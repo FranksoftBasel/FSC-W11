@@ -1,0 +1,25 @@
+Alcor Micro Smart Card Reader - sp154707.exe
+DisplayLink Grafiktreiber - sp160418.exe
+Firmware
+HP Hotkey Support  UWP - sp168736.exe
+HP Universal Camera - sp165984.exe
+HP Universal WBF Fingerprint - sp153464.exe
+Intel Bluetooth - sp160141.exe
+Intel Dynamic Tuning - sp167242.exe
+Intel Gaussian and Neural Accelerator - sp156271.exe
+Intel HID Event Filter Driver - sp157308.exe
+Intel Innovation Platform Framework - sp167236.exe
+Intel Management Engine - sp160328.exe
+Intel Processor Power Management Package - sp154708.exe
+Intel Sensor HubKomponenten - sp167164.exe
+Intel Serial IO Driver - sp158675.exe
+Intel Trusted Execution Technology TXT - sp144423.exe
+Intel XMM 7560R  LTEA Pro - sp155280.exe
+IntelÿVideotreiber und Bedienfeld - sp170367.exe
+IntelÿWLAN - sp165709.exe
+IntelChipsatz - sp157381.exe
+Mobiles Breitband 5G von HP 5G - sp166121.exe
+Names.txt
+NXP NFC NPC300ÿProximity - sp155171.exe
+Realtek HighDefinition HD Audio - sp165807.exe
+Thunderbolt 4 100W G6  - sp172012.exe

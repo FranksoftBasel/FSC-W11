@@ -1,0 +1,647 @@
+			Revision History
+			T37/T39/T76 ROM Family
+
+Models Supported:	HP EliteBook 830 G8 Notebook PC
+			HP EliteBook 840 G8 Notebook PC
+			HP EliteBook 850 G8 Notebook PC
+			HP ZBook Firefly 14 inch G8 Mobile Workstation PC
+			HP ZBook Firefly 15.6 inch G8 Mobile Workstation PC
+			HP EliteBook 840 Aero G8 Notebook PC
+
+- Provides the following drivers and firmware for T37 systems:
+EC/SIO Firmware, version 58.17.00
+TI USB-C Power Delivery Firmware, 7.9
+Intel GOP EFI Driver, version 17.0.1053
+Management Engine (ME) Firmware, version 15.0.55.2751
+
+- Provides the following drivers and firmware for T39 systems:
+Realtek Power Delivery Firmware, 8.3 (P017PH-B2D)
+EC/SIO Firmware, version 56.19.00
+Intel GOP EFI Driver, version 17.0.1053
+Management Engine (ME) Firmware, version 15.0.55.2751
+
+- Provides the following drivers and firmware for T76 systems:
+Cypress Power Delivery (PD) Firmware (CCG6), version 2.9 (P011Q9-B2H)
+EC/SIO Firmware, version 30.57.00
+Intel GOP EFI Driver, version 17.0.1053
+Management Engine (ME) Firmware, version 15.0.55.2751
+
+Version 01.24.02
+
+ENHANCEMENTS:  
+- Adds a new ownership state for 2023 Secure Boot certificates to track whether certificate settings use Microsoft defaults or have been modified by the user. If certificates are modified (added, disabled, or cleared), HP BIOS claims ownership of the policies to prevent Secure Boot changes when the system restarts.
+- Updates the system with the latest 2023 UEFI security certificates.
+- Adds support for Windows driver installation using DIRID 13.
+
+FIXES:
+
+PCR0 (TPM2.0) = T76 : 982A35ABE8B41829AC69B04AD62449FC2DDB2804306691AA224E4CB237D050FF
+                T37 : 6CDDE0D9D16389B98966C906B1B4A9E59365126506C5C1CCC3134626D6172AF2
+                T39 : 789B61F40DA6CCABC9D59E442108EDDEE39B43EA299C27C898BA8EA0E0E74C7C
+
+Version 01.23.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2025-20080, CVE-2025-27707, CVE-2025-32008, and CVE-2025-31648.
+- Updates the Absolute Persistence Module.
+
+FIXES:
+- General bug fixes.
+
+PCR0 (TPM2.0) = T76 : E55F3E990F33BE21492BB6F9D4F61FE43303E0CC6A7AFEADA8E4EF1483924A83
+                T37 : 9BF14C3A22E8436575FBB62713957DD2B272336A51E5332E05DFA0F4F517FBF6
+                T39 : 0A3D5FAEAE1FD4E478D7A666B04009D82F1D2B3FA40048ABF6779B49A8991960
+
+Version 01.22.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2025-20064, CVE-2025-20037, and CVE-2025-22392.
+- Optimizes the BIOS network buffer size to improve pre-boot performance.
+- Enables recent Windows cumulative updates to include the Windows UEFI CA 2023 certificate for platforms introduced in 2023 and earlier.
+
+FIXES:
+- General bug fixes.
+- Fixes an issue where the Fingerprint Device is missing from the F10 boot menu.
+- Fixes an issue where the microphone jack cannot be detected.
+
+PCR0 (TPM2.0) = T76 :  BAF8B47E56C763A2C0B64EB93D88BFA3AD77C76287F244AD32732CEFF1AB6DA1
+                T37 :  65836AC0CE0856B892C3D00AAF2EB03834F0DDE70F8593A693B1BBC1B407C38F
+                T39 :  8BB2805061E0A97C449734DABA86A7DD0CD8B14AEC13659F7FFF5887C6A9211D
+
+Version 01.21.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2023-48267, CVE-2023-48366, CVE-2023-49603, CVE-2023-49615, CVE-2023-49618, CVE-2024-36262, CVE-2024-45332, CVE-2025-20054, and CVE-2025-20109.
+
+FIXES:
+- General bug fixes.
+
+PCR0 (TPM2.0) = T76 : B473E8111200A92A7B341332E75D305DEEA021C646984CB9E6D8E9316087C1EE
+                T37 : 4E4C788192F99A01D13B5C156C7CD189AE6484760F3E451DE2B0B55232C346BA
+                T39 : D8BCE7EF6EBFB1F0B5939368408140F0AFDC162510E67D8EBC5B5281A4BF6AAD
+
+Version 01.20.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2021-39301, CVE-2024-26021, CVE-2024-28956, and CVE-2024-30211.
+
+FIXES:
+For T39 systems only:
+- Fixes an issue where the USB-C ports on the system do not detect certain USB-C devices properly.
+
+For T37 systems only:
+- Fixes an issue where certain USB-C ports do not charge properly when connected to certain docks.
+
+PCR0 (TPM2.0) = T76 : B9A5BF5FC2FFBCA9B75F75567C84D1F660D4A77D1413F7A4B15DE162CD27E6F0
+                T37 : 23C51C6285DA95BFD64EA41C131F0D783C733B99C88B89471151941F3541866B
+                T39 : E2C04DCEBE005623120EDF1B2B46B9822B2AC9E66D640928B20992F47E1D1C68
+
+Version 01.19.00
+
+ENHANCEMENTS:  
+- Adds Enhanced Sign-in Security support for the fingerprint reader and the IR camera on the system.
+- Improves storage management when the BIOS firmware is updated.
+
+For T76 systems only:
+- Improves Smart Cover Support.
+
+FIXES:
+- Fixes an issue where a dock connected to the system cannot be detected when the system is disconnected from AC power.
+- Fixes an issue where the Generic Superspeed USB Hub is not listed in Device Manager after the Hi-Res setting is disabled in the boot up settings while the system is connected to a docking device.
+- Fixes an issue where a USB-C device connected to the system disconnects continuously and causes the system to display an error message requesting more power.
+
+PCR0 (TPM2.0) = T76 : DCCB21BB8E0812D081A123F3C4FE497AF304D60A942421CCAA9B83CA755DB85A
+                T37 : BEDD362F957E2376EA22671060BC40377FB039A0E224475CAC7330E83BAA6636
+                T39 : 57A542A1427499F5A049EB5B003FEA488839B7A5654D326EA979BB8021FCA577
+
+Version 01.18.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2023-22351, CVE-2023-23904, CVE-2023-25546, CVE-2023-34424, CVE-2023-38655, CVE-2023-40067, CVE-2023-41833, CVE-2023-48361, CVE-2024-21844, CVE-2024-24853, CVE-2024-24853, CVE-2024-24968, and CVE-2024-24968.
+- Updates the names of all options in the Battery Health Manager settings.
+- Updates Smart Discharge to version 2.2.
+
+For T39 systems only:
+- Updates the Realtek Type-C Power Delivery firmware to version V7.9.
+
+FIXES:
+For T37 systems only:
+- Fixes an issue where the battery charge LED remains orange, indicating that the battery is still charging, after the system exits shipping mode.
+- Fixes an issue where the USB-C port does not function properly after the BIOS is updated.
+
+For T39 systems only:
+- Fixes an issue on a system connected to a dock where the USB-C port no longer detects the dock after a power surge occurs.
+- Fixes an issue where the battery icon continues to indicate that battery (DC) power is being used after the system is connected to an AC power source.
+- Fixes an intermittent issue where the RealTek USB Type-C power delivery port stops functioning after a BIOS update is run.
+- Fixes an issue where the Intel Thunderbolt Retimer Firmware Update fails to install when a BIOS update is run while the system is connected to a power delivery (PD) monitor.
+
+PCR0 (TPM2.0) = T76 : 7C854E2CCF6667071B6C3F1279EAD6092481594B4B27433D55C8C85B7710160B
+                T37 : 32F91AFF4F98B9451E9E86CD71EFDF0716D3116F4801886C9A4B175E0F63FF0D
+                T39 : 5DA834FAB5FBFC6F8CD9208D8F4554939BED584D735AA9AA4603DBEB851A6B50
+
+Version 01.17.01
+
+ENHANCEMENTS:  
+- Implemented smart discharge v2.1
+- Add MINIMIZE BATTERY HEALTH MANAGEMENT option to F10 and HPX for user can disabled BHM in BIOS
+- Implemented new F10 and HPX menu option to disable BHM permanent step-down 
+
+FIXES:
+- Fixes an issue the keyboard or mouse are jumpy and delayed in the BIOS menu when connect D6000 dock to host 
+
+For T76 systems only:
+- Fixes an issue Monitor can't display after resume from S4 with HP USB-C Dock G5
+
+For T39 systems only:
+- Fixes an issue the 740PM monitor can t display after off/on the monitor AC
+
+PCR0 (TPM2.0) = T76 : 86F1A938599355E402B58AE8C99A2865537FB355B667D6EA124DFEC181927DFA
+                T37 : 6A9D42F670F4B817A7CAB950C65EC7BBC10777AB2A152E7BBC0C0595AD0946E9
+                T39 : 84966167124486169726414C450E04AD51372F6AFCE0AE6BA6E3A77990750161
+
+Version 01.16.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2023-23583, CVE-2023-27502, CVE-2023-27504, CVE-2023-28383, CVE-2023-28389, CVE-2023-28402, CVE-2023-32282, and CVE-2023-32633.
+- Reserves a 32 GB partition on the hard drive for Sure Recover Partition-Based Recovery use.
+- Adds the item, Measure additional DMA settings, to prevent the system from entering BitLocker recovery mode after the DMA Protection setting is disabled.
+- Updates the RealTek 8153/8156 UEFI driver to version 2.043.
+- Improves the display processing mechanism.
+
+FIXES:
+- Fixes an issue where the incorrect characters are generated when the internal keyboard is used.
+- Fixes an issue where certain options that are present in UefiBIOSConfig file are not present in the HpSetup.txt file.
+
+For T39 systems only:
+- Fixes an issue on a system connected a USB-C dock where the system no longer functions after Windows Update is run.
+- Fixes an issue where an external monitor connected to dock remains blank after the system resumes from sleep mode.
+- Fixes an issue where the battery of a system connected to a 15W USB-C adapter cannot charge while the system is in a sleep, hibernate, or shutdown state.
+- Fixes an issue where a USB-C dock connected to the system cannot be detected after a BIOS update is run.
+
+PCR0 (TPM2.0) = T76 : A9C3B259DA0584CA8BE3C5F28A44210734E0728793B0DC82745D17A5BC9DA224
+                T37 : EE20C05451745818F728D2EA6D036C8D962C080B06CD46D1CE2513BB1AD57726
+                T39 : E8F017A4C1EF643AD33FEF107A9DD7BF80BE24EBC1CFAE2159CF169A21079CAC
+
+Version 01.15.02
+
+ENHANCEMENTS:  
+- Provides the BIOS update. NOTE: HP strongly recommends updating the system BIOS to address a potential issue with HP Sure Start that can cause some devices to experience a SecureBoot error at boot.
+- Addresses security vulnerabilities CVE-2023-22329 and CVE-2023-25756.
+- Updates the message that is displayed when a Non-HP Battery is detected.
+- Updates the Intel UEFI Wi-Fi driver to version 2.2.24.23283.
+- Updates the Intel MCU to enhance compatibility.
+- Adds HTTPS support for Sure Recover in the pre-boot environment for operating system recovery.
+- Provides support for the 5.15-5.35 GHz band.
+- Provides support for the SMBIOS type1 version string for db addition.
+- Adds Android Ready Support to the BIOS for Windows-to-Android Conversion on Android Ready computer models.
+
+FIXES:
+- Fixes an issue that occurs while flashing the BIOS which causes the system to display the message, Intel Thunderbolt Retimer Firmware Update failed.
+- Fixes an issue on a system connected to a network through an HP Thunderbolt G4 Dock where the network is not recognized in the pre-OS environment.
+- Fixes an issue where Power-On Authentication using the fingerprint reader does not function properly.
+- Fixes an issue that occurs after the EBAM and BIOS admin passwords are set where flashing the BIOS with the correct password causes the Firmware Update and Recovery Utility interface to display the message, Incorrect password was entered.
+- Fixes an issue where the fan fails UEFI diagnostics when the fan when fan speed is set to 100%.
+
+T37 systems only:
+- Fixes an issue on a system running in battery mode with less than 5% battery capacity remaining where the system fails to power on after High Resolution mode is enabled in the BIOS setup menu.
+
+T39 systems only:
+- Fixes an issue the USB-C port does not function and an error symbol (yellow bang) is displayed on USB  Connector Manager.
+
+PCR0 (TPM2.0) = T76 : A3D1980E44788FD9E0A094EC969416BCFD1827FFC1926BF155A50904CD335CA9
+                T37 : 1A3B2753B8E55F218C1C4FC194FD1A3968A25FF54A27B185865EB5764BEECB8E
+                T39 : C9F25AA7791770868ADA26FB08C297312F48C6E99C86BE5F9B866D72FCE0560C
+
+Version 01.15.01
+
+ENHANCEMENTS:  
+- HP strongly recommends updating system BIOS to address a potential issue with HP Sure Start that can cause some devices to experience a SecureBoot error at boot.
+- Addresses security vulnerabilities CVE-2023-22329 and CVE-2023-25756.
+- Updates the message that is displayed when a Non-HP Battery is detected.
+- Updates the Intel UEFI Wi-Fi driver to version 2.2.24.23283.
+- Updates the Intel MCU to enhance compatibility.
+- Adds HTTPS support for Sure Recover in the pre-boot environment for operating system recovery.
+- Provides support for the 5.15-5.35 GHz band.
+- Provides support for the SMBIOS type1 version string for db addition.
+- Adds Android Ready Support to the BIOS for Windows-to-Android Conversion on Android Ready computer models.
+
+FIXES:
+- Fixes an issue that occurs while flashing the BIOS which causes the system to display the message, Intel Thunderbolt Retimer Firmware Update failed.
+- Fixes an issue on a system connected to a network through an HP Thunderbolt G4 Dock where the network is not recognized in the pre-OS environment.
+- Fixes an issue where Power-On Authentication using the fingerprint reader does not function properly.
+- Fixes an issue that occurs after the EBAM and BIOS admin passwords are set where flashing the BIOS with the correct password causes the Firmware Update and Recovery Utility interface to display the message, Incorrect password was entered.
+- Fixes an issue where the fan fails UEFI diagnostics when the fan when fan speed is set to 100%.
+
+T37 systems only:
+- Fixes an issue on a system running in battery mode with less than 5% battery capacity remaining where the system fails to power on after High Resolution mode is enabled in the BIOS setup menu.
+
+T39 systems only:
+- Fixes an issue the USB-C port does not function and an error symbol (yellow bang) is displayed on USB  Connector Manager.
+
+PCR0 (TPM2.0) = T76 : 051D0CB0FE509DE9F22187E01471B306552368B8C32B288FC83D34F61F008D6C
+                T37 : 989BA825EEAD34B350431D43419CD0503D0117515C35132B6085698714ED8587
+                T39 : B65DD6D8E22B4BC6717EE08398F7BAF477D815BEEDF10AD58F046127A54A0730
+
+Version 01.14.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2022-29871 and CVE-2022-36392.
+- Addresses security vulnerabilities CVE-2022-44611.
+- Updates the Intel MCU to enhance compatibility.
+- Adds UEFI Video Port I/O Check in the HP PC Hardware Diagnostics.
+- Updates the Infineon TPM EFI Driver to version 02.02.3776.00.
+- Provides a feature under the Security tab in F10, Clear BIOS Passwords on RTC Battery Removal.
+
+FIXES:
+- Fixes a potential security issue where the system does not ask for the BitLocker key when Direct Memory Access (DMA) protection is disabled, even though BitLocker is enabled.
+- Fixes an issue where an external monitor connected through an HP Thunderbolt G4 Dock is not detected after the system resumes from a hibernation state.
+- Fixes an issue where the system battery level drops after an HP 4K USB-C multiport Hub is connected through a 65W USB-C adapter.
+- Fixes an issue where the battery does not recharge correctly when the Maximize my battery health option is set.
+- Fixes an issue where the BIOS cannot be updated when Enhanced BIOS Authentication Mode (EBAM) is enabled.
+
+T37 systems only:
+- Fixes an issue where a system connected to a USB-C DisplayPort alt mode dock does not power on properly when running on AC only with High-Resolution mode is enabled.
+
+T39 systems only:
+- Fixes an issue which causes a UCSI driver failure with error code 43 when a system is connected to a USB-C docking station.
+
+PCR0 (TPM2.0) = T76 : 71FB20B6F59505A8B98FA2C70C7C918A67D04F314A15032A8F32EA0739ABE9BE
+                T37 : 6FB746FC82A49DE4C33B261A73EBAC96FB5B5403373748FBE9D3946D7CD74DAD
+                T39 : 7AF64E0DF85422661356E4DCA1E403B34046BC8D1D823DDC7272BAD6BB05BDCE
+
+Version 01.13.01
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2022-27635, CVE-2022-36351, CVE-2022-38076, CVE-2022-40964, and CVE-2022-46329.
+- Provides support for the USB Audio Offload setup option to avoid the issue, USB headsets aren't recognized by Skype for Business on recent Intel platforms.
+- Provides support for PXE boot with an FIT0798 ethernet module.
+- Improves the help message translation of Thunderbolt Mode in the BIOS setup menu.
+- Provides support to PXE boot with an i-Tec USB Ethernet dongle.
+- Provides support for a new feature that displays a QR code and the URL to the correct HP Support documentation after a POST error.
+- Updates the Intel i225-V EFI Driver to version 0.10.5.
+- Updates the Intel silicon reference code to enhance compatibility.
+- Updates the Intel silicon MCU.
+- Updates HP Diagnostics Driver to version 2.3.2.0.
+- Adds support for Extended DHCP Timeout in the BIOS setup menu.
+- Improves charging stability in Windows 11.
+
+FIXES:
+- Fixes an issue where an HP Z38c Monitor does not display properly after disconnecting and reconnecting the monitor while the system is in a hibernation or shutdown state.
+- Fixes an issue where the screen does not display properly when the system is connected to a HP USB-C/A Dock G2.
+- Fixes an issue where deselecting the Thunderbolt Type-C Ports setting in the BIOS setup menu causes a blue screen event to occur with the error message, ACPI_BIOS_ERROR.
+- Fixes an issue where a system connected to a network through a USB-C to RJ45 dongle randomly drops the network connection.
+- Fixes issue where a POST Power-On Password cannot be set after a BIOS Administrator Password is set in Enhanced BIOS Authentication Mode.
+- Fixes an issue where LAN connections do not function properly when the source is switched.
+
+For T37 systems only:
+- Fixes an issue on a system that enters and resumes from hibernation while charging through an HP USB-C Essential Power Bank where the system displays the message, PC is not charging.
+- Fixes an issue which causes a USB-C power surge error when the system is connected to a USB-C Iiyama Prolite XUB2492HSN monitor.
+
+For T39 systems only:
+- Fixes an issue on a system that enters and resumes from hibernation while charging through an HP USB-C Essential Power Bank where the system displays the message, PC is not charging.
+- Fixes an issue where a USB drive cannot be detected after a Type-C adapter is disconnected and then an HP USB-C to USB 3.0 Adapter is connected through the same port.
+- Fixes an issue where an external monitor cannot be detected in Device Manager after Thunderbolt Mode is changed to enable or disable in the BIOS through an HP Elite USB-C Multi Port Hub connected to the system.
+
+PCR0 (TPM2.0) = T76 : E6FFD16A08C5758DC5273DECE6CE9E3C595B5DEC14BBC5D350334AD08B6E99F8
+                T37 : FEACA690E0C00B49E176053C287DBB2C710585937289A4B09295EFFF9AF9B4BC
+                T39 : C8BD9A35B4FE0DC76013EDF505D18D51415B561641A267BE710E08173BA98E72
+
+Version 01.12.10
+
+ENHANCEMENTS:  
+- Enhancement to support "USB Audio Offload" setup option to avoid the problem of "USB headsets aren't recognized by Skype for Business on recent Intel platforms"
+
+FIXES:
+
+PCR0 (TPM2.0) = T76 : B0775B16C424A6D4EFF3A482098993AA1B8817B334E3DA8F7ABD1C5BE4B9F7C6
+                T37 : 733CC13CB427A717F0335607CA08A32D2405476A59C38B7E9AC269A5BCF01CC5
+                T39 : 0987E81A64304CA824FA945075AECF0C6D7F73BB56CA27BF262866FF8A128753
+
+Version 01.12.00
+
+ENHANCEMENTS:  
+- Enhancement to update Intel UEFI Wi-Fi Driver to 2.2.17.22362
+- Updates the thermal management algorithm to improve fan noise
+- Enhancement to address security vulnerabilities CVE-2022-30704
+- Updates the Intel silicon reference code for compatibility enhancement
+- Adds BIOS F10 menu charging setting to disable sets Type-C ports to sink only when thne system in s4 hibernate and s5 shutdown and change it back to dual role when system power on.
+- Enhancement to support PXE boot with Dell and Lenovo USB Ethernet dongles or Docking station
+- Enhancement to implement code to handle post error map to corresponding URL.
+- Enhancement to add URL and QR code links for DT SMART error 30D~312.
+- Enhancement to port Implementation of Drivelock Event Logging.
+- Enhancement to integrate Sure Run Service Release v5.0.1.13.a.1.
+- Updates basic HP PC Hardware Diagnostics utility to 2.3.1.0.
+- Enhancement for failure when trying to recover HP Image via network.
+- Enhancement the experience of modern standby
+
+FIXES:
+- Fixes an issue where the system auto resume from hibernate and shutdown, when launches Tile Mobile App to find the Laptop Tile
+- Fixes an issue where system pops up message "PC isn't charging" after reboot with the 15W USB-C PD adapter connected
+
+T76 only
+- Fixes an issue where system shows not charging when plug in HP USB-C/A Dock G2, HP USB-C Dock G5 or HP Docking Station
+- Fixes an issue where the system didn't reconnect to the Tech Pulse server after erasing using Tech Pulse then re-installing OS.
+
+T39 only
+- Fixes an issue where system shows charging, but actually not charging when plug in Chicony 65 Watt nPFC Standard USB type C Straight 1.8m (Ceto)
+
+T37 only
+- Fixes an issue where system shows charging, but actually not charging when plug in Chicony 65 Watt nPFC Standard USB type C Straight 1.8m (Ceto)
+- Fixes up an issue where 'Generic SuperSpeed USB Hub' does not exist in 'Device Manger' after disable Hi-Res with Comm Accy Placeholder connected USB-C monitor
+
+PCR0 (TPM2.0) = T76 : 1CB08107A90832F46D5527F260CD5BC7BDC0D569C5F4D2FCBD2F9E08BED01EEA
+                T37 : 3E31CAFA6767F0470D83381AB8B7BED1DE81E1EEC1FF1F0B590CDA8EDCC5C776
+                T39 : 7C8032AB29CF9B888869A453960CCDCB1A07819E2EBEF06A7D27F13CE8A02B36
+
+Version 01.11.00
+
+ENHANCEMENTS:  
+- Enhancement to address security vulnerabilities CVE-2022-21198.
+- Enhancement to support new Micron 32GB memory
+- Enhancement to address security vulnerabilities CVE-2022-26845, CVE-2022-29893, CVE-2022-27497, CVE-2022-33159.
+- Updates the Preboot Wifi driver to v2.2.15.22272.
+- Updates the CPU microcode for Intel processors for stability enhancement.
+- Retrieving data. Wait a few seconds and try to cut or copy again.
+- Updates HP Sure Run Agent to v5.0.1.11 for compatibility and stability enhancement.
+- Updates basic HP PC Hardware Diagnostics utility to 2.3.0.0.
+- Enhancement to address security vulnerabilities CVE-2022-27538, CVE-2022-27541, CVE-2022-27539, CVE-2022-43777, CVE-2022-43778, CVE-2022-27540.
+
+T76 only
+- Enhanced the stability of USB-C connection on Windows 11 22H2
+
+FIXES:
+- Fixes an issue where system auto wake up second time after wake up on lan(WOL) via HP USB-C Dock G5 and and HP USB-C/A Dock G2.
+
+T76 only
+- Fixes an issue where Chicony 65W Ceto USBC adaptor shows charging ,but actually not charging.
+
+T39 only
+- Fixes an issue that the 2nd external monitor resolution cannot reach 2550*1440 when attach 4K+2K DP monitor on USB-C Dock G5
+
+PCR0 (TPM2.0) = T76 : DF344B8E6C964816D797520CC7571800E391F31C299F3C64BD5EF81408A54E9C
+                T37 : 0A8D0767CD4A76CD8883BD6EC15CAF4A4CE7E256BEFCA5F36FC94C82E5FFC63E
+                T39 : 133B27F881334A94FB2807885EFD5F88519A5BA86D73F6ACB6B784EB54AD31D1
+
+Version 01.10.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2021-23223, CVE-2021-37409.
+- Addresses security vulnerabilities CVE-2022-31644, CVE-2022-31645, CVE-2022-31646, CVE-2022-27537.
+- Addresses security vulnerabilities CVE-2022-31643.
+- Improves background brightness on the camera.
+- Provides dynamic adjustment of the battery charge level based on usage patterns to improve battery health.
+- Provides improved Sure Admin security to bind QR-code metadata to the Sure Admin PIN for local administration.
+- Improves the error message displayed when flashing a USB-C controller fails. 
+- Improves connection stability when HP Sure Recover is run.
+- Updates HP Sure Run Agent to version 5.0.0.38894 for compatibility and stability enhancement.
+- Provides support for a new Samsung memory module.
+- Adjusts the max fan speed in the HP Diagnostics UEFI to not exceed 100%.
+
+FIXES:
+- Fixes an issue where the system does not completely display the feature, HP will balance your battery health and battery duration [Enabled].
+- Fixes an issue where an incorrect Windows Security button message is displayed on the Windows lock screen.
+- Fixes an issue on a system with Lock BIOS Version enabled in the F10 setup where a BIOS update can be enabled using the ESC Startup menu.
+- Fixes an intermittent issue where the speed of a USB3 device decreases to USB2 speeds.
+- Fixes an issue where the system does not recharge through a USB Type-C 90W adapter after the system enters critical hibernate (power options default is 4%).
+- Fixes an issue that occurs when MultiKey is permanently disabled, the HP Find, Lock & Wipe feature is also disabled.
+- Fixes an issue where keypresses are unexpectedly repeated when the system is connected to a wired keyboard through the USB-C Dock G5.
+
+PCR0 (TPM2.0) = T76 : E0C8A0F43E6BFA3879126ECCA4B2CEA519E0ACDA83D467BE92E283C8A8E7B6BC
+                T37 : C0EB5AD8E3348CEF0C762376E46B7E4C525A222D880F30A3EBD4D43B2C69ECC1
+                T39 : D19C25F9B2C11353A74422971B1082209F59C243699067200506103487632813
+
+
+Version 01.09.10
+
+ENHANCEMENTS:  
+- Enhancement to address security vulnerabilities CVE-2022-31635, CVE-2022-31636, CVE-2022-31637, CVE-2022-31638, CVE-2022-31639.
+- Enhancement to address security vulnerabilities CVE-2022-31640, CVE-2022-31641, CVE-2022-31642.
+
+FIXES:
+- Fixes an issue where system hang during restoring factory default settings.
+
+PCR0 (TPM2.0) = T76 : F7B51E7FADFBBA956EE79C3FE90ADDE43AE958E19D0698EE8A4EDE73A4EEF726
+                T37 : DCFC9BB4908D4383AD7C5915BF2766F481BE9828F75B372239DD490134CB3F87
+                T39 : 160453892DDFCCA255DA61DC3647C7F336279A6C86A5A8093DF2E581BBF006B0
+
+
+Version 01.09.01
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2021-33122.
+- Addresses security vulnerabilities CVE-2021-33103, CVE-2021-33123, CVE-2021-33124.
+- Addresses security vulnerabilities CVE-2022-0004.
+- Addresses security vulnerabilities CVE-2022-21123.
+- Addresses security vulnerabilities CVE-2022-23924, CVE-2022-23925, CVE-2022-23926, CVE-2022-23927, CVE-2022-23928, CVE-2022-23929, CVE-2022-23930, CVE-2022-23931, CVE-2022-23932, CVE-2022-23933, CVE-2022-23934.
+- Addresses security vulnerabilities CVE-2022-23953, CVE-2022-23954, CVE-2022-23955, CVE-2022-23956, CVE-2022-23957, CVE-2022-23958.
+- Adds a feature to control the display of the BIOS Admin login based on the setting, BIOS Administrator visible at power-on authentication, when Enhanced BIOS Authentication Mode (EBAM) is set.
+- Provides support for the Intel WLAN AX201 802.11ax in Russia and Indonesia on the WLAN 5.15-5.35 GHz band.
+- Improves the stability of the face auto exposure feature of the camera.
+- Updates the splash screen with Protected by Sure Start bitmaps.
+For T37 systems only:
+- Updates the USB Type-C Power Delivery (PD) Firmware to version 7.5.
+For T39 systems only:
+- Adds a new BIOS family to support additional USB Type-C Controllers.
+
+FIXES:
+- Fixes an issue where the system does not boot properly after switching between two different saved boot stores.
+- Fixes an issue where the PXE boot option is not available when the system is connected to an HP Thunderbolt Dock G4.
+- Fixes an issue on a system with Intel Wireless-AC 9560 where the pop-up message warning that Bluetooth is disabled is not displayed when the WLAN is disabled.
+- Fixes an issue where the system continuously attempts to recover the Management Engine driver when the recovery image is deployed through a third-party application.
+- Fixes an issue where the clickpad controller firmware update does not install properly.
+- Fixes an issue on a system connected to a network through a USB Type-C dongle/dock where the system disconnects from the network after a BIOS/firmware update.
+For T39 systems only:
+- Fixes an issue where the Type-C LAN dongle does not function properly after the BIOS is updated to version 01.06.02.
+For T76 systems only:
+- Fixes an issue that occurs when the BIOS is updated by the Firmware Update and Recovery Utility (FUR) where a logo is incorrectly displayed when the system restarts.
+ 
+PCR0 (TPM2.0) = T76 : 11C3484F9155F8B1E5DF671ED6AFF2AE4BAED14A124AE996C557D573763776BA
+                T37 : 79CE62EABFB2E82FD7C1774947588BAEFD47DC532F21D72ABBD89D82848053F1
+                T39 : DA64EFECC098F9D77DF6C1EBDDA43239840F980CD8E81853ADFAD45095520034
+
+
+Version 01.09.00
+
+ENHANCEMENTS:  
+- Enhancement to improve face auto exposure stability
+- Enhancement to address security vulnerabilities CVE-2022-21123
+- Enhancement to address security vulnerabilities CVE-2021-33122.
+- Enhancement to address security vulnerabilities CVE-2021-23223, CVE-2021-37409.
+- Enhancement to extend Intel WLAN AX201 (Harrison Peak2) 802.11ax support in Russia and Indonesia WLAN 5.15-5.35 GHz band.
+- Enhancement to improve face auto exposure stability.
+- Enhancement to address security vulnerabilities CVE-2021-33123, CVE-2021-33124, CVE-2021-33103.
+- Enhancement to address security vulnerabilities CVE-2022-23924, CVE-2022-23925, CVE-2022-23926, CVE-2022-23927, CVE-2022-23928, CVE-2022-23929, CVE-2022-23930, CVE-2022-23931, CVE-2022-23932, CVE-2022-23933, CVE-2022-23934.
+- Enhancement to address security vulnerabilities CVE-2022-23953, CVE-2022-23954, CVE-2022-23955, CVE-2022-23956, CVE-2022-23957, CVE-2022-23958.
+- Adds a feature to control display of BIOS Admin login based on BIOS Administrator visible at power-on authentication when Enhanced BIOS Authentication Mode (EBAM) is set.
+- Enhancement to address security vulnerabilities CVE-2022-0004, CVE-2021-33159.
+- Update splash screen with Protected by Sure Start bitmaps.
+For T37 only:
+- PD F/W update to v7.5 with fixes an issue where need to charge for about 15 minutes before boot to os after the battery level drain out to 0% when connect the monitor to unit via USB-C cable.
+For T39 only
+- Adds new BIOS family for new USB Type-C Controller support.
+
+FIXES:
+- Fixes an issue where there is no pop up message for Bluetooth disablement when disable WLAN with Intel?Wireless-AC 9560.
+- Fixes an issue where system attempt to recover ME infinitely if customer deploy recover image via 3-party application
+- Fixes an issue where there is no PXE boot option when connect to HP Thunderbolt Dock G4.
+- Fixes an issue where system failure to update clickpad controller firmware.
+- Fixes an issue where network connected via USB Type-C dongle/dock loses connection after BIOS/firmware update.
+- Fixes issue where system failure to boot after switching between two different saved bootstores.
+For T39 only
+- Fixes an issue where Bios update to 01.06.02 the Type-C Lan dongle was not function.
+For T76 only
+- Fixes an issue where FUR Bios update from 01.07.02 to 01.08.00 new HP Logo is shown and the boot loop starts
+ 
+PCR0 (TPM2.0) = T76 : 71E268791110A9D44D1A014FE373A9BB7A7F69B3C6B6A4C2DAAC79A359412EF8
+                T37 : 81C0F18B42BE98661523E0DE0894C4DC623023409A1DBE434E225605B26AC2BB
+                T39 : B51F6594CF60885F12FB6CC63F29F6C522B5C1AB83A9066EC15507F8619E8E5D
+
+Version 01.08.20
+
+ENHANCEMENTS:  
+- Enhancement to address security vulnerabilities CVE-2022-23924, CVE-2022-23925, CVE-2022-23926, CVE-2022-23927, CVE-2022-23928, CVE-2022-23929, CVE-2022-23930, CVE-2022-23931, CVE-2022-23932, CVE-2022-23933, CVE-2022-23934.
+- Enhancement to address security vulnerabilities CVE-2022-23953, CVE-2022-23954, CVE-2022-23955, CVE-2022-23956, CVE-2022-23957, CVE-2022-23958.
+- Adds a feature to control display of BIOS Admin login based on BIOS Administrator visible at power-on authentication when Enhanced BIOS Authentication Mode (EBAM) is set.
+
+FIXES:
+- Fixes issue where system failure to boot after switching between two different saved bootstores.
+ 
+PCR0 (TPM2.0) = T76 : 347A7153B67EFD154D50053731DABEDD0C6FC57D69CDEA90D83FC61F50F038FE
+                T37 : 9646D40EA7EFF6A91DA5671049DD5F7B7D27FB1526030AB078EC033CC39DA1EE
+
+Version 01.08.00
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2021-39297, CVE-2021-39299, CVE-2021-39300, CVE-2021-39301.
+- Updates the splash screen with Protected by Sure Start bitmaps.
+- Updates the Intel Thunderbolt retimer firmware to version 2.25.1.1.
+- Provides support for the  Hynix 32GB memory module.
+- Provides support for the Realtek audio codec.
+
+FIXES:
+- Fixes an issue where the system displays the incorrect unlock screen message when the system screen is locked.
+- Fixes an issue where system battery does not recharge properly through the HP Thunderbolt Dock G4r.
+- Fixes an issue where a system that attempts to update firmware via FTP server with proxy from the F10 setup interface reports the error, Failure during data transfer (maximum downloaded content size exceeded). 
+- Fixes an issue where an unsupported Thunderbolt Dock is displayed in the BIOS Config Utility.
+- Fixes an issue where the audio replay volume is lower than expected after the BIOS is updated.
+ 
+PCR0 (TPM2.0) = 70EE7804465E4706A4C891043A17448835886BC11BBAE74BCD94E935DFBFBBA8
+
+Version 01.07.02
+
+ENHANCEMENTS:  
+- Enhancement to address security vulnerabilities CVE-2021-0145. 
+- Enhancement to address security vulnerabilities CVE-2021-0157, CVE-2021-0156. 
+- Enhancement to address security vulnerabilities CVE-2021-0107, CVE-2021-0111, CVE-2021-0114, CVE-2021-0115, CVE-2021-0116, CVE-2021-0117, CVE-2021-0118, CVE-2021-0119, CVE-2021-0124, CVE-2021-0125. 
+- Update camera Firmware Management to enhance camera firmware flash stability 
+- Update HP Sure Run Agent to v5.0.0.26569 for compatibility and stability enhancement.
+- Adds Windows11 operating system support.
+- Enhancement to address security vulnerabilities CVE-2021-0107, CVE-2021-0111, CVE-2021-0114, CVE-2021-0115, CVE-2021-0116, CVE-2021-0117, CVE-2021-0118, CVE-2021-0119, CVE-2021-0124, CVE-2021-0125. 
+- Enhancement to address security vulnerabilities CVE-2021-33113, CVE-2021-33115. 
+- Correct help string for F10 "Special Keys mapped to Fn+Keypress"  
+- Correct POST error message for "300-Confguration change warning" on Traditional Chinese 
+
+FIXES:
+- Fixes an issue where Thunderbolt grahpic card doesn t work properly after restarting unit. 
+- Fixes an issue where can't adjust brightness by FN+F3/F4 when Privacy Panel brightness turned on in F10 
+- Fixes an issue where charge LED  from amber change to white when battery charging to 88% 
+- Fixes an issue where it showes yellow bang in device manager on UCSI item. 
+- Fixes an issue where mobile hotspot doesn t work properly when a device connects to 5GHz channel. 
+- Fixes issue where HP Sure Run failure to enable with error message "Operation failed with the following error code:4" when "Remote Device Management" permanently disabled. 
+- Fixes issue where option in F10 setup menu does not match option get from BIOS Configuration Utility when HP Cloud Managed is permanently disabled.
+- Fixes issue where some F10 settings or help message display incomplete when change to non-English language." 
+- Fixes an issue where HP logo doesn't appear when system triggers ME recovery. 
+ 
+PCR0 (TPM2.0) = 2A382FFFAA90861C18C45568BDFB25A7EDA5915D6561DACA2689EBA7EE17378A
+
+Version 01.06.02
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2021-0072, CVE-2021-0161, CVE-2021-0164, CVE-2021-0165, CVE-2021-0166, CVE-2021-0168, CVE-2021-0170, CVE-2021-0076, CVE-2021-0183.
+- Updates the power-on battery warning message when the battery capacity is low.
+- Updates the battery capacity icon display when Maximize My Battery Health is set in the F10 settings and the battery is fully charged.
+- Provides support for the Apple USB-C 87W adaptor.
+- Provides support for a new camera module.
+- Updates the Realtek USB UEFI PXE driver to v2.035.
+- Updates HP Sure Run Service Agent to enhance compatibility and stability.
+- Delays the response of the power button on the keyboard to avoid accidental activation of the power button during sanitization mode while HP Easy Clean is used.
+- Provides support for the Soft Start feature.
+- Provides support for the Apple XDR display.
+- Updates the Intel reference code to provide enhanced stability and compatibility.
+- Adds support for a new memory module.
+- Improves power management on systems running multiple Type-C ports.
+
+NOTE: Due to the enhanced security features included in this update, the BIOS cannot be downgraded to an earlier version after this package is installed.
+
+FIXES:  
+- Fixes an issue on a system with Sure Admin enabled where the Power-On Password cannot be cleared after the defaults are restored using Restore Security Settings to Factory Defaults.
+- Fixes an issue where the CTRL+ALT+Insert key combination does not function in the Fn unlock mode.
+- Fixes an issue where the current and new version numbers in the HP Firmware Update and Recovery tool are reversed.
+- Fixes an issue where the touchscreen does not function in the F10 menu. 
+- Fixes issue where the HP Sure Recover page is not displayed correctly in the F10 setup menu after the display language is changed to a non-English language.
+- Fixes an issue where the system cannot charge the battery when battery is in shipping mode.
+- Fixes an issue where the HP Thunderbolt G2 dock disconnects from the system unexpectedly.
+  
+PCR0 (TPM2.0) = 9E4BD2BEE9B44D6E74744FA8BCE34B946E6B0BD0ECAA3C0727762D52EE2ABB1D
+
+Version 01.04.01
+
+ENHANCEMENTS:  
+- Addresses security vulnerabilities CVE-2021-0069, CVE-2021-0071, and CVE-2021-0075.
+- Addresses security vulnerabilities CVE-2020-12359.
+- Addresses security vulnerabilities CVE-2020-8700, CVE-2020-8703, CVE-2020-24507 and CVE-2020-24516.
+- Addresses security vulnerabilities CVE-2020-24489, CVE-2020-24511, and CVE-2020-24512.
+- Improves Customer Experience when a 3rd party device is used to charge the system through the USB-C port.
+- Updates the UEFI Wi-Fi Driver to version 1.2.4.2193 to enhance connection stability in the pre-boot environment.
+- Adds camera firmware update capability for additional supported camera devices.
+- Improves the performance of the clickpad firmware update process.
+- Enhances cursor movement when the clickpad is used.
+- Enhances cursor movement when a Bluetooth mouse is used.
+- Provides enhanced stability when an external monitor is connected to the system using an HP USB-C Dock G5.
+- Updates the Intel Sensor Hub firmware to version 5.4.300.4468.
+
+FIXES:  
+- Fixes an issue where the keyboard Fn key LED does not power off when the system is in hibernation.
+- Fixes an issue on a system connected to an HP dock that enters hibernation where the system restarts or shuts down during Wake on LAN.
+- Fixes an issue that occurs on a system connected to an external monitor using an HP Docking station where the speaker on the monitor does not function properly function after the system resumes from a hibernate or system off state while the lid is closed.
+- Fixes an issue on a system with the lid closed where the system cannot power on with external monitor connected though HP Docking station.
+
+PCR0 (TPM2.0) = 4A0024313F0A692D5D4ED2F8C2BFC2425B758C8AC87AD22403DE0D42582367F7
+
+
+Version 01.01.32
+
+- Fixes an issue where a system connected to a dock monitor stops functioning (hangs) when a BIOS update is performed.
+
+- Fixes an issue where an external monitor connected to the system using VGA or DisplayPort displays a black screen after the system is powered on (cold boot) while the lid is closed and BitLocker is enabled. 
+
+- Fixes an issue where the F1 through F12 keys do not function properly.
+
+- Fixes an issue where the system cannot boot to PXE from an IPv4/IPV6 network after Custom/system address is enabled in the F10 menu.
+
+- Fixes an issue which causes an error to occur when the HP Sure Admin QR Code is used on a system when Intel AMT (Active Management Technology) is disabled and Pre-boot WiFi is enabled.
+
+- Fixes an issue where the SSD ID string is incomplete in Secure Erase in the F10 menu.
+
+- Fixes an issue where system continues to boot to the USB recovery partition and not the USB image partition after the USB drive is selected from the boot menu.
+
+- Fixes an issue where the system does not boot successfully after the A/C power adapter is disconnected from the system during a capsule BIOS update on EMMC systems.
+
+- Improves the resume time from Modern Standby time when the system is running in DC mode.
+
+- Improves the Modern Standby (MSC) experience when the system transitions from AC to DC power mode while the lid is closed.
+
+- Enables the second source ELAN Clickpad Firmware update. 
+
+- Enables Brightness hotkey support for Linux Ubuntu.
+
+- Adds the Permanent Configuration of Boot Order for external network devices.
+
+- Limits system power when the system is running in DC mode and the battery temperature is below 10C.
+
+PCR0 (TPM2.0) = 48A46D5C8AD10C3F55E5A1423C700CC519A0A4F1902EAC2C5EC20DE3C6187BD5
+
+
+Version 01.01.04
+
+PCR0 (TPM2.0) = 8D09D72E59E783817DD6847FECDA9CFE2B8C8B71DEEE02472555271ADB1AA69E

@@ -1,0 +1,4 @@
+"Name": "HARMAN AdobeAIR",
+"Id": "HARMAN.AdobeAIR",
+"Mode": "update",
+"Source": "winget"

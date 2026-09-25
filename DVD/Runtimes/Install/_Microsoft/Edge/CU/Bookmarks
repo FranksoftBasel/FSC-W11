@@ -1,0 +1,138 @@
+{
+   "checksum": "ef751066f4e0ece478002d7d3e23aa11",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13230564869664732",
+            "date_last_used": "13378653321901203",
+            "guid": "fbae562c-ef65-4ac8-af05-167d9457a315",
+            "id": "6",
+            "name": "Google.ch",
+            "show_icon": false,
+            "source": "import_fre",
+            "type": "url",
+            "url": "https://www.google.ch/",
+            "visit_count": 7
+         }, {
+            "date_added": "13230564869664732",
+            "date_last_used": "13387030422359218",
+            "guid": "c3d436c1-ede7-47dc-9e9c-4966f1f3c330",
+            "id": "7",
+            "name": "Outlook.com",
+            "show_icon": false,
+            "source": "import_fre",
+            "type": "url",
+            "url": "https://login.live.com/",
+            "visit_count": 5
+         }, {
+            "date_added": "13378653330633488",
+            "date_last_used": "13387030421907164",
+            "guid": "67dbdb4c-3b75-4ad4-8763-dffba398ad88",
+            "id": "11",
+            "name": "WhatsAppWeb",
+            "show_icon": false,
+            "source": "user_copy",
+            "type": "url",
+            "url": "https://web.whatsapp.com/",
+            "visit_count": 4
+         }, {
+            "date_added": "13378653340188163",
+            "date_last_used": "13387030421079475",
+            "guid": "ace9b428-0dff-4b7d-be5a-b4ff8e2e5070",
+            "id": "12",
+            "name": "TelegramWeb",
+            "show_icon": false,
+            "source": "user_copy",
+            "type": "url",
+            "url": "https://web.telegram.org/z/",
+            "visit_count": 4
+         }, {
+            "date_added": "13387030400915968",
+            "date_last_used": "13387030420781815",
+            "guid": "5c5fb357-e595-4e33-a4f0-5dd66d9de9fa",
+            "id": "21",
+            "name": "ChatGPT",
+            "show_icon": false,
+            "source": "user_copy",
+            "type": "url",
+            "url": "https://chatgpt.com/",
+            "visit_count": 1
+         }, {
+            "date_added": "13322373911828457",
+            "date_last_used": "13387030420519166",
+            "guid": "62846d06-14ed-4205-b9e0-3d4f48397ee6",
+            "id": "5",
+            "name": "YT",
+            "show_icon": false,
+            "source": "import_fre",
+            "type": "url",
+            "url": "https://www.youtube.com/",
+            "visit_count": 4
+         }, {
+            "date_added": "13385921558247645",
+            "date_last_used": "13387030420072349",
+            "guid": "f24bd819-d4e2-4e17-b9a8-65bf103910cd",
+            "id": "18",
+            "name": "Total Adblock",
+            "show_icon": false,
+            "source": "user_copy",
+            "type": "url",
+            "url": "https://microsoftedge.microsoft.com/addons/detail/total-adblock-ad-blocke/kkkldohdhcfhpjchcefpkfhjfeapdmek",
+            "visit_count": 2
+         }, {
+            "date_added": "13385921512445416",
+            "date_last_used": "13387030419615769",
+            "guid": "9d97ff19-96b0-4c86-bb72-01826a5bee91",
+            "id": "17",
+            "name": "Save as MHTML",
+            "show_icon": false,
+            "source": "user_copy",
+            "type": "url",
+            "url": "https://microsoftedge.microsoft.com/addons/detail/save-as-mhtml/pjjgdpchkljpkhogkniodkimiaoeebmf",
+            "visit_count": 1
+         }, {
+            "date_added": "13230564571769458",
+            "date_last_used": "13387030419145400",
+            "guid": "9a75d44e-fd5a-4480-bd96-31f6b271e187",
+            "id": "8",
+            "name": "Franksoft",
+            "show_icon": false,
+            "source": "import_fre",
+            "type": "url",
+            "url": "http://www.franksoft.net/",
+            "visit_count": 4
+         } ],
+         "date_added": "13322375860664380",
+         "date_last_used": "0",
+         "date_modified": "13387030412271608",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Favoritenleiste",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13322375860664382",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Weitere Favoriten",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13322375860664383",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile Favoriten",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

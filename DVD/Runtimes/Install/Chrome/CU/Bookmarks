@@ -1,0 +1,92 @@
+{
+   "checksum": "aafa7c062abe44698a36a08b73d9a907",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13324257448669905",
+            "date_last_used": "13385775527661437",
+            "guid": "28b661eb-4118-4006-8ef8-2b598cc1f359",
+            "id": "22",
+            "name": "YouTube",
+            "type": "url",
+            "url": "https://www.youtube.com/"
+         }, {
+            "date_added": "13324257152291876",
+            "date_last_used": "13385775528425999",
+            "guid": "5af746ff-7638-49f2-a72e-36dabb6d8cb8",
+            "id": "19",
+            "name": "WhatsAppWeb",
+            "type": "url",
+            "url": "https://web.whatsapp.com/"
+         }, {
+            "date_added": "13324257178380146",
+            "date_last_used": "13385775529107580",
+            "guid": "87e33a73-83ec-4631-90c9-97386459cafe",
+            "id": "20",
+            "name": "TelegramWeb",
+            "type": "url",
+            "url": "https://web.telegram.org/z/"
+         }, {
+            "date_added": "13230564869664732",
+            "date_last_used": "13385775530530387",
+            "guid": "77ec9e7d-832f-44fa-a4f5-85180a8dde28",
+            "id": "14",
+            "name": "Outlook.com",
+            "type": "url",
+            "url": "https://login.live.com/"
+         }, {
+            "date_added": "13385775522359010",
+            "date_last_used": "13385775531342355",
+            "guid": "ee8fca79-1764-4402-beaf-3e32392637ab",
+            "id": "29",
+            "name": "ChatGPT",
+            "type": "url",
+            "url": "https://chatgpt.com/"
+         }, {
+            "date_added": "13230564571769458",
+            "date_last_used": "13385775532399623",
+            "guid": "d1dd713a-e5ee-41c0-aa46-bcf9c312eabf",
+            "id": "11",
+            "name": "Franksoft",
+            "type": "url",
+            "url": "http://www.franksoft.net/"
+         }, {
+            "date_added": "13235325579283824",
+            "date_last_used": "13385775533815924",
+            "guid": "4e84e18e-49d2-448c-a96e-eb70004b85e6",
+            "id": "17",
+            "name": "Adblock Plus",
+            "type": "url",
+            "url": "https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb?hl=de"
+         } ],
+         "date_added": "13230564764028095",
+         "date_last_used": "0",
+         "date_modified": "13385775524832746",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Lesezeichenleiste",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13230564764028113",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Weitere Lesezeichen",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13230564764028117",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile Lesezeichen",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

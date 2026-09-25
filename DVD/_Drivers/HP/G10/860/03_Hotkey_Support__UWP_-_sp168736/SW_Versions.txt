@@ -1,0 +1,6 @@
+Build Version: 8.10.50.393
+Keyboard driver ver : 8.10.50.393
+HP Lan\Wlan driver ver: 8.10.50.393
+HP System Inoformation ver: 8.10.50.0
+HK Service exe version: 8.10.50.393
+HK LanWanWwan exe version: 8.10.50.393

@@ -1,0 +1,2116 @@
+---------------------
+Version Information
+---------------------
+----------------------------
+Silent Installation Command 
+----------------------------
+Run "setup.exe /s /f2<path\LogFile>"
+i.e. setup.exe /s /f2c:\mylog.log
+
+-------------------------------
+Silent Uninstallation Command
+-------------------------------
+Run "setup.exe /removeonly /s /f1<path\usetup.iss> /f2<path\LogFile>"
+i.e. setup.exe /removeonly /s /f1c:\usetup.iss /f2c:\mylog.log
+
+--------------------
+Support Languages
+--------------------
+Arabic, Arabic Lebanon, Arabic Saudi Arabia
+Basque, Brazilian, Bulgarian, Catalan
+Chinese-Traditional-HK, Chinese-Simplified, Chinese-Traditional-TW
+Croatian, Czech, Danish, Dutch
+English, English-Euro, Estonian, Finnish
+French, French/Canadian, German, Greek
+Hebrew, Hungarian, Italian
+Japanese, Korean, Latvian
+Lithuanian, Norwegian, Polish, Portuguese
+Romanian, Russian, Slovak, Slovenian
+Spanish, Swedish, Thai
+Turkish, Ukrainian 
+
+--------------------
+Change Histroy
+-------------------
+[10.0.22000.20390]
+1.Bug fixes
+Fix LC memory leak issue
+Fix LC 5.0 change resolution crash issue
+Fix system HLK Zoom fail issue
+Fix Hello function fail issue
+
+2.New Features:
+Add some customized issue
+(BIOS ID : U3)
+
+[10.0.22000.20389]
+1.Bug fixes
+Fix get/set property hang issue when device removed
+
+2.New Features:
+Add some customized settings
+(HWID: 30C9/0132)
+(BIOS ID : U1CN)
+
+[10.0.22000.20388]
+1.Bug fixes
+Fix decoder hang issue for 5M
+Fix still pin hang issue when unplug camera
+Fix some coverity fail issues
+
+2.New Features:
+Add some customized settings
+(BIOS ID: U4)
+(HWID: 17EF/1148, 5986/11CE, 30C9/00FB, 04F2/B879, 3277/00D5)
+(HWID: 0408/5499, 0408/546B, 04F2/B88C)
+
+3. Improvements:
+Midify ESD function for 5881
+Update LC function:
+(HWID: 04F2/B87A, 04F2/B87B, 04F2/B87C, 5986/11C2)
+
+
+[10.0.22000.20387]
+1.Bug fixes
+Fix PTZ lag issue
+Fix SW TNR crash issue(5986/11C2)
+Fix task flow pool overload crash issue
+
+2.New Features:
+Add some customized setting
+(HWID : 0408/3082, 04F2/B8BE, 04F2/B8B3, 04F2/B8B4, 30C9/0136, 20C9, 0137)
+Update privacy image icon
+
+3. Improvements:
+Improve LC function
+
+[10.0.22000.20386]
+1.Bug fixes
+Fix PTZ MFT issue and change to MFT API
+
+2.New Features:
+Enable SW TNR(04F2/B88E)
+Enable LC(5986/11C9, 04F2/B88E, 04F2/B88F)
+Add some customized settings
+(BIOS ID: M6G, R3WE, N3WE)
+
+[10.0.22000.20385]
+1.Bug fixes
+Fix PTZ black line issue
+
+2.New Features:
+Add some customized settings
+(BIOS ID:R3CN, TTCN)
+(HWID: 04F2/B81B)
+Add event provider for some projects
+Support static frame rate control for some projects
+
+3. Improvements:
+Improve first frame time fro ADK test
+
+[10.0.22000.20384]
+1.Bug fixes
+Remove some debug option
+
+2.New Features:
+Add static frame rate control for 0408/3082
+Enable LC for 04F2/B87F and 174F/11C1
+Add some customized settings
+(BIOS ID:T9, TA, TG, O6Y, TYCN)
+(HWID: 0408/5490, 0408/549B)
+
+3. Improvements:
+Impreve first color frame time
+Impreve first IR frame time
+
+[10.0.22000.20383]
+1.Bug fixes
+Fix EPF noise issue for LC function
+Fix some coverity fails
+
+2.New Features:
+Disable touch AE for 04F2/B7F5 and 30C9/00CA
+Add some customized settings
+(BIOS ID:O6Y)
+(HWID: 0408/4072, 322E/2701, 04F2/B8B0, 3277/00B9, 0408/5499, 5986/11C9)
+(HWID: 3277/00DF, 5858/1008, 3196/0418, 0408/4072, 322E/2501)
+
+3. Improvements:
+Move more IR to IR DMFT
+Move extension control to common
+Move rebase to common
+
+
+[10.0.22000.20382]
+1.Bug fixes
+Fix some coverify errors
+Fix memory leak issue
+
+2.New Features:
+Add bypass function option
+Add delay preview option for some project
+
+3. Improvements:
+Skip load power DLL to improve first color frame
+Add some customized settings
+(HWID: 04F2/B88E, 04F2/B88F, 3196/0418)
+
+
+[10.0.22000.20381]
+1.Bug fixes
+Fix LC 5.0 crash issue with specify OpenVino
+
+2.New Features:
+Customized MSFT privacy icon for some projects
+Provide Event source for some projects
+Add some customized settings
+(HWID : 3277/00FC, 04F2/B87A, 04F2/B87B, 04F2/B87c, 174F/11C2, 04F2/B88E, 04F2/B88F)
+(BIOS ID : R38E, R39E, TNCN, TR)
+
+3 Improvements:
+Improve first frame time
+Update LC function
+(HWID:04F2B874, 04F2/B877, 174F/182B, 174F/2475, 5986/11C1)
+
+[10.0.22000.20380]
+Release Date: 6/27
+1.Bug fixes
+Fix HLK fail issue
+
+[10.0.22000.20379]
+Release Date: 6/26
+
+1.Bug fixes
+Fix some Coverify fails
+Fix Blur crash issues with two cameras
+
+2.New Features:
+Support special IR LED control for some projects
+Support customized privacy icon
+Add some customized settings.
+(HWID: 5986/11C3,3277/00DE,)
+(BIOS ID: TJ, TKCN, S4CN, R35E, R36E, R37E, R3AE, T8CN)
+
+3 Improvements:
+Improve 12MP performance
+LC 5.0 driver (HWID : 04F2/B875 and 5986/11C2)
+Improve mft process sample performance
+
+
+[10.0.22000.20378]
+1. Disable SW TNR for VID_17EF
+2. add some remove pitch code
+3. optimize lockbuffer parameter
+4. Add some customized settings
+(BIOS ID : T1, TB, TD, TECN, TFCN)
+(HWID: 174F/11C2, 174F/2475, 04F2/B876) 
+
+
+[10.0.22000.20377]
+1. Update taskflow to 3.11.0
+2. Fix memory crash issue caused by invalied media buffer length
+3. Add FCCL privacy icon
+4. Update Honor event
+5. Add some customized settings.
+  (HWID: 30C9/0117, 0BDA/5635, 0BDA/5636, 0408/5498, 30C9/0126, 30C9/015, 17EF/1148)
+  (BIOS: T6, T7, STCN, SZCN, T0CN, T5CN)
+
+
+[10.0.22000.20376]
+1. Fix privacy issue for some vendor
+2. Add som customized settings(HWID : 3277/0045, 3277/00A8, 3277/00B6, 5858/1004, 30C9/0117)
+(BIOS ID : SX , SY, T2CN, T4CN)
+
+
+[10.0.22000.20375]
+1. Fix SW TNR crash issue with specify resoltuion
+2. Add some customizeted settings(174F/11C1, 04F2/B87F, BIOS ID: SW, SVCN, O6X)
+
+
+[10.0.22000.20374]
+1. Fix privacy flash issue
+2. Fix lockbuffer fail issue
+3. Add some customized settings.(BIOS ID SUCN)
+
+[10.0.22000.20373]
+1. Add some customized settings.(30C9/010C)
+
+
+[10.0.22000.20372]
+
+1. Fix HLK ValidateRoiControlLegalBonds fail when disable touch AE
+2. Fix some coverity fail
+3. Fix pepa crash by lock resource fail
+4. Update LoadResourceMem for AlgLib
+5. Update LC function.(For 13D3/54DC, 2EF4/5820)
+6. Update TNR function.(04F2/B812, 04F2/B86C, 2EF4/5200)
+7. Add some customized settings.(For VID=17EF)
+
+
+[10.0.22000.20371]
+1. Fix some Matadata crash issue
+2. Fix some Coverity fail
+3. Fix some memory leak issue
+4. Add some customized settings
+HWID(174F/182B, 174F/2475, 04F2/B875, 04F2/B876, 04F2/B877, 5986/11C1, 5986/11C2,
+5986/11C5, 5986/11C6, 5986/11C7, 13D3/54DC)
+BIOS ID(S4CN, SKCN, SQCN, SRCN, SSCN)
+
+[10.0.22000.20370]
+1. Change driver filenames and DMFT GUID.
+2. Update Lc fonction.(5986/1AD, 04F2B876)
+3. Fix some change mode hang issue.
+4. Fix Disable touch AE issue for extenal camera
+5. Add some customized settings(04F2/B812, 04F2/B86C, 2EF4/5820, 174F/180C)
+
+
+[10.0.22000.20369]
+1. Fix disable touch AE issue
+2. Change SW TNR for 04F2/B761
+3. Fix some Coverity error
+4. Fix camera APP can't save zoom issue
+5. Fix VideoHDR FW default issue
+6. Add some customized settings.(04F2/B874, 04F2/B875, 04F2/B876, 04F2/B877, 5858/1004, 5886/11AC,
+5986/11AB, 17EF/1138, 17EF/1141, 17EF/1148)
+
+
+[10.0.22000.20368]
+1. Fix some Coverity errors
+2. Fix ROI issue with PTZ/Flip/Roll
+3. 04F2/B86B support LC4.0
+4. Add some customized settings
+
+[10.0.22000.20367]
+1. Revert taskflow to V3.7
+
+[10.0.22000.20366]
+1. Add some customized settings
+2. Fix focus issue
+3. Modify task flow
+
+
+[10.0.22000.20365]
+1. Add some customized settings
+2. Fix some crash issue
+
+[10.0.22000.20364]
+
+1. Add some customized settings
+2. Fix green image issue with LC in dark room
+3. Fix some Coverity issue
+
+
+[10.0.22000.20363]
+1. Add some customized settings
+2. Fix green image issue with LC in dark room
+3. Add some chip PID to support BT709
+4. Fix some Coverity issue
+
+[10.0.22000.20362]
+1. Fix some coverity error
+2. Add som ecustomized settings
+3. Update Papa face detect filter
+
+[10.0.22000.20361]
+1. Support AMD DTC2.0 sensor
+2. Add some customized settings
+3. Fix some Coverity errors
+
+[10.0.22000.20360]
+1. Add some customized settings
+2. Fix some coverity error
+3. modify BT709 behavior
+
+[10.0.22000.20359]
+1. Add some customized settings
+2. Fix some coverity errors
+3. Modify polling ROI 3A status
+
+
+[10.0.22000.20358]
+1. Fix Setting property isuee after device removed
+2. Fix LC 4.0 issue
+3. Add some customized settings
+4. Fix some Coverity errors
+
+
+[10.0.22000.20357]
+1. Add some customized settings
+2. Fix ROI issue with MEP
+3. Fix some coverify errors
+4. Fix property issue in setting page
+
+[10.0.22000.20356]
+1. Resolve preview issue with light sensor function
+2. Fix some ROI issue
+3. Fix MJPEG decode/encode issue for 22H2
+4. Fix some crash issue
+
+
+[10.0.22000.20355]
+1. Add some projects to support for LC 3.0
+2. Fix some coverity errros
+3. Add some customized settings
+4. Support TSP 9.8 spec
+
+[10.0.22000.20354]
+1. Add some customized settings
+2. Update LC function
+3. Seperate external camera driver
+4. Fix some coverity error
+
+
+[10.0.22000.20353]
+1. Add some customized settings
+2. Change ROI function
+3  Fix some static errors
+
+
+[10.0.22000.20352]
+1. Fix light sensor crash issue
+2. Add some customized settings
+3. Support TSP spec 9.7
+4. Fix some crash issue
+5. Change ROI behavior
+
+
+[10.0.22000.20351]
+1. Fix BT709 crash issue
+2. Update LC function
+3. Update some privacy icon
+
+[10.0.22000.20350]
+1. Add some customized settings
+2. Fix Touch AE issue
+3. Fix some crash issue
+
+[10.0.22000.20349]
+1. Add some customized settings
+
+[10.0.22000.20348]
+1. Fix ROI issue for 23H2 OS
+2. Fix invalied handle crash issue
+3. Fix resource unavaliable crash issue
+4. Fix shutdown crash issue
+5. Add some customized settings
+
+[10.0.22000.20347]
+1. Add some customized settings
+2. Fix some privacy flash issue
+3. Fix getstream id crash issue
+4. Seperate external camera driver files
+5. Fix some chagne resolution issue
+6. Update ECC function
+7. Change HW decoder behavior
+
+
+
+[10.0.22000.20346]
+
+1. Update customized settings
+2. Fix thread id crash
+3. Fix IR camera crash
+4. Update LC 4.0 function
+
+[10.0.22000.20345]
+1. Fix ARM HLK fail issue
+2. Add some customized settings
+3. Fix LSM/Hello issue
+4. Fix ECC delay load issue
+
+[10.0.22000.20344]
+1. Fix switch photo/video mode crash
+2. Fix camera app delay start caused not set ROI async event
+3. Fix some crash issues
+4. Change Face ROI behaviors
+5. Add some customized settings
+
+[10.0.22000.20343]
+1. Update face framing function
+2. Fix async ECC init AddVideoProcessor crash
+3. Supprot ROI metadata
+4. Update LC 4.0 function
+-
+
+[10.0.22000.20342]
+1. Add some customized settings
+
+
+[10.0.22000.20341]
+1. Add some customized settings
+
+[10.0.22000.20340]
+1. Fix BT709 block write issue
+2. Fix power line issue for some project
+3. Fix Amcap preview issue
+4. Add some customized settings
+5. Fix some BIOS ID issue
+6. Update LC 4.0 function
+
+[10.0.22000.20339]
+1. Add some custmoized settings
+2. Fix some crash issue
+
+[10.0.22000.20338]
+1. Support Privacy for 3277/00B6
+2. Optimize face time
+3. Update stream pause function
+4. Add some custmized settings
+
+[10.0.22000.20337]
+1. Fix stream pause issue for some project
+2. Fix HLK crash issue
+3. Add some customized settings
+4. Support TSP 9.4 spec
+
+
+[10.0.22000.20336]
+1. Add some customized settings
+2. Suppot LC4.0 function
+3. Change BT709 to memwrite block
+4. Delay load ECC Lib
+5. Fix some crash issue
+
+
+[10.0.22000.20335]
+1. Fix 848X480 garbage image with MEP framing function
+2. Fix MJPEG encode garbage issue
+3. Fix continue focus issue for some project
+4. Fix iamge freexe for touch focus
+5. Add some customized settings
+
+[10.0.22000.20334]
+1. Fix MJPEG encode garbage image issue
+2. Add some customized settings
+3. Supprot TSP 9.3 spec
+
+[10.0.22000.20333]
+1. Add some customized settings
+
+
+[10.0.22000.20332]
+1. Fix HLK crash issue with ACS
+2. Improve pipeline performance
+3. Fix color image issue
+4. Add some customized settings
+
+[10.0.22000.20331]
+1. Fix LC crash issue
+2. Fix some privacy issue
+3. Add some customized settings
+4. Disable LC when Hello
+
+[10.0.22000.20330]
+1. Add some customized settings
+2. Change ROI behaviors
+
+[10.0.22000.20329]
+1. Add some customized settings
+2. Improve some ROI behaviors
+
+[10.0.22000.20328]
+1. Add some customized settings
+
+
+[10.0.22000.20327]
+1. Add some customized settings
+2. Fix WinRT face detect crash issue
+
+[10.0.22000.20326]
+1. Remove FSColorInfoOverride for IR camea
+2. Add some customized settings
+3. Update TNR function
+4. Update some allgorithms
+
+
+[10.0.22000.20325]
+1. Add some customized settings
+
+[10.0.22000.20324]
+1. Remove force to BT709 decode 
+
+
+[10.0.22000.20323]
+1. Add some customized settings
+2. Fix some HLK fail issues
+
+[10.0.22000.20322]
+1. Fix Device HLK crash issue
+
+[10.0.22000.20321]
+1. Resolve garbage issue for 24H2 OS
+2. Support DCT 2.0
+3. Add some customized settings
+
+[10.0.22000.20320]
+1. Add some customized settings
+2. Support Energy saver mode for 24H2 OS
+3. Keep color info overwrite for 24H2 OS
+
+[10.0.22000.20319]
+1. Update ECC Lib
+2. Fix LC crash issue
+3. Update Blur function
+4. Add some customized settings
+
+[10.0.22000.20318]
+1. Add some customized settings
+2. Fix some issues for 24H2 OS
+
+[10.0.22000.20317]
+1. Update ECC library
+2. Fix remove pitch issue
+3. Update face framing function
+4. Add some customized settings
+
+
+[10.0.22000.20316]
+1. Update LC function
+2. Add some customized settings
+3. Fix some crash issues
+
+[10.0.22000.20315]
+1. Fix Realtek RGBBlur crash issue
+2. Modify SkinBT function to support NV12
+3. Update ECC Lib
+4. Add some customized settings
+
+
+[10.0.22000.20314]
+1. Fix PTZ not work with MJPEG format
+2. Fix crash issue for LC function
+3. Add some customized settings
+4. Fix privacy icon rotation issue
+
+[10.0.22000.20313]
+1. Optimize Sensor IQ function
+2. Update ECC Lib
+3. Fix privacy icon rotation issue
+4. Add some customized settings
+
+[10.0.22000.20312]
+1. Add some customized settings
+2. Update ECC function
+3. Fix blurr control issue
+
+[10.0.22000.20311]
+1. Fix Face Auth mode registry issue
+2. Remove overwrite FSColorInfoOverride in INF files
+3. Recover Update2Dbuffer and pitch function
+
+[10.0.22000.20310]
+1. Change Update sample by 2D buffer behavior
+2. Update TSP function
+3. Add some customized settings
+4. Modify MEP function check
+
+[10.0.22000.20309]
+1. Add customized settings
+2. Modify MEP support check
+3. Update LC function
+
+[10.0.22000.20308]
+1. Fix memory leak issue
+2. Update LC function
+3. Update IR function
+4. Add customized settings
+
+[10.0.22000.20307]
+1. Add some customized settings
+2. Fix memory leak issue
+
+[10.0.22000.20306]
+1. Fix Hello and HLK fail issue
+
+[10.0.22000.20305]
+1. Add some customized settings
+2. Update Blur algorithm
+3. Update Framing algorithm
+
+[10.0.22000.20304]
+1. Fix IR camera HLK fail issue
+2. Add some customized settings
+3. Fix can't preview issue
+
+[10.0.22000.20303]
+1. Update LC function
+2. Add some customized settings
+3. Update FOV function
+
+[10.0.22000.20302]
+1. Add some customized settings
+
+[10.0.22000.20301]
+1. Add some customized settings
+
+[10.0.22000.20300]
+1. Add some customized settings
+
+[10.0.22000.20299]
+1. Add some customized settings
+2. Support NV12 with SV2 for some projects
+
+
+[10.0.22000.20298]
+1. Disable AI for some OEM project
+2. Support NV12 format
+3. SV3 auto decode as NV12
+4. Add some customized settings
+
+[10.0.22000.20297]
+1. Add some customized settings
+2. Modified some features to support NV12
+3. Add hotfix for 5855/55856
+
+[10.0.22000.20296]
+1. Add some customized settings
+2. Fix crash issue if CPU less 2
+3. Resolve enable/disable preview fail issue
+
+[10.0.22000.20295]
+1. Add some customized settings
+
+[10.0.22000.20294]
+1. Fix some Face AE issue
+2. Check MEP support
+3. Add some customized settings
+
+[10.0.22000.20293]
+1. Add some customized settings
+2. Update LC function
+
+
+[10.0.22000.20292]
+1. Add some custimized settings
+
+[10.0.22000.20291]
+1. Fix some crash issue with HLK test
+
+[10.0.22000.20290]
+1. Fix some TSP issue
+2. Add some customized settings
+
+[10.0.22000.20289]
+1. Update LC function
+2. Update ECC function
+3. Add some customized settings
+
+[10.0.22000.20288]
+1. Add some customized settings
+2. Update LC function
+3. Update ECC function
+4. Fix TSP issue for some project
+
+[10.0.22000.20287]
+1. Update LC Algorithm
+2. Add some customized settings
+
+[10.0.22000.20286]
+1. Fix some TSP issue
+2. Fix AE hunting issue with face ROI
+3. Add some customized settings
+4. Support TSP 8.4 spe
+
+[10.0.22000.20285]
+1. Fix power resume TSP fail issue
+2. Fix some TSP issue
+3. Add some customized settings
+
+
+[10.0.22000.20284]
+1. Fix FW TSP mode not saved issue
+2. Fix some crash issue when end of stream
+3. Fix some blur issue
+4. Add some customized seetings
+
+[10.0.22000.20283]
+1. Fix some FW TSP HLK fail issue with IR camera
+2. Decrase Win10 TSP loading
+3. Add some customized settings
+
+[10.0.22000.20282]
+1.Decrease TSP loading for Win11
+2. Add some customized settings
+
+[10.0.22000.20281]
+1. Update LC function
+2. Add customized settings
+
+[10.0.22000.20280]
+1. Fix HDR HLK fail issue
+2. Add some customized settings
+3. Fix crash issue in MJPEG decoder callback
+4. Add protection for QueryInterface fail
+
+[10.0.22000.20279]
+1. Fix crash issue with specify CPU
+2. Add some customized settings
+
+[10.0.22000.20278]
+1. Add some customized settings
+2. Update LC function
+
+[10.0.22000.20277]
+1. Fix ROI issue
+2. Add some customized settings
+3. Fix HLK privacy fail issue
+
+[10.0.22000.20276]
+1. For SV3 MJPEG decode
+2. Fix Disable touch AE issue
+3. Fix restore flicker issue
+4. Update LC function
+5. Add some customized settings
+
+[10.0.22000.20275]
+1. Change ESD recover registry
+2. Add some customized settings
+3. Support TSP spec 8.2
+4. Update Update Face framing function
+5. Update LC function
+
+[10.0.22000.20274]
+1. Fix IR camera can't preview issue
+2. Add some customized settings
+
+[10.0.22000.20273]
+1. Support AMD sensor IQ
+2. Add some customized settings
+
+[10.0.22000.20272]
+1. Add some customized settings
+2. Rollback to SW MJWPG decoder when HW decode fail
+3. Update ECC function
+4. Update privacy icon
+
+[10.0.22000.20271]
+1. Add work around for HLK fail without enough memory
+2. Add some customized settings
+3, Modify sample buffer
+
+[10.0.22000.20270]
+1. Fix recording/pause error issue
+2. Fix green barbage issue in barcode mode
+3. Add some customized settings
+
+[10.0.22000.20269]
+1. Add some cusetomized settings
+2. Update LC2.0 function
+3. Fix black image issue without exposre control
+
+[10.0.22000.20268]
+1. Fix some privacy issue
+2. Fix latency issue
+3. Update LC2.0
+4. Add some customized settings
+
+[10.0.22000.20267]
+1. Fix some privacy issue for old FW supporting MSFT privacy
+2. Support SkinBT saved feature
+3. Fix some ECC saved issue
+4. Fix some privacy 
+5. Update LC function
+6. Add some customized settings
+
+[10.0.22000.20266]
+1. Fix TSP function doesn't work issue
+2. Support LC 2.0 function
+3. Add some custimzed settings
+
+[10.0.22000.20265]
+1. Fix some green garbage issue
+
+[10.0.22000.20264]
+1. Fix some blur control issues
+2. Add some customized settings
+
+[10.0.22000.20263]
+1. Resolve HLK fail issue
+2. Add some customized settings
+
+[10.0.22000.20262]
+1. Add some customized settings
+2. Support Lenovo TSP 8.1 spec
+3. Update FF function
+4. Update privacy images
+5. Support Medadata for privacy
+6. Update LC function
+
+[10.0.22000.20261]
+1. Fix HLK fail issue for blur control
+2. Add some customized settings
+3. Update Face detect function
+4. Update Blur function
+
+
+[10.0.22000.20260]
+1. Add some customized settings
+2. Fix can't preview issue with new camera APP
+3. Update Blur function
+
+[10.0.22000.20259]
+1. Add some customized settings
+
+[10.0.22000.20258]
+1. Add some protect for acces registry and vendorcmd
+2. Change work queue
+3. Add some customized settings
+
+
+[10.0.22000.20257]
+1. Add some customized settings
+
+[10.0.22000.20256]
+1. Add some customized settings
+2. Fix crash issue when read some registry fail
+
+[10.0.22000.20255]
+1. Fix power line system HLK fail issue
+2. Fix some memory leak crash issues
+3. Add some customized settings
+
+[10.0.22000.20254]
+1. Fix power line HLK fail issue
+
+[10.0.22000.20253]
+1. Fix black image issue for some TSP projects
+2. Resolve some memory leak and deadlock issues
+3. Remove Hardware registry path support
+4. Add some customized settings
+5. Support FOV function for some projects
+
+[10.0.22000.20252]
+1. Fix SW TNR memory leak issue
+2. Fis memory leak issue for display Orientation registry
+3. Add some customized settings
+
+[10.0.22000.20251]
+1. Add some customized settings
+2. Fix some HLK fail issue
+3. Support TSP 7.7 spec
+
+
+[10.0.22000.20250]
+1. Fix some HLK fail issue
+2. Update Lighting correction function
+3. Update ECC function
+4. Add some customized settings
+
+
+[10.0.22000.20249]
+1. Fix hang issue for rotate panel
+2. Disable FACE AE when shutter speed manual mode
+3. Add some customized settings
+
+[10.0.22000.20248]
+1. Add some customized settings
+2. Fix Face AE and Face framing issue
+3. Support TSP 7.5 and TSP 7.6 spec
+
+
+[10.0.22000.20247]
+1. Add some customized settings
+2. Update Face framing function
+3. Update Lighting correction function
+
+[10.0.22000.20246]
+1. Fix memory leak and handle leak during HLK test
+2. Fix some camera hang issue
+3. Add some customized setting
+
+[10.0.22000.20245]
+1. Improve GPU loading
+2. Add some hotfix for 5856
+3. Add some customized seetings
+
+[10.0.22000.20244]
+1. Fix grenn image during wtich TSP status
+2. Fix Vantage APP auto explosure issue
+3. Face framing chagne speed for some projects
+4. Remove RGB24 format support
+5. Add some customized settings
+6. Select low power GPU when create D3D device
+7. Update ECC to support muti-thread
+
+[10.0.22000.20243]
+1. Support Lenovo TSP 7.4 spec
+2. Add some customized settings
+3. Resolve some TSP issue
+
+[10.0.22000.20242]
+1. Fix Face ROI metadata issue
+2. Add some customized settings
+3. Update Blur function
+
+[10.0.22000.20241]
+1. Fix crash issues reported by MSFT
+2. Add some customized settings
+3. Fix Face tracking issue with GPIO control
+
+[10.0.22000.20240]
+1. Support light sensor auto-adjsut AWB for some project
+2. Add some customized settings
+
+[10.0.22000.20239]
+1. Add some customized settings
+2. Support MSFT blur control for SV2
+3. Update Blur function
+
+[10.0.22000.20238]
+1. Add some customized settings
+2. Update LC function
+3. Update blur function
+4. Support TSP 7.3 spec
+
+[10.0.22000.20237]
+1. Add some customized settings
+2. Fix EVcompensation HLK fail issue for some projects
+3. Fix some Face AE issues.
+
+[10.0.22000.20236]
+1. Resolve HLK faile issue for manual pivacy test
+2. Update ECC and FF function
+3. Update LC function
+4. Add some customized settings
+
+[10.0.22000.20235]
+1. Update LC function
+2. Update Papa face detect
+3. Add some customized settings
+
+[10.0.22000.20234]
+1. Update ECC library
+2. Add some customized settings
+3. Use SW decoder when HW decoder Init fail
+4. Resolve power line HLK fail issue
+
+[10.0.22000.20233]
+1. Resolve Face framing HLK fail issue for some projects
+2. Add some customized settings
+
+
+[10.0.22000.20232]
+1. Fix memory leak issue
+2. Fix RGB/IR con-current crash issue
+3. Update blur function
+4. Add workaround for ROI
+5. Add some customized settings
+6. Mirror privacy icon
+
+[10.0.22000.20231]
+1. Resolve drop frame issue for kill switch on
+2. Update SW TNR functioin to resolve flicker issue
+3. Resolive some memory leak, crash, dead lock issues
+4. Add some customized settings
+
+[10.0.22000.20230]
+1. Update SW TNR function
+2. Add some customized settings
+
+[10.0.22000.20229]
+1. Use config to control skin bt strength
+2. Add some customized settings
+
+[10.0.22000.20228]
+1. Update face framing and Skin BT function
+2. Add some customized settings
+
+
+[10.0.22000.20227]
+1. Add some customized settings
+
+[10.0.22000.20226]
+1. Fix some TSP issue
+2. Update LC function to fix HLK test crash issue
+3. Add some customized settings
+
+[10.0.22000.20225]
+1. Fix EPrivacy issue in the begining of streaming issue
+2. Rosolve frace framing issue for rotation 90/270 degree
+3. Update LC function and SW TNR function
+4. Add some CS22 projects for AI functions
+5. Add some customized settings
+6. Fix some HLK fail issue
+
+[10.0.22000.20224]
+1. Update Lighting correction function
+2. Support tray icon with shutter and e-privacy for CS22
+3. Add BIOS ID "O5K", "KE" and "KJ" for TSP function
+4. Add some customized settings
+
+[10.0.22000.20223]
+1. Disable SW TSP for some projects
+2. Update Lighting correction function
+
+[10.0.22000.20222]
+1. Fix E-privacy issue with LC funciton
+2. Add some customized settings for 174F/245D and 5986/114D
+
+[10.0.22000.20221]
+1. Resolve TSP loading issue for some project
+2. Add some workaround for 04F2/B6CB
+3. Don't apply ESD recover if FW privacy enable without framing
+4. Resolve some memory leak
+5. Update frace framing function
+6. Resolve RGBblur low performance issue
+7. Update LC function
+8. Add some customized settings
+
+
+[10.0.22000.20220]
+1. Change SW shutter Threshold for some projects
+2. Update Face framing and RGBBlur algorithm
+3. Add some BIOS ID fo TSP and support TSP 6.8 spec
+4. Update Face framing V1.3.8
+5. Add some cutomized settings
+6. Resolve preview crash issue with some old FW
+
+[10.0.22000.20219]
+1. Resovle some HLK test fail issue
+
+[10.0.22000.20218]
+1. Modify Framing capability function
+2. Enable SW TNR for some projects
+3. Resolve TSP issue with SW shutter
+4. Support TSP 6.7 spec
+5. Update ECC/Framing/LC Algorithm
+
+[10.0.22000.20217]
+1. Resolve Touch AF hang issue
+2. Resolve Face framing setting saving issue
+3. Add customized settings for 174F/2459
+
+[10.0.22000.20216]
+1. Resolve 5M privacy restart maker issue
+2. Disable SW TSP for 174F/245D
+3. Resolve swith photo/video hang up issue for some projects
+4. Add BIOS ID "K6CN" For TSP
+5. Add customized settings for 5986/116D and 3277/0009
+
+[10.0.22000.20215]
+1. Change power mode check for RGB Blur
+2. Enable auto flicker option for 174F/24D5
+3. Update Lighting correction algorithm
+4. Add customized settings for 5986/1175 and 0408/4039
+5. Privacy icon garbage issue in 424X240 with HW MJPEG decoder enable
+6. Update Blur and auto framing algorithm
+7. Add some custized settings for 174F/245D
+
+[10.0.22000.20214]
+1. Add some custiomzed settings for 04F2/B77B and 04F2/B77C
+2. Add BIOS "F9" and "FC" for TSP function
+3. Resovle win11 read string of registry issue
+4. Enable SW auto-flicker for 30C9/003B
+
+
+[10.0.22000.20213]
+1. Add BIOS ID "J7", "JF" and "JP" for TSP function
+2. Disable MSFT AI property control for some project
+
+[10.0.22000.20212]
+1. Fix TSP timing issue show manual privacy icon
+2. Update framing Algorithm
+3. Update RGBBlur Algorithm
+4. Add Eye contact correction function support
+5. Support TSP 6.6 spec
+
+
+[10.0.22000.20211]
+1. Fix TSP issue with exposure property control
+2. Update Lighting correction Algorithm
+3. Add customized settings for 174F/2463
+
+[10.0.22000.20210]
+1. Support TSP four modes
+
+[10.0.22000.20209]
+1. Add customized settings for 5986/116D and 174F/245D
+
+[10.0.22000.20208]
+1. Support win11 auto framing control
+2. Add BIOS ID "K3CN" and "R1WE" for TSP function
+3. Fix TSP issue
+4. Add customized settings for 5986/116D and 174F/245D
+
+[10.0.22000.20207]
+1. Optimize FACE AE loading
+2. support KSPROPERTY_CAMERACONTROL_EXTENDED_VIDEOHDR control
+3. Add BIOS ID "HW" and "HZ" for TSP function
+4. Add some customized settings for 5986/117A, 04F2/B781 and 174F/1816
+
+[10.0.22000.20206]
+1. Sopport LVF driver
+2. Add BIOS ID "HX", "J6CN", "JLCN","HYCN for TSP and support TSP 6.3
+3. Fix BIOS ID "O5N" issue
+4. Resolve RS3/RS4 get power setting API unload driver issue
+5. Set Panel type infomration to FW
+
+[10.0.22000.20205]
+1. Change some property name
+2. Disable Framing and LC with Low power API
+3. Support TSP 6.1 and 6.2
+4. Change to old privacy icon for BOIS ID "O5N"
+5. Fix RGB Blur property save issue
+6. Fix TSP issue with AE disable
+7. Disable SW shutter detect with Hello mode
+
+[10.0.22000.20204]
+1. Support auto rotate for privacy icon image
+2. Change back to old provicy icon for some projects
+3. Update Lighting correction algorithm
+4. Update some AI property control
+5. Change SW shutter threshold for some projects
+
+[10.0.22000.20203]
+1. Add customized settings for 0408/5459
+2. Add BIOS ID "R1SE", "R20E", "R1RE" and "R21E" for TSP function
+3. Add BIOS ID "JDCN" and "JECN for TSP function
+4. Add 940 settings for some HWID
+
+[10.0.22000.20202]
+1. Add 5856 / 5857 / 5858 / 5877 new chip ID to support ESD recover function
+2. Fix TNR crash issue
+
+[10.0.22000.20201]
+1. Add BIOS ID "JMCN" and "JNCN" for TSP function
+2. TSP function V6.0
+
+[10.0.22000.20200]
+1. Change from IR blur to RGB blur for BIOS ID "HECN"
+
+[10.0.22000.20199]
+1. Fix HLK fail issue for old OS(RS3/RS4...)
+
+[10.0.22000.20198]
+1. Fix HLK creash issue
+2. Add customized settings for 0408/5452
+
+
+[10.0.22000.20197]
+1. Covert Face to Q31 format
+2. Implement SW TSP function
+3. Add customized settings for 30C9/0085
+
+[10.0.22000.20196]
+1. Fix image effect broken image issue with MJPEG
+
+[10.0.22000.20195]
+1. Roll back privacy image for some projects
+2. Update auto-frame algorithm
+3. Fix Win11 HLK fail issue
+4. Remove work around for 0BDA/5629
+5. Report face ROI metadata in Q31 format
+6. Add some customized settings for 04F2/B771
+
+
+[10.0.22000.20194]
+1. Fix win11 HLK crash issue for some project
+2. Fix TSP issue for some projects
+3. Disable PTZ/Roll proerty with MJPEG for some projects
+4. Add customized settings for 04F2/B76E
+5. Change new privacy for new projects
+
+[10.0.22000.20193]
+1. Enable Gen 3 blur for BIOS ID "GZCN"
+2. Fix long run crash issue for TNR function
+
+
+[10.0.19041.20192]
+1. Fix crash issue with HW MJPEG decoder with media change
+2. Add customized settings for 0408/5483, 05C8/0B06, and 04F2/B753
+
+[10.0.19041.20191]
+1. Update Lighting correction algorithm
+2. Disable Rotation with MJPEG for some projects
+3. Change low power property behavior
+4. Add BIOS ID "O5N" for TSP function
+5. Fix print NULL issue for WPP
+6. Implement white balance metadata
+7. Remove "HW" and add "FB", "FJ", and "HU" for Gen3 blur
+
+
+[10.0.19041.20190]
+1. Update Lighting correction algorithm
+2. Add delay work around
+3. Add customized settings for 30C9/004F, 30C9/0051, 30C9/0062 and 30C9/006C
+
+[10.0.19041.20189]
+1. Add workaround for 174F/243E
+2. Add BIOS "HW" for RGB Blur function
+3. Fix can't preview issue for some projects
+4. Add some customized settings for 174F/1814, 5986/1174, 0408/545A and 04F2/B761
+
+[10.0.19041.20188]
+1. Implement IMFSampleAllocatorControl
+2. Fix Winwdow 10 October HLK crash fail issue
+3. Enable CRT shadow stack Compatible
+4. Add customized settings for 04F2/B74F, 04F2/B756, 04F2/B758, and 04F2/B759
+5. Disable image effect with MJPEG for some projects
+6. Add customized settings for 04F2/B751
+
+[10.0.19041.20187]
+1. Add customized settings for 0408/535A
+2. Add customized settings for 174F/180F and 174F/245B
+3. Disable RGBBlur when system is power low
+
+
+[10.0.19041.20186]
+1. Decrease vendor command during initialization
+2. Add customized setting for 13D3/56C6 and 0BDA/5518
+3. Add mutex for vendor command
+
+[10.0.19041.20185]
+1. Fix work around for 04F2/B6D3
+2. Add customized settings for 04F2/B754
+
+[10.0.19041.20184]
+1. Fix some TSP issue
+2. Add BIOS ID "HR" for TSP function
+3. Add customized setttings for 174F/1811, 174F/1812, 174F/1813 and 174F/2460
+4. Add work around for 04F2/B6D3
+
+[10.0.19041.20183]
+1. Fix crash issue without metadata
+2. Fix crash issue if HW decoder remove sample attribute
+3. Fix work around issue for 04F2/B6CB
+4. Support TSP 5.4 spec
+5. Add customized settings for 04F2/B74C and 5986/1175
+
+
+[10.0.19041.20182]
+1. RGB+IR Blur supports muti-pipeline architecture
+2. Update RGB blur function
+3. Seperate resource files
+4. Set ISO gain of metadata from raw data.
+5. Add customized settings for 5986/1176, 5986/1177, and 5986/1178
+
+
+[10.0.19041.20181]
+1. Update Blur algorithm
+2. Support Custom rotate interface function
+3. Modifu customized settings for 174F/2456, 5986/116D and 5986/116E
+4. Add work around for 04F2/B6CB
+5. Report Face ROI information by metadata
+6. Remove sendor group id/name for 5986/1143
+
+[10.0.19041.20180]
+1. Fix skype crash issue for blur function
+2. Fix long run latency issue for blur function
+3. Fix memory leak issue for blur funciton
+4. Add ""HL" "HFCN for TSP and add "HECN" for Blur
+5. Remove group for 5986/116A
+
+[10.0.19041.20179]
+1. Fix privacy icon issue for 1080P reolution
+2. Remove 0408/5379
+3. Add BIOS ID "O5AK", "O5BK", and "O5CK" for TSP function
+
+
+[10.0.19041.20178]
+1. Inprove performance of RGB blur function
+2. Add customized setting for 0408/303B and 5986/1173
+3. Add customized setting for 0408/5379 and 5986/116E
+
+
+[10.0.19041.20177]
+1. Fix sketch/comic mode crash issue
+2. Reduce memory copy for Face AE
+3. Fix close preview crash issue with Blur mode
+4. Enable TSP for 174F/1800
+5. Report stream state for tool
+
+
+[10.0.19041.20176]
+1. Fix image freze issue with HW MJPEG decoder
+2. Remove 322E/202C
+3. Add TSP for 174F/2456
+4. Add some customized settings for some new projects
+5. Merge RGB blur muti-thread algorithm for 1080P
+6. Muti-thread for RGB blur and export sample
+7. Fix camera yellow band issue with security mode enable
+
+
+[10.0.19041.20175]
+1. Add customized settings for 5986/1171
+2. Add BIOS ID "G6CN" and "G6EC" for TSP function
+3. Add Face tracking control function for some projects
+4. Fix latency issue with HW MJPEG decode
+5. Add some customized settings
+6. Fix flicker default value sync with FW issue
+7. Add BIOS ID "H3CN" and "H4CN" for TSP function
+
+[10.0.19041.20174]
+1. Enable FW TSP by vendor command for some projects
+2. Add some BIOS ID for RGB Blur function
+3. Add some customized settings
+
+[10.0.19041.20173]
+1. Fix BIOS ID "GWCN" and "GXCN" for TSP function issue
+
+[10.0.19041.20172]
+1. Clear TSP status for 30C9/001A and 30C9/001B
+2. Support TSP 5.3 spec
+3. Add BIOS ID "GWCN" and "GXCN" for TSP function
+4. Add customized settings for 04CA/7053, 04CA/7054 and 04F2/B51D
+5. Update RGB Blur algorithm
+6. Enable TSP for 04F2/B6BE and 13D3/56FB
+7. Add custmized settings for 04F2/B738 and 04F2/B739
+8. Enable RGB Blur for some projects
+10. Modify INF file for security mode for some projects
+
+[10.0.19041.20171]
+1. Add Blur function for 5986/114D
+2. Fix yellow band issue for some projects in secrity mode
+
+[10.0.19041.20170]
+1. Fix HW MJPEG decoder issue with AMD GPU
+2. Add customized setting for 30CA/003B
+
+[10.0.19041.20169]
+1. Fix blur distance issue for 04F2/B6CB and 13D3/5419
+2. Add BIOS ID "GZCN" for Blur function
+3. Add some customized settings for 30C9/003A
+
+[10.0.19041.20168]
+1. Add 720P scaling up to 1080P fucntion
+2. Add some customize settings for 174F/2459 and 174F/1800
+3. Add some cusomized settings for 04F2/B724, 04F2/B725, 04F2/B726,and 04F2/B72C 
+4. Add BIOS ID "GJ" for TSP function.
+
+[10.0.19041.20167]
+1. Fix check FW revison issue
+2. Add some customized settings for 174F/1801
+3. Add "R1PE" BIOS ID for TSP function
+4. Fix TSP timing issue for some VID=04F2 camera modules
+
+[10.0.19041.20166]
+1. Add some customized settings for 0408/3028 and 0408/302B
+2. Add BIOS ID "R1OE", "R1ME" and "R1NE" for TSP function.
+3. Add RGBBlur Algorithm
+4. Add BIOS ID "R1OE","N37E", "N38E" and "N40E" to support TSP 5.0 spec
+5. Add customized settings for 174F/1801, and 04F2/B6D9
+6. Fix TSP initiial privacy state issue
+
+[10.0.19041.20165]
+1. Add BIOS ID "GM" to support TSP
+2. Remove HDR function for 04F2/B70F
+3. Add some customized settings for 30C9/0030 and 04F2/B6D9
+
+[10.0.19041.20164]
+1. Fix TSP issue when reopn APP to preview with shutter on
+2. Add BIOS ID "GQCN" for TSP function
+3. Add TSP for 5986/1150 and 5986/116E
+
+[10.0.19041.20163]
+1. Add customized settings for 04F2/B70B, 0408/3028, 0408/302B
+2. Add BIOS "GHCN" for Blur
+3. Modify INF files and add some section for Security mode 
+
+[10.0.19041.20162]
+1. Add customized settings for 5986/115A
+
+[10.0.19041.20161]
+1. Fix FW version check for 13D3/56FB and 13D3/5419
+2. Add Pan/Tilt/Zoom for 5986/1165
+3. Add TNR function for 04F2/B70F
+4. Disable face tracking when Hello is enable
+5. Add "G5CN" for TSP function 
+6. Update Blur algorithm for 424X240 resolution issue
+
+[10.0.19041.20160]
+1. Enable ISO functon for 04F2/B6C2 if FW support it
+2. Disable HW MJPEG decode for some old FW
+3. Change group name/id for 5986/1165
+
+[10.0.19041.20159]
+1. Add BIOS ID for TSP 4.8
+2. Enable ISO control function for 04F2/B604,13D356A5,13D3/56A6 if FW support it
+3. Fix TSP status recover issue for 30C9/0014
+4. Remove group nmae/ID for 5986/1165
+
+[10.0.19041.20158]
+1. Fix TSP delay issue caused by TSP hunting
+
+[10.0.19041.20157]
+1. Update Blur algorithm
+2. Fix TSP status recover issue when open preview
+3. Remove "F4CN" and add "F4" BIOS ID for TSP function
+
+[10.0.19041.20156]
+1. Fix blur issue
+2. Fix privacy issue with HW MJPEG decoder
+3. Disable RGB with HW MJPEG decoder
+4. Add BIOS ID for TSP 4.7 spec
+
+[10.0.19041.20155]
+1. Enable HW MJPEG decoder for TNR and DShow APP
+2. Fix RGB format issue with HW MJPEG decoder
+3. Fix Face detect issue
+4. Fix blur lost face issue 
+
+[10.0.19041.20154]
+1. Update TNR function
+2. Add some BIOS ID for TSP 4.6 spec
+3. Add some customized settings for 04F2/B67C, 0BDA/56A7 and 04F2/B700
+4. Implement MJPEG HW dcoder
+5. Update blur function
+
+[10.0.19041.20153]
+Fix TSP issues for some projects
+
+[10.0.19041.20152]
+1. Add BIOS ID "G7" for blur
+2. For TSP 4.5 spec
+3. Add some customzed settings for 05C8/0609
+4. Update blur algorithm
+
+[10.0.19041.20151]
+1. Remove BIOS ID "N21E", "N2KE", and "N2ZE" for TSP function
+2. Change FACe AE and ROI behavior
+
+[10.0.19041.20150]
+1. Update Blur Algorithm
+
+[10.0.19041.20149]
+1. Fix memory leak issue
+
+[10.0.19041.20148]
+1. Add some custtomized settings for 5986/116B, 30CA/0029, 5986/1167, 5986/1169
+2. Add some BIOS IDs for enable SW TNR function
+3. Change platform DMFT sequence
+
+[10.0.19041.20147]
+1. Fix crash issue for debug driver
+2. Add BIOS ID "FZ" for Blur function
+3. Add some customized settings for 04F2/B6F7, 174F/2453, 13D3/5440 and 5986/116B
+4. Fix hardware saved registry issue
+
+[10.0.19041.20146]
+1. Fix crash issue reported by MSFT
+2. Add BIOS "F9" for TSP function
+3. Change save resgitry path to hardware registry key
+4. Add BIOS ID "FBCN" for blur function
+
+[10.0.19041.20145]
+1. Update Blur Algorithm
+2. Disable RGB format for general customer
+3. Add customized settings for 04F2/B6F8
+4. Add BIOS ID "R1EE" for TSP function
+
+[10.0.19041.20144]
+1. Update Blur algorithm
+2. Add customized settings for 174F/180C and 174F/2456
+3. Add customized settings for 174F/2453 and 5986/116E
+4. Add customized settings for 0408/3028 and 0408/302B
+
+
+[10.0.19041.20143]
+1. Add BIOS ID "R1FE, "R1GE" and "FKCN"
+2. Add some customized settings for 174F/180C
+3. Update TNR algorithm and aenable TNR for 0BDA/5613
+4. Update Blur algorithm
+
+[10.0.19041.20142]
+1. Enable shutter speed for 04F2/B6A6
+2. Fix Panorama mode dark issue
+3. Add BIOS ID "EHCN" for TSP
+4. Add customized settings for 5986/1166
+
+[10.0.19041.20141]
+1. Disable shutter speed for 04F2/B6A6 and 5986/1139
+2. Fix BIOS "FN" issue for TSP
+
+[10.0.19041.20140]
+1. Add BIOS ID "FN" for TSP function
+2. Add some projects for prvacy funtions
+3. Disable focus mode control for 0BDA/5613
+
+[10.0.19041.20139]
+1. Fix IR frame stop recover issue
+2. Add customized settings for 0BDa/58EF
+
+[10.0.19041.20138]
+1. Add BIOS ID "F0" for blur function.
+
+[10.0.19041.20137]
+1. Add BIOS ID "ES", "F7" and "FJ" for blur function.
+2. Add some customized settings for 174F/1800
+
+[10.0.18362.20136]
+1. Add some customized settings for 05C8/0809 and 04F2/B6EE
+2. Add PTZ function for 5986/1139 and 5986/1169
+
+[10.0.18362.20135]
+1. Set bitmap of SetROIMax from GET_MAX
+2. Fix check IR frame issue in face detect thread
+3. Add ESD recover function for some chip and projects
+4. Add some customized settings for 5986/1169
+
+[10.0.18362.20134]
+1. Set full ROI with shutter on
+2. Remove ISO mode control support
+
+[10.0.18362.20133]
+1. Update Blur algorithm
+2. Fix blur issue from S4/resume
+3. Decrease frame stop thread close delay time 
+4. Support KSPROPERTY_CAMERACONTROL_EXTENDED_ISO_ADVANCED property
+5. Add customized settings for 5986/116A
+
+[10.0.18362.20132]
+1.Fix ESD issue for some projects
+
+[10.0.18362.20131]
+1. Support TSP 3.9 and TSP 4.0 spec
+2. Add customized settings for 04F2/B6EA, 04F2/B6EB and 5986/114D
+3. Add "F4CN" BIOS ID for TSP function
+4. Support focus polling state
+5. Update Blur Alforithm to fix crash issue
+
+[10.0.18362.20130]
+1. Modify focus behavior
+2. Fix blur issue for 04F2/B6CB/REV_7618
+3. Add customized settings for 13D3/5426
+
+[10.0.18362.20129]
+1. Resolve flash image issue with Face Tracking function
+2. Speed up Face Tracking speed and change the ratio 
+3. Add 0408/5322 and 5986/113F in driver INF files
+
+[10.0.18362.20128]
+1. Default enable WPP log
+2. Add some customized settings for 174F/180B, 0BDA/5613 and 174F/1809
+3. Transfer MJPEG to RGB for some projects
+
+[10.0.18362.20127]
+1. implement Focus state property
+2. Add some workaorund for 04F2/B6CB
+
+[10.0.18362.20126]
+2. Change ratio of face for face tracking
+
+[10.0.18362.20125]
+1. Update Blur algorithm
+2. Change ratio of face for face tracking
+3. Add some customized settings for 13D3/5411
+4. Set auto mode if recevie continue for focus control
+
+[10.0.18362.20124]
+1. Fix preview hand issue if unplug camera device
+2. Change the behavior of the BgBlur settings 
+3. Remove 04F2/B6AB
+4. Add customized settings for 2EF4/4944
+
+[10.0.18362.20123]
+1. Add WPP driver log
+2. Add customized settings for 04F2/B6D4
+3. Update blur algorithm
+
+[10.0.18362.20122]
+1. Add customized settings for 0BDA/5612, 0BDA/5613 and 174F/243F
+2. Update Blur algorithm
+
+[10.0.18362.20121]
+1. Disable ROI for 174F/244D
+2. Support TSP 3.8
+3. Add some customized settings for 04F2/B6DF
+
+[10.0.18362.20120]
+1. Add customized settings for 5986/1165, 174F/244D
+2. Support TSP 3.6 spec
+3. Update Blur algorithm
+
+[10.0.18362.20119]
+1. Remove 0BDA/5540 and 04F2/B6D7
+2. Add some customized settings for 5986/1164 and 04F2B68C
+3. Fix RGB24 format disappear issue for some projects
+4. Fix debug message issue
+
+[10.0.18362.20118]
+1. Add L8ToYUY2 for 0408/70A0
+2. Update privacy picture for some projects
+3. Update BG blur algorithm
+4. Fix memory leak issue for slim HD modules
+5. Update restart marker method
+6. Add BIOS Id "DHCN", "DMCN", and "DNCN" to support BG blure function
+7. Speed up on/off for Face tracking
+
+[10.0.18362.20117]
+1. Add supporting ISO function
+2. Add GPIO control FaceTracking for 174F/1809
+3. Add customized settings for 5986/1163, 13D3/5419, and 13D3/5405
+4. Enable Dshow bridge for some projects
+
+[10.0.18362.20116]
+1. Fix extension unit control issue
+2. Add some customized settings for 5986/1143 and 174F/244D
+
+[10.0.18362.20115]
+1. Fix blur crash issue
+2. Fix anti-flicker current value issue when initialize
+3. Add some customized settings for 5986/1162, 6986/115F and 04F2/B568
+
+[10.0.18362.20114]
+1. Add customized settings for 04F2/B6D9, 30C9/001A, 30C9/001B, 174F/244D and 174F/244E
+
+
+[10.0.18362.20113]
+1. Add BIOS ID DJCN, DSCN, and DTCN for TSP function 
+2. Add customized settings for 04F2/B6D7 and 04F2/B6AB
+
+[10.0.18362.20112]
+1. Improve some performance for 1080P
+2. Add some customized settings for 0BDA/5677
+3. Keep FW powerline default value for some projects
+4. Implement TSP 3.4 spec
+5. Add customized settings for 0408/5440, 0408/0441 and 04F2/B6A4
+6. Add customized settings for 04F2/B6D0, 30CA/0014 and 30CA/0015
+7. Fix inf issues for 174F/118B, 117F/118C, and 174F/118D
+
+[10.0.18362.20111]
+1. Add customized settings for 04F2/B6D3
+2. Change default power line settings for some projects
+
+[10.0.18362.20110]
+1.Fix rotate issue with HDR enable for 04F2/B616
+2.Add customized settings for 04F2/B6C6, 05C8/03DD
+3.Enable Dshow bridge for 04F2/B6C6 and 04F2/B6A3
+4.Add customized settings for 174F/244B, 174F/144C and 04F2/B6D5
+
+[10.0.18362.20109]
+1. Add customized settings for 04F2/B6BE and 2EF4/4944
+2. Add customized settings for 04F2/B6BF, 0408/5347 and 0408/5346
+3. Add customized settings for 30C9/0011, 0408/5374 and 0408/5375
+
+[10.0.18362.20108]
+1. Remove RGB24 and enable MJPEG to YUV for 04F2/B616 
+2. Add customized setting for 04F2/B6CE
+2. Enable Dshow bridge setting for 04F2/B65A, 04F2/B67A, 5986/069E, and 5986/1147
+
+[10.0.18362.20107]
+1.Implement TSP 3.2 spec
+2. Add BIOS ID "CJCN"
+3. Add customized settings for 04F2/B6C1, 04F2/B6C2 and 04F2/B6CB
+4. Add customized settings for 13D3/5403 and 0408/3070
+
+[10.0.18362.20106]
+1. Add customized setting for 13D3/5405 and 13D3/5406
+2. Add auto flicker saved registry key in begining for some projects
+
+[10.0.18362.20105]
+1. Add some BIOS IDs for TSP 3.1 spec
+2. Modify SW de-flicker timer
+3. Add some customized setting for 174F/118D, 174F/243E
+4. Modify face tracking behavior
+5. Remove Group ID/Name for 05C8/0700
+6. Fix blur issue when face is fixed
+7. Fix unlock screen fail issue after open Vantage APP
+
+
+[10.0.18362.20104]
+1. Add some BIOS ID for TSP2.7 spec
+2. Add custimozed settings for 5986/115F
+
+[10.0.18362.20103]
+1. Add BIOS ID "CX"
+2. Add customized settings for 5986/115D, 5986/115E, 174F/118B, 174F/118C
+
+[10.0.18362.20102]
+1. Add customized setting for 0BDA/5540 
+2. Fix lag issue for SW auto flicker
+3. Enable SW auto for some projects
+
+[10.0.18362.20101]
+1. Add customized setting for 04F2/B6B7
+
+[10.0.18362.20100]
+1. Fix crash issue for two RGB camera project
+2. Add customized setting for 174F/243F
+
+[10.0.18362.20099]
+1. Add customize setting for 174F/1805
+2. Decrease close stream delay for Vantage APP issue
+3. Enable Face tracking function for 174F/1790
+4. Add BIOS ID "BY" and "BQ" to support blur function
+
+[10.0.18362.20098]
+1. Add customized settings for 5986/115B and 5986/115C
+2. Change customized settings  for 5986/113F and 04F2/B604
+3. Add BIOS ID "CL" to support Blur function
+4. Try to fix IR LED issue with privacy(also need FW update)
+5. Fix image lag issue with ECP function 
+
+
+[10.0.18362.20097]
+1. Add customized settings for 13D3/56FB and 13D3/56FD
+2. Add customized settings for 0BDA/5668, 04F2B6AF and 04F2/B6B0
+3. Try to fix IR LED issue with privacy(also need FW update)
+
+[10.0.18362.20096]
+1.Fix AE/ROI issue for 13D3/5619
+2.Try to fix flush image issue for 04F2/B604
+3.Enable TSP 2.6 for some BIOS IDs
+
+[10.0.17763.20095]
+1.Enable Face tracking for VID/PID = 174F|1790
+2.Change AE full size window for some projects
+3.Fix IR LED off issue for some projects
+4.Add profile for some projects
+5.Fix crash issue for LEi project
+
+[10.0.17763.20094]
+1.add customized settings for VID/PID = 0408|3090
+2.add function of auto flicker
+
+[10.0.17763.20093]
+1.add customized settings for VID/PID = 04CA|7074,04F2|B679,04F2|B6A9
+2.Modify drop frame behavior
+
+[10.0.17763.20092]
+1.modify the way to create mediatype
+2.fix the issure that face detect stop that caused by a deadlock
+3.update ECP function form new ECP Spec
+4.add customized settings for VID/PID = 5986|115A
+
+[10.0.17763.20091]
+1.fix the issure that can not preview in skype for business
+
+[10.0.17763.20090]
+1.fix the issure that privacy icon do not show in metro ap
+2.fix the issure that color enable
+
+[10.0.17763.20089]
+1.fix the issure that blur function failure because there is no face
+2.update blur algorithm
+3.disable gain control for 5986|114E
+
+[10.0.17763.20088]
+1.reduce cpu loading when open FaceDetect 
+2.update blur algorithm
+
+[10.0.17763.20087]
+1.add customized settings for VID/PID = 0BDA|5677、04F2|B6A8、04F2|B6A6
+2.update blur algorithm
+3.make jpeg to yuv and rgb when enable blur
+
+[10.0.17763.20085]
+1.fix the issure that preview will hang up when plug the power supply again
+2.support AWB control for 13D3|5815
+
+[10.0.17763.20084]
+1.fix the issure that DrawFaceROI always open
+
+[10.0.17763.20083]
+1.fix the issure that would produce flowers screen when swtich resolutioin
+2.update blur algorithm
+3.Add Blur & FaceROI video processor
+
+[10.0.17763.20082]
+1.update blur algorithm
+2.set power lower limit value to twenty two percent
+3.add customized settings for VID/PID = 04F2|B690
+
+[10.0.17763.20081]
+1.fix the issure of functional conflict between blur and zoom
+2.support the function that stop blur when power power is less than twenty percent
+3.add customized settings for VID/PID = 0EDC|3080、04F2|B59E
+3.add customized settings for VID/PID = 04F2|B59D、04F2|B676
+
+[10.0.17763.20080]
+1.update blur algorithm 
+
+[10.0.17763.20079]
+1.update blur algorithm 
+2.fix the issure that preview will hang when repeatedly plug
+
+[10.0.17763.20078]
+1.add customized settings for VID/PID = 13D3|56D7、04F2|B689、04F2|B5E8
+2.add customized settings for VID/PID = 04F2|B65F、04F2|B5FE
+3.fix the issure blur is not clear that caused by drop frames
+
+[10.0.17763.20077]
+1.add customized settings for VID/PID = 2EF4|4665、5986|1157
+2.fix the issure that can not preview when less than 30 fps
+3.fix the issure of blur memory
+
+[10.0.17763.20076]
+1.add customized settings for VID/PID = 174F|1803、174F|177C、174F|2439
+2.add customized settings for VID/PID = 13D3|5266、13D3|5268、5986|1158
+3.fix the issure of lag for FHD resolution
+
+[10.0.17763.20075]
+1.fix the issure that auto check not disable for pan/tilt/zoom/roll
+2.update blur algorithm 
+3.add customized settings for VID/PID = 174F|118A
+
+[10.0.17763.20073]
+1.fix the issure of color enable
+2.add bios id for ECP
+
+[10.0.17763.20072]
+1.fix the issure that IR device cant not do window hello
+
+[10.0.17763.20071]
+1.update special privacy image
+2.update blur algorithm 
+
+[10.0.17763.20070]
+1.fix the issure that face detect can not work in recording mode
+2.change customized settings for auto flicker modules
+
+[10.0.17763.20069]
+1.add customized settings for VID/PID = 04CA|B69F
+2.update blur algorithm
+
+[10.0.17763.20068]
+1.add customized settings for VID/PID = 04CA|707A
+2.fix the issure of IR Led off when relogin
+3.fix the issure of abnormal privacy image for 720p
+
+[10.0.17763.20067]
+1.add fuction that support speciao privacy image
+2.fix flicker issue for SUB_VGA if saved registry is empty
+3.add support RTK_EXT_PRIVACY_ENABLE_CTL
+
+[10.0.17763.20066]
+1.fix the HLK issure of FaceAuthMode
+2.Fix flicker issue for SUB_VGA
+
+[10.0.17763.20065]
+1.fix the HLK of 5849 IR for FaceAuth mode
+2.update blur algorithm
+
+[10.0.17763.20064]
+1.update blur algorithm
+2.fix the issure that can not preview for 5849 module
+
+[10.0.17763.20063]
+1.fix the HLK issure of torch mode
+2.diable still pin for VID/PID = 04F2|B604
+
+[10.0.17134.20062]
+1.add BIOS list for Blur Control
+
+[10.0.17134.20061]
+1.fix the privacy issure
+2.fix the issure of face Detect
+
+[10.0.17134.20060]
+1.add customized settings for VID/PID = 5986|1121
+2.fix the issure of lag for face detect
+
+[10.0.17134.20059]
+1.add customized settings for VID/PID = 04F2|B698
+
+[10.0.17134.20058]
+1.fix the HLK issure of 5849 IR
+2.add customized settings for VID/PID = 2FEE|1024
+
+[10.0.17134.20057]
+1.fix the issure of color enable on RS5
+2.fix the HLK issure of powerline
+3.fix the issure of ECP
+
+[10.0.17134.20056]
+1.add customized settings for VID/PID = 0BDA|5786
+2.add customized settings for VID/PID = 04F2|B5EB
+3.fix the issure of color enable in Property 
+4.add function for get hardware URL in updated OS
+5.support blur control for mode
+
+[10.0.17134.20055]
+1.fix the issure of ECP that not show icon
+2.add customized settings for VID/PID = 2EF4|4742
+3.add customized settings for VID/PID = 05C8|0704
+
+[10.0.17134.20054]
+1.fix the issure of format change in Amcap
+2.add customized settings for VID/PID = 5986|1155
+3.add customized settings for VID/PID = 05C8|0822
+4.add customized settings for VID/PID = 05C8|0823
+
+[10.0.17134.20053]
+1.disable face AE for default
+
+[10.0.17134.20052]
+1.fix the issure of change format for YUY2RGB24
+
+[10.0.17134.20051]
+1.fix the issure of ECP when restart preview in shutter mode
+
+[10.0.17134.20050]
+1.fix the issure of change format
+2.add customized settings for VID/PID = 5986/114B
+3.remove restore function for VID/PID = 04F2/B674
+4.add R10E for ECP
+
+[10.0.17134.20049]
+1.fix the issure that hang up when change between start and stop in preview
+2.add customized settings for VID/PID = 04CA/709C
+
+[10.0.17134.20048]
+1.add customized settings for VID/PID = 04F2/B688
+2.enable rotate function for VID/PID = 04F2/B570
+3.fix the issure of focus infinity mode
+
+[10.0.17134.20047]
+1.fix the issure of handle leaked
+2.fix the issure that stack will corruption in RestoreControl
+3.remove AWB for 5986/1137 and 5986/1143
+4.keep auto and disable for VGA modules
+5.add optimize of face ROI coordinates that getted from UWP API
+6.add customized settings for VID/PID = 04F2/B681
+
+[10.0.17134.20046]
+1.fix the issure that resolution will disorderly jump when preview
+2.diable RGB24 for VID/PID = 5986/1137,5986/1143
+
+[10.0.17134.20045]
+1.optimize ECP polling time
+2.add customized settings for VID/PID = 0BDA/5788
+3.add customized settings for VID/PID = 174F/1800
+4.add customized settings for VID/PID = 174F/1801
+
+[10.0.17134.20044]
+1.remove Shutter speed for 5986/1137 and 5986/1143
+2.fix the HLK issure of FaceAuthMode
+
+[10.0.17134.20043]
+1.fix the issure that hang up when Enroll
+
+[10.0.17134.20042]
+1.fix the issure that pan/tilt/zoom not fuction for still pin
+2.optimize face ROI coordinates that getted from UWP API
+3.fix the issure that LED not close when close AP
+4.disable shutter mode to on when exposure in manual mode
+
+[10.0.17134.20041]
+1.fix the issure of can't keep auto for deflicker when restore from sleep
+2.add customized settings for VID/PID = 04F2/B67C
+
+[10.0.17134.20040]
+1.fix the issure of can't preview for 340x340 privacy image
+2.add pan/tilt/zoom for 04CA/7078 and 04f2/B62F
+3.add flip/mirror for 13D3/5755 and 04f2/6969
+
+[10.0.17134.20039]
+1.add pan/tilt/zoom for 5986/1120
+2.support the function of WhiteBalance
+3.support the function of Exposure
+
+[10.0.16299.20038]
+1.add pan/tilt/zoom for 0BDA/562B
+2.remove pan/tilt/zoom for 04CA/7078 and 04f2/B62F
+
+[10.0.16299.20037]
+1.fix the issure of privacy off when restart preview
+
+[10.0.16299.20036]
+1.fix the issure of ECP privacy when in shutter on mode
+2.fix the issure that cant't preivew for VGA modules
+
+[10.0.16299.20035]
+1.fix the issure of event Processing mechanism
+
+[10.0.16299.20034]
+1.surport function of scene mode
+2.fix the issure of focus auto mode
+
+[10.0.16299.20033]
+1.fix the issure of preview hang up when switch framing grid mode
+2.fix the issure of jitter of focus manual mode
+3.fix the issure of ECP
+
+[10.0.16299.20032]
+1.fix the issure of take photo when enable privacy
+2.support the function set Def value 60 for Saturation
+
+[10.0.16299.20031]
+1.fix the issure of take photo when enable privacy
+2.fix the issure of value flipMirror
+3.support the function set Def value 6 for HUE
+
+[10.0.16299.20030]
+1.update blur algorithm
+2.add blacklist for ROI control
+
+[10.0.16299.20029]
+1.enable Roll for 13D3/5755,O4F2/6969
+2.add blacklist for tnr
+3.set defaut 50 for auto Flicker
+4.fix the issure of focus mode
+
+[10.0.16299.20028]
+1.fix the issure of focus mode
+2.support special process for VGA modules
+3.fix the issure for front HD RGB camera
+
+[10.0.16299.20027]
+1.fix the HLK issure of focus mode
+2.fix the issure of can not enroll
+3.fix the issure of RGB24
+
+[10.0.16299.20026]
+1.fix the error of garbage caused by RestartMarker
+2.remove the N1ZE from ECP support list
+
+[10.0.16299.20025]
+1.support function of torch mode
+2.fix the error of property save function
+3.convert special format for IR solution(340x374)
+
+[10.0.16299.20024]
+1.set auto for powerline when first connect camera
+2.support the function of property save
+3.support touch af
+4.cancle group ID for OBDA/562B,O4F2/B616,5986/113D,174F/1D02,04CA/7074
+
+[10.0.16299.20023]
+1.fix the issure of hang when connect USB camera
+2.increase the condition for Run ECP
+3.update package
+4.support IR LED tag 13 for tobii
+
+[10.0.16299.20022]
+1.update tnr
+2.fix the issure of RGB24
+3.support function of Flash LED
+
+[10.0.16299.20021]
+1.fix the issure that resolution shows negative for RGB24
+2.support fuction of color enable
+
+[10.0.16299.20020]
+1.fix the HLK issure for ROI control
+
+[10.0.16299.20019]
+1.fix the issure of caton for ECP
+2.fix the HLK issure for IR camera
+
+[10.0.16299.20018]
+1.fix the issure that shadow of the residual in preview when privacy enable
+
+[10.0.16299.20017]
+1.fix the issure of preview lag for tnr
+
+[10.0.16299.20016]
+1.fix the issure of RGB24 output
+2.fix the issure of still pin take photo
+3.support fuction of face AE
+
+[10.0.16299.20015]
+1.support fuction of privacy cover mode 
+2.support fuction of rotate and flipMirror
+3.fix the issure that IR Camera can not enroll
+
+[10.0.15063.20014]
+1.support fuction of privacy
+2.support fuction of tnr
+3.support fuction of autoFlicker
+
+[10.0.15063.20013]
+1.support RGB24 and Jpeg format Convert for RGB
+2.support fuction of pan/tilt/room
+
+[10.0.15063.20012]
+1.support RGB and IR for DCHU

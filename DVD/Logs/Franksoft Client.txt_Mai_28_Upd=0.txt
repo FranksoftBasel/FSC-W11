@@ -1,0 +1,293 @@
+
+Franksoft Client | Windows Deployment | Phase 01/04 | Script: SetupComplete.cmd
+ +------------------------------------------------+
+                                                   
+  Franksoft Client Deployment                      
+                                                   
+  Phase ID:      Phase 01/04 (Start)                  
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                        
+  Timestamp:     28.05.2026 11:21:42                       
+                                                   
+ +------------------------------------------------+
+  ComputerName:  FSC-W11-050                    
+  Modell:        HP Elite x360 830 13 inch G10 2-in-1 Notebook PC               
+  OS:            Windows 10 Pro                 
+  Bitness:       x64                         
+  Version:       10.0.26100.1742                         
+  Release:       24H2                      
+  Build:         26100                    
+  User:          SYSTEM                        
+  Power Plan:    Ultimative Leistung              
+ +------------------------------------------------+
+ 
+ [INFO] Logging Deployment State	
+ 
+
+ [WINDOWS] Power Configuration
+    config Script: "C:\Windows\Setup\Scripts\PowerPlanFS.cmd"
+    change Power Plan to Ultimative Leistung
+    enable Hibernate option
+
+ 
+ [WINDOWS] Customer Experience Improvement Program
+    Disabled
+ 
+ [SOFTWARE] Install Visual C++ Redistributable Runtimes
+    All-in-One May Package 2026
+    Microsoft Visual C++ 2015-2019 Redistributable x86
+    Microsoft Visual C++ 2015-2019 Redistributable x64
+
+ [WINDOWS] Security
+    Add Defender Exclusions:
+ 	    * C:\ProgramData\Franksoft
+ 	    * C:\Temp
+ 	    * C:\WINDOWS\TEMP
+ 	    * D:\
+    Windows UAC disabled
+    Set access permissions on "C:\ProgramData\Franksoft" Script: C:\Windows\Setup\Scripts\FS-Log.inf
+    Set Password Never Expires=True for the local user "Admin".
+ 
+ [WINDOWS] Environment Variables
+    Add to OS Path Variable C:\ProgramData\Franksoft\Sysinternals 
+ 
+ [WINDOWS]
+    Add scheduled task: Microsoft Store Updates 
+    Change volume label from drive C:\ to "System"
+ 
+ [FRANKSOFT]
+    Add Franksoft Client and Hardware Info to HKLM\SOFTWARE\Franksoft 
+    Mute Audio Volume
+    Windows Explorer Quick Access: Remove Catalog link
+ 
+ [DRIVER] Installation Start
+    Check Drivers on USB Drive Path = D:
+    >  Start Time: 11:22:45 
+    >  Script: D:\_Drivers\Install_HP-Drivers.cmd 
+    >  End   Time: 11:22:45 
+ [DRIVER] Installation End
+ 
+ [FRANKSOFT]
+    Apply FSC First Logon Settings
+
+ [FRANKSOFT]
+    Add Franksoft Deployment Windows Lockscreen
+    File: C:\ProgramData\Franksoft\Logos\Logon\01-R.png
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)                   
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                        
+  Timestamp:     28.05.2026 11:22:50                       
+  User:          SYSTEM                        
+  Power Plan:    Ultimative Leistung              
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | Script: SetupComplete.cmd
+
+************************************************************************************* 
+
+Franksoft Client | Software Deployment | Phase 02/04 | Script: FSC-Post-01.cmd
+
+ - Phase ID:       Phase 02/04
+ - Timestamp:      28.05.2026 11:23:25
+ - Executed by:    Admin
+ - Power Profile:  Franksoft Deployment
+ - Script Path:    C:\Temp\Updates\FSC-Post-01.cmd
+ 
+ - Logging: Deployment State
+ - Audio Volume: Set Muted
+ - Configure: Windows Notepad default settings 
+ - Configure: Intel Graphics user settings 
+ - System: Disable Windows System Restore 
+ - Registry: Apply HKLM Franksoft Settings
+ - Registry: Apply HKCU Franksoft Settings
+ - Keyboard: Remove Layout "Swiss French"
+- Config: "Disable "Open with" / association prompts """ 
+- Default Apps: Configure Windows Photo Viewer associations 
+- FSC: Task Manager configuration 
+ - Copy: New Wallpapers
+ - Windows Explorer:
+    Config Shell Bags
+    Kill and Restart
+    Copy Franksoft mod JumpList
+ - Power Plan:
+    Add: "High Performance" Plan
+    Change Name: "Franksoft Deployment"
+    Config: "Franksoft Deployment" Power Plan
+ - Install: Open Shell
+ - Install: 7-Zip
+ - Install: Desktop Restore
+ * NOT Installed TeamViewer Quick Support NOT found D:\Runtimes\Install\TeamViewer\fss.EXE
+ * Update: NOT Updated TeamViewer Quick Support
+ - Install: Microsoft Edge
+ -  Config: Edge: Add User GPO
+ -  Config: Edge: Start and Kill Edge
+ - Install: Google Chrome
+ -  Config: Chrome: Copy Bookmarks
+ -  Config: Chrome: Add User GPO
+ -  Config: Chrome: FTA: Change default Browser to Chrome
+ - Copy: Franksoft VCard to C:\Users\Public\Desktop
+ - OneDrive: Disable Autostart
+ - Remove First Logon Commands from Registry
+ - Uninstall Default Microsoft Apps
+  - Software Deployment Start : 11:26:41
+  - Software Deployment Script: D:\Runtimes\FS-Post-Apps.cmd
+  - Software Deployment End   : 11:30:07
+ - Franksoft: Add FSC Logon Script 02/04 : FSC-Post-02.cmd
+ - Logging: Deployment State
+ - System: Reboot Initiated
+
+ - Phase ID:       Phase 02/04
+ - Timestamp:      28.05.2026 11:30:07
+ - Executed by:    Admin
+ - Power Profile:  Franksoft Deployment
+ - Script Path:    C:\Temp\Updates\FSC-Post-01.cmd
+ 
+Franksoft Client | Software Deployment | Phase 02/04 | Script: FSC-Post-01.cmd
+
+************************************************************************************* 
+
+Franksoft Client | Software Deployment | Phase 03/04 | Script: FSC-Post-02.cmd
+
+ - Phase ID:       Phase 03/04
+ - Timestamp:      28.05.2026 11:31:34
+ - Executed by:    Admin
+ - Power Profile:  Franksoft Deployment
+ - Script Path:    C:\Temp\Updates\FSC-Post-02.cmd
+ 
+ - Windows System Restore: Disable
+ - Set Default App: Set .pdf extension to Acrobat Reader
+ - Franksoft: Add FSC Logon Script 03/04 : FSC-Post-03.cmd
+ - Config: Notepad default Settings 
+ - System: Reboot Initiated
+
+ - Phase ID:       Phase 03/04
+ - Timestamp:      28.05.2026 11:31:41
+ - Executed by:    Admin
+ - Power Profile:  Franksoft Deployment
+ - Script Path:    C:\Temp\Updates\FSC-Post-02.cmd
+ 
+Franksoft Client | Software Deployment | Phase 03/04 | Script: FSC-Post-02.cmd
+
+************************************************************************************* 
+
+Franksoft Client | Software Deployment | Phase 04/04 | Script: FSC-Post-03.cmd
+
+ - Phase ID:       Phase 04/04
+ - Timestamp:      28.05.2026 11:32:48
+ - Executed by:    Admin
+ - Power Profile:  Franksoft Deployment
+ - Script Path:    C:\Temp\Updates\FSC-Post-03.cmd
+ 
+ - System: Disable User Experiences and Telemetry
+ * TeamViewer Quick Support NOT Updated
+ - Logging: Deployment State
+ - Power Plan: Change to "Ausbalanciert"
+ + Franksoft: Windows Update: Activated
+ - Create scheduled task: Franksoft Windows Update
+ - Franksoft: Collect Franksoft events from EventLog "ID 007"
+
+﻿Franksoft Deployment Events:
++--------+---------------------+----------------+-----------+-----------------------+
+| Index  | Time                | Type           | Source    | Script                |
++--------+---------------------+----------------+-----------+-----------------------+
+| 1      | 2026-05-28 11:21    | Informationen  | Franksoft | SetupComplete.cmd     |
+| 2      | 2026-05-28 11:22    | Informationen  | Franksoft | SetupComplete.cmd     |
+| 3      | 2026-05-28 11:23    | Informationen  | Franksoft | FSC-Post-01.cmd       |
+| 4      | 2026-05-28 11:30    | Informationen  | Franksoft | FSC-Post-01.cmd       |
+| 5      | 2026-05-28 11:31    | Informationen  | Franksoft | FSC-Post-02.cmd       |
+| 6      | 2026-05-28 11:31    | Informationen  | Franksoft | FSC-Post-02.cmd       |
+| 7      | 2026-05-28 11:32    | Informationen  | Franksoft | FSC-Post-03.cmd       |
++--------+---------------------+----------------+-----------+-----------------------+
+
+ - System: Reboot Initiated
+
+ - Phase ID:       Phase 04/04
+ - Timestamp:      28.05.2026 11:33:14
+ - Executed by:    Admin
+ - Power Profile:  Ausbalanciert
+ - Script Path:    C:\Temp\Updates\FSC-Post-03.cmd
+ 
+Franksoft Client | Software Deployment | Phase 04/04 | Script: FSC-Post-03.cmd | Completed
+
+************************************************************************************* 
+ 
+ Franksoft Client: Windows Update Start - Time: 11:34:15
+ 
+ - FSC Phase ID:   01/09
+ - Timestamp:      28.05.2026 11:34:15
+ - Executed by:    Admin
+ - Admin Status:   Yes
+ - Script Path:    C:\ProgramData\Franksoft\Scripts\WinUpd and Reboot.cmd
+ 
+   - Set Performance Power Scheme
+   - Get-WindowsUpdate
+   - Install Windows Updates
+ Franksoft Client: Windows Update Reboot - Time: 11:34:33
+ 
+ Franksoft Client: Windows Update Start - Time: 11:35:37
+ 
+ - FSC Phase ID:   01/09
+ - Timestamp:      28.05.2026 11:35:37
+ - Executed by:    Admin
+ - Admin Status:   Yes
+ - Script Path:    C:\ProgramData\Franksoft\Scripts\WinUpd and Reboot.cmd
+ 
+   - Set Performance Power Scheme
+   - Get-WindowsUpdate
+   - Install Windows Updates
+ Franksoft Client: Windows Update Reboot - Time: 11:35:40
+ 
+ Franksoft Client: Windows Update Start - Time: 11:36:44
+ 
+ - FSC Phase ID:   02/09
+ - Timestamp:      28.05.2026 11:36:44
+ - Executed by:    Admin
+ - Admin Status:   Yes
+ - Script Path:    C:\ProgramData\Franksoft\Scripts\WinUpd and Reboot.cmd
+ 
+   - Set Performance Power Scheme
+   - Get-WindowsUpdate
+   - Install Windows Updates
+ Franksoft Client: Windows Update Reboot - Time: 11:36:47
+ 
+ Franksoft Client: Windows Update Start - Time: 11:37:52
+ 
+ - FSC Phase ID:   03/09
+ - Timestamp:      28.05.2026 11:37:52
+ - Executed by:    Admin
+ - Admin Status:   Yes
+ - Script Path:    C:\ProgramData\Franksoft\Scripts\WinUpd and Reboot.cmd
+ 
+   - Set Performance Power Scheme
+   - Get-WindowsUpdate
+   - Install Windows Updates
+ Franksoft Client: Windows Update Reboot - Time: 11:37:55
+ 
+ Franksoft Client: Windows Update Start - Time: 11:38:59
+ 
+ - FSC Phase ID:   04/09
+ - Timestamp:      28.05.2026 11:38:59
+ - Executed by:    Admin
+ - Admin Status:   Yes
+ - Script Path:    C:\ProgramData\Franksoft\Scripts\WinUpd and Reboot.cmd
+ 
+   - Set Performance Power Scheme
+   - Get-WindowsUpdate
+   - Install Windows Updates
+ Franksoft Client: Windows Update Reboot - Time: 11:39:02
+ 
+ Franksoft Client: Windows Update Start - Time: 11:40:06
+ 
+ - FSC Phase ID:   05/09
+ - Timestamp:      28.05.2026 11:40:06
+ - Executed by:    Admin
+ - Admin Status:   Yes
+ - Script Path:    C:\ProgramData\Franksoft\Scripts\WinUpd and Reboot.cmd
+ 
+   - Set Performance Power Scheme
+   - Get-WindowsUpdate
+   - Install Windows Updates
+ Franksoft Client: Windows Update Reboot - Time: 11:40:09

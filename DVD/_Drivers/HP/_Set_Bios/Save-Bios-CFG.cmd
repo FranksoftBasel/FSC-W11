@@ -1,0 +1,1 @@
+%~dp0BiosConfigUtility64.exe /get:"%~dp0Bios_%ComputerName%_%DATE%_%RANDOM%.txt"

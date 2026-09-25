@@ -1,0 +1,12 @@
+REM 1. Chrome Update
+msiexec /i GoogleChromeStandaloneEnterprise64.msi /qn
+
+REM 2. HKCU Einstellungen zurücksetzen
+reg import chromecu.reg
+
+REM 3. Default Profil wiederherstellen
+xcopy "%BACKUP%\Default" "%LOCALAPPDATA%\Google\Chrome\User Data\Default" /E /I /Y
+
+REM 4. Chrome Policies nochmals setzen
+reg import chromepolicies.reg
+

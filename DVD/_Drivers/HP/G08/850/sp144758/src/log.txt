@@ -1,0 +1,279 @@
+01.06.2026 23:50:46		 ============================================================ 
+01.06.2026 23:50:46				 Driver Uninstall Start 
+01.06.2026 23:50:46		 ============================================================ 
+01.06.2026 23:50:46		All ppkg packages :  
+01.06.2026 23:50:46		All ppkg packages : There have no "Auto-Constraints-Disable.ppkg" in this system ! 
+01.06.2026 23:50:46		All ppkg packages : There have no "Auto-Constraints-Disable.ppkg" in this system ! 
+01.06.2026 23:50:46		Call SIMService to uninstall
+01.06.2026 23:50:46		Call SIMService Exception : System.InvalidOperationException: Diesem Objekt ist kein Prozess zugeordnet.
+   bei System.Diagnostics.Process.EnsureState(State state)
+   bei System.Diagnostics.Process.get_HasExited()
+   bei System.Diagnostics.Process.EnsureState(State state)
+   bei System.Diagnostics.Process.get_ExitCode()
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.RunExternalExe(String filename, String arguments)
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.Send_Console_Command(Boolean showResult, String command, String arguments, String result)
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.Driver_Remove_Procedure()
+01.06.2026 23:50:46		Stop SIMService 
+01.06.2026 23:50:54		sc.exe stop "SIMService"
+01.06.2026 23:50:54		'sc.exe stop "SIMService"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+01.06.2026 23:50:46		Stop SIMSVC 
+01.06.2026 23:50:55		sc.exe stop "SIMSVC"
+01.06.2026 23:50:55		'sc.exe stop "SIMSVC"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+01.06.2026 23:50:46		Uninstall SIMService 
+01.06.2026 23:50:56		sc.exe delete "SIMService"
+01.06.2026 23:50:56		'sc.exe delete "SIMService"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+01.06.2026 23:50:46		Uninstall SIMSVC 
+01.06.2026 23:50:57		sc.exe delete "SIMSVC"
+01.06.2026 23:50:57		'sc.exe delete "SIMSVC"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+01.06.2026 23:50:46		Deleted File : C:\fota_running.txt
+01.06.2026 23:50:46		Deleted File : c:\sim_service_running.txt
+01.06.2026 23:50:59		DeviceRemove.exe "MBFW\{30334630-3041-3643-3034-3134464F5843}"
+01.06.2026 23:50:59		No matching devices found.No devices were removed.
+01.06.2026 23:51:00		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_05"
+01.06.2026 23:51:00		No matching devices found.No devices were removed.
+01.06.2026 23:51:01		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_09"
+01.06.2026 23:51:01		No matching devices found.No devices were removed.
+01.06.2026 23:51:02		DeviceRemove.exe "{7DCB3244-C836-4A0C-A1E9-BD68D385AA2B}\VID_03F0&PID_0A6C_QCGNSS"
+01.06.2026 23:51:02		No matching devices found.No devices were removed.
+01.06.2026 23:51:04		DeviceRemove.exe "{7DCB3244-C836-4A0C-A1E9-BD68D385AA2B}\VID_03F0&PID_0A6C_QcNetAdapter"
+01.06.2026 23:51:04		No matching devices found.No devices were removed.
+01.06.2026 23:51:05		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_02"
+01.06.2026 23:51:05		No matching devices found.No devices were removed.
+01.06.2026 23:51:07		DeviceRemove.exe "{3a4d657c-0a42-4501-9627-ba1b76ffc39d}\QcUde-877F103C"
+01.06.2026 23:51:07		No matching devices found.No devices were removed.
+01.06.2026 23:51:08		DeviceRemove.exe "PCI\VEN_103C&DEV_877F&SUBSYS_877F103C"
+01.06.2026 23:51:08		No matching devices found.No devices were removed.
+01.06.2026 23:51:09		DeviceRemove.exe "PCI\VEN_03F0&DEV_0A6C&SUBSYS_877F103C"
+01.06.2026 23:51:09		No matching devices found.No devices were removed.
+01.06.2026 23:51:10		Try OEM file: C:\WINDOWS\inf\oem0.inf
+01.06.2026 23:51:10		Try OEM file: C:\WINDOWS\inf\oem1.inf
+01.06.2026 23:51:10		Try OEM file: C:\WINDOWS\inf\oem2.inf
+01.06.2026 23:51:10		Try OEM file: C:\WINDOWS\inf\oem3.inf
+01.06.2026 23:51:10		Try OEM file: C:\WINDOWS\inf\oem4.inf
+01.06.2026 23:51:10		Try OEM file: C:\WINDOWS\inf\oem5.inf
+01.06.2026 23:51:10		Try OEM file: C:\WINDOWS\inf\oem6.inf
+01.06.2026 23:51:11		devcon32.exe rescan
+01.06.2026 23:51:11		Scanning for new hardware.Scanning completed.
+01.06.2026 23:51:11		taskkill /IM "SIMService.exe" /F
+01.06.2026 23:51:11		'taskkill /IM "SIMService.exe" /F' finished with exit code = 128: FEHLER: Der Prozess "SIMService.exe" wurde nicht gefunden.
+
+
+01.06.2026 23:51:11		 =============== Driver Uninstall Finish ==================== 
+
+02.06.2026 00:05:10		 ============================================================ 
+02.06.2026 00:05:10				 Driver Uninstall Start 
+02.06.2026 00:05:10		 ============================================================ 
+02.06.2026 00:05:10		All ppkg packages :  
+02.06.2026 00:05:10		All ppkg packages : There have no "Auto-Constraints-Disable.ppkg" in this system ! 
+02.06.2026 00:05:10		All ppkg packages : There have no "Auto-Constraints-Disable.ppkg" in this system ! 
+02.06.2026 00:05:10		Call SIMService to uninstall
+02.06.2026 00:05:10		Call SIMService Exception : System.InvalidOperationException: Diesem Objekt ist kein Prozess zugeordnet.
+   bei System.Diagnostics.Process.EnsureState(State state)
+   bei System.Diagnostics.Process.get_HasExited()
+   bei System.Diagnostics.Process.EnsureState(State state)
+   bei System.Diagnostics.Process.get_ExitCode()
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.RunExternalExe(String filename, String arguments)
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.Send_Console_Command(Boolean showResult, String command, String arguments, String result)
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.Driver_Remove_Procedure()
+02.06.2026 00:05:10		Stop SIMService 
+02.06.2026 00:05:14		sc.exe stop "SIMService"
+02.06.2026 00:05:14		'sc.exe stop "SIMService"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+02.06.2026 00:05:10		Stop SIMSVC 
+02.06.2026 00:05:15		sc.exe stop "SIMSVC"
+02.06.2026 00:05:15		'sc.exe stop "SIMSVC"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+02.06.2026 00:05:10		Uninstall SIMService 
+02.06.2026 00:05:16		sc.exe delete "SIMService"
+02.06.2026 00:05:16		'sc.exe delete "SIMService"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+02.06.2026 00:05:10		Uninstall SIMSVC 
+02.06.2026 00:05:17		sc.exe delete "SIMSVC"
+02.06.2026 00:05:17		'sc.exe delete "SIMSVC"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+02.06.2026 00:05:10		Deleted File : C:\fota_running.txt
+02.06.2026 00:05:10		Deleted File : c:\sim_service_running.txt
+02.06.2026 00:05:18		DeviceRemove.exe "MBFW\{30334630-3041-3643-3034-3134464F5843}"
+02.06.2026 00:05:18		No matching devices found.No devices were removed.
+02.06.2026 00:05:20		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_05"
+02.06.2026 00:05:20		No matching devices found.No devices were removed.
+02.06.2026 00:05:21		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_09"
+02.06.2026 00:05:21		No matching devices found.No devices were removed.
+02.06.2026 00:05:22		DeviceRemove.exe "{7DCB3244-C836-4A0C-A1E9-BD68D385AA2B}\VID_03F0&PID_0A6C_QCGNSS"
+02.06.2026 00:05:22		No matching devices found.No devices were removed.
+02.06.2026 00:05:24		DeviceRemove.exe "{7DCB3244-C836-4A0C-A1E9-BD68D385AA2B}\VID_03F0&PID_0A6C_QcNetAdapter"
+02.06.2026 00:05:24		No matching devices found.No devices were removed.
+02.06.2026 00:05:25		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_02"
+02.06.2026 00:05:25		No matching devices found.No devices were removed.
+02.06.2026 00:05:26		DeviceRemove.exe "{3a4d657c-0a42-4501-9627-ba1b76ffc39d}\QcUde-877F103C"
+02.06.2026 00:05:26		No matching devices found.No devices were removed.
+02.06.2026 00:05:28		DeviceRemove.exe "PCI\VEN_103C&DEV_877F&SUBSYS_877F103C"
+02.06.2026 00:05:28		No matching devices found.No devices were removed.
+02.06.2026 00:05:29		DeviceRemove.exe "PCI\VEN_03F0&DEV_0A6C&SUBSYS_877F103C"
+02.06.2026 00:05:29		No matching devices found.No devices were removed.
+02.06.2026 00:05:30		Try OEM file: C:\WINDOWS\inf\oem0.inf
+02.06.2026 00:05:30		Try OEM file: C:\WINDOWS\inf\oem1.inf
+02.06.2026 00:05:30		Try OEM file: C:\WINDOWS\inf\oem2.inf
+02.06.2026 00:05:30		Try OEM file: C:\WINDOWS\inf\oem3.inf
+02.06.2026 00:05:31		devcon32.exe rescan
+02.06.2026 00:05:31		Scanning for new hardware.Scanning completed.
+02.06.2026 00:05:31		taskkill /IM "SIMService.exe" /F
+02.06.2026 00:05:31		'taskkill /IM "SIMService.exe" /F' finished with exit code = 128: FEHLER: Der Prozess "SIMService.exe" wurde nicht gefunden.
+
+
+02.06.2026 00:05:31		 =============== Driver Uninstall Finish ==================== 
+
+05.09.2026 19:38:09		 ============================================================ 
+05.09.2026 19:38:09				 Driver Uninstall Start 
+05.09.2026 19:38:09		 ============================================================ 
+05.09.2026 19:38:09		All ppkg packages :  
+05.09.2026 19:38:09		All ppkg packages : There have no "Auto-Constraints-Disable.ppkg" in this system ! 
+05.09.2026 19:38:09		All ppkg packages : There have no "Auto-Constraints-Disable.ppkg" in this system ! 
+05.09.2026 19:38:09		Call SIMService to uninstall
+05.09.2026 19:38:09		Call SIMService Exception : System.InvalidOperationException: Diesem Objekt ist kein Prozess zugeordnet.
+   bei System.Diagnostics.Process.EnsureState(State state)
+   bei System.Diagnostics.Process.get_HasExited()
+   bei System.Diagnostics.Process.EnsureState(State state)
+   bei System.Diagnostics.Process.get_ExitCode()
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.RunExternalExe(String filename, String arguments)
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.Send_Console_Command(Boolean showResult, String command, String arguments, String result)
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.Driver_Remove_Procedure()
+05.09.2026 19:38:09		Stop SIMService 
+05.09.2026 19:38:13		sc.exe stop "SIMService"
+05.09.2026 19:38:13		'sc.exe stop "SIMService"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+05.09.2026 19:38:09		Stop SIMSVC 
+05.09.2026 19:38:15		sc.exe stop "SIMSVC"
+05.09.2026 19:38:15		'sc.exe stop "SIMSVC"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+05.09.2026 19:38:09		Uninstall SIMService 
+05.09.2026 19:38:16		sc.exe delete "SIMService"
+05.09.2026 19:38:16		'sc.exe delete "SIMService"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+05.09.2026 19:38:09		Uninstall SIMSVC 
+05.09.2026 19:38:17		sc.exe delete "SIMSVC"
+05.09.2026 19:38:17		'sc.exe delete "SIMSVC"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+05.09.2026 19:38:09		Deleted File : C:\fota_running.txt
+05.09.2026 19:38:09		Deleted File : c:\sim_service_running.txt
+05.09.2026 19:38:18		DeviceRemove.exe "MBFW\{30334630-3041-3643-3034-3134464F5843}"
+05.09.2026 19:38:18		No matching devices found.No devices were removed.
+05.09.2026 19:38:19		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_05"
+05.09.2026 19:38:19		No matching devices found.No devices were removed.
+05.09.2026 19:38:21		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_09"
+05.09.2026 19:38:21		No matching devices found.No devices were removed.
+05.09.2026 19:38:22		DeviceRemove.exe "{7DCB3244-C836-4A0C-A1E9-BD68D385AA2B}\VID_03F0&PID_0A6C_QCGNSS"
+05.09.2026 19:38:22		No matching devices found.No devices were removed.
+05.09.2026 19:38:23		DeviceRemove.exe "{7DCB3244-C836-4A0C-A1E9-BD68D385AA2B}\VID_03F0&PID_0A6C_QcNetAdapter"
+05.09.2026 19:38:23		No matching devices found.No devices were removed.
+05.09.2026 19:38:25		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_02"
+05.09.2026 19:38:25		No matching devices found.No devices were removed.
+05.09.2026 19:38:26		DeviceRemove.exe "{3a4d657c-0a42-4501-9627-ba1b76ffc39d}\QcUde-877F103C"
+05.09.2026 19:38:26		No matching devices found.No devices were removed.
+05.09.2026 19:38:27		DeviceRemove.exe "PCI\VEN_103C&DEV_877F&SUBSYS_877F103C"
+05.09.2026 19:38:27		No matching devices found.No devices were removed.
+05.09.2026 19:38:28		DeviceRemove.exe "PCI\VEN_03F0&DEV_0A6C&SUBSYS_877F103C"
+05.09.2026 19:38:28		No matching devices found.No devices were removed.
+05.09.2026 19:38:30		Try OEM file: C:\WINDOWS\inf\oem0.inf
+05.09.2026 19:38:30		Try OEM file: C:\WINDOWS\inf\oem1.inf
+05.09.2026 19:38:30		Try OEM file: C:\WINDOWS\inf\oem2.inf
+05.09.2026 19:38:30		Try OEM file: C:\WINDOWS\inf\oem3.inf
+05.09.2026 19:38:30		Try OEM file: C:\WINDOWS\inf\oem4.inf
+05.09.2026 19:38:30		Try OEM file: C:\WINDOWS\inf\oem5.inf
+05.09.2026 19:38:30		Try OEM file: C:\WINDOWS\inf\oem6.inf
+05.09.2026 19:38:30		Try OEM file: C:\WINDOWS\inf\oem7.inf
+05.09.2026 19:38:30		devcon32.exe rescan
+05.09.2026 19:38:30		Scanning for new hardware.Scanning completed.
+05.09.2026 19:38:30		taskkill /IM "SIMService.exe" /F
+05.09.2026 19:38:30		'taskkill /IM "SIMService.exe" /F' finished with exit code = 128: FEHLER: Der Prozess "SIMService.exe" wurde nicht gefunden.
+
+
+05.09.2026 19:38:30		 =============== Driver Uninstall Finish ==================== 
+
+06.09.2026 15:10:01		 ============================================================ 
+06.09.2026 15:10:01				 Driver Uninstall Start 
+06.09.2026 15:10:01		 ============================================================ 
+06.09.2026 15:10:01		All ppkg packages :  
+06.09.2026 15:10:01		All ppkg packages : There have no "Auto-Constraints-Disable.ppkg" in this system ! 
+06.09.2026 15:10:01		All ppkg packages : There have no "Auto-Constraints-Disable.ppkg" in this system ! 
+06.09.2026 15:10:01		Call SIMService to uninstall
+06.09.2026 15:10:01		Call SIMService Exception : System.InvalidOperationException: Diesem Objekt ist kein Prozess zugeordnet.
+   bei System.Diagnostics.Process.EnsureState(State state)
+   bei System.Diagnostics.Process.get_HasExited()
+   bei System.Diagnostics.Process.EnsureState(State state)
+   bei System.Diagnostics.Process.get_ExitCode()
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.RunExternalExe(String filename, String arguments)
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.Send_Console_Command(Boolean showResult, String command, String arguments, String result)
+   bei SDx55DriverUninstallTool.Form_SDx55DriverUninstallTool.Driver_Remove_Procedure()
+06.09.2026 15:10:01		Stop SIMService 
+06.09.2026 15:10:05		sc.exe stop "SIMService"
+06.09.2026 15:10:05		'sc.exe stop "SIMService"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+06.09.2026 15:10:01		Stop SIMSVC 
+06.09.2026 15:10:06		sc.exe stop "SIMSVC"
+06.09.2026 15:10:06		'sc.exe stop "SIMSVC"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+06.09.2026 15:10:01		Uninstall SIMService 
+06.09.2026 15:10:07		sc.exe delete "SIMService"
+06.09.2026 15:10:07		'sc.exe delete "SIMService"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+06.09.2026 15:10:01		Uninstall SIMSVC 
+06.09.2026 15:10:08		sc.exe delete "SIMSVC"
+06.09.2026 15:10:08		'sc.exe delete "SIMSVC"' finished with exit code = 1060: Std output:
+[SC] OpenService FEHLER 1060:Der angegebene Dienst ist kein installierter Dienst.
+
+06.09.2026 15:10:01		Deleted File : C:\fota_running.txt
+06.09.2026 15:10:01		Deleted File : c:\sim_service_running.txt
+06.09.2026 15:10:10		DeviceRemove.exe "MBFW\{30334630-3041-3643-3034-3134464F5843}"
+06.09.2026 15:10:10		No matching devices found.No devices were removed.
+06.09.2026 15:10:11		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_05"
+06.09.2026 15:10:11		No matching devices found.No devices were removed.
+06.09.2026 15:10:13		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_09"
+06.09.2026 15:10:13		No matching devices found.No devices were removed.
+06.09.2026 15:10:14		DeviceRemove.exe "{7DCB3244-C836-4A0C-A1E9-BD68D385AA2B}\VID_03F0&PID_0A6C_QCGNSS"
+06.09.2026 15:10:14		No matching devices found.No devices were removed.
+06.09.2026 15:10:15		DeviceRemove.exe "{7DCB3244-C836-4A0C-A1E9-BD68D385AA2B}\VID_03F0&PID_0A6C_QcNetAdapter"
+06.09.2026 15:10:15		No matching devices found.No devices were removed.
+06.09.2026 15:10:16		DeviceRemove.exe "USB\VID_03F0&PID_0A6C&MI_02"
+06.09.2026 15:10:16		No matching devices found.No devices were removed.
+06.09.2026 15:10:18		DeviceRemove.exe "{3a4d657c-0a42-4501-9627-ba1b76ffc39d}\QcUde-877F103C"
+06.09.2026 15:10:18		No matching devices found.No devices were removed.
+06.09.2026 15:10:19		DeviceRemove.exe "PCI\VEN_103C&DEV_877F&SUBSYS_877F103C"
+06.09.2026 15:10:19		No matching devices found.No devices were removed.
+06.09.2026 15:10:20		DeviceRemove.exe "PCI\VEN_03F0&DEV_0A6C&SUBSYS_877F103C"
+06.09.2026 15:10:20		No matching devices found.No devices were removed.
+06.09.2026 15:10:21		Try OEM file: C:\WINDOWS\inf\oem0.inf
+06.09.2026 15:10:21		Try OEM file: C:\WINDOWS\inf\oem1.inf
+06.09.2026 15:10:21		Try OEM file: C:\WINDOWS\inf\oem2.inf
+06.09.2026 15:10:21		Try OEM file: C:\WINDOWS\inf\oem3.inf
+06.09.2026 15:10:21		Try OEM file: C:\WINDOWS\inf\oem4.inf
+06.09.2026 15:10:21		Try OEM file: C:\WINDOWS\inf\oem5.inf
+06.09.2026 15:10:21		Try OEM file: C:\WINDOWS\inf\oem6.inf
+06.09.2026 15:10:21		Try OEM file: C:\WINDOWS\inf\oem7.inf
+06.09.2026 15:10:22		devcon32.exe rescan
+06.09.2026 15:10:22		Scanning for new hardware.Scanning completed.
+06.09.2026 15:10:22		taskkill /IM "SIMService.exe" /F
+06.09.2026 15:10:22		'taskkill /IM "SIMService.exe" /F' finished with exit code = 128: FEHLER: Der Prozess "SIMService.exe" wurde nicht gefunden.
+
+
+06.09.2026 15:10:22		 =============== Driver Uninstall Finish ==================== 
+

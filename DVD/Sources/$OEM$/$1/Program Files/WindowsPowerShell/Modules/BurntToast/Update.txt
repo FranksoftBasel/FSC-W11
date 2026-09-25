@@ -1,0 +1,6 @@
+Install-Module -Name BurntToast -Force
+
+verify:
+Get-Module -Name BurntToast
+
+New-BurntToastNotification -Text "Test", "Normale Sitzung?"

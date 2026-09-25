@@ -1,0 +1,70 @@
+________________________________________________________________________________________________
+
+IS: 
+
+Table: ISPathVariable
+
+SOURCEFILEPATH = <ISProjectFolder>\
+________________________________________________________________________________________________
+
+Exlorer:
+
+3x
+%SystemRoot%\System32\cmd.exe /c cd..&cd..&cd..&cd..&cd "Dawn Of The Dead 1978"&explorer.exe .
+
+2x
+%SystemRoot%\System32\cmd.exe /c cd..&cd..&cd..&cd "Dawn Of The Dead 1978"&explorer.exe .
+
+1x
+%SystemRoot%\System32\cmd.exe /c cd..&cd "Dawn Of The Dead 1978"&explorer.exe .
+
+
+%SystemRoot%\System32\cmd.exe /c cd..&cd "X-Men\2017 - Logan"&explorer.exe /select, "00. Marco Beltrami - Logan.m3u8"
+
+%SystemRoot%\System32\cmd.exe /c cd..&cd "_Hans Zimmer\Pirates Of The Caribbean (2003-2011)"&explorer.exe .
+
+
+
+:: export FTA
+
+Dism /Online /Export-DefaultAppAssociations:"%Public%\Desktop\OEMDefaultAssociations.xml"
+
+:: Get WIM/ESD Info
+
+dism /Get-WimInfo /WimFile:"C:\Users\Admin\Desktop\install.esd"
+
+:: Startmenu
+
+export-startlayout –path C:\layout.xml
+
+FS:
+F:\Work\FSC\W10\2009\sources\$OEM$\$1\Temp\Updates\StartMenuLayoutIco.exe
+F:\Work\FSC\W10\2009\sources\$OEM$\$1\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml
+
+::
+
+
+
+Check: 
+
+Dot NET>
+
+reg query "HKLM\SOFTWARE\Microsoft\Net Framework Setup\NDP" /s
+
+reg query "HKLM\SOFTWARE\Microsoft\Net Framework Setup\NDP\v4" /s | findstr /i "Version"
+
+
+
+
+Explorer.exe
+
+Def: 
+%SystemRoot%\System32\cmd.exe /c cd..&cd "Ecologia Del Delitto [Bay of Blood] (1971)"&explorer.exe /select, "_001. Stelvio Cipriani - Cani Arrabbiati.m3u8"
+
+cd1
+
+%SystemRoot%\System32\cmd.exe /c cd..&cd "X-Men\2017 - Logan"&explorer.exe /select, "00. Marco Beltrami - Logan.m3u8"
+
+cd2
+
+%SystemRoot%\System32\cmd.exe /c cd..&cd..&cd "_Hans Zimmer\Dark Phoenix (2019)"&explorer.exe .

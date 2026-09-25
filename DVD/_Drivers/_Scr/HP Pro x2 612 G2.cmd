@@ -1,0 +1,1 @@
+explorer "hp\Pro x2 612 G2\04_\FS-Work\3_SuppAssi_installation"

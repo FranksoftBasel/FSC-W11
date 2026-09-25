@@ -1,0 +1,11 @@
+Franksoft W11 x64 Client
+
+Winver....: 25H2
+OS Lang...: German
+Build Date: 23.06.2026
+Include...: Pro
+
+[Version 10.0.26200.8655]
+
+
+

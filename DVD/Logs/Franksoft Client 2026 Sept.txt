@@ -1,0 +1,216 @@
+
+Franksoft Client | Windows Deployment | Phase 01/04 | Start
+ +------------------------------------------------------------+
+                                                   
+  Phase ID:      Phase 01/04 (Start)                  
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                        
+  Timestamp:     20.09.2026 19:11:36                       
+                                                   
+ +------------------------------------------------------------+
+  ComputerName:  FSC-W11-890                    
+  Modell:        HP EliteBook 8 G1i 16 inch Notebook AI PC               
+  OS:            Windows 10 Pro                 
+  Bitness:       x64                         
+  Version:       10.0.26200.8655                         
+  Release:       25H2                      
+  Build:         26200                    
+  User:          SYSTEM                        
+  IsAdmin:       Yes                    
+  Power Plan:    Ultimative Leistung              
+ +------------------------------------------------------------+
+ 
+ [INFO] Logging Deployment State
+
+ [WINDOWS] Power Configuration
+    config Script: "C:\Windows\Setup\Scripts\PowerPlanFS.cmd"
+    change Power Plan to Ultimative Leistung
+    enable Hibernate option
+ 
+ [WINDOWS] Customer Experience Improvement Program
+    Disabled
+ 
+ [SOFTWARE] Install Visual C++ Redistributable Runtimes
+    All-in-One May Package 2026
+    Microsoft Visual C++ 2015-2019 Redistributable x86
+    Microsoft Visual C++ 2015-2019 Redistributable x64
+
+ [WINDOWS] Security
+    Add Defender Exclusions:
+      * C:\ProgramData\Franksoft
+      * C:\Temp
+      * C:\WINDOWS\TEMP
+      * D:\
+
+    Windows UAC disabled
+    Set access permissions on "C:\ProgramData\Franksoft" Script: C:\Windows\Setup\Scripts\FS-Log.inf
+    Set Password Never Expires=True for the local user "Admin".
+ 
+ [WINDOWS] Environment Variables
+    Add to OS Path Variable C:\ProgramData\Franksoft\Sysinternals 
+    Add scheduled task: Microsoft Store Updates 
+    Change volume label from drive C:\ to "System"
+ 
+ [FRANKSOFT] Registry 
+    Add Franksoft Client and Hardware Info to HKLM\SOFTWARE\Franksoft 
+    [ERROR] NOT found Mute Audio Volume File: C:\ProgramData\Franksoft\Scripts\WinAudio3.ExE
+    Windows Explorer Quick Access: Remove Catalog link
+ 
+ [FRANKSOFT] First Logon Settings
+    Apply FSC First Logon Settings
+
+ [FRANKSOFT] Lockscreen
+    Add FSC Windows Deployment Lockscreen
+    File: C:\ProgramData\Franksoft\Logos\Logon\01-R.png
+ 
+ [DRIVER] Installation Start Time: 19:11:36
+    Search Drivers on USB Drive D:
+    >  Start Time: 19:12:09 
+    >  Script: D:\_Drivers\Install_HP-Drivers.cmd 
+    >  End   Time: 19:16:33 
+ [DRIVER] Installation End Time:   19:16:33
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     20.09.2026 19:16:38               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+Franksoft Client | Software Deployment | Phase 02/04 | Start
+
+ - Phase ID:       Phase 02/04 (Start)      
+ - Timestamp:      20.09.2026 19:17:08           
+ - User:           Admin            
+ - IsAdmin:        Yes        
+ - Power Profile:  Franksoft Deployment  
+ - Script Path:    C:\Temp\Updates\FSC-Post-01.cmd            
+ 
+ - Logging: Deployment State
+ - Audio Volume: Set Muted
+ - Config: Windows Notepad default settings 
+ - Config: Windows Snipping tool
+ - Config: Intel Graphics user settings 
+ - Windows: Disable Windows System Restore 
+ - Registry: Apply HKLM Franksoft Settings
+ - Registry: Apply HKCU Franksoft Settings
+ - Keyboard: Remove Layout "Swiss French"
+ - Config: "Disable "Open with" / association prompts "C:\ProgramData\Franksoft\Scripts\FS\FTA\NoNewAppAlert.REG"" 
+ - Default Apps: Configure Windows Photo Viewer associations 
+ - FSC: Task Manager configuration 
+ - Copy: New Wallpapers
+ - Windows Explorer:
+    Config Shell Bags
+    Kill and Restart
+    Copy Franksoft mod JumpList
+ - Power Profile:
+    Add: "High Performance" Profile
+    Change: Name "Franksoft Deployment"
+    Config: "Franksoft Deployment" Power Profile
+ - Install: Open Shell
+ - Install: 7-Zip
+ - Install: Desktop Restore
+ - Install: Microsoft Edge
+ * Error: Not Update Microsoft Edge WebView2 149.0.4022.52
+    Config: Edge: Copy Bookmarks
+    Config: Edge: Add User GPO
+    Config: Edge: Start and Kill
+ - Install: Google Chrome
+    Config: Chrome: Copy Bookmarks
+    Config: Chrome: Add User GPO
+    Config: Chrome: FTA: Change default Browser to Chrome
+ - Copy: Franksoft VCard to C:\Users\Public\Desktop
+ - OneDrive: Disable Autostart
+ - Remove First Logon Commands from Registry
+ - Uninstall Default Microsoft Apps
+ >  Franksoft Software Deployment Start : 19:19:42
+ -  Software Deployment Script: D:\Runtimes\FS-Post-Apps.cmd
+ >  Franksoft Software Deployment End   : 19:23:50
+ - FSC: Add FSC Logon Script 02/04 : FSC-Post-02.cmd
+ - Logging: Deployment State
+ - System: Reboot Initiated
+
+ - Phase ID:       Phase 02/04 (End)      
+ - Timestamp:      20.09.2026 19:23:50           
+ - User:           Admin            
+ - IsAdmin:        Yes        
+ - Power Profile:  Franksoft Deployment  
+ - Script Path:    C:\Temp\Updates\FSC-Post-01.cmd            
+ 
+Franksoft Client | Software Deployment | Phase 02/04 | End 
+
+************************************************************************************* 
+
+Franksoft Client | Software Deployment | Phase 03/04 | Start 
+
+ - Phase ID:       Phase 03/04 (Start)      
+ - Timestamp:      20.09.2026 19:25:32           
+ - User:           Admin            
+ - IsAdmin:        Yes        
+ - Power Profile:  Franksoft Deployment  
+ - Script Path:    C:\Temp\Updates\FSC-Post-02.cmd            
+ 
+ - Windows System Restore: Disable
+ - Set Default App: Set .pdf extension to Acrobat Reader
+ - FSC: Add FSC Logon Script 03/04 : FSC-Post-03.cmd
+ - Configure: Windows Notepad default settings 
+ - System: Reboot Initiated
+
+ - Phase ID:       Phase 03/04 (End)        
+ - Timestamp:      20.09.2026 19:25:40           
+ - User:           Admin            
+ - IsAdmin:        Yes        
+ - Power Profile:  Franksoft Deployment  
+ - Script Path:    C:\Temp\Updates\FSC-Post-02.cmd            
+ 
+Franksoft Client | Software Deployment | Phase 03/04 | End
+
+************************************************************************************* 
+
+Franksoft Client | Software Deployment | Phase 04/04 | Start
+
+ - Phase ID:       Phase 04/04 (Start)      
+ - Timestamp:      20.09.2026 19:26:47           
+ - User:           Admin            
+ - IsAdmin:        Yes        
+ - Power Profile:  Franksoft Deployment  
+ - Script Path:    C:\Temp\Updates\FSC-Post-03.cmd            
+ 
+ - System: Disable User Experiences and Telemetry
+ - Windows Explorer: Copy JumpList "Franksoft mod"
+ - Logging: Deployment State
+ - Power Plan: Change to "Ausbalanciert"
+ + Franksoft: Windows Update: Activated
+ - FSC: Create scheduled task Franksoft Windows Update
+
+ - System: Reboot Initiated
+
+ - Phase ID:       Phase 04/04 (End)        
+ - Timestamp:      20.09.2026 19:26:49           
+ - User:           Admin            
+ - IsAdmin:        Yes        
+ - Power Profile:  Ausbalanciert  
+ - Script Path:    C:\Temp\Updates\FSC-Post-03.cmd            
+ 
+Franksoft Client | Software Deployment | Phase 04/04 | Completed
+
+************************************************************************************* 
+ Franksoft Client: Windows Update Start  - Time: 19:28:15
+ 
+ - FSC Phase ID:   01/09
+ - Timestamp:      20.09.2026 19:28:31
+ - Executed by:    Admin
+ - Admin Status:   Yes
+ - Script Path:    C:\ProgramData\Franksoft\Scripts\WinUpdate_FSC.cmd
+ 
+   - Set Performance Power Scheme
+   - Update: Microsoft Defender Signatur
+   - Get-WindowsUpdate
+   - Install Windows Updates

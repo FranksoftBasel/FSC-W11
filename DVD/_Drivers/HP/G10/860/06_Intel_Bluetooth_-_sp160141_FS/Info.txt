@@ -1,0 +1,4 @@
+start Vendor Setup 
+click next 2x
+search log in %temp%
+get .msi

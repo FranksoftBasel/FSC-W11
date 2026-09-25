@@ -1,0 +1,68 @@
+PackageIdentifier: Microsoft.UI.Xaml.2.8
+PackageVersion: 8.2310.30001.0
+Moniker: winui-2.8
+Tags:
+- winget
+- winui
+- xaml
+PackageLocale: en-US
+Copyright: Copyright (c) Microsoft Corporation. All rights reserved.
+CopyrightUrl: https://github.com/microsoft/microsoft-ui-xaml/blob/main/LICENSE
+ShortDescription: 'Windows UI Library: the latest Windows 10 native controls and Fluent
+  styles for your applications'
+License: MIT
+LicenseUrl: https://github.com/microsoft/microsoft-ui-xaml/blob/main/LICENSE
+PackageName: Microsoft.UI.Xaml
+PackageUrl: https://github.com/microsoft/microsoft-ui-xaml
+PrivacyUrl: https://github.com/microsoft/microsoft-ui-xaml/blob/v2.8.5/privacy.md
+Publisher: Microsoft Corporation
+PublisherSupportUrl: https://github.com/microsoft/microsoft-ui-xaml/issues
+PublisherUrl: https://github.com/microsoft
+Installers:
+- Architecture: x64
+  InstallerType: msix
+  InstallerSha256: 249d2afb41cc009494841372bd6dd2df46f87386d535ddf8d9f32c97226d2e46
+  SignatureSha256: b7bc3e83e97d2481a37b3d40d01777a0401eef34f1be57f35f2a77abe86dbd1d
+  InstallerUrl: https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx
+  PackageFamilyName: Microsoft.UI.Xaml.2.8_8wekyb3d8bbwe
+  InstallerAbortsTerminal: false
+  InstallLocationRequired: false
+  RequireExplicitUpgrade: false
+  DisplayInstallWarnings: false
+  DownloadCommandProhibited: false
+  ArchiveBinariesDependOnPath: false
+  MinimumOSVersion: 10.0.17763.0
+  UpgradeBehavior: install
+  ExpectedReturnCodes:
+  - InstallerReturnCode: 2147958003
+    ReturnResponse: missingDependency
+  - InstallerReturnCode: 2147958004
+    ReturnResponse: diskFull
+  - InstallerReturnCode: 2147958008
+    ReturnResponse: cancelledByUser
+  - InstallerReturnCode: 2147958011
+    ReturnResponse: alreadyInstalled
+  - InstallerReturnCode: 2147958013
+    ReturnResponse: missingDependency
+  - InstallerReturnCode: 2147958015
+    ReturnResponse: blockedByPolicy
+  - InstallerReturnCode: 2147958017
+    ReturnResponse: blockedByPolicy
+  - InstallerReturnCode: 2147958018
+    ReturnResponse: packageInUse
+  - InstallerReturnCode: 2147958022
+    ReturnResponse: downgrade
+  - InstallerReturnCode: 2147958032
+    ReturnResponse: systemNotSupported
+  - InstallerReturnCode: 2147958034
+    ReturnResponse: missingDependency
+  - InstallerReturnCode: 2147958035
+    ReturnResponse: systemNotSupported
+  - InstallerReturnCode: 2147958045
+    ReturnResponse: systemNotSupported
+  - InstallerReturnCode: 2147958058
+    ReturnResponse: systemNotSupported
+  Platform:
+  - Windows.Universal
+ManifestVersion: 1.6.0
+ManifestType: merged

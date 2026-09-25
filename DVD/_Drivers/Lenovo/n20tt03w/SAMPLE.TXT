@@ -1,0 +1,73 @@
+`
+` Sample of password txt file
+`
+` To set the POP and/or HDP of target systems,
+` Create password.txt file and pass to the srsetup like below:
+`  "srsetup.exe foo.dat /c /ep password.txt"
+`
+` Description:
+`
+` Structure of this csv file is:
+` "DataFileName,POP,HDD,UserHDP,MasterHDP,KbdLang"
+`
+`   DataFileName - This file name is used to save the datafile.
+`                  If this field is blank, a first parameter of srsetup is used.
+`                  ex) "srsetup.exe foo.dat /c /ep password.txt" ->
+`                      If this field is blank, the data is saved to "foo.dat".
+`
+`   POP          - PowerOn Password.
+`
+`   HDD          - Select the HDD to set the HDP.
+`                  'PM'=Primary Master, 'PS'=Primary Slave,
+`                  'SM'=Secondary Master, 'SS'=Secondary Slave.
+`
+`   UserHDP      - User Harddisk Password.
+`
+`   MasterHDP    - Master Harddisk Password.
+`                  You can set hdp only [User only] or [User + Master ].
+`                  You can not set master hdp only.
+`
+`   KbdLang      - Language type of keyboard.
+`                  srsetup support "US", "FR", and "GR".
+`                  US - English US, English UK, Chinese-Traditional, Danish,
+`                       Dutch, French-Canadian, Italian, Japanese, Korean,
+`                       Norwegian, Polish, Portuguese, Spanish-Europea,
+`                       Spanish-Latin American, Swiss, Turkish
+`                  FR - French-European, Belgian
+`                  GR - German, Czech, Slovak, Slovenian
+`
+`                  Important note for FR users:
+`                  In FR languages, 1st row of keyboards are not assigned to
+`                  number (1-9 and 0). But, you must write the character of
+`                  1st row as 'number' in this file.
+`                  ex) In France-European keyboard, If you want to set POP as
+`                  "(-_", you must write to this file as "568".
+`
+` Note:
+`  Maximum password length is depend on your ThinkPad models.
+`  Applicable character is :
+`     Passphrase is not disabled or not supported  -> [a-z] and [0-9]
+`     Passphrase is enabled                        -> [a-z], [0-9] and [space].
+`
+`
+` Valid Samples
+user01.dat,pass01,PM,pass01,ibm,US  ` POP, UserHDP and MasterHDP
+user02.dat,pass02,PM,pass02,,US     ` POP and UserHDP
+user03.dat,pass03,,,,US             ` POP only
+user04.dat,,PM,pass04,,US           ` UserHDP only
+user05.dat,,PM,pass05,ibm,US        ` UserHDP and MasterHDP
+user06.dat,pass06,PM+PS,pass06,ibm,US  `HDP will be set to PrimaryMaster
+`                                       and PrimarySlave.
+,pop,PM,pop,ibm,US                              ` blank filename -> 1st commandline param
+`                                     is used
+user08.dat,the quick brown fox jumps over the lazy dog,,,,US
+`                                     Using passphrase
+
+
+` Invalid Samples
+` To see the error msgs, remove '`'.
+`user01.dat,pass01,,pass01,ibm,US       ` HDD is not selected
+`user01.dat,pass01,PM,,ibm,US           ` MasterHDP must be set with UserHdp.
+`user01.dat,pass01,PM,pass01,ibm,English` Invalid language definition is used
+`user01.dat,pass01,PM,pass01,ibm        ` Language is not selected
+`user01.dat,pass0-1,,,,US               ` Invalid character for Password

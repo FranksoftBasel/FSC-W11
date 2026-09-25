@@ -1,0 +1,12 @@
+USB\VID_06CB&PID_00F0\5763BE175811
+    Hardware IDs:
+        USB\VID_06CB&PID_00F0&REV_0000
+        USB\VID_06CB&PID_00F0
+    Compatible IDs:
+        USB\COMPAT_VID_06CB&Class_FF&SubClass_00&Prot_00
+        USB\COMPAT_VID_06CB&Class_FF&SubClass_00
+        USB\COMPAT_VID_06CB&Class_FF
+        USB\Class_FF&SubClass_00&Prot_00
+        USB\Class_FF&SubClass_00
+        USB\Class_FF
+1 matching device(s) found.

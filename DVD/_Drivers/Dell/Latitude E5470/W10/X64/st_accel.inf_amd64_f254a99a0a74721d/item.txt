@@ -1,0 +1,3 @@
+Vendor:ST
+Category:G_Sensor
+Module:SMO8820

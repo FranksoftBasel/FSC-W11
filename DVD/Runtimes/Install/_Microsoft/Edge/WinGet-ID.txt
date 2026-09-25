@@ -1,0 +1,10 @@
+"Name": "Microsoft Edge",
+"Id": "Microsoft.Edge",
+"Mode": "update",
+"Source": "winget"
+
+"Name": "Microsoft EdgeWebView2 Runtime",
+"Id": "Microsoft.EdgeWebView2Runtime",
+"Mode": "update",
+"Source": "winget"
+

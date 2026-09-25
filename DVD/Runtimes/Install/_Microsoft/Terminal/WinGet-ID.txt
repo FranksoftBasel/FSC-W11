@@ -1,0 +1,4 @@
+"Name": "Microsoft Terminal",
+"Id": "Microsoft.WindowsTerminal",
+"Mode": "update",
+"Source": "winget"

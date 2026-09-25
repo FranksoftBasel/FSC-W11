@@ -1,0 +1,11 @@
+:: Winamp
+SetUserFTA.exe .mp3 Winamp.File.MP3
+SetUserFTA.exe .flac Winamp.File.FLAC
+SetUserFTA.exe .ape Winamp.File.APE
+SetUserFTA.exe .m3u Winamp.File.M3U
+
+:: WMP
+:SetUserFTA.exe .mp3 WMP11.AssocFile.mp3
+
+
+

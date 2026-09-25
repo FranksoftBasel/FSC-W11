@@ -1,0 +1,198 @@
+    >  End   Time: 03:22:48 
+ [DRIVER] Installation End Time:   03:22:48
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     23.06.2026 03:22:53               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 13:43:32 
+ [DRIVER] Installation End Time:   13:43:32
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     23.06.2026 13:43:37               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 15:56:53 
+ [DRIVER] Installation End Time:   15:56:53
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     23.06.2026 15:56:58               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 16:50:20 
+ [DRIVER] Installation End Time:   16:50:20
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     23.06.2026 16:50:25               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 00:25:34 
+ [DRIVER] Installation End Time:   00:25:34
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     24.06.2026 00:25:39               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 01:37:30 
+ [DRIVER] Installation End Time:   01:37:30
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     24.06.2026 01:37:35               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 02:22:38 
+ [DRIVER] Installation End Time:   02:22:38
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     24.06.2026 02:22:44               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 10:21:10 
+ [DRIVER] Installation End Time:   10:21:10
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     24.06.2026 10:21:15               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 11:13:23 
+ [DRIVER] Installation End Time:   11:13:23
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     24.06.2026 11:13:28               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 15:13:03 
+ [DRIVER] Installation End Time:   15:13:03
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     24.06.2026 15:13:08               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+
+    >  End   Time: 15:57:43 
+ [DRIVER] Installation End Time:   15:57:43
+
+ [INFO] Logging Deployment State
+ [ACTION] Reboot Initiated
+
+ +------------------------------------------------+
+  Phase ID:      Phase 01/04 (End)            
+  Script Path:   C:\Windows\Setup\Scripts\SetupComplete.cmd                
+  Timestamp:     24.06.2026 15:57:48               
+  User:          SYSTEM                
+  Power Plan:    Ultimative Leistung      
+ +------------------------------------------------+
+ 
+Franksoft Client | Windows Deployment | Phase 01/04 | End
+
+************************************************************************************* 
+

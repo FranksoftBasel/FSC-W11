@@ -1,0 +1,50 @@
+Microsoft-PnP-Hilfsprogramm
+
+PNPUTIL [/add-driver <...> | /delete-driver <...> |
+         /export-driver <...> | /enum-drivers | /?]
+
+Befehle:
+
+  /add-driver <Dateiname.inf | *.inf> [/subdirs] [/install] [/reboot]
+
+    Fügt dem Treiberspeicher Treiberpakete hinzu.
+      /subdirs - Durchsucht Unterverzeichnisse nach Treiberpaketen.
+      /install - Installiert/aktualisiert Treiber auf übereinstimmenden Geräten.
+      /reboot – Zum Abschließen des Vorgangs muss ein Systemneustart durchgeführt werden.
+
+  /delete-driver <oem#.inf> [/uninstall] [/force] [/reboot]
+
+    Löscht ein Treiberpaket aus dem Treiberspeicher.
+      /uninstall – Deinstalliert ein Treiberpaket von Geräten, die es verwenden.
+      /force - Löscht ein Treiberpaket, selbst wenn es von Geräten verwendet wird.
+      /reboot – Zum Abschließen des Vorgangs muss ein Systemneustart durchgeführt werden.
+
+  /export-driver <oem#.inf | *> <Zielverzeichnis>
+
+    Exportiert Treiberpakete aus dem Treiberspeicher in ein Zielverzeichnis.
+
+  /enum-drivers
+
+    Listet alle Treiberpakete von Drittanbietern im Treiberspeicher auf.
+
+  /?
+
+    Zeigt diesen Syntaxbildschirm an.
+
+Ältere Befehle:
+
+  [-i] -a <filename.inf> ==> /add-driver <Dateiname.inf> [/install]
+  [-f] -d <oem#.inf>     ==> /delete-driver <oem#.inf> [/force]
+  -e                     ==> /enum-drivers
+
+Beispiele:
+
+  pnputil /add-driver x:\driver.inf       <- Fügt ein Treiberpaket hinzu.
+  pnputil /add-driver c:\oem\*.inf        <- Fügt mehrere Treiberpakete hinzu.
+  pnputil /add-driver device.inf /install <- Fügt ein Treiberpaket hinzu und installiert es.
+  pnputil /enum-drivers                   <- Listet OEM-Treiberpakete auf.
+  pnputil /delete-driver oem0.inf         <- Löscht ein Treiberpaket.
+  pnputil /delete-driver oem1.inf /force  <- Erzwingt das Löschen eines Treiberpakets.
+  pnputil /export-driver oem6.inf .       <- Exportiert ein Treiberpaket.
+  pnputil /export-driver * c:\backup      <- Exportiert alle Treiberpakete.
+

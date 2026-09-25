@@ -1,0 +1,8 @@
+do not delete see _01_SetupComplete.cmd
+
+Add not Install :-)
+
+pnputil.exe  /add-driver ".\*.inf" /subdirs /install
+
+
+HKEY_LOCAL_MACHINE\SYSTEM\HardwareConfig\Current

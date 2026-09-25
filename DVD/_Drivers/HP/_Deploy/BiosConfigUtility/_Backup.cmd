@@ -1,0 +1,1 @@
+%~dp0BiosConfigUtility64.exe /get:"_HP_G10_FS_01_%Random%.txt"

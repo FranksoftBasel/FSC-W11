@@ -1,0 +1,402 @@
+SunplusIT NB camera Driver Revision History
+===========================================
+Version 5.0.8.87 (2025/09/15) [WHQL: Win11 21H2/22H2/24H2/25H2]
+-------------------------------------------------------------------------------
+- Add one LUXVISIONS VID/PID: 30C9/011D.
+- Add one Quanta VID/PID: 0408/5496.
+- Add 04F2/B882 IR camera.
+
+Version 5.0.8.86 (2025/09/03) [WHQL: Win11 21H2/22H2/24H2/25H2]
+-------------------------------------------------------------------------------
+- Add new OS 25H2.
+- Remove 32bit driver. No longer support 32bit Windows.
+
+Version 5.0.8.85 (2025/08/25) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Remove wrong IR camera 0408/5493 from INF to fix APP mode YB issue.
+
+Version 5.0.8.84 (2025/06/16) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix DCT issue for CKFO512.
+- Modify the ACS sensor calbration check method.
+- Disable camera DCT function if ACS sensor is not calibrated.
+
+Version 5.0.8.83 (2025/06/04) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Add one Chicony VID/PID: 04F2/B882.
+- Add one Foxlink VID/PID: 05C8/0618.
+- Add one Quanta VID/PID: 0408/5493.
+
+Version 5.0.8.82 (2025/04/16) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix the HLK issue that caused by the modification in v5.0.8.80.
+
+Version 5.0.8.81 (2025/03/24) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Adjust C7FNE5A-1/C7FOE53/YHWP Face ROI shift solution of v5.0.8.80.
+
+Version 5.0.8.80 (2025/02/17) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix C7FNE5A-1/C7FOE53/YHWP Face ROI shift issue.
+
+Version 5.0.8.79 (2025/01/16) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix HLK System - Sleep with IO Before and After (Reliability SysFund) test fail issue.
+
+Version 5.0.8.78 (2025/01/07) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Support AMD DCT 2.0.
+
+Version 5.0.8.77 (2024/11/22) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix some issues with ACS sensor.
+
+Version 5.0.8.76 (2024/10/23) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix face AE and touch AE for non Win11 24H2 OS.
+
+Version 5.0.8.75 (2024/10/09) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Solve ACS sensor initial delay issue.
+
+Version 5.0.8.74 (2024/09/13) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix crash issue on Intel DCT 2.0 platform.
+
+Version 5.0.8.73 (2024/08/28) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix XU command on 24H2.
+- Fix camera FW DCT version check.
+
+Version 5.0.8.72 (2024/07/29) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Add one Foxlink VID/PID: 05C8/0615.
+
+Version 5.0.8.71 (2024/07/16) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Change all Manufacturers in INFs to "SunplusIT"
+- Support DCT V2.
+
+Version 5.0.8.70 (2024/06/11) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix touch focus for 30C9/0005.
+- Fix G-sensor rotation of external camera on 24H2.
+
+Version 5.0.8.69 (2024/05/21) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Fix crash issue when disable camera in camera setting page.
+
+Version 5.0.8.68 (2024/04/12) [WHQL: Win10 20H1, Win11 21H2/22H2/24H2]
+-------------------------------------------------------------------------------
+- Modify for Win11 24H2.
+- Add six Chicony VID/PIDs: 04F2/B795, 04F2/B822, 04F2/B824. 04F2/B82C and 04F2/B82E.
+- Add two Quanta VID/PIDs: 0408/5473 and 0408/547E.
+- Add two Foxlink VID/PIDs: 05C8/0614 and 05C8/0834.
+
+Version 5.0.8.67 (2023/01/31) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Move ACS sensor initial from DMFT initial function to start preview function.
+
+Version 5.0.8.66 (2023/01/10) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Fix recorded video FPS not enough issue on ACS platform.
+
+Version 5.0.8.65 (2023/12/18) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Fix wrong ACS sensor enumeration of AMD platform.
+
+Version 5.0.8.64 (2023/12/01) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Add calibration check for ACS sensor.
+
+Version 5.0.8.63 (2023/10/16) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Fix crash issue on AMD platform without ACS sensor.
+
+Version 5.0.8.62 (2023/08/28) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Add one Chicony VID/PID: 04F2/B804.
+- Support ACS sensor.
+
+Version 5.0.8.61 (2023/06/26) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Fix camera app delay 10s to preview after resume from S3.
+- Add one LUXVISIONS VID/PID: 30C9/00BB.
+
+Version 5.0.8.60 (2023/06/14) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Add one LUXVISIONS VID/PID: 30C9/00BA.
+
+Version 5.0.8.59 (2023/05/02) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Add one Quanta VID/PID: 0408/546A.
+- Add two Rayprus VID/PIDs: 1161/1507 and 1161/1508.
+
+Version 5.0.8.58 (2023/02/23) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Fix IR camera issue of 04F2/B7BC.
+
+Version 5.0.8.57 (2022/10/21) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Fix Windows Hello issue that was caused by compatibility with myHP MFT0.
+
+Version 5.0.8.56 (2022/10/14) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Fix format type for 04F2/B7CE and 04F2/B7A8.
+
+Version 5.0.8.55 (2022/09/13) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Add on Chicony VID/PID: 04F2/B7CE.
+
+Version 5.0.8.54 (2022/08/31) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Fix IR camera preview issue for 04F2/B7BC and 30C9/00AA.
+
+Version 5.0.8.53 (2022/08/18) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Add one Quanta VID/PID: 0408/5445.
+- Fix external cameras rotation not work issue with Amcap on Win11 SV2.
+
+Version 5.0.8.52 (2022/08/05) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Add one Chicony VID/PID: 04F2/B7BC.
+- Add one LUXVISIONS VID/PID: 30C9/00AA.
+
+Version 5.0.8.51 (2022/05/31) [WHQL: Win10 19H1/20H1, Win11 21H2/22H2]
+-------------------------------------------------------------------------------
+- Add two Foxlink VID/PIDs: 05C8/0613 and 05C8/082F.
+- Add one Chicony VID/PID: 04F2/B7A8.
+
+Version 5.0.8.50 (2022/04/29) [WHQL: Win10 RS5/19H1/20H1, Win11 21H2]
+-------------------------------------------------------------------------------
+- Add one LUXVISIONS VID/PID: 30C9/008D.
+- Add one Chicony VID/PID: 04F2/B79A.
+
+Version 5.0.8.49 (2022/04/20) [WHQL: Win10 RS5/19H1/20H1, Win11 21H2]
+-------------------------------------------------------------------------------
+- Add one Foxlink VID/PID: 05C8/0612.
+
+Version 5.0.8.48 (2021/09/9) [WHQL: Win10 RS5/19H1/20H1, Win11 21H2]
+-------------------------------------------------------------------------------
+- Fix IR camera driver issue.
+- Remove YHSW IR camera, and move to HP Display Camera Driver v5.0.26.1.
+
+Version 5.0.8.47 (2021/08/23) [WHQL: Win10 RS5/19H1/20H1, Win11 21H2]
+-------------------------------------------------------------------------------
+- Add IR Camera 940 property for 30C9/0040 and 0408/545B.
+
+Version 5.0.8.46 (2021/08/09) [WHQL: Win10 RS5/19H1/20H1, Win11 21H2]
+-------------------------------------------------------------------------------
+- Add one LUXVISIONS VID/PID: 30C9/0067.
+- Add one Chicony VID/PID: 04F2/B778.
+- Solve YHSW IR issue.
+
+Version 5.0.8.45 (2021/07/06) [WHQL: Win10 RS5/19H1/20H1, Win11 21H2]
+-------------------------------------------------------------------------------
+- Add one LUXVISIONS VID/PID: 30C9/006D.
+- Add one Chicony VID/PID: 04F2/B76B.
+- Add one Quanta VID/PID: 0408/5443.
+
+Version 5.0.8.44 (2021/06/18) [WHQL: Win10 RS5/19H1/20H1, Win11 21H2]
+-------------------------------------------------------------------------------
+- Disable format transform from MJPG to YUY2 on Paradigm.
+- Disable zoom/pan/tilt/roll for MJPG format. Only enable for YUY2 format.
+
+Version 5.0.8.43 (2021/05/24) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Add IMFSampleAllocatorControl.
+- Disable IR driver face detection and use System face detaction for YHSW.
+- Add resolution FHD and above YUY2 format that transform from MJPG format on Paradigm.
+
+Version 5.0.8.42 (2021/04/20) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Disable transform format MJPG->YUY2 for Paradigm. This also solved Panorama mode issue,
+  because Panorama mode can not work with YUY2 format with camera app v2018.826.98.0.
+- Disable zoom/pan/tilt/roll for AIO camera.
+
+Version 5.0.8.41 (2021/04/06) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Fix 9BF112N3 preview issue with specific app.
+
+Version 5.0.8.40 (2021/03/03) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Correct YHSK VID/PID 0408/545B.
+- Transform format MJPG->YUY2 for Paradigm.
+
+Version 5.0.8.39 (2021/02/18) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Add four LUXVISIONS VID/PIDs: 30C9/003F, 30C9/0040, 30C9/0043 and 30C9/0044.
+- Add one Chicony VID/PID: 04F2/B73C.
+- Add two Quanta VID/PIDs: 0408/534B and 0408/534C.
+- Add one Foxlink VID/PID: 05C8/060D.
+
+Version 5.0.8.38 (2021/01/26) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Add one LUXVISIONS VID/PID: 30C9/003C.
+- Add one Chicony VID/PID: 04F2/B733.
+- Support rotation by G-Sensor for upper two devices.
+
+Version 5.0.8.37 (2020/12/22) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Copy WDF Directives from UVC INF file for secure biometrics.
+
+Version 5.0.8.36 (2020/12/10) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Add WDF Directives in INF files for secure biometrics.
+
+Version 5.0.8.35 (2020/11/12) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Add two 8MP cameras and support Flash.
+- Fix flicker issue about plugin the external camera while preview.
+
+Version 5.0.8.34 (2020/10/29) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Add CameraDeviceMftClsidChain into all inf files. To avoid driver getting 
+  wrong HWID and uses wrong functions when System has two cameras.
+- Solve gain not work with face AE for some modules.
+
+Version 5.0.8.33 (2020/10/05) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Add one Quanta VID/PID: 0408/5457.
+- Add property value check at first load.
+
+Version 5.0.8.32 (2020/08/27) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Add one IR camera 0408/5456.
+
+Version 5.0.8.31 (2020/07/15) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Fix lag issue that caused by setting face ROI.
+
+Version 5.0.8.30 (2020/06/18) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Do face detection in driver for Camera App Video Mode .
+
+Version 5.0.8.29 (2020/04/22) [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Fix rotation order to clockwise.
+
+Version 5.0.8.28 (2020/04/07)  [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Enable KSPROPERTY_CAMERACONTROL_EXTENDED_FOCUSMODE for 8M camera on 20H1.
+
+Version 5.0.8.27 (2020/03/16)  [WHQL: Win 10 RS4/RS5/19H1/20H1]
+-------------------------------------------------------------------------------
+- Update version for 20H1 WHQL.
+
+Version 5.0.8.26 (2019/12/26)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Fix ROI fast touch issue with Windows Camera App.
+
+Version 5.0.8.25 (2019/12/19)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Support touch ROI for 30C9/0005.
+
+Version 5.0.8.24 (2019/12/02)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Add one Foxlink VID/PID.
+
+Version 5.0.8.23 (2019/11/25)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Disable driver ROI for 30C9/0005, behavior the same as inbox driver.
+
+Version 5.0.8.22 (2019/09/25)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Fix ROI issue with flip.
+
+Version 5.0.8.21 (2019/08/27)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Add 3 sets VID/PIDs of 2020 projects..
+
+Version 5.0.8.20 (2019/07/31)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Add 4 sets VID/PIDs of 2020 projects..
+
+Version 5.0.8.19 (2019/06/04)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Add 5 sets VID/PID of 2020 projects.
+
+Version 5.0.8.18 (2019/05/30)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Fix YHRU blue image issue when change resolution in Windows Camera App.
+
+Version 5.0.8.17 (2019/05/13)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Disable KSPROPERTY_CAMERACONTROL_EXTENDED_FOCUSMODE for 8M camera.
+
+Version 5.0.8.16 (2019/04/22)  [WHQL: Win 10 RS3/RS4/RS5/19H1]
+-------------------------------------------------------------------------------
+- Suppiort 19H1 WHQL.
+
+Version 5.0.8.15 (2019/01/23)  [WHQL: Win 10 RS3/RS4/RS5]
+-------------------------------------------------------------------------------
+- Suppiort 8M camera ROI.
+- Fix preview lag issue when zoom.
+
+Version 5.0.8.14 (2018/12/13)  [WHQL: Win 10 RS3/RS4/RS5]
+-------------------------------------------------------------------------------
+- Fix Zoom/Pan/Tilt/Roll could be checked issue in AMCAP on RS5.
+- Add RTS's sensor gropu ID and name for VID_04F2&PID_B58F.
+- Add one LUXVISIONS VID/PID.
+
+Version 5.0.8.13 (2018/11/26)  [WHQL: Win 10 RS3/RS4/RS5]
+-------------------------------------------------------------------------------
+- Fix Win10 RS4 HLK "Camera Driver System Test - MediaCapture - TestEnumerateVideoProfile" fail issue.
+- Also install vendor INF on Win10 RS4 for IR camera of Hybrid camera.
+- Fix error issue when open Windows Camera App setting.
+
+Version 5.0.8.12 (2018/10/29)  [WHQL: Win 10 RS3/RS4/RS5]
+-------------------------------------------------------------------------------
+- Add one RGBIR, three RGB cameras.
+- Add two IR camera profile.
+- Change zoom range from 10-40 to 100-400.
+
+Version 5.0.8.11 (2018/09/20)  [WHQL: Win 10 RS3/RS4/RS5]
+-------------------------------------------------------------------------------
+- Modify IR Camera Profile for Win10 RS5.
+- Add "PreferDeviceInfo" in INF.
+
+Version 5.0.8.10 (2018/08/14)  [WHQL: Win 10 RS3/RS4]
+-------------------------------------------------------------------------------
+- Support IR Camerea Profile.
+- Add new VID/PIDs.
+
+Version 5.0.8.9 (2018/06/11)  [WHQL: Win 10 RS3/RS4]
+-------------------------------------------------------------------------------
+- Fix flip function with Amcap v9.23.
+
+Version 5.0.8.8 (2018/05/23)  [WHQL: Win 10 RS3/RS4]
+-------------------------------------------------------------------------------
+- Add 4 modules.
+- Modify the version in files as the same as the driver verion.
+- Midify setup. If a driver was installed. Uninstall old driver before install new driver.
+
+Version 5.0.8.7 (2018/04/16)  [WHQL: Win 10 RS3]
+-------------------------------------------------------------------------------
+- Fix flip save issue in Amcap format/resolution page.
+
+Version 5.0.8.6 (2018/03/28)  [WHQL: Win 10 RS3]
+-------------------------------------------------------------------------------
+- Solve 1920x1080 15FPS lag issue.
+- Support flip in Amcap format/resolution page.
+
+Version 5.0.8.5 (2018/03/21)  [WHQL: Win 10 RS3]
+-------------------------------------------------------------------------------
+- Solve 122N2 first frame gray block issue.
+
+Version 5.0.8.4 (2018/03/07)  [WHQL: Win 10 RS3]
+-------------------------------------------------------------------------------
+- Enable Dshow bridge.
+- Disable WarmStart.
+
+Version 5.0.8.3 (2018/01/18)  [WHQL: Win 10 RS3]
+-------------------------------------------------------------------------------
+- Add custom property page.
+
+Version 5.0.8.2 (2017/12/06)  [WHQL: Win 10 RS3]
+-------------------------------------------------------------------------------
+- Add new VID/PIDs.
+
+Version 5.0.8.1 (2017/11/27)  [WHQL: Win 10 RS3]
+-------------------------------------------------------------------------------
+- Win10 RS3 DMFT driver. Meet DCHU.

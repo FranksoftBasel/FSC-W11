@@ -1,0 +1,1 @@
+cmd /k winget install HPInc.HPSupportAssistant

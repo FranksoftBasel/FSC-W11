@@ -1,0 +1,163 @@
+
+@echo off
+
+
+@CD /D %0\..
+
+
+
+@Echo. - Write FSC info to Eventlog
+EVENTCREATE /T INFORMATION /so Franksoft /ID 007 /l application /d "Franksoft Drv Inst Start %0" >Nul
+
+rem for /f "tokens=*" %%f in ('wmic BASEBOARD get Product /format:list ^| find "="') do set "%%f"
+for /f "tokens=*" %%f in ('wmic CSProduct get name /format:list ^| find "="') do set "%%f"
+
+rem Set PC-Model=%Product%
+Set PC-Model=%name%
+set PC-Model=%PC-Model: =%
+
+
+@echo. 
+@Echo. - %%PC-Model%% = '%PC-Model%'
+@echo. 
+
+
+if '%PC-Model%' == 'X79-DELUXE' Goto Asus_X79-DELUXE
+if '%PC-Model%' == 'PORTEGEZ10T-A' Goto PORTEGEZ10TA
+if '%PC-Model%' == 'LatitudeE5470' Goto LatitudeE5470
+if '%PC-Model%' == 'HP Compaq dc7900 Small Form Factor' Goto dc7900
+if '%PC-Model%' == 'HPProBook6560b' Goto HPProBook6560b
+if '%PC-Model%' == 'HPProBook6540b' Goto HPProBook6540b
+if '%PC-Model%' == 'HPEliteBook8470p' Goto HPEliteBook8470p
+
+
+
+@echo. 
+@echo. %%PC-Model%% = '%PC-Model%'
+@echo. 
+
+
+
+Goto Error
+
+
+:Error
+Color 0C
+@echo. 
+@echo. No Driver Found
+@echo. 
+goto end
+
+
+:HPEliteBook8470p
+color 1a
+@echo. 
+@echo. Install Drivers for HP EliteBook 8470p
+
+@echo. 
+for %%i in (B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do if exist %%i:\sources\setup.exe set DrvPath=%%i:
+start "" "%DrvPath%\Drivers\HP\8740P\x64\accelerometer\setup.exe" /quiet /norestart
+start "" "%DrvPath%\Drivers\HP\8740P\x64\DPInst64.exe"
+
+@echo. 
+
+Goto End
+
+
+:Asus_X79-DELUXE
+color 1a
+@echo. 
+@echo. Install Drivers for Asus_X79-DELUXE
+@echo. 
+Goto End
+
+:PORTEGEZ10TA
+color fa
+@echo. 
+@echo. Install Drivers for Toshiba PORTEGE Z10T-A
+@echo. 
+for %%i in (B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do if exist %%i:\sources\setup.exe set DrvPath=%%i:
+
+SET DrvPath=%DrvPath%\Drivers\TOSHIBA\PORTEGE Z10T-A
+
+@echo. DrvPath %DrvPath%
+
+
+msiexec /i "%DrvPath%\DTSPremiumSoundInstaller.msi" TRANSFORMS=DTSPremiumSoundInstaller.mst /qb! /norestart
+
+msiexec /i "%DrvPath%\System Driver\TC30846800B\x64\TOSHIBA System Driver.msi" TRANSFORMS="TOSHIBA System Driver.mst" /qb! /norestart
+msiexec /i "%DrvPath%\TOSHIBA_System_Settings.msi" TRANSFORMS=TOSHIBA_System_Settings.mst /qb! /norestart
+msiexec /i "%DrvPath%\TOSHIBA_Function_Key.msi" TRANSFORMS=TOSHIBA_Function_Key.mst /qb! /norestart
+
+"%DrvPath%\Display Utility\19.40.05.TCJ0022500A.exe" /Silent
+
+@timeout 10 >NUL
+
+pnputil.exe /add-driver "%DrvPath%\installiert\Bluetooth\Intel Bluetooth Service\ibtusb.inf"
+
+@timeout 5 >NUL
+
+pnputil.exe /add-driver "%DrvPath%\installiert\HIDClass\Hotkey Driver\Thotkey.inf"
+@timeout 10 >NUL
+
+@echo.
+@echo Install Drivers please wait...
+@echo.
+
+:: start "" "%DrvPath%\installiert\DPInst64.exe"
+"%DrvPath%\installiert\DPInst64.exe"
+
+if exist "%DrvPath%\igfxDTCM.reg" regedit /s "%DrvPath%\igfxDTCM.reg"
+
+:: 12:49 21.10.2018
+
+goto End
+
+:LatitudeE5470
+@echo. 
+@echo. Install Drivers for Dell Latitude E5470
+@echo. 
+for %%i in (B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do if exist %%i:\sources\setup.exe set DrvPath=%%i:
+@rem start "" "%DrvPath%\Drivers\Dell\Latitude E5470\W10\X64\DPInst64.exe"
+
+"%DrvPath%\Drivers\Dell\Latitude E5470\W10\X64\DPInst64.exe"
+
+goto end
+
+:HPProBook6560b
+@echo. 
+@echo. Install Drivers for HP Pro Book 6560b
+@echo.
+for %%i in (B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do if exist %%i:\sources\setup.exe set DrvPath=%%i:
+start "" "%DrvPath%\Drivers\HP\ProBook 6560b\x64\DPInst64.exe"
+goto end
+
+
+:dc7900
+@echo. 
+@echo. Install Drivers for HP DC 7900 SFF
+@echo.
+for %%i in (B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do if exist %%i:\sources\setup.exe set DrvPath=%%i:
+start "" "%DrvPath%\Drivers\HP\dc7900\DPInst64.exe"
+goto end
+
+:HPProBook6540b
+@echo. 
+@echo. Install Drivers for HP Pro Book 6540b
+@echo.
+for %%i in (B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do if exist %%i:\sources\setup.exe set DrvPath=%%i:
+start "" "%DrvPath%\Drivers\HP\ProBook 6540b\DPInst64.exe"
+goto end
+
+:end
+@echo.
+
+
+EVENTCREATE /T INFORMATION /so Franksoft /ID 007 /l application /d "Franksoft Drv Inst End   %0" >Nul
+
+@echo. Reboot 
+
+shutdown -r -f -t 60
+
+exit
+

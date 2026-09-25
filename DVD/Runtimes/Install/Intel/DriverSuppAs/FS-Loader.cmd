@@ -1,0 +1,1 @@
+"%~dp0Intel-Driver-and-Support-Assistant-Installer.exe" /install /quiet /norestart

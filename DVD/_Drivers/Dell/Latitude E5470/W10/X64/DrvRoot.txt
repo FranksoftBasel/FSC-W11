@@ -1,0 +1,19 @@
+<!-- Add Drivers -->
+	<RunSynchronous>
+	   <RunSynchronousCommand>
+		  <Order>1</Order>
+		  <Path>cmd.exe /X /C "FOR %i IN (C D E F G H I J K L N M O P Q R S T U V W X Y Z) DO IF EXIST %i:\sources\pnpDrivers SET DriversRoot=%i:\&& start /W ..\Setup.exe"</Path>
+		  <Description>Aggiunta dei drivers PNP per iinstallazione</Description>
+	   </RunSynchronousCommand>
+	</RunSynchronous>
+<!-- Run PErsonal procedure -->
+	<RunSynchronous>
+	   <RunSynchronousCommand>
+		  <Order>2</Order>
+		  <Path>cmd.exe /X /C "FOR %i IN (C D E F G H I J K L N M O P Q R S T U V W X Y Z) DO IF EXIST %i:\sources\$OEM$\Install\PassoWinPE.cmd start /W %i:\sources\$OEM$\Install\PassoWinPE.cmd"</Path>
+		  <Description>Esecuzione al passo windowsPE</Description>
+	   </RunSynchronousCommand>
+	</RunSynchronous
+
+
+FOR %i IN (C D E F G H I J K L N M O P Q R S T U V W Y Z) DO IF EXIST %i:\Drivers\DrvRoot.txt SET DriversRoot=%i:

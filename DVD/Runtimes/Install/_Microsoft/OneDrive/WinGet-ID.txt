@@ -1,0 +1,4 @@
+"Name": "Microsoft OneDrive",
+"Id": "Microsoft.OneDrive",
+"Mode": "update",
+"Source": "winget"

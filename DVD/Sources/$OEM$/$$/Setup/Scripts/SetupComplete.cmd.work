@@ -1,0 +1,475 @@
+TITLE %~nx0 Time: %TIME%
+setlocal EnableDelayedExpansion
+
+SET FSC_STAGE=Setup_Complete_cmd
+
+PUSHD "%~dp0"
+IF Not Exist "%SystemDrive%\%~nx0_DBG" MD "%SystemDrive%\%~nx0_DBG"
+
+:: GET Admin Status
+Openfiles 2>NUL 1>&2
+IF %ErrorLevel% equ 0 (Set Admin-Status=Yes) else (Set Admin-Status=No)
+
+SET FSC-Counter-Start=01
+SET FSC-Counter-End=04
+SET Status=Phase %FSC-Counter-Start%/%FSC-Counter-End%
+SET FSC-Tools-Local=%ProgramData%\Franksoft
+IF NOT Exist "%FSC-Tools-Local%\Logs" MD "%FSC-Tools-Local%\Logs"
+SET FSC-LOG="%FSC-Tools-Local%\Logs\Franksoft Client.txt"
+SET FSC-Tools-Local=%ProgramData%\Franksoft
+SET FSC-Scripts-Local=%FSC-Tools-Local%\Scripts
+SET FSC-Scripts-USB=%USB-Stick-Path%\sources\$OEM$\$1\ProgramData\Franksoft\Scripts
+
+SET REG_Path_01=HKLM\SYSTEM\HardwareConfig\Current
+SET REG_KEY_01=SystemProductName
+for /f "tokens=2*" %%A in ('reg query "%REG_Path_01%" /v %REG_KEY_01% 2^>nul') do SET SystemProductName=%%B
+
+SET REG_Path_01=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+SET REG_KEY_01=CurrentBuild
+for /f "tokens=2*" %%A in ('reg query "%REG_Path_01%" /v %REG_KEY_01% 2^>nul') do SET CurrentBuild=%%B
+
+@echo.>>%FSC-LOG%
+@Echo Franksoft Client ^| Windows Deployment ^| %Status% ^| Start>>%FSC-LOG%
+
+@EVENTCREATE /T INFORMATION /so Franksoft /ID 007 /l application /d "Franksoft Client | Windows Deployment | %Status% | Script: %~nx0" >NUL
+Powershell Set-WinHomeLocation 223
+
+:: Add Windows 11 Product Name
+:: REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ProductName /t REG_SZ /d "Windows 11 Pro" /f
+
+:: GET Windows Setup Source (USB)
+for %%i in (
+    A B D E F G H I J K L M N O P Q R S T U V W X Y Z
+) do (
+    if exist %%i:\Sources\setup.exe (
+        set "USB-Stick-Path=%%i:"
+    )
+)
+
+REG Add "HKCU\SOFTWARE\Sysinternals\Autologon" /v EulaAccepted /t REG_DWORD /d 1 /f
+REG Add "HKCU\SOFTWARE\Sysinternals\PsExec" /v EulaAccepted /t REG_DWORD /d 1 /f
+
+:: Get Windows Product Name (Home,Pro,Ent)
+:: RegVal: Windows 11 Pro
+SET RK=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+for /f "tokens=3*" %%a in ('reg query "%RK%" /V "ProductName" ^|findstr /ri "REG_SZ"') do Set FullProductName=%%a %%b
+SET RK=
+
+:: Get Edition Product Name (Professional,Home,Enterprise)
+:: RegVal: Professional
+SET RK=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+for /f "tokens=3*" %%a in ('reg query "%RK%" /V "EditionID" ^|findstr /ri "REG_SZ"') do Set EditionLong=%%a %%b
+SET RK=
+
+:: Get Windows Build Name (24h2)
+:: RegVal: 21H2
+SET RK=HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+for /f "tokens=3" %%a in ('reg query "%RK%"  /V "DisplayVersion" ^|findstr /ri "REG_SZ"') do Set WinRelease=%%a
+SET RK=
+
+:: Get Winver numbers only Numbers
+for /f "tokens=4 delims=[] " %%i in ('ver') do set "WIN_VER=%%i"
+
+:: Get Bitness
+if /i "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
+    set "BITNESS=x64"
+) else (
+    set "BITNESS=x86"
+)
+
+:::: Power Settings ::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Disable Monitor Timeout
+Powercfg -change -monitor-timeout-ac 0 >NUL
+Powercfg -change -monitor-timeout-dc 0 >NUL
+
+:: Disable HardDisk Timeout
+Powercfg -change -disk-timeout-ac 0 >NUL
+Powercfg -change -disk-timeout-dc 0 >NUL
+
+:: Disable Sleep Timeout (Energiesparmodus)
+Powercfg -change -standby-timeout-ac 0 >NUL
+Powercfg -change -standby-timeout-dc 0 >NUL
+
+:: Enable Hibernate option in Energy Options
+REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\238C9FA8-0AAD-41ED-83F4-97BE242C8F20\9d7815a6-7ee4-497e-8888-515a05f02364 /v Attributes /t REG_DWORD /d 2 /f
+
+:: Hibernate CFG
+powercfg -change -hibernate-timeout-ac 45 >NUL
+powercfg -change -hibernate-timeout-dc 30 >NUL
+
+:::: Power Settings END ::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::: GET Current Windows PowerPlan
+for /f "tokens=*" %%i in ('powercfg /getactivescheme') do (
+    for /f "tokens=2 delims=()" %%a in ("%%i") do set "CurrentPowerScheme=%%a"
+)
+
+::: Remote Desktop config
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+netsh advfirewall firewall add rule name="Remote Desktop" dir=in action=allow protocol=TCP localport=3389
+
+:: GET Nice Time
+FOR /F "tokens=1-3 delims=:.," %%A IN ("%TIME%") DO (
+    set H=%%A
+    set M=%%B
+    set S=%%C
+)
+
+
+SET H=%H: =%
+IF %H% LSS 10 SET H=0%H%
+SET NT=%H%:%M%:%S%
+
+@echo. 
+@echo. +------------------------------------------------+>>%FSC-LOG%
+@echo.                                                   >>%FSC-LOG%
+@echo.  Franksoft Client Deployment                      >>%FSC-LOG%
+@echo.                                                   >>%FSC-LOG%
+@echo.  Phase ID:      %Status% (Start)                  >>%FSC-LOG%
+@echo.  Script Path:   %~dp0%~nx0                        >>%FSC-LOG%
+@echo.  Timestamp:     %Date% %NT%                       >>%FSC-LOG%
+@echo.                                                   >>%FSC-LOG%
+@echo. +------------------------------------------------+>>%FSC-LOG%
+@echo.  ComputerName:  %ComputerName%                    >>%FSC-LOG%
+@echo.  Modell:        %SystemProductName%               >>%FSC-LOG%
+@echo.  OS:            %FullProductName%                 >>%FSC-LOG%
+@echo.  Bitness:       %Bitness%                         >>%FSC-LOG%
+@echo.  Version:       %WIN_VER%                         >>%FSC-LOG%
+@echo.  Release:       %WinRelease%                      >>%FSC-LOG%
+@echo.  Build:         %CurrentBuild%                    >>%FSC-LOG%
+@echo.  User:          %UserName%                        >>%FSC-LOG%
+@echo.  IsAdmin:       %Admin-Status%                    >>%FSC-LOG%
+@echo.  Power Plan:    %CurrentPowerScheme%              >>%FSC-LOG%
+@echo. +------------------------------------------------+>>%FSC-LOG%
+@Echo. >>%FSC-LOG%
+
+@Echo. [INFO] Logging Deployment State>>%FSC-LOG%	
+
+::: Change Powerplan CMD FSC
+IF Exist "%~dp0PowerPlanFS.cmd" (
+		@Echo.>>%FSC-LOG%
+		@Echo. [WINDOWS] Power Configuration>>%FSC-LOG%
+		@Echo.    config Script: "%~dp0PowerPlanFS.cmd">>%FSC-LOG%
+		CMD /c "%~dp0PowerPlanFS.cmd"
+		TimeOut 3 
+		@Echo.    change Power Plan to %CurrentPowerScheme%>>%FSC-LOG%
+		@Echo.    enable Hibernate option>>%FSC-LOG%
+		@Echo.>>%FSC-LOG%
+) ELSE (
+		@Echo. [WINDOWS] Power Configuration>>%FSC-LOG%
+		@Echo.    [ERROR] Not found %~dp0PowerPlanFS.cmd>>%FSC-LOG%
+)
+
+@Echo. >>%FSC-LOG%
+@Echo. [WINDOWS] Customer Experience Improvement Program>>%FSC-LOG%
+@Echo.    Disabled>>%FSC-LOG%
+@Echo. >>%FSC-LOG%
+:: Disable Customer Experience Improvement Program
+SET TN-Path=\Microsoft\Windows\Customer Experience Improvement Program
+schtasks /Change /TN "%TN-Path%\Consolidator" /Disable
+schtasks /Change /TN "%TN-Path%\UsbCeip" /Disable
+
+SET CPFILEPath=%USB-Stick-Path%\Runtimes\Install\_Microsoft
+SET CPFILEPath0=%CPFILEPath%\VisualCppRedist_AIO.exe
+SET CPFILEPath1=%CPFILEPath%\vc_redist.x86-2015-2019.exe
+SET CPFILEPath2=%CPFILEPath%\vc_redist.x64-2015-2019.exe
+
+@Echo. [SOFTWARE] Install Visual C++ Redistributable Runtimes>>%FSC-LOG%
+
+IF Exist %CPFILEPath0% (
+	@Echo.    All-in-One May Package 2026>>%FSC-LOG%
+	"%CPFILEPath0%" /y
+) else (
+	@Echo.    [ERROR] Not found %CPFILEPath0%>>%FSC-LOG%
+)
+
+IF Exist %CPFILEPath1% (
+	@Echo.    Microsoft Visual C++ 2015-2019 Redistributable x86>>%FSC-LOG%
+	"%CPFILEPath1%" /passive
+) else (
+	@Echo.    [ERROR] Not found %CPFILEPath1% >>%FSC-LOG%
+)
+
+IF Exist %CPFILEPath2% (
+	@Echo.    Microsoft Visual C++ 2015-2019 Redistributable x64>>%FSC-LOG%
+	"%CPFILEPath2%" /passive
+) else (
+	@Echo.    [ERROR] NOT found %CPFILEPath2%>>%FSC-LOG%
+)
+
+::: Install VM Tools (Only VM Franksoft VM Wrapper.exe )
+SET File2Run=%USB-Stick-Path%\Runtimes\Install\VMware\tools\InstallVMwareTools.EXE
+IF Exist "%File2Run%" "%File2Run%"
+SET File2Run=
+
+::: LOG VM Tools Installation
+IF Exist "%ProgramFiles%\VMware\VMware Tools\vmtoolsd.exe" (
+	@Echo.    VMware Tools Installed>>%FSC-LOG%
+)
+
+:: SET Defender Exclusions
+@Echo.>>%FSC-LOG%
+@Echo. [WINDOWS] Security>>%FSC-LOG%
+
+SET "FN=%~dp0Defender_Exclusion.cmd"
+IF EXIST "%FN%" (
+	@Echo.    Add Defender Exclusions:>>%FSC-LOG%
+	@Echo. 	    * C:\ProgramData\Franksoft>>%FSC-LOG%
+	@Echo. 	    * C:\Temp>>%FSC-LOG%
+	@Echo. 	    * %TEMP%>>%FSC-LOG%
+	@Echo. 	    * D:\>>%FSC-LOG%
+    	CALL "%FN%"
+) ELSE (
+	@Echo.    [ERROR] NOT found Defender Exclusions FILE: %FN%>>%FSC-LOG%
+)
+
+SET FSC_REGFile_UAC=%~dp0UAC-OFF.reg
+IF Exist "%FSC_REGFile_UAC%" (
+	@Echo.    Windows UAC disabled>>%FSC-LOG%
+	Regedit /s "%FSC_REGFile_UAC%"
+) ELSE (
+	@Echo.    [ERROR] NOT found FSC UAC File: %FSC_REGFile_UAC%>>%FSC-LOG%
+)
+SET FSC_REGFile_UAC=
+
+SET "FN=%~dp0FS-Log.inf"
+IF Exist "%FN%" (
+	@Echo.    Set access permissions on "%FSC-Tools-Local%" Script: %FN%>>%FSC-LOG%
+	SECEDIT.EXE /CONFIGURE /CFG "%FN%" /DB "%TEMP%\FSC-acl_%RANDOM%.db"
+) else (
+		@Echo.    [ERROR] NOT found Set access permissions File: %FN%>>%FSC-LOG%
+)
+
+:: Disable Windows Password Exp
+@Echo.    Set Password Never Expires=True for the local user "Admin".>>%FSC-LOG%
+Powershell -ExecutionPolicy Bypass -Command "Get-LocalUser -Name 'Admin' | Set-LocalUser -PasswordNeverExpires $true"
+
+SET Sysinternals_Path=%ProgramData%\Franksoft\Sysinternals
+SET FSC_Script_Path=%ProgramData%\Franksoft\Scripts
+
+@Echo. >>%FSC-LOG%
+@Echo. [WINDOWS] Environment Variables>>%FSC-LOG%
+@Echo.    Add %Sysinternals_Path% to the system PATH>>%FSC-LOG%
+IF NOT Exist "%Sysinternals_Path%" MD "%Sysinternals_Path%"
+IF Exist "%Sysinternals_Path%" Setx /M PATH "%PATH%;%Sysinternals_Path%"
+IF Exist "%FSC_Script_Path%" Setx /M PATH "%PATH%;%FSC_Script_Path%"
+
+
+::: ADD Scheduled Windows Task (MS Store Update at Logon)
+@Echo. >>%FSC-LOG%
+@Echo. [WINDOWS]>>%FSC-LOG%
+
+SET FSC_TASK_FILE01=%~dp0Microsoft_Store_Update.xml
+IF Exist "%FSC_TASK_FILE01%" (
+		@Echo.    Add scheduled task: Microsoft Store Updates
+		@Echo.    Add scheduled task: Microsoft Store Updates >>%FSC-LOG%
+		schtasks /create /tn "Microsoft Store Update" /xml "%FSC_TASK_FILE01%"
+		TimeOut 3
+) ELSE (
+		@Echo.    [ERROR] NOT found File: %FSC_TASK_FILE01%>>%FSC-LOG%
+)
+
+@Echo.    Change volume label from drive C:\ to "System">>%FSC-LOG%
+label %SystemDrive% System
+
+IF Exist "%~dp0FSInfo.VBS" (
+		@Echo. >>%FSC-LOG%
+		@Echo. [FRANKSOFT]>>%FSC-LOG%
+		@Echo.    Add Franksoft Client and Hardware Info to HKLM\SOFTWARE\Franksoft >>%FSC-LOG%
+		"%~dp0FSInfo.VBS"
+) else (
+		@Echo.    [ERROR] NOT found  Franksoft Client and Hardware Info File: "%~dp0FSInfo.VBS">>%FSC-LOG%
+)
+
+:: Mute Windows Sound
+SET FSC_FSTools_Local=%ProgramData%\Franksoft
+SET FSC_Scripts_Local=%FSC_FSTools_Local%\Scripts
+Set VolApp1=%FSC_Scripts_Local%\WinAudio3.ExE
+If Exist "%VolApp1%" (
+		@Echo.    Mute Audio Volume>>%FSC-LOG%
+		cmd /c Start "" "%VolApp1%" 1966
+) else (
+		@Echo.    [ERROR] NOT found Mute Audio Volume File: %VolApp1%>>%FSC-LOG%
+)
+
+:: Win 11
+SET REG-PATH-01=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop
+
+@Echo.    Windows Explorer Quick Access: Remove Catalog link>>%FSC-LOG%
+reg delete %REG-PATH-01%\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c} /f
+
+:: DEBUG ***
+:: Only for Driver Installation in POST 1
+@REM @Echo. - *Enable Windows TESTSIGNING Mode>>%FSC-LOG%
+@REM BcdEdit.exe /set LoadOptions DISABLE_INTEGRITY_CHECKS
+@REM BcdEdit.exe /set TESTSIGNING ON
+
+@Echo. >>%FSC-LOG%
+@Echo. [DRIVER] Installation Start>>%FSC-LOG%
+
+@echo off
+setlocal EnableDelayedExpansion
+
+set "USB-Stick-Path_Drivers="
+
+for %%i in (
+    B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+) do (
+    if exist %%i:\_Drivers\Franksoft_Drivers1.txt (
+        set "USB-Stick-Path_Drivers=%%i:"
+        goto :FoundDrivers
+    )
+)
+
+:NotFound
+goto :NEXT_AFTER_DRV
+
+:FoundDrivers
+@echo.    Check Drivers on USB Drive Path = !USB-Stick-Path_Drivers!>>%FSC-LOG%
+goto :NEXT_AFTER_DRV
+
+:NEXT_AFTER_DRV
+
+FOR /F "tokens=1-3 delims=:.," %%A IN ("%TIME%") DO (
+    set H=%%A
+    set M=%%B
+    set S=%%C
+)
+
+SET H=%H: =%
+IF %H% LSS 10 SET H=0%H%
+SET NT=%H%:%M%:%S%
+:: ******************************************************************************************
+:: START: Driver Installation for HP EliteBook 
+
+SET Drivers-Path=%USB-Stick-Path_Drivers%\_Drivers
+SET FSC_DRV_File2Ex=%Drivers-Path%\Install_HP-Drivers.cmd
+
+IF Exist "%FSC_DRV_File2Ex%" (
+	@Echo.    ^>  Start: %NT% >>%FSC-LOG%
+	@Echo.    ^>  Script: %FSC_DRV_File2Ex% >>%FSC-LOG%
+	Call "%FSC_DRV_File2Ex%"
+) ELSE (
+	@Echo. [ERROR] NOT found Driver Script %FSC_DRV_File2Ex%>>%FSC-LOG%
+)
+
+FOR /F "tokens=1-3 delims=:.," %%A IN ("%TIME%") DO (
+    set H=%%A
+    set M=%%B
+    set S=%%C
+)
+
+SET H=%H: =%
+IF %H% LSS 10 SET H=0%H%
+SET NT=%H%:%M%:%S%
+
+IF Exist "%FSC_DRV_File2Ex%" (
+	TimeOut 5
+	@Echo.    ^>  End    %NT% >>%FSC-LOG%
+
+)
+SET FSC_DRV_File2Ex=
+
+@Echo. [DRIVER] Installation End>>%FSC-LOG%
+
+:: END: Driver Installation for HP EliteBook 
+:: ******************************************************************************************
+
+
+:: @Echo. - Install Windows KB5054156 enable 25H2>>%FSC-LOG%	
+:: "%USB-Stick-Path%\Updates\W11\windows11.0-kb5054156-x64_25H2_ENABLER.msu" /quiet /norestart
+:: @Echo. - Install Status KB5054156: "%ERRORLEVEL%">>%FSC-LOG%	
+
+:: 0  			Installation erfolgreich
+:: 3010  		Erfolgreich, Neustart erforderlich
+:: 2359302  	Update ist bereits installiert
+:: -2145124329  Update nicht anwendbar (falsches OS / Build)
+
+SET FSC_REGFile_01=%~dp0FS-Cust.reg
+@Echo. >>%FSC-LOG%
+@Echo. [FRANKSOFT]>>%FSC-LOG%
+
+IF Exist "%FSC_REGFile_01%" (
+	@Echo.    Apply FSC First Logon Settings Script: %FSC_REGFile_01%>>%FSC-LOG%
+	Regedit /s "%FSC_REGFile_01%"
+) ELSE (
+	@Echo.    [ERROR] NOT found FSC First Logon Settings File: %FSC_REGFile_01%>>%FSC-LOG%
+)
+SET FSC_REGFile_01=
+SET "IMG=%ProgramData%\Franksoft\Logos\Logon\01-R.png"
+SET "CSP=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP"
+SET "POL=HKLM\SOFTWARE\Policies\Microsoft\Windows\System"
+
+IF Exist "%IMG%" (
+	@Echo.>>%FSC-LOG%
+	@Echo. [FRANKSOFT]>>%FSC-LOG%
+	@Echo.    Add Franksoft Deployment Windows Lockscreen>>%FSC-LOG%
+	@Echo.    File: %IMG%>>%FSC-LOG%
+	:: CSP-Schl ssel anlegen
+	reg add "%CSP%" /f >nul
+
+	:: Lockscreen setzen
+	reg add "%CSP%" /v LockScreenImagePath /t REG_SZ /d "%IMG%" /f
+	reg add "%CSP%" /v LockScreenImageUrl /t REG_SZ /d "%IMG%" /f
+	reg add "%CSP%" /v LockScreenImageStatus /t REG_DWORD /d 1 /f
+
+	:: Logon-Hintergrund aktivieren
+	reg add "%POL%" /v DisableLogonBackgroundImage /t REG_DWORD /d 0 /f
+) ELSE (
+	@Echo.>>%FSC-LOG%
+	@Echo. [FRANKSOFT] Lockscreen>>%FSC-LOG%
+	@Echo.    [ERROR] NOT found Windows Lockscreen File: %IMG%>>%FSC-LOG%
+)
+
+@Echo.>>%FSC-LOG%
+
+@Echo. [INFO] Logging Deployment State>>%FSC-LOG%
+@Echo. [ACTION] Reboot Initiated>>%FSC-LOG%
+
+FOR /F "tokens=1-3 delims=:.," %%A IN ("%TIME%") DO (
+    set H=%%A
+    set M=%%B
+    set S=%%C
+)
+
+SET H=%H: =%
+IF %H% LSS 10 SET H=0%H%
+SET NT=%H%:%M%:%S%
+
+::: GET Current Windows PowerPlan (DO NOT DELETE)
+for /f "tokens=*" %%i in ('powercfg /getactivescheme') do (
+    for /f "tokens=2 delims=()" %%a in ("%%i") do set "CurrentPowerScheme=%%a"
+)
+
+@Echo.>>%FSC-LOG%
+@echo. +------------------------------------------------+>>%FSC-LOG%
+@echo.  Phase ID:      %Status% (End)                   >>%FSC-LOG%
+@echo.  Script Path:   %~dp0%~nx0                        >>%FSC-LOG%
+@echo.  Timestamp:     %Date% %NT%                       >>%FSC-LOG%
+@echo.  User:          %UserName%                        >>%FSC-LOG%
+@echo.  IsAdmin:       %Admin-Status%                    >>%FSC-LOG%
+@echo.  Power Plan:    %CurrentPowerScheme%              >>%FSC-LOG%
+@echo. +------------------------------------------------+>>%FSC-LOG%
+@Echo. >>%FSC-LOG%
+
+@Echo Franksoft Client ^| Windows Deployment ^| %Status% ^| Script: %~nx0>>%FSC-LOG%
+@Echo.>>%FSC-LOG%
+@Echo ************************************************************************************* >>%FSC-LOG%
+@Echo.>>%FSC-LOG%
+
+@EVENTCREATE /T INFORMATION /so Franksoft /ID 007 /l application /d "Franksoft Client | Windows Deployment | %Status% | Script: %~nx0" >NUL
+
+REG delete HKCU\Software\Policies\Microsoft\Windows\Explorer /v DisableNotIFicationCenter /f >NUL
+
+:: SET Wallpaper for Next Logon
+SET "REGKEY-RunOnce=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
+SET "WallPaper_CMD=%FSC_Scripts_Local%\WallP.cmd"
+if exist "%WallPaper_CMD%" start "" "%WallPaper_CMD%"
+
+TimeOut 5
+
+Endlocal
+
+:: net user User /ACTIVE:No
+:: Del DBG Script_Folder
+IF Exist "%SystemDrive%\%~nx0_DBG" RD /S/Q "%SystemDrive%\%~nx0_DBG"

@@ -1,0 +1,9 @@
+[AutoRun.Amd64]
+open=setup.exe
+icon=efi\KDTHx1.ico
+Label=W10 1803 (64GB) WrK
+
+[AutoRun]
+open=sources\SetupError.exe x64
+icon=efi\KDTHx1.ico
+Label=W10 1803 (64GB) WrK

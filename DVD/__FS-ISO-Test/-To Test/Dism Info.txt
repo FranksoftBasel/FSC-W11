@@ -1,0 +1,1 @@
+DISM /Get-WimInfo /WimFile:install.esd

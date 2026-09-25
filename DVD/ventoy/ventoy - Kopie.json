@@ -1,0 +1,44 @@
+{
+    "control":[
+        { "VTOY_MAX_SEARCH_LEVEL": "1" },
+        { "VTOY_FILE_FLT_EFI": "1" },
+        { "VTOY_FILE_FLT_IMG": "1" },
+        { "VTOY_FILE_FLT_VHD": "1" },
+        { "VTOY_FILE_FLT_VTOY": "1" },
+        { "VTOY_SECONDARY_BOOT_MENU": "0" },
+        { "VTOY_DEFAULT_KBD_LAYOUT": "GERMAN" },
+        { "VTOY_MENU_LANGUAGE": "de_DE" }
+    ],
+    "theme":{
+        "file": "/ventoy/themes/arco/theme.txt",
+        "fonts":[
+            "/ventoy/themes/arco/terminus-18.pf2"
+        ]
+    },
+    "menu_alias":[
+        {
+            "image": "/Sources/boot.wim",
+            "alias": "12. Windows 11 Pro 25H2 Franksoft Client (USB)"
+        }
+    ],
+    "menu_alias_legacy":[
+        {
+            "image": "/Sources/boot.wim",
+            "alias": "12. Windows 11 Pro 25H2 Franksoft Client (USB)"
+        }
+    ],
+    "auto_install":[
+        {
+            "image": "/ISO/10. Windows 11 Pro 25H2 Sept 2026 (MCT).iso",
+            "template":[
+                "/ISO/10. Windows 11 Pro 25H2 Sept 2026 (MCT)_Unat.xml"
+            ]
+        },
+        {
+            "image": "/ISO/11. Windows 11 Pro 25H2 Franksoft Client.ISO",
+            "template":[
+                "/ISO/11. Windows 11 Pro 25H Franksoft Client_Autounattend.xml"
+            ]
+        }
+    ]
+}
