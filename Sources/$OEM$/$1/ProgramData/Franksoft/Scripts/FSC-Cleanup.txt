@@ -1,0 +1,180 @@
+C:\ProgramData\Franksoft\Scripts\SetVol.vbs
+
+C:\ProgramData\Franksoft\Apps\_2_Download\A
+
+
+C:\Windows\Setup\Scripts
+C:\DumpStack.log.tmp
+C:\$Recycle.Bin
+C:\system.sav
+
+C:\Windows\Panther\actionqueue
+C:\Windows\Panther\Resources
+C:\Windows\Panther\_s_5080.tmp
+C:\Windows\Panther\compatscancache.dat
+C:\Windows\Panther\Contents0.dir
+C:\Windows\Panther\DlTel.etl
+C:\Windows\Panther\DlTel.Merge.00001.etl
+C:\Windows\Panther\DlTel-Merge.etl
+C:\Windows\Panther\FirstBootTel-M1.etl
+C:\Windows\Panther\FirstBootTel-M2.etl
+C:\Windows\Panther\MainQueueOnline0.que
+
+
+
+%ProgramData%\Franksoft\Scripts\ul
+
+%ProgramData%\Microsoft\Windows\Start Menu\Programs\Support
+%ProgramData%\Microsoft\Windows\Start Menu\Support
+
+%Public%\Desktop\FS_Post_
+%SystemRoot%\SoftwareDistribution\Download
+
+%ProgramData%\Franksoft\A
+%ProgramData%\Franksoft\Apps\FTA
+%ProgramData%\Franksoft\Config
+%ProgramData%\Franksoft\FSC
+%ProgramData%\Franksoft\Scripts\A
+%ProgramData%\Franksoft\Scripts\BC
+%ProgramData%\Franksoft\Scripts\FS
+%ProgramData%\Franksoft\Scripts\Pinto10
+%ProgramData%\Franksoft\Scripts\SystemRestore
+%ProgramData%\Franksoft\Scripts\UserAccountPictures
+%ProgramData%\Franksoft\Scripts\WinX
+%ProgramData%\Franksoft\Scripts\_@WinUpd_TEST
+%ProgramData%\Franksoft\Scripts\_Work
+%ProgramData%\Franksoft\Shortcuts
+%ProgramData%\Franksoft\Sounds
+%ProgramData%\Franksoft\Support
+%ProgramData%\Franksoft\UserAccountPictures
+D:\Sources\$OEM$\$$\Setup\Scripts\A
+
+C:\Windows\System32\oobe\info\backgrounds.zip
+D:\Sources\$OEM$\$$\Web\Screen.zip
+
+D:\Sources\$OEM$\$$\Web\Wallpaper\Windows\Windows\img0.jpg
+C:\Windows\Web\Wallpaper\Theme1\img4.zip
+
+
+
+
+%ProgramData%\Franksoft\FS-WfWi-cfg-Beta.ExE
+
+%ProgramData%\Franksoft\Logos\WindowsUpdate_FSC_Logo_01.zip
+%ProgramData%\Franksoft\Logos\Themes.zip
+%ProgramData%\Franksoft\Logos\FSC_DEP
+%ProgramData%\Franksoft\Logos\Windows\A.zip
+%ProgramData%\Franksoft\Logos\Logon
+%ProgramData%\Franksoft\Logos\FSC_DEP
+
+
+%ProgramData%\Franksoft\Scripts\WinUpdatesView-FSC-Summary.ps1
+%ProgramData%\Franksoft\Scripts\WinKey.vbs
+%ProgramData%\Franksoft\Scripts\WinKey.exe
+
+%ProgramData%\Franksoft\Scripts\WinGetUpdate_FSC.ps1
+%ProgramData%\Franksoft\Scripts\WinGetUpdate_FSC.cmd
+%ProgramData%\Franksoft\Scripts\WinGetApps.json
+
+%ProgramData%\Franksoft\Scripts\WallP_RunOnceExProcess_Execute.lnk
+%ProgramData%\Franksoft\Scripts\WallP (Download).url
+%ProgramData%\Franksoft\Scripts\PowerPlanFS.cmd
+%ProgramData%\Franksoft\Scripts\FS-Shutdown_MSG_2.png
+%ProgramData%\Franksoft\Scripts\FS-Shutdown_MSG_1.png
+%ProgramData%\Franksoft\Scripts\FS-Shutdown_MSG.png
+%ProgramData%\Franksoft\Scripts\FSC-Complete_02.ps1
+%ProgramData%\Franksoft\Scripts\FSC-Complete_01.ps1
+%ProgramData%\Franksoft\Scripts\EnableUAC.reg
+%ProgramData%\Franksoft\Scripts\_Wup_Wrk
+%ProgramData%\Franksoft\Scripts\_Backup
+
+%AppData%\Microsoft\Windows\Themes\CachedFiles
+%AppData%\Microsoft\Windows\Themes\TranscodedWallpaper
+
+
+%ProgramData%\Franksoft\Scripts\*Defender*
+%ProgramData%\Franksoft\Scripts\*DelReg*
+%ProgramData%\Franksoft\Scripts\*DesktopRefresh*
+%ProgramData%\Franksoft\Scripts\*Kopie*
+%ProgramData%\Franksoft\Scripts\*.zip
+%ProgramData%\Franksoft\Scripts\_Del-FSC-RT-Scr.cmd.txt
+%ProgramData%\Franksoft\Scripts\_fsc_RunOnce_DBG.cmd
+%ProgramData%\Franksoft\Scripts\AppAssoc_W10Px64.xml
+%ProgramData%\Franksoft\Scripts\Autologon.exe
+%ProgramData%\Franksoft\Scripts\Change Drive Letter.ps1
+%ProgramData%\Franksoft\Scripts\ChangeCDRomDriveLetter.ps1
+%ProgramData%\Franksoft\Scripts\ChangeDL.ps1
+%ProgramData%\Franksoft\Scripts\ChangeDL.vbs
+%ProgramData%\Franksoft\Scripts\Check HD.vbs
+%ProgramData%\Franksoft\Scripts\CleanMGR.reg
+%ProgramData%\Franksoft\Scripts\CleanUp.cmd
+%ProgramData%\Franksoft\Scripts\Del EventViewer.VBS
+%ProgramData%\Franksoft\Scripts\Del-FSC-OEM.cmd
+%ProgramData%\Franksoft\Scripts\Del_FSC_Files.cmd
+%ProgramData%\Franksoft\Scripts\Disable-System-Restore.vbs
+%ProgramData%\Franksoft\Scripts\EVENTDEL.VBS
+%ProgramData%\Franksoft\Scripts\EventViewer.VBS
+%ProgramData%\Franksoft\Scripts\Franksoft Events
+%ProgramData%\Franksoft\Scripts\FSICO0.ico
+%ProgramData%\Franksoft\Scripts\FSInfo.VBS
+%ProgramData%\Franksoft\Scripts\FSMSG.VBS
+%ProgramData%\Franksoft\Scripts\GetFS-Event*
+%ProgramData%\Franksoft\Scripts\GUIPropView*.*
+%ProgramData%\Franksoft\Scripts\HideDesktopIcons.exe
+%ProgramData%\Franksoft\Scripts\Install Dot NET Dism.lnk
+%ProgramData%\Franksoft\Scripts\Install Dot NET PowerShell.lnk
+%ProgramData%\Franksoft\Scripts\Install-Drv.cmd
+%ProgramData%\Franksoft\Scripts\Inst Dot Net 3.5.cmd
+%ProgramData%\Franksoft\Scripts\Kill*.vbs
+%ProgramData%\Franksoft\Scripts\NetDisabler.exe
+%ProgramData%\Franksoft\Scripts\NetDisabler_x64.exe
+%ProgramData%\Franksoft\Scripts\NoNewAppAlert.REG
+%ProgramData%\Franksoft\Scripts\NoSound.vbs
+%ProgramData%\Franksoft\Scripts\Note&pad.lnk
+%ProgramData%\Franksoft\Scripts\PinTo10v4*.url
+%ProgramData%\Franksoft\Scripts\PinToTaskBar1903.ps1
+%ProgramData%\Franksoft\Scripts\PinUtil*.*
+%ProgramData%\Franksoft\Scripts\Programme und Features.lnk
+%ProgramData%\Franksoft\Scripts\Rexplorer_x64.exe
+%ProgramData%\Franksoft\Scripts\SetDefaultBrowser.exe
+%ProgramData%\Franksoft\Scripts\SetUserFTA.exe
+%ProgramData%\Franksoft\Scripts\SetVol.exe
+%ProgramData%\Franksoft\Scripts\ShellBags.reg
+%ProgramData%\Franksoft\Scripts\Sleep Now.lnk
+%ProgramData%\Franksoft\Scripts\Start all Windows Apps.cmd
+%ProgramData%\Franksoft\Scripts\StartMenuLayoutIco.exe
+%ProgramData%\Franksoft\Scripts\TaskManagerCFG.json
+%ProgramData%\Franksoft\Scripts\Taskmanager.reg
+%ProgramData%\Franksoft\Scripts\ThemeSwitcher.exe
+%ProgramData%\Franksoft\Scripts\TimeOutB.cmd
+%ProgramData%\Franksoft\Scripts\UAC-DEF.reg
+%ProgramData%\Franksoft\Scripts\UAC-OFF.reg
+%ProgramData%\Franksoft\Scripts\UninstallAppx.PS1
+%ProgramData%\Franksoft\Scripts\UpdateTime.exe
+%ProgramData%\Franksoft\Scripts\W8Icons01.EXE
+%ProgramData%\Franksoft\Scripts\Wallpaper.lnk
+%ProgramData%\Franksoft\Scripts\WallpaperChanger.exe
+%ProgramData%\Franksoft\Scripts\Windows Update LogFile (FS)*
+%ProgramData%\Franksoft\Scripts\WindowsPhotoViewer.reg
+%ProgramData%\Franksoft\Scripts\WindowsUpdate*.lnk
+%ProgramData%\Franksoft\Scripts\WinUpd and Reboot (USB)*
+%ProgramData%\Franksoft\Scripts\WinUpd and Reboot_2026.cmd
+%ProgramData%\Franksoft\Scripts\WinUpd and Reboot1.cmd
+%ProgramData%\Franksoft\Scripts\elevate.exe
+%ProgramData%\Franksoft\Scripts\f01b4d95cf55d32a.automaticDestinations-ms
+%ProgramData%\Franksoft\Scripts\hashlnk.exe
+
+%USERPROFILE%\Desktop\FSC-Appx-Update.txt
+
+C:\*_Setup*
+C:\*_frank*
+C:\FSC-Post-02.cmd_DBG.lnk
+C:\PerfLogs
+C:\SWSetup
+C:\WinUPD=0.lnk
+C:\Windows\Web\Screen.zip
+C:\_Desktop-Public.lnk
+C:\_HP-Logs.lnk
+C:\_Panther.lnk
+C:\system.sav.lnk
+C:\x_Local_XCopy.lnk

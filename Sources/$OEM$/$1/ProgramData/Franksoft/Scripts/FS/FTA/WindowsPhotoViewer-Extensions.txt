@@ -1,0 +1,9 @@
+.bmp, PhotoViewer.FileAssoc.Tiff
+.gif, PhotoViewer.FileAssoc.Tiff
+.jpe, PhotoViewer.FileAssoc.Tiff
+.jpg, PhotoViewer.FileAssoc.Tiff
+.jpeg, PhotoViewer.FileAssoc.Tiff
+.tif, PhotoViewer.FileAssoc.Tiff
+.png, PhotoViewer.FileAssoc.Tiff
+
+

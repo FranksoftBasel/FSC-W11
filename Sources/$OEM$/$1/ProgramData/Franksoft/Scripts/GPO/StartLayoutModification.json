@@ -1,0 +1,35 @@
+{
+  "applyOnce": true,
+  "pinnedList": [
+    {
+      "desktopAppLink": "%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\File Explorer.lnk"
+    },
+    {
+      "desktopAppLink": "%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Google Chrome.lnk"
+    },
+    {
+      "packagedAppId": "MicrosoftCorporationII.QuickAssist_8wekyb3d8bbwe!App"
+    },
+    {
+      "packagedAppId": "Microsoft.SecHealthUI_8wekyb3d8bbwe!SecHealthUI"
+    },
+    {
+      "desktopAppLink": "%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Windows-Update.lnk"
+    },
+    {
+      "desktopAppLink": "%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Franksoft\\Cristal DiskInfo.lnk"
+    },
+    {
+      "desktopAppLink": "%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Bluetooth.lnk"
+    },
+    {
+      "desktopAppLink": "%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Franksoft\\Franksoft Client LOG.lnk"
+    },
+    {
+      "desktopAppLink": "%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Franksoft\\Franksoft Apps.lnk"
+    },
+    {
+      "packagedAppId": "Microsoft.WindowsStore_8wekyb3d8bbwe!App"
+    }
+  ]
+}

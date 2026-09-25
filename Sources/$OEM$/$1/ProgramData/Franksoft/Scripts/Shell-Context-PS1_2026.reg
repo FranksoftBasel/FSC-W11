@@ -1,0 +1,126 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; .PS1 ASSOCIATION
+; ============================================================
+
+[HKEY_CLASSES_ROOT\.ps1]
+@="Microsoft.PowerShellScript.1"
+"Content Type"="text/plain"
+"PerceivedType"="text"
+
+; ============================================================
+; POWERSHELL SCRIPT ICON
+; ============================================================
+
+[HKEY_CLASSES_ROOT\.ps1\DefaultIcon]
+@="%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+
+[HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\DefaultIcon]
+@="%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+
+; ============================================================
+; POWERSHELL MENU
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with]
+"MUIVerb"="Powershell Menu"
+"SubCommands"=""
+"Icon"="%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell]
+
+; ============================================================
+; RUN WITH POWERSHELL
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\001flyout]
+"MUIVerb"="Run with PowerShell"
+"Icon"="%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\001flyout\Command]
+@="\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File \"%1\""
+
+; ============================================================
+; RUN WITH POWERSHELL AS ADMINISTRATOR
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\002flyout]
+"MUIVerb"="Run with PowerShell as administrator"
+"HasLUAShield"=""
+"Icon"="%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\002flyout\Command]
+@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process powershell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \\\"%1\\\"' -Verb RunAs\""
+
+; ============================================================
+; POWERSHELL ISE
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\005flyout]
+"MUIVerb"="Edit with PowerShell ISE"
+"Icon"="%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell_ise.exe"
+"CommandFlags"=dword:00000020
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\005flyout\Command]
+@="\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell_ise.exe\" \"%1\""
+
+; ============================================================
+; POWERSHELL ISE AS ADMIN
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\006flyout]
+"MUIVerb"="Edit with PowerShell ISE as administrator"
+"HasLUAShield"=""
+"Icon"="%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell_ise.exe"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\006flyout\Command]
+@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process powershell_ise.exe -ArgumentList '\\\"%1\\\"' -Verb RunAs\""
+
+; ============================================================
+; POWERSHELL ISE x86
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\007flyout]
+"MUIVerb"="Edit with PowerShell ISE (x86)"
+"Icon"="%SystemRoot%\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell_ise.exe"
+"CommandFlags"=dword:00000020
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\007flyout\Command]
+@="\"%SystemRoot%\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell_ise.exe\" \"%1\""
+
+; ============================================================
+; POWERSHELL ISE x86 AS ADMIN
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\008flyout]
+"MUIVerb"="Edit with PowerShell ISE (x86) as administrator"
+"HasLUAShield"=""
+"Icon"="%SystemRoot%\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell_ise.exe"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\008flyout\Command]
+@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process '%SystemRoot%\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell_ise.exe' -ArgumentList '\\\"%1\\\"' -Verb RunAs\""
+
+; ============================================================
+; NOTEPAD
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\009flyout]
+"MUIVerb"="Edit with Notepad"
+"Icon"="%SystemRoot%\\System32\\notepad.exe"
+"CommandFlags"=dword:00000020
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\009flyout\Command]
+@="\"%SystemRoot%\\System32\\notepad.exe\" \"%1\""
+
+; ============================================================
+; NOTEPAD AS ADMIN
+; ============================================================
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\010flyout]
+"MUIVerb"="Edit with Notepad as administrator"
+"HasLUAShield"=""
+"Icon"="%SystemRoot%\\System32\\notepad.exe"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.ps1\shell\Edit-Run-with\shell\010flyout\Command]
+@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process notepad.exe -ArgumentList '\\\"%1\\\"' -Verb RunAs\""

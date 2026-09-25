@@ -1,0 +1,40 @@
+Example: 
+
+SetDefaultBrowser.exe HKLM "Google Chrome"
+SetUserFTA.exe .URL, InternetShortcut
+
+
+how to use SetUserFTA:
+i made it very easy for you and the only thing you have to supply is the extension and the ProgId (optional since Version 1.1, a groupname). it works just like assoc.exe:
+
+SetUserFTA.exe extension progid (optional:Groupname)
+
+or
+
+SetUserFTA.exe configfile
+
+SetUserFTA.exe get 
+
+will show all protected filetypes, just like GetUserFTA
+
+SetUserFTA.exe del extension
+will delete an association from the user registry
+
+Example:
+
+SetUserFTA.exe .pdf AcroExch.Document.DC
+
+this will associate .pdf file with Acrobat Reader for the current user.
+
+SetUserFTA.exe .pdf AcroExch.Document.DC Adobe Acrobat Users
+
+this will associate .pdf files with Acrobat Reader only if the current user is member of the Adobe Acrobat Users group. if the group contains spaces, you must use quotes.
+
+SetUserFTA.exe \\mydomain.local\fileshare\SetUserFTAconfig.txt
+
+this will read all associations from the config file and set them. the file can be on a share or locally. just add every filetype on a new line like this:
+
+.pdf, AcroExch.Document.DC, GRP_Adobe_Reader
+
+
+

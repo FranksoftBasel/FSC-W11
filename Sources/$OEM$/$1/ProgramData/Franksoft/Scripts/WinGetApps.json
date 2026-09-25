@@ -1,0 +1,100 @@
+{
+  "Apps": [
+    {
+      "Name": "Microsoft AppInstaller",
+      "Id": "Microsoft.AppInstaller",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft Remotehilfe",
+      "Id": "9P7BP5VNWKX5",
+      "Mode": "install",
+      "Source": "msstore"
+    },
+    {
+      "Name": "Microsoft Fotos",
+      "Id": "Microsoft Photos",
+      "Mode": "install",
+      "Source": "msstore"
+    },
+    {
+      "Name": "Microsoft Fotos-Legacy",
+      "Id": "9NV2L4XVMCXM",
+      "Mode": "install",
+      "Source": "msstore"
+    },
+    {
+      "Name": "Microsoft DotNet Runtime 8",
+      "Id": "Microsoft.DotNet.Runtime.8",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft DotNet DesktopRuntime 8",
+      "Id": "Microsoft.DotNet.DesktopRuntime.8",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft AspNetCore 8",
+      "Id": "Microsoft.DotNet.AspNetCore.8",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft OneDrive",
+      "Id": "Microsoft.OneDrive",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "HARMAN AdobeAIR",
+      "Id": "HARMAN.AdobeAIR",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Google Chrome",
+      "Id": "Google.Chrome",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "HP System Information",
+      "Id": "9MTKLT3PWWN1",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft Edge",
+      "Id": "Microsoft.Edge",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft Visual C++ v14 Redistributable (x86)",
+      "Id": "Microsoft.VCRedist.2015+.x86",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft Visual C++ v14 Redistributable (x64)",
+      "Id": "Microsoft.VCRedist.2015+.x64",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft EdgeWebView2 Runtime",
+      "Id": "Microsoft.EdgeWebView2Runtime",
+      "Mode": "update",
+      "Source": "winget"
+    },
+    {
+      "Name": "Microsoft Terminal",
+      "Id": "Microsoft.WindowsTerminal",
+      "Mode": "update",
+      "Source": "winget"
+    }
+  ]
+}
