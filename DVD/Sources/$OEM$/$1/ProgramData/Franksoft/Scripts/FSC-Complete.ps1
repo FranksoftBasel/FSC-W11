@@ -1,7 +1,7 @@
 ﻿# =============================================================================
 # Script Name : FSC-Complete.ps1
-# Version     : 2.2
-# Date        : 21.09.2026
+# Version     : 2.3
+# Date        : 27.09.2026
 # Author      : Franksoft
 #
 # Purpose     : Franksoft Client Deployment Abschlussdialog
