@@ -1,3 +1,41 @@
+:: =============================================================================
+:: Script Name : FSC-Post-01.cmd
+:: Path        : "C:\Temp\Updates\FSC-Post-01.cmd"
+:: Source      : "D:\Sources\$OEM$\$1\Temp\Updates\FSC-Post-01.cmd"
+:: Version     : 2.5
+:: Date        : 27.09.2026
+:: Author      : Franksoft
+::
+:: Changelog
+:: -----------------------------------------------------------------------------
+:: v2.5 - 27.09.2026
+:: - Header an den Scriptanfang verschoben und Changelog ergänzt
+:: - FST_HKLM.REG Import aus FSC-Post-01.cmd entfernt
+:: - FST_HKLM.REG wird ab SetupComplete.cmd v7.1 im SYSTEM-Kontext importiert
+:: - Alte lokale PowerPlan-Erstellung und Powercfg-Konfiguration entfernt
+:: - Energie-Konfiguration wird zentral durch PowerPlanFS.cmd ausgeführt
+:: - Auslesen des aktuell aktiven Power Plans für das Logging beibehalten
+:: - Display-Helligkeit 40 Prozent beibehalten
+:: - FST_HKCU.REG und übrige Post-Deployment-Logik unverändert beibehalten
+::
+:: v2.4 - 14.06.2026
+:: - Bisheriger produktiver Stand
+::
+:: Purpose
+:: -----------------------------------------------------------------------------
+:: FSC Deployment Phase 02/06
+::
+:: - FSC User Configuration
+:: - FSC Software Deployment
+::
+:: Systemweite FSC Registry-Konfiguration:
+:: - FST_HKLM.REG wird bereits in SetupComplete.cmd ausgeführt
+::
+:: Log
+:: -----------------------------------------------------------------------------
+:: %ProgramData%\Franksoft\Logs\Franksoft Client.txt
+:: =============================================================================
+
 net start WSearch
 cls
 
@@ -31,25 +69,6 @@ IF Exist "%FSC-Scripts-Local%\FS\FST_HKCU.reg" Regedit /s "%FSC-Scripts-Local%\F
 SET "DesktopOK_VBS=%ProgramData%\Franksoft\Scripts\DesktopOK\DesktopOK_Start.vbs"
 IF Exist "%DesktopOK_VBS%" "%DesktopOK_VBS%"
 
-
-:: =============================================================================
-:: Script Name : FSC-Post-01.cmd
-:: Path        : "D:\Sources\$OEM$\$1\Temp\Updates\FSC-Post-01.cmd"
-:: Version     : 2.4
-:: Date        : 14.06.2026
-:: Author      : Franksoft
-::
-:: Purpose
-:: -----------------------------------------------------------------------------
-:: FSC Deployment Phase 02/06
-::
-:: - FSC Config
-:: - FSC Software Deployment
-::
-:: Log
-:: -----------------------------------------------------------------------------
-:: %ProgramData%\Franksoft\Logs\Franksoft Client.txt"
-:: =============================================================================
 
 SET "NT=%TIME: =0%"
 SET "NT=%NT:~0,8%"
@@ -310,21 +329,7 @@ IF EXIST "%Intel_GFX_CFG_Source%" (
 start "" /min powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command "Disable-ComputerRestore -Drive 'C:\'" %_null%
 vssadmin delete shadows /all /quiet %_null%
 
-:: FSC Settings HKCU/HKLM
-SET MSG=Registry: Apply HKLM Franksoft Settings
-SET REGFile=%FSC-Scripts-Local%\FS\FST_HKLM.REG
-
-IF Exist "%REGFile%" (
-	@Echo. - %MSG%
-	@Echo. - %MSG%>>%FSC-LOG%
-	Regedit /s "%REGFile%" %_null%
-) ELSE (
-	@Echo. * Registry: NOT found %MSG% "%REGFile%"
-	@Echo. * Registry: NOT found %MSG% "%REGFile%">>%FSC-LOG%
-)
-SET MSG=
-SET REGFile=
-
+:: FSC Settings HKCU
 SET REGFile=%FSC-Scripts-Local%\FS\FST_HKCU.REG
 SET MSG=Registry: Apply HKCU Franksoft Settings
 
@@ -449,58 +454,13 @@ If Exist %FSC_Explorer_JumpList% (
 @SET Explorer_JumpList_PATH=
 @SET FSC_Explorer_JumpList=
 
-::::::::::::  MOVE SOON  AIIII ::::::::::::::::::::::
-:: Powerplan, Duplicate and Config by FS 
+:: -------------------------------------------------------------------------------
+:: POWER PLAN
+:: -------------------------------------------------------------------------------
+:: Die komplette Energie-Konfiguration erfolgt bereits in SetupComplete.cmd
+:: über PowerPlanFS.cmd.
+:: Hier wird nur noch der aktuell aktive Power Plan für das Logging ausgelesen.
 
-@Echo. - Power Profile:
-@Echo. - Power Profile:>>%FSC-LOG%
-@Echo.    Add: "High Performance" Profile
-@Echo.    Add: "High Performance" Profile>>%FSC-LOG%
-@Powercfg /DUPLICATESCHEME 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c e5bf7999-365f-410a-9c75-65c8f6efee86 %_null%
-@Powercfg -changename e5bf7999-365f-410a-9c75-65c8f6efee86 "Franksoft Deployment" %_null%
-SET FSC-MSG=
-
-@Echo.    Change: Name "Franksoft Deployment"
-@Echo.    Change: Name "Franksoft Deployment">>%FSC-LOG%
-Powercfg -setactive e5bf7999-365f-410a-9c75-65c8f6efee86 %_null%
-
-@Echo.    Config: "Franksoft Deployment" Power Profile
-@Echo.    Config: "Franksoft Deployment" Power Profile>>%FSC-LOG%
-
-:: (Netzschalter und Zuklappen)
-:: powercfg  -query e5bf7999-365f-410a-9c75-65c8f6efee86 4f971e89-eebd-4455-a8de-9e59040e7347 5ca83367-6e45-459f-a27b-476b1d01c936
-
-@Powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_BUTTONS LIDACTION 000 %_null%
-@Powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_BUTTONS LIDACTION 000 %_null%
-
-:: (Bildschirm ausschalten nach)
-:: powercfg  -query e5bf7999-365f-410a-9c75-65c8f6efee86 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e
-
-@Powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_VIDEO VIDEOIDLE 300 %_null%
-@Powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_VIDEO VIDEOIDLE 300 %_null%
-
-:: (Energiespartastenaktion)
-:: powercfg  -query e5bf7999-365f-410a-9c75-65c8f6efee86 4f971e89-eebd-4455-a8de-9e59040e7347 96996bc0-ad50-47ec-923b-6f41874dd9eb
-
-@Powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_BUTTONS SBUTTONACTION 000 %_null%
-@Powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_BUTTONS SBUTTONACTION 000 %_null%
-
-@Powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 001 %_null%
-@Powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_BUTTONS PBUTTONACTION 001 %_null%
-
-:: Disable Monitor Timeout
-powercfg -change -monitor-timeout-ac 0 >NUL
-powercfg -change -monitor-timeout-dc 0 >NUL
-
-:: Disable HardDisk Timeout
-powercfg -change -disk-timeout-ac 0 >NUL
-powercfg -change -disk-timeout-dc 0 >NUL
-
-:: Disable Sleep Timeout (Energiesparmodus)
-powercfg -change -standby-timeout-ac 0 >NUL
-powercfg -change -standby-timeout-dc 0 >NUL
-
-:: Aktives Energieschema auslesen und Namen extrahieren
 for /f "tokens=*" %%i in ('powercfg /getactivescheme') do (
     for /f "tokens=2 delims=()" %%a in ("%%i") do set "CurrentPowerScheme=%%a"
 )
