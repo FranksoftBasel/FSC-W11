@@ -1,0 +1,184 @@
+ 
+-+ Franksoft Client: Windows-Deployment - FSC: Setup Phase: 01/04 - Start - Script: SetupComplete.cmd +-
+ 
+ FSC: Setup Phase..: 01/04 - Start
+ Time/Date.........: 02:17:12 - 11.09.2025
+ User Name.........: SYSTEM
+ User is Admin.....: Yes
+ Power Scheme......: Ultimative Leistung
+ Windows Name......: Windows 11 Pro x64 24H2
+ Script............: C:\Windows\Setup\Scripts\SetupComplete.cmd
+ 
+ - FSC: LOG Franksoft Deployment state	
+ - FSC: Power Plan: config Script: "C:\Windows\Setup\Scripts\PowerPlanFS.cmd"
+ - FSC: Power Plan: Change to Ultimative Leistung
+ - Install Microsoft Visual C++ Redistributable VisualCppRedist_AIO 
+ - Install Microsoft Visual C++ Redistributable vc_redist.x86-2015-2019 
+ - Install Microsoft Visual C++ Redistributable vc_redist.x64-2015-2019 
+ - FSC: Windows Defender: GPO Disable Defender
+ - FSC: Windows Defender: Add Exclusions
+ -      C:\ProgramData\Franksoft
+ -      C:\Temp
+ -      C:\WINDOWS\TEMP
+ -      D:\
+ - FSC: Windows UAC: Disable
+ - FSC: Apply Franksoft Registry Script C:\Windows\Setup\Scripts\FS-Cust.reg
+ - FSC: Power Plan: Enable the Hibernate option in the Windows Power Options.
+ - FSC: Add to system PATH: Sysinternals C:\ProgramData\Franksoft\Sysinternals
+ - FSC: Add to system PATH: WMIC.exe
+ - FSC: Created scheduled task: Microsoft Store Updates 
+ - FSC: Set access permissions on "C:\ProgramData\Franksoft" Script: FS-Log.inf
+ - FSC: Changed volume label of system drive to "System"
+ - FSC: Add Franksoft Client Info to HKLM\SOFTWARE\Franksoft 
+ - Mute Audio Volume
+ - FSC: User Account: "Password Never Expires" for all users
+ - FSC: Windows Explorer: Remove Catalog link from Quick Access
+ - FSC: Windows Explorer: Remove Start link from Quick Access
+ + FSC: Install Drivers Start:  2:18:13
+ - FSC: Install Drivers Call : C:\Windows\Setup\Scripts\FS-Drivers.cmd 
+ -   Install Drivers: Modell: HP EliteBook 860 16 inch G10 Notebook PC
+ -   Install Drivers: Script: E:\_Drivers\HP\G10\860\2025\HP\G10_Drivers_Hp.cmd
+ -   Install Drivers: Start :  2:18:13
+ -   Install Drivers: End   :  2:21:29
+ + FSC: Install Driver End  :  2:21:29
+ - FSC: LOG Franksoft Deployment state	
+ - Reboot
+ 
+ FSC: Setup Phase..: 01/04 - End
+ Time/Date.........: 02:21:35 - 11.09.2025
+ User Name.........: SYSTEM
+ User is Admin.....: Yes
+ Power Scheme......: Ultimative Leistung
+ Script............: C:\Windows\Setup\Scripts\SetupComplete.cmd
+ 
+-+ Franksoft Client: Windows-Deployment - FSC: Setup Phase: 01/04 - End - Script: SetupComplete.cmd +-
+
+************************************************************************************* 
+
+-+ Franksoft Client: Post-Deployment - FSC: Setup Phase: 02/04 - Start - Script: FSC-Post-01.cmd +- 
+ 
+ FSC: Setup Phase..: 02/04 - Start
+ Time/Date.........: 02:22:09 - 11.09.2025
+ User Name.........: Admin
+ User is Admin.....: Yes
+ Power Scheme......: Franksoft Deployment
+ Script............: C:\Temp\Updates\FSC-Post-01.cmd
+ 
+ - FSC: LOG Franksoft Deployment state
+ - Mute Volume
+ - FSC: UWP Apps: Config Notepad
+ - Disable System Restore
+ - FSC: Apply Franksoft Registry Scripts HKLM
+ - FSC: Apply Franksoft Registry Scripts HKCU
+ - FSC: Keyboard layout : Remove Swiss French 
+ - FSC: Windows Explorer: Add Shell Bags
+ - FSC: FTA: Windows Photo Viewer
+ - FSC: Copy New Wallpapers
+ - FSC: Windows Explorer: Kill and Restart
+ - FSC: Windows Explorer: Copy Franksoft mod JumpList	
+ -           Add...: New Power Plan "High Performance and No Sleep"
+ -           Change: Name to "Franksoft Deployment"
+ -           Config: Power Plan "Franksoft Deployment"
+ - Install: Open Shell
+ - Install: 7-Zip
+ - Install: Desktop Restore
+ - Install: TeamViewer Quick Support
+ - Install: Microsoft Edge
+ - Install: Microsoft Edge WebView2
+ -           Edge CFG: Copy Bookmarks
+ -           Edge CFG: Add User GPO
+ -           Edge CFG: Start and Kill Edge
+ - Install: Google Chrome
+ -           Chrome CFG: Copy Bookmarks
+ -           Chrome CFG: Add User GPO
+ -           FSC: Chrome: FTA: Change default Browser to Chrome
+ - Copy Franksoft VCard to C:\Users\Public\Desktop
+ - Windows Autostart: Disable OneDrive 
+ - FSC: Delete FSC First Logon Commands from Regedit
+ - FSC: Uninstall useless Microsoft Apps
+ - FSC: Franksoft Client: Software-Deployment Start ...: Time:  2:25:44
+ - FSC: Franksoft Client: Software-Deployment Script..: D:\Runtimes\FS-Post-Apps.cmd
+ - FSC: Franksoft Client: Software-Deployment End .....: Time:  2:29:15
+ - FSC: Add FSC Logon Script 02/04 : FSC-Post-02.cmd
+ - FSC: LOG Franksoft Deployment state
+ - Reboot
+ 
+ FSC: Setup Phase..: 02/04 - End
+ Time/Date.........: 02:29:15 - 11.09.2025
+ User Name.........: Admin
+ User is Admin.....: Yes
+ Power Scheme......: Franksoft Deployment
+ Script............: C:\Temp\Updates\FSC-Post-01.cmd
+ 
+-+ Franksoft Client: Post-Deployment - FSC: Setup Phase: 02/04 - End - Script: FSC-Post-01.cmd +- 
+ 
+*******************************************************************************************************************
+ 
+-+ Franksoft Client: Post-Deployment - FSC: Setup Phase: 03/04 - Start - Script: FSC-Post-02.cmd +- 
+ 
+ FSC: Setup Phase..: 03/04 - Start
+ Time/Date.........: 02:31:09 - 11.09.2025
+ User Name.........: Admin
+ User is Admin.....: Yes
+ Power Scheme......: Franksoft Deployment
+ Script............: C:\Temp\Updates\FSC-Post-02.cmd
+ 
+ - Disable Windows System Restore
+ - FSC: FTA: Change .pdf to Acrobat Reader 
+ - FSC: Add FSC Logon Script 03/04 : Del_FSC_Files.cmd
+ - Reboot
+ 
+ FSC: Setup Phase..: 03/04 - End
+ Time/Date.........: 02:31:21 - 11.09.2025
+ User Name.........: Admin
+ User is Admin.....: Yes
+ Power Scheme......: Franksoft Deployment
+ Script............: C:\Temp\Updates\FSC-Post-02.cmd
+ 
+-+ Franksoft Client: Post-Deployment - FSC: Setup Phase: 03/04 - End - Script: FSC-Post-02.cmd +- +- 
+ 
+*******************************************************************************************************************
+ 
+-+ Franksoft Client: Post-Deployment - FSC: Setup Phase: 04/04 - Start - Script: Del_FSC_Files.cmd +- 
+ 
+ FSC: Setup Phase..: 04/04 - Start
+ Time/Date.........: 02:32:37 - 11.09.2025
+ User Name.........: Admin
+ User is Admin.....: Yes
+ Power Scheme......: Franksoft Deployment
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ - Disable User Experiences and Telemetry
+ - Update: TeamViewer Quick Support
+ - Enable Windows Defender
+ - FSC: LOG Franksoft Deployment state
+ - FSC: EventLog: Collect Franksoft events ID 007 - Script: C:\ProgramData\Franksoft\Scripts\GetFS-Events.vbs - START
+
+   Index Time          EntryType   Source                 InstanceID Message                                                                                          
+   ----- ----          ---------   ------                 ---------- -------                                                                                          
+      30 Sep 11 02:17  Information Franksoft                       7 Franksoft Client: 01/04 - Start C:\WINDOWS\Setup\Scripts\SetupComplete.cmd                       
+     244 Sep 11 02:21  Information Franksoft                       7 Franksoft Client: 01/04 - End   C:\WINDOWS\Setup\Scripts\SetupComplete.cmd                       
+     284 Sep 11 02:22  Information Franksoft                       7 Franksoft Client: 02/04 - Start C:\Temp\Updates\FSC-Post-01.cmd                                  
+     366 Sep 11 02:29  Information Franksoft                       7 Franksoft Client: 02/04 - End   C:\Temp\Updates\FSC-Post-01.cmd                                  
+     419 Sep 11 02:30  Information Franksoft                       7 Franksoft Client: 03/04 - Start C:\Temp\Updates\FSC-Post-02.cmd                                  
+     452 Sep 11 02:31  Information Franksoft                       7 Franksoft Client: 03/04 - End   C:\Temp\Updates\FSC-Post-02.cmd                                  
+     502 Sep 11 02:32  Information Franksoft                       7 Franksoft Client: 04/04 - Start C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd               
+     515 Sep 11 02:32  Information Franksoft                       7 Franksoft Client: 04/04 - End   C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd               
+
+
+ - FSC: Power Plan: Change to "Balanced" 381b4222-f694-41f0-9685-ff5bb260df2e 
+ * FSC: Windows Update NOT Activated 
+ - Reboot
+ 
+ FSC: Setup Phase..: 04/04 - End 
+ Time/Date.........: 02:33:23 - 11.09.2025
+ User Name.........: Admin
+ User is Admin.....: Yes
+ Power Scheme......: Ausbalanciert
+ Windows Name......: Windows 11 Pro x64 24H2
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+-+ Franksoft Client: Windows-Deployment - FSC: Setup Phase: 04/04 - End - Script: Del_FSC_Files.cmd +- 
+ 
+*******************************************************************************************************************
+ 

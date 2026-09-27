@@ -1,0 +1,40 @@
+@Echo Off
+@MODE CON: COLS=57 LINES=10
+CD %~dp0
+
+
+IF %computername% equ PROD Exit
+
+goto check_Permissions
+
+:check_Permissions
+::    echo Administrative permissions required. Detecting permissions...
+
+    net session >nul 2>&1
+    if %errorLevel% == 0 (
+        color 2F& Title .
+    ) else (
+        color 4F& Title .
+    )
+
+
+call :Admin
+
+
+@Echo. - Your Suff goes here %USERNAME%
+@Echo. 
+Query User
+@rem Notepad
+pause
+
+:Admin
+reg query "HKU\S-1-5-19\Environment" >nul 2>&1
+if not %errorlevel% EQU 0 (
+    cls
+    powershell.exe -windowstyle hidden -noprofile "Start-Process '%~dpnx0' -Verb RunAs"
+    exit
+)
+
+
+
+

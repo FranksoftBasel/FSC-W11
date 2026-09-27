@@ -87,7 +87,7 @@
     {
       "Name": "Microsoft EdgeWebView2 Runtime",
       "Id": "Microsoft.EdgeWebView2Runtime",
-      "Mode": "update",
+      "Mode": "install",
       "Source": "winget"
     },
     {

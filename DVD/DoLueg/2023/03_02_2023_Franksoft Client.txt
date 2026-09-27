@@ -1,0 +1,241 @@
+ 
+ -+ Windows 10 Pro for Workstations (x64) build 22H2 - Franksoft Client Post 01/06 - Start SetupComplete.cmd +- 
+ 
+ FSC Setup phase...: 01/06 - Start
+ Time/Date.........: 23:00:09 - 16.04.2023
+ User Name.........: SYSTEM
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Windows Name......: Windows 10 Pro for Workstations Version 22H2
+ Script............: C:\Windows\Setup\Scripts\SetupComplete.cmd
+ 
+ - Write FSC info to Eventlog	
+ - VMware Tools Installed
+ - Hide Network Wizard  
+ - Disable UAC
+ - Add C:\Windows\Setup\Scripts\FS-Cust.reg 
+ - ADD Sysinternals Folder Path to OS PATH Variable 
+ - Change Power Plan Options 
+ - Disable NIC Interface
+ - SET C:\ProgramData\Franksoft Permissions
+ - Rename System Partition to System
+ - Delete and Disable System Restore
+ - Add FS Info to HKLM\SOFTWARE\Franksoft 
+ - Disable Password Expiration for Admin Account 
+ - Reset Startmenu del Tile DataLayer 
+ - Enable Windows Autologon
+ - Add Dot NET feature
+ - Dot NET feature NetFx3 Status : Aktiviert 
+ - Write FSC Info to Eventlog	
+ - Reboot
+ 
+ FSC Setup phase...: 01/06 - End
+ Time/Date.........: 23:02:08 - 16.04.2023
+ User Name.........: SYSTEM
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\Windows\Setup\Scripts\SetupComplete.cmd
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 01/06 - End SetupComplete.cmd +- 
+ 
+************************************************************************************* 
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 02/06 - Start _Update_All_00.cmd +- 
+ 
+ FSC Setup Phase...: 02/06 - Start
+ Time/Date.........: 23:04:03 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: No Sleep
+ Script............: C:\Temp\Updates\_Update_All_00.cmd
+ 
+ - Write FSC Info to Eventlog
+ - Apply FSC Registry Scripts 
+ - ADD FSC WinX Shortcut's 
+ - Register Windows Photo Viewer
+ - Change Windows Theme
+ - Add FSC Taskmanager config
+ - Restart Windows Explorer
+ - Copy New Windows Explorer JumpList
+ - Add New PowerPlan "No Sleep" 
+ - Config PowerPlan "No Sleep" 
+ - Disable Network Interface
+ - Open Shell is Installed
+ - Install Desktop Restore
+ - Google Chrome is Installed
+ - Copy Google Chrome Bookmarks
+ - Add Google Chrome User GPO
+ - Change Default Browser to Chrome
+ - Start Google Chrome
+ - Install Microsoft Edge
+ - Copy EDGE Bookmarks
+ - Add Microsoft Edge User GPO
+ - Start and Kill Edge
+ - Install Edge WebView2 Runtime
+ - Install WinRAR
+ - Disable System Restore
+ - Sort Desktop Icons
+ - Disable OneDrive AutoStart 
+ - Copy FSC User Account Pictures
+ - Pin Apps to Taskbar
+ - Uninstall Microsoft Store Apps
+ - WPI not Activated
+ - Enable Windows Autologon
+ - Add 2nd FSC Script to RunOnce _Update_All_01.cmd 
+ - Write FSC info to Eventlog
+ - Reboot in 20Sec
+ 
+ FSC Setup Phase...: 02/06 - End
+ Time/Date.........: 23:07:35 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: No Sleep
+ Script............: C:\Temp\Updates\_Update_All_00.cmd
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 02/06 - End _Update_All_00.cmd +- 
+ 
+************************************************************************************* 
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 03/06 - Start _Update_All_01.cmd +- 
+ 
+ FSC Setup phase...: 03/06 - Start
+ Time/Date.........: 23:08:12 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\Temp\Updates\_Update_All_01.cmd
+ 
+ - Change Windows Theme
+ - Change Wallpaper to  
+ - Microsoft Quick Assist was "NOT Installed"
+ - Disable System Restore
+ - Enable Windows Autologon
+ - Reboot
+ 
+ FSC Setup phase...: 03/06 - End
+ Time/Date.........: 23:09:07 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\Temp\Updates\_Update_All_01.cmd
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 03/06 - End _Update_All_01.cmd +- 
+ 
+************************************************************************************* 
+ 
+ - Enable Windows Autologon
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 04/06 - Start CleanUp.cmd +- 
+ 
+ FSC Setup phase...: 04/06 - Start
+ Time/Date.........: 23:10:07 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\ProgramData\Franksoft\Scripts\CleanUp.cmd
+ 
+ - Write FSC info to Eventlog
+ - Change Wallpaper to C:\ProgramData\Franksoft\Logos\Panter\fs3.jpg 
+ - Enable NIC Interface
+ - Turn off Admin User Password Expiration
+ - Enable Windows Autologon
+ - Disable Skype Autostart
+ - Config Classic Shell
+ - Change Power Plan to Balanced 
+ - Enable Windows Autologon
+ - Start some MS Store Apps
+ - Unmute Windows Sound
+ - Change Windows Theme
+ - Change Wallpaper to C:\ProgramData\Franksoft\Logos\Panter\fs3.jpg 
+ - DVD Drive letter is "NOT changed" 
+ - Change Windows Theme to Franksoft 22H2.theme
+ - Add Del FSC Files.cmd to RunONCE 
+ - Write FSC info to Eventlog
+ - Franksoft CleanUp end
+ - Delete C:\ProgramData\Franksoft\Scripts\CleanUp.cmd 
+ - Reboot
+ 
+ FSC Setup phase...: 04/06 - End
+ Time/Date.........: 23:11:21 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\ProgramData\Franksoft\Scripts\CleanUp.cmd
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 04/06 - End CleanUp.cmd +- 
+ 
+************************************************************************************* 
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 05/06 - Start Del_FSC_Files.cmd +- 
+ 
+ FSC Setup phase...: 05/06 - Start
+ Time/Date.........: 23:12:17 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ - Disable Connected User Experiences and Telemetry
+ - Install Windows Terminal 10.1
+ - Microsoft Quick Assist was "Installed"
+ - Copy FSC Windows Explorer JumpList
+ - Change Windows Theme
+ - Write FSC Status to Eventlog
+ - Disable password expiration for Admin
+ - Add FSC Taskmanager cfg
+ - Add Del FSC Files.cmd to HKLM\RunOnce 
+ - Add WinUpd and Reboot.cmd to HKLM\RunOnce 
+ - Enable System Restore
+ - Reboot
+ 
+ FSC Setup phase...: 05/06 - End
+ Time/Date.........: 23:13:15 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 06/06 - Start 2 Del_FSC_Files.cmd +- 
+ 
+ FSC Setup phase...: 06/06 - Start 2 
+ Time/Date.........: 23:14:10 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ - FSC Phase 02/02 of Del_FSC_Files.cmd 
+ - Write FSC Status to Eventlog
+ - Re-Enable Windows Defender
+ - Collect Franksoft events from Event Log (START)
+
+   Index Time          EntryType   Source                 InstanceID Message                                                                                          
+   ----- ----          ---------   ------                 ---------- -------                                                                                          
+     287 Apr 16 23:00  Information Franksoft                       7 Franksoft Client Setup 01/06 - Start C:\Windows\Setup\Scripts\SetupComplete.cmd                  
+     448 Apr 16 23:02  Information Franksoft                       7 Franksoft Client Setup 01/06 - End C:\Windows\Setup\Scripts\SetupComplete.cmd                    
+     476 Apr 16 23:04  Information Franksoft                       7 Franksoft Client Setup 02/06 - Start C:\Temp\Updates\_Update_All_00.cmd                          
+     511 Apr 16 23:07  Information Franksoft                       7 Franksoft Client Setup 02/06 - End C:\Temp\Updates\_Update_All_00.cmd                            
+     542 Apr 16 23:08  Information Franksoft                       7 Franksoft Client Setup 03/06 - Start C:\Temp\Updates\_Update_All_01.cmd                          
+     553 Apr 16 23:09  Information Franksoft                       7 Franksoft Client Setup 03/06 - End C:\Temp\Updates\_Update_All_01.cmd                            
+     591 Apr 16 23:10  Information Franksoft                       7 Franksoft Client Setup 04/06 - Start C:\ProgramData\Franksoft\Scripts\CleanUp.cmd                
+     597 Apr 16 23:11  Information Franksoft                       7 Franksoft Client Setup 04/06 - End C:\ProgramData\Franksoft\Scripts\CleanUp.cmd                  
+     628 Apr 16 23:12  Information Franksoft                       7 Franksoft Client Setup 05/06 - Start C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd          
+     638 Apr 16 23:13  Information Franksoft                       7 Franksoft Client Setup 05/06 - End   C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd          
+     669 Apr 16 23:14  Information Franksoft                       7 Franksoft Client Setup 06/06 - Start 2 C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd        
+     670 Apr 16 23:14  Information Franksoft                       7 Franksoft Client Setup 06/06 - FSC End C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd        
+
+
+ - Collect Franksoft events from Event Log (END) 
+ - Reboot
+ 
+ FSC Setup phase...: 06/06 - FSC End 
+ Time/Date.........: 23:15:00 - 16.04.2023
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Windows Name......: Windows 10 Pro for Workstations 22H2
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ -+ Windows 10 Pro for Workstations (x64) - Franksoft Client Post 06/06 - FSC End +- 
+ 
+************************************************************************************* 
+ 

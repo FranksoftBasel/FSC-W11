@@ -1,0 +1,247 @@
+ 
+ -+ Windows 10 Pro (x64) Version 22H2 - Franksoft Client Post 01/06 - Start SetupComplete.cmd +- 
+ 
+ FSC Setup phase...: 01/06 - Start
+ Time/Date.........: 20:32:04 - 01.12.2024
+ User Name.........: SYSTEM
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Windows Name......: Windows 10 Pro (x64) Version 22H2
+ Script............: C:\Windows\Setup\Scripts\SetupComplete.cmd
+ 
+ - Change Energy PowerPlan to "Ultimate Performance"
+ - Write FSC info to Eventlog	
+ - Install Microsoft Visual C++ Redistributable VisualCppRedist_AIO 
+ - Install Microsoft Visual C++ Redistributable vc_redist.x86-2015-2019 
+ - Install Microsoft Visual C++ Redistributable vc_redist.x64-2015-2019 
+ * VMware Tools NOT Installed
+ - Config and Disable Windows Defender with C:\Windows\Setup\Scripts\Defender-0.reg 
+ - Hide Network Wizard  
+ - Disable UAC
+ - Add C:\Windows\Setup\Scripts\FS-Cust.reg 
+ - Add Sysinternals Path to OS PATH Variable 
+ - Change Power Plan Options 
+ - Disable NIC Interface
+ - SET C:\ProgramData\Franksoft Permissions
+ - Rename Windows Partition to System
+ - Delete and Disable System Restore
+ - Add FS Info to HKLM\SOFTWARE\Franksoft 
+ - Disable Password Expiration for Admin Account 
+ - Reset Windows Startmenu delete Tile DataLayer 
+ - Enable Autologon via Autologon.exe
+ - Add Dot NET feature
+ - Dot NET feature NetFx3 Status : Aktiviert 
+ - Write FSC Info to Eventlog	
+ - Reboot
+ 
+ FSC Setup phase...: 01/06 - End
+ Time/Date.........: 20:33:10 - 01.12.2024
+ User Name.........: SYSTEM
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\Windows\Setup\Scripts\SetupComplete.cmd
+ 
+ -+ Windows 10 Pro (x64) - Franksoft Client Post 01/06 - End SetupComplete.cmd +- 
+ 
+************************************************************************************* 
+ 
+ -+ Windows 10 Pro - Franksoft Client Post - 02/06 - Start - _Update_All_00.cmd +- 
+ 
+ FSC Setup Phase...: 02/06 - Start
+ Time/Date.........: 20:34:55 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\Temp\Updates\_Update_All_00.cmd
+ 
+ - Write FSC Info to Eventlog
+ - Change Audio Volume
+ - Disable System Restore
+ - Apply FSC Registry Scripts
+ - Change Windows Theme
+ - Add FSC WinX Shortcut's 
+ - Register Windows Photo Viewer
+ - Copy Startmenu Tiles Pictures for FSC Custom Startmenu
+ - Copy Windows Explorer JumpList "Favorites"
+ - Copy New Wallpapers
+ - Restart Windows Explorer
+ - Copy Windows Explorer JumpList
+ - Add New PowerPlan "No Sleep" 
+ - Config PowerPlan "No Sleep"
+ - Change PowerPlan Scheme to "Ultimate Performance"
+ - Disable Network Interface
+ - Install: Open Shell
+ - Install: 7-Zip
+ - Install: Desktop Restore
+ - Install: TeamViewer Quick Support
+ - Install: Microsoft Edge
+ - Install: Microsoft Edge WebView2 Runtime
+ - Copy EDGE Bookmarks
+ - Config Microsoft Edge User GPO
+ - Start and Kill Edge 3x
+ - Install: Google Chrome = Installed
+ - Copy Google Chrome Bookmarks
+ - Add Google Chrome User GPO
+ - Change FTA for Default Browser to Chrome
+ - Copy Franksoft VCard to C:\Users\Public\Desktop
+ - Sort Desktop Icons
+ - Disable OneDrive AutoStart 
+ - Copy FSC User Account Pictures
+ - Pin Apps to Taskbar
+ - Delete Franksoft First Logon Commands from Regedit HKLM\...\Run
+ - Uninstall useless Microsoft UWP Apps
+ - FS-Post-Apps Start ...: Time: 20:38:30 
+ - FSC RUO Script Start .: Time: 20:38:30 Script: D:\Runtimes\FS-Post-Apps.cmd
+ - FSC RUO Script End ...: Time: 20:38:30 Script: D:\Runtimes\FS-Post-Apps.cmd
+ - FS-Post-Apps End .....: Time: 20:41:33
+ - Add 2nd FSC Script to RunOnce _Update_All_01.cmd 
+ - Write FSC info to Eventlog
+ - Reboot in 30Sec
+ 
+ FSC Setup Phase...: 02/06 - End
+ Time/Date.........: 20:41:35 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\Temp\Updates\_Update_All_00.cmd
+ 
+ -+ Windows 10 Pro (x64) - Franksoft Client Post 02/06 - End _Update_All_00.cmd +- 
+ 
+************************************************************************************* 
+ 
+ -+ Windows 10 Pro - Franksoft Client Post - _Update_All_01.cmd +- 
+ 
+ FSC Setup phase...: 03/06 - Start
+ Time/Date.........: 20:42:14 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\Temp\Updates\_Update_All_01.cmd
+ 
+ - Change Windows Theme
+ - Enable Windows Autologon via Regedit
+ - Reboot in 25Sec
+ 
+ FSC Setup phase...: 03/06 - End
+ Time/Date.........: 20:43:05 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\Temp\Updates\_Update_All_01.cmd
+ 
+ -+ Windows 10 Pro (x64) - Franksoft Client Post 03/06 - End _Update_All_01.cmd +- 
+ 
+************************************************************************************* 
+ 
+ -+ Windows 10 Pro (x64) - Franksoft Client Post 04/06 - Start CleanUp.cmd +- 
+ 
+ FSC Setup phase...: 04/06 - Start
+ Time/Date.........: 20:44:03 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\ProgramData\Franksoft\Scripts\CleanUp.cmd
+ 
+ - Write FSC info to Eventlog
+ - Enable NIC Interface
+ - Turn off Admin User Password Expiration
+ - Disable Skype Autostart
+ - Start some MS Store Apps
+ - Unmute Windows Sound
+ - DVD Drive letter is "NOT changed" 
+ - Change Windows Theme to Franksoft 22H2.theme
+ - Add "C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd" to 
+ - Write FSC info to Eventlog
+ - Franksoft Client CleanUp End
+ - Reboot
+ 
+ FSC Setup phase...: 04/06 - End
+ Time/Date.........: 20:45:04 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\ProgramData\Franksoft\Scripts\CleanUp.cmd
+ 
+ -+ Windows 10 Pro (x64) - Franksoft Client Post 04/06 - Start CleanUp.cmd +- 
+ 
+************************************************************************************* 
+ 
+ -+ Windows 10 Pro - Franksoft Client Post - Del_FSC_Files.cmd +- 
+ 
+ FSC Setup phase...: 05/06 - Start
+ Time/Date.........: 20:45:35 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ - Change Audio Volume
+ - Disable User Experiences and Telemetry
+ - Install Windows Terminal
+ - Windows Terminal = Installed 
+ - Copy FSC Windows Explorer JumpList
+ - Write FSC Status to Eventlog
+ - Disable password expiration for Admin
+ - Add FSC Taskmanager cfg
+ - Add Del FSC Files.cmd to HKLM\RunOnce 
+ - Update TeamViewer Quick Support
+ - Add WinUpd and Reboot.cmd to HKLM\RunOnce 
+ - Reboot
+ 
+ FSC Setup phase...: 05/06 - End
+ Time/Date.........: 20:46:45 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ -+ Windows 10 Pro - Franksoft Client Post - Del_FSC_Files.cmd +- 
+ 
+************************************************************************************* 
+ 
+ -+ Windows 10 Pro - Franksoft Client Post - Del_FSC_Files.cmd +- 
+ 
+ 
+ FSC Setup phase...: 06/06 - Start 02/02 
+ Time/Date.........: 20:47:44 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Ultimate Performance
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ - FSC Phase 02/02 of Del_FSC_Files.cmd 
+ - Write FSC Status to Eventlog
+ - Enable Windows Defender
+ - Collect Franksoft events from Event Log (START)
+
+   Index Time          EntryType   Source                 InstanceID Message                                                                                          
+   ----- ----          ---------   ------                 ---------- -------                                                                                          
+     117 Dez 01 20:31  Information Franksoft                       7 Franksoft Client Setup 01/06 - Start C:\Windows\Setup\Scripts\SetupComplete.cmd                  
+     283 Dez 01 20:33  Information Franksoft                       7 Franksoft Client Setup 01/06 - End   C:\Windows\Setup\Scripts\SetupComplete.cmd                  
+     300 Dez 01 20:34  Information Franksoft                       7 Franksoft Client Setup 02/06 - Start C:\Temp\Updates\_Update_All_00.cmd                          
+     512 Dez 01 20:41  Information Franksoft                       7 Franksoft Client Setup 02/06 - End   C:\Temp\Updates\_Update_All_00.cmd                          
+     537 Dez 01 20:42  Information Franksoft                       7 Franksoft Client Setup 03/06 - Start C:\Temp\Updates\_Update_All_01.cmd                          
+     569 Dez 01 20:43  Information Franksoft                       7 Franksoft Client Setup 03/06 - End   C:\Temp\Updates\_Update_All_01.cmd                          
+     589 Dez 01 20:44  Information Franksoft                       7 Franksoft Client Setup 04/06 - Start C:\ProgramData\Franksoft\Scripts\CleanUp.cmd                
+     606 Dez 01 20:45  Information Franksoft                       7 Franksoft Client Setup 04/06 - End   C:\ProgramData\Franksoft\Scripts\CleanUp.cmd                
+     624 Dez 01 20:45  Information Franksoft                       7 Franksoft Client Setup 05/06 - Start C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd          
+     629 Dez 01 20:46  Information Franksoft                       7 Franksoft Client Setup 05/06 - End   C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd          
+     646 Dez 01 20:47  Information Franksoft                       7 Franksoft Client Setup 05/06 - Start C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd          
+     648 Dez 01 20:47  Information Franksoft                       7 Franksoft Client Setup 06/06 - Start 02/02 C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd    
+     651 Dez 01 20:47  Information Franksoft                       7 Franksoft Client Setup 06/06 - FSC End C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd        
+
+
+ - Collect Franksoft events from Event Log (END) 
+ - Reboot
+ 
+ FSC Setup phase...: 06/06 - FSC End 
+ Time/Date.........: 20:48:16 - 01.12.2024
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Windows Name......: Windows 10 Pro (x64) Version 22H2
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ -+ Windows 10 Pro - Franksoft Client Post - Del_FSC_Files.cmd +- 
+ 
+*************************************************************************************

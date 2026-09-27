@@ -1,0 +1,3 @@
+https://winaero.com/how-to-change-default-lid-close-action-on-windows-10/#Change_Default_Lid_Close_Action_in_Command_Prompt
+
+powercfg /q e5bf7999-365f-410a-9c75-65c8f6efee86 >2.txt

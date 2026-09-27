@@ -1,0 +1,252 @@
+ 
+ -+ Franksoft Windows 10 Pro 1903 (x64) Client configuration -+[SetupComplete]+- 
+ 
+ FSC Setup phase...: 01/06 - Start
+ Time/Date.........:  5:29:55 - 05.04.2020
+ User Name.........: SYSTEM
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Windows Name......: Windows 10 Pro Version 1903
+ Script............: C:\Windows\Setup\Scripts\SetupComplete.cmd
+ 
+ - Write FSC info to Eventlog	
+ - VM Tools NOT installed
+ - Windows Updates not installed 
+ - Add Windows Security exclusions (Defender-0.reg) 
+    restored in FSC Phase 5 with \Scripts\Defender-1.reg 
+ - Hide Network Wizard  
+ - Disable UAC
+ - Add FS-Cust.reg (HKLM) 
+ - Add Taskmanager cfg (System Context) 
+ - Change Power Plan Options 
+ - Disable NIC Interface
+ - Rename Systemdrive Partition to System
+ - Disable System Recovery
+ - Add FS Info to HKLM\SOFTWARE\Franksoft\Client Info 
+ - Turn off Admin User Password Expiration
+ - Enable Autologon
+ - Add Dot NET feature
+ - Enable Windows TESTSIGNING Mode
+ - Change the DVD drive letter to Z:\ 
+ - Write FSC Info to Eventlog	
+ - Delete C:\Windows\Setup\Scripts\SetupComplete.cmd
+ - Reboot
+ 
+ FSC Setup phase...: 01/06 - End
+ Time/Date.........:  5:31:17 - 05.04.2020
+ User Name.........: SYSTEM
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Script............: C:\Windows\Setup\Scripts\SetupComplete.cmd
+ 
+ ************************************************************************************* 
+ 
+ - Delete Desktop.ini on Desktop
+ -+ Franksoft Windows 10 Pro (x64) Client configuration [Post 1]+- 
+ 
+ FSC Setup phase...: 02/06 - Start
+ Time/Date.........:  5:33:13 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: No Sleep
+ Script............: C:\Temp\Updates\_Update_All_00.cmd
+ 
+ - Write FSC Info to Eventlog
+ - Duplicate Power Schmeme
+ - Mute Windows Sound
+ - Install Open Shell 1 
+ - Install Google Chrome  
+ - Install WinRAR 1 
+ - Copy New Wallpapers 
+ - Change Current Windows Theme 
+ - Enable Autologon
+ - Disable System Recovery
+ - Delete Desktop.ini on Desktop
+ - Copy User Pictures
+ - Apply Registry Scripts 
+ - Pin Apps to Taskbar 
+ - Del Send 2 Crap 
+ - Copy .url's to IE 
+ - IE Cleanup 
+ - Enable Autologon
+ - Start WPI : Time:  5:36:27 
+ - End   WPI : Time:  5:46:23 
+ - Write FSC info to Eventlog
+ - Add 2nd Script to RunOnce _Update_All_01.cmd "After Reboot" 
+ - Reboot 
+ 
+ FSC Setup phase...: 02/06 - End
+ Time/Date.........:  5:46:29 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: No Sleep
+ Script............: C:\Temp\Updates\_Update_All_00.cmd
+ 
+ ************************************************************************************* 
+ 
+ -+ Franksoft Windows 10 Pro (x64) Client configuration [Post 2]+- 
+ 
+ FSC Setup phase...: 03/06 - Start
+ Time/Date.........:  5:48:04 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: No Sleep
+ Script............: C:\Temp\Updates\_Update_All_01.cmd
+ 
+ - Kill OneDrive 
+ - Kill Skype 
+ - Write FS-Event
+ - Disable System Restore
+ - IE Config
+ - Windows Update 
+ -  Start:  5:48:27 
+ -  End..:  6:00:18 
+ - Enable Autologon
+ - Enable Windows Testsigning Mode
+ - Add CleanUp Job (After Reboot)
+ - Reboot in 60Sec
+ 
+ FSC Setup phase...: 03/06 - End
+ Time/Date.........:  6:00:20 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: No Sleep
+ Script............: C:\Temp\Updates\_Update_All_01.cmd
+ 
+ ************************************************************************************* 
+ 
+ -+ Franksoft Windows 10 Pro (x64) Client configuration [Cleanup]+- 
+ 
+ FSC Setup phase...: 04/06 - Start
+ Time/Date.........:  6:05:13 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: No Sleep
+ Script............: C:\ProgramData\Franksoft\Scripts\CleanUp.cmd
+ 
+   - Enable NIC Interface
+   - Turn off Admin User Password Expiration
+   - SET Autologon
+   - CleanUp Windows Updates
+   - Disable Skype Autostart
+   - Config Classic Shell
+   - Write FSC info to Eventlog
+   - Delete Desktop.ini in Desktops 
+   - Change Power Plan to Balanced
+   - Change Powershell POLICY (Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope LocalMachine -Force) 
+   - Add Del FSC Files.cmd to RunONCE 
+   - Franksoft CleanUp end
+   - Delete C:\ProgramData\Franksoft\Scripts\CleanUp.cmd 
+   - Reboot 
+ 
+ FSC Setup phase...: 04/06 - End
+ Time/Date.........:  6:06:09 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: No Sleep
+ Script............: C:\ProgramData\Franksoft\Scripts\CleanUp.cmd
+ 
+ ************************************************************************************* 
+ 
+ -+ Franksoft Windows 10 Pro (x64) Client configuration [Delete FSC Files]+- 
+ 
+ FSC Setup phase...: 05/06 - Start
+ Time/Date.........:  6:07:46 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ - Add Del FSC Files.cmd to RunONCE 
+ 
+ - Collect Reboot and Franksoft Events from EventViewer 
+ - Enable System Recovery
+ - Reboot
+ 
+ FSC Setup phase...: 05/06 - End
+ Time/Date.........:  6:08:07 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ -+ Franksoft Windows 10 Pro (x64) Client configuration [Delete FSC Files]+- 
+ 
+ FSC Setup phase...: 06/06 - Start
+ Time/Date.........:  6:09:48 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ 
+ - Collect Reboot and Franksoft Events from EventViewer 
+
+
+   ProviderName: Franksoft
+
+TimeCreated                     Id LevelDisplayName Message                                                            
+-----------                     -- ---------------- -------                                                            
+05.04.2020 06:08:08              7 Informationen    Franksoft CleanUp2 end C:\ProgramData\Franksoft\Scripts\Del_FSC_...
+05.04.2020 06:06:04              7 Informationen    Franksoft CleanUp End C:\ProgramData\Franksoft\Scripts\CleanUp.cmd 
+05.04.2020 06:05:38              7 Informationen    Franksoft CleanUp Start C:\ProgramData\Franksoft\Scripts\CleanUp...
+05.04.2020 06:00:18              7 Informationen    Franksoft Post 2 End  C:\Temp\Updates\_Update_All_01.cmd           
+05.04.2020 05:48:26              7 Informationen    Franksoft Post 2 Start C:\Temp\Updates\_Update_All_01.cmd          
+05.04.2020 05:46:29              7 Informationen    Franksoft Post 1 End C:\Temp\Updates\_Update_All_00.cmd            
+05.04.2020 05:33:13              7 Informationen    Franksoft Post 1 Start C:\Temp\Updates\_Update_All_00.cmd          
+05.04.2020 05:31:17              7 Informationen    Franksoft Client Setup End C:\Windows\Setup\Scripts\SetupComplet...
+05.04.2020 05:29:56              7 Informationen    Franksoft Client Setup Start C:\Windows\Setup\Scripts\SetupCompl...
+
+
+
+
+   ProviderName: EventLog
+
+TimeCreated                     Id LevelDisplayName Message                                                            
+-----------                     -- ---------------- -------                                                            
+05.04.2020 06:09:13           6006 Informationen    Der Ereignisprotokolldienst wurde beendet.                         
+05.04.2020 06:07:11           6006 Informationen    Der Ereignisprotokolldienst wurde beendet.                         
+05.04.2020 06:02:50           6006 Informationen    Der Ereignisprotokolldienst wurde beendet.                         
+05.04.2020 05:47:33           6006 Informationen    Der Ereignisprotokolldienst wurde beendet.                         
+05.04.2020 05:29:12           6006 Informationen    Der Ereignisprotokolldienst wurde beendet.                         
+
+
+
+
+   ProviderName: EventLog
+
+TimeCreated                     Id LevelDisplayName Message                                                            
+-----------                     -- ---------------- -------                                                            
+05.04.2020 06:09:35           6005 Informationen    Der Ereignisprotokolldienst wurde gestartet.                       
+05.04.2020 06:07:34           6005 Informationen    Der Ereignisprotokolldienst wurde gestartet.                       
+05.04.2020 06:03:10           6005 Informationen    Der Ereignisprotokolldienst wurde gestartet.                       
+05.04.2020 05:47:52           6005 Informationen    Der Ereignisprotokolldienst wurde gestartet.                       
+05.04.2020 05:29:40           6005 Informationen    Der Ereignisprotokolldienst wurde gestartet.                       
+05.04.2020 05:27:11           6005 Informationen    Der Ereignisprotokolldienst wurde gestartet.                       
+
+
+ - Reboot in 60sec 
+ - Delete "C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd"
+ 
+ FSC Setup phase...: 06/06 - End
+ Time/Date.........:  6:10:13 - 05.04.2020
+ User Name.........: Admin
+ User Is Admin.....: Yes
+ Power Scheme......: Balanced
+ Script............: C:\ProgramData\Franksoft\Scripts\Del_FSC_Files.cmd
+ 
+ 
+ +- Franksoft Windows 10 Pro (x64) Client configuration [End] -+ 
+ 
+ 
+ ************************************************************************************* 
+ 
+
+
+ FSC Setup phase...: 01/06 - Start
+ Time/Date.........:  5:29:55 - 05.04.2020
+ Time/Date.........:  6:10:13 - 05.04.2020
+
+
+FSC Setup phase...: 06/06 - End
+
