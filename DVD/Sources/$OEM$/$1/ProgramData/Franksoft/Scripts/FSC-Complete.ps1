@@ -538,6 +538,7 @@ if (Test-Path $logoPath) {
     $bitmap.EndInit()
 
     $window.FindName("LogoImage").Source = $bitmap
+    $window.Icon = $bitmap
 }
 else {
     echo "Logo nicht gefunden: $logoPath"
