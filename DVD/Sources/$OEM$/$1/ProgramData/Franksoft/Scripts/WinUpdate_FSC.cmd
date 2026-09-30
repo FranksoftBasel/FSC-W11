@@ -15,7 +15,7 @@ TITLE Franksoft Client: Windows Update - Prepare
 @Echo. Please wait for Franksoft Client: Windows Update - Prepare
 @Echo. 
 
-@SET "FSC_VERSION=2.4"
+@SET "FSC_VERSION=2.5"
 
 :: =============================================================================
 :: Script Name : WinUpdate_FSC.cmd
@@ -102,7 +102,8 @@ REM ----------------------------------------------------------------------------
 REM Windows Update phase counter - Registry only
 REM HKLM\SOFTWARE\Franksoft\WupCount
 REM   Phase01    REG_SZ   1..12
-REM   WinGetDone REG_SZ   1
+REM   WinGetDone03 REG_SZ  1
+REM   WinGetDone06 REG_SZ  1
 REM -----------------------------------------------------------------------------
 
 REM A completed previous deployment means this is a new FSC WU run.
@@ -206,12 +207,10 @@ REG Add "%REG_FSCWU%" /v LastResult /t REG_SZ /d "Running" /f >NUL
 
 SET FSC_LOG="%ProgramData%\Franksoft\Logs\Franksoft Client.txt"
 
-REM WinGet was proven working in FSC 2.0 at update round 3.
-REM Run it once as soon as round 3 is reached; WinGetDone prevents duplicates.
-REM This also recovers automatically if a manual/extra start skips exact round 3.
-SET "FSC_WINGET_DONE=0"
-REG QUERY "%REG_WUPCOUNT%" /v WinGetDone >NUL 2>NUL && SET "FSC_WINGET_DONE=1"
-IF %Status% GEQ 3 IF "%FSC_WINGET_DONE%"=="0" CALL :RunWinGet
+REM WinGet Update runs twice per FSC deployment: Phase 03 and Phase 06.
+REM Separate registry markers prevent duplicate execution of either run.
+IF "%Status%"=="3" CALL :RunWinGet WinGetDone03
+IF "%Status%"=="6" CALL :RunWinGet WinGetDone06
 
 IF "%Status%"=="4" (
     cmd /c start /min chrome
@@ -512,7 +511,16 @@ IF Exist "%PSShutDownScr%" (
 Exit /b
 
 :RunWinGet
+SET "FSC_WINGET_MARKER=%~1"
 SET "FSC_WINGET_CMD=%ProgramData%\Franksoft\Scripts\WinGetUpdate_FSC.cmd"
+
+REM Do not run the same WinGet phase twice.
+REG QUERY "%REG_WUPCOUNT%" /v "%FSC_WINGET_MARKER%" >NUL 2>NUL
+IF NOT ERRORLEVEL 1 (
+    Echo.   - WinGet Update already done: %FSC_WINGET_MARKER%>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   - WinGet Update already done: %FSC_WINGET_MARKER%>>%FSC_LOG_UPD%
+    EXIT /B 0
+)
 
 IF NOT EXIST "%FSC_WINGET_CMD%" (
     Echo.   * WinGetUpdate_FSC.cmd NOT found: %FSC_WINGET_CMD%>>%FSC_LOG%
@@ -520,9 +528,9 @@ IF NOT EXIST "%FSC_WINGET_CMD%" (
     EXIT /B 1
 )
 
-Echo.   - Call WinGetUpdate_FSC.cmd
-Echo.   - Call WinGetUpdate_FSC.cmd>>%FSC_LOG%
-IF DEFINED FSC_LOG_UPD Echo.   - Call WinGetUpdate_FSC.cmd>>%FSC_LOG_UPD%
+Echo.   - Call WinGetUpdate_FSC.cmd - %FSC_WINGET_MARKER%
+Echo.   - Call WinGetUpdate_FSC.cmd - %FSC_WINGET_MARKER%>>%FSC_LOG%
+IF DEFINED FSC_LOG_UPD Echo.   - Call WinGetUpdate_FSC.cmd - %FSC_WINGET_MARKER%>>%FSC_LOG_UPD%
 
 CALL "%FSC_WINGET_CMD%"
 SET "FSC_WINGET_RC=%ERRORLEVEL%"
@@ -530,8 +538,8 @@ SET "FSC_WINGET_RC=%ERRORLEVEL%"
 Echo.   - WinGetUpdate_FSC.cmd ReturnCode: %FSC_WINGET_RC%>>%FSC_LOG%
 IF DEFINED FSC_LOG_UPD Echo.   - WinGetUpdate_FSC.cmd ReturnCode: %FSC_WINGET_RC%>>%FSC_LOG_UPD%
 
-REM Mark as done only after the CMD was actually found and executed.
-REG Add "%REG_WUPCOUNT%" /v WinGetDone /t REG_SZ /d "1" /f >NUL
+REM Mark this WinGet phase as done after the CMD was actually executed.
+REG Add "%REG_WUPCOUNT%" /v "%FSC_WINGET_MARKER%" /t REG_SZ /d "1" /f >NUL
 
 REM Keep the known-good Chrome post-update start/kill sequence from FSC 2.0.
 cmd /c start /min chrome
@@ -542,4 +550,3 @@ Timeout 2 >NUL
 Taskkill /im Chrome.exe /f >NUL 2>NUL
 
 EXIT /B %FSC_WINGET_RC%
-
