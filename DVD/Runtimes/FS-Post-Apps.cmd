@@ -1,4 +1,39 @@
-:: Called by FSC-Post-01.cmd
+:: =============================================================================
+:: Script Name : FS-Post-Apps.cmd
+:: Version     : 1.4
+:: Date        : 30.09.2026
+:: Author      : Franksoft
+::
+:: Changelog
+:: -----------------------------------------------------------------------------
+:: v1.4 - 30.09.2026
+:: - Header an den Scriptanfang verschoben
+:: - Changelog erg„nzt
+:: - FSC Phase auf 02/06 korrigiert und dokumentiert
+:: - Aufruf durch FSC-Post-01.cmd korrekt dokumentiert
+:: - Log-Pfad auf Franksoft Client.txt korrigiert
+:: - Tippfehler "S ET /A i+=1" im 7-Zip Block korrigiert
+:: - Doppelte "Called by FSC-Post-01.cmd" Kommentarzeile entfernt
+::
+:: v1.3 - 19.03.2022
+:: - Bisheriger produktiver Stand
+::
+:: Purpose
+:: -----------------------------------------------------------------------------
+:: FSC Software Deployment ber Windows RunOnceEx.
+::
+:: Called by
+:: -----------------------------------------------------------------------------
+:: FSC-Post-01.cmd
+::
+:: FSC Deployment Phase
+:: -----------------------------------------------------------------------------
+:: 02/06
+::
+:: Log
+:: -----------------------------------------------------------------------------
+:: %ProgramData%\Franksoft\Logs\Franksoft Client.txt
+:: =============================================================================
 
 @echo off
 chcp 850
@@ -7,23 +42,6 @@ setlocal EnableExtensions
 
 SET FSC_PHASE=02/06
 
-:: =============================================================================
-:: Script Name : FS-Post-Apps.cmd
-:: Version     : 1.3
-:: Date        : 19.03.2022
-:: Author      : Franksoft
-:: Modules     : Called from PSC-Post-01.cmd  :FS-Apps-Deployment
-::
-:: Purpose
-:: -----------------------------------------------------------------------------
-:: FSC Deployment Phase 03/09
-:: 
-:: Software Deployment 
-::
-:: Log
-:: -----------------------------------------------------------------------------
-:: No Log
-:: =============================================================================
 SET "NT=%TIME: =0%"
 SET "NT=%NT:~0,8%"
 
@@ -86,7 +104,7 @@ IF Not Exist "%ProgramFiles(x86)%\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe" (
 	REG ADD %ROE%\%i% /v "002" /d "REGEDIT /S %SourcePath%\Adobe\ReaderDC_GE\Acrobat_GPO.reg" /f >NUL
 	SET /A i+=1
 )
-	
+
 If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 	REG ADD %ROE%\%i% /ve /d "Desktop Restore" /f >NUL
 	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\DesktopRestore\DesktopRestoreInstall.exe /NOCANCEL /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS" /f >NUL
@@ -152,7 +170,14 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 	IF NOT Exist "%ProgramFiles(x86)%\7-Zip\7zFM.exe" (
     	REG ADD %ROE%\%i% /ve /d "7-Zip" /f >NUL
     	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\7Zip\FS-Wrapper.exe" /f >NUL
-    S	ET /A i+=1
+    	SET /A i+=1
+	)
+
+
+	IF NOT Exist "%ProgramFiles%\IrfanView\i_view64.exe" (
+    	REG ADD %ROE%\%i% /ve /d "IrfanView" /f >NUL
+    	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\IrfanView\FS-Wrapper.cmd" /f >NUL
+    	SET /A i+=1
 	)
 
 	IF Not Exist "%ProgramFiles%\WinRAR\WinRAR.exe" (	
@@ -181,7 +206,7 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 SET "NT=%TIME: =0%"
 SET "NT=%NT:~0,8%"
 
-	REG ADD %ROE%\%i% /ve /d "Franksoft Settings" /f >NUL
+	REG ADD %ROE%\%i% /ve /d "Franksoft Cleanup" /f >NUL
 	REG ADD %ROE%\%i% /v "001" /d "CMD /C MD %Temp%\FSRunOnce_Done" /f >NUL
 	SET /A i+=1
 
@@ -210,5 +235,3 @@ if not %errorlevel% EQU 0 (
     powershell.exe -windowstyle hidden -noprofile "Start-Process '%~dpnx0' -Verb RunAs"
     exit
 )
-
-:: Called by FSC-Post-01.cmd
