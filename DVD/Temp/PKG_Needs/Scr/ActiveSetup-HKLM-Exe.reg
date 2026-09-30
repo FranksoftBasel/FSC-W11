@@ -1,0 +1,7 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components\[ProductCode]]
+@="[ProductName]"
+"StubPath"="[INSTALLDIR]Name.exe"
+
+

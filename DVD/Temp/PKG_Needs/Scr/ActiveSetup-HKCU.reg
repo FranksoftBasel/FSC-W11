@@ -1,0 +1,7 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Active Setup\Installed Components\[ProductCode]]
+"Name"="[ProductName]"
+
+
+
