@@ -10,9 +10,21 @@ SET FSC_PHASE=03/06
 :: =============================================================================
 :: Script Name : FSC-Post-02.cmd
 :: Path        : "D:\Sources\$OEM$\$1\Temp\Updates\FSC-Post-02.cmd"
-:: Version     : 2.4
-:: Date        : 14.06.2026
+:: Version     : 2.5
+:: Date        : 01.10.2026
 :: Author      : Franksoft
+::
+:: Changelog
+:: -----------------------------------------------------------------------------
+:: v2.5 - 01.10.2026
+:: - NT-Zeitstempel vor Registry-Start initialisiert
+:: - FSC_LOG_PAT Tippfehler korrigiert
+:: - Nicht definierte Variable FSC_FSTools_Local korrigiert
+:: - RunOnce-Aufruf fuer FSC-Post-03 mit sicheren Pfad-Quotes
+:: - USB-Laufwerkserkennung bereinigt
+::
+:: v2.4 - 14.06.2026
+:: - Bisheriger produktiver Stand
 ::
 :: Purpose     : FSC Deployment main script 02/03
 :: -----------------------------------------------------------------------------
@@ -30,6 +42,9 @@ set "FSC_REG=HKLM\SOFTWARE\Franksoft\Setup"
 set "FSC_SCRIPT_NAME=%~nx0"
 set "FSC_SCRIPT_PATH=%~f0"
 
+SET "NT=%TIME: =0%"
+SET "NT=%NT:~0,8%"
+
 reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /f >nul 2>nul
 
 reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "Script Name" /t REG_SZ /d "%FSC_SCRIPT_NAME%" /f >nul
@@ -40,9 +55,6 @@ reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "Start" /t REG_SZ /d "%DATE% %NT%" /f >
 set "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
 set "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_02.png"
 if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER"
-
-SET "NT=%TIME: =0%"
-SET "NT=%NT:~0,8%"
 
 :: Brightness 40% Hellikeit
 Powershell (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,40) %_null%
@@ -85,18 +97,19 @@ IF %ErrorLevel% equ 0 (Set Admin-Status=Yes) else (Set Admin-Status=No) >NUL
 
 :: GET Windows Setup USB Drive letter
 @REM for %%i in (B D E F G H I J K L M N O P Q R S T U V W X Y Z) do @IF Exist %%i:\Sources\setup.exe set USB-Stick-Path=%%i:
-for %%i in (
-    B D E F G H I J K L M N O P Q R S T U V W X Y Z
-) do (
-    if exist %%i:\Sources\setup.exe (
+SET "USB-Stick-Path="
+for %%i in (B D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+    if exist "%%i:\Sources\setup.exe" (
         set "USB-Stick-Path=%%i:"
+        goto :USB_FOUND
     )
 )
+:USB_FOUND
 
 SET FSC-Scripts-USB=%USB-Stick-Path%\sources\$OEM$\$1\ProgramData\Franksoft\Scripts
 
 SET "FSC_DRVI_LOG=%Public%\Desktop\FS-Driver-Inst.txt"
-SET "FSC_LOG_PATH=%FSC_LOG_PAT%"
+SET "FSC_LOG_PATH=%FSC-Tools-Local%\Logs"
 
 IF EXIST "%FSC_DRVI_LOG%" (
     COPY /Y "%FSC_DRVI_LOG%" "%FSC_LOG_PATH%" 1>NUL 2>NUL
@@ -273,14 +286,14 @@ SET "FSC-Script-P3=%SystemDrive%\Temp\Updates\%FSC-Post-03-Script%"
 :: RUO ADD 1
 :: SET Wallpaper for Next Logon
 SET "REGKEY-RunOnce=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
-SET "WallPaper_CMD=%FSC_FSTools_Local%\Scripts\WallP.cmd"
+SET "WallPaper_CMD=%FSC-Tools-Local%\Scripts\WallP.cmd"
 if exist "%WallPaper_CMD%" call "%WallPaper_CMD%"
 
 :: RUO ADD 2
 IF EXIST "%FSC-Script-P3%" IF EXIST "%ELEVATE-EXE%" (
     @Echo. - %FSC-MSG%
 	@Echo. - %FSC-MSG%>>%FSC-LOG%
-    @REG ADD "%REGKEY-RunOnce%" /v FSC-Post-03 /d "%ELEVATE-EXE% %FSC-Script-P3%" /f >NUL
+    @REG ADD "%REGKEY-RunOnce%" /v FSC-Post-03 /d "\"%ELEVATE-EXE%\" \"%FSC-Script-P3%\"" /f >NUL
 ) ELSE (
    	@Echo. * NOT found %FSC-Script-P3%
 	@Echo. * NOT found %FSC-Script-P3%>>%FSC-LOG%
