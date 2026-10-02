@@ -1,0 +1,8 @@
+[Setup]
+Lang=de
+Dir=C:\Program Files\XnViewMP
+Group=XnView MP
+NoIcons=0
+SetupType=custom
+Components=shell
+Tasks=

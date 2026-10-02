@@ -1,0 +1,42 @@
+$filename(txt,utf-8)---------------------------------------------------------------------
+  %artist% - %album%
+---------------------------------------------------------------------
+
+Artist............. : %artist%
+Album.............. : %album%
+Label.............. : %PUBLISHER%
+Label ID........... : %CATALOGID%
+
+Format............. : %MEDIATYPE%
+Country............ : %Country%
+Year............... : %year%
+Released........... : %DISCOGS_DATE%
+Genre.............. : %genre%
+
+Total Tracks....... : %_total_files%
+	
+Playing Time....... : %_total_time%
+Total Size......... : %_total_size%
+
+$if($eql(%_codec%,Free Lossless Audio Codec),Codec.............. : FLAC Version $right(%_tool%,$sub($len(%_tool%),18)),)$if($eql(%_codec%,'MPEG 1 Layer III'),Codec............... : MP3,)
+Samplerate......... : $replace(%_samplerate%,'32000','32','44100','44,1','48000','48','96000','96','192000','192') kHz
+$if(%_BITSPERSAMPLE%,Bits per sample.....: %_BITSPERSAMPLE% Bit,)
+$if(%_bitrate%,Bitrate.............: %_bitrate% Kbps,)
+Filetype........... : .%_extension%
+$if(%comment%,Comment............ : %comment%,)
+$if(%NOTES%,Notes.............. : %NOTES%,)
+['URL 01............. : '$if(%www%,%www%,)]
+['URL 02............. : '$if(%WWWARTIST%,%WWWARTIST%,)]
+
+---------------------------------------------------------------------
+                       Tracklisting
+---------------------------------------------------------------------
+
+$loop(%fieldname%)%track%. (%_length%) %artist% - %title%
+$loopend()
+
+Total Tracks....... : %_total_files%
+Playing Time........: %_total_time%
+Total Size..........: %_total_size%
+
+NFO generated on....: %_date%

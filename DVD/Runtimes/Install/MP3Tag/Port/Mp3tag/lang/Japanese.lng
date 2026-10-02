@@ -1,0 +1,807 @@
+﻿LANGAUTHOR YOSHIDA Shigeto / 9demaio
+LANGCONTACT shigep640509@gmail.com
+LANGVERSION 3.34
+LANGCODE_639_1 ja
+LANGNAME Japanese
+LANGNAMELOC 日本語
+SLangCancel キャンセル(&C)
+SLangOk OK(&O)
+SLangErrCatch ランタイムエラー\n\ファイル:\t{1}\n行:\t{2}\n\nこのアプリケーションは予測しない例外に遭遇し、不安定な状態です。アプリケーションを閉じて、\n\n{3}\n\nを詳細なエラーの記述と共に私たちのサポートスタッフに送ってください。\n\n送付先: support@mp3tag.de
+SLangErrCheck ランタイムエラー\n\ファイル:\t{1}\n行:\t{2}\nTerm:\t{3}\nコード:\t0x{4}\n\nこのアプリケーションは予測しない例外に遭遇し、不安定な状態です。アプリケーションを閉じて、\n\n{5}\n\nを詳細なエラーの記述と共に私たちのサポートスタッフに送ってください。\n\送付先: support@mp3tag.de
+SLangErrDriveCannotBeAccessed ドライブ {1} にアクセスできません。\n\n» ドライブを確かめてください。
+SLangErrFileCannotBeAccessed ファイル {1} にアクセスできません。\n\n» ドライブを確かめてください。
+SLangErrFileCannotBeDeleted ファイル {1} を削除できません。\n\n» 他のプロセスがドライブを使用中でないか確かめてください。
+SLangErrFolderCannotBeAccessed ディレクトリ {1} にアクセスできません。\n\n» ドライブを確かめてください。
+SLangErrFolderCannotBeDeleted ディレクトリ {1} を削除できません。\n\n» 他のプロセスがドライブを使用中でないか確かめてください。
+SLangErrHelpBrowserIsNotAvailable ヘルプを見るためにはウェブブラウザが必要です。
+SLangErrHelpSystemIsNotAvailable ヘルプシステムを利用できません。\n\n» {1} を再インストールしてください。
+SLangErrHelpTopicIsNotAvailable ヘルプトピックを利用できません。\n\n» 私たちのサポートスタッフに連絡してください。\n\送付先: support@mp3tag.de
+SLangErrNotEnoughFreeDiskSpace デバイス {1} に十分な空きスペースがありません。\n\n» 最低でも {2} のディスクスペースを確保してください。
+SLangErrRegistryCannotBeAccessed データ読み込みエラー\n\nWindows レジストリにアクセスできません。
+SLangMsgItemExistsAlready この記述があるエントリーは既に存在します。\n\n» 別の記述を使ってください。
+SLangMsgFirstSteps ファーストステップに慣れるためのしばらくの時間をください。
+SLangMsgShutdownInfo {1} が閉じる間お待ちください。
+SLangWrnAppIsAlreadyRunning このアプリケーションは既に起動しています。
+SLangWrnAppHasToBeRestarted この変更は再起動後に有効になります。\n\n今 Mp3tag を再起動しますか?
+SLangWrnNameContainsInvalidCharacters 使えない文字を含んだ記述です。\n\n» 他の記述を使ってください。
+SLangWrnStartLogging あなたは {1} を FLOG1 コマンドラインパラメーターと共に起動しました。このパラメーターはデバッグに使われます。\n\nログ機能を使用しますか?
+_C_ABORT 中断
+_C_ABORTING 中断処理中...
+_C_APP_ST_ALBUM アルバム(&A)
+_C_APP_ST_ARTIST アーティスト(&I)
+_C_APP_ST_COMMENT コメント(&M)
+_C_APP_ST_FOLDER ディレクトリ(&D)
+_C_APP_ST_GENRE ジャンル(&G)
+_C_APP_ST_TITLE タイトル(&L)
+_C_APP_ST_TRACK トラック(&R)
+_C_APP_ST_YEAR 年(&Y)
+_C_CANCEL キャンセル(&C)
+_C_CANCELING キャンセル処理中...
+_C_CHECK 確認
+_C_CLOSE 閉じる(&O)
+_C_DLG_CDDBCONFIRM_CAPTION 検索結果...
+_C_DLG_CDDBCONFIRM_CHK_DISCID ディスク ID をコメント欄にコピー
+_C_DLG_CDDBCONFIRM_CHK_DISCID2 ディスク ID を DISCID 欄にコピー
+_C_DLG_CDDBCONFIRM_CHK_SAMPLER コンピレーション...
+_C_DLG_CDDBCONFIRM_CHK_SORT 並べる順番
+_C_DLG_CDDBCONFIRM_ST_INFO 1 件以上の検索結果が見つかりました。\nどれか 1 つを選んでください:
+_C_DLG_CDDBCONFIRM_ST_INFO2 {1} データベースに {2} 件の検索結果が見つかりました。\nどれか 1 つを選んでください:
+_C_DLG_CDDBCONFIRM_STC_TOP タグ情報を設定します
+_C_DLG_CDDBINPUT_CAPTION freedb ID を入力
+_C_DLG_CDDBINPUT_ST_CATEGORY カテゴリ:
+_C_DLG_CDDBINPUT_ST_ID freedb ID:
+_C_DLG_CDDBSTYLE_CAPTION freedb
+_C_DLG_CDDBSTYLE_RD_CDROM 挿入された音楽 CD から入力(&A)
+_C_DLG_CDDBSTYLE_RD_ENTER 入力
+_C_DLG_CDDBSTYLE_RD_MP3 選択したファイルから入力
+_C_DLG_CDDBSTYLE_RD_SEARCH ウェブ検索から入力
+_C_DLG_CDDBSTYLE_RD_SEARCHLOCAL テキスト検索から入力
+_C_DLG_CDDBSTYLE_STC_TOP freedb ID...
+_C_DLG_COPYFORMAT テキストとしてコピー
+_C_DLG_COPYFORMAT_BTN_COPY コピー(&O)
+_C_DLG_COLUMNS_CAPTION カラム
+_C_DLG_COLUMNS_TOP カラムの表示を設定します
+_C_DLG_TAGS タグを編集
+_C_DLG_TTF_TOP 文字列規則を新規作成もしくは選択
+_C_FIND_BTN_FIND 検索する(&F)
+_C_FIND_CAPTION 検索
+_C_FIND_CHK_CASESENSITIVE 大文字小文字を区別(&C)
+_C_FIND_COLUMN_FIELD フィールド
+_C_FIND_COLUMN_MATCH 一致
+_C_FIND_STATUS_BUSY 検索中...
+_C_FIND_STATUS_MANY_MANY {1} 件が {2} 点のファイルで見つかりました。
+_C_FIND_STATUS_MANY_ONE {1} 件が {2} 点のファイルで見つかりました。
+_C_FIND_STATUS_NONE 何も見つかりませんでした。
+_C_FIND_STATUS_ONE_ONE {1} 件が {2} 点のファイルで見つかりました。
+_C_FIND_STC_RESULT 結果(&R):
+_C_FIND_STRATEGY_BEGINSWITH この語句で始まる
+_C_FIND_STRATEGY_CONTAINS この語句を含む
+_C_FIND_STRATEGY_ENDSWITH この語句で終わる
+_C_FIND_STRATEGY_MATCHESCONTENT 一致するコンテンツ
+_C_FIND_STRATEGY_MATCHESWORD 一致する語句
+_C_FIND_STRATEGY_REGEX 正規化表現
+_C_HELP ヘルプ(&H)
+_C_MANAGECOVERS カバーの管理
+_C_MANAGECOVERS_ACC_COVERINALLFILES 全ファイル中のカバー
+_C_MANAGECOVERS_ACC_COVERINONEFILE 1 ファイル中のカバー
+_C_MANAGECOVERS_ACC_COVERINSOMEFILES {1} ファイル中のカバー
+_C_MANAGECOVERS_BTN_ADD 追加(&A)...
+_C_MANAGECOVERS_BTN_REMOVE 除去(&R)
+_C_MANAGECOVERS_BTN_REPLACE 置換(&L)...
+_C_MANAGECOVERS_COL_COVER カバー
+_C_MANAGECOVERS_COL_METADATA メタデータ
+_C_MANAGECOVERS_COL_STATUS 状態
+_C_MANAGECOVERS_MNU カバーを管理(&M)...\tCtrl+Alt+M
+_C_MANAGECOVERS_MNU_APPLYTOALL すべて適用(&P)
+_C_MNU_ACTIONS アクション(&A)\tAlt+6
+_C_MNU_CON 変換(&C)
+_C_MNU_CON_FTF ファイル名(&I) - ファイル名\tAlt+3
+_C_MNU_CON_FTT ファイル名(&F) - タグ\tAlt+2
+_C_MNU_CON_TFF テキストファイル(&X) - タグ\tAlt+4
+_C_MNU_CON_TTF タグ(&T) - ファイル名\tAlt+1
+_C_MNU_CON_TTT タグ(&A) - タグ\tAlt+5
+_C_MNU_COVER_ADD カバーを追加(&A)...\tCtrl+Alt+A
+_C_MNU_COVER_ADJUST カバーを調整...
+_C_MNU_COVER_REPLACE カバーを置換(&L)...
+_C_MNU_COVERS_ADJUST カバーすべてを調整
+_C_MNU_COVERS_REMOVE カバーすべてを削除(&R)
+_C_MNU_COVERS_REPLACE カバーすべてを置換(&L)...
+_C_MNU_COVERS_SETDESC カバーすべてに説明をつける(&D)...
+_C_MNU_COVERS_SETTYPE カバーすべてに形式をつける(&T)
+_C_MNU_EDIT 編集(&E)
+_C_MNU_EDIT_COPY フィールドすべてをコピー(&O)\tCtrl+C
+_C_MNU_EDIT_COPY_FORMAT テキストとしてコピー...
+_C_MNU_EDIT_CUT フィールドすべてを切り取り(&T)\tCtrl+X
+_C_MNU_EDIT_FIND 検索(&F)...\tCtrl+F
+_C_MNU_EDIT_INVERTSELECTION 選択を反転(&I)\tCtrl+Shift+A
+_C_MNU_EDIT_NEXT 次のファイルを選択(&N)\tCtrl+N
+_C_MNU_EDIT_PASTE フィールドすべてを貼り付け(&P)\tCtrl+V
+_C_MNU_EDIT_REDO やり直し(&R)\tCtrl+Y
+_C_MNU_EDIT_REPEAT くり返し(&R)\tCtrl+Y
+_C_MNU_EDIT_SELECT すべてのファイルを選択(&F)\tCtrl+A
+_C_MNU_EDIT_SELECT_SIMILAR 類似ファイルを選択\tCtrl+G
+_C_MNU_EDIT_SELECT_SIMILAR_NEXT 次の類似ファイルを選択\tCtrl+Shift+G
+_C_MNU_EDIT_UNDO アンドゥ(&U)\tCtrl+Z
+_C_MNU_EDIT_UNSELECTALL 選択をすべて解除(&U)\tCtrl+U
+_C_MNU_EXTRA ツール(&O)
+_C_MNU_EXTRA_OPTIONS オプション(&O)...\tCtrl+O
+_C_MNU_EXTRA_RESET_EDITS すべての入力フィールドを元に戻す(&I)\tCtrl+B
+_C_MNU_EXTRA_SET_EDITS 入力フィールドをデフォルト値にする\tCtrl+W
+_C_MNU_EXTRA_TRACKWIZARD 自動ナンバリングウィザード...\tCtrl+K
+_C_MNU_FILE ファイル(&F)
+_C_MNU_FILE_ADD ディレクトリを追加...
+_C_MNU_FILE_CDDB freedb...\tCtrl+I
+_C_MNU_FILE_CDDBLOCAL freedb (ローカル)...\tCtrl+L
+_C_MNU_FILE_COPY ファイルをコピー...
+_C_MNU_FILE_DELETE ディスクから削除...
+_C_MNU_FILE_DIR ディレクトリを変更(&D)...\tCtrl+D
+_C_MNU_FILE_EXIT 終了(&X)\tAlt+F4
+_C_MNU_FILE_EXPORT テキストファイルを出力(&E)...\tCtrl+E
+_C_MNU_FILE_FAVDIR お気に入りのディレクトリ(&F)\tCtrl+M
+_C_MNU_FILE_MOVE ファイルを移動...
+_C_MNU_FILE_OPENFOLDER エクスプローラーで開く(&O)
+_C_MNU_FILE_OPENCONFIGFOLDER 構成ファイルがあるフォルダを開く
+_C_MNU_FILE_PLALL すべてのファイルからプレイリストファイルを作成\tCtrl+P
+_C_MNU_FILE_PLAY ファイルを再生
+_C_MNU_FILE_PLAYLIST プレイリスト/キューシートの読み込み...
+_C_MNU_FILE_PLGEN プレイリストを作成...\tCtrl+Shift+P
+_C_MNU_FILE_PLSEL 選択したファイルからプレイリストファイルを作成
+_C_MNU_FILE_PROPERTIES プロパティ...
+_C_MNU_FILE_READ フィールドすべてを読み込み(&T)\tCtrl+T
+_C_MNU_FILE_REMOVE フィールドすべてを削除(&R)\tCtrl+R
+_C_MNU_FILE_REMOVEFILE ファイルリストから除去(&M)\tDel
+_C_MNU_FILE_RENAME ファイル名を変更\tF2
+_C_MNU_FILE_SAVE フィールドすべてを保存(&S)\tCtrl+S
+_C_MNU_FILE_SAVECONFIG 構成ファイルをアーカイブに保存(&C)...
+_C_MNU_FREEDB freedb(&R)
+_C_MNU_FREEDB_INDEX ローカルインデックスの作成
+_C_MNU_FS_EXT 拡張フィールド
+_C_MNU_FS_FNCT ファンクション
+_C_MNU_FS_INFO 情報フィールド
+_C_MNU_FS_MANAGE 履歴を管理...
+_C_MNU_FS_REM 左の履歴 1 つを削除
+_C_MNU_FS_REMALL 左の履歴すべてを削除...
+_C_MNU_FS_REMALL_MSG 本当に履歴すべてを削除してもよろしいですか?
+_C_MNU_HELP ヘルプ(&H)
+_C_MNU_HELP_ABOUT Mp3tag について (英語)...
+_C_MNU_HELP_DONATE 開発者へ寄付 (英語)
+_C_MNU_HELP_FINDER ヘルプ (英語) の目次をブラウザで開く(&C)...\tF1
+_C_MNU_HELP_FIRSTSTEPS ファーストステップ (英語) をブラウザで開く(&F)
+_C_MNU_HELP_KEYBOARD キーボードショートカットヘルプ (英語) をブラウザで開く(&K)
+_C_MNU_HELP_SUPPORT オンラインサポート (英語) をブラウザで開く...
+_C_MNU_HELP_UPGRADE 新しいバージョンを確認...
+_C_MNU_HELP_WWW Mp3tag ウェブサイト (英語) をブラウザで開く(&W)...
+_C_MNU_TAG_EDIT 編集...\tF2
+_C_MNU_TAG_NEW 追加...\tIns
+_C_MNU_TAG_REMOVE タグを取り除く\tDel
+_C_MNU_TAGSOURCES タグを取得(&S)
+_C_MNU_TAGSOURCES_SETTINGS 設定
+_C_MNU_TOOLS ツール(&T)
+_C_MNU_VIEW 表示(&V)
+_C_MNU_VIEW_COLUMNS カラム(&C)
+_C_MNU_VIEW_FILTER フィルタ(&F)\tF3
+_C_MNU_VIEW_FILTER_AUTOAPPLY フィルタを自動適用
+_C_MNU_VIEW_ID3 タグパネル\tCtrl+Q
+_C_MNU_VIEW_REFRESH 最新の情報に更新(&E)\tF5
+_C_MNU_VIEW_SORTBY 並べ替え(&S)
+_C_MNU_VIEW_SORTBYRANDOM 不規則化(&R)
+_C_MNU_VIEW_TAGS タグを編集(&X)...\tAlt+T
+_C_MNU_VIEW_TOOLBAR ツールバー(&L)
+_C_MNU_VIEW_TOOLBAR_CUSTOM 独自ツールバー(&C)
+_C_MNU_VIEW_TOOLBAR_CUSTOMIZE ツールバーをカスタマイズ(&B)...
+_C_MNU_VIEW_TOOLBAR_CUSTOMIZE_CUSTOM 独自ツールバーをカスタマイズ(&T)...
+_C_MNU_VIEW_TOOLBAR_CUSTOMIZE_MAIN メインツールバーをカスタマイズ(&B)...
+_C_MNU_VIEW_TOOLBAR_MAIN メインツールバー(&M)
+_C_MNU_VIEW_TOOLBARS ツールバー(&B)
+_C_MNU_SB_ACTIONS 選択したファイルにユーザー定義のアクションを適用 (語形変化、置換など) します。
+_C_MNU_SB_CON_FTF 古いファイル名を元に定義されたパターンによってファイル名を変更します。
+_C_MNU_SB_CON_FTT 定義されたファイル名のパターンからタグを取得します。
+_C_MNU_SB_CON_TFF 定義されたテキストファイルのパターンからタグを取得します。
+_C_MNU_SB_CON_TTF 定義されたファイル名のパターンからファイル名を変更します。
+_C_MNU_SB_CON_TTT タグを基にタグをフォーマットします。
+_C_MNU_SB_EDIT_COPY 選択したテキスト、または選択したファイルのタグをクリップボードにコピーします。
+_C_MNU_SB_EDIT_COPY_FORMAT Copy 選択したファイルのテキスト表現をクリップボードにコピーします。
+_C_MNU_SB_EDIT_CUT クリップボードの内容を挿入位置、または選択したファイルに貼り付けます。
+_C_MNU_SB_EDIT_INVERTSELECTION 現在の選択を反転します。
+_C_MNU_SB_EDIT_NEXT ファイルリストにある次のファイルをマークします。
+_C_MNU_SB_EDIT_PASTE 挿入マークか選択したファイルにクリップボードの内容を貼り付けます。
+_C_MNU_SB_EDIT_REDO 直前の取り消し操作を元に戻します。
+_C_MNU_SB_EDIT_REPEAT 直前のアクションをくり返します。
+_C_MNU_SB_EDIT_SELECT ファイルリストにあるファイルを選択します。
+_C_MNU_SB_EDIT_SELECT_SIMILAR Select files アクティブな並べ替え基準 {1} に基づいて現在選択中のファイルと類似するファイルを選択します。
+_C_MNU_SB_EDIT_SELECT_SIMILAR_NEXT アクティブな並べ替え基準 {1} に基づいて現在選択中のファイルとは異なる次の類似するファイルを選択します。
+_C_MNU_SB_EDIT_UNDO 直前の行動を取り消し、元に戻します。
+_C_MNU_SB_EDIT_UNSELECTALL すべて選択を解除します。
+_C_MNU_SB_EXTRA_OPTIONS オプションダイアログを表示します。
+_C_MNU_SB_EXTRA_RESET_EDITS タグパネルのすべてのフィールドにあるテキストを削除します。
+_C_MNU_SB_EXTRA_SET_EDITS すべてのタグパネルにある入力フィールドを定義された標準の値に設定します。
+_C_MNU_SB_EXTRA_TRACKWIZARD 自動トラックナンバーウィザードを実行します。
+_C_MNU_SB_FILE_ADD ファイルのリストにディレクトリを追加します。
+_C_MNU_SB_FILE_CDDB インターネット接続で挿入された音楽 CD か選択された音楽ファイルの情報を取得します。
+_C_MNU_SB_FILE_CDDBLOCAL ローカル freedb データベースにある挿入された音楽 CD か選択された音楽ファイルの情報を取得します。
+_C_MNU_SB_FILE_COPY 選択したファイルを別のディレクトリにコピーします。
+_C_MNU_SB_FILE_DELETE 選択したファイルをディスク上から削除します。ゴミ箱がないリムーバルメディア上のファイルの場合はすぐに参照できなくなります。
+_C_MNU_SB_FILE_DIR 現在の作業ディレクトリを変更します。
+_C_MNU_SB_FILE_EXIT アプリケーションを閉じます。
+_C_MNU_SB_FILE_EXPORT 選択したファイルからタグとファイル情報をテキストファイルとして出力します。
+_C_MNU_SB_FILE_FAVDIR デフォルトのディレクトリに変更します。
+_C_MNU_SB_FILE_FREEDBINDEX ローカル freedb インデックスを作成します。
+_C_MNU_SB_FILE_MOVE 選択したファイルを別のディレクトリに移動します。
+_C_MNU_SB_FILE_PLALL すべてのファイルからプレイリストを作成します
+_C_MNU_SB_FILE_PLAY 選択したファイルを既定のプログラムで開き再生します。
+_C_MNU_SB_FILE_PLAYLIST プレイリストファイルやキューシートファイルからファイルを参照します。
+_C_MNU_SB_FILE_PLSEL 選択したファイルからプレイリストを作成します。
+_C_MNU_SB_FILE_PROPERTIES 選択したファイルのプロパティを表示します。
+_C_MNU_SB_FILE_READ 選択したファイルのタグすべてを読み込みます
+_C_MNU_SB_FILE_REMOVE 選択したファイルからタグすべてを削除します。
+_C_MNU_SB_FILE_REMOVEFILE ファイルリストから選択したファイルを除去します。
+_C_MNU_SB_FILE_RENAME 選択したファイルの名前を変更します。
+_C_MNU_SB_FILE_SAVE 選択したファイルにタグすべてを保存します。
+_C_MNU_SB_FILE_SAVECONFIG 現在の構成ファイルすべてを 1 つのアーカイブファイルにまとめて保存します。
+_C_MNU_SB_HELP_ABOUT Mp3tag についての情報を表示します。
+_C_MNU_SB_HELP_CONTEXT クリックされたフィールド、メニュー、ウィンドウについてのコンテキストヘルプを表示
+_C_MNU_SB_HELP_DONATE Mp3tag の開発を助ける支援金の寄付をお待ちしています
+_C_MNU_SB_HELP_FINDER ヘルプの目次 (英語) を表示します。
+_C_MNU_SB_HELP_FIRSTSTEPS Mp3tag の短い紹介 (英語) を表示します。
+_C_MNU_SB_HELP_KEYBOARD キーボードショートカット (英語) のリストを表示します。
+_C_MNU_SB_HELP_SUPPORT Mp3tag フォーラム (英語) をブラウザで開きます
+_C_MNU_SB_HELP_UPGRADE Mp3tag の新しいバージョンがあるかどうか確認します。
+_C_MNU_SB_HELP_WWW Mp3tag ウェブサイト (英語) をブラウザで開きます
+_C_MNU_SB_UPDIR 上のディレクトリに移動
+_C_MNU_SB_VIEW_COLUMNS ファイルリストのカラムをカスタマイズできるダイアログを表示します。
+_C_MNU_SB_VIEW_FILTER ファイルリストをフィルタリングします。
+_C_MNU_SB_VIEW_ID3 タグ入力マスクを表示または非表示にします。
+_C_MNU_SB_VIEW_REFRESH ファイルリストを更新します。
+_C_MNU_SB_VIEW_TAGS タグを編集します。
+_C_MNU_SB_VIEW_TOOLBAR ツールバーを表示または非表示にします。
+_C_MNU_SB_WND_IDLE 待機中
+_C_MNU_SB_WND_MAXIMIZE ウィンドウ最大化します。
+_C_MNU_SB_WND_MINIMIZE ウィンドウをタスクバーに最小化します。
+_C_MNU_SB_WND_MOVE ウィンドウの位置を移動します。
+_C_MNU_SB_WND_RESTORE ウィンドウのサイズを元に戻します。
+_C_MNU_SB_WND_SIZE ウィンドウのサイズを変更します。
+_C_MULTILINE 複数行フィールド
+_C_OK OK(&O)
+_C_OPT_ACTIONGROUPS アクショングループ
+_C_OPT_ACTIONGROUPS_BTN_APPLY 適用(&A)
+_C_OPT_ACTIONGROUPS_SEL_EMPTY 有効なアクショングループがありません
+_C_OPT_ACTIONGROUPS_SEL_MULTI {1} 点のアクショングループが有効です
+_C_OPT_ACTIONGROUPS_SEL_SINGLE 1 点のアクショングループが有効です
+_C_OPT_ACTIONGROUPS_SORTBYNAME 名前でべ替え
+_C_OPT_ACTIONGROUPS_SORTBYSTATE 状態で並べ替え
+_C_OPT_ACTIONS アクション
+_C_OPT_ACTIONS_TYPE アクションタイプの選択
+_C_OPT_ADVANCED 高度な設定
+_C_OPT_ADVANCED_ID3V2LANG ID3v2 コメントに利用する言語コード (ISO-639-2 形式)
+_C_OPT_ADVANCED_ID3V2_REUSEUNMODIFIEDFRAMES 未変更の ID3v2 フレームを再利用
+_C_OPT_ADVANCED_LISTCHAPTERS 埋め込んだチャプタ情報を複数ファイルとしてリスト表示
+_C_OPT_ADVANCED_MATROSKAVIDEO Matroska 動画に推奨されるマッピングを使用
+_C_OPT_ADVANCED_MP4_REUSEUNMODIFIEDATOMS 未変更の MP4 atom を再利用
+_C_OPT_ADVANCED_MP4_WRITEMULTIDATA 複数の値に対して単一の MP4 atom を使用
+_C_OPT_ADVANCED_POPULARIMETER ID3v2 の評価用に POPULARIMETER 値を常に表示
+_C_OPT_APPEARANCE 表示
+_C_OPT_APPEARANCE_COLOR_DARK ダーク
+_C_OPT_APPEARANCE_COLOR_DEFAULT OS に合わせる
+_C_OPT_APPEARANCE_COLOR_LIGHT ライト
+_C_OPT_APPEARANCE_COLORMODE カラーモード
+_C_OPT_APPEARANCE_ICONS アイコン
+_C_OPT_APPEARANCE_ICONS_SET_DEFAULT 既定
+_C_OPT_APPEARANCE_ICONS_SET_ORIGINAL 独自
+_C_OPT_APPEARANCE_MINVERSION Windows 10 version 1809 以上が必要です。
+_C_OPT_APPEARANCE_TOOLBAR_SCALING ツールバーを拡大縮小
+_C_OPT_APPEARANCE_UI_SCALING UI を拡大縮小
+_C_OPT_CAPTION オプション
+_C_OPT_CDDB_CAPTION freedb
+_C_OPT_CDDB_CHK_USEPROXY プロクシを使用(&O)
+_C_OPT_CDDB_FRM_CDDB freedb サーバー
+_C_OPT_CDDB_FRM_LOCALPATH ローカル freedb パス(&L):
+_C_OPT_CDDB_FRM_PROXY プロクシ
+_C_OPT_CDDB_RD_FMT_UNIX UNIX フォーマット
+_C_OPT_CDDB_RD_FMT_WIN Windows フォーマット
+_C_OPT_CDDB_ST_ADDRESS アドレス(&A):
+_C_OPT_CDDB_ST_EMAIL メールアドレス(&E):
+_C_OPT_CDDB_ST_NAME 名前(&N):
+_C_OPT_CDDB_ST_PATH パス:
+_C_OPT_CDDB_ST_PORT ポート:
+_C_OPT_CDDB_ST_PROXYNAME プロクシ(&P):
+_C_OPT_CDDB_ST_PROXYPORT ポート(&R):
+_C_OPT_CDDB_ST_PWD パスワード(&W):
+_C_OPT_CDDB_ST_TIMEOUT タイムアウトまでの秒数(&I):
+_C_OPT_CDDB_ST_USERNAME ユーザー名(&U):
+_C_OPT_CDDB3_CAPTION ローカル freedb
+_C_OPT_CON_FRM_FTT ファイル名 - タグ(&F)
+_C_OPT_CON_FRM_TFF テキストファイル - タグ(&X)
+_C_OPT_CON_FRM_TTF タグ - テキストファイル(&T)
+_C_OPT_CON_ST_FNAME ファイル名の文字列規則もしくはファイル指定:
+_C_OPT_CON_ST_FS 文字列規則:
+_C_OPT_DIR ディレクトリ
+_C_OPT_DIR_COVER カバーディレクトリ:
+_C_OPT_DIR_STARTUP 初期ディレクトリ:
+_C_OPT_DIR_STARTUP_EMPTY 無指定
+_C_OPT_DIR_STARTUP_PREVIOUS 前回使用した場所
+_C_OPT_DIR_STARTUP_STANDARD お気に入り
+_C_OPT_FILES Files
+_C_OPT_FILES_FRM_READ Read Files
+_C_OPT_FILES_FRM_RENAME Rename Files from Tags
+_C_OPT_FILES_FRM_WRITE Write Files
+_C_OPT_FILES_ST_REPLACE_FOLDER_SEPARATOR Replace folder separator in tag values with:
+_C_OPT_EMPTY_HINT 以下のトピックを選んでください。
+_C_OPT_EXP_CAPTION テキストファイル出力
+_C_OPT_EXP_CHK_APPEND 上書きせずに追記する
+_C_OPT_EXP_CHK_WRITEBOM BOM を書き込む
+_C_OPT_EXP_FRM_EXPORT 構成を出力する形式
+_C_OPT_EXP_RD_TRACK トラック
+_C_OPT_EXP_ST_FNAME 以下のファイル名で出力:
+_C_OPT_EXP_ST_NAME 新しく出力された設定の名前
+_C_OPT_FIELDVALUES_CAPTION Field Values
+_C_OPT_FIELDVALUES_FIELDS Fields with custom values
+_C_OPT_FIELDVALUES_LABEL Custom field values
+_C_OPT_FMT_CASE 値の大文字・小文字変換
+_C_OPT_FMT_FRM_FTF ファイル名 - ファイル名
+_C_OPT_FMT_ST_BEGIN 次の文字で始まる / その後から始まる単語を対象:
+_C_OPT_FMT_ST_FNAME_NEW 新しいファイル名のパターン:
+_C_OPT_FMT_ST_FNAME_OLD 古いファイル名のパターン:
+_C_OPT_FMT2 値を置換
+_C_OPT_FMT2_CASE 大文字小文字を区別して比較
+_C_OPT_FMT2_COL_ORIGINAL 置換前の文字列
+_C_OPT_FMT2_COL_REPLACE 置換後の文字列
+_C_OPT_FMT2_ONLYWORDS 単語全体のみ
+_C_OPT_GEN_CAPTION 一般
+_C_OPT_GEN_CHK_AUTOSAVE 矢印キー/シングルクリックを使った時にタグを保存(&U)
+_C_OPT_GEN_CHK_FOLDERSTART このディレクトリから始める
+_C_OPT_GEN_CHK_GRID ファイルリストの表示 (□水平線なし/☑境界線/■グリッド)
+_C_OPT_GEN_CHK_JUMPONEDIT ファイルリストで編集中に自動で次のファイルを選択
+_C_OPT_GEN_CHK_KEEPFILETIME 編集したタグを保存する時に更新時刻を維持
+_C_OPT_GEN_CHK_KEEPMOVEDFILES ファイルを移動後もファイルリストに残す
+_C_OPT_GEN_CHK_MSG_ACTIONWARNINGS アクション使用時の警告
+_C_OPT_GEN_CHK_MSG_CHANGE 変更後
+_C_OPT_GEN_CHK_MSG_CUT タグを切り取る時
+_C_OPT_GEN_CHK_MSG_DEL 削除後
+_C_OPT_GEN_CHK_MSG_DELETEFILE ファイルを削除する時
+_C_OPT_GEN_CHK_MSG_EXPORT タグを出力する時
+_C_OPT_GEN_CHK_MSG_PASTE タグを貼り付ける時
+_C_OPT_GEN_CHK_MSG_REMOVETAGS タグを削除する時
+_C_OPT_GEN_CHK_MSG_SAVE 保存後
+_C_OPT_GEN_CHK_MSG_TSIMPORTCOVER カバーをインポートする時
+_C_OPT_GEN_CHK_MSG_UNSAVED 変更を保存していない時
+_C_OPT_GEN_CHK_PL プレイリストを自動的に作成(&P)
+_C_OPT_GEN_CHK_RELPL エントリーを作業ディレクトリと関連づける
+_C_OPT_GEN_CHK_AUTOCOMPLETE プルダウンボックス上でオートコンプリートを有効
+_C_OPT_GEN_CHK_SELECTFILES 自動的にファイルを選択
+_C_OPT_GEN_CHK_SHOWEXPLORERCONTEXTMENU Windows コンテキストメニューに表示
+_C_OPT_GEN_CHK_SORTNATURAL 自然な並べ替えを使用 (1,10,11,12,2,3,,,を防ぐ)
+_C_OPT_GEN_CHK_TITLESHOWFOLDERPATH 現在の作業ディレクトリをウィンドウタイトルに表示(&S)
+_C_OPT_GEN_FRM_GEN 一般
+_C_OPT_GEN_FRM_MSG メッセージの表示
+_C_OPT_GEN_FRM_PL プレイリストのファイル名(&F)
+_C_OPT_GEN_RD_PLALL すべてのファイルから
+_C_OPT_GEN_RD_PLSEL 選択したファイルから
+_C_OPT_GEN_ST_FAVDIR お気に入りのディレクトリ:
+_C_OPT_GEN2_CAPTION メッセージ
+_C_OPT_GENRES ユーザー定義のジャンル
+_C_OPT_GENRES_HIDESTANDARD ユーザー定義のジャンルのみ表示
+_C_OPT_GENRES_PREFEREXISTING タグパネルのリストにあるタグからジャンルを選択
+_C_OPT_ID3_CHK_ISO88591 UTF-16 の代わりに常に ISO-8859-1 タグを使用
+_C_OPT_ID3_CHK_LEADINGZEROS トラックナンバーを 0 埋めする (01, 02, ...)
+_C_OPT_ID3_CHK_LENGTHDEPENDEND ID3v1 が短すぎる場合のみ ID3v2 を使用
+_C_OPT_ID3_CHK_V1 ID3v1
+_C_OPT_ID3_CHK_V2 ID3v2
+_C_OPT_ID3_FRM_READ 読み込み
+_C_OPT_ID3_FRM_REMOVE 削除
+_C_OPT_ID3_FRM_WRITE 書き込み
+_C_OPT_LIB ライブラリ
+_C_OPT_LIB_CHK_ENABLE ライブラリを有効
+_C_OPT_LIB_CHK_RESTRICT 以下のディレクトリのみ有効
+_C_OPT_LIB_CLEANUP ライブラリを整理
+_C_OPT_MAPPING マッピング
+_C_OPT_MAPPING_FRM ユーザー定義フィールドマッピング (単方向紐づけ)
+_C_OPT_MAPPING_SOURCE 実際に書き込みまれる Mp3tag 定義フィールド
+_C_OPT_MAPPING_TARGET ユーザー定義フィールド
+_C_OPT_PLAYLIST_CAPTION プレイリスト
+_C_OPT_PLAYLIST_EXTENDED 拡張情報を書き込む
+_C_OPT_PLAYLIST_NOFOLDERS ディレクトリを作成しない
+_C_OPT_PLAYLIST_SHOWDLG 確認ダイアログを表示
+_C_OPT_PLAYLIST_WRITE_BOM m3u8 プレイリストを UTF-8 BOM 形式で書き出す 
+_C_OPT_TAG タグ
+_C_OPT_TAGS_COVER カバーファイル名の文字列規則:
+_C_OPT_TAGS_EXT 拡張タグ編集ウィンドウでタグに変更を加えた際 << >> をクリックで:
+_C_OPT_TAGS_FILEFILTER 読み込むファイルを以下に制限:
+_C_OPT_TAGS_MUSICBRAINZ_COVERSIZE MusicBrainz カバーの大きさ
+_C_OPT_TAGS_NOIMG ディレクトリにある最初の画像をカバーとして表示しない(&D)
+_C_OPT_TOOLS ツール
+_C_OPT_TOOLS_CHK_DEFAULT ダブルクリックで別のプログラムを使用:
+_C_OPT_TOOLS_CHK_MULTIPLEINSTANCES すべての選択したファイル
+_C_OPT_TOOLS_COL_PARAM パラメーター
+_C_OPT_TOOLS_COL_PATH パス
+_C_OPT_TOOLS_EDIT カスタマイズツール 名前とパスは必須
+_C_OPT_TOOLS_FRM_DEFAULT デフォルトツール
+_C_OPT_TOOLS_FRM_TOOLS ツール
+_C_PLAYLIST_GENERATOR プレイリスト作成ツール
+_C_PLAYLIST_GENERATOR_FORMAT プレイリストのファイル名に使用する文字列の書式:
+_C_PLAYLIST_GENERATOR_PARTITION ファイルを以下のもので区切る:
+_C_PLAYLIST_GENERATOR_PREVIEW プレビュー:
+_C_PLAYLIST_GENERATOR_STATUS_BUSY 生成しています...
+_C_PLAYLIST_GENERATOR_STATUS_ONE {1} 点のプレイリスト
+_C_PLAYLIST_GENERATOR_STATUS_MANY {1} 点のプレイリスト
+_C_OVERWRITE 上書きする(&W)
+_C_REMOVE 除去(&R)
+_C_RENAME ファイル名を変更(&R)
+_C_TEXT テキスト
+_C_TT_CDDB freedb...
+_C_TT_CDDBLOCAL freedb (ローカル)...
+_C_TT_CLOSE 閉じる
+_C_TT_DIR ディレクトリを変更...
+_C_TT_EDIT_REDO やり直し
+_C_TT_EDIT_REPEAT くり返し
+_C_TT_EDIT_UNDO アンドゥ
+_C_TT_EXPORT テキストファイルを出力
+_C_TT_FAVDIR お気に入りのディレクトリ
+_C_TT_FILE_ADD ディレクトリを追加...
+_C_TT_FILE_COPY コピー...
+_C_TT_FILE_DELETE 削除...
+_C_TT_FILE_MOVE 移動...
+_C_TT_FILE_PLAY 再生
+_C_TT_FILE_PROPERTIES プロパティ...
+_C_TT_FILE_RENAME ファイル名を変更
+_C_TT_FTF ファイル名 - ファイル名
+_C_TT_FTT ファイル名 - タグ
+_C_TT_HELP ヘルプの内容...
+_C_TT_OPT オプションダイアログ...
+_C_TT_PLALL すべてのファイルからプレイリストを作成
+_C_TT_PLSEL 選択したファイルからプレイリストを作成
+_C_TT_REFRESH ファイルリストの更新
+_C_TT_REMOVE タグを削除
+_C_TT_SAVE 保存
+_C_TT_TFF テキストファイル - タグ
+_C_TT_TTF タグ - ファイル名
+_C_TT_TTT タグ - タグ
+_C_TT_UPDIR 上へ
+_C_WIZARD_TRACKS 自動ナンバリングウィザード
+_C_WIZARD_TRACKS_BEGIN 開始するトラックナンバー:
+_C_WIZARD_TRACKS_DESC トラックナンバーとディスクナンバーを割り当てる
+_C_WIZARD_TRACKS_DISC_BEGIN 開始するディスクナンバー
+_C_WIZARD_TRACKS_DISC_LEADINGZEROS ディスクナンバーを 0 埋めする (01, 02,...)
+_C_WIZARD_TRACKS_DISC_SAVETOTAL ディスクナンバーの総数を保存
+_C_WIZARD_TRACKS_DISCNUMBER ディスクナンバー
+_C_WIZARD_TRACKS_NEXTDISC_FIELD 次の項目の変更時にディスクナンバーを変更
+_C_WIZARD_TRACKS_NEXTDISC_FOLDER ディレクトリの変更時にディスクナンバーを変更
+_C_WIZARD_TRACKS_RESETDISC_FIELD 交換時にディスクナンバーをリセット
+_C_WIZARD_TRACKS_RESETFOLDERS ディレクトリごとにカウンターをリセット
+_C_WIZARD_TRACKS_RESETTRACK_NEXTDISC 次のディスクでトラックナンバーをリセット
+_C_WIZARD_TRACKS_SAVETOTAL トラックの総数を保存
+_C_WIZARD_TRACKS_TRACKNUMBER トラックナンバー
+_M_ERR_CANCEL プロセスはキャンセルされました。
+_M_ERR_CDDB_CD 音楽 CD の読み込みエラー
+_M_ERR_CDDB_CONNECT サーバー接続エラー: {1}
+_M_ERR_CDDB_NOENTRY freedb ID {1} に合ったエントリーが何も見つかりませんでした。
+_M_ERR_CDDB_NOENTRYINLOCALBD freedb ID {1} に合ったエントリーがローカル freedb データベース '{2}' に何も見つかりませんでした。
+_M_ERR_CDDB_PARSER 照会した結果、何も見つかりませんでした。
+_M_ERR_CDDB_READ {1} からデータを読み込む時のエラー
+_M_ERR_CONFIGURATION 設定を読み込めませんでした。
+_M_ERR_COPY 選択したファイルをコピーできません。
+_M_ERR_DELETE 選択したファイルを削除できません。
+_M_ERR_FILECREATE ファイル \"{1}\" を作成できません。
+_M_ERR_FILEDELETE ファイル \"{1}\" を削除できません。
+_M_ERR_FILENAMEALREADYEXISTS ファイル名 \"{1}\" は既に存在します。
+_M_ERR_FILENAMEALREADYEXISTS2 ファイル \"{1}\" をスキップしました。
+_M_ERR_FILEOPABORTED 現在のディレクトリの内容は変更されました。\n\n現在のディレクトリを読み込み直しますか?
+_M_ERR_FILEOPEN ファイル \"{1}\" を開けません。
+_M_ERR_FILEREADONLY ファイル \"{1}\" は読み込み専用です。\n\nMp3tag がすべての読み込み専用ファイルの書き込み保護を無効にするようにしますか?
+_M_ERR_FOLDERCANNOTBEACCESSED アクセスエラー\n\nディレクトリ \"{1}\" にアクセスできません。
+_M_ERR_INVALID_FILENAME 有効なファイル名を指定してください。
+_M_ERR_INVALID_FTF_FS 文字列 \"{1}\" はファイル名への有効な文字列ではありません。
+_M_ERR_INVALID_TOKEN {1}:\n次の文字はファイル名には使用できません。\n\\ / : * ? \" < > |\n\n自動で書き換えますか?
+_M_ERR_MOVE 選択したファイルを移動できません。
+_M_ERR_ONLINE_NOTFOUND 残念ながら、あなたの検索基準に合ったエントリーは何も見つかりませんでした。
+_M_ERR_OPT_CDDB_NOADDRESS freedb サーバーのアドレスを入力してください。
+_M_ERR_OPT_CDDB_NOEMAIL あなたのメールアドレスを オプション > freedb > メールアドレス欄に入力してください。freedb サーバーへのアクセス記録としてに使用されます。
+_M_ERR_OPT_CDDB_NONAME 設定に有効な名前を入力してください。
+_M_ERR_OPT_CDDB_NOPORT freedb サーバーのポート番号を入力してください。
+_M_ERR_PARSELINE 行番号 {1} を解析できません。
+_M_ERR_PLAY ファイル \"{1}\" を再生できません。
+_M_ERR_READ_FILE ファイル \"{1}\" を読み込めません。
+_M_ERR_RENAME_FILE ファイル \"{1}\" の名前を \"{2}\" に変更できません。
+_M_ERR_RETRY 再試行しますか?
+_M_ERR_TL_NOTAGS \"{1}\" にマッチするエントリーがありません。
+_M_ERR_WRITE_FILE ファイル \"{1}\" に書き込めません。
+_M_ERR_YN \n\n続けますか?
+_M_LOG_FMT_FNAME {1} / {2} のファイルの名前が変更されました。
+_M_LOG_FMT_TAG {1} / {2} のタグがフォーマットされました。
+_M_LOG_FTF {1} / {2} のファイル名が変更されました。
+_M_LOG_FTT {1} / {2} のファイルからタグを取得しました。
+_M_LOG_PL_ALL プレイリスト \"{1}\" はこれらすべてのファイルから作成されました ({2})。
+_M_LOG_PL_SEL プレイリスト \"{1}\" はこれらの選択したファイルから作成されました ({2})。
+_M_LOG_REMOVE ファイル \"{1}\" からタグが削除されました。
+_M_LOG_REMOVED {1} / {2} のファイルからタグを削除しました。
+_M_LOG_REMOVED_UNSUPPORTED_FIELDS {2} ファイルの {1} 点から未サポートのフィールドを除去しました。
+_M_LOG_REMOVE_NOTAG ファイル \"{1}\" にはタグがありません。
+_M_LOG_SAVE ファイル \"{1}\" のタグを保存しました。
+_M_LOG_SAVED {1} / {2} のファイルのタグを保存しました。
+_M_LOG_TFF テキストファイル \"{1}\" からタグが取り出され、{3} のファイルのうち {2} にタグを保存しました。
+_M_LOG_TFF_S テキストファイル \"{1}\" からタグが取り出され、ファイルにタグを保存しました。
+_M_LOG_TTF {1} / {2} のファイルの名前を変更しました。
+_M_STAT_PLAY ファイル \"{1}\" を再生中...
+_M_STR_ACTION 操作
+_M_STR_ACTION_ADJUSTCOVER カバーを調整
+_M_STR_ACTION_ADJUSTCOVER_FORMAT 画像の形式
+_M_STR_ACTION_ADJUSTCOVER_FORMATKEEP 元画像と同じ
+_M_STR_ACTION_ADJUSTCOVER_QUALITY 画像の品質
+_M_STR_ACTION_ADJUSTCOVER_QUALITY_BEST 最高
+_M_STR_ACTION_ADJUSTCOVER_QUALITY_HIGH 高い
+_M_STR_ACTION_ADJUSTCOVER_QUALITY_LOW 低い
+_M_STR_ACTION_ADJUSTCOVER_QUALITY_MEDIUM 中間
+_M_STR_ACTION_ADJUSTCOVER_SCALINGMODE_CROPTOSQUARE 正方形に切り抜き
+_M_STR_ACTION_ADJUSTCOVER_SCALINGMODE_PROPORTIONAL 比例して拡大縮小
+_M_STR_ACTION_ADJUSTCOVER_SCALINGMODE_SCALETOSQUARE 正方形に拡大縮小
+_M_STR_ACTION_ADJUSTCOVER_SIZE 大きさ
+_M_STR_ACTION_ADJUSTCOVER_SIZEMODE_MAX 最大の大きさ
+_M_STR_ACTION_ADJUSTCOVER_SIZEMODE_MIN 最小の大きさ
+_M_STR_ACTION_CODEPAGE 値のコードページを変換
+_M_STR_ACTION_CODEPAGE_DESC コードページ
+_M_STR_ACTION_EXPORTCOVER カバーを出力
+_M_STR_ACTION_EXPORTCOVER_DUPES 同一カバーファイルの重複出力を許可
+_M_STR_ACTION_EXPORTCOVER_TYPES 選択したカバーの種類のみ出力
+_M_STR_ACTION_FORMAT 値をフォーマット (規則的に再定義)
+_M_STR_ACTION_GUESS 値の規則性を推測し他のフィールドの値とする
+_M_STR_ACTION_GUESSPATTERN 規則性の推測パターン
+_M_STR_ACTION_GUESSSOURCE 参照先
+_M_STR_ACTION_IMPORTCOVER カバーを入力
+_M_STR_ACTION_IMPORTCOVER_FS カバーファイル名の文字列規則もしくはファイル指定:
+_M_STR_ACTION_IMPORTCOVER_DELETE 既存のカバーを削除(&D)
+_M_STR_ACTION_IMPORTCOVER_TYPE カバーの種類:
+_M_STR_ACTION_IMPORTTEXT テキストファイルを入力
+_M_STR_ACTION_MERGEDUPLICATEFIELDS 指定した重複フィールドを統合
+_M_STR_ACTION_PLAYLIST プレイリストを作成
+_M_STR_ACTION_REGEXP 値を置換 (正規表現を使用)
+_M_STR_ACTION_REGEXP_EXP 置換前の文字列 (正規表現)
+_M_STR_ACTION_REGEXP_MATCH 置換後の文字列 (後方参照は \1, \2, \3...)
+_M_STR_ACTION_REMOVEDUPES 指定した重複フィールドを先頭以外をすべて削除
+_M_STR_ACTION_REMOVEDUPES_ONLYSAMECONTENT 同じ内容の重複フィールドのみ
+_M_STR_ACTION_REM 指定したフィールドを削除
+_M_STR_ACTION_REM_DESC 削除するフィールド (; で複数指定、カバーは PICTURE):
+_M_STR_ACTION_REM_EX 指定したフィールド以外のすべてのフィールドを削除
+_M_STR_ACTION_REM_EX_DESC 維持するフィールド (; で複数指定、カバーは PICTURE):
+_M_STR_ACTION_SETCOVERPROPERTIES カバーのプロパティを設定
+_M_STR_ACTION_SETCOVERPROPERTIES_DESC カバーの説明:
+_M_STR_ACTION_SETCOVERPROPERTIES_FILTER これに対する設定:
+_M_STR_ACTION_SETCOVERPROPERTIES_FILTER_ALL すべてのカバー
+_M_STR_ACTION_SETCOVERPROPERTIES_TYPE カバーの種類:
+_M_STR_ACTION_SPLITFIELDS 指定したフィールドを区切り文字で分割
+_M_STR_ACTIONGROUP_CHANGED アクショングループの構成が変更されました。\r\n\r\n変更を保存しますか?
+_M_STR_ACTIONGROUP_NAME アクショングループの名前
+_M_STR_ALBUM アルバム
+_M_STR_ALBUMARTIST アルバムアーティスト
+_M_STR_ALL_FILEDLGFILTER すべてのファイル (*.*)|*.*||
+_M_STR_ARTIST アーティスト
+_M_STR_AUTHOR 作者
+_M_STR_AUTOSIZECOLUMNS カラムの大きさを自動調整
+_M_STR_BACK < 戻る(&B)
+_M_STR_BROWSE_COPY コピー:
+_M_STR_BROWSE_MOVE 移動:
+_M_STR_BROWSE_TEXT 音楽ファイルを含むディレクトリを指定してください
+_M_STR_BYTES バイト
+_M_STR_CDDB_CD 音楽 CD を読み込む
+_M_STR_CDDB_CONNECT {1} に接続...
+_M_STR_CDDB_CONNECTED 接続しました。
+_M_STR_CDDB_IDXDB_ENTRIES データベースエントリーが作成されました。
+_M_STR_CDDB_RETRIEVE タイトル情報を取得
+_M_STR_COLUMNFILENAME ファイル名
+_M_STR_COLUMNPATH パス
+_M_STR_COLUMNUSEDCOLS 表示
+_M_STR_COMBO_HOLD < 維持 >
+_M_STR_COMBO_REMOVE < 空白 >
+_M_STR_COMBO_USER < 入力 >
+_M_STR_COMMENT コメント
+_M_STR_COMPOSER 作曲家
+_M_STR_CONFIGURE Configure...
+_M_STR_CONTEXT コンテキスト
+_M_STR_COPYOF {1} のコピー
+_M_STR_COVER カバー
+_M_STR_COVER_ADD 既存のカバーを保持しますか?
+_M_STR_COVER_CORRECTAR 正しいアスペクト比で表示
+_M_STR_COVER_SETDESC カバーの概要・説明(&D)...
+_M_STR_COVER_SETTYPE カバーの種類(&T)
+_M_STR_COVERVARIES カバーが異なります
+_M_STR_CUSTOMIZE カスタマイズ...
+_M_STR_CUSTOMLISTVALUES 独自のリスト値
+_M_STR_DAY 日
+_M_STR_DAYS 日(複数)
+_M_STR_DEFAULTVALUE デフォルト値
+_M_STR_DESCRIPTION 説明
+_M_STR_DISCID CDDB ID
+_M_STR_DISCOGS_OAUTH_PIN Discogs の認証コードを入力
+_M_STR_DISCNUMBER ディスクナンバー
+_M_STR_DONTSHOWAGAIN このメッセージを再表示しない
+_M_STR_ERR_CDDB_NOENTRYSELECTED エントリーを選んでください。
+_M_STR_EXPORT エクスポート...
+_M_STR_EXPORT_DELETE 出力した設定ファイル \"{1}\" を削除しますか?
+_M_STR_EXPORT_FILEDLGTITLE 出力ファイルの選択
+_M_STR_EXPORT_MULTIPLE 各ディレクトリ毎に 1 つのファイル
+_M_STR_EXPORT_PARTITION Create one output file per:
+_M_STR_EXPORT_SHOWEXPORTFILE \n\n今出力ファイルを表示しますか?
+_M_STR_EXP_MSG 出力されたファイル {2} に関する情報がファイル '{1}' に書き込まれました。
+_M_STR_FIELD フィールド(&I):
+_M_STR_FIELDSIZE 入力フィールドのサイズ
+_M_STR_FIELDTYPE 形式
+_M_STR_FIELDROWS 行数
+_M_STR_FILE ファイル
+_M_STR_FILEDELETE 本当にすべての選択したファイルを削除してもよろしいですか?
+_M_STR_FILEMODIFIED 更新日時
+_M_STR_FILESIZE サイズ
+_M_STR_FILTER フィルタ(&R):
+_M_STR_FMT_CAPITAL 大文字と小文字を混在(例外設定可)
+_M_STR_FMT_HIGH すべて大文字
+_M_STR_FMT_LOW すべて小文字
+_M_STR_FMT_SENTENCE 文章体(例外設定可)
+_M_STR_FREEDBCREATEINDEX ローカル freedb インデックスデータベースを作成しますか?\n\nこれには少し時間がかかります。
+_M_STR_FREEDB_SEARCH freedb ウェブ検索
+_M_STR_GENRE ジャンル
+_M_STR_GENRES ジャンル
+_M_STR_HIDE 非表示(&I)
+_M_STR_IMPORT インポート...
+_M_STR_ITEMALREADYEXISTS 同じ名前のファイルが存在します。上書きしますか?
+_M_STR_LANGUAGE 言語
+_M_STR_M3U_FILEDLGFILTER サポート形式 (*.m3u; *.m3u8; *.cue)|*.m3u; *.m3u8; *.cue||
+_M_STR_MANAGE 管理...
+_M_STR_MANAGEHISTORY 履歴を管理
+_M_STR_METADATA メタデータ(&M)
+_M_STR_MOVEDOWN 下に移動(&V)
+_M_STR_MOVEUP 上に移動(&P)
+_M_STR_MPEGBITRATE ビットレート
+_M_STR_MPEGFREQUENCY サンプルレート
+_M_STR_MPEGLENGTH 曲の長さ
+_M_STR_MPEGMODE チャンネル
+_M_STR_MPEGVERSION コーデック
+_M_STR_MSGCUT 本当に選択したファイルからタグを削除して、クリップボードにタグをコピーしますか?
+_M_STR_MSGPASTE 本当にクリップボードの内容を、選択したファイルの新しいタグとして貼り付けますか?
+_M_STR_MSGREMOVE 本当に選択したファイルからタグすべてを削除してもよろしいですか?
+_M_STR_NAME 名前(&A)
+_M_STR_NETWORKING ネットワーク
+_M_STR_NEXT 次へ(&N) >
+_M_STR_NOACTION アクション無し
+_M_STR_NOACTIONENABLED この機能を使うにはチェックマークで少なくとも 1 つのアクションを有効にしてください。
+_M_STR_NOICON No Icon
+_M_STR_NUMERIC 数字を扱う (右揃え利用) (&M)
+_M_STR_OPT_CDDB_BROWSE_LOCALPATH ローカル freedb サーバーが使用する作業ディレクトリを指定してください。
+_M_STR_OPT_CDDB_PROCEED すべてのサーバーを削除します。\n\n続けますか?\n
+_M_STR_OPTIMIZEFLAC FLAC のデータ構造を最適化
+_M_STR_OPTIMIZEMP4 MP4 のデータ構造を最適化
+_M_STR_OPTS_ALWAYS 確認せず常に自動保存する
+_M_STR_OPTS_ASK 保存するかどうか毎回確認する
+_M_STR_OPTS_NEVER 確認せず常に自動保存しない (編集は反映されず破棄される)
+_M_STR_PLNAME プレイリスト - ファイル名
+_M_STR_PL_CONFIRM この名前でプレイリストを作成
+_M_STR_PL_SAVEFILTER プレイリストファイル (*.m3u)|*.m3u|Unicodeプレイリストファイル (*.m3u8)|*.m3u8||
+_M_STR_PREFERTAGVALUES タグパネルのリスト内にあるタグから値を選択
+_M_STR_PRESET_SELECTION 選択したプリセットを作成(&P)...
+_M_STR_PRESETS プリセット(&P)
+_M_STR_PREVIEW プレビュー
+_M_STR_PREVIEW_COVER Co&ver
+_M_STR_PROPERTIES {1} のプロパティ
+_M_STR_QUICK クイック(&Q)
+_M_STR_RECURSE サブディレクトリ以下も含む
+_M_STR_RESET リセット
+_M_STR_REST その他
+_M_STR_SAVE_NOT < 関連無し >
+_M_STR_SAVECONFIG ファイル '{1}' に設定を保存しました。\n\n設定を再構築する際は \"{2}\" に解凍してください。
+_M_STR_SAVECONFIG_FILEDLGFILTER アーカイブ (*.zip)|*.zip||
+_M_STR_SAVECONFIG_FILEDLGTITLE 設定を保存...
+_M_STR_SAVEIMAGE タグに画像を保存
+_M_STR_SAVEIMAGEDIRECTORY 画像をハードディスクに保存
+_M_STR_SAVESELECTION 選択状況を保存...
+_M_STR_SB_ABORTED 中断されました。
+_M_STR_SB_ACTION ファイルにアクションを適用中... {1} / {2}
+_M_STR_SB_CLEANUPDATABASE {1} / {2} を処理中...({3} 消去完了)
+_M_STR_SB_CLEANUPDATABASE_BINARIES 不要なバイナリデータを消去
+_M_STR_SB_CLEANUPDATABASE_COVERS 不要なカバーデータを消去
+_M_STR_SB_CLEANUPDATABASE_NONLIBFILES 不要な非ライブラリデータを消去
+_M_STR_SB_EXPORTTAGS タグデータを出力中... {1} / {2}
+_M_STR_SB_FILTER フィルタリング...
+_M_STR_SB_LOADTAGS タグ情報を読み込み中... {1} / {2}
+_M_STR_SB_READDIRECTORY ディレクトリを読み込み中
+_M_STR_SB_REMOVETAGS タグ情報を削除中... {1} / {2}
+_M_STR_SB_RENAMEFILES ファイル名を変更中... {1} / {2}
+_M_STR_SB_WRITETAGS タグデータを書き込み中... {1} / {2}
+_M_STR_SHOWCHOOSEDLG 選択ダイアログを表示
+_M_STR_SEARCHBY 検索条件:
+_M_STR_SEARCHTEXT テキスト:
+_M_STR_SEPARATOR 区切り文字列(/,-、・など)
+_M_STR_SHOW 表示(&W)
+_M_STR_SIZE_FULL 特大
+_M_STR_SIZE_LARGE 極大
+_M_STR_SIZE_LARGER 大
+_M_STR_SIZE_MEDIUM 中
+_M_STR_SIZE_NORMAL 通常
+_M_STR_SIZE_SMALLER 小
+_M_STR_SIZE_SMALL 極小
+_M_STR_SIZE_TINY 超極小
+_M_STR_SNA タスクバー
+_M_STR_SNA_SHOW 常にタスクバーにアイコンを表示
+_M_STR_SNA_SHOWMIN タスクバーに最小化
+_M_STR_STRIPCHAPTERSMP4 Nero 形式のチャプター情報を除去
+_M_STR_TAG_COPIED {1} ファイルのタグをクリップボードにコピーしました。
+_M_STR_TAG2 タグ
+_M_STR_TAGFIELDS_REMOVE 左のフィールド1つを削除
+_M_STR_TAGFIELDS_REMOVEALL 左のフィールドすべてを削除...
+_M_STR_TAGFIELDS_REMOVEALLMSG 本当に左のフィールドすべてを削除してもよろしいですか?
+_M_STR_TAGFIELDS_RESET 左のフィールドを初期状態にリセット...
+_M_STR_TAGFIELDS_RESETMSG 本当に左のフィールドすべてを初期状態にリセットしてもよろしいですか?
+_M_STR_TAGPANEL タグパネル
+_M_STR_TAGPANEL_COVER カバーを表示
+_M_STR_TAGPANEL_DIRECTORY ディレクトリスイッチャーを表示
+_M_STR_TAGPANEL_DUPLICATEFIELD {1} は既に別のフィールドで使用されており、複数回追加できません。
+_M_STR_TAGLIST_FILEDLGFILTER テキストファイル ({1})
+_M_STR_TAGLIST_FILEDLGTITLE テキストファイルを選択
+_M_STR_TAGSOURCES タグを取得
+_M_STR_TAGSOURCES_STATUS_METADATA Retrieving metadata from {1}
+_M_STR_TAGSOURCES_STATUS_SEARCH Retrieving search results from {1}
+_M_STR_TAGTYPES_REMOVE_CAPTION 削除するタグの種類
+_M_STR_TAGTYPES_REMOVE_MENU 削除するタグの種類(&R)...
+_M_STR_TAGTYPES_REMOVE_MSG 以下の種類のタグを削除してもよろしいですか?
+_M_STR_TAGTYPES_REMOVE_MSG_BTN 確認せずに削除(&R)
+_M_STR_TAGTYPES_REMOVE_MSG_WARN タグには、元の音量を復元するために必要な音量正規化データ (例: MP3GAIN_UNDO) が含まれている場合があります。
+_M_STR_THISALBUMON {1} にあるアルバム
+_M_STR_TITLE タイトル
+_M_STR_TOOLBAR_COMMAND_CAPTION ツールバーの項目を変更
+_M_STR_TOOLBAR_COMMAND_MNU_CHANGEICON アイコンを変更...
+_M_STR_TOOLBAR_COMMAND_MNU_USEDEFAULTICON 既定のアイコンを使う
+_M_STR_TOOLBAR_COMMAND_SEPARATOR 区切り
+_M_STR_TOOLBAR_COMMAND_SPACER Spacer
+_M_STR_TOOLBAR_CUSTOMIZE_CAPTION ツールバーをカスタマイズ...
+_M_STR_TOOLTIP ツールチップ:
+_M_STR_TRYAGAIN もう一度試しますか?
+_M_STR_TTF タグ - ファイル名
+_M_STR_UNSAVED 変更を保存しますか?
+_M_STR_UNSUPPORTED_FIELDS_REMOVE_MENU 未サポートのフィールドを削除する
+_M_STR_UNSUPPORTED_FIELDS_REMOVE_MSG 未サポートのフィールドを永久に削除しますか?
+_M_STR_UNSUPPORTED_FIELDS_REMOVE_STATUS 未サポートのフィールドを削除中です... {1} / {2}
+_M_STR_UPDATE_FRM アップデート
+_M_STR_UPDATE_OPT_CHECK 起動時にアップデートを確認
+_M_STR_UPDATE_OPT_CHECK_BETA 開発 (ベータ) 版を含める
+_M_STR_UPDATE_OPT_CHECK_RELEASENOTES 新しいバージョンのリリースノートを表示
+_M_STR_UPDATEAVAILABLE 新しいバージョンの Mp3tag {1} が利用可能です。\n\n今すぐ {2} からダウンロードしますか?
+_M_STR_UPDATENOTAVAILABLE 最新版 {1} を使用しています。\n\n更新はありません。
+_M_STR_URL https://www.mp3tag.de/en/download.html
+_M_STR_UTILS ユーティリティ(&S)
+_M_STR_VALUE 値(&L)
+_M_STR_VERSION バージョン
+_M_STR_YEAR 年
+_M_TP_CDDB_LOCALPATH ローカル freedb ディレクトリを指定
+_M_TP_CDDB_SITES インターネットを通じた現在の freedb サーバーのリスト
+_M_TP_CVR_CLIPBOARD カバーを貼り付け(&P)
+_M_TP_CVR_CLIPBOARD_COPY カバーをコピー
+_M_TP_CVR_CLIPBOARD_CUT カバーを切り取り(&C)
+_M_TP_CVR_DEL カバーを削除(&R)
+_M_TP_CVR_NEW カバーを追加(&A)...
+_M_TP_CVR_SAVE カバーを保存(&E)...
+_M_TP_DUPLICATE 複製
+_M_TP_EXP_DEL 削除(&D)
+_M_TP_EXP_EDIT 編集
+_M_TP_EXP_FILE 出力ファイルを選択
+_M_TP_EXP_HLP クイックヘルプを表示
+_M_TP_EXP_LOAD 設定を読み込み...
+_M_TP_EXP_NEW 新規作成(&N)
+_M_TP_EXP_SAVE 設定を保存...
+_M_TP_GEN_DIR ディレクトリを選択
+_M_TP_TAG_DEL フィールドを削除
+_M_TP_TAG_EDIT フィールドを編集...
+_M_TP_TAG_NEW フィールドを追加...
+_M_TS_ADDINFO 追加の情報(&D)
+_M_TS_MULTIPLEVALUES 複数の値
+_M_TS_RELEASE リリース(&R)
+_M_TS_TRACKS トラック(&T)
+_M_UNDO_CANNOTREDO {1}をやり直しできません 
+_M_UNDO_CANNOTUNDO {1}をアンドゥできません
+_M_UNDO_CDDB freedb
+_M_UNDO_DIRECTORYCREATE ディレクトリを作成
+_M_UNDO_DIRECTORYMOVE ディレクトリを移動
+_M_UNDO_FORMAT フォーマット
+_M_UNDO_FTF ファイル名 - ファイル名
+_M_UNDO_FTT ファイル名 - タグ
+_M_UNDO_REMOVEFILE ファイルを削除
+_M_UNDO_RENAME ファイル名を変更
+_M_UNDO_TAGCHANGE タグを変更
+_M_UNDO_TAGREMOVE タグを削除
+_M_UNDO_TAGSAVE タグを保存
+_M_UNDO_TFF テキストファイル - タグ
+_M_UNDO_TTF タグ - ファイル名

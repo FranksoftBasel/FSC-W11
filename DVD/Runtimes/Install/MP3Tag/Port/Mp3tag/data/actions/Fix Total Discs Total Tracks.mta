@@ -1,0 +1,10 @@
+﻿[#0]
+T=5
+F=TRACKTOTAL
+1=$if(%TOTALTRACKS%,%TRACK%'/'%TOTALTRACKS%,%TRACK%)
+
+[#1]
+T=5
+F=TRACKTOTAL
+1=%_total_files%
+

@@ -1,0 +1,19 @@
+﻿[#0]
+T=5
+F=_FILENAME
+1=%Track%. %Title%
+
+[#1]
+T=15
+F=Gen URL
+1=00. %artist% - %album%.m3u8
+2=0
+3=0
+
+[#2]
+T=15
+F=Gen Playlist
+1=00. %artist% - %album%.m3u8
+2=0
+3=0
+

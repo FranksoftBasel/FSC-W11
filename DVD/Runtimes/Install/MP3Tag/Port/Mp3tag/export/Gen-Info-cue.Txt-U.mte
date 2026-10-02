@@ -1,0 +1,14 @@
+
+------------------------------------------------------------------------------------
+                       Tracklisting
+------------------------------------------------------------------------------------
+
+$loop(%fieldname%)$num(%track%,2). (%_length%) %artist% - %title%
+$loopend()
+
+Total Tracks....... : %_max_counter%
+Playing Time........: %_total_time%
+
+$if(%NOTES%,NOTES............ : %NOTES%,)
+
+NFO generated ......: %_date%

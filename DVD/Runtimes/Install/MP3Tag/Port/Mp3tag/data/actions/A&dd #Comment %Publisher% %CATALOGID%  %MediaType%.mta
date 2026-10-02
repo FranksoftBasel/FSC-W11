@@ -1,0 +1,5 @@
+﻿[#0]
+T=5
+F=COMMENT
+1=$if(%PUBLISHER%,%PUBLISHER%,)$if(%PUBLISHER%, | ,)$if(%CATALOGNUMBER%,%CATALOGNUMBER%,)$if(%CATALOGNUMBER%, | ,)$if(%mediatype%,%mediatype%,)$if(%NOTES%, | ,)$if(%HIRESINFO_FS1%,%HIRESINFO_FS1%,)
+

@@ -1,0 +1,7 @@
+﻿[#0]
+T=15
+F=000 Export_LogTag
+1=%_folderpath%\\%_filename%.log
+2=0
+3=0
+

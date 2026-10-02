@@ -1,0 +1,2 @@
+$filename(txt,utf-8)$loop(%_path%)%LOG%
+$loopend()

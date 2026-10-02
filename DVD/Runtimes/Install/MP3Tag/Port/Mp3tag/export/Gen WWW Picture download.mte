@@ -1,0 +1,6 @@
+$filename(GDL.cmd,ansi)set wget=C:\Windows\System32\cmd.exe
+$if(%www%,set wwwcmd=%www%,)
+$loop(%_folderpath%,1)PUSHD "%_folderpath%"
+$if(%www%,'%wget% /c Start chrome --headless --disable-gpu --screenshot="%cd%\About.png" %wwwcmd% --hide-scrollbars --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36" --user-data-dir="%LOCALAPPDATA%\Google\Chrome\User Data" --force-max-texture-size --force-device-scale-factor=2 --window-size=725,1200' %wwwcmd%,)
+$if(%www%,'del %0',)
+$loopend()

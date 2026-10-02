@@ -1,0 +1,26 @@
+$filename(txt,ansi)---------------------------------------------------------------------
+  %artist% - %album%
+---------------------------------------------------------------------
+
+Artist............. : %artist%
+Album.............. : %album%
+Label.............. : %PUBLISHER%
+Label ID........... : %CATALOGNUMBER%
+
+Format............. : %MEDIATYPE%
+Country............ : %Country%
+Year............... : %year%
+Released........... : %DISCOGS_DATE%
+Genre.............. : %genre%
+
+Playing Time....... : %_total_time%
+Total Size......... : %_total_size%
+
+$if($eql(%_codec%,Free Lossless Audio Codec),Codec.............. : %CODEC%,)$if($eql(%_codec%,'MPEG 1 Layer III'),Codec.............. : MP3 (%_tool%),)
+Sample Rate........ : $replace(%_samplerate%,'32000','32','44100','44,1','48000','48','96000','96','192000','192') kHz
+$if(%_BITSPERSAMPLE%,Bit Rate........... : %_BITSPERSAMPLE% Bit,)
+Filetype........... : .%_extension%
+$if(%NOTES%,Notes.............. : %NOTES%,)
+$if(%comment%,Comment............ : %comment%,)
+$if(%www%,URL 01............. : %www%,)
+$if(%wwwArtist%,URL 02............. : %wwwArtist%,)

@@ -1,0 +1,2 @@
+$filename($replace(%_folderpath%,\%_directory%,)$if2(%artist% - %album% - %_directory%,%album%).m3u8)$loop(%_folderpath%)$loop(%_filename_ext%)%_filename_rel%
+$loopend()$loop(%_filename_ext%)$loopend()$loopend()

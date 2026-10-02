@@ -1,0 +1,39 @@
+﻿[#0]
+T=2
+F=CODEC
+1=MPEG 1 Layer III 
+2=MP3 
+3=0|0
+
+[#1]
+T=5
+F=CODEC
+1=$if($eql(%_extension%,'mp3'),MP3 %_tool%,)$if($eql(%_extension%,'flac'),%_tool%,)
+
+[#2]
+T=5
+F=BITSPERSAMPLE
+1=%_bitspersample%
+
+[#3]
+T=5
+F=BITRATE
+1=$if($eql(%_extension%,'mp3'),%_BITRATE%,)$if($eql(%_extension%,'flac'),,)
+
+[#4]
+T=5
+F=SAMPLERATE
+1=$replace(%_samplerate%,'32000','32','44100','44,1','48000','48','96000','96','192000','192') kHz
+
+[#5]
+T=5
+F=HIRESINFO_FS1
+1=$if($eql(%BITSPERSAMPLE%,'24'),'Hi-Res' %SAMPLERATE%/%bitspersample% Bit,)
+
+[#6]
+T=2
+F=CODEC
+1=reference lib
+2=
+3=0|0
+

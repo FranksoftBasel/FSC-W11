@@ -1,0 +1,94 @@
+$filename(%Artist% - %Album%.html)<html>
+<head>
+<title>%Artist% - %Album%</title>
+<style type="text/css"><!--
+BODY { background: #404142; color: white; FONT-FAMILY: Verdana,Arial; FONT-SIZE: 9pt; }
+.table1 { background: #7B8279; FONT-SIZE: 10pt; color: white; FONT-FAMILY: Tahoma,Verdana,Arial; }
+.table2 { background: #2C2D2E; FONT-SIZE: 10pt; color: #B9C2C4; FONT-FAMILY: Tahoma,Verdana,Arial; }
+.table3 { background: #111112; FONT-SIZE: 10pt; color: #B9C2C4; FONT-FAMILY: Tahoma,Verdana,Arial; }
+a:link, a:visited, a:active { text-decoration: none;color: #000; }
+a:hover { text-decoration: underline;color: #B9C2C4; }
+a img (border:NONE;)
+--></style>
+</head>
+<body>
+<div align="center">
+<table class="table1" width="80%%" border="0" cellspacing="1" cellpadding="2">
+<tr>
+<th align="left" rowspan="13" width="30%%"><a href="folder.jpg"><img src="folder.jpg" width="200" alt="No Cover!"></a></th>
+<td align="right">Artist:</td>
+<td align="left">%artist%</td>
+</tr><tr>
+<td align="right">Album:</td>
+<td align="left">%album%</td>
+</tr><tr>
+<td align="right">Genre:</td>
+<td align="left">%genre% </td>
+</tr><tr>
+
+<td align="right">Label:</td>
+<td align="left">%PUBLISHER%</td>
+</tr><tr>
+
+<td align="right">Label ID:</td>
+<td align="left">%CATALOGID%</td>
+</tr><tr>
+
+<td align="right">Released:</td>
+<td align="left">%DISCOGS_DATE%</td>
+</tr><tr>
+
+<td align="right">Type:</td>
+<td align="left">%MEDIATYPE%</td>
+</tr><tr>
+
+<td align="right">Country:</td>
+<td align="left">%ISRC%</td>
+</tr><tr>
+
+<td align="right">Year:</td>
+<td align="left">%year% </td>
+</tr><tr>
+
+<td align="right">Codec:</td>
+<td align="left">%_codec%</td>
+</tr><tr>
+
+<td align="right">Settings:</td>
+<td align="left">%_bitrate% kbps %_vbr% / %_samplerate% khz / %_mode%</td>
+</tr><tr>
+<td align="right">Written Tags:</td>
+<td align="left">%_tag% </td>
+</tr><tr>
+<td align="right">Total Size:</td>
+<td align="left">%_total_size%</td>
+</tr><tr>
+<td align="right">Total Tracks:</td>
+<td align="left">%_total_files%</td>
+</tr><tr>
+<td align="right">Total Length:</td>
+<td align="left">%_total_time%</td>
+</tr><tr>
+
+</table><br>
+
+<table class="table1" width="98%%" border="0" cellspacing="1" cellpadding="1">
+$loop(%disc%)<tr><td class="table1" align="center">-</td>
+<td class="table1" align="left">Disc %_counter% || %_total_size% | %_total_time% | %_total_files% Files</td></tr>
+$loop(%_filename_ext%)<tr>
+<td class="table$if($odd(%_counter%),2,3)" align="center" width="3%%">$num(%_counter%,2)</td>
+<td class="table$if($odd(%_counter%),2,3)" align="left" width="37%%">$replace(%artist% - %track% - ,-  -,-)%title%</td>
+<td class="table$if($odd(%_counter%),2,3)" align="center" width="12%%">%_length%</td>
+<td class="table$if($odd(%_counter%),2,3)" align="center" width="12%%">%_file_size%</td>
+<td class="table$if($odd(%_counter%),2,3)" align="center" width="12%%">%_bitrate%kbps %_vbr%</td>
+<td class="table$if($odd(%_counter%),2,3)" align="center" width="12%%">%_samplerate%khz</td>
+<td class="table$if($odd(%_counter%),2,3)" align="center" width="12%%">%_mode%</td>
+</tr>$loopend()$loopend()
+</table><br>
+<table class="table1" width="80%%" border="0" cellspacing="1" cellpadding="2">
+<tr>
+</tr>
+</table>
+</div>
+</body>
+</html>

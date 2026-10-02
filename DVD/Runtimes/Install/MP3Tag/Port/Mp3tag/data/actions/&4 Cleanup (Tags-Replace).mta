@@ -1,0 +1,1560 @@
+﻿[#0]
+T=5
+1=$if2(%DISCOGS_CATALOG%,%CATALOGNUMBER%)
+F=CATALOGNUMBER
+
+[#1]
+T=5
+1=$if2(%CATALOGID%,%CATALOGNUMBER%)
+F=CATALOGNUMBER
+
+[#2]
+T=5
+1=$if($eql($regexp(%catalognumber%,'(.*?), (.*)',$1),$regexp(%catalognumber%,'(.*), (.*)',$2)),$regexp(%catalognumber%,'(.*?), (.*)',$1),%catalognumber%)
+F=CATALOGNUMBER
+
+[#3]
+T=9
+F=ENCODED-BY;ENCODERSETTINGS;COMPILATION;CREDITS;P.M.E.D.I.A;;PROVIDER;RELEASECOUNTRY;WORK;TAGGED BY:;MOOD;TOTALTRACKS;CATALOG;CATALOGID;LOCATION;SOURCE;DESCRIPTION;ITUNESACCOUNT;ITUNNORM;ITUNSMPB;ITUNESADVISORY;COPYRIGHT;ALBUMARTIST;url;ALBUM ARTIST;ALBUMARTISTSORT;ALBUMSORT;ALBUMARTISTSORT;ITUNMOVI;ITUNESACCOUNT;DESCRIPTION;TITLESORT;STYLE;INITIALKEY;CONTENTGROUP;CONDUCTOR;VGMDB ALBUM URL;RELEASER;GRACENOTEEXTDATA;GRACENOTEFILEID;MCN;ARTISTSORT;ITUNESALBUMID;ITUNESARTISTID;ITUNESCATALOGID;ITUNESCOMPOSERID;ITUNESCOUNTRYID;LABELNO;DISCOGS_CATALOG;CUESHEET
+
+[#4]
+T=5
+1=$if($eql(%_extension%,flac),,)$if($eql(%_extension%,wav),,)$if($eql(%_extension%,mp3),%_bitrate%,)
+F=BITRATE
+
+[#5]
+T=5
+1=$if2(%DISCOGS_DATE%,%YEAR%)
+F=DISCOGS_DATE
+
+[#6]
+T=5
+1=$if(%DISCOGS_RELEASE_ID%,'https://www.discogs.com/release/'%DISCOGS_RELEASE_ID%,)
+F=WWW
+
+[#7]
+T=2
+F=TRACK
+1=Featuring
+2=(Feat.
+3=0|0
+
+[#8]
+T=2
+F=TRACK
+1=featuring
+2=(Feat.
+3=0|0
+
+[#9]
+T=2
+F=TITLE
+1=\u201c
+2=
+3=0|0
+
+[#10]
+T=2
+F=ALBUM
+1= (Original Score From The HBO Original Series)
+2= (TV)
+3=0|0
+
+[#11]
+T=2
+F=ALBUM
+1= (Prime Video Original Series)
+2=
+3=0|0
+
+[#12]
+T=2
+F=TITLE
+1=\u2013
+2=-
+3=0|0
+
+[#13]
+T=2
+F=TITLE
+1=\u201d
+2=
+3=0|0
+
+[#14]
+T=2
+F=TITLE
+1=\u201c
+2=
+3=0|0
+
+[#15]
+T=2
+F=TITLE
+1= / 
+2= - 
+3=0|0
+
+[#16]
+T=2
+F=TITLE
+1=/
+2= & 
+3=0|0
+
+[#17]
+T=2
+F=ALBUM
+1=- The Complete Motion Picture Score
+2=(Complete)
+3=0|0
+
+[#18]
+T=2
+F=TITLE
+1=\uff0f
+2= & 
+3=0|0
+
+[#19]
+T=2
+F=TITLE
+1=\uff5e
+2=-
+3=0|0
+
+[#20]
+T=2
+F=TITLE
+1=? \u003d 
+2=
+3=0|0
+
+[#21]
+T=2
+F=TITLE
+1=\u2018
+2='
+3=0|0
+
+[#22]
+T=2
+F=TITLE
+1=\u2019
+2='
+3=0|0
+
+[#23]
+T=2
+F=TITLE
+1=?
+2=
+3=0|0
+
+[#24]
+T=2
+F=ARTIST
+1= (2)
+2=
+3=0|0
+
+[#25]
+T=2
+F=ARTIST
+1=\u2013
+2=-
+3=0|0
+
+[#26]
+T=2
+F=ARTIST
+1= (3)
+2=
+3=0|0
+
+[#27]
+T=2
+F=ARTIST
+1= (4)
+2=
+3=0|0
+
+[#28]
+T=2
+F=ARTIST
+1= (5)
+2=
+3=0|0
+
+[#29]
+T=2
+F=ARTIST
+1= (6)
+2=
+3=0|0
+
+[#30]
+T=2
+F=ARTIST
+1= (7)
+2=
+3=0|0
+
+[#31]
+T=2
+F=ARTIST
+1= (8)
+2=
+3=0|0
+
+[#32]
+T=2
+F=ARTIST
+1= (9)
+2=
+3=0|0
+
+[#33]
+T=2
+F=ARTIST
+1= (10)
+2=
+3=0|0
+
+[#34]
+T=2
+F=ARTIST
+1= (11)
+2=
+3=0|0
+
+[#35]
+T=2
+F=ARTIST
+1= (12)
+2=
+3=0|0
+
+[#36]
+T=2
+F=ARTIST
+1= (13)
+2=
+3=0|0
+
+[#37]
+T=2
+F=ARTIST
+1= (14)
+2=
+3=0|0
+
+[#38]
+T=2
+F=ARTIST
+1= (15)
+2=
+3=0|0
+
+[#39]
+T=2
+F=ARTIST
+1= (17)
+2=
+3=0|0
+
+[#40]
+T=2
+F=ARTIST
+1=? \u003d 
+2=
+3=0|0
+
+[#41]
+T=2
+F=ARTIST
+1= \u003d 
+2=
+3=0|0
+
+[#42]
+T=2
+F=ARTIST
+1= (1)
+2=
+3=0|0
+
+[#43]
+T=2
+F=ARTIST
+1= (????)
+2=
+3=0|0
+
+[#44]
+T=2
+F=ARTIST
+1=Featuring
+2=(Feat.
+3=0|0
+
+[#45]
+T=2
+F=ARTIST
+1= ()
+2=
+3=0|0
+
+[#46]
+T=2
+F=ARTIST
+1=/
+2= & 
+3=0|0
+
+[#47]
+T=2
+F=ALBUM
+1=(Television Soundtrack)
+2=(TV)
+3=0|0
+
+[#48]
+T=2
+F=ALBUM
+1= (Music From The Original Motion Picture Score)
+2=
+3=0|0
+
+[#49]
+T=2
+F=ALBUM
+1= (Motion Picture Score)
+2=
+3=0|0
+
+[#50]
+T=2
+F=ALBUM
+1= (Expanded Original  Soundtrack)
+2= (Expanded)
+3=0|0
+
+[#51]
+T=2
+F=ALBUM
+1= (Original Score From The HBO Motion Picture)
+2=
+3=0|0
+
+[#52]
+T=2
+F=ALBUM
+1= (Motion Picture Score)
+2=
+3=0|0
+
+[#53]
+T=2
+F=ALBUM
+1= (Music From The Dimension Motion Picture)
+2=
+3=0|0
+
+[#54]
+T=2
+F=ALBUM
+1= (Original TV Soundtrack)
+2= (TV)
+3=0|0
+
+[#55]
+T=2
+F=ALBUM
+1=[Original Series Soundtrack]
+2= (TV)
+3=0|0
+
+[#56]
+T=2
+F=ALBUM
+1=(Music from the Original Series)
+2=(TV)
+3=0|0
+
+[#57]
+T=2
+F=ALBUM
+1= - Original Series Soundtrack
+2= (TV)
+3=0|0
+
+[#58]
+T=2
+F=ALBUM
+1=[Original Series Soundtrack]
+2= (TV)
+3=0|0
+
+[#59]
+T=2
+F=ALBUM
+1=: Original Television Soundtrack
+2= (TV)
+3=0|0
+
+[#60]
+T=2
+F=ALBUM
+1= Original Television Soundtrack
+2= (TV)
+3=0|0
+
+[#61]
+T=2
+F=ALBUM
+1= (Original Television Soundtrack)
+2= (TV)
+3=0|0
+
+[#62]
+T=2
+F=ALBUM
+1= - Original Television Soundtrack
+2= (TV)
+3=0|0
+
+[#63]
+T=2
+F=ALBUM
+1=(Original Soundtrack from the TV Series)
+2= (TV)
+3=0|0
+
+[#64]
+T=2
+F=ALBUM
+1=(Soundtrack from the HBO\u00ae Series)
+2=(TV)
+3=0|0
+
+[#65]
+T=2
+F=ALBUM
+1= (Original Soundtrack From The Television Miniseries)
+2= (TV)
+3=0|0
+
+[#66]
+T=2
+F=ALBUM
+1= (Original Television Series Soundtrack)
+2= (TV)
+3=0|0
+
+[#67]
+T=2
+F=ALBUM
+1= (Music From The MGM Original Television Series)
+2= (TV)
+3=0|0
+
+[#68]
+T=2
+F=ALBUM
+1= (Original Television Scores)
+2=
+3=0|0
+
+[#69]
+T=2
+F=ALBUM
+1= (Soundtrack From The Television Motion Picture)
+2=
+3=0|0
+
+[#70]
+T=2
+F=ALBUM
+1= (Official Soundtrack)
+2=
+3=0|0
+
+[#71]
+T=2
+F=ALBUM
+1= - Official Game Soundtrack
+2= (Game)
+3=0|0
+
+[#72]
+T=2
+F=ALBUM
+1= (Complete Original Score)
+2= (Complete)
+3=0|0
+
+[#73]
+T=2
+F=ALBUM
+1= (Musiche Dalla Colonna Sonora Originale Del Film)
+2=
+3=0|0
+
+[#74]
+T=2
+F=ALBUM
+1= (Soundtrack From The Motion Picture)
+2=
+3=0|0
+
+[#75]
+T=2
+F=ALBUM
+1= (Original Score From The Dimension Motion Picture)
+2=
+3=0|0
+
+[#76]
+T=2
+F=ALBUM
+1= (Original Score Soundtrack)
+2=
+3=0|0
+
+[#77]
+T=2
+F=ALBUM
+1= (Music From The Netflix Film)
+2= (Netflix)
+3=0|0
+
+[#78]
+T=2
+F=ALBUM
+1=Original Videogame
+2=Videogame
+3=0|0
+
+[#79]
+T=2
+F=ALBUM
+1=((
+2=(
+3=0|0
+
+[#80]
+T=2
+F=ALBUM
+1=))
+2=)
+3=0|0
+
+[#81]
+T=2
+F=ALBUM
+1=? (
+2=
+3=1|0
+
+[#82]
+T=2
+F=ALBUM
+1=?) ?
+2=
+3=1|0
+
+[#83]
+T=2
+F=ALBUM
+1=? \u003d 
+2=
+3=0|0
+
+[#84]
+T=2
+F=ALBUM
+1=? 
+2=
+3=0|0
+
+[#85]
+T=2
+F=ALBUM
+1=?
+2=
+3=0|0
+
+[#86]
+T=2
+F=ALBUM
+1= - Motion Picture Soundtrack
+2=
+3=0|0
+
+[#87]
+T=2
+F=ALBUM
+1=(For Your Consideration)
+2=(FYC)
+3=0|0
+
+[#88]
+T=2
+F=ALBUM
+1= (Colonna Sonora Originale Del Film)
+2=
+3=0|0
+
+[#89]
+T=2
+F=ALBUM
+1=(Amazon Original Motion Picture Soundtrack)
+2=(Amazon Soundtrack)
+3=0|0
+
+[#90]
+T=2
+F=ALBUM
+1=Music From The Motion Picture - 20th Anniversary Edition
+2=20th Anniversary Edition
+3=0|0
+
+[#91]
+T=2
+F=ALBUM
+1=(The Complete Original Instrumental Motion Picture Soundtrack)
+2=(Complete Instrumental Soundtrack)
+3=0|0
+
+[#92]
+T=2
+F=ALBUM
+1=(Soundtrack from the Netflix Series)
+2=(Netflix Series)
+3=0|0
+
+[#93]
+T=2
+F=ALBUM
+1=(Soundtrack From The Netflix Anime Series)
+2=(Netflix Anime Series)
+3=0|0
+
+[#94]
+T=2
+F=ALBUM
+1=(Soundtrack For The Netflix Series)
+2=(Netflix Series)
+3=0|0
+
+[#95]
+T=2
+F=ALBUM
+1=\u2013
+2=-
+3=0|0
+
+[#96]
+T=2
+F=ALBUM
+1=(Soundtrack from the Netflix Film)
+2=(Netflix)
+3=0|0
+
+[#97]
+T=2
+F=ALBUM
+1=: Original Score
+2=
+3=0|0
+
+[#98]
+T=2
+F=ALBUM
+1=Original Motion Picture Soundtrack / 
+2=
+3=0|0
+
+[#99]
+T=2
+F=ALBUM
+1= - The Original Scores
+2=
+3=0|0
+
+[#100]
+T=2
+F=ALBUM
+1=/
+2=&
+3=0|0
+
+[#101]
+T=2
+F=ALBUM
+1=(Original Game Soundtrack)
+2=(Game)
+3=0|0
+
+[#102]
+T=2
+F=ALBUM
+1=: Original Motion Picture Soundtrack
+2=
+3=0|0
+
+[#103]
+T=2
+F=ALBUM
+1= (Original Motion Picure Score)
+2=
+3=0|0
+
+[#104]
+T=2
+F=ALBUM
+1= (Original Score Album)
+2=
+3=0|0
+
+[#105]
+T=2
+F=ALBUM
+1= (Bande Originale Du Film)
+2=
+3=0|0
+
+[#106]
+T=2
+F=ALBUM
+1= (Musique Du Film De Luc Besson)
+2=
+3=0|0
+
+[#107]
+T=2
+F=ALBUM
+1= (Motion Picture Sound Track)
+2=
+3=0|0
+
+[#108]
+T=2
+F=ALBUM
+1= (Original Score From The Showtime Original Movie)
+2=
+3=0|0
+
+[#109]
+T=2
+F=ALBUM
+1=: Music From The Motion Picture Soundtrack
+2=
+3=0|0
+
+[#110]
+T=2
+F=ALBUM
+1= (Original Soundtrack From The Motion Picture)
+2=
+3=0|0
+
+[#111]
+T=2
+F=ALBUM
+1= Original Movie Soundtrack
+2=
+3=0|0
+
+[#112]
+T=2
+F=ALBUM
+1=: Original Motion Picture Score
+2=
+3=0|0
+
+[#113]
+T=2
+F=ALBUM
+1=Series Soundtrack
+2=Series
+3=0|0
+
+[#114]
+T=2
+F=ALBUM
+1= (Original Game Score)
+2= - (GAME)
+3=0|0
+
+[#115]
+T=2
+F=ALBUM
+1= Original Sound Track
+2=
+3=0|0
+
+[#116]
+T=2
+F=ALBUM
+1= (Music from the Netflix Original Series)
+2=
+3=0|0
+
+[#117]
+T=2
+F=ALBUM
+1=( Expanded
+2=(Expanded
+3=0|0
+
+[#118]
+T=2
+F=ALBUM
+1= (Paramount Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#119]
+T=2
+F=ALBUM
+1= (Motion Picture Score)
+2=
+3=0|0
+
+[#120]
+T=2
+F=ALBUM
+1= - Music From The Original Motion Picture Soundtrack
+2=
+3=0|0
+
+[#121]
+T=2
+F=ALBUM
+1=(Soundtrack From The Netflix Original Series)
+2=(Netflix)
+3=0|0
+
+[#122]
+T=2
+F=ALBUM
+1= (Score From The Motion Picture)
+2=
+3=0|0
+
+[#123]
+T=2
+F=ALBUM
+1=Vol. Two
+2=Vol. 2
+3=0|0
+
+[#124]
+T=2
+F=ALBUM
+1=\u201c
+2=
+3=0|0
+
+[#125]
+T=2
+F=ALBUM
+1=Vol One
+2=Vol. 1
+3=0|0
+
+[#126]
+T=2
+F=ALBUM
+1=Vol Two
+2=Vol. 2
+3=0|0
+
+[#127]
+T=2
+F=ALBUM
+1=Vol Tree
+2=Vol. 3
+3=0|0
+
+[#128]
+T=2
+F=ALBUM
+1=Vol Four
+2=Vol. 4
+3=0|0
+
+[#129]
+T=2
+F=ALBUM
+1=Vol Five
+2=Vol. 5
+3=0|0
+
+[#130]
+T=2
+F=ALBUM
+1=Vol Six
+2=Vol. 6
+3=0|0
+
+[#131]
+T=2
+F=ALBUM
+1= - Original Motion Picture Soundtrack
+2=
+3=0|0
+
+[#132]
+T=2
+F=ALBUM
+1=\u201d
+2=
+3=0|0
+
+[#133]
+T=2
+F=ALBUM
+1= - Original Motion Picture Score
+2=
+3=0|0
+
+[#134]
+T=2
+F=ALBUM
+1=(The Complete Original Motion Picture Soundtrack)
+2=(Complete)
+3=0|0
+
+[#135]
+T=2
+F=ALBUM
+1=(Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#136]
+T=2
+F=ALBUM
+1=(Complete Original Score From The Motion Picture)
+2=(Complete)
+3=0|0
+
+[#137]
+T=2
+F=ALBUM
+1=Music From The Original 
+2=
+3=0|0
+
+[#138]
+T=2
+F=ALBUM
+1= Original Motion Picture Score
+2=
+3=0|0
+
+[#139]
+T=2
+F=ALBUM
+1= (Original Filmmusik)
+2=
+3=0|0
+
+[#140]
+T=2
+F=ALBUM
+1=Expanded Original Motion Picture Score
+2=Expanded
+3=0|0
+
+[#141]
+T=2
+F=ALBUM
+1= - Colonna Sonora Originale Del Film
+2=
+3=0|0
+
+[#142]
+T=2
+F=ALBUM
+1= ()
+2=
+3=0|0
+
+[#143]
+T=2
+F=ALBUM
+1= - Soundtrack
+2=
+3=0|0
+
+[#144]
+T=2
+F=ALBUM
+1= (Original MGM Motion Picture Score)
+2=
+3=0|0
+
+[#145]
+T=2
+F=ALBUM
+1=(Original Score From The Motion Picture)
+2=
+3=0|0
+
+[#146]
+T=2
+F=ALBUM
+1= (Original Sound Track Recording)
+2=
+3=0|0
+
+[#147]
+T=2
+F=ALBUM
+1=: Original Soundtracks
+2=
+3=0|0
+
+[#148]
+T=2
+F=ALBUM
+1= (Original Film Soundtrack)
+2=
+3=0|0
+
+[#149]
+T=2
+F=ALBUM
+1=(The Complete Motion Picture Soundtrack)
+2=(Complete)
+3=0|0
+
+[#150]
+T=2
+F=ALBUM
+1= Original Soundtrack
+2=
+3=0|0
+
+[#151]
+T=2
+F=ALBUM
+1= (Original Soundtrack Recordings)
+2=
+3=0|0
+
+[#152]
+T=2
+F=ALBUM
+1= Original Soundtrack Album
+2=
+3=0|0
+
+[#153]
+T=2
+F=ALBUM
+1= - Original Film Soundtrack
+2=
+3=0|0
+
+[#154]
+T=2
+F=ALBUM
+1=: Original Soundtrack Album
+2=
+3=0|0
+
+[#155]
+T=2
+F=ALBUM
+1= (Original Soundtrack Album)
+2=
+3=0|0
+
+[#156]
+T=2
+F=ALBUM
+1= (Original Series Soundtrack)
+2=
+3=0|0
+
+[#157]
+T=2
+F=ALBUM
+1= (The Original Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#158]
+T=2
+F=ALBUM
+1= (The Original Motion Picture Soundtrack Recording)
+2=
+3=0|0
+
+[#159]
+T=2
+F=ALBUM
+1= - The Original Picture Soundtrack
+2=
+3=0|0
+
+[#160]
+T=2
+F=ALBUM
+1= - The Original Motion Picture Soundtrack
+2=
+3=0|0
+
+[#161]
+T=2
+F=ALBUM
+1= The Soundtrack
+2=
+3=0|0
+
+[#162]
+T=2
+F=ALBUM
+1= (The Original Score)
+2=
+3=0|0
+
+[#163]
+T=2
+F=ALBUM
+1= (The Original Soundtrack)
+2=
+3=0|0
+
+[#164]
+T=2
+F=ALBUM
+1= (Original Film Score)
+2=
+3=0|0
+
+[#165]
+T=2
+F=ALBUM
+1= (Original Music From The Motion Picture)
+2=
+3=0|0
+
+[#166]
+T=2
+F=ALBUM
+1= (Original Score Album From The Motion Picture)
+2=
+3=0|0
+
+[#167]
+T=2
+F=ALBUM
+1= (Original Motion Picture Soundtrack - Special Edition)
+2=
+3=0|0
+
+[#168]
+T=2
+F=ALBUM
+1= (An Original Soundtrack Recording)
+2=
+3=0|0
+
+[#169]
+T=2
+F=ALBUM
+1= (An Original MGM Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#170]
+T=2
+F=ALBUM
+1= (Music From The Original Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#171]
+T=2
+F=ALBUM
+1= (Music From The Original Motion Picture)
+2=
+3=0|0
+
+[#172]
+T=2
+F=ALBUM
+1= (Music From The Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#173]
+T=2
+F=ALBUM
+1=Music From The Motion Picture
+2=
+3=0|0
+
+[#174]
+T=2
+F=ALBUM
+1=Soundtrack Music Collection
+2=
+3=0|0
+
+[#175]
+T=2
+F=ALBUM
+1= (Original Score To The Motion Picture)
+2=
+3=0|0
+
+[#176]
+T=2
+F=ALBUM
+1= (Original Score)
+2=
+3=0|0
+
+[#177]
+T=2
+F=ALBUM
+1=(Complete Motion Picture Score)
+2=(Complete Score)
+3=0|0
+
+[#178]
+T=2
+F=ALBUM
+1=(Complete Original Motion Picture Score)
+2=(Complete)
+3=0|0
+
+[#179]
+T=2
+F=ALBUM
+1= - Complete Original Motion Picture Score
+2= (Complete)
+3=0|0
+
+[#180]
+T=2
+F=ALBUM
+1=(Expanded Motion Picture Score)
+2=(Expanded Score)
+3=0|0
+
+[#181]
+T=2
+F=ALBUM
+1=Expanded Motion Picture Soundtrack
+2=Expanded
+3=0|0
+
+[#182]
+T=2
+F=ALBUM
+1=(Expanded Original MGM Motion Picture Soundtrack)
+2=(Expanded)
+3=0|0
+
+[#183]
+T=2
+F=ALBUM
+1= - Original Motion Picture Score
+2=
+3=0|0
+
+[#184]
+T=2
+F=ALBUM
+1= (Original Soundtrack From The Fox Television Series)
+2=
+3=0|0
+
+[#185]
+T=2
+F=ALBUM
+1= (Music From The HBO Series)
+2=
+3=0|0
+
+[#186]
+T=2
+F=ALBUM
+1= (Soundtrack)
+2=
+3=0|0
+
+[#187]
+T=2
+F=ALBUM
+1= (Music From The Showtime Original Series)
+2=
+3=0|0
+
+[#188]
+T=2
+F=ALBUM
+1= - Music From The Original Motion Picture Soundtrack
+2=
+3=0|0
+
+[#189]
+T=2
+F=ALBUM
+1=Music From The Showtime Original Series 
+2=
+3=0|0
+
+[#190]
+T=2
+F=ALBUM
+1= (Music From The Original Motion Picture Score)
+2=
+3=0|0
+
+[#191]
+T=2
+F=ALBUM
+1= (Music From The Warner Bros. Motion Picture)
+2=
+3=0|0
+
+[#192]
+T=2
+F=ALBUM
+1= (Music From The Motion Picture)
+2=
+3=0|0
+
+[#193]
+T=2
+F=ALBUM
+1= (Original Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#194]
+T=2
+F=ALBUM
+1= (Original Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#195]
+T=2
+F=ALBUM
+1= (Original Score From Motion Picture)
+2=
+3=0|0
+
+[#196]
+T=2
+F=ALBUM
+1= (Original Motion Picture Score)
+2=
+3=0|0
+
+[#197]
+T=2
+F=ALBUM
+1= (Original Soundtrack)
+2=
+3=0|0
+
+[#198]
+T=2
+F=ALBUM
+1=Original Motion Picture Soundtrack
+2=
+3=0|0
+
+[#199]
+T=2
+F=ALBUM
+1= (Original Soundtrack Recording)
+2=
+3=0|0
+
+[#200]
+T=2
+F=ALBUM
+1= (Original MGM Motion Picture Soundtrack)
+2=
+3=0|0
+
+[#201]
+T=2
+F=ALBUM
+1= - Music From The Motion Picture
+2=
+3=0|0
+
+[#202]
+T=2
+F=ALBUM
+1= (Colonna Sonora Originale)
+2=
+3=0|0
+
+[#203]
+T=2
+F=ALBUM
+1= (Original Soundtracks)
+2=
+3=0|0
+
+[#204]
+T=2
+F=ALBUM
+1= (Colonna Sonora Originale Del Film - Premiere In Stereo)
+2=
+3=0|0
+
+[#205]
+T=2
+F=ALBUM
+1= - Music From The Motion Picture
+2=
+3=0|0
+
+[#206]
+T=2
+F=ALBUM
+1= - Music From The Original Motion Picture
+2=
+3=0|0
+
+[#207]
+T=2
+F=ALBUM
+1= (Music From The Original Motion Picture)
+2=
+3=0|0
+
+[#208]
+T=2
+F=ALBUM
+1=: Music From The Motion Picture
+2=
+3=0|0
+
+[#209]
+T=2
+F=ALBUM
+1= (Motion Picture)
+2=
+3=0|0
+
+[#210]
+T=2
+F=ALBUM
+1=Volume
+2=Vol.
+3=0|0
+
+[#211]
+T=2
+F=ALBUM
+1= - Original Game Score
+2= - (GAME)
+3=0|0
+
+[#212]
+T=2
+F=ALBUM
+1= ()
+2=
+3=0|0
+
+[#213]
+T=2
+F=ALBUM
+1=(Complete )
+2=(Complete)
+3=1|0
+
+[#214]
+T=2
+F=PUBLISHER
+1= (1)
+2=
+3=0|0
+
+[#215]
+T=2
+F=PUBLISHER
+1= (2)
+2=
+3=0|0
+
+[#216]
+T=2
+F=PUBLISHER
+1= (3)
+2=
+3=0|0
+
+[#217]
+T=2
+F=PUBLISHER
+1= (4)
+2=
+3=0|0
+
+[#218]
+T=2
+F=PUBLISHER
+1= (5)
+2=
+3=0|0
+
+[#219]
+T=2
+F=PUBLISHER
+1= (6)
+2=
+3=0|0
+
+[#220]
+T=2
+F=PUBLISHER
+1= (7)
+2=
+3=0|0
+
+[#221]
+T=2
+F=PUBLISHER
+1=Var\u00c3\u00a8se Sarabande
+2=Varese Sarabande
+3=0|0
+
+[#222]
+T=2
+F=_ALL
+1=%20
+2=
+3=0|0
+
+[#223]
+T=2
+F=_ALL
+1=_
+2= 
+3=0|0
+
+[#224]
+T=2
+F=_ALL
+1=Feat
+2=feat
+3=0|0
+

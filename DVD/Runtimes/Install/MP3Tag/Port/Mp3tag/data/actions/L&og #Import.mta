@@ -1,0 +1,10 @@
+﻿[#0]
+T=14
+F=LOGFILE (EAC)
+1=Cover\\%_filename%.log
+
+[#1]
+T=14
+F=LOGFILE (EAC)
+1=%_filename%.log
+
