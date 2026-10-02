@@ -1,14 +1,17 @@
 :: =============================================================================
 :: Script Name : FS-Post-Apps.cmd
-:: Version     : 1.4
-:: Date        : 30.09.2026
+:: Version     : 1.5
+:: Date        : 02.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
 :: -----------------------------------------------------------------------------
+:: v1.5 - 02.10.2026
+:: - Add SW: XnViewMP
+:: -----------------------------------------------------------------------------
 :: v1.4 - 30.09.2026
 :: - Header an den Scriptanfang verschoben
-:: - Changelog erg„nzt
+:: - Changelog ergänzt
 :: - FSC Phase auf 02/06 korrigiert und dokumentiert
 :: - Aufruf durch FSC-Post-01.cmd korrekt dokumentiert
 :: - Log-Pfad auf Franksoft Client.txt korrigiert
@@ -190,6 +193,12 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 	IF Not Exist "%ProgramFiles%\RustDesk\rustdesk.exe" (	
 	REG ADD %ROE%\%i% /ve /d "RustDesk" /f >NUL
 	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\RustDesk\FS-Wrapper.exe" /f >NUL
+	SET /A i+=1
+	)
+
+	IF Not Exist "%ProgramFiles%\XnViewMP\xnviewmp.exe" (	
+	REG ADD %ROE%\%i% /ve /d "XnView MP" /f >NUL
+	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\XnViewMP\XnViewMP-win-x64.exe /Silent" /f >NUL
 	SET /A i+=1
 	)
 
