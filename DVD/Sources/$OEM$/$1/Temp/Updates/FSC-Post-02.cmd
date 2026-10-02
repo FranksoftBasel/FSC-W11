@@ -10,12 +10,16 @@ SET FSC_PHASE=03/06
 :: =============================================================================
 :: Script Name : FSC-Post-02.cmd
 :: Path        : "D:\Sources\$OEM$\$1\Temp\Updates\FSC-Post-02.cmd"
-:: Version     : 2.5
+:: Version     : 2.6
 :: Date        : 01.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
 :: -----------------------------------------------------------------------------
+:: v2.6 - 01.10.2026
+:: - Wallpaper-Aufruf nach WAIT_DESKTOP verschoben
+:: - Doppelte/fruehe Wallpaper-Aufrufe entfernt
+::
 :: v2.5 - 01.10.2026
 :: - NT-Zeitstempel vor Registry-Start initialisiert
 :: - FSC_LOG_PAT Tippfehler korrigiert
@@ -52,10 +56,6 @@ reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "Script Path" /t REG_SZ /d "%FSC_SCRIPT
 reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "FSC Phase" /t REG_SZ /d "%FSC_PHASE%" /f >nul
 reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "Start" /t REG_SZ /d "%DATE% %NT%" /f >nul
 
-set "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
-set "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_02.png"
-if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER"
-
 :: Brightness 40% Hellikeit
 Powershell (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,40) %_null%
 REG Add "HKCU\Control Panel\Colors" /v Background /t REG_SZ /d "0 0 0" /f >NUL 2>&1
@@ -65,10 +65,6 @@ SET FSC_STAGE=02
 SET FSC-Tools-Local=%ProgramData%\Franksoft
 SET FSC-Scripts-Local=%FSC-Tools-Local%\Scripts
 
-
-set "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
-set "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_02.png"
-if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER"
 
 
 IF NOT Exist "%SystemDrive%\%~nx0_DBG" MD "%SystemDrive%\%~nx0_DBG"
@@ -148,6 +144,15 @@ if errorlevel 1 (
     goto WAIT_DESKTOP
 )
 echo.  - Explorer ist bereit, Desktop geladen!
+
+rem ==========================================================
+rem FSC Post-02 Wallpaper - erst nach geladenem Desktop
+rem ==========================================================
+SET "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
+SET "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_02.png"
+IF EXIST "%WallPaper_Exe%" IF EXIST "%FSC_Wallpaper%" (
+    START "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER
+)
 
 rem ==========================================================
 rem 2) msiexec.exe-Check:
