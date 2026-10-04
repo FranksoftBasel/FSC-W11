@@ -1,6 +1,7 @@
 {
     "control":[
         { "VTOY_MAX_SEARCH_LEVEL": "1" },
+        { "VTOY_FILE_FLT_WIM": "1" },
         { "VTOY_FILE_FLT_EFI": "1" },
         { "VTOY_FILE_FLT_IMG": "1" },
         { "VTOY_FILE_FLT_VHD": "1" },
@@ -8,62 +9,14 @@
         { "VTOY_SECONDARY_BOOT_MENU": "0" },
         { "VTOY_DEFAULT_KBD_LAYOUT": "GERMAN" },
         { "VTOY_MENU_LANGUAGE": "de_DE" },
-        { "VTOY_DEFAULT_IMAGE": "/ISO/03. WinPE AnkhTech 15.iso" }
+        { "VTOY_DEFAULT_SEARCH_ROOT": "/SOURCES" },
+        { "VTOY_DEFAULT_IMAGE": "/SOURCES/03. WinPE AnkhTech W10 1.5.iso" }
     ],
     "theme":{
-        "file": "/ventoy/themes/arco/theme.txt",
-        "fonts":[
-            "/ventoy/themes/arco/terminus-18.pf2"
-        ]
-    },
-    "menu_alias_legacy":[
-        {
-            "image": "/Sources/boot.wim",
-            "alias": "Windows 11 Pro 25H2 Franksoft Client (USB)"
-        },
-        {
-            "image": "/ISO/08. Windows 11 Pro 26H2 Okt 2026 (MCT).iso",
-            "alias": "Windows 11 Pro 26H2 Okt 2026 (MCT)"
-        },
-        {
-            "image": "/ISO/01. WinPE NHV Boot 2600 Extreme.iso",
-            "alias": "WinPE NHV Boot 2600 Extreme"
-        },
-        {
-            "image": "/ISO/02. WinPE SST 2026.09.08.iso",
-            "alias": "WinPE SST 2026.09.08"
-        },
-        {
-            "image": "/ISO/03. WinPE AnkhT 15.iso",
-            "alias": "WinPE AnkhT 15"
-        },
-        {
-            "image": "/ISO/04. WinPE Active@ Boot Disk 26.0.1.iso",
-            "alias": "WinPE Active@ Boot Disk 26.0.1"
-        },
-        {
-            "image": "/ISO/05. Linux Ubuntu 26.04.1.iso",
-            "alias": "Linux Ubuntu 26.04.1"
-        },
-        {
-            "image": "/ISO/06. Linux Kubuntu 26.04.1.iso",
-            "alias": "Linux Kubuntu 26.04.1"
-        },
-        {
-            "image": "/ISO/07. Linux Zorin 18.1 Pro.iso",
-            "alias": "Linux Zorin 18.1 Pro"
-        },
-        {
-            "image": "/ISO/09. Windows 11 Enterprise 25H2 DE.iso",
-            "alias": "Windows 11 Enterprise 25H2 DE"
-        }
-    ],
-    "auto_install":[
-        {
-            "image": "/ISO/08. Windows 11 Pro 26H2 Okt 2026 (MCT).iso",
-            "template":[
-                "/ISO/08. Windows 11 Pro Unattended.xml"
-            ]
-        }
-    ]
+        "file":[
+            "/ventoy/themes/ROG/theme.txt",
+            "/ventoy/themes/arco/theme.txt"
+        ],
+        "default_file": 2
+    }
 }
