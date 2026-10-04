@@ -1,0 +1,136 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+
+<meta name="keywords" content=" Backup ,Disk Cloning, Disk Imaging, Disaster recovery, Windows NT, Windows 2000,Windows XP">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<title>Drive Snapshot - DiskImage Backup for Windows NT</title>
+<base target="_parent">
+</head>
+
+<body>
+
+<center>
+<h1>Snapshot - Disk Image Backup</h1>
+</center>
+<table align="right">
+  <tr>
+    <td><a href="back1.htm"><img border="0" src="../images/startups.png" width="205" height="152">
+      <center>Benutzeroberfläche 'testen'</center></a></td>
+  </tr>
+</table>
+<h3>Snapshot ist einfach zu bedienen</h3>
+Die Snapshot Benutzeroberfläche ist bewusst einfach gehalten; selbst
+unerfahrene Benutzer sollten keine Schwierigkeiten mit der Bedienung haben.<br>
+
+<h2>Erstellung von Disk Images unter Windows</h2>
+<p>Ein Disk Image ist ein exaktes Abbild eines Laufwerks in einer Datei.<br>
+Dadurch
+kann dieses Laufwerk zu einem späteren Zeitpunkt in genau diesem Zustand
+wiederhergestellt werden.<br>
+
+Dieser Zustand beinhaltet nicht nur Ihre 'normalen' Daten, sondern auch alle
+Daten des Betriebssystems (DLL's, Registry,...), alle Attribute der Daten
+(Komprimiert, Eigentümerschaft, zuletzt geändert am, Verschlüsselung, ...),
+usw.<br>
+
+Geöffnete Dateien werden in dem Zustand gesichert, wie sie derzeit auf der
+Festplatte liegen.</p>
+<h3>Snapshot kann oft und problemlos genutzt werden</h3>
+<p>Da Snapshot keinen Neustart erfordert, und der Benutzer sogar weiterarbeiten
+kann, ist eine ganz wichtige Möglichkeit gegeben : regelmäßiges Backup, und
+insbesondere Backup vor einer neuen Installation/Update.<br>
+
+Der Start von Snapshot zur Sicherung des Systemlaufwerks dauert nur wenige
+Sekunden, und wird deshalb vielleicht sogar gemacht - und steht zur Verfügung,
+sollte diese Installation wieder rückgängig gemacht werden sollen.</p>
+<p>Genau so ist die Sicherung von Servern und Rechnern in der
+Automatisierungstechnik möglich, die 24 Stunden online sein müssen.</p>
+<h3>Arbeiten Sie weiter, während das Backup läuft</h3>
+Das Problem bei Windows basierten Disk Image Lösungen (und jedem anderen Backup
+Programm ) ist,&nbsp; dass während des Backup andere Programme ständig auf die
+Platte schreiben - oder dies zumindest können.<br>
+Am Ende erhält man eine Datei,
+die teils den Zustand zu Beginn der Sicherung, und teils den Zustand am Ende der
+Sicherung enthält - nicht immer sinnvoll.<br>
+
+<p>Konventionelle Disk Image Programme erfordern deshalb, dass Sie den Rechner
+unter DOS neu starten, wo sie dann in aller Ruhe sichern können.</p>
+<p>Konventionelle Backup Programme unter Windows lösen das Problem etwas anders
+- sie sichern offene Dateien einfach nicht.</p>
+<p>Snapshot löst das Problem etwas anders<br>
+Nach dem Start von Backup benötigt Snapshot eine kurze Zeit (wenige Sekunden),
+um Informationen über das zu sichernde Laufwerk zu sammeln, und
+zwischengespeicherte Informationen auf die Festplatte zu sichern.</p>
+<p>Dann erfolgt ein Schnitt ( Snapshot integriert sich in das Betriebssystem),
+nachdem es nicht mehr möglich ist, Daten auf dem Laufwerk zu ändern, ohne dass
+Snapshot dies merkt.</p>
+<p>Wenn Snapshot danach merkt, dass ein Programm auf das Laufwerk schreiben
+will, werden zunächst die zu überschreibenden Daten gesichert, bevor das
+Programm fortfahren kann.</p>
+<p>Deshalb entspricht das gesicherte Image exakt dem Zustand zum Zeitpunkt des
+Starts der Sicherung (+10 Sekunden).</p>
+<p>Sollten Sie danach - während der Sicherung - Daten gelöscht, geändert,
+Programme installiert,...<br>
+haben, sind diese Änderungen nicht im Image enthalten</p>
+<p>&nbsp;</p>
+<h3>Kompatibilität:</h3>
+<ul>
+  <li>Windows NT4sp6, 2000, XP, 2003, Vista, 2003, 7, 2008, 2008 R2, 8, 8.1, 2012, 10, 2012R2, PE, x64</li>
+  <li>Alle <b>lokalen</b> Festplatten (keine Netzwerk Laufwerke)</li>
+  <li>alle Windows Dateisysteme (FAT16, FAT32, NTFS, ReFS) und Linux Ext2/3/4, Reiser, XFS.</li>
+  <li>beliebige Hardware ( IDE/SCSI/USB/..) mit einer Sektorgröße von 512 Byte</li>
+  <li>beliebige RAID Konfigurationen</li>
+</ul>
+<h3>Snapshot Backup arbeitet schnell ...</h3>
+Sowohl Geschwindigkeit als auch Kompressionsfaktor hängen von den zu sichernden
+Daten ab und dem verwendeten Computer ab.<br>
+Als Faustformel kann man aber
+veranschlagen
+<p>&nbsp;&nbsp;&nbsp; Geschwindigkeit [Megabyte/Minute] = 0.5 * Megahertz des
+Computers<br>
+&nbsp;&nbsp;&nbsp; Kompressionsfaktor ca.<br>
+50%</p>
+<p>also sichert aktueller 3 GHz Computer ca.<br>
+1,5 GByte/Minute.<br>
+
+Der angegebene Kompressionsfaktor bezieht sich auch die 'normale' Mischung von
+Dateien im Windows Verzeichnis.<br>
+
+Multimedia Dateien (MP3, AVI,Video,...) und bereits gepackte Dateien (ZIP,CAB)
+sind nicht weiter komprimierbar.</p>
+<p>Sollte Ihr Computer deutlich langsamer sichern als oben angegeben (typisch
+~120 MB/min), ist in der Regel der ULTRA-DMA Modus der Festplatte nicht
+aktiviert.<br>
+In diesem Fall müssen Sie die Chipsatz spezifischen Treiber für
+ihren Computer installieren.</p>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...<br>
+und Ressourcen schonend</h3>
+<p>Versuchen Sie mal, weiterzuarbeiten während im Hintergrund eine
+Datensicherung (oder das kopieren eines großen Verzeichnisses mit dem Explorer)
+läuft.<br>
+Es geht, macht aber einfach keinen Spaß.</p>
+<p>Deswegen braucht Snapshot lediglich ca.<br>
+8MB Speicher, läuft mit niedriger
+Priorität, und wenn 'fremde' Festplatten Aktivität festgestellt wird, stellt
+Snapshot eigene Aktivität für einen kleinen Moment ganz ein.<br>
+Natürlich stellt
+Snapshot trotzdem sicher, dass keine Daten verloren gehen.</p>
+<p>Normalerweise sollten sie es kaum merken, wenn im Hintergrund die Snapshot
+Sicherung läuft.</p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+</body>
+
+</html>

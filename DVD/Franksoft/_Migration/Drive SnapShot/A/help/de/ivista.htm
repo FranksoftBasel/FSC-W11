@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<meta name="keywords" content="disk image, disk, image, Disk Imaging, Windows NT,Windows 2000, Windows XP, Windows Vista">
+<title>Drive Snapshot und Windows Vista</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+
+<center><h1>Drive Snapshot und Windows Vista ?</h1>
+</center>
+
+<h4>Ist Drive Snapshot 1.37 kompatibel mit Windows Vista (aka Windows für Video
+Recorder)?</h4>
+
+<p>Im wesentlichen schon, <b>ABER</b>:</p>
+
+<p>Drive Snapshot benötigt Administrator Rechte um zu arbeiten; deswegen muss
+es über die rechte Maustaste, 'Als Administrator starten' gestartet werden
+(beseitigt am 28.2.2007).<br>
+</p>
+
+<p>Vista X64 erfordert signierte Treiber; der Drive Snapshot 1.37 Treiber war
+nicht signiert.<br>
+
+Deshalb wurde Vista X64 nicht unterstützt (beseitigt am 1.3.2007)</p>
+
+<p>Der (unglaublich dumme) neue Vista Boot Manager bootet ausschließlich von
+derselben Platte von exakt demselben Offset wie die Originalplatte.<br>
+Mit anderen
+Worten, die Bootmöglichkeit</p>
+
+<blockquote>
+  <p align="left">'Boote von der ersten Platte, erste Partition'</p>
+
+</blockquote>
+<p>besteht nicht mehr.<br>
+In der schönen neuen Welt der durchsichtigen Fenster lautet der Booteintrag</p>
+
+<blockquote>
+  <p align="left">'Boote von&nbsp; der Platte mit der Disk Signatur 1234 von
+  der Partition bei 1 MB'<br>
+  (und wenn da keine Partition beginnt - Pech)</p>
+
+</blockquote>
+<p>Die Disk Signatur ist ein 4 Byte Wert, der im MBR steht, und wird von der
+Festplatten Verwaltung mit einem Zufallswert initialisiert.</p>
+
+<p>Das hat zur Folge, dass die (derzeit) einzigen Möglichkeiten des Restores
+folgende sind:</p>
+
+<p>Entweder</p>
+
+<blockquote>
+
+<p>Restore eines Volumes auf die selbe Platte (ohne irgendwelche Partitionierung)</p>
+
+</blockquote>
+
+<p>oder (auf einer neuen Platte)</p>
+
+<blockquote>
+
+<p>Müssen Sie zuerst die Partitionsstruktur restaurieren (und <b>nicht </b>mit
+anderen Hilfsmittel erstellen)<br>
+Dann erfolgt das Restore in dieselbe Partition</p>
+
+</blockquote>
+
+<p>Restore der Partitionstrukture aus Windows:</p>
+
+<blockquote>
+
+<p>Snapshot, restore, Image wählen, [next]</p>
+
+<p>Unten in der Grafik, links, rechte Maustaste auf [HD1]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --&gt; restore partition structure</p>
+
+<p>&nbsp;</p>
+
+</blockquote>
+
+<p>Andere Methoden des Clonens/Restore auf neue Platten/etc.<br>
+werden derzeit <b>nicht
+unterstützt.</b></p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" endspan i-checksum="60662" -->
+
+
+</body>
+</html>

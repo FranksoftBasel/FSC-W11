@@ -1,0 +1,117 @@
+;Author: Frank White - 
+;Copyright © 2001 by F-W 97©.
+;All rights reserved.
+
+[version]
+signature="$CHICAGO$"
+
+[DefaultInstall]
+AddReg	   = MyTweak, ,ShellBat ,Extensions ,Context ,Specials
+UpdateInis = Shortcuts.add
+
+[DefaultInstall.ntx86]
+AddReg	   = MyTweak, ,ShellBat ,Extensions ,Context ,Specials ,MyTweakNt 
+UpdateInis = Shortcuts.add
+
+[MyTweak]
+HKCU,"Control Panel\Desktop",MenuShowDelay,,"0"
+HKCU,"Control Panel\Desktop",SmoothScroll,1, 00, 00, 00, 00
+HKCU,"Control Panel\Desktop",DragFullWindows,,"1"
+HKCU,"Control Panel\Desktop",FontSmoothing,,"0"
+HKCU,"Control Panel\Desktop\WindowMetrics",MinAnimate,,"0"
+HKCU,"%TPath%",FullPath,%REG_DWORD%,"0x00000001"
+HKCU,"%TPath%",FullPathAddress,%REG_DWORD%,"0x00000001"
+HKCU,"%STMENU%",NoFavoritesMenu,%REG_DWORD%,"0x00000001"
+
+[MyTweakNt]
+; Num Lock on 
+HKCU,"Control Panel\Keyboard",InitialKeyboardIndicators,,"2"
+HKU,".Default\Control Panel\Keyboard",InitialKeyboardIndicators,,"2"
+; Background Color Winnt before U Login 
+HKU,".DEFAULT\Control Panel\Colors",Background,,"0   0   0"
+; open Regedit32
+HKCR,Directory\shell\By FrankW\,,,"Regedit&32"
+HKCR,Directory\shell\By FrankW\Command,,,"regedt32.exe"
+
+[ShellBat]
+HKCR,.bat\ShellNew"
+HKCR,.bat\ShellNew,NullFile,,""
+HKCR,.bat\ShellNew,Command,,"Notepad.exe %1"
+HKCR,batfile,,,"MS-Dos Batch"
+
+[Extensions]
+;NFO
+HKCR,.nfo,,,"nfo_auto_file"
+HKCR,nfo_auto_file\shell\open\command,,,"Notepad.exe %1"
+;Diz
+HKCR,.diz,,,"diz_auto_file"
+HKCR,diz_auto_file\shell\open\command,,,"Notepad.exe %1"
+
+[Context]
+; Open with Notepad
+HKCR,*\Shell\By FrankW\,,,"Send To &Notepad"
+HKCR,*\Shell\By FrankW\Command,,,"notepad.exe %1"
+; open TXT file after Create
+HKCR,.txt\ShellNew,"Command",,"Notepad.exe %1"
+; open Regedit
+HKCR,Directory\shell\By Frank\,,,"&Regedit"
+HKCR,Directory\shell\By Frank\Command,,,"Regedit.exe"
+
+[Specials]
+
+; Rename Recycle bin
+HKCR,"CLSID\{645FF040-5081-101B-9F08-00AA002F954E}",,,"Tschüss"
+HKCR,"CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\ShellFolder",Attributes,1, 50, 01, 00, 20
+
+; View All & Hide Extension 
+HKCU,"Software\Microsoft\Windows\CurrentVersion\Explorer","ShellState",196609,\
+     10,00,00,00,09,00,00,00,00,00,00,00,00,00,00,00
+
+; Full Path in the Titlebar & More u Need 
+;HKCU,"Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState","Settings",196609,\
+;     0c,00,01,00,0b,01,00,00,60,00,00,00
+
+; Disabling resolving of UNC in shortcuts
+HKLM,"%SMWCP%",LinkResolveIgnoreLinkInfo,%REG_DWORD%,"0x00000001"
+
+; No Tips
+HKCU,%SMWCV%\Explorer\Tips,DisplayInitialTipWindow,%REG_DWORD%,"0"
+
+; Remove the Inbox Icon on Desktop
+HKLM,%SMWCV%\explorer\Desktop\NameSpace\"{00020D76-0000-0000-C000-000000000046}"
+
+;Removing the 'Shortcut to...' Text on Shortcuts (Windows 9x and NT)
+HKCU,"%SMWCV%\Explorer",link,1, 00, 00, 00, 00
+
+;Avoid Accidental Registry Imports (Windows 9x and NT)
+HKCR,"regfile\shell",,,"Edit"
+
+;Hidding shell new entrys
+HKCR,.bmp\ShellNew-
+HKCR,.bfc\ShellNew-
+HKCR,.wav\ShellNew-
+HKCR,.cl4\ShellNew-
+HKCR,.ppt\ShellNew-
+HKCR,.psd\ShellNew-
+HKCR,.rar\ShellNew-
+HKCR,.rgs\ShellNew-
+HKCR,.rtf\ShellNew-
+HKCR,.xls\ShellNew-
+HKCR,.zip\ShellNew-
+
+[Shortcuts.add]
+; Create Control Panel on Start Menu (Current User)
+setup.ini, progman.groups,,"group101=..\%SHORTPATH%"
+setup.ini, group101,,"""%DESC%"", %24%\%EXE%,,,,,%SHORT_DESC%"
+
+[Strings]
+SHORTPATH = "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+EXE = "Winnt\System32\control.exe"
+SHORT_DESC = "System"
+TPath	="Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState"
+STMENU	="Software\Microsoft\Windows\CurrentVersion\Policies\Explorer"
+REG_SZ         = "0x00000000"
+REG_MULTI_SZ   = "0x00010000"
+REG_EXPAND_SZ  = "0x00020000"
+REG_BINARY     = "0x00000001"
+REG_DWORD      = "0x00010001"

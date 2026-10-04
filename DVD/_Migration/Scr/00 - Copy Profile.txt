@@ -1,0 +1,7 @@
+
+
+
+robocopy "%UserProfile%" "D:\Data\Backup\Migration\02.01.2016\Profile" /mir /xj
+
+mit ACL
+robocopy "%UserProfile%" "d:\Data\Profiles\%UserName%" /mir /xj /copyall

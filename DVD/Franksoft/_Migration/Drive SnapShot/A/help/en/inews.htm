@@ -1,0 +1,327 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="keywords" content="disk image, disk, image, Disk Imaging, Windows NT,Windows 2000, Windows XP">
+<title>Drive Snapshot - News</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+
+<center><h1>Drive Snapshot - What's new</h1>
+</center>
+
+<h4>V1.48 - December 2019: Drive Snapshot 1.48</h4>
+<ul>
+	<li>
+		Changes to support recent operating systems (Server 2019)	and Windows 10 (1909)
+	</li>
+<li>	
+	   Fixed some problems in the encryption 
+</li>
+</ul>
+
+
+
+<h4>V1.47 - May 2019: Drive Snapshot 1.47</h4>
+<ul>
+	<li>
+		Changes to support recent operating systems (Server 2019)	
+	</li>
+<li>	
+	Completely rewritten encryption. Improved speed and security. Instead of a plain text password you 
+	can use a public encryption key now.
+</li>
+<li>
+	New option (--EjectMediaAfterBackup) to eject a backup medium after the backup has finished. 
+</li>
+</ul>
+
+
+
+<h4>V1.46 - March 2018: Drive Snapshot 1.46</h4>
+
+<ul>
+	<li>
+		Changes to support recent operating systems (Windows 10 (1709))	
+	</li>
+<li>	
+	Improved speed when verifying images
+</li>
+<li>
+	Additional options to create differential images much faster (--FastDiff:)
+</li>
+<li>
+	Possibility to remove a removable drive after successful backup (--EjectDrive)
+</li>
+<li>
+	Improved image repair functionality (--repair)
+</li>
+<li>
+Improved partition handling for Linux partitions</li>
+<li>
+Support for recent versions of XFS (V5 with CRC) file systems</li>
+
+</ul>
+
+
+
+<h4>V1.45 - December 2016: Drive Snapshot 1.45</h4>
+
+<ul>
+<li>
+Support for Server 2016</li>
+<li>
+Support for disk with a native sector size of 4k byte (4kn)</li>
+<li>
+</ul>
+	
+
+<h4>V1.44 - April 2016: Drive Snapshot 1.44</h4>
+
+<ul>
+<li>
+Support for Windows 10</li>
+<li>
+Restore complete disks with multiple partitions at once</li>
+<li>
+Connect to remote network shares with Snapshot</li>
+<li>NT4sp6 is supported again. If you encounter any problems please use<br>
+ <a href="http://www.drivesnapshot.de/download/snap140.exe">Snapshot.exe 1.40</a> and send us an email<br>
+</li>
+</ul>
+	
+
+
+
+<h4>V1.43 – 17.Feb 2014: Drive Snapshot 
+1.43 </h4>
+<ul>
+<li>
+Support for Windows 8, 8.1, 2012, 2012 R2</li>
+<li>
+Support of GPT Partitions</li>
+</ul>
+
+
+
+<h4>V1.42 – 14.
+Dec 2012: Drive Snapshot 1.42 </h4>&nbsp;
+<b>&nbsp; </b>fixes a bug in 1.41 when using the combination of 'Restore during reboot' and 
+'Reboot on Success'.<br>
+Sorry.<h4>V1.41 – 20.
+Oct 2012: Drive Snapshot 
+1.41 </h4>
+<ul>
+<li>Backup and Restore using <a href="ftp.htm"> FTP </a></li>
+<li>for 64-Bit Restore Environments
+<a href="http://www.drivesnapshot.de/download/snapshot64.exe">Snapshot64.exe</a> </li>
+<li>Using VSS with <a href="snapshot_vss.htm">explicit
+<span id="result_box" class lang="en"><span class="hps">involvement</span>
+<span class="hps">of</span> <span class="hps">VSS</span> <span class="hps">
+Writers</span></span></a></li>
+<li>unfortunately NT4 is no longer supported; please use
+<a href="http://www.drivesnapshot.de/download/snap140.exe">Snapshot.exe 1.40</a>.<br>
+
+Windows 2000 requires SP3 Upgrade Rollup.<br>
+</li>
+</ul>
+
+
+
+<h4>V1.40 - 20 Feb 2010: Drive Snapshot 1.40</h4>
+<ul>
+  <li>it is possible to restore the system drive <a href="restboot.htm">
+  during next system Restart</a></li>
+  <li>supports Windows 7/2008 R2
+  </li>
+  <li>
+  <p align="left">supports Linux Ext4</li>
+  <li>
+  <p align="left"><a href="hardware.htm">moving to different Hardware</a> has 
+  been enhanced</li>
+</ul>
+
+<h4>V1.39 - 15 July 2008: Drive Snapshot 1.39</h4>
+<ul>
+  <li>Supports Restore into <a href="vm.htm" target="_self">Virtual Machines (VMWare/Virtual
+    Server)</a>&nbsp;
+  <li>mounted Snapshots are writeable (data are buffered in RAM) - and you can make a new
+    snapshot of this virtual disk
+  <li>
+    Ability to exclude files and folders has been <a href="icommandline.htm#exclude139" target="_self">enhanced</a>
+    ( --exclude:\*.MP3 )
+  <li>defect Images can be - within limits - <a href="icommandline.htm#repair" target="_self">repaired</a>
+  <li>allows in WinPE/BartPE <a href="icommandline.htm#AddDriver" target="_self">Installation
+    of additional (disk) drivers</a>
+  <li>fixes/tolerates some bugs in Vista/2008 X64</li>
+</ul>
+
+<h4>V1.38 - 26 March 2007: Drive Snapshot 1.38</h4>
+<ul>
+  <li>supports Microsoft VSS (useful for MS Exchange 2003 servers) (<a href="snapshot_vss.htm">details</a>)
+  <li>supports mounting of up to 5 images at the same time
+  <li>possibility to exclude Files or directories <a href="icommandline.htm#exclude" target="_self">enhanced</a>
+    ( --exclude:\windows\$NtUninstall*)
+  <li>default image size is 1500 MB</li>
+</ul>
+<p>works better with <a href="vista.htm">Windows Vista</a></p>
+
+<h4>V1.37 - 28 February 2007: Drive Snapshot 1.37</h4>
+
+<p>Still 1.37, but works better with <a href="vista.htm">Windows Vista
+(read more)</a></p>
+
+<h4>V1.37 - 17 November 2005: Drive Snapshot 1.37</h4>
+
+<ul>
+<li>
+<a href="differential.htm" target="_parent">differential Backup</a>
+<li>
+<a href="icommandline.htm#exclude" target="_self">exclude
+files/directories from backup</a>
+<li>
+command line replacement of some 'magic' strings <a href="icommandline.htm#replace" target="_self">$DATE,$DRIVE,...<br>
+</a>
+<li>
+supports Windows64 X64 (not IA64-Itanium)
+<li>
+Windows Longhorn Beta 1 (it simply worked)
+</ul>
+
+<h4>V1.36 20 July 2005: Drive Snapshot 1.36</h4>
+&nbsp;&nbsp; older versions of Drive Snapshot (1.35 and earlier) do <font color="#FF0000"><b>NOT work with Windows
+2003 SP1</b></font>
+
+<p>new features:</p>
+
+<p>backup:</p>
+
+<ul>
+<li>
+partitions without a drive letter (mounted at mount points)
+<li>
+unrecognized partitions (Compaq/HP/Dell service partitions)
+<li>
+Linux Ext2/Ext3/Reiser/Swap partitions
+<li>
+image files are saved as unfragmented as possible
+<li>
+USB sticks should be supported
+<li>
+our first attempt to use some graphic in the windows user interface ;)&nbsp;
+</ul>
+
+<p>Restore:</p>
+
+<ul>
+<li>
+to all partitions mentioned above
+<li>
+when restoring from Windows/BartPE, allows resizing of NTFS file system to the
+partition size.<br>
+
+Resizing up is always possible; resizing down only to the size of the highest
+used<br>
+sector on the disk (basically: what you see in disk defragmenter), NOT to the
+used data size;<br>
+no defragmentation on the fly is attempted.<br>
+
+</ul>
+
+<p>Bugs fixed:</p>
+
+<ul>
+<li>
+previous versions allowed mounting of images with &lt;= 256 image .sn1, .sn2,...pieces;<br>
+now up to 65535 pieces (of max 256 TB each) are mountable
+<li>
+supports image mounting in Win 2000/Win 2003 Terminal server environment
+<li>
+behaves better, if memory cards (MMC etc.) aren't plugged in
+<li>
+a couple of minor things (as usual)
+<li>
+the described procedure to convert the networkbootdiskette.sna into a 'real' image,
+suitable to burn a bootable CD, had a bug.<br>
+fixed.<br>
+
+</ul>
+
+<h4>V1.35 -1 May 2004</h4>
+<ul>
+<li>
+BUG: Windows 2003 Server: 'Driver reports error: IRQL 5'; should be fixed
+<li>
+BUG: The recovery diskette was broken for Intel E1000 Network driver.<br>
+fixed.<br>
+
+</ul>
+
+<h4>V1.34 -22 Apr 2004</h4>
+<ul>
+<li>
+BUG: Sometimes Snapshot Backup caused blue screens; should be fixed
+<li>
+BUG: DOS restore worked only for drives, that supported LBA addressing; fixed.<br>
+
+<li>
+new: SafeGuard Easy is detected, and gets special handling.<br>
+Needs some more
+testing.<br>
+
+<li>
+new: the DOS part is now packed with <a href="http://www.ibsensoftware.com/products_aPACK.html">APACK</a>,
+reducing .EXE size by 3K ;)
+</ul>
+
+<h4>V1.33 -1 Mar 2004</h4>
+<ul>
+<li>
+&nbsp;new: when backing up from command line.<br>
+some users wanted a graphical
+status nevertheless.<br>
+
+added new switch -G&nbsp; (graphical) to allow this
+<li>
+new: when restoring to a new drive, where the drive geometry (cylinders/sectors)
+changed, the disk isn't bootable.<br>
+there's a new command<br>
+&nbsp; DOS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; snapshot&nbsp;&nbsp;&nbsp;
+CHECKBOOT HD1<br>
+&nbsp; Windows:snapshot -!CHECKBOOT HD1<br>
+to correct this; will be done automatically in 1.36
+<li>
+when output is redirected (command line backup), progress messages are written to
+stderr, not to the logfile
+<li>
+some formatting changes, typos,...<br>
+
+</ul>
+
+<h4>V1.30 - 9 Oct 2003</h4>
+<ul>
+<li>
+UDMA Support in the DOS Recovery diskette&nbsp;[BETA]
+<li>
+Ability to resize the file system inside a partition <a href="resize.htm">[read
+more]</a>
+</ul>
+<p></p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+
+</body>
+</html>

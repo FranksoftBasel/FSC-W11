@@ -1,0 +1,308 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   <meta http-equiv="Content-Language" content="en-gb">
+   <meta name="robots" content="index,follow">
+   <meta name="content" content="Image, Disk, Drive, Drive Image, Disk Image, Recover, Backup, Windows,DOS,FreeDOS,UDMA">
+   <meta name="description" content="Drive SnapShot - how to make the bootable recovery disk">
+   <meta name="keywords" content="Image, Disk, Drive, Drive Image, Disk Image, Recover, Backup, Windows,DOS,FreeDOS,UDMA">
+   
+   <title>Create a Dos boot disk</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+   <base target="_parent">
+</head>
+<body>
+<h2 align="center">Creation of a DOS BOOT floppy</h2>
+<h3>If you have already a DOS Boot disk</h3>
+<p>Fine. Just use it - Snapshot will run on any DOS. Just copy SNAPSHOT.EXE to
+the disk and use it.</p>
+<h3>If you are using&nbsp; Windows XP</h3>
+<p>You can create a DOS Bootdisk by formatting a floppy with the Option 'MS-DOS
+Bootdisk creation'.<br>
+Windows XP will create a floppy, containing a (very limited) subset of Windows
+ME.</p>
+<h3>If you have SNAPSHOT installed</h3>
+<p>
+Snapshot SETUP has created a shortcut in the start menu
+</p>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Programs-&gt;Snapshot Disk Imaging-&gt;Create
+Disaster Recovery Disk.
+</p>
+<p>
+Click this to create a bootable FreeDOS disk, including&nbsp; PnP network access
+to your Windows server (see below).
+</p>
+<p>
+If you bought the full version, you got a CDROM, which is bootable as well. The
+booted CD is equivalent to the diskette above.
+</p>
+<p>Properties:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Always supported are FAT16, FAT32 und ATAPI CD-ROMs (the
+<b>CDROM-Laufwerk </b>is as <b>W:</b>  installed)<span style="background-color: #C0C0C0">.</span>
+</p>
+<p>Due to limited available memory, you have to select on start, if you
+additionally want to access local NTFS drives (for the image file location), or
+want to find the image files on the Windows Network.
+</p>
+<h3> International Keyboard support</h3>
+<p>When creating the recovery boot disk, Snapshot tries to detect the current
+keyboard layout (of Windows). It then creates a file LANGUAGE.BAT on the
+bootdisk, that is executed during boot and holds the statement</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KEYB XX</p>
+<p>where XX is the layout identifier to be loaded.&nbsp;<br>
+Currently detected are English (US), United Kingdom (UK), German (GR), Swiss
+German (SG), French (FR), Swiss French (SF), Portuguese (PO), Brazil (BR),
+Russia (RU), Bulgaria (BG), Belgian (BE), Dutch (NL), Finnish (SU), Swedish (SV),
+Italy (IT), Hebrew (HE), Norwegian (NO).<br>
+You can get a list of all
+supported layouts with&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A:&gt;KEYB /L</p>
+<h3>Bootdisk with PnP support for the Windows&nbsp; Network/Samba</h3>
+<p>This Bootdisk is derived from <b>Bart Lagerweij's&nbsp;</b>  <a href="http://www.nu2.nu/bootdisk/network"><b>Bart's
+Network Boot Disk</b></a>.&nbsp;<br>
+We changed it to be based on FreeDOS to avoid license issues.</p>
+<p>This disk supports</p>
+<ul>
+  <li><b>automatic detection</b> of your network adapter&nbsp;</li>
+  <li>to use DHCP or direct selection of your IP Address</li>
+  <li>TCP/IP or NetBEUI</li>
+  <li>Save of Profiles to be available on next boot (only on diskette)</li>
+</ul>
+<p>After starting the disk, you have to enter something like&nbsp;</p>
+<blockquote>
+<p>A:&gt; NET USE&nbsp;&nbsp; Z:&nbsp;&nbsp; \\Servername\\Share</p>
+</blockquote>
+<p>and restore the image files from Z:</p>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Currently supported network adapters:</p>
+</blockquote>
+  <table class="nu2table" cellSpacing="1" cellPadding="2" border="1" width="740">
+    <tbody>
+      <tr>
+        <th class="nu2th" width="129">File</th>
+        <th class="nu2th" width="501">Description</th>
+        <th class="nu2th" width="108">Updated</th>
+      </tr>
+      <tr>
+        <td class="nu2td2" rowSpan="2" width="129">b57.cab&nbsp;(19KB)</td>
+        <td class="nu2td2" width="501">Broadcom NetXtreme Gigabit Ethernet NDIS2
+          Driver v8.23 (20 jul 05)</td>
+        <td class="nu2td2" width="108">Aug 11, 2005</td>
+      </tr>
+      <tr>
+        <td class="nu2td" colSpan="2" width="628"><b>Works also for HP/Compaq NC67xx/NC77xx Gigabit (Broadcom Based) adapters!</b></td>
+      </tr>
+      <tr>
+        <td class="nu2td2" rowSpan="2" width="129"><a title="http://www.nu2.mostlycreativeworkshop.com/nu2files/dc21x4.cab" href="http://www.nu2.mostlycreativeworkshop.com/nu2files/dc21x4.cab">dc21x4.cab</a>&nbsp;(19KB)</td>
+        <td class="nu2td2" width="501">Digital 2104x/2114x 10/100 mbps Ethernet Controller
+          v3.00</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td" colSpan="2" width="628">OEM: Linksys v1? Used in VirtualPC.</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" rowSpan="2" width="129">e100b.cab&nbsp;(12KB)</td>
+        <td class="nu2td2" width="501">Intel(R) PRO PCI Driver v4.56 032404</td>
+        <td class="nu2td2" width="108">Nov 11, 2005</td>
+      </tr>
+      <tr>
+        <td class="nu2td" colSpan="2" width="628">v1.6 Updated by Todd Geib, added
+          dev=1209,v1.7 Updated by BG,updated by Tom</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" rowSpan="2" width="129">e1000.cab&nbsp;(12KB)</td>
+        <td class="nu2td2" width="501">Intel 8254X Based Adapter (pro/1000
+          gigabit) v3.62 070204</td>
+        <td class="nu2td2" width="108">Nov 11, 2005</td>
+      </tr>
+      <tr>
+        <td class="nu2td" colSpan="2" width="628">Created by Todd Geib. Update by Dan
+          Chappelear , BG,Tom.</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129"><a title="/nu2files/el59x.cab" href="http://www.nu2.nu/nu2files/el59x.cab">el59x.cab</a>&nbsp;(13KB)</td>
+        <td class="nu2td2" width="501">3Com DOS NDIS driver for 3C59X Family Adapters v1.2f</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" rowSpan="2" width="129"><a title="http://www.nu2.mostlycreativeworkshop.com/nu2files/el90x.cab" href="http://www.nu2.mostlycreativeworkshop.com/nu2files/el90x.cab">el90x.cab</a>&nbsp;(13KB)</td>
+        <td class="nu2td2" width="501">3Com Etherlink PCI DOS NDIS driver v5.2.2</td>
+        <td class="nu2td2" width="108">Aug 15, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td" colSpan="2" width="628">Downgraded by Bob Whitworth (Nasa) with
+          good reason: v5.2.5 for 3Com 90x cards doesn't work properly with old
+          905-TX card (9050) with the original Parallel Tasking chip (not v2
+          used in 905b or c). If you try to install Win2000 over the network, it
+          will hang at random (usually about 40-60% thru). The 5.2.4 driver has
+          the same bug. 3Com couldn't figure it out. The older v5.2.2 driver
+          works with all 905s (905, 905b &amp; 905c).</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" rowSpan="2" width="129"><a title="/nu2files/elnk3.cab" href="http://www.nu2.nu/nu2files/elnk3.cab">elnk3.cab</a>&nbsp;(11KB)</td>
+        <td class="nu2td2" width="501">3Com DOS EtherLink 10 ISA (3C509b) Network Driver
+          v3.1</td>
+        <td class="nu2td2" width="108">Sep 11, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td" colSpan="2" width="628">Updated by Dick Nagtegaal. Fixed divide
+          overflow on fast Pentium machines. <a title="http://support.3com.com/infodeli/tools/nic/3c509b.htm" href="http://support.3com.com/infodeli/tools/nic/3c509b.htm" target="_blank">More
+          info!</a></td>
+      </tr>
+      <tr>
+        <td class="nu2td2" rowSpan="2" width="129"><a title="http://public.www.planetmirror.com/pub/nu2files/elpc3.cab" href="http://public.www.planetmirror.com/pub/nu2files/elpc3.cab">elpc3.cab</a>&nbsp;(14KB)</td>
+        <td class="nu2td2" width="501">3Com Megahertz Ethernet PC Card 589E DOS Network
+          Driver v1.9.005</td>
+        <td class="nu2td2" width="108">Feb 3, 2003</td>
+      </tr>
+      <tr>
+        <td class="nu2td" colSpan="2" width="628">Updated by Robert Mader. Should fix divide
+          by zero errors. <a title="http://help.nec-computers.com/uk/itemnr/NECFIUP03730100.asp" href="http://help.nec-computers.com/uk/itemnr/NECFIUP03730100.asp" target="_blank">More
+          info!</a></td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129"><a title="http://public.www.planetmirror.com/pub/nu2files/elpc575.cab" href="http://public.www.planetmirror.com/pub/nu2files/elpc575.cab">elpc575.cab</a>&nbsp;(14KB)</td>
+        <td class="nu2td2" width="501">3Com Megahertz 10/100 LAN CardBus PC Card DOS NDIS
+          driver v3.4b</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129">getnd2.cab&nbsp;(9KB)</td>
+        <td class="nu2td2" width="501">VIA Networking Velocity Family Gigabit Ethernet Adapter v1.05 (09/08/03)</td>
+        <td class="nu2td2" width="108">Dec 18, 2004</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129"><a title="http://www.nu2.mostlycreativeworkshop.com/nu2files/ne2000.cab" href="http://www.nu2.mostlycreativeworkshop.com/nu2files/ne2000.cab">ne2000.cab</a>&nbsp;(9KB)</td>
+        <td class="nu2td2" width="501">Microsoft NE2000 NDIS Driver</td>
+        <td class="nu2td2" width="108">Jul 11, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129"><a title="/download.php?sFile=n100.cab" href="http://www.nu2.nu/download.php?sFile=n100.cab">n100.cab</a>&nbsp;(13KB)</td>
+        <td class="nu2td2" width="501">Compaq Fast Ethernet and Gigabit NDIS 2
+          NIC Drivers 7.0a (25Jan02)</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td" width="129">&nbsp;</td>
+        <td class="nu2td" width="478">Created by Dilan Patel</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" rowSpan="2" width="129"><a title="/download.php?sFile=n1000.cab" href="http://www.nu2.nu/download.php?sFile=n1000.cab">n1000.cab</a>&nbsp;(12KB)</td>
+        <td class="nu2td2" width="501">Compaq Gigabit 6134/6136 (Intel Based)</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td" colSpan="2" width="628">Created by Dimitri Janczak.
+          Does not support EMM386!</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129"><a title="http://www.nu2.mostlycreativeworkshop.com/nu2files/pcntnd.cab" href="http://www.nu2.mostlycreativeworkshop.com/nu2files/pcntnd.cab">pcntnd.cab</a>&nbsp;(13KB)</td>
+        <td class="nu2td2" width="501">AMD PCNet Family Ethernet Adapter NDIS v2.0.1 MAC
+          Driver v3.12</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129"><a title="http://public.www.planetmirror.com/pub/nu2files/rtsnd.cab" href="http://public.www.planetmirror.com/pub/nu2files/rtsnd.cab">rtsnd.cab</a>&nbsp;(21KB)</td>
+        <td class="nu2td2" width="501">Realtek RTL8139/810X Family PCI Fast Ethernet v3.23
+          07/28/99</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129">rtgbnd.cab&nbsp;(8KB)</td>
+        <td class="nu2td2" width="501">RTL8169/8110 Family Gigabit Ethernet Adapter v1.01 (07/16/03)(Tom)</td>
+        <td class="nu2td2" width="108">Dec 18,2004</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129"><a title="/nu2files/sis900.cab" href="http://www.nu2.nu/nu2files/sis900.cab">sis900.cab</a>&nbsp;(14KB)</td>
+        <td class="nu2td2" width="501">SiS 900/7016 SIS900 10/100 PCI DOS Driver v1.13</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129"><a title="http://public.www.planetmirror.com/pub/nu2files/smc9432.cab" href="http://public.www.planetmirror.com/pub/nu2files/smc9432.cab">smc9432.cab</a>&nbsp;(13KB)</td>
+        <td class="nu2td2" width="501">SMC EtherPower II 10/100 (9432TX) v1.02c (970605)</td>
+        <td class="nu2td2" width="108">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="129">D-LINK&nbsp;(0KB)</td>
+        <td class="nu2td2" width="501">D-Link DGE-530T Gigabit : doesn't support
+          DOS - hands off !! (tom)</td>
+        <td class="nu2td2" width="108">Dec 18, 2004</td>
+      </tr>
+    </tbody>
+  </table>
+<p>&nbsp;</p>
+<p>If you have a different Network adapter, go to <a href="http://www.nu2.nu/bootdisk/network#niclist"><b>Bart's Network
+Boot Disk</b></a>.<br>
+You will find ~100 supported drivers, which unfortunately don't fit all on a
+floppy disk. Just copy the required driver XXXCARD.CAB into A:\LIB\NDIS, and
+reboot.</p>
+<blockquote>
+  <p>We would like to hear from you, which drivers are missing; so we can place
+  the most required drivers immediately into the delivered package.<a href="mailto:support@drivesnapshot.de?subject=SNAPSHOT-missing%20Network-driver&body=Hallo%0d%0a,we use the Network Card:">
+<br>
+  short note to support@drivesnapshot.de</a>  will do. thanks.</p>
+</blockquote>
+<h3><a name="NTFSDOS"></a>NTFS Support for DOS</h3>
+<p>If your image files are located on a NTFS volume, DOS isn't able to access
+them by itself.</p>
+<p><a href="http://www.sysinternals.com" target="_blank"><b>Sysinternals</b></a> 
+ offers (besides a lot of different useful utilities) a&nbsp; <b><a href="http://www.sysinternals.com/ntw2k/freeware/NTFSDOS.shtml">NTFSDOS</a></b> 
+ driver for DOS; the read-only variant is free.</p>
+<p>Please download NTFSDOS.EXE&nbsp; and copy it to&nbsp; A:\UTILS.&nbsp;</p>
+<p>Due to License issues, we are not allowed to add it to our delivery package
+(coming soon).<br>
+</p>
+<h3>UDMA Support for DOS</h3>
+<p>Most motherboard don't support the fast UDMA mode for IDE drives in their
+BIOS; therefore Disk transfer speed in DOS is limited to ~8MB/sec, which results
+in a max. possible restore rate of 5MB/sec.&nbsp;</p>
+<p>Modern hard disks could have a transfer speed of 50 MB/sec and more, if
+accessed with UDMA.</p>
+<p>UDMA will test it's functionality, and will not load, if it doesn't find compatible
+hardware. Unfortunately, the test causes some (very few) main boards to hang, so
+we can't load it automatically.</p>
+<p>UDMA was developed by&nbsp; Jack Ellis - thanks for that :))<br>
+</p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2005 Tom Ehlert Software -- last modified 09 Nov 05</font> 
+
+<a href="botindex.htm" style="color:white">link table for Bots</a>
+
+<script type="text/javascript">
+<!--
+function IncludeOuterFrames(){
+var loaded=top.location.pathname;
+var start = 0;
+
+for (var i = loaded.length-1;i >= 0; i--)
+	{
+	if (loaded.substring(i,i+1) == "/" || loaded.substring(i,i+1) == "\\")
+		{
+		start = i+1;
+		break;
+		}	
+	}
+if (loaded.substring(start,start+1) != "i") 	return;
+if (loaded.substring(start,start+10) == "index.htm") 	return;
+if (loaded.substring(start,start+10) == "intro.htm") 	return;
+top.location.replace(loaded.substring(start+1,loaded.length));
+}
+
+IncludeOuterFrames();
+
+//-->  
+</script>
+
+
+
+<!--webbot bot="Include" endspan i-checksum="23805" -->
+
+</html>

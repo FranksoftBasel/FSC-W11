@@ -1,0 +1,246 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>Drive Snapshot - Disk Image Restore from DOS</title>
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+</head>
+
+<body>
+
+<table BORDER=0 CELLSPACING=2 CELLPADDING=0 COLS=1 >
+<TBODY>
+</TBODY>
+
+<tr ALIGN=CENTER>
+<td><b><font size="+2">Snapshot - Restoring a volume from Dos</font></b></td>
+</tr>
+
+<tr>
+<td>
+    <h3>Quick steps</h3>
+    <p>Boot your system from a DOS boot disk.<br>
+ Below it is assumed that
+    your image data are accessible as drive W:\C-DRIVE.SNA.</p>
+    <p>If you want to (or have to) repartition your drive, because it is new or
+    completely damaged, enter:</p>
+    <blockquote>
+    <p><b>A:&gt;SNAPSHOT RESTORE HD1 partitionstructure W:\C-DRIVE.SNA -Y</b></p>
+    </blockquote>
+    <p>This will partition the whole drive (HD1) in exactly the same way as
+    your original drive.<br>
+
+    You don't need to do that, and shouldn't do it, if you only want to restore
+    a single, damaged volume.</p>
+      <blockquote>
+    <p><b>A:&gt;SNAPSHOT RESTORE HD1 auto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; W:\C-DRIVE.SNA -Y -V</b></p>
+      </blockquote>
+    <p>This restores all data in the automatically selected partition from the
+    image saved on C-drive, will not ask for confirmation (-Y), and will verify that all data were
+    indeed written correctly (-V).</p>
+    <h3>Details</h3>
+    <p>Boot your system (from a DOS bootdisk)<br>
+    If you don't have a DOS bootdisk available, <a href="makebootdisk.htm">here</a>
+    is more information on how to create one.</p>
+    <p>When restoring a partition, all data on it will be deleted and replaced
+    by the data at the time of the backup.<br>
+If you think you need some of the
+    data, you have to copy them to somewhere else before restoring the image.</p>
+    <p>After the restore, the system will be identical to the time you
+    created the image.<br>
+</p>
+    <p>To restore an image, the imagefile must be accessible to DOS (you must be
+    able to say C:&gt;DIR); for more information about how to access a file on
+    CDROM, Network, or local NTFS <a href="makebootdisk.htm">click here</a>.<br>
+</p>
+    
+    <h4>actions to be performed</h4>
+  <ol>
+    <li><a href="#HarddiskInfo" target="_self">show information about the hard
+      disk's partition structure</a></li>
+    <li><a href="#ImageInfo" target="_self">show information about the Image
+      file<br>
+      </a></li>
+    <li><a href="#AutoFdisk" target="_self">restore the partition structure</a></li>
+    <li><a href="#RestorePartition" target="_self">restore the partition data<br>
+      </a></li>
+    <li><a href="#TestImage" target="_self">test image file for internal
+      consistency (optional)</a></li>
+    <li><a href="#RestoreMBR" target="_self">restore Master Boot Sector (MBR)
+      (rarely needed)</a></li>
+  </ol>
+    <h3><b><a name="HarddiskInfo"></a><a name="HarddiskInfo">show information
+    about the hard disk's partition structure</a></b></h3>
+    <p style="margin-bottom: 0">snapshot.exe show [HDx]</p>
+  <p style="margin-top: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  [HDx]:&nbsp;&nbsp; number of hard disk, HD1 is the first hard disk</p>
+  <p><b>A:&gt;SNAPSHOT SHOW HD1</b></p>
+  
+    <blockquote>
+  
+  <pre><font color="#000000">
+  SNAPSHOT for DOS V1.21 [Feb 27 2003] Copyright (c) tom ehlert
+
+1 hard disk(s) detected
+
+disk 1 - 1022 cylinders, 255 heads, 63 sectors, 512 byte
+           total physical size 29314 MB
+
+Primary partitions         start   -     end     :   start, size
+ 1:06 FAT16          CHS    0  1  1- 129 254 63  :     0MB,  1020MB
+ 2:05 extended Part.<br>
+CHS  130  0  1-   2 254 63  :  1019MB,  7037MB
+ 3:07 NTFS inst FS   CHS    3  0  1- 249 254 63  :  8056MB, 18003MB
+ 4:0C FAT32 LBA      CHS  250  0  1- 663 254 63  : 26058MB,  3248MB
+Logical partitions
+ 1:06 FAT16          CHS  130  1  1- 194 254 63  :  1019MB,   510MB
+ 2:06 FAT16          CHS  195  1  1- 324 254 63  :  1529MB,  1020MB
+ 3:06 FAT16          CHS  439  1  1- 568 254 63  :  3443MB,  1020MB
+ 4:07 NTFS inst FS   CHS  569  1  1-1014 254 63  :  4463MB,  3499MB
+ 5:07 NTFS inst FS   CHS 1015  1  1-1015 254 63  :  7961MB,     8MB
+ 6:04 FAT16 &lt; 32MB   CHS 1016  1  1-1019 254 63  :  7969MB,    32MB
+highest used sector on disk 60018840 (29307 MB)
+</font></pre>
+
+  
+  
+    </blockquote>
+  <h3><a name="ImageInfo"></a><u>  show information about the Image file</u></h3>
+    <p style="margin-bottom: 0">snapshot.exe show imagefile</p>
+    <p style="margin-top: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    imagefile: path and name of the image file</p>
+  <p>This shows information about the saved volume as it was stored at backup
+  time.<br>
+Additionally, the partition structure of the original disk is shown.</p>
+  <p><b>&nbsp;&nbsp; A:&gt;snapshot show&nbsp; x:\c-drive.sna</b></p>
+    <blockquote>
+  <pre><font color="#000000">Information about the saved volume from  &lt;x:\c-drive.sna&gt;
+
+  Computer 'TP', drive C:, Label 'C-TP       ', Filesystem FAT (06)
+  Hard disk 1 Primary Partition 1- size   2.097.393.664 =1999MB
+  total size 1999 MB - 420 MB free - 32768 Bytes per cluster
+
+disk 1 - 1222 cylinders, 255 heads, 63 sectors, 512 byte
+           total physical size 9585 MB
+
+Primary partitions         start   -     end     :   start, size
+ 1:06 FAT16          CHS    0  1  1- 254 254 63  :     0MB,  2001MB
+ 2:0F extended Part  CHS  255  0  1-1023 254 63  :  2000MB,  7586MB
+Logical partitions
+ 1:07 NTFS inst FS   CHS  255  1  1- 514 254 63  :  2000MB,  2040MB
+ 2:06 FAT16          CHS  515  1  1- 641 254 63  :  4039MB,   997MB
+ 3:07 NTFS inst FS   CHS  642  1  1-1023 254 63  :  5036MB,  2997MB
+ 4:07 NTFS inst FS   CHS 1023  1  1-1023 254 63  :  8032MB,  1554MB
+highest used sector on disk 19631430 (9586 MB)
+</font></pre>
+
+    </blockquote>
+
+  <h3 style="margin-top: 0"> <b><u><a name="AutoFdisk"></a><a name="AutoFdisk">restore
+  the p</a>artition structure</u></b></h3>
+  <p style="margin-top: 0">This is required, if your disk is new (not
+  partitioned), or partitioned differently.<br>
+
+  Snapshot will restore the exact partitioning of the original disk.</p>
+  <p style="margin-top: 0">The necessary information is available in each
+  Snapshot image file.</p>
+    <p style="margin-top: 0">If for some reason you want to partition the disk
+    in a different way, you have to use FDISK or similar tools.<br>
+
+    <b>Note: </b>for this to work it is necessary, that the new disk is at least
+    as large as the partitioned area on the original disk;&nbsp; Snapshot will
+    not modify the partition information in any way.</p>
+    <p style="margin-top: 0; margin-bottom: 0"><b>A:&gt;snapshot restore [HDx]
+  partitionstructure imagefile</b></p>
+    <p style="margin-top: 0; margin-bottom: 0"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    [HDx]:&nbsp; Number of hard disk, starting with HD1</b></p>
+    <p style="margin-top: 0"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    [imagefile]: Path and name of&nbsp; Image file</b></p>
+    <h3 style="margin-top: 0"><b><u><a name="RestorePartition"></a>restore the
+    partition data</u></b></h3>
+    <p>The real restore action.<br>
+This will overwrite all data on this
+    partition and replace it with the original data.<br>
+After that, the partition is
+    identical to the original state.</p>
+    <p style="margin-top: 0; margin-bottom: 0">snapshot.exe restore [HDx]
+    {auto/primary#/logical#} imagefile</p>
+  <p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  [HDx]:&nbsp; Number of hard disk</p>
+  <p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {auto/primary#/logical#}: automatically select the destination partition,</p>
+  <p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  or force a primary or logical partition to be restored</p>
+  <p style="margin-top: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  [imagefile]: Path and name of image file</p>
+  <p style="margin-top: 0">AUTO - PRIMARY1 - LOGICAL5</p>
+  <blockquote>
+    <p style="margin-top: 0">Snapshot knows which partition is contained in the
+    image file; option 'AUTO' will use this partition as the destination.<br>
+
+    Should you want to restore a different partition, you may select this by PRIMARY1
+    or LOGICAL2.<br>
+Please use the SHOW command first to verify what partition you want
+    to restore.<br>
+
+    </p>
+  </blockquote>
+  <p style="margin-top: 0">option&nbsp; -V&nbsp; ( Verify)</p>
+  <blockquote>
+    <p style="margin-top: 0">this will cause a verification run after the
+    restore is completed, to verify that all data are readable and correct.<br>
+
+    You may abort the verification at any time by pressing Ctrl-C.<br>
+
+    </p>
+  </blockquote>
+  <p style="margin-top: 0">Parameter -Y (Yes)</p>
+  <blockquote>
+  <p style="margin-top: 0">-Y&nbsp; (YES) will skip the 'are you really sure'
+  question.</p>
+  </blockquote>
+  <p style="margin-top: 0">the command to automatically restore the C-drive from
+  network drive W: should look similar to:</p>
+  <blockquote>
+  <p style="margin-top: 0"><b>A:\&gt;snapshot.exe restore HD1 auto W:\c.drive.sna
+  -Y -V</b></p>
+  </blockquote>
+    <h3><b><a name="TestImage"></a><u>    test image file for internal
+    consistency</u></b></h3>
+  <p style="margin-bottom: 0"><b>A:&gt;snapshot test X:C-DRIVE.SNA
+  </b></p>
+    <p style="margin-top: 0">this reads the complete image file, and verifies
+  readability and consistency.<br>
+
+    This is useful, if you want to make sure, for example, that all your CDROM is readable before
+  starting the restore.</p>
+    <h3><b><u><a name="RestoreMBR"></a>restore Master Boot Sector (MBR)</u></b></h3>
+    <p>This is rarely needed, but useful if some software installed a different
+    boot loader in the MBR.<br>
+
+    It will restore the very first sector on the disk.</p>
+  <blockquote>
+  <p style="margin-top: 0"><b>A:&gt;snapshot.exe restore HD1 MBR W:\c.drive.sna</b></p>
+  </blockquote>
+</td>
+</tr>
+
+</table>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+
+</html>

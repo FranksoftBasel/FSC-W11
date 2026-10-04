@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="en-us">
+    <meta name="keywords" content="disk image, disk, image, Disk Imaging, Windows NT,Windows 2000, Windows XP">
+    <title>
+      Drive Snapshot - FTP
+    </title>
+    <link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+    <base target="_parent">
+  </head>
+  <body>
+    <h1>
+      Verwendung eines FTP-Servers
+    </h1>Snapshot kann Images ab Version 1.41 auch auf einem FTP-Server sichern und von dort restaurieren.<br>
+Dies erfolgt durch die Eingabe eines speziellen in der Form:<br>
+    <p>
+      <b>ftp://username:password@server:port/pfad/dateiname.sna</b>
+    </p>
+    <p>
+      Wenn Sie einen FTP-Server mit der Verwaltung der FTP-Server angelegt haben, muss das Passwort nicht mehr im Dateinamen angegeben werden.<br>
+Es wird dann automatisch eingesetzt.<br>
+Die Passw&ouml;rter werden in verschl&uuml;sselter Form (AES) in der Registry gesichert.<br>
+Die Angabe des Ports ist optional.<br>
+
+    </p><b>Bitte beachten Sie, dass beim Erstellen eine vollen Images auf einem FTP-Server keine Hashdatei angelegt wird.<br>
+Wenn Sie eine Hashdatei erzeugen wollen, m&uuml;ssen Sie mit der Option -o den Pfad und den Namen f&uuml;r eine lokale Hashdatei angeben.<br>
+</b>
+    <br>
+    <br>
+    <h3>
+      Verwalten von FTP-Accounts
+    </h3>
+		  
+		  <p>Mit der Schaltfl&auml;che Manage FTP Accounts k&ouml;nnen FTP-Accounts f&uuml;r verschiedene Server konfiguriert und gespeichert werden (siehe Abbildung).<br>
+F&uuml;r alle konfigurierten Accounts muss das Passwort nicht mehr im Dateinamen angegeben werden.<br>
+Die Speicherung der Daten, die zu einem Account geh&ouml;ren, erfolgt in der Registry.<br>
+Das Passwort wird dabei in verschl&uuml;sselter Form gespeichert.<br>
+Mit den Schaltfl&auml;chen am unteren Ende des Fensters k&ouml;nnen Sie neue Accounts erzeugen (New Account), bestehende Accounts editieren (Edit Account) und l&ouml;schen (Delete Account).<br>
+Die Schaltfl&auml;che Back f&uuml;hrt Sie zum letzten Dialog zur&uuml;ck und mit der Schaltfl&auml;che Select k&ouml;nnen Sie den hinterlegten Account als Ziel f&uuml;r Ihr Backup in die Eingabemaske von Snapshot &uuml;bernehmen.</p>
+
+<p align="center"><img border="0"  src="../images/ManageFTPAccount.png"  <a href="ftp.htm" target="_parent"></a></img></p><br/>
+
+		  
+F&uuml;r die Eingabe eines FTP-Accounts steht unten aufgef&uuml;hrte Dialog zur Verf&uuml;gung.<br>
+
+		  
+<p align="center"><img border="0" src="../images/EnterFTPServer.png"  <a href="ftp.htm" target="_parent"></a></img></p>
+  </body>
+</html>

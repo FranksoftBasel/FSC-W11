@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="en-us">
+    <meta name="keywords" content="disk image, disk, image, Disk Imaging, Windows NT,Windows 2000, Windows XP">
+    <title>
+      Drive Snapshot - FTP
+    </title>
+    <link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+    <base target="_parent">
+  </head>
+  <body>
+    <h1>
+      Verwendung von VSS mit und ohne explizite Beteiligung von VSS-Writern
+    </h1>
+Der Volumenschattenkopieservice (VSS) von Windows ist seit Windows XP/2003 verf&uuml;gbar.<br>
+Er kann von einer Applikation angesprochen werden, um eine Schattenkopie von einer oder mehreren Partitionen anzulegen.<br>
+Die Komponenten, die mit dem VSS kommunizieren, werden VSS-Writer genannt.<br>
+Sie können vor und nach einem Backup Aktionen ausf&uuml;hren.<br>
+
+
+Eine Liste aller im System vorhandenen Writer erh&auml;lt man durch das Kommando: <br />
+
+<p><b>vssadmin list writers</b></p>
+
+Snapshot kann VSS auf zwei verschiedene Arten verwenden.<br>
+<br >
+
+<h3>VSS ohne explizite Beteiligung von Writern</h3>
+
+<li>	Erzeugt Schattenkopie, die eine Kopie der bestehenden Daten enthält.</li>
+<li>Snapshot verwendet diesen Modus automatisch, wenn mehr als eine Partition gleichzeitig gesichert werden soll oder ein laufender Exchange-Server auf einer der Partitionen im Backup gefunden wird.<br>
+(Bei einem SBS2003 ist der dazu notwendige Exchange-Writer standardmäßig abgeschaltet.<br>
+Damit Snapshot den Exchange-Server findet, müssen Sie den Writer manuell starten: <a href="http://support.microsoft.com/kb/838183">http://support.microsoft.com/kb/838183)</a> </li>
+
+<li>Die Writer werden nicht explizit angesprochen und führen keine spezifischen Operationen aus.</li> 
+<li>Transaktionsprotokolle eines Exchange-Servers werden nach der Sicherung nicht abgeschnitten, und ein Hyper-V-Host benachrichtigt die laufenden virtuellen Maschinen nicht über das geplante Backup.</li><br /><br />
+
+<h3>VSS mit expliziter Beteiligung von Writern</h3>
+
+<li>Dieser Modus verwendet Snapshot nur auf Anweisung (Dialog Advanced Backup Options).<br>
+Die explizite Beteiligung aller Writer erzwingen Sie durch Setzen eines Häkchens bei Explicitly include all VSS writers.<br>
+Damit werden alle im System gestarteten VSS-Writer über das bevorstehende Backup informiert und können vor und nach dem Backup spezielle Operationen durchführen.<br>
+</li>
+<li>In diesem Modus würde ein Hyper-V-Server, auf dem eine virtuelle Maschine ohne gestartete Integrationsdienste läuft, diese Maschine kurzzeitig zu</li>
+<li>Beginn des Backups pausieren lassen.<br>
+Direkt nach der Erstellung der Schattenkopie läuft die virtuelle Maschine dann automatisch weiter.<br>
+Ein Exchange</li>
+<li>-Server würde nach einem erfolgreichen Backup die Transaktionsprotokolle löschen.<br>
+Welche Aufgaben die Writer erledigen, obliegt den Writern selbst.</li>
+<li>Snapshot hat keinen Einfluss auf die von den Writern durchgeführten Aktionen.</li>
+Eine detaillierte Steuerung der Writer ist durch die Verwendung der Kommandozeile möglich, wenn Sie z.<br>
+B.<br>
+bereits über ein dediziertes Exchange
+-Backup verfügen und nicht wünschen, dass Snapshot das Löschen der Transaktionsprotokolle auslöst:
+<ul type="square">
+<li>--AllWriters <br /> Bei dieser Option verwendet Snapshot den Volumenschattenkopieservice in einem Modus, der alle beteiligten Applikationen explizit über den Vorgang des Backups benachrichtigt.<br>
+Die Writer haben daraufhin die Möglichkeit, vor und auch nach dem Backup notwendige Aktionen durchzuführen.<br>
+Ein Hyper-V-Server mit aktiven virtuellen Maschinen benachrichtigt alle virtuellen Maschinen über das bevorstehende Backup.<br>
+Virtuelle Maschinen, auf denen keine Integrationsdienste installiert sind, werden für das Erstellen der Schattenkopie kurz angehalten.</li>
+<li>--ExcludeWriter:"NameWriter1","NameWriter2","NameWriter3",...<br />
+Diese Option setzt implizit --AllWriters und spart die Liste der angegebenen Writer aus.</li>
+<li>--IncludeWriter:"NameWriter1","NameWriter2","NameWriter3",...<br />
+Mit dieser Option wird die Liste der angegebenen Writer explizit beim Backup benachrichtigt.</li>
+</ul>
+
+
+	<br />
+	<br />
+  </body>
+</html>

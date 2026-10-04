@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="robots" content="follow, index">
+<title>Disk Image Encryption - Details</title>
+<meta name="keywords" content="disk image, backup, encryption, AES, Rijndael, recovery password, backdoor password">
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+
+<style type="text/css">
+<!--
+.english { color:red ;font-size:100%;visibility:hidden}
+.german  { color:green ;font-size:10%;}
+-->
+</style>
+</head>
+<body>
+
+<h1 align="center">Snapshot - Encryption Details</h1>
+
+<p><a href="back2.htm">Back to Backup</a></p>
+<h3>Setting a default password</h3>
+<p>Drive Snapshot lets you store a default password for encryption and decryption in the
+registry. The passwords will always be used when creating (encrypting) or using (decrypting) disk images; they are
+stored at HKCU\software\snapshot\DefaultEncPassword and HKCU\software\snapshot\DefaultDecPassword.</p>
+<p>The encryption password is converted to a public key which is used for encryption. Storing the encrytion password is safe and no security risk.</p>
+
+<p>The default encryption password can be set with the option <b> --DefaultEncPWD=SuperSecret</b></p>
+
+<p>The decrytion password will be stored encrypted in the registry. Although this presents some security risk, it's very convenient compared to always re-entering the password when using disk images.<br>
+Although it's stored in encrypted form , there's always the risk to disassemble Snapshot.exe
+and retrieve the decryption password.</p>
+
+<p>The default decryption password can be set with the option <b> --DefaultDecPWD=SuperSecret</b></p>
+
+<p>Even if you don't store your password permanently, it is remembered until you
+close Drive Snapshot; e.g.<br>
+for creating multiple partition Backups.</p>
+<h3> <font color="#FF0000">Remember
+your Password</font>
+
+</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#FF0000">If you
+forget your password, there's no way to recover it; you might as well delete your
+backup in such a case.<br>
+</font>
+
+</p>
+<h3>Setting the password from the command line</h3>
+<p>From the command line, you can set the encryption password with&nbsp; <b>-PW=&nbsp; </b></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C:
+X:\Backup\c-drive.sna <b>-PW=SuperSecret</b></p>
+<p>This overrides a default password.<br>
+	
+<p>If you don't want to use a plain text password from the command line you can use the command</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; snapshot <b>-pwgen=key_file.txt &nbsp; -PW=SuperSecret</b></p>
+<p>to create a public key file. The file can be used if you want to encrypt an image with</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; snapshot C: X:\Backup\c-drive.sna <b>-pwuse=key_file.txt </b></p>
+
+If you have a default password, and don't set one from the command line, the
+default is used.<br>
+
+If you have a default, but nevertheless want your image unencrypted, you have to
+indicate an empty password:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C: X:\Backup\c-drive.sna
+<b>-PW=</b></p>
+<h3>En/Decryption Speed:</h3>
+<p>A 1GHz machine is able to en- and decrypt data at a rate of ~30 MB/sec; the DOS
+restore is ~10MB/sec</p>
+<p>This will slow down the overall backup and Restore speed by 10-20%</p>
+<p>On CPU's supporting Intels AES instructions the slow down will be even smaller.</p>
+
+<h3>Implementation details</h3>
+<p>
+The used encryption (and implementation) should be 'state of&nbsp;the art'.</p>
+<p>The algorithm used is AES (Rijndael) with a block and key length of 128 bits; which will
+be the industry standard for the next few years.</p>
+<p>AES is used in CBC (Cipher Block Chaining) mode, to avoid some easy attacks
+on images, that are possible if you have a lot of cyphertext, with large
+portions of it known to the attacker; which is certainly the case for GB images,
+with all the WindowsNT OS installed.</p>
+<h3>Big problem - and how we think we solved it</h3>
+<p>a) Any program has to tell the user 'Wrong Password', if he mistypes it
+accidentally</p>
+<p>
+b) If the information needed to verify the password is included in the image there must be some password verification (hash), and a potential attacker has all information&nbsp;in
+its hands to run a brute force (or dictionary) attack against a password hash</p>
+<p>
+c) Even if the potential key has 256 bits, users tend to use passwords with less then 15 characters, and they look much
+more like 'Christmastree' or (at best) '13Christmastrees' and very seldom like '[ChRiStMaS]->[TrEeS]'; so
+dictionary attacks are relatively easy - and that's how Password Regain utilities work.</p>
+<p>To prevent against brute force attacks, we make the 
+hash generation slow: not artificially by a bad implementation,
+but by iterating a good implementation (the AES implementation itself)
+for ~0.1 seconds to generate the hash; so even if an attacker
+has a much faster machine than yours, he can't test millions
+of possible keys, but only a few hundred.</p>
+<p>To prevent against dictionary attacks, the password is salted,
+using the current environment as a random number generator.</p>
+<p>However, the salt value is stored in the image, too, readily
+available to the attacker to use in his dictionary attack.<br>
+So lastly, we store only 20 bits of the password hash.<br>
+
+This gives you (the legitimate user) a chance of 1000000:1 that
+wrong passwords are detected, and the attacker hopefully a lot of
+wrong passwords (with the right hash) to try.</p>
+<p>If you happen to enter a wrong password with the right hash,
+nothing bad will happen - other then you have a disk filled with
+garbage ;)</p>
+<p>
+
+Comments on this (and other implementation issues) welcome.</p>
+<h3>What the hell is 'AES'</h3>
+<p>AES is the designated new encryption standard, replacing DES.<br>
+DES (the former
+standard), with a key length of 56 bits, is no longer safe against brute force
+attacks.</p>
+<p>So the <a href="http://www.nist.gov/">NIST</a>  (National Institute of Standards and Technology)
+founded a 1998 competition to find AES (Advanced Encryption standard) as a Crypto standard for next the decade
+, which was decided in 2000, and Rijndael was selected as the standard.</p>
+<p>For us there was no reason to select anything different as the implementation
+is sufficiently fast for Drive Snapshot's needs.</p>
+<p>Without claiming to have read (and understood) everything below (some
+of it is really advanced math), here are some interesting links regarding AES,
+Rijndael, and encryption in general.</p>
+<p><a href="http://csrc.nist.gov/CryptoToolkit/aes/round2/aesfact.html">Why Rijndael
+was choosen as AES<br>
+</a><a href="http://www.esat.kuleuven.ac.be/~rijmen/rijndael/">The Rijndael
+Homepage&nbsp;</a>  and <a href="http://www.esat.kuleuven.ac.be/~rijmen/rijndael/PropCorr.PDF">The
+Theory behind of Rijndael (Hardcore Mathematics !!)<br>
+</a><a href="http://www.counterpane.com/twofish.html">TWOFISH:</a>  another
+candidate for AES, by Bruce Schneier</p>
+<p>&nbsp;</p>
+<p><a href="back2.htm">Back to Backup</a></p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<title>How to create a bootable CD/DVD</title>
+</head>
+
+<body>
+
+<h1>How to create a bootable CD/DVD</h1>
+
+<p><a href="tips.htm" target="_parent"><font size="+2">more Tips</font></a></p>
+
+<h2>STEP 1 - Prepare something bootable</h2>
+
+<p>To begin, you need some kind of bootable medium, preferably a floppy disk</p>
+
+<p><b>If you have a floppy disk drive:<br>
+</b>Create a bootable floppy, for instance by using<br>
+&nbsp;&nbsp; Start-&gt;Programs-&gt;Snapshot-&gt;Create Recover Floppy<br>
+Use A: as bootable bootable medium <a href="#step2">below</a></p>
+
+<p><b>If you have no disk drive - Method A:<br>
+</b>Method 1: create a small partition, then restore networkbootdiskette.sna (installed
+during setup) to this partition.<br>
+
+You can customize&nbsp; this partition at will (change autoexec.bat etc.).<br>
+
+Use this partition as bootable medium <a href="#step2">below</a>.</p>
+
+<p><b>If you have no disk drive - Method B:<br>
+C</b>reate a bootable (uncompressed) image of a floppy.<br>
+
+Using the windows commandline, expand networkbootdiskette.sna with the
+(undocumented) command</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:\programs\snapshot&gt; snapshot
+networkbootdiskette.sna bootdisk.img -X</p>
+
+<p>Use bootdisk.img as bootable medium <a href="#step2">below</a>.</p>
+
+<h2><a name="step2"></a>STEP 2 - Burn disk, using NERO</h2>
+
+<ul>
+  <li>start Nero</li>
+  <li>(create a new project)</li>
+  <li>[Close Wizard] if necessary, we need the tabbed view</li>
+  <li>in the top left, select CD or DVD</li>
+  <li>in the lower left, scroll down to CD-ROM [boot] or DVD-ROM [boot]</li>
+  <li>click the [boot] tab</li>
+  <li>select (*) bootable logical drive or (*) image file, depending on the boot
+    medium from above</li>
+  <li>enable expert settings</li>
+  <li><b>make sure</b> ' kind of emulation' is set to <b>Floppy Emulation 1,44
+    MB</b></li>
+  <li>click [NEW]</li>
+  <li>add image files&nbsp; to the CD/DVD; they will be visible on drive
+    W: when booted from CD</li>
+  <li>burn</li>
+  <li>done</li>
+</ul>
+
+<h2>STEP 3 - reboot and test if CD boots</h2>
+
+<p>Better now then in an emergency ;)</p>
+
+<p><a href="tips.htm" target="_parent"><font size="+2">more Tips</font></a></p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+
+</html>

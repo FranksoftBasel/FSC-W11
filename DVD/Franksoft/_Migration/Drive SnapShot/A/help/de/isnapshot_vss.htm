@@ -1,0 +1,261 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+<meta name="keywords" content="Drive Snapshot, backup, Volume Snapshot Copy Service,VSS">
+<title>Drive Snapshot - VSS</title>
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+
+<style type="text/css">
+<!--
+.english { color:red ;font-size:100%;visibility:hidden}
+.german  { color:green ;font-size:10%;}
+-->
+</style>
+</head>
+<body>
+
+<h1 align="center">Drive Snapshot - VSS Volume Shadow Copy Service</h1>
+
+<p align="left">Drive Snapshot bietet die
+Möglichkeit, bei Einsatz auf Windows 2003 (oder besser) den Windows eigenen VSS
+(Volume Shadow Copy Service) zur Erzeugung von konsistenten Images zu nutzen.</p>
+
+<p align="left">Der Hauptvorteil gegenüber dem 'normalen' Treiber von Drive
+Snapshot ist, dass auch MS Exchange Server online gesichert werden können, ohne
+die Exchange Services zu beenden (<a href="#Details">Technische Details</a>
+siehe unten).</p>
+
+<ul>
+  <li>
+    <p align="left"> MS Exchange Server 2003 können online gesichert werden
+    (ohne die Exchange Services zu beenden)&nbsp;</li>
+  <li>
+    <p align="left">es können mehrere Laufwerke gleichzeitig gesichert werden</li>
+</ul>
+
+<h3 align="left">Anwendung</h3>
+
+<p align="left">Durch die Verwendung von VSS können auch mehrere Laufwerke
+gleichzeitig gesichert werden:</p>
+
+<ul>
+  <li>
+    <p align="left">Aus dem GUI durch Festhalten der Control-Taste bei der
+    Selektion in der Liste</li>
+  <li>
+    <p align="left">von der Kommandozeile mit<br>
+    <br>
+    <b>c:&gt;snapshot c:+d:+e:&nbsp; x:\backup\rechner\$DISK-FULL.sna&nbsp;
+    </b>($DISK wird durch den Laufwerksbuchstaben ersetzt)
+    <b><br>
+    </b></li>
+  <li>
+    <p align="left">Bei mehreren gleichzeitig gesicherten Laufwerken ist die
+    Angabe von $DISK irgendwo im Dateinamen zwingend zur Erzeugung
+    unterschiedlicher Images&nbsp;</li>
+  <li>
+    <p align="left">differentielle
+    Images&nbsp;<br>
+    <br>
+    <b>c:&gt;snapshot c:+d:+e:&nbsp; x:\backup\rechner\$DISK-$DATE-Diff.sna -hx:\backup\rechner\$DISK-FULL.hsh<br>
+    <br>
+    </b>funktioniert nur von der Kommandozeile</li>
+  <li>
+    <p align="left"><b>&nbsp;snapshot hd1:* x:\backup\$disk.sna<br>
+    <br>
+    </b>sichert alle Partitionen der 1.<br>
+Festplatte; incl.<br>
+Linux Partitionen, 
+    Wartungspartitionen,etc.<br>
+<b>
+    </b></li>
+</ul>
+
+<h3 align="left"><a name="Details">Technische Details</a></h3>
+
+<p align="left">Seit Windows XP implementiert Windows einen 'Volume ShadowCopy
+Service' (VSS), der im wesentlichen das gleiche leistet wie der interne Drive
+Snapshot Treiber - nämlich ein konsistentes Abbild einer (oder mehrerer)
+Partition zu einem fixen Zeitpunkt.<br>
+
+Zusätzlich definiert und implementiert er eine Art Rundruf:&nbsp; '</p>
+
+<blockquote>
+
+<p align="left">An alle die VSS verstehen: würdet Ihr euch bitte in einen
+konsistenten Zustand versetzen, Transaktionen beenden, usw.<br>
+, und danach für
+einen Moment ruhig sein; ich möchte nämlich gleich ein Backup machen.</p>
+
+</blockquote>
+
+<p align="left">Danach ist der eingefrorene Zustand für (Backup-) Programme fix
+verfügbar, bis der Zustand wieder freigegeben wird; eventuelle Änderungen auf
+dem Laufwerk werden in einem Puffer (fester Größe) zwischengespeichert.</p>
+
+<p align="left"><b>Vorteile von VSS</b></p>
+
+<ul>
+  <li>
+    <p align="left">Kann mehrere Laufwerke zur gleichen Zeit sichern</li>
+  <li>
+    <p align="left">Kann mit Hilfe des Rundrufs auch MS Exchange Server 2003 im
+    laufenden Zustand sichern (bzw.<br>
+restaurieren) , was ohne VSS nicht immer
+    zuverlässig möglich ist.<br>
+Bei andere Datenbanken VS nicht nötig, schadet
+    aber immerhin auch nichts.</li>
+</ul>
+
+<p align="left"><b>Nachteile von VSS</b></p>
+
+<ul>
+  <li>
+    <p align="left">durch die feste (vorkonfigurierte) Größe des Puffers kann
+    dieser zumindest prinzipiell überlaufen; der interne Treiber schreibt
+    Änderungen sofort in das Image und kann daher nicht überlaufen</li>
+  <li>
+    <p align="left">durch das zusätzliche Schreiben auf Festplatte ist das
+    Backup bei vielen Schreiboperationen während des Backups tendenziell
+    langsamer</li>
+  <li>
+    <p align="left">VSS existiert nicht für Windows NT und Windows 2000</li>
+  <li>
+    <p align="left">VSS funktioniert schlicht nicht, wenn einige (ältere)
+    Produkte wie z.B.<br>
+ältere MS SQL Server auf neueren Versionen von Windows
+    laufen; auch NTBACKUP funktioniert dann nicht</li>
+</ul>
+
+<p align="left"><b>Implementation von VSS vs.<br>
+interner Treiber</b></p>
+
+<p align="left">Da keiner der beiden Treiber nur Vorteile hat, wird per Default
+der VSS Treiber genommen, wenn</p>
+
+<ul>
+  <li>
+    <p align="left">MS Exchange 2003 oder Active Directory gefunden wird</li>
+  <li>
+    <p align="left">ein Backup von mehreren Platten gleichzeitig gemacht
+    wird&nbsp;</li>
+</ul>
+
+<p align="left">Ansonsten wird der interne Treiber verwendet.<br>
+Dies kann&nbsp;
+über den [Advanced Options] Dialog geändert werden, oder von der Kommandozeile
+durch&nbsp;</p>
+
+<ul>
+  <li>
+    <p align="left">--noVSS: verwendet immer den internen Treiber</li>
+  <li>
+    <p align="left">--UseVSS: versuche immer VSS; wenn VSS nicht vorhanden, oder
+    Fehler meldet, wird der interne Treiber verwendet</li>
+  <li>
+    <p align="left">--ForceVSS: versucht immer mit VSS zu arbeiten; Abbruch mit
+    Fehler falls VSS nicht vorhanden oder nicht funktioniert</li>
+  <li>
+    <p align="left">--AllWriters: s.u.</li>
+</ul>
+
+    <h3 align="left"><a name="AllWriters"></a>(<font color="#FF0000">1.41</font>)Löschen 
+    der Exchange Logs</h3>
+
+    <p align="left">VSS Backup kann in 2 Betriebsarten verwendet werden, 
+    Microsoft Backup nennt das
+
+<ul>
+  <li>
+    <p align="left"><b>VSS Copy Backup</b>: Wählen Sie diese Option falls Sie <b>
+    eine</b> andere Backup Applikation verwenden.<br>
+Dateien werden in einer 
+    konsistenten Form gesichert, es werden aber keine Logfiles gelöscht.<br>
+
+    Dies ist der bisher als Standard verwendete Modus von Drive Snapshot, und 
+    entspricht <b>--UseVSS</b>.</li>
+  <li>
+    <p align="left"><b>VSS Full Backup</b>: Wählen Sie diese Option falls Sie <b>
+    keine</b> andere Backup Applikation verwenden.<br>
+Diese Option aktualisiert den 
+    Backup Verlauf, aller Dateien und löscht Logfiles der Anwendungen (exchange, 
+    MS SQL,...).<br>
+
+    Bei erfolgreichem Backup werden alle beteiligten Komponenten informiert, 
+    dass ein erfolgreiches Backup durchgeführt wurde.<br>
+Diese können dann 
+    gegebenenfalls Transaktionslogs löschen, und andere Aufräumarbeiten 
+    durchführen.<br>
+
+    Dieser wird durch <b>--AllWriters</b> aktiviert.</li>
+</ul>
+<p align="left">&nbsp;<h1>
+      Verwendung von VSS mit und ohne explizite Beteiligung von VSS-Writern
+    </h1>
+Der Volumenschattenkopieservice (VSS) von Windows ist seit Windows XP/2003 verf&uuml;gbar.<br>
+Er kann von einer Applikation angesprochen werden, um eine Schattenkopie von einer oder mehreren Partitionen anzulegen.<br>
+Die Komponenten, die mit dem VSS kommunizieren, werden VSS-Writer genannt.<br>
+Sie können vor und nach einem Backup Aktionen ausf&uuml;hren.<br>
+
+
+Eine Liste aller im System vorhandenen Writer erh&auml;lt man durch das Kommando: <br />
+
+<p><b>vssadmin list writers</b></p>
+
+Snapshot kann VSS auf zwei verschiedene Arten verwenden.<br>
+<br >
+
+<h3>VSS ohne explizite Beteiligung von Writern</h3>
+
+<li>	Erzeugt Schattenkopie, die eine Kopie der bestehenden Daten enthält.</li>
+<li>Snapshot verwendet diesen Modus automatisch, wenn mehr als eine Partition gleichzeitig gesichert werden soll oder ein laufender Exchange-Server auf einer der Partitionen im Backup gefunden wird.<br>
+(Bei einem SBS2003 ist der dazu notwendige Exchange-Writer standardmäßig abgeschaltet.<br>
+Damit Snapshot den Exchange-Server findet, müssen Sie den Writer manuell starten: <a href="http://support.microsoft.com/kb/838183">http://support.microsoft.com/kb/838183)</a> </li>
+
+<li>Die Writer werden nicht explizit angesprochen und führen keine spezifischen Operationen aus.</li> 
+<li>Transaktionsprotokolle eines Exchange-Servers werden nach der Sicherung nicht abgeschnitten, und ein Hyper-V-Host benachrichtigt die laufenden virtuellen Maschinen nicht über das geplante Backup.</li><br /><br />
+
+<h3>VSS mit expliziter Beteiligung von Writern</h3>
+
+<li>Dieser Modus verwendet Snapshot nur auf Anweisung (Dialog Advanced Backup Options).<br>
+Die explizite Beteiligung aller Writer erzwingen Sie durch Setzen eines Häkchens bei Explicitly include all VSS writers.<br>
+Damit werden alle im System gestarteten VSS-Writer über das bevorstehende Backup informiert und können vor und nach dem Backup spezielle Operationen durchführen.<br>
+</li>
+<li>In diesem Modus würde ein Hyper-V-Server, auf dem eine virtuelle Maschine ohne gestartete Integrationsdienste läuft, diese Maschine kurzzeitig zu</li>
+<li>Beginn des Backups pausieren lassen.<br>
+Direkt nach der Erstellung der Schattenkopie läuft die virtuelle Maschine dann automatisch weiter.<br>
+Ein Exchange</li>
+<li>-Server würde nach einem erfolgreichen Backup die Transaktionsprotokolle löschen.<br>
+Welche Aufgaben die Writer erledigen, obliegt den Writern selbst.</li>
+<li>Snapshot hat keinen Einfluss auf die von den Writern durchgeführten Aktionen.</li>
+Eine detaillierte Steuerung der Writer ist durch die Verwendung der Kommandozeile möglich, wenn Sie z.<br>
+B.<br>
+bereits über ein dediziertes Exchange
+-Backup verfügen und nicht wünschen, dass Snapshot das Löschen der Transaktionsprotokolle auslöst:
+<ul type="square">
+<li><b>--AllWriters </b> <br /> Bei dieser Option verwendet Snapshot den Volumenschattenkopieservice in einem Modus, der alle beteiligten Applikationen explizit über den Vorgang des Backups benachrichtigt.<br>
+Die Writer haben daraufhin die Möglichkeit, vor und auch nach dem Backup notwendige Aktionen durchzuführen.<br>
+Ein Hyper-V-Server mit aktiven virtuellen Maschinen benachrichtigt alle virtuellen Maschinen über das bevorstehende Backup.<br>
+Virtuelle Maschinen, auf denen keine Integrationsdienste installiert sind, werden für das Erstellen der Schattenkopie kurz angehalten.</li>
+<li><b>--ExcludeWriter:"NameWriter1","NameWriter2","NameWriter3",...</b><br />
+Diese Option setzt implizit --AllWriters und spart die Liste der angegebenen Writer aus.</li>
+<li><b>--IncludeWriter:"NameWriter1","NameWriter2","NameWriter3",...</b><br />
+Mit dieser Option wird die Liste der angegebenen Writer explizit beim Backup benachrichtigt.</li>
+</ul>
+
+
+	&nbsp;<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+</body>
+</html>

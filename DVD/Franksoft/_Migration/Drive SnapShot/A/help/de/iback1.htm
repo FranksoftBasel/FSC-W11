@@ -1,0 +1,133 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+
+<title>Backup 1 of 3</title>
+
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<style>
+<!--
+.BILD        { float: right }
+-->
+</style>
+</head>
+<body>
+<h1 align="center">Snapshot - Disk Image Backup <font size="+4">1</font>  <a href="back2.htm"> 2</a>
+<a href="back3.htm"> 3</a></h1>
+<hr>
+
+  <table border="0" style="position: relative; left: 0; top: 0" width="33" height="54">
+    <tr>
+      <td>
+
+<map name="FPMap0">
+<area href="start.htm" shape="rect" coords="164, 445, 272, 491">
+<area href="back2.htm" shape="rect" coords="285, 443, 381, 489"></map>
+<img border="0" src="../images/SelectVolumeToSave.png" usemap="#FPMap0" width="579" height="511">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      </td>
+    </tr>
+  </table>
+
+  
+<h2>1.
+Schritt&nbsp; - Sie wählen die zu sichernden Partitionen.</h2>
+<p>Durch das Festhalten der Strg-Taste können Sie mehrere Partitionen zum 
+Sichern auswählen. <br>Wenn Sie die Festplatte mit allen vorhandenen Partitionen sichern und wiederherstellen möchten, <br>
+wählen Sie alle Partitionen an (Strg-A). <color="red" Wichtig: wenn Sie die Platte später mit allen Partitionen auf einmal restauriren möchten müssen Sie hier alle Partitionen gelichzeitig sichern><br>
+
+Zusätzlich zu den gewählten Partitionen werden alle Partitionen der Größe &lt; 512 
+MB unter dem <br>
+Namen HD1-1, HD1-2 gesichert.<br>
+Diese werden evtl. zum Booten des Rechners 
+benötigt (System reserved etc.).<br>
+
+Sollte das nicht gewünscht sein, können Sie das unter den &#39;Advanced Options&#39; 
+abstellen.</p>
+<p>Wenn Sie mehrere Laufwerke C:, D: ...<br>
+gewählt haben, muss im Dateinamen ein 
+$DISK angegeben werden, z.B.<br>
+X:\Backup-<b>$DISK</b>.SNA<br>
+Beim Backup werden dann mehrere Images X:\Backup-<b>C</b>.SNA,&nbsp; X:\Backup-<b>D</b>.SNA 
+angelegt.</p>
+<p>Für jede Partition
+  werden weitere Informationen angezeigt, als da wären:</p>
+<table border="0">
+  <tr>
+    <td>Drive</td>
+    <td>Der 'normale' Windows Laufwerksbuchstabe (C:, D:,...)</td>
+  </tr>
+  <tr>
+    <td>HD (HardDisk)</td>
+    <td>Die Festplatte, auf der diese Partition liegt (falls Sie mehr als eine
+      besitzen).</td>
+  </tr>
+  <tr>
+    <td>PartNo</td>
+    <td>Die Partitionsnummer und Typ; kann 'primär' oder 'logisch' sein</td>
+  </tr>
+  <tr>
+    <td>PartStart</td>
+    <td>Der Speicherort, wo ihre Partition auf der Festplatte beginnt.<br>
+</td>
+  </tr>
+  <tr>
+    <td>PartSize</td>
+    <td>Die Größe der Partition&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Label</td>
+    <td>der von ihnen zugewiesene Name für das Volume</td>
+  </tr>
+  <tr>
+    <td>FileSystem</td>
+    <td>kann FAT16, FAT32, oder NTFS sein</td>
+  </tr>
+  <tr>
+    <td>Size</td>
+    <td>Die vom Dateisystem in dieser Partition belegte Größe.<br>
+Diese ist
+      normalerweise geringfügig kleiner als die Größe der Partition, kann
+      aber auch deutlich kleiner sein; nie aber größer.<br>
+
+      Dies ist beim Restore wichtig, da ein kleines Laufwerk durchaus in eine große
+      Partition&nbsp; zurückgespielt werden kann, nie aber umgekehrt.</td>
+  </tr>
+  <tr>
+    <td>Used</td>
+    <td>Der belegte Speicher auf dem Laufwerk, entspricht den zu sichernden
+      Daten.</td>
+  </tr>
+  <tr>
+    <td>Free</td>
+    <td>Der freie Speicher auf dem Laufwerk.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<div align="right">
+  <font FACE="LMRoman12-Regular"></font>&nbsp;<table border="0">
+    <tr>
+      <td><a href="back2.htm">weiter (Backup 2)</a></td>
+    </tr>
+  </table>
+</div>
+
+  
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+  
+</body>
+</html>

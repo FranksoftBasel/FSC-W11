@@ -1,0 +1,165 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="de">
+
+
+<meta name="robots" content="follow, index">
+<title>Disk Image Encryption</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+
+<style type="text/css">
+<!--
+.english { color:red ;font-size:100%;visibility:hidden}
+.german  { color:green ;font-size:10%;}
+-->
+</style>
+</head>
+<body>
+
+<h1 align="center">Snapshot - Verschlüsselung Details</h1>
+
+<p><a href="back2.htm">Zurück zur Sicherung</a>&nbsp;</p>
+<h3>Ein Kennwort als Standardkennwort merken</h3>
+<p>Drive Snapshot bietet die Möglichkeit, sich ein Kennwort zur
+Verschlüsselung und ein Kennwort zur Entschlüsselung in der Registry zu merken; gespeichert wird für den
+augenblicklichen Benutzer (HKCU\software\snapshot\DefaultEncPassword und HKCU\software\snapshot\DefaultDecPassword).</p>
+
+<p> Die Speicherung des Passwortes zur Verschlüsselung stellt kein Sicherheitsriusiko dar, da nicht das Passweort selbst,
+	sondern ein aus dem Passwort generierter öffentlicher Schlüssel in der Registry hinterlegt wird. Damit weerden dann alle
+fortan erzeugten Images verschlüsselt.</p>
+
+<p>Die Speicherung des Passortes zur Entschlüsselung, die z.B. beim Mounten eines Images verwendet wird, 
+	stellt ein gewisses Sicherheitsrisiko dars, ist es viel bequemer, als ständig (lange!) Passwörter einzugeben.<br>
+Das Kennwort für die Entschlüsselung in der Registry wird
+zwar verschlüsselt gespeichert &nbsp; zumindest theoretisch kann Drive Snapshot jederzeit
+disassembliert und das
+Kennwort entschlüsselt werden.</p>
+<p>Auch wenn Sie das Kennwort nicht dauerhaft speichern, bleibt es während
+eines Programmlaufs bestehen, wenn Sie z.B.<br>
+mehrere Partitionen sichern,
+explorieren oder restaurieren wollen.</p>
+<h3><font color="#FF0000">Merken Sie sich Ihr Kennwort</font>
+
+</h3>
+<blockquote>
+<p> <font color="#FF0000">Wenn Sie Ihr
+Kennwort vergessen, können Sie die Sicherung löschen.<br>
+<br>
+Es besteht keine Möglichkeit (auch
+für uns nicht), das Kennwort später zu rekonstruieren</font>
+
+</p>
+</blockquote>
+<h3>Kennwortangabe von der Kommandozeile</h3>
+<p>von der Kommandozeile wird das Passwort mit der Option <b>-PW= </b>angegeben,
+also</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C:
+X:\Backup\c-drive.sna <b>-PW=SuperSecret</b></p>
+<p>Dies überschreibt ein evtl. vorgegebenes Kennwort.<br>
+
+<p>Seit der Version 1.47 gibt es auch die Möglichkeit einen öffentlichen Schlüssel 
+aus einem Kennwort erzeugen zu lassen und diesen dann zur Verschlüsselung eines Images zu verwenden.</p>
+<p>Starten Sie dazu folgendes Kommando:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot <b>-PW=SuperSecret  --PwGen=KeyFile.txt</b></p>
+<p>Der öffentiche Schlüssel, der in der Datei KeyFile.txt gespeichert wird, kann dann bei der Erzeugnung eines Backup 
+mit folgendem Kommando verwendet werden:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C: x:\image-c.sna --PwUse=KeyFile.txt</b></p>
+Auf diese Weise müssen Sie kein Passwort im Klartext mehr verwenden.
+
+
+
+<br>
+Wenn Sie ein Kennwort vorgegeben haben und auf der Kommandozeile angeben, wird
+das vorgegebene verwendet.<br>
+
+Wenn Sie eins vorgegeben haben, aber trotzdem unverschlüsselt sichern wollen,
+müssen Sie explizit ein leeres Kennwort angeben:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C: X:\Backup\c-drive.sna
+<b>-PW=</b></p>
+<h3>Ver- und Entschlüsselungsgeschwindigkeit:</h3>
+<p>Ein 1GHz PC kann unter Windows ca.<br>
+30 MB/Sekunde ver- und entschlüsseln; die
+DOS Restore Version ca.<br>
+10 MB/sec.<br>
+Dies sollte Backup Restore um nicht mehr als
+10-20% relativ zur unverschlüsselten Variante verlangsamen.</p>
+<p> Bei CPU's, die den AES Befehlssatz unterstützen, ist praktisch keine Verlangsamung durch die Verschlüsseung mehr vorhanden.
+<h3>Implementierungsdetails</h3>
+<p>
+Drive
+Snapshot kann die erzeugten Disk Images verschlüsseln.<br>
+Die verwendete
+Verschlüsselung (und Implementierung) entspricht dem Stand der Technik.</p>
+<p>Der verwendete Algorithmus ist AES (Rijndael) mit einer Block- und
+Schlüssellänge von 256 Bit, und damit vermutlich der Industriestandard für
+die nächsten Jahre.</p>
+<p>AES wird im CBC (Cipher Block Chaining) Modus verwendet, um einfache Attacken
+auf ein Image zu vermeiden, die darauf beruhen, dass große Teile eines Images
+bekannten Klartext enthalten, nämlich das Betriebssystem, MS Office,...</p>
+<h3>Wörterbuch Attacken - und seine Lösung</h3>
+<p>Natürlich muss ein Programm in der Lage sein, dem Benutzer 'Falsches
+Kennwort' zu sagen, sollte er sich vertippt haben, ohne die komplette Festplatte
+zu restaurieren bzw.<br>
+dabei de facto zu löschen; insofern muss eine Funktion
+existieren, um das Kennwort zu verifizieren.</p>
+<p>Andererseits hat ein potentieller Angreifer das Disk Image in der Hand, und
+damit alle notwendigen Informationen, um das Programm (oder in einer eigenen
+Implementierung) fast beliebig viele mögliche Kennworte auszuprobieren.</p>
+<p>Gegen einen Angriff mit ausschließlich roher Gewalt ist die gewählte
+Implementierung mit einer Schlüssellänge von 128 Bit hinreichend sicher.</p>
+<p>Andererseits tendieren Benutzer dazu, 'normale' Wörter + evtl.<br>
+ein wenig
+'Dekoration' zu verwenden, wie z.B.<br>
+'Password76' , '19Tannenbäume' oder
+'Mein3.Kennwort'.</p>
+<p>Solche Kennworte können aber trotzdem noch durch (semi intelligente)
+Attacken mit Hilfe von Wörterbüchern erfolgreich attackiert werden.</p>
+<p>Deshalb leitet Snapshot aus dem gegebenen Kennwort mit Hilfe einer
+Zufallszahl ein 'echtes' 128 Kennwort ab, und macht diesen Prozess langsam,
+indem er solange wiederholt wird, bis der erzeugende PC 0.1 Sekunden gerechnet
+hat; dadurch ist ein potentieller Angreifer nicht in der Lage, mehrere Millionen
+an Kennworten pro Sekunde zu testen, sondern zur mehrere Dutzend.</p>
+<h3>OEM Master Key</h3>
+<p>Für größere Kunden besteht die Möglichkeit, ein Master Kennwort zu
+erzeugen.<br>
+Mehr dazu <a href="ioemkey.htm">hier</a></p>
+<h3>Was zum Teufel ist 'AES'</h3>
+<p>AES ist der designierte Nachfolger von DES.<br>
+DES (der ehemalige Standard) ist
+mit einer Schlüssellänge von 56 Bit der Rechenleistung von Angreifern nicht
+mehr, oder nicht mehr lange gewachsen.</p>
+<p>Deswegen hat das <a href="http://www.nist.gov/">NIST</a> (National Institute
+of Standards and Technology) 1998 einen Wettbewerb ausgeschrieben, um einen AES
+(Advanced Encryption Standard) zu finden als Crypto Standard für die nächsten
+Jahrzehnte.</p>
+<p>Dieser wurde 2000 beendet, und Rijndael wurde als Standard gewählt; für uns
+gab es keinen Grund, irgendetwas anderes zu wählen, da die Implementierung
+hinreichend schnell für Drive Snapshot's Zwecke möglich ist.</p>
+<p>Ohne damit angeben zu wollen, das alles gelesen und vor allem verstanden zu
+haben (das ist wirklich höhere Mathematik), hier sind ein paar interessante
+Links zum Thema Verschlüsselung,&nbsp; AES und Rijndael:</p>
+<p><a href="http://csrc.nist.gov/CryptoToolkit/aes/round2/aesfact.html">Warum
+Rijndael als Standard für AES gewählt wurde<br>
+</a><a href="http://www.esat.kuleuven.ac.be/~rijmen/rijndael/">Die Rijndael
+Homepage&nbsp;</a> und <a href="http://www.esat.kuleuven.ac.be/~rijmen/rijndael/PropCorr.PDF">Die
+Theorie hinter Rijndael (Hardcore Mathematik !!)<br>
+</a><a href="http://www.counterpane.com/twofish.html">TWOFISH:</a> ein anderer
+Kandidat für AES, von Bruce Schneier<br>
+<a href="http://lasecwww.epfl.ch/php_code/publications/search.php?ref=Oech03">Knacken
+von Windows-Passwörtern in Sekunden</a><br>
+</p>
+<p><a href="back2.htm">Zurück zur Sicherung</a></p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" endspan i-checksum="60662" -->
+
+</body>
+</html>

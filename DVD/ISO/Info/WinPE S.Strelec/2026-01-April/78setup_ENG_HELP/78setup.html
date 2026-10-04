@@ -1,0 +1,345 @@
+﻿
+<a <!DOCTYPE html>
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>78setup INSTRUCTION</title>
+<link rel="stylesheet" type="text/css" href="css/document.css">
+<META content="MSHTML 6.00.6001.18444" name=GENERATOR></HEAD>
+
+<BODY>
+<h1>78Setup (Windows 7/8/8.1/10 classical setup from distribution sets) ver. 2.3</h1>
+
+<h2>CONTENT:</h2>
+<li><A href="#Introduction78setup">Introduction</li>
+<li><A href="#Interface78setup">Interface</li>
+<li><a href="#MoreDetails78setup">More details about buttons, what and how</li><blockquote>
+<li><A href="#1-4buttons78setup">1-4. buttons</li>
+<li><A href="#5-9buttons78setup">5-9. buttons, info</li>
+<li><A href="#10-17buttons78setup">10. panel, Setup from extracted distribution folder, 11-17 buttons and panel</li>
+<li><A href="#18-24buttons78setup">18. panel, Setup from distribution disk image (ISO), 18-24 buttons and panels</li></blockquote>
+<li><A href="#Utilities78setup">U1. Utilities panel, U2-U10</li><blockquote>
+<li><A href="#U278setup">U2-5</li>
+<li><A href="#U678setup">U6-9</li>
+<li><A href="#U1078setup">U10</li></blockquote>
+<li><A href="#Parameters78setup">Setup parameters selection</li>
+<li><A href="#NotesFiles78Setup">Notes about files</li><blockquote>
+<li><A href="#Appointment78setup">Assignment of the files</li>
+<li><A href="#Wildcards78Setup">Wildcards to find the installation files</li>
+<li><A href="#CFGsample78Setup">78setup.cfg configuration file sample</li>
+<li><a href="#RepackSources">Repacking of the Sources.7z and Sources64.7z archives</li></blockquote>
+<li><A href="#Ref78Setup">Final references</li>
+<hr>
+<a id="Introduction78setup"><H2>Introduction</H2></a>
+<p>
+The utility allows you to keep the OS distribution sets for Windows 7/8/8.1 (and possibly 10) in 3 folders (specified in the 78setup.cfg configuration file).<br/>
+It supports processing both unpacked distributions, and disk images (if necessary, ImDisk is installed to work with images).<br/>
+Started tool scans folders specified in the configuration on all drives (processes all subfolders of these folders), and generates found distributions list and disc images list.<br/>
+Additionally distributions unpacked to the root disk (Sources folder) are scanned. Number of distributions is not limited to (within reason), fifty of them are displayed without any problems.
+</p>
+<a id="Interface78setup"><h2>Interface</H2></a>
+<p>
+Despite the buttons "abundance" software is quite simple in the normal use case. In general, you should determine what variant of the distributions
+ should install operating system: from decompressed one (Classical installation from distribution folder) or from disk image
+ (Classical installation from distribution image). We choose the necessary distribution in the corresponding panel (from found or,
+ if necessary, manually), and click "Install". This opens installation parameters selection window. There will be default optimal choice of
+ installation environment, $OEM$ folder and installation script (they can be changed too, if necessary). We will have only to click "Start" 
+ - and classic OS installation starts ...</p></br>
+
+<a id="MoreDetails78setup"><H2>More details about buttons, what and how</H2></a>
+<br><br>
+
+<img src="pics78/78setup_Interface.png" alt="Interface" usemap="#interface" style="float: left; margin: 0px 10px 0px 0px">
+<map name="interface">
+ <area shape="rect" coords="25,39,139,59" href="#178setup" alt="Break">
+ <area shape="rect" coords="155,39,285,60" href="#278setup" alt="Resolution">
+ <area shape="rect" coords="306,39,460,60" href="#378setup" alt="Language">
+ <area shape="rect" coords="476,39,586,60" href="#478setup" alt="RefreshHDD">
+ <area shape="rect" coords="27,74,200,90" href="#5-9buttons78setup" alt="Info-5">
+ <area shape="rect" coords="210,74,500,90" href="#5-9buttons78setup" alt="Info-6">
+ <area shape="rect" coords="560,74,600,90" href="#5-9buttons78setup" alt="Info-7">
+ <area shape="rect" coords="27,98,380,120" href="#5-9buttons78setup" alt="Info-8">
+ <area shape="rect" coords="407,98,600,111" href="#5-9buttons78setup" alt="RAM-9">
+ <area shape="rect" coords="12,124,380,140" href="#10-16buttons78setup" alt="Panel-10">
+ <area shape="rect" coords="393,124,590,140" href="#1178setup" alt="AlTBreakHotkey">
+ <area shape="rect" coords="21,146,600,172" href="#1278setup" alt="DropDownMenu">  
+ <area shape="rect" coords="78,180,460,193" href="#1378setup" alt="DescriptionFile">
+ <area shape="rect" coords="24,204,240,223" href="#1478setup" alt="WimManual"> 
+ <area shape="rect" coords="258,204,353,223" href="#1578setup" alt="Xsource"> 
+ <area shape="rect" coords="371,204,455,223" href="#1678setup" alt="Diskpart"> 
+ <area shape="rect" coords="474,204,590,230" href="#1778setup" alt="StartSetup"> 
+ <area shape="rect" coords="27,250,400,270" href="#18-24buttons78setup" alt="ISOpanel"> 
+ <area shape="rect" coords="24,273,596,295" href="#18-24buttons78setup" alt="ChooseImage">
+ <area shape="rect" coords="75,308,560,320" href="#18-24buttons78setup" alt="SelectedImage">  
+ <area shape="rect" coords="24,330,240,350" href="#18-24buttons78setup" alt="Manual">
+ <area shape="rect" coords="259,330,357,350" href="#18-24buttons78setup" alt="MountedFolder">  
+ <area shape="rect" coords="371,330,457,350" href="#18-24buttons78setup" alt="Imdisk"> 
+ <area shape="rect" coords="474,328,590,354" href="#18-24buttons78setup" alt="StartSetup">
+ <area shape="rect" coords="613,30,740,354" href="#Utilities78setup" alt="UtilitiesPanel">  
+ </map> 
+
+<div style="height:400px"><p>There is 78setup interface with numbered panels and buttons in the picture.<br><br>
+They are clickable, the page will scroll to the location with the bookmark.</p></div>
+
+
+<a id="1-4buttons78setup"></a><H3> ----- 1-4 ----- </H3>
+<p>
+<a id="178setup"></a><b> 1. </b><img src="pics78/78setup_1_break.png"/> Open Task Manager. There is hotkey to call TaskMgr (Break/Pause button) hotkey works until 78setup is running.<br/>
+<a id="278setup"></a><b> 2. </b><img src="pics78/78setup_2_resolution.png"/> Resolution (800x600 or 1024x768) selection panel. If selected resolution is not specified, resolution setting is disabled (it is believed
+ that there is a full resolution mode selection for PE).<br/>
+<a id="378setup"></a><b> 3. </b><img src="pics78/78setup_3_language.png"/> Panel to change operatively 78setup language (on start utility detects automatically PE/OS language, and if it is Russian, Russian interface
+ is shown; if not, English is shown). At operational change of the language also available HDD are refreshed and distribution are searched repeatedly on all disks (similar to the 4-th item).<br/>
+<a id="478setup"></a><b> 4. </b><img src="pics78/78setup_4_refresh.png"/> Refresh HDD. Repeated search for the distributions will be made (actually, if you have connected new media) without program restarting. At the same time manually added distributions will be removed from the dropdown menu.
+</p>
+
+<a id="5-9buttons78setup"></a><H3> ---- 5-9 ---- INFO</H3>
+<p>
+<img src="pics78/78setup_5-9_info.png"/><br>
+<b> 5.</b> Information about the system: for WinPE boot view (BIOS/UEFI), OS/PE type (Windows/WinPE Indication), bit (x86, x64,
+ if supported x64 x86 subsystem, then h64|86), Russian or not ( Rus/Eng, for others - DOS-code page display, eg CP: 936 for the Chinese WinPE).<br>
+<b> 6.</b> Name of the running OS/PE.<br>
+<b> 7.</b> The disk where you are running the utility.<br>
+<b> 8.</b> Name of the processor and its frequency.<br>
+<b> 9.</b> Available RAM on the OS/PE (full amount for x64; without PAE support for x86, it is limited to 3,7Gb 3.2 ...).</p>
+
+<a id="10-16buttons78setup"></a><H3>10. Panel, Setup from extracted distribution Sources folder</H3>
+<p> 
+<a id="1178setup"></a><b>11. </b>Tip for hotkey ( 'Alt + Break') to interrupt the OS installation or MS DaRT operation.<br>	
+<a id="1278setup"></a><b>12. </b>Choosing distribution.<br><img src="pics78/78setup_11_wim_esd.png"/><br>
+ *.wim, install*.esd, install*.swm wilcard search is performed. All available options are added to
+  selection menu.<br><img src="pics78/78Setup_wimesd_menu.png"/><br> The last thing is to search in root Sources folders (regardless of the folder settings for search), the latter found
+  option is selected by default.<br>
+<a id="1378setup"></a><b>13. </b>Distribution description from install*.wim/esd/swm.txt file (ie, the name should be the same as that of installation file,
+  but with the additional .txt extension). The text should be in one line, coding 1251, up to 70-80 characters. You can not use special characters, and a comma -
+  generally try to, if it is "uncomfortable" symbol - a description will be truncated/reduced/missed. <b>"There is no install.wim.txt description file in distribution's folder"</b> message is
+  displayed if no description file is found.<br>
+<a id="1478setup"></a><b>14. </b><img src="pics78/78setup_wimmanual.png"/>Manual distribution selection (opens the file browsing window, wildcard *.wim/*.Esd/*.Swm). The selected distribution
+ will be added into drop-down menu (p.11) and selected by default.<br>
+<a id="1578setup"></a><b>15. </b><img src="pics78/78setup_Xsources.png"/>Setup environment status in the X:\Sources folder. If the environment is not available, the inscription is in gray,
+ if the environment is available, the inscription is in black. If environment is not available, but it has archive (sources.7z and sources64.7z
+ files in Utilites subdirectory), after the 78setup is launched the archive will be unpacked in the background and after this the display will
+ change.<br>
+ <a id="1678setup"></a><b>16. </b><img src="pics78/78setup_15_diskpart.png"/>Run DiskPart in a separate window.<br>
+ <a id="1778setup"></a><b>17.</b><img src="pics78/78setup_16_start.png"/>Setup (with the possibility of installation environment, OEM and installation script) starts.
+ If the installation environment is missing, the setup is possible only with the help of WinNTsetup.<br>
+</p>
+
+<a id="18-24buttons78setup"></a><H3>18th Panel, Setup from distribution disk image (ISO)</H3>
+<p><img src="pics78/78setup_18_image.png"/><br><br>
+<a id="1978setup"></a><b>19. </b><img src="pics78/78setup_19_iso.png"/> Choosing distribution image. The search is performed by wildcards *.iso, *.nrg, *.bin (these formats are supported
+ by ImDisk). All available options are added to the drop-down menu.<br>
+<a id="2078setup"></a><b>20. </b><img src="pics78/78setup_19_selected.png"/> Displays the current (selected) image for use.<br>
+<a id="2178setup"></a><b>21. </b><img src="pics78/78Setup_21_isomanual.png"/> Manual image selection. After your choice the image will be added to the drop-down menu (p.19) and selected by default.<br>
+<a id="2278setup"></a><b>22. </b><img src="pics78/78setup_22_vsources.png"/> Mounted image V:\Sources folder display.<br>
+<a id="2378setup"></a><b>23. </b><img src="pics78/78setup_23_imdisk.png"/> Window ImDisk control (you can mount the image with any free drive letter, or detach image).<br>
+<a id="2478setup"></a><b>24. </b><img src="pics78/78setup_16_start.png"/> Start setup. New image is mounted (if necessary) before starting. Under PE (if there is any tray bar),
+ message pop-ups in the system tray after mounting.
+ The next is the same to p.16, but distribution to setup will be selected from V:\Sources folder.</a><br>
+</p>
+
+<A id="Utilities78setup"><H3>U1. Utilit<font class=style2>i</font>es panel, U2-U10</H3></a>
+<p><img src="pics78/78setup_U1_utilities.png" style="float: left; margin: 0px 10px 0px 0px"/><br>
+<a id="U278setup"></a><b>U2-5. </b>78setup staff utilities: notebook, file manager Just Manager /hotkey 'F11'/, Recovery Environment/DaRT running
+ (if on the path X:\sources\recovery\RecEnv.exe is msissing it is inactive), BootICE (hidden if there is no WinNTsetup).<br><br>
+<a id="U678setup"></a><b>U6-9. </b>78setup Custom utilities. you can specify in the configuration file (78setup.cfg):<br>
+ а) utilities names (User X =, where X is 1 ... 4) displayed on the buttons<br>
+ б) the path they run (UserX86=/UserX64= x86 or x64 environments, respectively), the path can be a relative (relative 78Setup.exe, for example,
+ Utilites\SnapShot.exe), and a full (X:\Windows\regedit.exe)<br>
+ * If you know that WinPE x64 will be used with support for x86 subsystem, you can specify the same (path to the x86 version of the tool)<br>
+** If the path to the utility (corresponding OS/PE bit) is not specified or is incorrect, its start button  will invisible.<br><br>
+<a id="U1078setup"></a><b>U10. </b>Switch to the "Reboot" window. It displays a warning, and reboot or shutdown your PC is available.
+ Any media (CD/DVD) are retrieved before turning off.<br>
+ * Under PE installers reboot is also possible, if at Alt + F4 to close 78setup (used as the shell); in this case work session will end -
+ which will cause PE installer to reboot.<br>
+** After using the Recovery Environment (if you leave the program) are reloaded. If this is undesirable, remove RecEnv.exe process in
+ Task Manager or by hotkey 'Alt + Break' (p.18) <b> without leaving the DaRT</b>
+</p><br><br>
+
+<a id="Parameters78setup"></a><br><H2>Setup parameters selection</H2>
+ <div style="height:200px">
+<img src="pics78/78setup_StartSetup.png" alt="Setup parameters" usemap="#setupparameters">
+<map name="setupparameters">
+ <area shape="rect" coords="167,38,392,50" href="#dfd78setup" alt="folder">
+ <area shape="rect" coords="87,57,469,70" href="#ddia78setup" alt="description">
+ <area shape="rect" coords="20,85,275,140" href="#iesp78setup" alt="environment">
+ <area shape="rect" coords="298,82,532,142" href="#spos78setup" alt="OEM">
+ <area shape="rect" coords="18,160,120,180" href="#cancel78setup" alt="cancel">
+ <area shape="rect" coords="142,164,277,180" href="#verify78setup" alt="verify">
+ <area shape="rect" coords="295,162,410,180" href="#roiuw78setup" alt="WinNTsetup">
+ <area shape="rect" coords="425,158,533,186" href="#rcsss78setup" alt="SelectedSetup">
+  </map> 
+</div>
+
+
+<p>
+<a id="dfd78setup"></a><b>1. </b>Distribution folder is displayed<br>
+<a id="ddia78setup"></a><b>2. </b>Description display (if available). For the image (if the image has no description), it is displayed the full path to the image.<br>
+<a id="iesp78setup"></a><b>3. </b>Installation environment selection panel. The maximum possible 3 options:<br>
+  a) Distributive. There is environment in the distribution folder and is suitable for use;<br>
+  b) X:\Sources. There is environment in X:\Sources (or has been unpacked from Utilites\sources*.7z) preform;<br>
+  c) .\Utilites. Environment is already available in the X:\Sources when you start 78setup, but it can be used from Utilites\sources *.7z preform.
+  It is displayed Bit and the installation environment version.<br>
+* Preliminary search is made for files in the distribution folders and X:\Sources. Found files are analyzed by the bit (x86/x64) and added to this menu. Only those options will
+ be available to use that are compatible with the current system (ie, for WinPE x86 - only x86, and for WinPE x64 x86 without the support subsystem - only x64). Besides installation
+ file bit, an important role is played by installation environment bit (libraries beside setup.exe) - it must meet the setup.exe bit, installation is possible under such conditions
+ only. If you have installation environment in the X:\Sources, then there is 100% necessary environment.<br>
+<b><a id="spos78setup">4. </a></b>Selection panel of the OEM-installation and script folders. By default, automatically they are selected from the distribution folder (the items are inactive if not available in
+ the distribution). It is possible to manually select also (the item is activated when is selected).<br>
+<a id="cancel78setup"></a><b>5. </b>Cancel, exit to the main menu.<br>
+<a id="verify78setup"></a><b>6. </b>Verifying selected distribution archive (install*.wim/esd/swm/rwm file) integrity via WimLib (it opens the DOS-window with information about the state and result of the test).<br>
+<a id="roiuw78setup"></a><b>7. </b>Running OS installation using WinNTsetup. The program allows you to install the operating system, even without the installation environment.
+In this case settings (the selected distribution, the installation script) will be automatically added to WinNTSetup, as well as the destination drive for the OS and the boot 
+loader will be selected C:\.<br>
+* WinNTsetup supports OEM-installation folder exclusively from the distribution folder.
+That is, if the distribution has Sourses\$OEM$, the OEM-installation is made from it automatically.
+  If the OEM-installation folder is selected manually (from a different directory), the OEM-installation will not be made.<br>
+<a id="rcsss78setup"></a><b>8. </b>Running classic setup with the selected settings.</br>
+<b>Notes:</b></br>
+* If the mouse does not work, use the Tab key to navigate through the buttons (Shift+TAB to move in the reverse order) and Enter/Space to perform.<br>
+ ** Unavailable operations buttons are blocked automatically.
+ *** It is allowed to place in the same folder different versions of distributions with different names: install.swm (only one set, since it may consist of several files,
+ such as install.swm,  install1.swm, install2.swm etc.) unlimited installXXX.wim (install_7x86.wim, install_8x86.wim etc, on a wildcard install*.wim) and installXXX.esd
+ (install_8x86.esd, install_8.1x86.esd and so on wildcard install*.esd). All these distributions are added to the drop-down menu. Description of the particular distribution
+ should correspond to its name with the additional extension txt, for example, install_7x86.wim.txt. We take into account that the installation environment and OEM installation
+ script will be common.<br>
+ **** Starting with version 2.3, when searching 78setup skips (ignores) files less than 256MB. That is, these files are not included in the selection list of the distributions and
+ their images. But, if desired, they can be selected manually.<br>
+</p>
+
+<a id="Appointment78setup"></a><H2><a id="NotesFiles78Setup"></a>Notes about files</H2>
+<H2>Assignment of the files</SPAN></H2>
+<p>
+78Setup.exe is utility х86 version. If there is subsystem x86 in РЕх64, it will work also (ie it is sufficient in this case).</br>
+78Setup64.exe is х64 version. Designed exclusively for x64 PE installers without subsystem x86.<br>
+78setup.cfg is configuration. You can delete it if not needed (read it in the description). If not, the utilities panel is automatically activated.<br>
+Utilites\JustManager\ is file manager. If it is not needed, you can delete (button will become inactive).<br>
+Utilites\sources*.7z is SFX-self-extracting installation environment (that is unpacked to X:\Sources), installation environment (versions for x86 and x64) is used from Win10 in
+ the version 2.0. If it is not necessary we remove it.<br>
+Utilites\ImDisk*.7z is SFX-self-extracting ImDisk installer. Versions for x86 and x64. If it is not necessary remove. If it is missing (no ImDisk) in the WinPE, the operation buttons with virtual disks are blocked.<br>
+Utilites\WinNTSetup*.exe is Self-extracting SFX-WinNTSetup (x86 + x64). If missing, BootICE start button disappears in the main menu, and check the archives
+ via WimLib and installing OS using WinNTsetup in the setup menu.<br>
+Utilites\DaRTex*.exe is Explorer DaRT 6.0. Explorer comes with DaRT. Remarkable fact that no problems working with password protected (NTFS) folder. It works only in the WinPE environment.<br>
+Utilites\SnapShot*.exe is small, but very functional Drive SnapShot backuper.<br>
+Utilites\P_Assistant*.exe is Aomei Partition Assistant, quite advanced disk manager. It allows you to convert MBR<>GPT.<br>
+Utilites\ShadowProtect*.exe is excellent backuper. It allows you to create both normal and incremental backups, it can check and mount them. There is also a function of the operating system adaptation under the new hardware (HIR, works only in the x86 versions), disk manager and many other things.<br>
+Folder Translate. There are blanks for interface translation to other languages in it, the description in the read.txt. The program does not need.<br>
+* It is not necessary to use full set of files in 78Setup . If the installation environment is in PE, then you can remove Utilites\sources*.7z.<br>
+ If x64-based PE has the x86 support subsystem,  utilities ofthe x64 version can be removed (you need to leave driver ImDisk64.7z - if it is not in the PE x64).<br>
+ If ImDisk is installed in WinPE, then Utilite\ImDisk*.7z is not needed. If additional tools (JustManager, DaRTex, SnapShot, P_Assistant, ShadowProtect) are not needed,
+ they also can be removed completely or optionally (or replace with your user set).
+ <p/>
+ 
+<a id="Wildcards78Setup"></a><H2>Wildcards to find the installation files</H2>
+<p>
+For installation file (setup.exe in the original distribution):. Set????.exe (ie, setup.exe files, set64.exe, setup64.exe,
+ setup32.exe will be found)</br>
+For distributions: install.swm, install*.wim, install*.esd</br> 
+For disk images: *.iso, *.nrg, *.bin</br>
+For folders OEM: *OEM?</br> 
+For installation scripts: *unattend.xml</br>
+Checking x64: the presence of the folder %WinDir%\SysWOW64</br>
+Checking x86 x64 subsystem: the presence of the file %WinDir%\SysWOW64\regedit.exe
+<p/>
+
+<a id="CFGsample78Setup"></a><H2>78setup.cfg configuration file sample</H2>
+DistrFolder1-3 - Folder names to search for distributives OS (unpacked)</br>
+ISOfolder1-3 - Folder names to search for ISO-images distributives OS</br>
+UtilitesPanel - The utilites panel: allow (any character) or hidden (0)<pre>
+ ========================== CODEPAGE 1251 ===============================
+ DistrFolder1=\_ISO
+ DistrFolder2=\_ISO
+ DistrFolder3=\MyDistributions\Here
+ IsoFolder1=\_ISO
+ IsoFolder2=\_ISO
+ IsoFolder3=\Here images
+ UtilitesPanel=1
+ LetterSwap=1
+ Sources.7z=10.0.10240
+ User1=Drive SnapShot
+ User1.86=Utilites\SnapShot.exe
+ User1.64=Utilites\SnapShot64.exe
+ User2=MS-DaRT Explorer
+ User2.86=Utilites\DaRTex.exe
+ User2.64=Utilites\DaRTex64.exe
+ User3=Partition Assistant
+ User3.86=Utilites\P_Assistant.exe
+ User3.64=Utilites\P_Assistant64.exe
+ User4=ShadowProtect
+ User4.86=Utilites\ShadowProtectPE.exe
+ User4.64=Utilites\ShadowProtect64.exe</pre>
+ 
+<H4>Remarks:</H4>
+<p>
+ 1. Lines 1-4 are ignored (description).</br>
+ 2. If it is not necessary to look for in 3 folders, specify only the first folder DistrFolder1/IsoFolder1 (and leave blank 2/3), or 1st and 2nd.</br>
+ 3. If you do not specify a folder to search for 1 and 2 (not filled or variable non-existent), the default search is made in the working directory
+ (all subdirectories too processed) and in the _ISO root folders. The same happens if configuration 78setup.cfg file is missing.</br>
+ 4. Search folders extends over all disks, and all found results will be added to the selection menu. 
+  It is made additional search in root directory Sources for unpacked distributions.</br>
+ 5. If it is specified only the backslash \ as the search string, the search is performed on all drives and all folders/subfolders. But this is a very lengthy process
+ - up to ten minutes (depending on the number of drives/folders/files). It is not recommended to use - it would seem that the utility hanged!!<br>
+ 6. ParameterUtilitiesPanel=1 serves to enable utilities panel. When it is set to '0' or there is no configuration file, the panel is dissabled.</br>
+ 7. LetterSwap=1 is used to activate the auto sort of drive letters. When set to '0' or this option is missing in the configuration file then auto sort is dissabled.
+ It is disabled as well, if the system disk is not X:\ or in the system catalog is present letterswap*.* file (it is considered that WinPE has its sorting method).
+ Auto Sort result: if there is operating system on any HDD, the letters will be sorted according to the operating system, in case of missing operating system first
+ it will be sorted partitions on the first HDD (active partition is the first), then the second, etc .., then CD/DVD, at last - flash drives and USB-HDD (starting with Q letter).<br>
+ 8. It is used Sources.7z=10.0.10240 parameter to specify the Sources*.7z blank version. The parameter is optional, in its absence the version in the
+ "Setup parameters selecting" is not specified in 3-c).<br>
+ 9. User1= (Drive SnapShot in example) is used to specify the name of the User Utility button 1, while in User1.86 we specify the path to run x86 version of the utility, and
+  User1.64 - x64 version (for x64 with X86 subsystem support it is permissible to use x86 version, in User1.64 we indicate the same as in User1.86 for this).
+ For custom utilities 2-4 it is being done analogous.<p/>
+ 
+<H4>It can be indicated path:</H4>
+<p>
+1. For any folder on the same partition as the 78setup (use the variable% CurDrv%). For exemple, %CurDrv%\2k10\Programs-2k10\FileManager\TotalCmd\TC.exe to run ТС
+ from 2k10 program pack.<br>
+2. To specify the full path - ie, only for the programs on the system drive. For example, X:\Program Files\TC\TC.exe.<br>
+3. To specify relative path (relative to the folder where is 78_setup.exe). Eg ..\..\2k10\Programs-2k10\FileManager\TotalCmd\TC.exe. "..\" means to move to a higher level
+ than is the program, "..\..\" means two levels higher.<br>
+* Even though there is spaces or Cyrillic characters it is NOT NEEDED to take path in quotes.</p>
+
+<p>
+** The order of variables in the configuration file is not important.</br>
+*** Encoding of this file (if Russian letters are used in the path) is 1251.<p/></div><hr>
+
+<a id=RepackSources></a>
+<h2>Repacking of the Sources.7z and Sources64.7z archives</h2>
+
+<p><br/>
+The Sources and Sources64 archives are actually self-extracting SFX. The extension 7z is used only so that the curious
+ do not run accidentally.<br/>
+How to repack them for our tasks:<br/>
+1. We need <b>7z spliter</b>. If you do not find it, it is in the kernels of the 2k10 assembly named z7.exe. Or you can
+ download it <a href=https://www.upload.ee/files/8621532/z7.7z.html target=_blank>here</a>.<br/>
+2. First we change the extension of the originals to .exe, i.e. <b>Sources.7z -> Sources.exe</b> and <b>Sources64.7z ->
+ Sources64.exe</b/><br/>
+3. We disassemble the originals into three components: the SFX module, the script and the actual 7z-archive. We start the
+ <b>7z spliter</b>, select the experimental one, <u>note the extraction of all 3 parts.</u><br/>
+4. Modify the 7z-archive with 7-Zip, or create a new one. To reduce the size, you can play with different packaging
+ parameters.<br/>
+If there is no such desire, we choose the compression level "Ultra", the LZMA compression method (you can try LZMA2,
+ but this method is supported by not all SFX modules), the maximum word size and the "Continuous" block size. With these
+ settings, for large files, the maximum compression is usually provided.<br/>
+5. We collect the SFX archive with the command</p>
+<pre><b>copy /b sources.sfx + sources.txt + sources.7z sources.exe</b></pre>
+<p>6. It is desirable to test the performance of self-extracting. If the system has an X:\ drive available for writing, just
+ run the created file. If this is not - you can simply mount any folder as an X:\ drive</p>
+ <pre>SUBST X: C:\Test</pre>
+<p>This command mounts the C:\Test folder as an X:\ drive. After mounting, we test the work of self-unpacking - on the
+ disk X:\ should appear <b>Sources</b> folder.<br/>
+It is not difficult to unmount later:</p>
+<pre>SUBST X: /d</pre>
+<p>However, it is not necessary to do this, after the reboot the mounted disk will be lost.<br/>
+7. If everything works, we rename our file to <b>sources.7z</b> and return it to the 78setup set.</p>
+
+<h2><a id="Ref78Setup"></a>Final references</h2>
+<p><A href="https://technet.microsoft.com/en-us/library/hh824993.aspx" style="color: green; padding: 0px; text-align: left; text-decoration: none"><b><font size=4>
+Reference to technet.microsoft.com on the possibilities installation of x64 WinPE x32 and vice
+ versa <font class=style2>(We take into account that WinPE X64-installers from MicroSoft does not support x86-based subsystem!)</font></a></p> 
+ <p><A href="https://technet.microsoft.com/en-us/library/hh824834.aspx"><font class=style2a>Reference to technet.microsoft.com on the command line switches for setup.exe</font></a></p> 
+<p>Utility can be distributed without restrictions. It is desirable to specify a link to this page <a href="http://usbtor.ru/viewtopic.php?t=149">usbtor.ru 78Setup</a>
+ (you never know - suddenly utility is updated or there will be glitches).<br><br>
+<font class=style2a size=5><b>conty9</b></font><br><br><br></p>
+
+</BODY></HTML>

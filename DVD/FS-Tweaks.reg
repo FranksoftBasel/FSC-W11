@@ -1,0 +1,197 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; def.reg
+; Windows 11 - Default Tweaks für blanke MCT Installation
+; ============================================================
+
+
+; ============================================================
+; EXPLORER
+; ============================================================
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_SearchFiles"=dword:00000002
+"ServerAdminUI"=dword:00000000
+"Hidden"=dword:00000001
+"ShowCompColor"=dword:00000001
+"HideFileExt"=dword:00000000
+"DontPrettyPath"=dword:00000000
+"ShowInfoTip"=dword:00000000
+"HideIcons"=dword:00000000
+"MapNetDrvBtn"=dword:00000000
+"WebView"=dword:00000001
+"Filter"=dword:00000000
+"ShowSuperHidden"=dword:00000001
+"SeparateProcess"=dword:00000001
+"AutoCheckSelect"=dword:00000000
+"IconsOnly"=dword:00000001
+"ShowTypeOverlay"=dword:00000001
+"ShowStatusBar"=dword:00000001
+"ListviewAlphaSelect"=dword:00000001
+"ListviewShadow"=dword:00000001
+"TaskbarAnimations"=dword:00000001
+"TaskbarSizeMove"=dword:00000000
+"DisablePreviewDesktop"=dword:00000001
+"TaskbarSmallIcons"=dword:00000000
+"TaskbarAutoHideInTabletMode"=dword:00000000
+"ShellMigrationLevel"=dword:00000003
+"StartShownOnUpgrade"=dword:00000001
+"ReindexedProfile"=dword:00000001
+"ProgrammableTaskbarStatus"=dword:00000002
+"StartMenuInit"=dword:0000000d
+"WinXMigrationLevel"=dword:00000001
+"TaskbarStateLastRun"=hex:79,17,a9,6a,00,00,00,00
+"ShowTaskViewButton"=dword:00000000
+"LaunchTo"=dword:00000001
+"ShowRecommendations"=dword:00000000
+"Start_IrisRecommendations"=dword:00000000
+"Start_TrackProgs"=dword:00000000
+"ShowSyncProviderNotifications"=dword:00000000
+"SharingWizardOn"=dword:00000000
+"HideDrivesWithNoMedia"=dword:00000000
+
+; ============================================================
+; STARTMENÜ
+; ============================================================
+
+; Empfehlungen für Tipps, Verknüpfungen und neue Apps deaktivieren
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_IrisRecommendations"=dword:00000000
+
+; Zuletzt hinzugefügte Apps nicht anzeigen
+"Start_TrackProgs"=dword:00000000
+
+; Empfehlungen / App-Werbung / Vorschläge deaktivieren
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start]
+"ShowRecommendations"=dword:00000000
+
+
+; ============================================================
+; VISUAL EFFECTS
+; ============================================================
+
+; Fenster beim Minimieren / Maximieren nicht animieren
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"MinAnimate"="0"
+
+; Transparenzeffekte deaktivieren
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
+"EnableTransparency"=dword:00000000
+
+
+; ============================================================
+; WINDOWS TIPPS / EMPFEHLUNGEN / WERBUNG
+; ============================================================
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+
+; Vorgeschlagene Inhalte deaktivieren
+"SubscribedContent-338388Enabled"=dword:00000000
+"SubscribedContent-338389Enabled"=dword:00000000
+"SubscribedContent-353694Enabled"=dword:00000000
+"SubscribedContent-353696Enabled"=dword:00000000
+
+; Windows Tipps deaktivieren
+"SoftLandingEnabled"=dword:00000000
+
+; Vorschläge / Consumer Content deaktivieren
+"SystemPaneSuggestionsEnabled"=dword:00000000
+"SilentInstalledAppsEnabled"=dword:00000000
+
+; Windows Welcome Experience deaktivieren
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
+"ScoobeSystemSettingEnabled"=dword:00000000
+
+
+; ============================================================
+; CMD
+; ============================================================
+
+; AutoComplete mit TAB
+[HKEY_CURRENT_USER\Software\Microsoft\Command Processor]
+"CompletionChar"=dword:00000009
+"PathCompletionChar"=dword:00000009
+
+
+; ============================================================
+; MICROSOFT EDGE
+; ============================================================
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+
+; First Run / Willkommen unterdrücken
+"HideFirstRunExperience"=dword:00000001
+
+; Startup Boost deaktivieren
+"StartupBoostEnabled"=dword:00000000
+
+
+; ============================================================
+; GOOGLE CHROME
+; ============================================================
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+
+; First Run / Willkommen unterdrücken
+"HideFirstRunExperience"=dword:00000001
+
+
+
+; ============================================================
+; DESKTOP
+; ============================================================
+
+; "Dieser PC" auf dem Desktop anzeigen
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_SearchFiles"=dword:00000002
+"ServerAdminUI"=dword:00000000
+"Hidden"=dword:00000001
+"ShowCompColor"=dword:00000001
+"HideFileExt"=dword:00000000
+"DontPrettyPath"=dword:00000000
+"ShowInfoTip"=dword:00000000
+"HideIcons"=dword:00000000
+"MapNetDrvBtn"=dword:00000000
+"WebView"=dword:00000001
+"Filter"=dword:00000000
+"ShowSuperHidden"=dword:00000001
+"SeparateProcess"=dword:00000001
+"AutoCheckSelect"=dword:00000000
+"IconsOnly"=dword:00000001
+"ShowTypeOverlay"=dword:00000001
+"ShowStatusBar"=dword:00000001
+"ListviewAlphaSelect"=dword:00000001
+"ListviewShadow"=dword:00000001
+"TaskbarAnimations"=dword:00000001
+"TaskbarSizeMove"=dword:00000000
+"DisablePreviewDesktop"=dword:00000001
+"TaskbarSmallIcons"=dword:00000000
+"TaskbarAutoHideInTabletMode"=dword:00000000
+"ShellMigrationLevel"=dword:00000003
+"StartShownOnUpgrade"=dword:00000001
+"ReindexedProfile"=dword:00000001
+"ProgrammableTaskbarStatus"=dword:00000002
+"StartMenuInit"=dword:0000000d
+"WinXMigrationLevel"=dword:00000001
+"TaskbarStateLastRun"=hex:79,17,a9,6a,00,00,00,00
+"TaskbarAl"=dword:00000000
+"ShowTaskViewButton"=dword:00000000
+"LaunchTo"=dword:00000001
+"ShowRecommendations"=dword:00000000
+"Start_IrisRecommendations"=dword:00000000
+"Start_TrackProgs"=dword:00000000
+"ShowSyncProviderNotifications"=dword:00000000
+"SharingWizardOn"=dword:00000000
+"HideDrivesWithNoMedia"=dword:00000000
+;"TaskbarDa"=dword:00000000
+"IsEnabled"=dword:00000000
+
+
+

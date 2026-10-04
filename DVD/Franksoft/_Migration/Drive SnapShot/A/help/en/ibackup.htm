@@ -1,0 +1,189 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="keywords" content="disk image,disk,image,backup,hard disk,recovery,disaster,easy backup,partition, Disk Imaging, WinNT,Win2K, Windows NT">
+
+<title>Drive Snapshot - DiskImage Backup for Windows NT</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+<center><h1>Snapshot - DiskImage Backup for Windows NT</h1></center>
+
+<table align="right">
+  <tr>
+    <td>
+      <p align="center"><a href="back1.htm"><img border="0" src="../images/startups.png" width="205" height="152">
+      </a><a href="back1.htm"> &nbsp;<br>
+      Screenshots</a></p>
+    </td>
+  </tr>
+</table>
+
+<h3>Snapshot is easy to use</h3>
+The Snapshot user interface is Windows Wizard-like with few surprises, even to inexperienced
+users.<br>
+
+
+Anything with a drive letter (like C:, E:) can be backuped.<br>
+
+Anything with a drive letter (like X:) can be used for the image destination.<br>
+
+See some <a href="backups.htm">Screenshots</a> of a backup operation.<br>
+
+<br>
+
+<h3>Snapshot can be used often</h3>
+For DOS based image backup, the user has to stop his work, boot into a different
+configuration, wait for the backup to finish, then boot Windows again.<br>
+
+With Snapshot, there is no need to reboot.<br>
+Simply start Snapshot, then continue to work normally.<br>
+
+<br>
+This enables one of the most important things in backup business: <b>backup often</b>
+<p>
+It is even possible to make image backup for servers, that must be online 24 hours
+a day.</p>
+
+<h3>Snapshot is safe to use</h3>
+The problem with Windows based disk imaging is that Windows may constantly write to the disk, even with no user interaction.<br>
+As the image creation takes some time, you may end up with
+a disk image that partially reflects the disk status at program start, partially at a later time.<br>
+
+<p>
+Snapshot handles this.<br>
+Once Snapshot has been started, you may continue to work, delete anything on the disk, install new programs,...<br>
+
+The created image will always reflect the disk status at program start.<br>
+
+
+
+
+
+
+</p>
+
+
+
+
+
+<h3>Compatible</h3>
+Snapshot is compatible with
+<ul>
+<li>Windows 2000, XP, 2003, Vista, 2003, 7, 2008, 2008 R2, 8, 8.1, 10, 2012, 2016, 2019, PE, x64</li>
+<li>all file systems supported by WinNT/Win2K (FAT16,FAT32,NTFS,ReFS).</li>
+<li>Linux Ext2/Ext3/Ext4/Reiser/XFS (but no explore is possible)</li>
+<li>any IDE/SCSI/USB/...<b>local</b> disk drive.<br>
+If WinNT can access it, Snapshot will back it up.</li>
+<li>any disk mirroring/striping/spanning/RAID scheme.</li>
+</ul>
+
+
+<h3>Fast and efficient</h3>
+Both speed and image size are data and configuration dependent.<br>
+In short:
+<p>
+Snapshot saves about 2 GB/min on a Core I3 3GHz, and is usually limited by I/O 
+bandwidth.<br>
+
+The compressed image size is comparable to other disk imaging products; expect a 
+space reduction of about 50% for &#39;normal&#39; data.<br>
+Of course media data (mpeg, mp3, 
+jpg) can&#39;t be compressed.<br>
+
+
+<br>
+More of detailed performance data can he found <a href="bench.htm">here</a>.<br>
+
+<p></p>
+
+
+
+
+<h3>How it works</h3>
+
+Any disk image program takes some time to run.<br>
+Depending on
+computer speed and disk size, this take a few minutes to a few
+hours.<br>
+As Windows constantly writes to
+the disk, what do you get?<p>
+
+<font size="4">SnapShot takes the image at a certain point of
+time.<br>
+</font>
+</p>
+<p>
+When SnapShot gets started, it will take some time to collect information
+about the disk to be saved, such as disk size, used disk space,...<br>
+
+Then the OS is instructed to write all data from the disk caches.</p>
+<p>
+And then, Snapshot takes the SnapShot.</p>
+<p>
+All you will get in your Disk Image is what is at this very moment
+on your disk.<br>
+What's on the disk is saved; nothing else.<br>
+
+If you would POWER OFF the computer at this moment and make the image from DOS, you would get exactly the same.<br>
+Because we flushed all data to the disk,
+Windows will boot without CHKDSK, because the data on the disk are consistent.<br>
+
+You would lose the changes of any open (unsaved) files, of course, but the original would be
+exist and be valid.</p>
+
+
+<p></p>
+<h3>The magic</h3>
+The idea is simple:
+<p>
+By using WindowsNT Driver technology, Snapshot chains itself between the file system
+and the disk driver so that it will see any request to the disk.<br>
+
+
+When any WRITE request is detected, before the data are saved, the data are read first from the disk and saved, before the WRITE request is allowed to proceed.</p>
+<p>
+So the data are completely safe against change; and this allows the user to work while Snapshot is
+running and no changes will be reflected in the image produced.<br>
+Whatever
+happens, the image will contain the disk data at start time.<br>
+
+You may work as usual, clean up the disk, install/uninstall Software, or even catch a virus of his choice.</p>
+<p>
+
+SnapShot even tries to minimize its influence on
+other programs.<br>
+
+Snapshot uses about 32MB of memory during Backup, 0 bytes when not activ.<br>
+
+Snapshot runs at low priority, giving the foreground application as many CPU cycles as needed.<br>
+
+As SnapShot uses a huge amount of disk IO, Snapshot would bring down a typical Windows program start to a crawl.<br>
+So Snapshot watches for any user disk activity and will pause for a short while, so the user application runs at nearly full speed.<br>
+
+However, SnapShot still makes sure that no unsaved data are overwritten.<br>
+
+In this case, SnapShot will buffer these data up to a few Megabytes in memory, and
+then simply delay the application, until these data have been saved to the
+SnapShot destination.<br>
+
+This won't happen often, as applications tend to modify the same data over and over again, like a database's index files.<br>
+These data will be saved the first
+time a change is detected and later requests will proceed at normal speed.</p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+
+</body>
+</html>

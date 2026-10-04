@@ -1,0 +1,25 @@
+ASCII Art Studio
+Copyright (c) 2003-2017 TorchSoft
+All rights reserved
+
+License Agreement
+
+You should carefully read the following terms and conditions
+before using this software. By using this software you indicate 
+your acceptance of this license agreement and warranty.
+
+FREEWARE LICENSE
+This software is being distributed as freeware. It may be 
+freely used, copied and distributed as long as it is not sold, 
+and all original files are included, including this license. 
+You are NOT allowed to make a charge for distributing this 
+software whether as a stand-alone product, or as part of a 
+compilation or anthology, without explicit prior written permission.
+
+NO WARRANTY
+
+THIS SOFTWARE IS SOLD "AS IS" AND WITHOUT ANY WARRANTY AS 
+TO MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR ANY 
+OTHER WARRANTIES EITHER EXPRESSED OR IMPLIED. THE AUTHOR WILL 
+NOT BE LIABLE FOR DATA LOSS, DAMAGES, LOSS OF PROFITS OR ANY 
+OTHER KIND OF LOSS WHILE USING OR MISUSING THIS SOFTWARE.

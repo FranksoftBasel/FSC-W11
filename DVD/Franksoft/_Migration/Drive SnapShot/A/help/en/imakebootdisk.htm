@@ -1,0 +1,1128 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   <meta http-equiv="Content-Language" content="en-gb">
+   <meta name="robots" content="index,follow">
+   <meta name="content" content="Image, Disk, Drive, Drive Image, Disk Image, Recover, Backup, Windows,DOS,FreeDOS,UDMA">
+   <meta name="description" content="Drive SnapShot - how to make the bootable recovery disk">
+   <meta name="keywords" content="Image, Disk, Drive, Drive Image, Disk Image, Recover, Backup, Windows,DOS,FreeDOS,UDMA">
+   
+   <title>Create a Dos boot disk</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+   <base target="_parent">
+</head>
+<body>
+<h2 align="center">Creation of a DOS BOOT floppy</h2>
+<h3>If you have already a DOS Boot disk</h3>
+<p>Fine.<br>
+Just use it - Snapshot will run on any DOS.<br>
+Just copy SNAPSHOT.EXE to
+the disk and use it.</p>
+<h3>If you are using&nbsp; Windows XP</h3>
+<p>You can create a DOS Bootdisk by formatting a floppy with the Option 'MS-DOS
+Bootdisk creation'.<br>
+
+Windows XP will create a floppy, containing a (very limited) subset of Windows
+ME.</p>
+<h3>If you have SNAPSHOT installed</h3>
+<p>
+Snapshot SETUP has created a shortcut in the start menu:
+</p>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Programs-&gt;Snapshot Disk Imaging-&gt;Create
+Disaster Recovery Disk.<br>
+
+</p>
+<p>
+Click this to create a bootable FreeDOS disk, including&nbsp; PnP network access
+to your Windows server (see below).<br>
+
+</p>
+<p>
+If you bought the full version, you got a CDROM, which is bootable as well.<br>
+The
+booted CD is equivalent to the diskette above.<br>
+
+</p>
+<p>Properties:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Always supported are FAT16, FAT32 und ATAPI CD/DVD-ROMs <span style="background-color: #FFFF00"> (the
+<b>CDROM-drive </b>letter<b> </b>is <b>W:</b>).<br>
+</span>
+</p>
+<p>Due to limited available memory, upon start up you have to select, if you
+additionally want to access local NTFS drives (for the image file location), or
+want to find the image files on the Windows Network.<br>
+
+</p>
+<h3> International Keyboard support</h3>
+<p>When creating the recovery boot disk, Snapshot tries to detect the current
+keyboard layout (of Windows).<br>
+It then creates a file LANGUAGE.BAT on the
+bootdisk, that is executed during boot and holds the statement</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KEYB XX</p>
+<p>where XX is the layout identifier to be loaded.<br>
+<br>
+Currently detected are English (US), United Kingdom (UK), German (GR), Swiss
+German (SG), French (FR), Swiss French (SF), Portuguese (PO), Brazil (BR),
+Russia (RU), Bulgaria (BG), Belgian (BE), Dutch (NL), Finnish (SU), Swedish (SV),
+Italy (IT), Hebrew (HE), Norwegian (NO).<br>
+
+You can get a list of all
+supported layouts with&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A:&gt;KEYB /L</p>
+<h3>Bootdisk with PnP support for the Windows&nbsp; Network/Samba</h3>
+<p>This Bootdisk is derived from <b>Bart Lagerweij's&nbsp;</b>  <a href="http://www.nu2.nu/bootdisk/network"><b>Bart's
+Network Boot Disk</b></a>.<br>
+<br>
+We changed it to be based on FreeDOS to avoid license issues.</p>
+<p>This disk supports</p>
+<ul>
+  <li><b>automatic detection</b> of your network adapter&nbsp;</li>
+  <li>DHCP or static IP address</li>
+  <li>TCP/IP or NetBEUI</li>
+  <li>Saving Profiles to be available on next boot (only on diskette)</li>
+</ul>
+<p>After starting the disk, you have to enter something like&nbsp;</p>
+<blockquote>
+<p>A:&gt; NET USE&nbsp;&nbsp; Z:&nbsp;&nbsp; \\Servername\\Share</p>
+</blockquote>
+<p>and restore the image files from Z:</p>
+<p>&nbsp;</p>
+  <h3>Currently supported network adapters:</h3>
+<blockquote>
+  <div align="left">
+    <table border="1" width="606" height="26" bordercolor="#808080">
+      <tr>
+        <td width="606" height="26">Note: the original network boot disk by Bart
+          used Microsoft CABARC/EXTRACT tools to compress and maintain the
+          drivers.<br>
+
+          Since 1.37 (November 2005) a different, better compression program,
+          UHARC, is used.<br>
+You can download the shareware version of UHARC <a href="http://www.drivesnapshot.de/nu2files/uharc.zip">here</a>
+          .</td>
+      </tr>
+    </table>
+  </div>
+</blockquote>
+<blockquote>
+  <div align="left">
+    &nbsp;</div>
+</blockquote>
+  <table class="nu2table" cellSpacing="1" cellPadding="2" border="1" width="821">
+      <tr>
+        <th class="nu2th" width="170">File</th>
+        <th class="nu2th" width="508">Description</th>
+        <th class="nu2th" width="120">Updated</th>
+      </tr>
+      <tr>
+        <td class="nu2td2" ><a href="http://www.drivesnapshot.de/nu2files//b57.uha">b57.uha</a>
+          <a href="http://www.drivesnapshot.de/nu2files//b57.cab">cab</a>(19K)</td>
+        <td class="nu2td2" width="508">Broadcom NetXtreme Gigabit NDIS2 Driver 6.1 (101207)</td>
+        <td class="nu2td2" width="120">Mar 14, 2011</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" >
+        <a href="http://www.drivesnapshot.de/nu2files/bnx2ev.uha">bnx2ev.uha</a>
+        <a href="http://www.drivesnapshot.de/nu2files/bnx2ev.cab">cab</a>(19K)</td>
+        <td class="nu2td2" width="508">Broadcom NetXtreme II 10 Gigabit 6.2.5 
+        (110103)</td>
+        <td class="nu2td2" width="120">Mar 11, 2011</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files//dc21x4.uha">dc21x4.uha</a>
+          <a href="http://www.drivesnapshot.de/nu2files//dc21x4.cab">cab</a>(19KB)</td>
+        <td class="nu2td2" width="508">Digital 2104x/2114x 10/100 mbps Ethernet Controller
+          v3.00</td>
+        <td class="nu2td2" width="120">Jul 15, 2005</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files//e100b.uha">e100b.uha</a>
+          <a href="http://www.drivesnapshot.de/nu2files//e100b.cab">cab</a>(12KB)</td>
+        <td class="nu2td2" width="508">Intel(R) PRO PCI Driver v4.58 012309</td>
+        <td class="nu2td2" width="120">Jan 26, 2009</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170">
+        <a href="http://www.drivesnapshot.de/nu2files/e1000.uha">e1000.uha</a>
+        <a href="http://www.drivesnapshot.de/nu2files/e1000.cab">cab</a>(12KB)</td>
+        <td class="nu2td2" width="508">Intel 8254X Based Adapter (pro/1000
+          gigabit) v5.67 111610</td>
+        <td class="nu2td2" width="120">Nov 26, 2010</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/el59x.uha">el59x.uha</a>
+          <a href="http://www.drivesnapshot.de/nu2files/el59x.cab">cab</a>(13KB)</td>
+        <td class="nu2td2" width="508">3Com DOS NDIS driver for 3C59X Family Adapters v1.2f</td>
+        <td class="nu2td2" width="120">Jul 18, 2005</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/el90x.uha">el90x.uha</a>
+          <a href="http://www.drivesnapshot.de/nu2files/el99x.cab">cab</a>(13KB)
+        </td>
+        <td class="nu2td2" width="508">3Com Etherlink PCI DOS NDIS driver 
+        vv5.2.9</td>
+        <td class="nu2td2" width="120">Jul 07, 2006</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/elnk3.uha">elnk3.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/elnk3.cab">cab</a>(11KB)</td>
+        <td class="nu2td2" width="508">3Com DOS EtherLink 10 ISA (3C509b) Network Driver
+          v3.1</td>
+        <td class="nu2td2" width="120">Sep 11, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/elpc3.uha">elpc3.uha</a>
+          <a href="http://www.drivesnapshot.de/nu2files/elpc3.cab">cab</a>(14KB)</td>
+        <td class="nu2td2" width="508">3Com Megahertz Ethernet PC Card 589E DOS Network
+          Driver v1.9.005</td>
+        <td class="nu2td2" width="120">Feb 3, 2003</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/elpc575.uha">elpc575.uha</a>
+          <a href="http://www.drivesnapshot.de/nu2files/elpc575.cab">cab</a>(14KB)</td>
+        <td class="nu2td2" width="508">3Com Megahertz 10/100 LAN CardBus PC Card DOS NDIS
+          driver v3.4b</td>
+        <td class="nu2td2" width="120">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/getnd2.uha">getnd2.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/getnd2.cab">cab</a>(9KB)</td>
+        <td class="nu2td2" width="508">VIA Velocity Family Gigabit Adapter 
+        v1.10(08-21-2008)</td>
+        <td class="nu2td2" width="120">Aug 21, 2008</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/ne2000.uha">ne2000.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ne2000.cab">cab</a>(9KB)</td>
+        <td class="nu2td2" width="508">Microsoft NE2000 NDIS Driver</td>
+        <td class="nu2td2" width="120">Jul 11, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/nc100.uha">nc100.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/nc100.cab">cab</a>(13KB)</td>
+        <td class="nu2td2" width="508">Compaq Fast Ethernet and Gigabit NDIS 2 
+        NIC Drivers 7.0a (25Jan02)</td>
+        <td class="nu2td2" width="120">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/n1000.uha">n1000.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/n1000.cab">cab</a>(12KB)</td>
+        <td class="nu2td2" width="508">Compaq Gigabit 6134/6136 (Intel Based).</td>
+        <td class="nu2td2" width="120">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/pcntnd.uha">pcntnd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/pcntnd.cab">cab</a>(13KB)</td>
+        <td class="nu2td2" width="508">AMD PCNet Family Ethernet Adapter NDIS v2.0.1 MAC
+          Driver v3.12</td>
+        <td class="nu2td2" width="120">Jul 18, 2005</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170">
+        <a href="http://www.drivesnapshot.de/nu2files/rtend.uha">rtend.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/rtend.cab">cab</a>(21KB)</td>
+        <td class="nu2td2" width="508">Realtek 8168/8136 10/100/1000 Family 
+        Ethernet (V1.23) [2008/12/05]</td>
+        <td class="nu2td2" width="120">Feb 02,2009</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/rtsnd.uha">rtsnd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/rtsnd.cab">cab</a>(21KB)</td>
+        <td class="nu2td2" width="508">Realtek RTL8139 10/100&nbsp; Ethernet 
+        (V3.27) [2008/07/15]</td>
+        <td class="nu2td2" width="120">Jul 15,2008</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170">
+        <a href="http://www.drivesnapshot.de/nu2files/rtgbnd.uha">rtgbnd</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/rtgbnd.cab">cab</a>(8KB)</td>
+        <td class="nu2td2" width="508">RTL8169/8110 Family 10/100/1000 Adapter 
+        (V1.23) [2008/12/05]</td>
+        <td class="nu2td2" width="120">Dec 05,2008</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/sis900.uha">sis900.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/sis900.cab">cab</a>(14KB)</td>
+        <td class="nu2td2" width="508">SiS 900/7016 SIS900 10/100 PCI DOS Driver v1.13</td>
+        <td class="nu2td2" width="120">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/smc9432.uha">smc9432.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/smc9432.cab">cab</a>(13KB)</td>
+        <td class="nu2td2" width="508">SMC EtherPower II 10/100 (9432TX) v1.02c (970605)</td>
+        <td class="nu2td2" width="120">Mar 26, 2002</td>
+      </tr>
+      <tr>
+        <td class="nu2td2" width="170"><a href="http://www.drivesnapshot.de/nu2files/yuknd.uha">yuknd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/yuknd.cab">cab</a>(26KB)</td>
+        <td class="nu2td2" width="508">Yukon Marvel&nbsp; / 3Com
+          3C2000T&nbsp;v9.55.1.3 (20091028)</td>
+        <td class="nu2td2" width="120">Oct 28,2009</td>
+      </tr>
+      </table>
+<p>If you have a different Network adapter, see&nbsp; <a href="#morenics" target="_self"><b>More
+Network Drivers</b></a><b> </b>below.<br>
+
+You will find ~100 supported drivers, which unfortunately don't fit all on a
+floppy disk.<br>
+Just copy the required driver XXXCARD.UHA into A:\LIB\NDIS, and
+reboot.</p>
+<blockquote>
+  <p>We would like to hear from you, which drivers are missing; so we can place
+  the most popular drivers immediately into the delivered package.<br>
+<a href="mailto:support@drivesnapshot.de?subject=SNAPSHOT-missing%20Network-driver&body=Hallo%0d%0a,we use the Network Card:">
+<br>
+  short note to support@drivesnapshot.de</a>  will do.<br>
+thanks.</p>
+</blockquote>
+<h3><a name="NTFSDOS"></a>NTFS Support for DOS</h3>
+<p>If your image files are located on a NTFS volume, DOS isn't able to access
+them by itself.</p>
+<p><a href="http://www.sysinternals.com" target="_blank"><b>Sysinternals</b></a> 
+ offers (besides a lot of other useful utilities) a&nbsp; <b><a href="http://www.sysinternals.com/utilities/ntfsdos.html">NTFSDOS</a></b> 
+ driver for DOS; the read-only variant is free.</p>
+<p>Please download NTFSDOS.EXE&nbsp; and copy it to&nbsp; A:\UTILS.<br>
+</p>
+<h3>UDMA Support for DOS</h3>
+<p>Most motherboards don't support the fast UDMA mode for IDE drives in their
+BIOS; therefore Disk transfer speed in DOS is limited to ~8MB/sec, which results
+in a max.<br>
+possible restore rate of 5MB/sec.<br>
+</p>
+<p>Modern hard disks could have a transfer speed of 80 MB/sec and more, if
+accessed with UDMA.</p>
+<p>UDMA will test its functionality, and will not load, if it doesn't find compatible
+hardware.<br>
+Unfortunately, the test causes some (very few) main boards to hang, so
+we can't load it automatically.</p>
+<p>UDMA was developed by&nbsp; Jack Ellis - thanks for that :))<br>
+</p>
+<h3><a name="morenics"></a>More Network Drivers</h3>
+<p>Unfortunately not all existing network card drivers fit on a single floppy;
+here are ~100 more supported.<br>
+
+Just&nbsp;<br>
+&nbsp;&nbsp;&nbsp; download<br>
+&nbsp;&nbsp;&nbsp; copy to a:\lib\ndis<br>
+&nbsp;&nbsp;&nbsp; reboot</p>
+<p>for the current version of the boot disk, use the .UHA download; older
+versions (before 15 nov 2005) require the slightly larger .CAB version&nbsp;</p>
+<p>&nbsp;</p>
+<table class="nu2table" cellSpacing="1" cellPadding="2" border="1" width="740">
+  <tbody>
+    <tr>
+      <th class="nu2th" width="162">File</th>
+      <th class="nu2th" width="437">Description</th>
+      <th class="nu2th" width="113">Updated</th>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dp83815.uha">dp83815.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/dp83815.cab">cab</a>(15KB)</td>
+      <td class="nu2td2" width="437">DP83815 10/100 MacPhyter PCI Adapters DOS v1.16.<br>
+
+        Created by Mirando K.<br>
+OEM: Netgear
+        FA311/FA312
+        v1.1: Updated by Peter Verstraten.</td>
+      <td class="nu2td2" width="113">Nov 12, 2003</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/b44.uha">b44.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/b44.cab">cab</a>(15KB)</td>
+      <td class="nu2td2" width="437">Broadcom 440x 10/100 Ethernet NDIS2 Driver v2.44
+        (030506).<br>
+
+        Created by K.<br>
+Stulen from HP</td>
+      <td class="nu2td2" width="113">Jul 8, 2003</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/elpc3.uha">elpc3.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/elpc3.cab">cab</a>(14KB)</td>
+      <td class="nu2td2" width="437">3Com Megahertz Ethernet PC Card 589E DOS Network Driver
+        v1.9.005.<br>
+
+        Updated by Robert Mader.<br>
+Should fix divide
+        by zero errors.<br>
+</td>
+      <td class="nu2td2" width="113">Feb 3, 2003</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/exp16.uha">exp16.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/exp16.cab">cab</a>
+        (6KB)</td>
+      <td class="nu2td2" width="437">Intel EtherExpress 16 ISA Driver v2.36<br>
+        Created by Oliver Hookins.</td>
+      <td class="nu2td2" width="113">Jun 13, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/m16andis.uha">m16andis.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/m16andis.cab">cab</a>(17KB)</td>
+      <td class="nu2td2" width="437">Intel EtherExpress PRO/100 PC Card Mobile Adapter16
+        Driver v1.61 (970702).<br>
+Created by Jay Davis.</td>
+      <td class="nu2td2" width="113">Jun 12, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/el99x.uha">el99x.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/el90x.cab">cab</a>(34KB)</td>
+      <td class="nu2td2" width="437">3Com Etherlink 10/100 PCI Adapter with 3XP (3C990)</td>
+      <td class="nu2td2" width="113">Jun 3, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Al Gilhousen.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/elnk3.uha">elnk3.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/elnk3.cab">cab</a>(11KB)</td>
+      <td class="nu2td2" width="437">3Com DOS EtherLink 10 ISA (3C509b) Network Driver v3.1.Updated by Dick
+        Nagtegaal.<br>
+Fixed divide
+        overflow on fast Pentium machines.<br>
+<a title="http://support.3com.com/infodeli/tools/nic/3c509b.htm" href="http://support.3com.com/infodeli/tools/nic/3c509b.htm" target="_blank">More
+        info!</a></td>
+      <td class="nu2td2" width="113">Sep 11, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/elpc575.uha">elpc575.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/elpc575.cab">cab</a>(14KB)</td>
+      <td class="nu2td2" width="437">3Com Megahertz 10/100 LAN CardBus PC Card DOS NDIS
+        driver v3.4b</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/el556.uha">el556.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/el556.cab">cab</a>(12KB)</td>
+      <td class="nu2td2" width="437">3Com EL556 driver 10/100 V.90 Mini-PCI Combo Card Jan
+        22, 2001</td>
+      <td class="nu2td2" width="113">Jun 6, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by John Ole Gronmo.<br>
+Updated v1.1:
+        added device 6056 to ndis.pci by Bob Gagnon.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/el556.uha">el556.uha</a>
+        <a title="/download.php?sFile=elpc656.cab" href="http://www.nu2.nu/download.php?sFile=elpc656.cab">cab</a>&nbsp;(13KB)</td>
+      <td class="nu2td2" width="437">3Com 3C656 10/100 LAN+56K CardBus PC Card</td>
+      <td class="nu2td2" width="113">Aug 15, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Todd George.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/fem556.uha">fem556.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/fem556.cab">cab</a>(18KB)</td>
+      <td class="nu2td2" width="437">3Com Megahertz Ethernet 3CCFEM556B</td>
+      <td class="nu2td2" width="113">May 22, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Geoffrey Gardner.<br>
+For the 3Com
+        Megahertz 10/100 Lan+56K Modem PC Card Model 3CCFEM556 B Ver.1.1.1</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/el3c574.uha">el3c574.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/el3c574.cab">cab</a>(15KB)</td>
+      <td class="nu2td2" width="437">3Com-Megahertz 574 LAN PC Card Dos NDIS Driver v1.2.005</td>
+      <td class="nu2td2" width="113">May 31, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Patrick Fortin-Ducharme.<br>
+Updated
+        by Dustin Krysak.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/el515.uha">el515.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/el515.cab">cab</a>(13KB)</td>
+      <td class="nu2td2" width="437">3Com 3C515-TX Fast Etherlink ISA PnP</td>
+      <td class="nu2td2" width="113">Apr 23, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Lou Vaccari</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/netflx3.uha">netflx3.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/netflx3.cab">cab</a>(31KB)</td>
+      <td class="nu2td2" width="437">Compaq NetFlex-3 DOS NDIS 2.02 driver</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/n100.uha">n100.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/n100.cab">cab</a>(13KB)</td>
+      <td class="nu2td2" width="437">Compaq Fast Ethernet and Gigabit NDIS 2 NIC Drivers
+        7.0a (25Jan02)</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Dilan Patel</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/pcntnd.uha">pcntnd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/pcntnd.cab">cab</a>(13KB)</td>
+      <td class="nu2td2" width="437">AMD PCNet Family Ethernet Adapter NDIS v2.0.1 MAC
+        Driver v3.12</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Used in VMWare.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/smc9432.uha">smc9432.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/smc9432.cab">cab</a>(13KB)</td>
+      <td class="nu2td2" width="437">SMC EtherPower II 10/100 (9432TX) v1.02c (970605)</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/smc8000.uha">smc8000.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/smc8000.cab">cab</a>(17KB)</td>
+      <td class="nu2td2" width="437">SMC EtherCard PLUS NDIS Driver v4.06a (SMC8xxx)</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Allard Sijm.<br>
+Also supports the
+        old SMC/WD8003 and 8013 ISA cards the SMC EtherCard Elite 16 Ultra (8216
+        series) and EtherEZ (8416 series).</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/smc1660.uha">smc1660.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/smc1660.cab">cab</a>(9KB)</td>
+      <td class="nu2td2" width="437">SMC EZ Card 10 ISA (SMC 1660 Series)</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Robert Cooper</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/smc1255.uha">smc1255.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/smc1255.cab">cab</a>(8KB)</td>
+      <td class="nu2td2" width="437">SMC EZ Card 10/100 PCI (SMC1255 Series)</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Robert Cooper</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/smc1208.uha">smc1208.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/smc1208.cab">cab</a>(6KB)</td>
+      <td class="nu2td2" width="437">SMC EZ Card 10 PCI (SMC1208 Series)</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Robert Cooper</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/smc1211.uha">smc1211.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/smc1211.cab">cab</a>(21KB)</td>
+      <td class="nu2td2" width="437">SMC EZ Card 10/100 PCI (SMC1211 Series)</td>
+      <td class="nu2td2" width="113">Apr 10, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Shane Brooks</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/cbendis.uha">cbendis.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/cbendis.cab">cab</a>(24KB)</td>
+      <td class="nu2td2" width="437">Xircom CardBus Ethernet 10/100 Adapter</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Michel Harding</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ce3ndis.uha">ce3ndis.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ce3ndis.cab">cab</a>(24KB)</td>
+      <td class="nu2td2" width="437">Xircom Ethernet 10/100 (CE3)</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Tim Vanlint</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/xcemndis.uha">xcemndis.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/xcemndis.cab">cab</a>(24KB)</td>
+      <td class="nu2td2" width="437">Xircom Ethernet 10/100+Modem 56 Adapter (XEM)</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/rem56g10.uha">rem56g10.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/rem56g10.cab">cab</a>(24KB)</td>
+      <td class="nu2td2" width="437">Xircom Realport Ethernet + Modem 56 (REM56G-10)</td>
+      <td class="nu2td2" width="113">Apr 23, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Patrick Baeken</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/xircom.uha">xircom.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/xircom.cab">cab</a>(22KB)</td>
+      <td class="nu2td2" width="437">Xircom Pocket Ethernet Adapter III</td>
+      <td class="nu2td2" width="113">Sep 4, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Hon Chau.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/mxnicf.uha">mxnicf.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/mxnicf.cab">cab</a>(7KB)</td>
+      <td class="nu2td2" width="437">Macronix MX987xx Family Fast Ethernet NDIS 2 MAC</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Howard F.<br>
+Cooper</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dm9pci.uha">dm9pci.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/dm9pci.cab">cab</a>(9KB)</td>
+      <td class="nu2td2" width="437">DAVICOM DM9PCI Series Ethernet Adapter v1.28</td>
+      <td class="nu2td2" width="113">Jun 6, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Art Heimsoth.<br>
+Updated v1.1:
+        Driver file now v1.28 by Jack Spradling.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/accnd.uha">accnd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/accnd.cab">cab</a>(21KB)</td>
+      <td class="nu2td2" width="437">Accton EN1207D-TX/EN2242A Series Fast-Ethernet PCI
+        Adapter</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Mike Elliott</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/en5251.uha">en5251.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/en5251.cab">cab</a>(8KB)</td>
+      <td class="nu2td2" width="437">Accton EN5251 Based Fast Ethernet Adapter Driver v1.04</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Chris Porosky</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/lm560txc.uha">lm560txc.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/lm560txc.cab">cab</a>(17KB)</td>
+      <td class="nu2td2" width="437">Accton ComNet56k PCMCIA 10/100 Ethernet + Modem</td>
+      <td class="nu2td2" width="113">Apr 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Tomasz Saniawa.<br>
+The enabler uses
+        IRQ 11 and port 300h.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ethne.uha">ethne.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ethne.cab">cab</a>(9KB)</td>
+      <td class="nu2td2" width="437">Accton EN166x MPX2 PnP Ethernet Adapter EtherCombo/Coax/Pair</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Severin TERRIER</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/l100.uha">l100.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/l100.cab">cab</a>(7KB)</td>
+      <td class="nu2td2" width="437">Lite-on PNIC-10/100 (Fast) Ethernet Adapter v3.0</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/lne100d.uha">lne100d.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/lne100d.cab">cab</a>(13KB)</td>
+      <td class="nu2td2" width="437">Linksys LNE100TX Fast Ethernet Adapter (Chip Name:
+        Digital)</td>
+      <td class="nu2td2" width="113">Jun 25, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">With IC Chip from Digital.<br>
+Created by Jeff
+        Bogari.<br>
+<a title="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" href="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/lne100l.uha">lne100l.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/lne100l.cab">cab</a>(7KB)</td>
+      <td class="nu2td2" width="437">Linksys LNE100TX Fast Ethernet Adapter (Chip Name:
+        Linksys)</td>
+      <td class="nu2td2" width="113">Jun 25, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">With IC Chip from Linksys.<br>
+Created by Jeff
+        Bogari.<br>
+<a title="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" href="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/lne100p.uha">lne100p.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/lne100p.cab">cab</a>(7KB)</td>
+      <td class="nu2td2" width="437">Linksys LNE100TX Fast Ethernet Adapter (Chip Name: PNIC)</td>
+      <td class="nu2td2" width="113">Jun 25, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">With IC Chip from PNIC.<br>
+Created by Jeff
+        Bogari.<br>
+<a title="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" href="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/lne100v2.uha">lne100v2.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/lne100v2.cab">cab</a>(9KB)</td>
+      <td class="nu2td2" width="437">Linksys LNE100TX v2 Fast Ethernet Adapter (LNE100)</td>
+      <td class="nu2td2" width="113">Jun 11, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">This is for the version 2.0 adapter! Created
+        by Victor Grund, updated using info from Jeff Bogari.<br>
+<a title="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" href="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/lne100v4.uha">lne100v4.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/lne100v4.cab">cab</a>(8KB)</td>
+      <td class="nu2td2" width="437">Linksys LNE100TX v4 Fast Ethernet Adapter</td>
+      <td class="nu2td2" width="113">Jun 11, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">This is for the version 4.x adapter! Created
+        by Jeff Bogari.<br>
+<a title="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" href="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/lne100v5.uha">lne100v5.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/lne100v5.cab">cab</a>(8KB)</td>
+      <td class="nu2td2" width="437">Linksys LNE100TX v5 Fast Ethernet Adapter</td>
+      <td class="nu2td2" width="113">Jun 25, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">This is for the version 5.x adapter! Created
+        by Jeff Bogari.<br>
+<a title="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" href="http://linksys.com/download/driver.asp?dlid=2&amp;osid=2" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/pc100.uha">pc100.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/pc100.cab">cab</a>(14KB)</td>
+      <td class="nu2td2" width="437">Linksys EtherFast 10/100 PC Card (PCMPC100) NDIS DOS
+        Driver v2.20</td>
+      <td class="nu2td2" width="113">Aug 15, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Federico Lucifredi.<br>
+Enabler
+        options are set to &quot;/IOP=320 /IRQ=11&quot;.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ec2t.uha">ec2t.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ec2t.cab">cab</a>(13KB)</td>
+      <td class="nu2td2" width="437">Linksys Combo PCMCIA Adapter</td>
+      <td class="nu2td2" width="113">May 21, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Craig Setera.<br>
+The card services
+        enabler is set with paramters IOP=300 and IRQ=11</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/le10nds.uha">le10nds.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/le10nds.cab">cab</a>(13KB)</td>
+      <td class="nu2td2" width="437">EPC-0100 TB Level-One PC Card / PCMCIA 10Mbps</td>
+      <td class="nu2td2" width="113">Apr 24, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by René Beer.<br>
+Uses I/O port 0x300
+        and IRQ 5.<br>
+<a title="http://www.level-one.net" href="http://www.level-one.net" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/pcntnd.uha">pcntnd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/pcntnd.cab">cab</a>(6KB)</td>
+      <td class="nu2td2" width="437">Realtek 8019 driver v2.0</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Robert Moosreiner</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/pcind.uha">pcind.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/pcind.cab">cab</a>(7KB)</td>
+      <td class="nu2td2" width="437">Realtek RTL8029 Family PCI Fast Ethernet</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Dennis Descheneaux</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/de22x.uha">de22x.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/de22x.cab">cab</a>(12KB)</td>
+      <td class="nu2td2" width="437">D-Link DE-220 Family Ethernet NDIS DOS Driver v5.01</td>
+      <td class="nu2td2" width="113">Aug 30, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Aleksandr A.<br>
+Kozlov.<br>
+This is ISA
+        PnP NIC, that I used in PnP mode, so I have no ideas about it will work
+        when NIC is non-PnP mode.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dlkrts.uha">dlkrts.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/dlkrts.cab">cab</a>(21KB)</td>
+      <td class="nu2td2" width="437">D-Link DFE-530TX+ 10/100 Fast/Eth v5.390</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Jose Raul Cruz R.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dlh5x.uha">dlh5x.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/dlh5x.cab">cab</a>(10KB)</td>
+      <td class="nu2td2" width="437">D-Link DFE-550TX 10/100 Adapter NDIS2 v1.06</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Dennis Descheneaux</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/de620.uha">de620.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/de620.cab">cab</a>(10KB)</td>
+      <td class="nu2td2" width="437">D-Link DE-620CT Ethernet Pocket LAN Adapter</td>
+      <td class="nu2td2" width="113">Aug 30, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Crisco.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/de660.uha">de660.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/de660.cab">cab</a>(11KB)</td>
+      <td class="nu2td2" width="437">D-Link DE-660 Ethernet PC Card Driver v2.10</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Jan Drost</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dfe650.uha">dfe650.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/dfe650.cab">cab</a>(13KB)</td>
+      <td class="nu2td2" width="437">D-Link DFE-650 Fast Ethernet PC Card Driver v1.02</td>
+      <td class="nu2td2" width="113">Jun 13, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Jeremy Ferris</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dfe660.uha">dfe660.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/dfe660.cab">cab</a>(19KB)</td>
+      <td class="nu2td2" width="437">D-Link DFE-660(TX) PCMCIA Ethernet 10/100 v1.12</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Pedro Rodrigues</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dfe670.uha">dfe670.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/dfe670.cab">cab</a>(16KB)</td>
+      <td class="nu2td2" width="437">D-Link DFE-670TXD 10/100 PCMCIA card</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Bob Leonard</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dlkpci.uha">dlkpci.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/dlkpci.cab">cab</a>(18KB)</td>
+      <td class="nu2td2" width="437">D-Link PCI DEC2104x/2114x 10/100 mbps Ethernet v2.61</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Pedro Rodrigues.<br>
+Note: Same PCI
+        vendor/device id's as dc21x4! But the dc21x4 driver doesn't work with
+        the D-Link DFE500TX card</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/dc21x4.uha">dc21x4.uha</a>&nbsp;(<a href="http://www.drivesnapshot.de/nu2files/dc21x4.cab">cab</a>19KB)</td>
+      <td class="nu2td2" width="437">Digital 2104x/2114x 10/100 mbps Ethernet Controller
+        v3.00</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">OEM: Linksys v1? Used in VirtualPC.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/fetnd.uha">fetnd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/fetnd.cab">cab</a>(10KB)</td>
+      <td class="nu2td2" width="437">VIA Rhine Family Fast Ethernet Adapter Driver v4.05</td>
+      <td class="nu2td2" width="113">Aug 30, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">v1.1: Updated by Brett King.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/w940nd.uha">w940nd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/w940nd.cab">cab</a>(6KB)</td>
+      <td class="nu2td2" width="437">Winbond W89C940F 10 PCI DOS Driver v2.00</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Robert Moosreiner</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ep312.uha">ep312.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ep312.cab">cab</a>(7KB)</td>
+      <td class="nu2td2" width="437">Surecom EP-312V Ethernet Adapter NDIS2 DOS Driver V2.72.<br>
+
+        Created by Dennis Ploeger</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ibmtok.uha">ibmtok.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ibmtok.cab">cab</a>(12KB)</td>
+      <td class="nu2td2" width="437">IBM ISA Token Ring Driver.<br>
+Created by Pascal de Wild</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ibmtokcb.uha">ibmtokcb.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ibmtokcb.cab">cab</a>(48KB)</td>
+      <td class="nu2td2" width="437">IBM 16/4 Token ring CardBus Adapter</td>
+      <td class="nu2td2" width="113">May 8, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Philippe Deplanque from IBM
+        Vienna.<br>
+Supports the 32 bits IBM token ring Cardbus adapter</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ibmtokcs.uha">ibmtokcs.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ibmtokcs.cab">cab</a>(20KB)</td>
+      <td class="nu2td2" width="437">IBM Auto and Turbo 16/4 Token ring PC Card and PC Card
+        2</td>
+      <td class="nu2td2" width="113">May 8, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Philippe Deplanque from IBM
+        Vienna.<br>
+Is supposed to cover the 16bits pcmcia token ring cards.<br>
+It is
+        tested on the 3 families: IBM auto 16/4 PC Card, IBM turbo 16/4 PC Card
+        and IBM turbo 16/4 PC Card 2.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ibmtrp.uha">ibmtrp.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ibmtrp.cab">cab</a>(39KB)</td>
+      <td class="nu2td2" width="437">IBM Token-Ring PCI Family Adapter (IBMTRP.DOS)</td>
+      <td class="nu2td2" width="113">Mar 27, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Van den Ende Jacques</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ibmcndis.uha">ibmcndis.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ibmcndis.cab">cab</a>(24KB)</td>
+      <td class="nu2td2" width="437">IBM 10/100 EtherJet CardBus Adapter (08L3147)</td>
+      <td class="nu2td2" width="113">Apr 24, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Dieter de Sena.<br>
+Product: Ethernet
+        Adapters(PCMCIA-08L3147) <a title="http://www.pc.ibm.com/qtechinfo/MIGR-4GJS2U.html" href="http://www.pc.ibm.com/qtechinfo/MIGR-4GJS2U.html" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ibmfe.uha">ibmfe.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ibmfe.cab">cab</a>(12KB)</td>
+      <td class="nu2td2" width="437">IBM 100/10 EtherJet PCI Adapter Driver</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Kapa.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ibmeindi.uha">ibmeindi.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ibmeindi.cab">cab</a>(8KB)</td>
+      <td class="nu2td2" width="437">IBM EtherJet ISA Ethernet driver V2.24</td>
+      <td class="nu2td2" width="113">Aug 2, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Joao Claudio Pizzato Sidou.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/xj10bt.uha">xj10bt.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/xj10bt.cab">cab</a>(15KB)</td>
+      <td class="nu2td2" width="437">Megahertz XJ10BT &amp; CC10BT PC Card (Small - Enabler
+        v1.30)</td>
+      <td class="nu2td2" width="113">Mar 27, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Wes Brewer<br>
+        Megahertz drivers with the older point enabler v1.30 which is a lot
+        smaller then the new version but doesn't support as many PC Card
+        controllers.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/xj10bt2.uha">xj10bt2.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/xj10bt2.cab">cab</a>(36KB)</td>
+      <td class="nu2td2" width="437">Megahertz XJ10BT &amp; CC10BT PC Card (Large - Enabler
+        v2.05)</td>
+      <td class="nu2td2" width="113">Mar 27, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Wes Brewer<br>
+        Megahertz drivers with the new point enabler v2.05 which is huge but
+        supports newer PC Card Controllers.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/oct3xnd2.uha">oct3xnd2.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/oct3xnd2.cab">cab</a>(40KB)</td>
+      <td class="nu2td2" width="437">Olicom 3139/314x/3250/3540 Token-Ring 16/4 Adapter</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Ralf Jungmann</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/oce4x.uha">oce4x.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/oce4x.cab">cab</a>(9KB)</td>
+      <td class="nu2td2" width="437">Olicom OC-2326 Driver</td>
+      <td class="nu2td2" width="113">Apr 9, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Douglas Earnshaw</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/oce5xnd2.uha">oce5xnd2.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/oce5xnd2.cab">cab</a>(17KB)</td>
+      <td class="nu2td2" width="437">OC-2327 Rapidfire 10/100 Ethernet Adapter</td>
+      <td class="nu2td2" width="113">Sep 3, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Andrew Chittams.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/olitok16.uha">olitok16.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/olitok16.cab">cab</a>(38KB)</td>
+      <td class="nu2td2" width="437">Olicom OC-3137 Token-Ring 16/4 PCI/II Adapter</td>
+      <td class="nu2td2" width="113">May 24, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Chris Gepp</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/olitokr.uha">olitokr.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/olitokr.cab">cab</a>(39KB)</td>
+      <td class="nu2td2" width="437">Olicom OC-3118 ISA Adapter</td>
+      <td class="nu2td2" width="113">May 24, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Chris Gepp</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/mdgnd.uha">mdgnd.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/mdgnd.cab">cab</a>(130KB)</td>
+      <td class="nu2td2" width="437">Madge Token-Ring DOS NDIS MAC Driver v5.17</td>
+      <td class="nu2td2" width="113">Apr 4, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Pascal de Wild (v1.0) and Keith
+        Edmunds (v1.1)</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/fa31x.uha">fa31x.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/fa31x.cab">cab</a>(15KB)</td>
+      <td class="nu2td2" width="437">FA31X 10/100 MacPhyter PCI Adapters DOS v1.05</td>
+      <td class="nu2td2" width="113">May 21, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Ken Wygant.<br>
+Updated by Eric
+        Gentry.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/ngrpci.uha">ngrpci.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/ngrpci.cab">cab</a>(16KB)</td>
+      <td class="nu2td2" width="437">Netgear FA310TX Fast Ethernet PCI Adapter</td>
+      <td class="nu2td2" width="113">Apr 10, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Shane Brooks.<br>
+Try newer driver:
+        fa31x.cab</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/fa410.uha">fa410.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/fa410.cab">cab</a>(12KB)</td>
+      <td class="nu2td2" width="437">Netgear FA410TX PCMCIA Mobile Adapter v3.0</td>
+      <td class="nu2td2" width="113">Aug 29, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Carl Sawyer.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/fa411.uha">fa411.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/fa411.cab">cab</a>(11KB)</td>
+      <td class="nu2td2" width="437">Netgear FA411 PCMCIA Mobile Adapter v3.0</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Dennis Diaz.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/endsxx.uha">endsxx.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/endsxx.cab">cab</a>(10KB)</td>
+      <td class="nu2td2" width="437">Crystal LAN(tm) CS8900/CS8920 Ethernet Adapter</td>
+      <td class="nu2td2" width="113">Mar 26, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Jim Webster.<br>
+It was tested with
+        an IO address of 300 and interrupt 10.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/fastnic.uha">fastnic.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/fastnic.cab">cab</a>(8KB)</td>
+      <td class="nu2td2" width="437">ADMtek PCI 10/100 Fast Ethernet Adapter Driver v1.05</td>
+      <td class="nu2td2" width="113">Apr 4, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558"><a title="http://www.admtek.com/Download.htm" href="http://www.admtek.com/Download.htm" target="_blank">More
+        info!</a></td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/le100.uha">le100.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/le100.cab">cab</a>(14KB)</td>
+      <td class="nu2td2" width="437">Trust MB100 Network PC-Card (Large - Enabler v2.05)</td>
+      <td class="nu2td2" width="113">Apr 23, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Marco Gubitzer</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/at2400.uha">at2400.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/at2400.cab">cab</a>(7KB)</td>
+      <td class="nu2td2" width="437">Allied Telesyn AT2400 PCI</td>
+      <td class="nu2td2" width="113">May 10, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Ben Pauly.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/hpfend.uha">hpfend.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/hpfend.cab">cab</a>(14KB)</td>
+      <td class="nu2td2" width="437">Hewlett-Packard 10/100VG NDIS 2.01 Driver</td>
+      <td class="nu2td2" width="113">May 31, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Daniel Homolka.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/uk0022.uha">uk0022.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/uk0022.cab">cab</a>(9KB)</td>
+      <td class="nu2td2" width="437">ETHNE$ - Unisys custom NE2000 chip for 486s</td>
+      <td class="nu2td2" width="113">May 31, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Al Gilhousen.<br>
+UK0022 driver works
+        best for both the 486 and pentium versions of the Unisys box but the
+        UK0023 version sometimes works in situations that the UK0022 does not
+        (the chips are marked uk0022 or uk0023).</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/uk0023.uha">uk0023.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/uk0023.cab">cab</a>(9KB)</td>
+      <td class="nu2td2" width="437">ETHNE$ - Unisys NE2000 driver for Pentiums (no emm386!)</td>
+      <td class="nu2td2" width="113">May 31, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Al Gilhousen.<br>
+UK0022 driver works
+        best for both the 486 and pentium versions of the Unisys box but the
+        UK0023 version sometimes works in situations that the UK0022 does not
+        (the chips are marked uk0022 or uk0023).</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/a2500.uha">a2500.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/a2500.cab">cab</a>(21KB)</td>
+      <td class="nu2td2" width="437">Allied Tsyn PCI Ethernet Adapter</td>
+      <td class="nu2td2" width="113">Jul 4, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Homan Tashakoor.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/rl100a.uha">rl100a.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/rl100a.cab">cab</a>(7KB)</td>
+      <td class="nu2td2" width="437">Compex RL100ATX 10/100Base-TX PCI Fast Ethernet Adapter</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Mikhail Tungusov.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/rlpnpa.uha">rlpnpa.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/rlpnpa.cab">cab</a>(8KB)</td>
+      <td class="nu2td2" width="437">Compex RL2000A PnP Ethernet Adapter NDIS driver v2.10
+        (970312)</td>
+      <td class="nu2td2" width="113">Sep 4, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Rudy Tuypens.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/aln325.uha">aln325.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/aln325.cab">cab</a>(21KB)</td>
+      <td class="nu2td2" width="437">AcerLAN 325 10/100 PCI</td>
+      <td class="nu2td2" width="113">Jul 5, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Robert Cooper</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/rl2000.uha">rl2000.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/rl2000.cab">cab</a>(6KB)</td>
+      <td class="nu2td2" width="437">Compex RL2000 PCI Ethernet Adapter NDIS Driver v1.10
+        (960416)</td>
+      <td class="nu2td2" width="113">Sep 3, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Peter Waeltken.</td>
+    </tr>
+    <tr>
+      <td class="nu2td2" rowSpan="2" width="162"><a href="http://www.drivesnapshot.de/nu2files/epxet.uha">epxet.uha</a>&nbsp;<a href="http://www.drivesnapshot.de/nu2files/epxet.cab">cab</a>(8KB)</td>
+      <td class="nu2td2" width="437">EigerNet Lan Adapter EPX-10BT NDIS 2.0.1 Driver, v2.10</td>
+      <td class="nu2td2" width="113">Sep 4, 2002</td>
+    </tr>
+    <tr>
+      <td class="nu2td" colSpan="2" width="558">Created by Angelo Sarto.<br>
+Settings in
+        epxet.ini: INT=5/PORT=0x300/MEM=0xD0000</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+</html>

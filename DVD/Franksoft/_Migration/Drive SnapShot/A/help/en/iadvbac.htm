@@ -1,0 +1,119 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<title>Advanced Backup Options</title>
+<meta name="keywords" content="disk image,disk,image,backup,hard disk,recovery,disaster,easy backup,partition, Disk Imaging, WinNT,Win2K, Windows NT">
+
+
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+<body>
+<h1 align="center">Advanced Backup Options</h1>
+<hr>
+
+<p>
+<map name="FPMap0">
+<area href="back2.htm" shape="rect" coords="90, 403, 166, 432"></map>
+<img border="0" src="../images/advbac.png" usemap="#FPMap0" align="middle" hspace="10" vspace="10" width="581" height="441">
+</p>
+
+<h2>
+
+Advanced Options</h2>
+
+
+<p>
+
+None of these options are important for the normal use of Drive Snapshot;
+usually you should use the default settings.<br>
+
+
+</p>
+
+<h3>VSS Options</h3>
+<p>forces or disables use of VSS (Volume Shadowcopy Service); <a href="snapshot_vss.htm">see
+also</a>&nbsp;</p>
+
+
+<p>
+
+&nbsp;
+
+</p>
+
+<h3>
+Maximum size of a single image file
+
+</h3>
+
+<p>Disk image files can become rather large, if saving big partitions.<br>
+However
+they should not be larger then certain limits, else they will not be usable by
+DOS (limit = 2047 MB) or will not fit on a CD-R/W (Limit 650-750MB)or an ISO-DVD
+(Limit 2048 MB).<br>
+
+
+</p>
+
+<p>So Snapshot will cut the disk image file after a preset size (default=650MB),
+and create several files with extensions&nbsp;<br>
+SNA, .SN1,.Sn2,..,.SN9,.S10...S99,.100...999,.1000 etc
+
+</p>
+
+<p>By default the limit is 1500 MB, so 3 image pieces fit on a DVD.<br>
+
+
+</p>
+
+<h3>
+Maintenance Mode&nbsp;
+
+</h3>
+
+<p>
+This saves each and every cluster on the disk, ignoring the free space
+information.<br>
+
+
+</p>
+
+<p>
+This has its use if you are trying some&nbsp; 'Data Recovery' Tool to recover
+some data from a damaged disk, but want to be able to restore the original state
+in case the 'recovery' fails.<br>
+
+
+</p>
+
+<h3>Hash File Options</h3>
+<p>Usually, with each full backup, also a .HSH hashfile is created, which is
+used for differential images.</p>
+<p>If you don't plan to use differential backup, clear this option.</p>
+<p>with <b>[Create Hash file from full image] </b>you can recreate a .hsh file
+from the full image.</p>
+
+<h3>
+Use settings as default
+
+</h3>
+
+<p>Saves these settings to be used as new default settings.<br>
+
+
+</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+</html>

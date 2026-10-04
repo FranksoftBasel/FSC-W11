@@ -1,0 +1,444 @@
+[2026/09/10 20:21:38.990] 
+##################################################################################
+############################## Ventoy2DiskX86  #############################
+##################################################################################
+[2026/09/10 20:21:38.990] Current Directory <C:\Users\Admin\Downloads\ventoy-1.1.17>
+[2026/09/10 20:21:38.990] Exe file path <C:\Users\Admin\Downloads\ventoy-1.1.17\Ventoy2Disk.exe>
+[2026/09/10 20:21:38.990] Current directory check OK.
+[2026/09/10 20:21:38.990] Current directory:<C:\Users\Admin\Downloads\ventoy-1.1.17>
+[2026/09/10 20:21:38.990] ######### Current Ventoy Version: Ventoy2DiskX86 1.1.17 ########
+[2026/09/10 20:21:38.994] id=7832/13244
+[2026/09/10 20:21:38.996] PPath:<C:\Windows\explorer.exe>
+[2026/09/10 20:21:38.996] PSize:<3373256 3294KB>
+[2026/09/10 20:21:38.996] Lunch main process 0
+[2026/09/10 20:21:38.996] Control Flag: 0 1 1
+[2026/09/10 20:21:38.996] Windows Version: <<Windows 11 Pro, 64-bit (Build 26200.9168)>>
+[2026/09/10 20:21:38.996] 
+===================== Enum All PhyDrives =====================
+[2026/09/10 20:21:38.999] RegOpenKeyExA <SYSTEM\CurrentControlSet\Services\disk\Enum> Ret:0
+[2026/09/10 20:21:38.999] RegQueryValueExA <Count> ret:0  Size:4 Value:3
+[2026/09/10 20:21:38.999] GetPhysicalDriveCount: 3
+[2026/09/10 20:21:38.999] Logical Drives: 0x3c
+[2026/09/10 20:21:38.999] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:332398592 ExtentLength:510906073088
+[2026/09/10 20:21:38.999] C --> 0
+[2026/09/10 20:21:39.010] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:2048373645312
+[2026/09/10 20:21:39.010] D --> 1
+[2026/09/10 20:21:39.012] LogicalDrive:\\.\E: PhyDrive:2 Num:1 Offset:1048576 ExtentLength:52428800000
+[2026/09/10 20:21:39.012] E --> 2
+[2026/09/10 20:21:39.012] LogicalDrive:\\.\F: PhyDrive:2 Num:1 Offset:52429848576 ExtentLength:199227342848
+[2026/09/10 20:21:39.012] F --> 2
+[2026/09/10 20:21:39.012] Create file Handle:00000150 \\.\PhysicalDrive0 status:0
+[2026/09/10 20:21:39.012] PHYSICALDRIVE0 size 512110190592 bytes
+[2026/09/10 20:21:39.012] Create file Handle:0000014C \\.\PhysicalDrive1 status:0
+[2026/09/10 20:21:39.012] PHYSICALDRIVE1 size 2048408248320 bytes
+[2026/09/10 20:21:39.012] Create file Handle:0000014C \\.\PhysicalDrive2 status:0
+[2026/09/10 20:21:39.012] PHYSICALDRIVE2 size 251658240000 bytes
+[2026/09/10 20:21:39.012] DeviceIoControl3 error:1 dwBytes:132
+[2026/09/10 20:21:39.012] PhyDrv:0 BusType:Nvme Removable:0 Size:512GB(512110190592) Sector:512/4096 Name: MTFDKBA512QGN-1BN1AABHA
+[2026/09/10 20:21:39.012] PhyDrv:1 BusType:USB  Removable:0 Size:2048GB(2048408248320) Sector:512/512 Name:SAMSUNG MZVL22T0HBLB-00B
+[2026/09/10 20:21:39.012] PhyDrv:2 BusType:USB  Removable:1 Size:256GB(251658240000) Sector:0/0 Name:Kingston HyperX Savage
+[2026/09/10 20:21:39.012] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:332398592 ExtentLength:510906073088
+[2026/09/10 20:21:39.012] Logical Drive:C  ===> PhyDrive:0
+[2026/09/10 20:21:39.032] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:2048373645312
+[2026/09/10 20:21:39.032] Logical Drive:D  ===> PhyDrive:1
+[2026/09/10 20:21:39.034] LogicalDrive:\\.\E: PhyDrive:2 Num:1 Offset:1048576 ExtentLength:52428800000
+[2026/09/10 20:21:39.034] Logical Drive:E  ===> PhyDrive:2
+[2026/09/10 20:21:39.034] LogicalDrive:\\.\F: PhyDrive:2 Num:1 Offset:52429848576 ExtentLength:199227342848
+[2026/09/10 20:21:39.034] Logical Drive:F  ===> PhyDrive:2
+[2026/09/10 20:21:39.034] Create file Handle:00000150 \\.\PhysicalDrive2 status:0
+[2026/09/10 20:21:39.034] Read MBR Ret:1 Size:512 code:183
+[2026/09/10 20:21:39.034] =========== Disk2 MBR Partition 1 ============
+[2026/09/10 20:21:39.034] PartTbl.Active = 0x80
+[2026/09/10 20:21:39.034] PartTbl.FsFlag = 0xb
+[2026/09/10 20:21:39.034] PartTbl.StartSectorId = 2048
+[2026/09/10 20:21:39.034] PartTbl.SectorCount = 102400000
+[2026/09/10 20:21:39.034] PartTbl.StartHead = 32
+[2026/09/10 20:21:39.034] PartTbl.StartSector = 33
+[2026/09/10 20:21:39.034] PartTbl.StartCylinder = 0
+[2026/09/10 20:21:39.034] PartTbl.EndHead = 254
+[2026/09/10 20:21:39.034] PartTbl.EndSector = 63
+[2026/09/10 20:21:39.034] PartTbl.EndCylinder = 1023
+[2026/09/10 20:21:39.034] =========== Disk2 MBR Partition 2 ============
+[2026/09/10 20:21:39.034] PartTbl.Active = 0x0
+[2026/09/10 20:21:39.034] PartTbl.FsFlag = 0x7
+[2026/09/10 20:21:39.034] PartTbl.StartSectorId = 102402048
+[2026/09/10 20:21:39.034] PartTbl.SectorCount = 389115904
+[2026/09/10 20:21:39.034] PartTbl.StartHead = 254
+[2026/09/10 20:21:39.034] PartTbl.StartSector = 63
+[2026/09/10 20:21:39.034] PartTbl.StartCylinder = 1023
+[2026/09/10 20:21:39.034] PartTbl.EndHead = 254
+[2026/09/10 20:21:39.034] PartTbl.EndSector = 63
+[2026/09/10 20:21:39.034] PartTbl.EndCylinder = 1023
+[2026/09/10 20:21:39.038] =========== Disk2 MBR Partition 3 ============
+[2026/09/10 20:21:39.038] PartTbl.Active = 0x0
+[2026/09/10 20:21:39.038] PartTbl.FsFlag = 0x0
+[2026/09/10 20:21:39.038] PartTbl.StartSectorId = 0
+[2026/09/10 20:21:39.038] PartTbl.SectorCount = 0
+[2026/09/10 20:21:39.038] PartTbl.StartHead = 0
+[2026/09/10 20:21:39.038] PartTbl.StartSector = 0
+[2026/09/10 20:21:39.038] PartTbl.StartCylinder = 0
+[2026/09/10 20:21:39.038] PartTbl.EndHead = 0
+[2026/09/10 20:21:39.038] PartTbl.EndSector = 0
+[2026/09/10 20:21:39.038] PartTbl.EndCylinder = 0
+[2026/09/10 20:21:39.038] =========== Disk2 MBR Partition 4 ============
+[2026/09/10 20:21:39.038] PartTbl.Active = 0x0
+[2026/09/10 20:21:39.038] PartTbl.FsFlag = 0x0
+[2026/09/10 20:21:39.038] PartTbl.StartSectorId = 0
+[2026/09/10 20:21:39.038] PartTbl.SectorCount = 0
+[2026/09/10 20:21:39.038] PartTbl.StartHead = 0
+[2026/09/10 20:21:39.038] PartTbl.StartSector = 0
+[2026/09/10 20:21:39.038] PartTbl.StartCylinder = 0
+[2026/09/10 20:21:39.038] PartTbl.EndHead = 0
+[2026/09/10 20:21:39.038] PartTbl.EndSector = 0
+[2026/09/10 20:21:39.038] PartTbl.EndCylinder = 0
+[2026/09/10 20:21:39.038] Part2 not match [0x7 0xef] [102402048 102402048] [389115904 65536]
+[2026/09/10 20:21:39.038] Create file Handle:0000014C \\.\PhysicalDrive1 status:0
+[2026/09/10 20:21:39.038] Read MBR Ret:1 Size:512 code:183
+[2026/09/10 20:21:39.038] =========== Disk1 MBR Partition 1 ============
+[2026/09/10 20:21:39.038] PartTbl.Active = 0x80
+[2026/09/10 20:21:39.038] PartTbl.FsFlag = 0x7
+[2026/09/10 20:21:39.038] PartTbl.StartSectorId = 2048
+[2026/09/10 20:21:39.038] PartTbl.SectorCount = 4000729776
+[2026/09/10 20:21:39.038] PartTbl.StartHead = 32
+[2026/09/10 20:21:39.038] PartTbl.StartSector = 33
+[2026/09/10 20:21:39.038] PartTbl.StartCylinder = 0
+[2026/09/10 20:21:39.038] PartTbl.EndHead = 254
+[2026/09/10 20:21:39.038] PartTbl.EndSector = 63
+[2026/09/10 20:21:39.038] PartTbl.EndCylinder = 1023
+[2026/09/10 20:21:39.038] =========== Disk1 MBR Partition 2 ============
+[2026/09/10 20:21:39.038] PartTbl.Active = 0x0
+[2026/09/10 20:21:39.038] PartTbl.FsFlag = 0xff
+[2026/09/10 20:21:39.038] PartTbl.StartSectorId = 4000731824
+[2026/09/10 20:21:39.038] PartTbl.SectorCount = 65536
+[2026/09/10 20:21:39.038] PartTbl.StartHead = 254
+[2026/09/10 20:21:39.038] PartTbl.StartSector = 63
+[2026/09/10 20:21:39.038] PartTbl.StartCylinder = 1023
+[2026/09/10 20:21:39.038] PartTbl.EndHead = 254
+[2026/09/10 20:21:39.038] PartTbl.EndSector = 63
+[2026/09/10 20:21:39.038] PartTbl.EndCylinder = 1023
+[2026/09/10 20:21:39.044] =========== Disk1 MBR Partition 3 ============
+[2026/09/10 20:21:39.044] PartTbl.Active = 0x0
+[2026/09/10 20:21:39.044] PartTbl.FsFlag = 0x0
+[2026/09/10 20:21:39.044] PartTbl.StartSectorId = 0
+[2026/09/10 20:21:39.044] PartTbl.SectorCount = 0
+[2026/09/10 20:21:39.044] PartTbl.StartHead = 0
+[2026/09/10 20:21:39.044] PartTbl.StartSector = 0
+[2026/09/10 20:21:39.044] PartTbl.StartCylinder = 0
+[2026/09/10 20:21:39.044] PartTbl.EndHead = 0
+[2026/09/10 20:21:39.044] PartTbl.EndSector = 0
+[2026/09/10 20:21:39.044] PartTbl.EndCylinder = 0
+[2026/09/10 20:21:39.044] =========== Disk1 MBR Partition 4 ============
+[2026/09/10 20:21:39.044] PartTbl.Active = 0x0
+[2026/09/10 20:21:39.044] PartTbl.FsFlag = 0x0
+[2026/09/10 20:21:39.044] PartTbl.StartSectorId = 0
+[2026/09/10 20:21:39.044] PartTbl.SectorCount = 0
+[2026/09/10 20:21:39.044] PartTbl.StartHead = 0
+[2026/09/10 20:21:39.044] PartTbl.StartSector = 0
+[2026/09/10 20:21:39.044] PartTbl.StartCylinder = 0
+[2026/09/10 20:21:39.044] PartTbl.EndHead = 0
+[2026/09/10 20:21:39.044] PartTbl.EndSector = 0
+[2026/09/10 20:21:39.044] PartTbl.EndCylinder = 0
+[2026/09/10 20:21:39.044] PhysicalDrive1 is ventoy disk
+[2026/09/10 20:21:39.044] QueryDosDeviceA success \Device\Harddisk1\DR4
+[2026/09/10 20:21:39.044] [0] CreateFileA \\.\PhysicalDrive1 code:0 00000154
+[2026/09/10 20:21:39.044] Parse FAT fs...
+[2026/09/10 20:21:39.044] attach media success...
+[2026/09/10 20:21:39.060] GetVentoyVerInPhyDrive rc=0...
+[2026/09/10 20:21:39.060] VentoyVerInPhyDrive 1 is <1.1.17>...
+[2026/09/10 20:21:39.060] PhyDrive 1 is Ventoy Disk ver:1.1.17 SecureBoot:1
+[2026/09/10 20:21:39.076] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:2048373645312
+[2026/09/10 20:21:39.076] Find the partition 1 logical drive is D:\
+[2026/09/10 20:21:39.076] GetVolumeClusterSize D:\ SUCCESS 256 512 131072
+[2026/09/10 20:21:39.076] GetVentoyFsNameInPhyDrive 1 D:\ <exFAT> <exFAT>
+[2026/09/10 20:21:39.076] < MTFDKBA512QGN-1BN1AABHA> is filtered for not USB type.
+[2026/09/10 20:21:39.129] Load languages from json file ...
+[2026/09/10 20:21:39.129] language json file len:293356 json parse:0
+[2026/09/10 20:21:39.131] Total 53 languages ...
+[2026/09/10 20:21:39.175] Not ventoy disk, set secure boot option
+[2026/09/10 20:21:39.180] Courier New font <C:\WINDOWS\Fonts\couri.ttf> exist OK.
+[2026/09/10 20:21:39.180] system_dir=<C:\WINDOWS\system32>
+[2026/09/10 20:21:39.180] sysnative_dir=<C:\WINDOWS\Sysnative>
+[2026/09/10 20:21:39.180] LoadLibrary shell32.dll.mui SUCCESS
+[2026/09/10 20:21:39.180] SetAlertPromptHook SUCCESS
+[2026/09/10 20:21:43.102] Combox select change, update secure boot option: 1 1
+[2026/09/10 20:21:44.808] Not ventoy disk, set secure boot option
+[2026/09/10 20:21:46.337] Combox select change, update secure boot option: 1 1
+[2026/09/17 23:58:45.988] 
+##################################################################################
+############################## Ventoy2DiskX86  #############################
+##################################################################################
+[2026/09/17 23:58:45.988] Current Directory <D:\ISO\ventoy-1.1.17>
+[2026/09/17 23:58:45.988] Exe file path <D:\ISO\ventoy-1.1.17\Ventoy2Disk.exe>
+[2026/09/17 23:58:45.988] Current directory check OK.
+[2026/09/17 23:58:46.068] Current directory:<D:\ISO\ventoy-1.1.17>
+[2026/09/17 23:58:46.080] ######### Current Ventoy Version: Ventoy2DiskX86 1.1.17 ########
+[2026/09/17 23:58:46.086] id=4316/7140
+[2026/09/17 23:58:46.101] PPath:<C:\Windows\explorer.exe>
+[2026/09/17 23:58:46.110] PSize:<3340184 3261KB>
+[2026/09/17 23:58:46.117] Lunch main process 0
+[2026/09/17 23:58:46.132] Control Flag: 0 1 1
+[2026/09/17 23:58:46.142] Set Ventoy FS ClusterSize 0
+[2026/09/17 23:58:46.150] Windows Version: <<Windows 11 Pro, 64-bit (Build 26200.8655)>>
+[2026/09/17 23:58:46.168] 
+===================== Enum All PhyDrives =====================
+[2026/09/17 23:58:46.177] RegOpenKeyExA <SYSTEM\CurrentControlSet\Services\disk\Enum> Ret:0
+[2026/09/17 23:58:46.186] RegQueryValueExA <Count> ret:0  Size:4 Value:2
+[2026/09/17 23:58:46.190] GetPhysicalDriveCount: 2
+[2026/09/17 23:58:46.197] Logical Drives: 0xc
+[2026/09/17 23:58:46.209] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:332398592 ExtentLength:510906073088
+[2026/09/17 23:58:46.209] C --> 0
+[2026/09/17 23:58:46.222] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:251623636992
+[2026/09/17 23:58:46.238] D --> 1
+[2026/09/17 23:58:46.250] Create file Handle:0000014C \\.\PhysicalDrive0 status:0
+[2026/09/17 23:58:46.263] PHYSICALDRIVE0 size 512110190592 bytes
+[2026/09/17 23:58:46.269] Create file Handle:0000014C \\.\PhysicalDrive1 status:0
+[2026/09/17 23:58:46.286] PHYSICALDRIVE1 size 251658240000 bytes
+[2026/09/17 23:58:46.286] DeviceIoControl3 error:1 dwBytes:132
+[2026/09/17 23:58:46.301] PhyDrv:0 BusType:Nvme Removable:0 Size:512GB(512110190592) Sector:512/4096 Name: MTFDKBA512QGN-1BN1AABHA
+[2026/09/17 23:58:46.310] PhyDrv:1 BusType:USB  Removable:1 Size:256GB(251658240000) Sector:0/0 Name:Kingston HyperX Savage
+[2026/09/17 23:58:46.318] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:332398592 ExtentLength:510906073088
+[2026/09/17 23:58:46.329] Logical Drive:C  ===> PhyDrive:0
+[2026/09/17 23:58:46.341] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:251623636992
+[2026/09/17 23:58:46.350] Logical Drive:D  ===> PhyDrive:1
+[2026/09/17 23:58:46.361] Create file Handle:0000014C \\.\PhysicalDrive1 status:0
+[2026/09/17 23:58:46.371] Read MBR Ret:1 Size:512 code:183
+[2026/09/17 23:58:46.371] =========== Disk1 MBR Partition 1 ============
+[2026/09/17 23:58:46.383] PartTbl.Active = 0x80
+[2026/09/17 23:58:46.397] PartTbl.FsFlag = 0x7
+[2026/09/17 23:58:46.401] PartTbl.StartSectorId = 2048
+[2026/09/17 23:58:46.417] PartTbl.SectorCount = 491452416
+[2026/09/17 23:58:46.422] PartTbl.StartHead = 32
+[2026/09/17 23:58:46.434] PartTbl.StartSector = 33
+[2026/09/17 23:58:46.444] PartTbl.StartCylinder = 0
+[2026/09/17 23:58:46.450] PartTbl.EndHead = 254
+[2026/09/17 23:58:46.463] PartTbl.EndSector = 63
+[2026/09/17 23:58:46.476] PartTbl.EndCylinder = 1023
+[2026/09/17 23:58:46.483] =========== Disk1 MBR Partition 2 ============
+[2026/09/17 23:58:46.491] PartTbl.Active = 0x0
+[2026/09/17 23:58:46.499] PartTbl.FsFlag = 0xff
+[2026/09/17 23:58:46.503] PartTbl.StartSectorId = 491454464
+[2026/09/17 23:58:46.510] PartTbl.SectorCount = 65536
+[2026/09/17 23:58:46.521] PartTbl.StartHead = 254
+[2026/09/17 23:58:46.530] PartTbl.StartSector = 63
+[2026/09/17 23:58:46.539] PartTbl.StartCylinder = 1023
+[2026/09/17 23:58:46.540] PartTbl.EndHead = 254
+[2026/09/17 23:58:46.558] PartTbl.EndSector = 63
+[2026/09/17 23:58:46.567] PartTbl.EndCylinder = 1023
+[2026/09/17 23:58:46.573] =========== Disk1 MBR Partition 3 ============
+[2026/09/17 23:58:46.583] PartTbl.Active = 0x0
+[2026/09/17 23:58:46.587] PartTbl.FsFlag = 0x0
+[2026/09/17 23:58:46.604] PartTbl.StartSectorId = 0
+[2026/09/17 23:58:46.604] PartTbl.SectorCount = 0
+[2026/09/17 23:58:46.617] PartTbl.StartHead = 0
+[2026/09/17 23:58:46.627] PartTbl.StartSector = 0
+[2026/09/17 23:58:46.634] PartTbl.StartCylinder = 0
+[2026/09/17 23:58:46.643] PartTbl.EndHead = 0
+[2026/09/17 23:58:46.650] PartTbl.EndSector = 0
+[2026/09/17 23:58:46.652] PartTbl.EndCylinder = 0
+[2026/09/17 23:58:46.664] =========== Disk1 MBR Partition 4 ============
+[2026/09/17 23:58:46.676] PartTbl.Active = 0x0
+[2026/09/17 23:58:46.683] PartTbl.FsFlag = 0x0
+[2026/09/17 23:58:46.692] PartTbl.StartSectorId = 0
+[2026/09/17 23:58:46.704] PartTbl.SectorCount = 0
+[2026/09/17 23:58:46.704] PartTbl.StartHead = 0
+[2026/09/17 23:58:46.722] PartTbl.StartSector = 0
+[2026/09/17 23:58:46.730] PartTbl.StartCylinder = 0
+[2026/09/17 23:58:46.746] PartTbl.EndHead = 0
+[2026/09/17 23:58:46.758] PartTbl.EndSector = 0
+[2026/09/17 23:58:46.765] PartTbl.EndCylinder = 0
+[2026/09/17 23:58:46.767] PhysicalDrive1 is ventoy disk
+[2026/09/17 23:58:46.779] QueryDosDeviceA success \Device\Harddisk1\DR1
+[2026/09/17 23:58:46.783] [0] CreateFileA \\.\PhysicalDrive1 code:0 0000014C
+[2026/09/17 23:58:46.800] Parse FAT fs...
+[2026/09/17 23:58:46.804] attach media success...
+[2026/09/17 23:58:46.843] GetVentoyVerInPhyDrive rc=0...
+[2026/09/17 23:58:46.856] VentoyVerInPhyDrive 1 is <1.1.17>...
+[2026/09/17 23:58:46.867] PhyDrive 1 is Ventoy Disk ver:1.1.17 SecureBoot:1
+[2026/09/17 23:58:46.873] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:251623636992
+[2026/09/17 23:58:46.890] Find the partition 1 logical drive is D:\
+[2026/09/17 23:58:46.903] GetVolumeClusterSize D:\ SUCCESS 256 512 131072
+[2026/09/17 23:58:46.904] GetVentoyFsNameInPhyDrive 1 D:\ <exFAT> <exFAT>
+[2026/09/17 23:58:46.921] < MTFDKBA512QGN-1BN1AABHA> is filtered for not USB type.
+[2026/09/17 23:58:46.962] Load languages from json file ...
+[2026/09/17 23:58:46.971] language json file len:293356 json parse:0
+[2026/09/17 23:58:46.983] Total 53 languages ...
+[2026/09/17 23:58:47.024] Combox select change, update secure boot option: 1 1
+[2026/09/17 23:58:47.037] Courier New font <C:\WINDOWS\Fonts\couri.ttf> exist OK.
+[2026/09/17 23:58:47.050] system_dir=<C:\WINDOWS\system32>
+[2026/09/17 23:58:47.055] sysnative_dir=<C:\WINDOWS\Sysnative>
+[2026/09/17 23:58:47.071] LoadLibrary shell32.dll.mui SUCCESS
+[2026/09/17 23:58:47.083] SetAlertPromptHook SUCCESS
+[2026/09/18 23:37:26.386] 
+##################################################################################
+############################## Ventoy2DiskX86  #############################
+##################################################################################
+[2026/09/18 23:37:26.386] Current Directory <D:\ISO\ventoy-1.1.17>
+[2026/09/18 23:37:26.386] Exe file path <D:\ISO\ventoy-1.1.17\Ventoy2Disk.exe>
+[2026/09/18 23:37:26.386] Current directory check OK.
+[2026/09/18 23:37:26.386] Current directory:<D:\ISO\ventoy-1.1.17>
+[2026/09/18 23:37:26.386] ######### Current Ventoy Version: Ventoy2DiskX86 1.1.17 ########
+[2026/09/18 23:37:26.395] id=796/12784
+[2026/09/18 23:37:26.395] PPath:<C:\Windows\explorer.exe>
+[2026/09/18 23:37:26.395] PSize:<3389784 3310KB>
+[2026/09/18 23:37:26.395] Lunch main process 0
+[2026/09/18 23:37:26.400] Control Flag: 0 1 1
+[2026/09/18 23:37:26.400] Set Ventoy FS ClusterSize 0
+[2026/09/18 23:37:26.400] Windows Version: <<Windows 11 Pro, 64-bit (Build 26200.9457)>>
+[2026/09/18 23:37:26.400] 
+===================== Enum All PhyDrives =====================
+[2026/09/18 23:37:26.403] RegOpenKeyExA <SYSTEM\CurrentControlSet\Services\disk\Enum> Ret:0
+[2026/09/18 23:37:26.403] RegQueryValueExA <Count> ret:0  Size:4 Value:3
+[2026/09/18 23:37:26.403] GetPhysicalDriveCount: 3
+[2026/09/18 23:37:26.403] Logical Drives: 0x3c
+[2026/09/18 23:37:26.404] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:332398592 ExtentLength:510829527040
+[2026/09/18 23:37:26.404] C --> 0
+[2026/09/18 23:37:26.404] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:128009109504
+[2026/09/18 23:37:26.404] D --> 1
+[2026/09/18 23:37:26.404] LogicalDrive:\\.\E: PhyDrive:2 Num:1 Offset:1048576 ExtentLength:256025911296
+[2026/09/18 23:37:26.407] E --> 2
+[2026/09/18 23:37:26.407] LogicalDrive:\\.\F: PhyDrive:2 Num:1 Offset:256026959872 ExtentLength:33554432
+[2026/09/18 23:37:26.407] F --> 2
+[2026/09/18 23:37:26.407] Create file Handle:000000C8 \\.\PhysicalDrive0 status:0
+[2026/09/18 23:37:26.410] PHYSICALDRIVE0 size 512110190592 bytes
+[2026/09/18 23:37:26.411] Create file Handle:000000CC \\.\PhysicalDrive1 status:0
+[2026/09/18 23:37:26.411] PHYSICALDRIVE1 size 128043712512 bytes
+[2026/09/18 23:37:26.414] Create file Handle:000000D0 \\.\PhysicalDrive2 status:0
+[2026/09/18 23:37:26.414] PHYSICALDRIVE2 size 256060514304 bytes
+[2026/09/18 23:37:26.414] PhyDrv:0 BusType:Nvme Removable:0 Size:512GB(512110190592) Sector:512/4096 Name: MTFDKBA512QGN-1BN1AABHA
+[2026/09/18 23:37:26.414] PhyDrv:1 BusType:USB  Removable:1 Size:128GB(128043712512) Sector:512/512 Name:SanDisk Extreme Pro
+[2026/09/18 23:37:26.414] PhyDrv:2 BusType:USB  Removable:0 Size:256GB(256060514304) Sector:512/512 Name:Kingston DataTraveler Max
+[2026/09/18 23:37:26.414] LogicalDrive:\\.\C: PhyDrive:0 Num:1 Offset:332398592 ExtentLength:510829527040
+[2026/09/18 23:37:26.414] Logical Drive:C  ===> PhyDrive:0
+[2026/09/18 23:37:26.414] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:128009109504
+[2026/09/18 23:37:26.414] Logical Drive:D  ===> PhyDrive:1
+[2026/09/18 23:37:26.414] LogicalDrive:\\.\E: PhyDrive:2 Num:1 Offset:1048576 ExtentLength:256025911296
+[2026/09/18 23:37:26.414] Logical Drive:E  ===> PhyDrive:2
+[2026/09/18 23:37:26.414] LogicalDrive:\\.\F: PhyDrive:2 Num:1 Offset:256026959872 ExtentLength:33554432
+[2026/09/18 23:37:26.414] Logical Drive:F  ===> PhyDrive:2
+[2026/09/18 23:37:26.414] Create file Handle:000000C8 \\.\PhysicalDrive1 status:0
+[2026/09/18 23:37:26.414] Read MBR Ret:1 Size:512 code:183
+[2026/09/18 23:37:26.414] =========== Disk1 MBR Partition 1 ============
+[2026/09/18 23:37:26.424] PartTbl.Active = 0x80
+[2026/09/18 23:37:26.424] PartTbl.FsFlag = 0x7
+[2026/09/18 23:37:26.424] PartTbl.StartSectorId = 2048
+[2026/09/18 23:37:26.424] PartTbl.SectorCount = 250017792
+[2026/09/18 23:37:26.424] PartTbl.StartHead = 32
+[2026/09/18 23:37:26.424] PartTbl.StartSector = 33
+[2026/09/18 23:37:26.424] PartTbl.StartCylinder = 0
+[2026/09/18 23:37:26.427] PartTbl.EndHead = 254
+[2026/09/18 23:37:26.427] PartTbl.EndSector = 63
+[2026/09/18 23:37:26.427] PartTbl.EndCylinder = 1023
+[2026/09/18 23:37:26.427] =========== Disk1 MBR Partition 2 ============
+[2026/09/18 23:37:26.429] PartTbl.Active = 0x0
+[2026/09/18 23:37:26.429] PartTbl.FsFlag = 0xff
+[2026/09/18 23:37:26.429] PartTbl.StartSectorId = 250019840
+[2026/09/18 23:37:26.429] PartTbl.SectorCount = 65536
+[2026/09/18 23:37:26.429] PartTbl.StartHead = 254
+[2026/09/18 23:37:26.429] PartTbl.StartSector = 63
+[2026/09/18 23:37:26.429] PartTbl.StartCylinder = 1023
+[2026/09/18 23:37:26.429] PartTbl.EndHead = 254
+[2026/09/18 23:37:26.429] PartTbl.EndSector = 63
+[2026/09/18 23:37:26.429] PartTbl.EndCylinder = 1023
+[2026/09/18 23:37:26.433] =========== Disk1 MBR Partition 3 ============
+[2026/09/18 23:37:26.433] PartTbl.Active = 0x0
+[2026/09/18 23:37:26.433] PartTbl.FsFlag = 0x0
+[2026/09/18 23:37:26.433] PartTbl.StartSectorId = 0
+[2026/09/18 23:37:26.433] PartTbl.SectorCount = 0
+[2026/09/18 23:37:26.433] PartTbl.StartHead = 0
+[2026/09/18 23:37:26.433] PartTbl.StartSector = 0
+[2026/09/18 23:37:26.433] PartTbl.StartCylinder = 0
+[2026/09/18 23:37:26.433] PartTbl.EndHead = 0
+[2026/09/18 23:37:26.433] PartTbl.EndSector = 0
+[2026/09/18 23:37:26.433] PartTbl.EndCylinder = 0
+[2026/09/18 23:37:26.433] =========== Disk1 MBR Partition 4 ============
+[2026/09/18 23:37:26.438] PartTbl.Active = 0x0
+[2026/09/18 23:37:26.438] PartTbl.FsFlag = 0x0
+[2026/09/18 23:37:26.438] PartTbl.StartSectorId = 0
+[2026/09/18 23:37:26.438] PartTbl.SectorCount = 0
+[2026/09/18 23:37:26.438] PartTbl.StartHead = 0
+[2026/09/18 23:37:26.438] PartTbl.StartSector = 0
+[2026/09/18 23:37:26.440] PartTbl.StartCylinder = 0
+[2026/09/18 23:37:26.440] PartTbl.EndHead = 0
+[2026/09/18 23:37:26.441] PartTbl.EndSector = 0
+[2026/09/18 23:37:26.441] PartTbl.EndCylinder = 0
+[2026/09/18 23:37:26.441] PhysicalDrive1 is ventoy disk
+[2026/09/18 23:37:26.441] QueryDosDeviceA success \Device\Harddisk1\DR1
+[2026/09/18 23:37:26.443] [0] CreateFileA \\.\PhysicalDrive1 code:0 00000154
+[2026/09/18 23:37:26.443] Parse FAT fs...
+[2026/09/18 23:37:26.446] attach media success...
+[2026/09/18 23:37:26.475] GetVentoyVerInPhyDrive rc=0...
+[2026/09/18 23:37:26.475] VentoyVerInPhyDrive 1 is <1.1.17>...
+[2026/09/18 23:37:26.479] PhyDrive 1 is Ventoy Disk ver:1.1.17 SecureBoot:1
+[2026/09/18 23:37:26.479] LogicalDrive:\\.\D: PhyDrive:1 Num:1 Offset:1048576 ExtentLength:128009109504
+[2026/09/18 23:37:26.481] Find the partition 1 logical drive is D:\
+[2026/09/18 23:37:26.481] GetVolumeClusterSize D:\ SUCCESS 256 512 131072
+[2026/09/18 23:37:26.481] GetVentoyFsNameInPhyDrive 1 D:\ <exFAT> <exFAT>
+[2026/09/18 23:37:26.481] Create file Handle:00000154 \\.\PhysicalDrive2 status:0
+[2026/09/18 23:37:26.481] Read MBR Ret:1 Size:512 code:183
+[2026/09/18 23:37:26.481] =========== Disk2 MBR Partition 1 ============
+[2026/09/18 23:37:26.485] PartTbl.Active = 0x80
+[2026/09/18 23:37:26.485] PartTbl.FsFlag = 0x7
+[2026/09/18 23:37:26.485] PartTbl.StartSectorId = 2048
+[2026/09/18 23:37:26.485] PartTbl.SectorCount = 500050608
+[2026/09/18 23:37:26.487] PartTbl.StartHead = 32
+[2026/09/18 23:37:26.487] PartTbl.StartSector = 33
+[2026/09/18 23:37:26.487] PartTbl.StartCylinder = 0
+[2026/09/18 23:37:26.487] PartTbl.EndHead = 213
+[2026/09/18 23:37:26.487] PartTbl.EndSector = 47
+[2026/09/18 23:37:26.487] PartTbl.EndCylinder = 406
+[2026/09/18 23:37:26.487] =========== Disk2 MBR Partition 2 ============
+[2026/09/18 23:37:26.490] PartTbl.Active = 0x0
+[2026/09/18 23:37:26.490] PartTbl.FsFlag = 0xef
+[2026/09/18 23:37:26.490] PartTbl.StartSectorId = 500052656
+[2026/09/18 23:37:26.490] PartTbl.SectorCount = 65536
+[2026/09/18 23:37:26.491] PartTbl.StartHead = 213
+[2026/09/18 23:37:26.491] PartTbl.StartSector = 48
+[2026/09/18 23:37:26.491] PartTbl.StartCylinder = 406
+[2026/09/18 23:37:26.491] PartTbl.EndHead = 233
+[2026/09/18 23:37:26.493] PartTbl.EndSector = 63
+[2026/09/18 23:37:26.493] PartTbl.EndCylinder = 410
+[2026/09/18 23:37:26.493] =========== Disk2 MBR Partition 3 ============
+[2026/09/18 23:37:26.493] PartTbl.Active = 0x0
+[2026/09/18 23:37:26.493] PartTbl.FsFlag = 0x0
+[2026/09/18 23:37:26.493] PartTbl.StartSectorId = 0
+[2026/09/18 23:37:26.493] PartTbl.SectorCount = 0
+[2026/09/18 23:37:26.493] PartTbl.StartHead = 0
+[2026/09/18 23:37:26.493] PartTbl.StartSector = 0
+[2026/09/18 23:37:26.493] PartTbl.StartCylinder = 0
+[2026/09/18 23:37:26.493] PartTbl.EndHead = 0
+[2026/09/18 23:37:26.493] PartTbl.EndSector = 0
+[2026/09/18 23:37:26.493] PartTbl.EndCylinder = 0
+[2026/09/18 23:37:26.493] =========== Disk2 MBR Partition 4 ============
+[2026/09/18 23:37:26.493] PartTbl.Active = 0x0
+[2026/09/18 23:37:26.493] PartTbl.FsFlag = 0x0
+[2026/09/18 23:37:26.500] PartTbl.StartSectorId = 0
+[2026/09/18 23:37:26.500] PartTbl.SectorCount = 0
+[2026/09/18 23:37:26.501] PartTbl.StartHead = 0
+[2026/09/18 23:37:26.501] PartTbl.StartSector = 0
+[2026/09/18 23:37:26.501] PartTbl.StartCylinder = 0
+[2026/09/18 23:37:26.501] PartTbl.EndHead = 0
+[2026/09/18 23:37:26.501] PartTbl.EndSector = 0
+[2026/09/18 23:37:26.501] PartTbl.EndCylinder = 0
+[2026/09/18 23:37:26.501] PhysicalDrive2 is ventoy disk
+[2026/09/18 23:37:26.501] QueryDosDeviceA success \Device\Harddisk2\DR2
+[2026/09/18 23:37:26.504] [0] CreateFileA \\.\PhysicalDrive2 code:0 00000154
+[2026/09/18 23:37:26.504] Parse FAT fs...
+[2026/09/18 23:37:26.504] attach media success...
+[2026/09/18 23:37:26.532] GetVentoyVerInPhyDrive rc=0...
+[2026/09/18 23:37:26.532] VentoyVerInPhyDrive 2 is <1.1.17>...
+[2026/09/18 23:37:26.533] PhyDrive 2 is Ventoy Disk ver:1.1.17 SecureBoot:1
+[2026/09/18 23:37:26.533] LogicalDrive:\\.\E: PhyDrive:2 Num:1 Offset:1048576 ExtentLength:256025911296
+[2026/09/18 23:37:26.533] Find the partition 1 logical drive is E:\
+[2026/09/18 23:37:26.533] GetVolumeClusterSize E:\ SUCCESS 256 512 131072
+[2026/09/18 23:37:26.533] GetVentoyFsNameInPhyDrive 2 E:\ <exFAT> <exFAT>
+[2026/09/18 23:37:26.533] < MTFDKBA512QGN-1BN1AABHA> is filtered for not USB type.
+[2026/09/18 23:37:26.623] Load languages from json file ...
+[2026/09/18 23:37:26.627] language json file len:293356 json parse:0
+[2026/09/18 23:37:26.627] Total 53 languages ...
+[2026/09/18 23:37:26.702] Combox select change, update secure boot option: 1 1
+[2026/09/18 23:37:26.708] Courier New font <C:\WINDOWS\Fonts\couri.ttf> exist OK.
+[2026/09/18 23:37:26.708] system_dir=<C:\WINDOWS\system32>
+[2026/09/18 23:37:26.713] sysnative_dir=<C:\WINDOWS\Sysnative>
+[2026/09/18 23:37:26.719] LoadLibrary shell32.dll.mui SUCCESS
+[2026/09/18 23:37:26.719] SetAlertPromptHook SUCCESS
+[2026/09/18 23:37:29.875] Combox select change, update secure boot option: 1 1

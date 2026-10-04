@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Schedule backup</title>
+
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<meta name="robots" content="follow, index">
+</head>
+<body>
+<h1 align="center">SCHEDULER - Geplante Tasks</h1>
+<hr>
+
+<p>Statt selbst einen Scheduler zu entwickeln, bevorzugen wir, den bereits in
+Windows eingebauten Scheduler zu verwenden.</p>
+<p>Vorgehensweise Win2000/WindowsXP:</p>
+<p>Start -&gt; Einstellungen-&gt; Systemsteuerung-&gt; Geplante Tasks-&gt;
+Geplanten Task hinzufügen<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </i> <i>Start-&gt;Settings-&gt;Control Panel-&gt;Scheduled
+Tasks-&gt;Add scheduled Task</i></p>
+<p><img border="0" src="../images/butt_weiter.png" alt="[weiter]" ></p>
+<p>[Durchsuchen] und eintragen C:\Programme\Snapshot\Snapshot.exe</p>
+<p>&nbsp;(*) wöchentlich und <img border="0" src="../images/butt_weiter.png" alt="[weiter]" ></p>
+<p>[*] Montag<br>
+[*] Freitag&nbsp; und <img border="0" src="../images/butt_weiter.png" alt="[weiter]" ></p>
+<p>einen Benutzernamen eintragen, der auf dem lokalen Rechner Administrator
+Befugnis hat, und eventuell auch auf einen Netzwerk Server zugreifen kann.</p>
+<p><img border="0" src="../images/butt_weiter.png" alt="[weiter]" ></p>
+<p>[*] erweiterte Eigenschaften&nbsp; ankreuzen, und [fertig stellen]</p>
+<p>in der folgenden Maske eintragen:</p>
+<p>entweder</p>
+<p>&nbsp;&nbsp;&nbsp; [starten]&nbsp; 'c:\programme\snapshot\SNAPSHOT.exe C: X:\C-DRIVE.SNA&nbsp;</p>
+<p>oder (viel leistungsfaehiger und flexibler)</p>
+<p>&nbsp;&nbsp;&nbsp; [starten]&nbsp; 'cmd /c c:\programme\snapshot\Datensicherung.bat'</p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" endspan i-checksum="60662" -->
+
+</body>
+</html>

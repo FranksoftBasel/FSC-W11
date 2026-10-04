@@ -1,0 +1,202 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   <meta http-equiv="Content-Language" content="de">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+   <base target="_self">
+   <meta name="robots" content="index,follow">
+   <meta name="content" content="Image, Disk, Drive, Drive Image, Disk Image, Recover, Backup, Windows">
+   <meta name="description" content="Drive SnapShot the Drive Image Solution">
+   <meta name="keywords" content="Image, Disk, Drive, Drive Image, Disk Image, Recover, Backup, Windows">
+   
+<meta name="robots" content="follow, index">
+<title>restore DOS</title></head>
+<body>
+<h1>Konkurrenz belebt das Geschäft ;-)</h1>
+<p>Ein <b>subjektiver</b> Vergleich von True Image (TI) und Drive Snapshot (DS)
+- vom Drive Snapshot Team.</p>
+<h3>Gemeinsamkeiten</h3>
+<p>Beide Programme leisten im wesentlichen das selbe:</p>
+<ul>
+<li> Die Sicherung ganzer Partitionen in eine Image Datei</li>
+<li> Anzeigen&nbsp; der Image Datei als virtuelles Laufwerk</li>
+<li> Restaurieren von ungenutzten Partitionen im laufenden Betrieb</li>
+<li> Restaurieren der Systempartition(en) nach Neustart von DOS</li>
+<li>Der Benutzer darf&nbsp; während der Sicherung weiterarbeiten</li>
+<li>während der Sicherung ist sinnvolles arbeiten am Rechner möglich</li>
+<li>True Image kann mehrere Partitionen in ein Image sichern</li>
+</ul>
+<h3>Installation</h3>
+<p>Drive Snapshot ist ohne Installation lauffähig, und ändert <b> nichts</b> an den
+Systemeinstellungen.</p>
+<p>
+True Image installiert den benötigten Treiber und erfordert danach einen Neustart;
+ebenso bei Deinstallation.<br>
+Ein Neustart ist (vermutlich) auch bei jedem Update nötig.</p>
+<h3>Benutzeroberfläche Windows</h3>
+<p>True Image sieht einfach besser (moderner) aus, und erklärt jeden Schritt ausführlich.<br>
+
+Sehr gute Benutzerführung - die allerdings beim zehnten Mal eher nervt.<br>
+<br>
+<b>Plus</b>: sehr gut geeignet für Anfänger.<br>
+<br>
+<b>Minus</b>: keine Automatisierung möglich.</p>
+<p>Drive Snapshot bietet das nackte Minimum an GUI - gut genug für Profis, die wissen
+was sie tun.<br>
+Dafür sind auch nur die Hälfte an Mausklicks nötig.<br>
+<br>
+<b>Minus</b>: Für Anfänger weniger geeignet.<br>
+
+<b>Plus</b>: Automatisierung durch Kommandozeile / Batchfiles / <a href="http://www.sysinternals.com/utilities/psexec.html">PSEXEC</a>
+leicht möglich.</p>
+<h3>Benutzeroberfläche DOS</h3>
+<p>True Image bootet wahlweise von CD oder 4 Disketten ein eigenes
+Betriebssystem, und sieht genau so aus wie unter Windows.<br>
+Die BootCD/Diskette
+wird automatisch erstellt; vermutlich werden benötigte (Netzwerkkarten) Treiber
+von WindowsNT verwendet ??<br>
+Evtl.<br>
+erfordert jeder Rechner eine eigene Boot CD (Die Dokumentation schweigt
+sich darüber aus)??&nbsp;<br>
+<b>Plus</b>: gut für Anfänger geeignet<br>
+<b>Minus</b>: keine Automatisierung möglich.<br>
+
+<b>Minus</b>: Auf beiden getesteten Rechnern war kein Zugriff auf das Netzwerk möglich.</p>
+<p>Drive Snapshot bootet von DOS Diskette; eine Netzwerk Bootdiskette kann
+erstellt werde.<br>
+
+Snapshot ist ein kleines spartanisches Kommandozeilen Programm ohne jede weitere
+Benutzerführung.<br>
+
+<b>Minus</b>: für Anfänger wenig geeignet<br>
+<b>Plus</b>: Automatisierung des Restore über AUTOEXEC.BAT leicht möglich;&nbsp;<br>
+<b>Plus</b>: zusätzliche Werkzeuge (Diskeditoren,...) können mit auf Diskette
+gepackt werden als universelle Rettungsdiskette (auf der Netzwerk Diskette sind
+ca.<br>
+500KB frei).<br>
+
+</p>
+<h3>Partition sichern auf CD-ROM's</h3>
+<p>True Image kann direkt auf CD-R(W) sichern.<br>
+<br>
+<b>Minus</b>: Wie jedes andere CD Brennprogramm löscht auch True Image eine
+CDRW nicht automatisch, sondern muss extra (z.B.<br>
+mit Nero) gelöscht werden.<br>
+
+<b>Minus</b>: Die erzeugte CD ist nicht bootfähig.<br>
+
+<b>Minus</b>: langsam - Sicherung von C: (s.u.) dauerte 26:00 min.</p>
+<p>Drive Snapshot kann nicht auf CD schreiben, deswegen muss ausreichender
+Plattenplatz für (mehrere) Imagedateien vorhanden sein.<br>
+Danach müssen die
+Images mit dem Brennprogramm ihrer Wahl geschrieben werden.<br>
+
+<b>Minus</b>: Festplattenplatz zur Zwischenspeicherung erforderlich;<br>
+<b>Minus</b>: Manuelles Brennen nötig<br>
+<b>Plus</b>: Zeit für Image erzeugen 1:30m; Zeit für Brennen incl.<br>
+Aufruf von
+Nero: 9:50 (4x schreiben) = 11:30 deutlich schneller als True Image integriertes
+Sichern auf CD-R (26:00)</p>
+<h3>Performance Zahlen</h3>
+<blockquote>
+  <p>Referenzsystem:<br>
+  Dual PIII-700<br>
+  256 MB Speicher<br>
+  30 GB IBM IDE Festplatte<br>
+  C-Partition FAT16, Groesse 1GB, 660MB belegt<br>
+  Windows Verzeichnis WinNT 4.0&nbsp; 340 MB</p>
+  <p>alle angegebenen Zeiten reine Ausführungszeiten (ohne Benutzerinterface)</p>
+</blockquote>
+<table border="0" width="531" height="1">
+  <tr>
+    <td width="532" height="1">
+      <div align="center">
+        <center>
+        <table border="1" width="539">
+          <tr>
+            <td width="204">&nbsp;</td>
+            <td width="67">Drive Snapshot</td>
+            <td width="81">True Image Compression=3/1</td>
+            <td width="74">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="204">Speichern C: auf Festplatte X:\ (min)</td>
+            <td width="67">1:24</td>
+            <td width="81">5:24/5:14</td>
+            <td width="74">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="204">Speichern auf CD-RW (4x schreiben)</td>
+            <td width="67">-</td>
+            <td width="81">26:00</td>
+            <td width="74">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="204">Speicherbedarf</td>
+            <td width="67">6 MB</td>
+            <td width="81">28 MB</td>
+            <td width="74">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="204">Image Dateigröße</td>
+            <td width="67">291 MB</td>
+            <td width="81">275/283 MB</td>
+            <td width="74">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="204">Restaurieren Image auf Festplatte</td>
+            <td width="67">1:15</td>
+            <td width="81">2:10</td>
+            <td width="74">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="204">Virtuelles Laufwerk (mit Explorer)</td>
+            <td width="67">&nbsp;</td>
+            <td width="81">&nbsp;</td>
+            <td width="74">Festplatte C:</td>
+          </tr>
+          <tr>
+            <td width="204">Kopieren \WinNT (340 MB) auf Festplatte</td>
+            <td width="67">4:25</td>
+            <td width="81">5:25</td>
+            <td width="74">4:20</td>
+          </tr>
+          <tr>
+            <td width="204">Suchen in \WinNT (340MB)&nbsp; nach 'abcdefghijklm'</td>
+            <td width="67">2:15</td>
+            <td width="81">15:30</td>
+            <td width="74">1:02</td>
+          </tr>
+        </table>
+        </center>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<h3>Fazit</h3>
+<p>Beide Programme leisten was sie versprechen, mit fast identischem
+Leistungsumfang.</p>
+<p>Dank der besseren Benutzerführung ist True Image für Anfänger eher
+geeignet.</p>
+<p>
+Drive Snapshot bietet eine bessere Sicherungs-Performance, erfordert bei der
+Installation keinen Neustart des Rechners und macht das
+automatisieren von Vorgängen möglich, erfordert aber vom Anwender deutlich
+mehr Vorwissen.</p>
+<p>Und nicht vergessen - diese Beurteilung wurde vom Snapshot Team erstellt; das
+True Image Team könnte das evtl.<br>
+etwas anders beurteilen.</p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" endspan i-checksum="60662" -->
+
+</body>
+</html>

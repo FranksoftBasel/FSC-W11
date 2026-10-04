@@ -1,0 +1,743 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<meta name="keywords" content="Disk Image, Backup,command line, Kommandozeile, Windows NT,Windows 2000, Windows XP">
+
+<title>Kommandozeilen Parameter unter Windows</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+<center><h1>Snapshot - Kommando Zeilen Parameter für Windows</h1></center>
+
+
+
+<p>So schön und einfach die Bedienung auch ist, häufig möchte man gar nicht mehr 
+klicken, sondern Vorgänge automatisieren, wie das automatische Backup zu 
+vorgegebenen Zeiten, das Sichern mehrerer Laufwerke auf einmal, das Sichern und 
+zusätzlich auf CD-ROM brennen, und andere Vorgänge.</p>
+<p>Snapshot ist einfach von der Kommando Zeile aus zu bedienen.</p>
+<h2>Backup Laufwerk in eine Datei</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>C:\&gt; SNAPSHOT C:&nbsp;&nbsp; 
+X:\C-Drive.sna</b></p>
+<p>sichert das C: Laufwerk in die Datei X:\C-Drive.SNA.</p>
+<p>eine Batch Datei&nbsp;</p>
+<blockquote>
+<p>SNAPSHOT&nbsp;&nbsp; C:&nbsp;&nbsp; \\Server\Backups\C-Drive.sna&nbsp;<br>
+ SNAPSHOT&nbsp;&nbsp; D:&nbsp;&nbsp; \\Server\Backups\D-Drive.sna&nbsp;<br>
+ SNAPSHOT&nbsp;&nbsp; E:&nbsp;&nbsp; \\Server\Backups\E-Drive.sna&nbsp;</p>
+</blockquote>
+<p>Sichert die Laufwerke C:, D:, E: <b>nacheinander</b> auf einen Server.</p>
+<blockquote>
+<p>SNAPSHOT&nbsp;&nbsp;&nbsp; C:+D:+E:&nbsp;&nbsp; \\Server\Backups\$disk-Drive.sna&nbsp;
+</blockquote>
+Macht zunächst eine <b>gleichzeitige</b> Schattenkopie der drei Laufwerke und 
+dann nacheinander ein Backup dieser Schattenkopie.<br>
+Dieses Kommando muss immer dann verwendet werden, wenn sich voneinander 
+anhängige Daten auf verschiedenen Partitionen befinden.<br>
+Sie müssen in diesem Fall alle betroffenen Partitionen gleichzeitig mit VSS 
+sichern.</p>
+
+<p>Für Laufwerke, die nicht über einen Laufwerksbuchstaben verfügen, können Sie 
+folgende Syntax verwenden:<br /><br />
+HD1:1 &nbsp;&nbsp;bezeichnet die erste Partition auf der ersten Festplatte<br />
+HD2:1 &nbsp;&nbsp;bezeichnet die erste Partition auf der zweiten Festplatte<br>
+HD1:2 &nbsp;&nbsp;bezeichnet die zweite Partition auf der ersten Festplatte<br />
+HD2:2 &nbsp;&nbsp;bezeichnet die zweite Partition auf der zweiten Festplatte<br />
+HD<b>X</b> &nbsp;&nbsp;&nbsp; bezeichnet alle Partition auf der Festplatte auf der siche das Laufwerk <b>X:</b> befindet
+(<font color="#FF0000">1.43</font>)<br />
+HD1:* &nbsp;&nbsp;bezeichnet alle Partition auf der ersten Festplatte<br />
+HDWIN:* &nbsp;&nbsp;bezeichnet alle Partition auf der Festplatte, von der das aktuelle Windows gestartet wurde<br /><br />
+Mehrere Partitionen können durch ein “+“-Zeichen verkettet werden.<br>
+Immer wenn mehr als eine Partition gesichert werden soll, müssen Sie die 
+Variable $disk im Namen der Imagedatei verwenden.<br>
+Sie wird zur Laufzeit durch einen eindeutigen Bezeichner ersetzt.<br>
+Wenn die Partition über einen Laufwerksbuchstaben verfügt, ist dies einfach der 
+Laufwerksbuchstabe.<br>
+
+</p>
+
+<h4>&nbsp;&nbsp;&nbsp; Option -L1490</h4>
+
+
+<p>Meist ist es sinnvoll, die maximale Größe einer einzelnen Imagedatei so zu 
+begrenzen, dass sie auf eine DVD passen.<br>
+Der Parameter -L gibt diese Größe an, die Image Datei wird dann in einzelne 
+Dateien mit der Erweiterung .SNA, .SN1, .SN2, ...<br>
+aufgeteilt.<br>
+
+Diese ist mit 1490 MB vorbesetzt, so dass 3 Image Teile auf eine DVD passen; 
+größere Teilstückekönnen Sie diese hier einstellen.<br>
+
+Um Theater mit DOS zu vermeiden, wenn die Images restauriert werden sollen, 
+sollten Sie auf jeden Fall eine Größe von 4000 MB nicht überschreiten.</p>
+<h4>&nbsp;&nbsp;&nbsp; Option -R&nbsp; [recycle bin löschen]</h4>
+<p>Mit dieser Option wird der Papierkorb (Recycle Bin) vor dem Backup für dieses 
+Laufwerk gelöscht.</p>
+<h4>&nbsp;&nbsp;&nbsp; Option -W&nbsp; [Wait]</h4>
+<p>Wenn Drive Snapshot gestartet wird, und beim Start befindet sich der Cursor 
+ganz oben links, nimmt er an, dass er von einem Batchfile gestartet wurde, und 
+wartet auf den &lt;ANY KEY&gt;, damit Sie das Ergebnis kontrollieren können.<br>
+
+Dieses Warten kann mit <b>-W </b>unterdrückt werden.</p>
+<h4>&nbsp;&nbsp;&nbsp; Option -T&nbsp; [Test]</h4>
+<p>Mit dieser Option können Sie einen Test des erzeugten Images anfordern.<br>
+<br>
+Dabei wird das Image komplett eingelesen, und überprüft, dass das erzeugte Image 
+konsistent ist (Prüfsummen korrekt etc.).<br>
+Das Ergebnis des Tests kann per Errorlevel überprüft werden; ein Errorlevel &gt; 0 
+bedeutet immer einen Fehler.</p>
+<p>
+&nbsp;&nbsp;&nbsp; c:&gt;snapshot x:\image.sna -T</p>
+<p>Normalerweise (speziell in Batchfiles) ist es allerdings meist praktischer, 
+in einem separaten Durchlauf das Image zu überprüfen, um</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; tut's nicht weil der Server nicht da ist/Platte 
+voll/etc.<br>
+<br>
+von<br>
+&nbsp;&nbsp;&nbsp; tut's nicht - unzuverlässige Daten geschrieben</p>
+<p>unterscheiden zu können.</p>
+<h4>&nbsp;&nbsp;&nbsp; Option -G&nbsp; [Graphical]</h4>
+<p>Wenn Sie Snapshot aus einem Batchfile ausführen aber trotzdem eine grafische 
+Fortschrittsanzeige sehen wollen:</p>
+<p>&nbsp;&nbsp;&nbsp; c:&gt;snapshot c: x:\image.sna&nbsp; -G<br>
+<br>
+zeigt den normalen Fortschrittsdialog</p>
+<p>mit den Untermodi</p>
+<p>&nbsp;&nbsp;&nbsp; -G&nbsp;&nbsp;&nbsp;&nbsp; Fortschrittsanzeige, am Ende 
+auf den Benutzer warten<br>
+&nbsp;&nbsp;&nbsp; -Go&nbsp; Fortschrittsanzeige, und beenden, wenn alles 'Ok', 
+sonst auf den Benutzer warten<br>
+&nbsp;&nbsp;&nbsp; -Gx&nbsp; Fortschrittsanzeige, und auf jeden Fall beenden mit 
+Rückgabe von Errorlevel<br>
+&nbsp;&nbsp;&nbsp; -Gn&nbsp; Fortschrittsanzeige, aber [Abort] ist nicht möglich<br>
+&nbsp;&nbsp;&nbsp; -Gm Fortschrittsanzeige, startet minimiert</p>
+<h2>Differentielle Backups</h2>
+<p>siehe <a href="differential.htm">differential.htm</a>.</p>
+<h2>Image auf Konsistenz prüfen</h2>
+<p>mit der Option -T, also</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot&nbsp; X:\Backup\c-drive.sna <b>
+-T</b></p>
+
+<h2>Kennwortangabe von der Kommandozeile</h2>
+<p>von der Kommandozeile wird das Passwort mit der Option <b>-PW= </b>angegeben, 
+also</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C: X:\Backup\c-drive.sna <b>
+-PW=SuperSecret</b></p>
+<p>Dies überschreibt ein evtl.
+vorgegebenes Kennwort.<br>
+<br>
+Wenn Sie ein Kennwort vorgegeben haben und auf der Kommandozeile ein anderes angeben, wird 
+das von der Kommmandozeile verwendet.<br>
+
+Wenn Sie eins vorgegeben haben, aber trotzdem unverschlüsselt sichern wollen, 
+müssen Sie explizit ein leeres Kennwort angeben:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C: X:\Backup\c-drive.sna
+<b>-PW=</b></p>
+<p>Das Passwort kann mit <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot --<b>setdefaultpwd</b>=MyPassword<br>
+dauerhaft vorbesetzt werden. Ab der Version 1.47 wird mit dieser Option sowohl das Verschlüsselungs- <br>
+auch das Entschlüsselungspasswort gesetzt.<br>
+&nbsp;</p>
+
+<h2>Kennwortangabe von der Kommandozeile ab Version 1.47</h2>
+Ab der Version 1.47 muss das Passwort nicht mehr im Klartext von der Kommandozeile angegeben werden. <br>
+Sie können mit der Option -pwgen=Key.txt
+und der Option -pw=Geheim aus dem Passwort "Geheim" eine Schlüsseldatei (hier "Key.txt") erzeugen. <br>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot <b>-pwgen=Key.txt -pw=Geheim</b><p>
+
+
+Diese Datei muss nicht geheim gehalten werden. Mit der Option -pwuse=Key.txt können Sie das Image dann mit
+der erzeugten Schlüsseldatei verschlüsseln. <br>
+
+<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C: x:\image-c.sna <b>-pwuse=Key.txt</b></p>
+
+Wenn Sie restaurieren, oder ein Image mounten möchten, müssen
+Sie das ursprüngliche Passwort (hier "Geheim") angeben. <br>
+
+<p>Das Setzen des Default Passwortes ist ab der Version 1.47 zweiteilig. Mit <b>--setdefaultencpwd=</b> <br>
+	kann das Passwort angegeben werden, das von nun an zum Verschlüsseln aller Images verwendet wird. <br>
+	Die Speicherung dieses Passwortes ist sicher. Das Passwort kann nicht wiederhergestellt werden.<br>
+	Mit der Option <b>--setdefaultdecpwd=</b> wird ein Standard-Passwort für die Entschlüsselung gesetzt. <br>
+	Auch wenn dieses Kennwort verschlüsselt hinterlegt wird, ist der Vorgang prinzipiell umkehrbar, d.h. <br>
+	das Kennwort ist weniger sicher hinterlegt. Wenn Sie die Funktionalität nicht unbedingt benötigen, <br>
+	sollten Sie die Verwendung dieser Option vermeiden. 
+</p>
+
+
+
+<h2><a name="replace"></a>&nbsp;&nbsp;&nbsp; Erzeugen von Dateinamen mit Datum, 
+Wochentag,...</h2>
+<p>wenn der gegebene Dateiname spezielle Kennungen enthält, werden ersetzt</p>
+<div align="left">
+  <table border="0" width="539">
+    <tr>
+      <td width="45"></td>
+      <td width="176">$computername&nbsp;</td>
+      <td width="304">der Computername</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="176">$type&nbsp;</td>
+      <td width="304">für differentielle Images --&gt; 'dif'</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="176">$disk&nbsp;</td>
+      <td width="304">der Laufwerksbuchstabe (C,D,...)</td>
+    </tr>
+    <tr>
+      <td width="45"><font color="#FF0000">1.43</font></td>
+      <td width="176">$HD</td>
+      <td width="304">Partitionsname in der Form HD1-1</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="176">         $date&nbsp;</td>
+      <td width="304">Datum 6-stellig als JJMMTT</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="176">$weekday&nbsp;</td>
+      <td width="304">Wochentag in 2 Buchstaben</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="176">$year&nbsp;</td>
+      <td width="304">4-stellige Jahreszahl</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="176">$month&nbsp;</td>
+      <td width="304">Monat&nbsp;(1..12)</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="176">$day&nbsp;</td>
+      <td width="304">Tag (1..31)</td>
+    </tr>
+    <tr>
+      <td width="45">&nbsp;</td>
+      <td width="176">$hour, $minute, $second</td>
+      <td width="304">Uhrzeit im 24 Stunden Format</td>
+    </tr>
+    <tr>
+      <td width="45">&nbsp;</td>
+      <td width="176">$week</td>
+      <td width="304">Kalenderwoche nach <span class="st">DIN 1355</span></td>
+    </tr>
+    <tr>
+      <td width="45"><font color="#FF0000">1.43</font></td>
+      <td width="176">$LABEL=&quot;BACKUP&quot;\verzeichnis\Datei</td>
+      <td width="304">$LABEL=&quot;Backup&quot; wird durch das erste gefundene Laufwerk 
+      mit den Namen &quot;Backup&quot; ersetzt; hilfreich für USB Laufwerke</td>
+    </tr>
+  </table>
+</div>
+<h2>Wiederherstellung eines Laufwerk</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>C:\&gt; SNAPSHOT&nbsp; X:\D-Drive.sna&nbsp;&nbsp; 
+D:</b></p>
+<p>kopiert den Inhalt des Images auf das Laufwerk D:.</p>
+<p>Es gelten dieselben Einschränkungen wie beim generellen <a href="rest.htm">
+Snapshot Restore</a>.</p>
+<h2>Mounten eines Images als virtuelles Laufwerk</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:\&gt; SNAPSHOT&nbsp; X:\C-Drive.sna&nbsp;&nbsp; 
+Z: -V</p>
+<p>kreiert ein virtuelles Laufwerk Z: aus dem gesicherten Image X:\C-Drive.SNA&nbsp;</p>
+<p>mit folgenden Varianten:</p>
+<p>&nbsp;&nbsp;&nbsp; -VM&nbsp;&nbsp;&nbsp; nur Mounten des Images ohne Starten 
+des Explorers</p>
+<p>&nbsp;&nbsp;&nbsp; zur Verwendung in Batchfiles:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -VQ Z:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mounted das Laufwerk; keine Dialoge etc.<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --unmount:Z&nbsp;&nbsp; 
+unmounted das Laufwerk<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --unmount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+unmounted alle Laufwerke (ab 1.38)<br>
+<br>
+&nbsp;&nbsp;&nbsp; Snapshot muss dabei mit 'start' gestartet werden wie z.B.:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start Snapshot 
+x:\image.bat Z: -vq<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xcopy z:\Data 
+c:\Data&nbsp;&nbsp;/E /H /K /O<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Snapshot 
+-!unmount:Z<br>
+</p>
+<h2>Angabe des Passwortes von der Kommandozeile</h2>
+<p>&nbsp;&nbsp;&nbsp; -PW=MeinGeheimesPasswort</p>
+<p>Dies gilt für alle Operationen.<br>
+Bei Mount und Restore wird bei Bedarf das Passwort interaktiv erfragt.</p>
+<h2><a name="exclude"></a>Ausschließen von Dateien aus dem Backup</h2>
+<p>In manchen Fällen kann es sinnvoll sein, gewisse Verzeichnisse und Dateien 
+aus dem Backup auszuschließen.</p>
+<p>Dies ist immer der Fall (und schon immer so implementiert) für Pagefile.sys 
+und Hiberfile.sys, kann aber auch für temporäre Verzeichnisse, gesammelte 
+gesaugte Filme etc.<br>
+sinnvoll sein.</p>
+<p>Technisch bedingt wird dabei lediglich der Inhalt der betroffenen Dateien 
+nicht gesichert, die Verzeichniseinträge aber sehr wohl.</p>
+<p>Deshalb sind nach einem Restore zwar sämtliche Dateien noch immer/wieder da, 
+enthalten aber lediglich zufällige Daten.</p>
+<p>Aus diesem Grunde wird im Image eine Datei 'SnapshotDeleteAfterRestore.BAT' 
+angelegt; sie sollte nach einem Restore ausgeführt werden, um Irritationen zu 
+vermeiden.</p>
+<p>Dateien und Verzeichnisse können ausgeschlossen werden durch (Komma-separiert)</p>
+<p>&nbsp;&nbsp;&nbsp; --exclude:\Temp,\Windows\Memory.dmp,\Windows\Minidump\*,&quot;\Dokumente 
+und Einstellungen<b>&quot;</b>,\Windows\$NtUninstall*<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(\temp und \temp\* sind equivalent)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Leerzeichen im Dateinamen müssen durch `&quot;` Hochkomma eingeschlossen werden</p>
+<p>Dies umfasst immer auch Unterverzeichnisse</p>
+	<p><b><font color="#FF0000"><a name="exclude139"></a> </font></b>auch<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --exclude:&quot;\*.MP3,\*.TMP&quot;<br>
+    funktioniert wie man das erwarten würde</p>
+<h2><a name="repair"></a>Reparieren defekter Images</h2>
+<p>Leider kommt es vor, dass Images teilweise gelöscht (einzelne Stücke des 
+Images), oder schlicht beschädigt/nicht lesbar etc.<br>
+sind, und das Image nicht mehr gemountet werden kann.</p>
+<p>Als <b>Image</b> ist dieses Backup dann wertlos, weil Sie nie wissen werden 
+welche Teile beschädigt sind.<br>
+
+Falls es aber nur um einige (wenige) Dateien geht, die Sie genau aus diesem 
+Backup rekonstruieren wollen, indem Sie das Image mounten, und die Daten 
+wiederhertsellen, können Sie (innerhalb gewisser Grenzen) mit</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:&gt;snapshot x:\DefektesImage.SNA&nbsp; 
+--repair:Y:\REPAIRED.SNA&nbsp;</p>
+<p>ein repariertes Image Image anlegen ( die .SNA Datei muss dabei existieren).<br>
+
+Diese Datei sollte sich mounten lassen, und spätestens nach CHKDSK ein paar 
+Daten entreißen lassen.</p>
+<h2><font color="#FF0000"><a name="AddDriver"></a></font>Umzug auf fremde 
+Hardware&nbsp;</h2>
+<p>Wenn Sie unter Windows/WindowsPE/BartPE restaurieren, können Sie mit&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --AddDriver</p>
+<p>dem restaurierten Windows einen zusätzlichen Treiber für die neuen Platten 
+beibringen.<br>
+
+Sie werden nach Treiber und Ort der Windows Installation gefragt; siehe auch
+<a href="hardware.htm">Hardware</a></p>
+<p>&nbsp;</p>
+<h2><a name="exclude"></a>weitere spezielle Optionen bei Backup</h2>
+
+
+<table border="1" >
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--LogFile:C:\LOGFILE.TXT</td>
+		<td valign="top">&nbsp;leitet alle Ausgaben nach C:\LOGFILE.TXT um.<br>
+&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>--Version</td>
+		<td valign="top">gibt die Versionsnummer von Snapshot aus. Anschließend wird Snapshot beendet.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--UseVSS<br>
+        --NoVSS<br>
+        --ForceVSS</td>
+		<td valign="top">gibt an ob die&nbsp; <a href="snapshot_vss.htm">VSS</a> 
+        Dienste von Windows verwendet werden sollen oder der interne Treiber</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--AllWriters </td>
+		<td valign="top">verwendet den Volumenschattenkopieservice in einem 
+        Modus, der alle beteiligten Applikationen explizit über den Vorgang des 
+        Backups benachrichtigt; siehe <a href="snapshot_vss.htm">VSS</a></td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> --ExcludeWriter: </td>
+		<td valign="top"> &quot;NameWriter1&quot;,&quot;NameWriter2&quot;,&quot;NameWriter3&quot;...<br>
+        setzt implizit --AllWriters und spart die Liste der angegebenen Writer 
+        aus; siehe <a href="snapshot_vss.htm">VSS</a></td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--IncludeWriter:</td> 
+		<td>&quot;NameWriter1&quot;,&quot;NameWriter2&quot;,&quot;NameWriter3&quot; ...<br>
+        - benachrichtigt die Liste der angegebenen Writer explizit beim Backup; 
+        siehe 
+<a href="snapshot_vss.htm">VSS</a></td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--CreateDir </td> 
+		<td>legt das Verzeichnis an, in das das Image gespeichert werden soll, 
+        falls es nicht existiert<br>
+</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.43</font></td> 
+		<td valign="top" nowrap>--DedupTarget</td> 
+		<td>optimiert die Speicherung für einen Server 2012; schaltet die 
+        Komprimierung ab</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.43</font></td> 
+		<td valign="top" nowrap>--AutoBackupSize:512</td> 
+		<td> Wenn dieser Parameter gesetzt wird, werden alle Partitionen 
+        derselben Platte die kleiner als 512 MB sind mitgesichert. Dies soll 
+        Boot- und Startpartitionen mitsichern.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--exclude:\temp<br>
+        --exclude:\*.tmp<br>
+        --exclude:@excludeList.txt</td> 
+		<td>erlaubt es, Verzeichnisse und/oder Dateien aus dem Backup 
+        auszuschließen.<br>
+&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.46</font></td> 
+		<td valign="top" nowrap>--FastDiff:\*.vhd<br>
+			--FastDiff:\Pfad1,\Pfad2,...</td> 
+		<td>kann das Erzeugen eines differentiellen Images beschleunigen. Für die bei der Option angegeben Dateien
+			werden nicht die Inhalte sondern nur das Änderungsdatum, die Dateigröße und die Positionen der belegten 
+			Cluster verglichen. Werden vor allem große Dateien bei der Option angegeben, kann das differentielle 
+			Backup deutlich beschleunigt werden.<br>
+</td>
+	</tr>
+
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.46</font></td> 
+		<td valign="top" nowrap>--EjectDriveAfterBackup</td> 
+		<td>Falls das Ziellaufwerk das Entfernen unterstützt, wird es mit dieser Option im Anschluss an das Backup ausgeworfen. <br>
+</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>--EjectMediaAfterBackup</td> 
+		<td>Falls das Ziellaufwerk das Entfernen von Medien unterstützt, wird das Medium mit dieser Option im Anschluss an das Backup ausgeworfen. <br>
+</td>
+	</tr>	
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--FullIfHashIsMissing</td> 
+		<td>erzeugt bei einem differentiellen Backup im Falle einer fehlenden Hashdatei ein neues volles Image.<br>
+</td>
+	</tr>
+	
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--exec:&quot;NET START ORACLE&quot;&nbsp;<br>
+        --exec:&quot;RestartExchange.bat&quot;&nbsp;</td> 
+		<td>führt Kommandos aus, sobald der 'Snapshot' des internen Treibers 
+        ausgeführt wurde.<br>
+        muss am Ende der Kommandozeile stehen !</td>
+	</tr>
+	</tr>
+		<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--LimitIORate:10</td> 
+		<td>limitiert den maximalen IO Durchsatz auf 10MB/s ( 1-100)<br>
+&nbsp;</td>
+	</tr>
+	
+	
+</table>
+
+
+
+<p>&nbsp;</p>
+<h2>Spezielle Optionen bei Restore</h2>
+
+
+<table border="1" >
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--Activate X:<br>
+        --Deactivate X:</td>
+		<td valign="top" width="725"><font FACE="LMRoman12-Regular">
+        <p ALIGN="LEFT">setzt die Partition, die mit dem Laufwerksbuchstaben X: 
+        verknüpft ist, aktiv/inaktiv.</font></td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> --resize C: 100000 </td>
+		<td valign="top" width="725"> vergrößert C: auf 100 GB, oder maximal die 
+        verfügbare Partitionsgröße (<a href="resize.htm">siehe auch </a>)</td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> --resizepart C: 100000</td>
+		<td valign="top" width="725"> vergrößert Partition und Dateisystem auf 
+        100 GB<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --resizepart kann 
+        Dateisystem/Partition&nbsp; nicht verkleinern !</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--RestoreMBR HD1 filename - </td> 
+		<td width="725">restauriert genau die ersten 512 Byte einer Partition</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--RestorePartitionStructure HD1 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        filename</td> 
+		<td width="725">Restauriert den Master Boot Record, evtl. vorhandene 
+        extended Partitionen, und die ersten (bis zu) 63 Sektoren einer 
+        Partition. i.d.R. sollte das auch für Bootmanager ausreichen</td>
+	</tr>
+	
+	
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.43</font></td> 
+		<td valign="top" nowrap>--Extendpartitions:Image.sna HD1</td> 
+		<td width="725">wie --RestorePartitionstructure, vergrößert aber (falls 
+        nötig) NTFS Partitionen auf die Plattengröße</td>        
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--EntireDisk Image-C.sna HD1</td> 
+		<td width="725">Restauriert die gesamte Festplatte mit allen Images, die zusammen
+				mit Image-C.sna erstellt wurden. Die Partitionsstruktur wird ebenfalls restauriert.
+      Ziel ist die HD1</td>
+	</tr>
+	
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td width="725">&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--Schedule C: D:\image.sna&nbsp;&nbsp;</td> 
+		<td width="725">Merkt das Restaurieren von D:\image.sna nach C: für den 
+        nächsten Neustart vor</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--ListSchedule</td> 
+		<td width="725"> zeigt eine für den nächsten Neustart geplanten 
+        Wiederherstellung.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--RemoveSchedule </td> 
+		<td width="725">entfernt eine für den nächsten Neustart geplante 
+        Wiederherstellung</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--autoreboot:off <br>
+        --autoreboot:any<br>
+        --autoreboot:success</td> 
+		<td width="725">bestimmt das Verhalten nach dem Abschluss des 
+        Restaurierens, wenn das Restaurieren während des Neustarts durchgeführt 
+        wird: <br>
+        Der Computer startet nie/immer/nur falls keine Fehler aufgetreten sind 
+        automatisch neu.</td>
+	</tr>
+	</tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td width="725">&nbsp;</td>
+	</tr>
+	</tr>
+	</tr>
+		<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--AddDriver<br>
+        --MergeIDE</td> 
+		<td width="725">fügt dem restaurierten Windows einen Platten-Treiber 
+        hinzu. Siehe
+<a href="hardware.htm">Hardware</a></td>
+	</tr>
+	
+	
+    <tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--ClearSignature HD1<br>
+        --SetSignature HD1 01234567</td> 
+		<td width="725">löscht/setzt Disksignatur</td>
+	</tr>
+	
+	
+    <tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--show<br>
+        --showlist</td> 
+		<td>zeigt in zwei unterschiedlichen Formaten Informationen über 
+        angeschlossene Platten und Partitionen</td>
+	</tr>
+	
+	
+</table>
+
+
+
+<h2>&nbsp;</h2>
+<h2>Spezielle Optionen bei Mounten der Image Dateien als Laufwerk</h2>
+
+
+<table border="1" width="918" >
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> --SearchFull:Fullpath1</td>
+		<td valign="top" width="642"> Wenn Sie ein differentielles Image mounten, 
+        und das volle Image in einem anderen Pfad liegt, können Sie diesen Pfad 
+        hiermit angeben</td>
+	</tr>
+	</tr>
+	</tr>
+	</tr>
+			
+	
+</table>
+
+
+
+<p>&nbsp;</p>
+<h2>sonstige spezielle Optionen</h2>
+
+
+<table border="1" >
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--?</td>
+		<td valign="top">Liste aller verfügbarer spezieller Optionen</td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> &nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--setdefaultpwd=MyPassword</td> 
+		<td>trägt in der Registry ein zu verwendendes Passwort ein mit dem per 
+        Standard die Images verschlüsselt werden sollen. ab Version 1.47 wird 
+        mit dieser Option das Passwort für die Ver- und Entschlüsselung hinterlegt.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>--setdefaultencpwd=MyPassword</td> 
+		<td>trägt in der Registry einen zu verwendenden Schlüssel ein, mit dem per 
+        Standard die Images verschlüsselt werden sollen. Der Schlüssel wird aus dem Kennwort generiert. 
+        </td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>--setdefaultdecpwd=MyPassword</td> 
+		<td>trägt in der Registry ein zu verwendendes Passwort ein mit dem per 
+        Standard die Images entschlüsselt werden sollen.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td> &nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--repair:X:REPARIERT.SNA <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y:\KAPUTT.SNA </td> 
+		<td>Erzeugt aus einem defekten, unvollständigen, oder sonst wie 
+        beschädigtem KAPUTT.SNA ein zumindest wieder mountbares Image (REPARIERT.SNA). Der 
+        korrekte Inhalt des reparierten Images kann nicht garantiert werden.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.46</font></td> 
+		<td valign="top" nowrap>--repair X:KAPUTT.SNA </td> 
+		<td>Erzeugt aus einem defekten, unvollständigen, oder sonst wie 
+        beschädigtem KAPUTT.SNA ein zumindest wieder mountbares Image ohne ein neues Image zu erzeugen. 
+        Die bei der Reparatur erzeugten Informationen werden an das ursprüngliche Image angehängt. Ein 
+        solches Image kann nur mit der Version 1.46 oder höher gemountet werden. Der korrekte
+        Inhalt des reparierten Images kann nicht garantiert werden.</td>
+	</tr>
+	
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--QuickCheck:test.sna </td> 
+		<td>eine schnelle Überprüfung ob das Image fehlerfrei und vollständig 
+        'aussieht'. Das ersetzt <b>nicht </b>den vollständigen Test mit -T.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.46</font></td> 
+		<td valign="top" nowrap>--DeepVerify</td> 
+		<td>verwendet in Verbindung mit -T die Prüfmethode, die bis einschließlich Version 1.45 verwendet wurde.</td>
+	</tr>	
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--register:Lizenzdatei.txt </td> 
+		<td>erzeugt einen lizenzierten snapshot.exe.<br>
+        Die Lizenzdatei muss den gesamten Lizenzschlüssel enthalten, den Sie von 
+        uns erhalten haben.<br /></td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--merge:neu_voll.sna diff_image.sna </td> 
+		<td>erzeugt aus einem bestehenden differentiellen Image und dem 
+        zugehörigen vollen Image ein neues volles Image und eine neue Hashdatei.<br /></td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--NetUse:\\server\share,N:,Username,Password</td> 
+		<td width="725">Verbindet das Netzwerklaufwerk \\server\share unter dem Laufwerksbuchstaben N:</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--NetUse:\\server\share,Username,Password</td> 
+		<td width="725">Verbindet das Netzwerklaufwerk \\server\share</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--AddFTPAccount:Username,Server,Password,Port</td> 
+		<td width="725">Fügt einen neuen FTP-Account für den angegebenen Benutzer hinzu.
+			Wenn die Portnummer nicht angegeben wird, wird der Standard FTP-Port 21 verwendet.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--DeleteFTPAccount:Username,Server,Password,Port</td> 
+		<td width="725">Löscht den vorhandenen FTP-Account für den angegebenen Benutzer.
+			Wenn die Portnummer nicht angegeben wird, wird der Standard FTP-Port 21 verwendet.</td>
+	</tr>
+	
+	
+	
+    </table>
+
+
+
+<p>&nbsp;</p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan --><p>&nbsp;</p>
+&nbsp;
+
+
+</body>
+</html>

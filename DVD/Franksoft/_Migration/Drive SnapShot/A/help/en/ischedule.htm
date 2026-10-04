@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Schedule backup</title>
+
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_self">
+</head>
+<body>
+<h1>SCHEDULER - Geplante Tasks</h1>
+<p><a href="tips.htm" target="_parent"><font size="+2">more Tips</font></a></p>
+
+<p>Instead of developing yet another scheduler, we prefer to use the built-in Windows Scheduler; that's one
+less thing to worry about.</p>
+<p>Usage&nbsp; Win2000/WindowsXP (for WinNT4, use AT/WinAT):</p>
+<p>Start -&gt; Settings-&gt; Control Panel-&gt; Scheduled Tasks-&gt; Add
+scheduled Task<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </i> <i>Start-&gt;Settings-&gt;Control Panel-&gt;Scheduled
+Tasks-&gt;Add scheduled Task</i></p>
+<p><img border="0" src="../images/butt_next.png" alt="[weiter]" ></p>
+<p>[Browse] and insert &quot;C:\Program Files\Snapshot\Snapshot.exe&quot;</p>
+<p>&nbsp;(*) weekly and <img border="0" src="../images/butt_next.png" alt="[weiter]" ></p>
+<p>[*] Monday<br>
+[*] Friday&nbsp; und <img border="0" src="../images/butt_next.png" alt="[weiter]" ></p>
+<p>enter a user name that has administrative rights on the local machine, and
+possibly can access (with this account) a network server.</p>
+<p><img border="0" src="../images/butt_next.png" alt="[weiter]" ></p>
+<p>[*] advanced properties, and [finish]</p>
+<p>in the following dialog, enter:</p>
+<p>either</p>
+<p>&nbsp;&nbsp;&nbsp; [start]&nbsp; 'c:\programs\snapshot\SNAPSHOT.exe C: X:\C-DRIVE.SNA&nbsp;</p>
+<p>or (much more powerful and flexible)</p>
+<p>&nbsp;&nbsp;&nbsp; [start]&nbsp; 'cmd /c
+c:/programs/snapshot/SuperDuperBackup.BAT''</p>
+<p><a href="tips.htm" target="_parent"><font size="+2">more Tips</font></a></p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+</html>

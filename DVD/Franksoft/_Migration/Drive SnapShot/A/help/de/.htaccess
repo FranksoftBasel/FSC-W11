@@ -1,0 +1,5 @@
+ErrorDocument 403 "Auf dieses Verzeichnis ist der Zugriff verboten
+ErrorDocument 404 /de/notfound.htm
+
+#internal server error
+ErrorDocument 500 http://www.drivesnapshot.com/index.htm

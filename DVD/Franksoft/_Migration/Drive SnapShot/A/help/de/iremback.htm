@@ -1,0 +1,78 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+
+<title>Tips &amp; Tricks</title>
+<base target="_self">
+</head>
+
+<body>
+
+<center><h1>Snapshot - Remote Backup</h1></center>
+
+
+
+<hr>
+<p>Wenn Sie als Systemadministrator die Images von vielen Rechnern aktuell
+halten wollen, kann das zu signifikanter Laufleistung ihrerseits führen.<br>
+Durch
+die Kommandozeilen-Bedienung von Snapshot ergibt sich hierfür eine einfache Lösung.<br>
+
+</p>
+
+<p>Es gibt mehrere Möglichkeiten, von Ihrem Rechner aus die Ausführung eines
+Programms auf einem fremden Rechner zu veranlassen, sofern Sie sich dort
+einloggen können.<br>
+Bekannte Möglichkeiten sind RLOGIN, RCONSOLE (Windows NT
+Resource Kit), oder
+<a target="_blank" href="http://technet.microsoft.com/de-de/sysinternals/bb897553.aspx">PSEXEC</a>,
+einer weiteren Utility von <a href="http://www.sysinternals.com" target="_blank">http://www.sysinternals.com</a>.<br>
+
+</p>
+
+<p>Wenn Sie (als Administrator) mit PSEXEC einen anderen Rechner sichern wollen
+(der unter Windows NT läuft), geht das wie folgt</p>
+
+<p><b>&nbsp;&nbsp;&nbsp; C::\&gt;PSEXEC&nbsp; \\FremderRechner -u administrator -p
+AdminPasswd&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -c -f
+-h&nbsp;&nbsp; c:\Programme\snapshot\Snapshot.exe C: \\Server\Backup\C-Sicherung.SNA</b></p>
+
+<p><b>Erklärung</b>:</p>
+
+<p>C::\&gt;PSEXEC&nbsp; \\FremderRechner -u administrator -p AdminPasswd&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Sie müssen sich auf dem 'fremden' Rechner als Benutzer mit
+Administrator Rechten einloggen.</p>
+
+<p> -c -f c:\Programme\snapshot\Snapshot.exe<br>
+&nbsp;&nbsp;&nbsp; kopiert Snapshot vom lokalen Rechner auf den fremden Rechner
+in das Systemverzeichnis und startet es von dort.</p>
+<p><b>&nbsp;-h</b> vermeidet auf Vista oder Windows 7 den UAC (User Account 
+Control) Prompt</p>
+
+<p>C: C: \\Server\Backup\C-Sicherung.SNA<br>
+&nbsp;&nbsp;&nbsp; sichert die C-Partition auf den Server \\Server.</p>
+
+<p>Alternativ können Sie auf dem fremden Rechner auch einen Batchfile 'Datensicherung.bat'
+anlegen und diesen mittels PSEXEC ausführen.</p>
+
+<p>C::\&gt;PSEXEC&nbsp; \\FremderRechner -u administrator -p AdminPasswd <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cmd /c x:\Datensicherung.bat</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+</body>
+
+</html>

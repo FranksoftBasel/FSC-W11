@@ -1,0 +1,168 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 //EN">
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+
+
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Disk Backup performance data</title>
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+</head>
+<body>
+
+<h1>Disk Backup performance data</h1>
+Here are some numbers on Snapshot disk imaging performance, comparing both speed and compression ratios for
+certain configurations to other disk imaging software.<br>
+
+
+<p></p> Please note however:
+<ul>
+<li>All these data are data and configuration dependent.<br>
+
+<li>The measurements were performed by ourselves, so you shouldn't rely on there objectivity.<br>
+However no attempt was done to produce fake
+  data.<br>
+
+
+<h3>Snapshot vs.<br>
+PQDI vs.<br>
+GHOST</h3>
+
+The comparisons were done using PQDI 3.0 and Ghost 5.0.<br>
+For both products, newer versions exist.<br>
+Should these perform significantly better, we apologize.<br>
+
+
+<p></p>
+
+Configurations tested:
+<li> P200MMX, 64MB memory,ATA66 DOS 6.2, HIMEM+SMARTDRV
+<li> P200MMX, 64MB memory,ATA66 WinNT4.0<br>
+
+<li> PIII700, 256MB memory,ATA100 DOS 6.2, HIMEM+SMARTDRV
+<li> PIII700, 256MB memory,ATA100 Win2K
+<li> Dual PIII700, 256MB memory, Win2K
+
+<p></p>
+The tested hard drive was always the same: 30 GB IBM, 5400 rpm.<br>
+
+The copied partition was in all cases the P200 boot drive with WinNT4.0,FAT16, size = 1 GB, 864 MB used.<br>
+
+
+
+<br>
+
+
+<table border="1">
+<tr>
+ <td></td>                      <td>Image size</td>    <td>P200 Time</td><td>P700 Time</td>  <td>P700 dual </td>  <td>P700 MB/min</td>
+</tr>
+
+<tr>
+ <td>PQDI, low compression</td>  <td>499,422,797</td>  <td>4:43 </td>  <td>3:57</td>
+ <td></td><td>218</td>
+</tr>
+<tr>
+ <td>PQDI, high compression</td> <td>394.881.808</td>  <td>8:10</td>  <td>4:50 </td><td></td>
+ <td>178</td>
+</tr>
+<tr>
+ <td>Ghost, low compression</td> <td>490.463.605</td>  <td>9:40</td>   <td>6:40</td><td></td>
+ <td>129</td>
+</tr>
+<tr>
+ <td>Ghost, high compression</td><td>391,454,564</td>  <td>21:54</td>  <td>10:45</td><td></td><td>80</td>
+</tr>
+<tr>
+ <td>Snapshot default</td>     <td>412,312,064 </td> <td>10:28 </td><td>2:00</td><TD>1:30</td><td>432</td>
+</tr>
+<tr>
+ <td>Snapshot byte mode</td>     <td>406,496,960 </td> <td>10:32 </td>  <td>2:01</td> <td>1:31 </td><td>428</td>
+</tr>
+</table>
+
+<h3>Snapshot vs.<br>
+Win2000 Backup</h3>
+All tests were done on a PIII700 Dual, Win2K SP1, 256MB RAM.<br>
+<br>
+The network 'server' was a P200MMX, WinNT 4.0 Workstation, 64MB RAM.<br>
+
+<br>
+
+
+<b>FAT16</b> NT4 System partition, 1GB, 649 MB used, cluster size 32K<br>
+
+
+<table border="1">
+<tr>
+ <td></td>      <td>Image size</td>  <td>local drive</td> <td>MB/min</td><td>network</td>
+<td>MB/min</td>
+</tr>
+<tr>
+ <td>Win2K Backup</td>
+ <td>588,861,440</td>
+ <td>3:11 </td><td>184</td>
+ <td>3:31 </td><td>167</td>
+</tr>
+<tr>
+ <td>Snapshot, default</td>
+ <td>324,358,656 </td>
+ <td>1:09</td><td>511</td>
+ <td>2:31</td><td>233</td>
+</tr>
+<tr>
+ <td>Snapshot, byte mode</td>
+ <td>284,323,328</td>
+ <td>1:09</td><td>511</td>
+ <td>2:17</td><td>257</td>
+</tr>
+</table>
+
+
+<br>
+<b>NTFS</b> Win2K system partition, 2GB, 1314 MB used, 200 MB PAGEFILE.SYS, cluster size
+  2K
+<br>
+
+<table border="1">
+<tr>
+ <td></td>      <td>Image size</td>  <td>local drive</td> <td>MB/min</td><td>network</td>
+<td>MB/min</td>
+</tr>
+
+<tr>
+ <td>Win2K Backup</td>
+ <td>1,101,501,440</td>
+ <td>7:43</td> <td>142</td>
+ <td>8:21</td> <td>131</td>
+</tr>
+<tr>
+ <td>Snapshot, default</td>
+ <td>667,919,360</td>
+ <td>2:11</td> <td>504</td>
+ <td>5:22</td> <td>205</td>
+</tr>
+<tr>
+ <td>Snapshot, byte mode</td>
+ <td>663,210,494</td>
+ <td>2:17</td> <td>482</td>
+ <td>5:34</td> <td>197</td>
+</tr>
+</table>
+
+<p><p></p>
+<div align="center"><a href="javascript:history.back()">Back</a></div>
+</ul>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+</html>

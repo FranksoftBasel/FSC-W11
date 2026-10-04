@@ -1,0 +1,264 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+
+<meta name="keywords" content="Partition, resize, windows, Disk, drive, Image, imaging, vcolume, snapshot, Backup ,Disk Cloning, Disk Imaging, Disaster recovery, Windows,Windows NT, Windows 2000,Windows XP, UDMA, 2003 server">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>Drive Snapshot - Resize Partitions</title>
+</head>
+
+<body>
+
+<h1 align="center">Snapshot - Partition Resize</h1>
+<hr>
+
+<h3>Resizing a Partition</h3>
+
+<p>Sometimes it's useful to resize a partition</p>
+
+<p>Drive Snapshot 1.30 supports this with the following limitations:</p>
+<ul><li>Currently, only the file system inside the partition can be resized up
+    to the partition size and down to the last used sector on the drive
+    (resizing the partition itself is under construction)<li>Resizing is done
+    only from Windows<li>resizing is implemented for NTFS only<li><b>Resize is
+    currently explicitly BETA.<br>
+It has been tested, and it works; however it has
+    not been tested in as many different configurations as the other Snapshot
+    features.<br>
+use it at your own risk (though we think we won't destroy
+    anything).<br>
+</b>
+
+  <li>Please close all applications (if possible) that access the disk.<br>
+
+
+</ul>
+
+<p>Resize is only available from the command line.</p>
+
+<h3>Show the resizability of a drive</h3>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>C:&gt;snapshot -!resize c:<br>
+</b></p>
+
+<div align="center">
+  <center>
+  <table border="1" width="674" height="75">
+    <tr>
+      <td width="674" height="75"><font face="Terminal">C:\Programme\Snapshot\snapshot&gt;snapshot -!resize
+        c:<br>
+        SNAPSHOT - Instant DiskImaging for WinNT/2000/XP - (C) www.drivesnapshot.de<br>
+        <br>
+        <br>
+        Drive C: total size  2400 MB, free 2281 MB, clustersize 4096<br>
+        current       size is   2.516.582.400 = 2400 MB<br>
+        min.<br>
+possible size is   1.975.517.184 = 1884 MB<br>
+        max.<br>
+possible size is   3.890.525.184 = 3710 MB<br>
+        </font></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>min.<br>
+possible size: the minimum size of the drive, as there are some used
+data at this place; it may be possible to reduce this by defragmenting the
+drive.<br>
+ However it's usually not possible to reduce a drives size to less
+then 0.5 * the original size, as NTFS stores some system information in the
+middle of the drive.<br>
+So a 10 GB NTFS drive can't be made smaller then 5 GB.</p>
+
+<h3>Resize the drive&nbsp;</h3>
+
+<p>First, the drive is checked (using CHKDSK), if the drive is error free.<br>
+If
+not, Snapshot won't touch it.<br>
+Please correct all errors first by running C:&gt;CHKDSK
+/F first, rebooting if necessary.<br>
+<b>Warning: not all file system errors are
+found by the GUI CheckDisk.<br>
+Please use CHKDSK /F!!</b></p>
+
+<p>Then the drive gets resized, and brought into a controlled inconsistent
+state.<br>
+This is cured by CHKDSK.<br>
+</p>
+
+<p><b>Please answer all questions with 'Yes',&nbsp; and <font color="#FF0000">do
+not use the drive until CHKDSK has been run without errors.<br>
+</font>if necessary,
+reboot windows as soon as possible!!</b></p>
+
+<h3>resizing the drive to 3000MB</h3>
+
+<p>&nbsp;&nbsp;&nbsp;<font face="Terminal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+C:&gt;snapshot -!resize c: 3000<br>
+</font></p>
+
+<div align="center">
+  <center>
+  <table border="1" width="664">
+    <tr>
+      <td width="63">see if your request is plausible&nbsp;</td>
+      <td width="585"><font face="Terminal">c:&gt;\Programme\snapshot\snapshot -!resize q: 3000<br>
+        SNAPSHOT - Instant DiskImaging for WinNT/2000/XP - (C) www.drivesnapshot.de<br>
+        <br>
+        Drive Q: total size  2400 MB, free 2281 MB, clustersize 4096<br>
+        current       size is   2.516.582.400 = 2400 MB<br>
+        min.<br>
+possible size is   1.975.517.184 = 1884 MB<br>
+        max.<br>
+possible size is   3.890.525.184 = 3710 MB<br>
+        wanted        size is   3.145.728.000 = 3000 MB<br>
+        verifying filesystem on T: for integrity first</font></td>
+    </tr>
+    <tr>
+      <td width="63">CHKDSK to check the drive for errors</td>
+      <td width="585"><font face="Terminal">The type of the file system is NTFS.<br>
+
+        Volume label is test.<br>
+
+        <br>
+        WARNING!  F parameter not specified.<br>
+
+        Running CHKDSK in read-only mode.<br>
+
+        <br>
+        CHKDSK is verifying files (stage 1 of 3)...<br>
+
+        File verification completed.<br>
+
+        CHKDSK is verifying indexes (stage 2 of 3)...<br>
+
+        Index verification completed.<br>
+
+        CHKDSK is verifying security descriptors (stage 3 of 3)...<br>
+
+        Security descriptor verification completed.<br>
+
+        Windows has checked the file system and found no problem.<br>
+
+        <br>
+   2457600 KB total disk space.<br>
+
+     96684 KB in 2472 files.<br>
+
+       520 KB in 129 indexes.<br>
+
+         0 KB in bad sectors.<br>
+
+     24164 KB in use by the system.<br>
+
+     21056 KB occupied by the log file.<br>
+
+   2336232 KB available on disk.<br>
+
+        <br>
+      4096 bytes in each allocation unit.<br>
+
+    614400 total allocation units on disk.<br>
+
+    584058 allocation units available on disk.<br>
+
+        <br>
+        Drive Q: checked and no errors found</font></td>
+    </tr>
+    <tr>
+      <td width="63">Snapshot changes the file system size, just to call CHKDSK
+        /F</td>
+      <td width="585"><font face="Terminal">resizing Q: to   3.145.728.000 (3000 MB)<br>
+        <br>
+        drive Q: has been resized to   3.145.728.000 = 3000 MB<br>
+        <br>
+        you MUST run CHKDSK /F on this drive before you continue<br>
+        to use it; if this is your systemdrive, please reboot your<br>
+        computer now<br>
+        <br>
+        running CHKDSK /F now.<br>
+Please let it run!!</font></td>
+    </tr>
+    <tr>
+      <td width="63">CHKDSK /F to correct the errors.<br>
+
+        <p>the message 'correcting errors...' is expected!</td>
+      <td width="585"><font face="Terminal">The type of the file system is NTFS.<br>
+
+        Volume label is test.<br>
+
+        <br>
+        CHKDSK is verifying files (stage 1 of 3)...<br>
+
+        File verification completed.<br>
+
+        CHKDSK is verifying indexes (stage 2 of 3)...<br>
+
+        Index verification completed.<br>
+
+        CHKDSK is verifying security descriptors (stage 3 of 3)...<br>
+
+        Security descriptor verification completed.<br>
+
+        <span style="background-color: #FFFF00">Correcting errors in the Volume Bitmap.<br>
+</span>
+        Windows has made corrections to the file system.<br>
+
+        <br>
+   3072000 KB total disk space.<br>
+
+     96684 KB in 2472 files.<br>
+
+       520 KB in 129 indexes.<br>
+
+         0 KB in bad sectors.<br>
+
+     24184 KB in use by the system.<br>
+
+     21056 KB occupied by the log file.<br>
+
+   2950612 KB available on disk.<br>
+
+        <br>
+      4096 bytes in each allocation unit.<br>
+
+    768000 total allocation units on disk.<br>
+
+    737653 allocation units available on disk.</font></td>
+    </tr>
+    <tr>
+      <td width="63">Congratulations</td>
+      <td width="585"><font face="Terminal">chkdsk found some errors, and corrected them<br>
+        this is the expected behaviour<br>
+        it should be safe to use this drive now<br>
+        SUCCESS!</font></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>&nbsp;</p>
+
+<p>Not only the software is BETA, the description is BETA as well, suggestions
+are welcome&nbsp;</p>
+
+  
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+
+</html>

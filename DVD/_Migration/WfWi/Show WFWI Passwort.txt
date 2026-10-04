@@ -1,0 +1,2 @@
+netsh wlan show profile name=FS-Home-WZ key=clear
+

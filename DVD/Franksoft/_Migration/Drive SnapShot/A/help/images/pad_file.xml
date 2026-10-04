@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML_DIZ_INFO>
+	<MASTER_PAD_VERSION_INFO>
+		<MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to dissemminate information to anyone interested in their software products.  To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+		<MASTER_PAD_EDITOR>DeuPAD 3.1.0.55 (http://www.deupad.org)</MASTER_PAD_EDITOR>
+		<MASTER_PAD_VERSION>3.10</MASTER_PAD_VERSION>
+	</MASTER_PAD_VERSION_INFO>
+	<Company_Info>
+		<Company_Name>Tom Ehlert Software</Company_Name>
+		<Address_1>Veltmanplatz 19</Address_1>
+		<Address_2 />
+		<Zip_Postal_Code>52062</Zip_Postal_Code>
+		<City_Town>Aachen</City_Town>
+		<Country>Germany</Country>
+		<State_Province>NRW</State_Province>
+		<Company_WebSite_URL>http://www.drivesnapshot.de</Company_WebSite_URL>
+		<Contact_Info>
+			<Author_First_Name>Tom</Author_First_Name>
+			<Author_Last_Name>Ehlert</Author_Last_Name>
+			<Author_Email>te@drivesnapshot.de</Author_Email>
+			<Contact_First_Name>Tom</Contact_First_Name>
+			<Contact_Last_Name>Ehlert</Contact_Last_Name>
+			<Contact_Email>te@drivesnapshot.de</Contact_Email>
+		</Contact_Info>
+		<Support_Info>
+			<General_Email>te@drivesnapshot.de</General_Email>
+			<Support_Email>te@drivesnapshot.de</Support_Email>
+			<Sales_Email>te@drivesnapshot.de</Sales_Email>
+			<General_Phone>+49-241-79886</General_Phone>
+			<Support_Phone>+49-241-79886</Support_Phone>
+			<Sales_Phone>+49-241-79886</Sales_Phone>
+			<Fax_Phone>+49 241 4015417</Fax_Phone>
+		</Support_Info>
+	</Company_Info>
+	<Program_Info>
+		<Program_Name>Drive Snapshot</Program_Name>
+		<Program_Version>1.43</Program_Version>
+		<Program_Release_Year>2014</Program_Release_Year>
+		<Program_Release_Month>02</Program_Release_Month>
+		<Program_Release_Day>01</Program_Release_Day>
+		<Program_Type>Shareware</Program_Type>
+		<Program_Release_Status>Major Update</Program_Release_Status>
+		<Program_Cost_Other>39.00</Program_Cost_Other>
+		<Program_Cost_Dollars>55.00</Program_Cost_Dollars>
+		<Program_Categories>Backup</Program_Categories>
+		<Program_Specific_Category>Utilities</Program_Specific_Category>
+		<Program_Change_Info>Support for Windows 8, 8.1, 2012</Program_Change_Info>
+		<Program_Language>English</Program_Language>
+		<Program_OS_Support>Win2000,Win7 x32,Win7 x64,WinOther,WinServer,WinVista,WinVista x64,WinXP</Program_OS_Support>
+		<Program_Install_Support>Install and Uninstall</Program_Install_Support>
+		<Program_System_Requirements>requires administrative rights</Program_System_Requirements>
+		<Includes_VB_Runtime>N</Includes_VB_Runtime>
+		<Includes_JAVA_VM>N</Includes_JAVA_VM>
+		<Includes_DirectX>N</Includes_DirectX>
+		<File_Info>
+			<Filename_Long>Setup.exe</Filename_Long>
+			<Filename_Generic>Setup.exe</Filename_Generic>
+			<Filename_Versioned>setup135.exe</Filename_Versioned>
+			<Filename_Previous>Setup134.exe</Filename_Previous>
+			<File_Size_Bytes>3200000</File_Size_Bytes>
+			<File_Size_K>3125</File_Size_K>
+			<File_Size_MB>3.05</File_Size_MB>
+		</File_Info>
+		<Expire_Info>
+			<Has_Expire_Info>Y</Has_Expire_Info>
+			<Expire_Based_On>Days</Expire_Based_On>
+			<Expire_Count>30</Expire_Count>
+			<Expire_Year />
+			<Expire_Month />
+			<Expire_Day />
+			<Expire_Other_Info />
+		</Expire_Info>
+		<Program_Cost_Other_Code>EUR</Program_Cost_Other_Code>
+		<Program_Category_Class>System Utilities::Backup &amp; Restore</Program_Category_Class>
+	</Program_Info>
+	<Program_Descriptions>
+		<English>
+			<Keywords>disk image, backup, cloning, drive, restore, disaster recovery,snapshot, partition, volume, RAID</Keywords>
+			<Char_Desc_45>Drive Snapshot - Disk Image Backup für Windos</Char_Desc_45>
+			<Char_Desc_80>Drive Snapshot - Disk Image Backup for Windows 2000/XP/2003/7/8/20008/2012</Char_Desc_80>
+			<Char_Desc_250>Drive Snapshot creates an exact Disk Image Backup of your system - while windows is running and you continue to work. If desaster strikes, a complete and exact restauration of your system will be possible in only few minutes.</Char_Desc_250>
+			<Char_Desc_450>Drive Snapshot creates an exact Disk Image Backup of your system - while windows is running and you continue to work. If desaster strikes,a complete and exact restauration of your system will be possible in only few minutes.  The image file can be used as a virtual drive. Restart to DOS is only necessary, if you must restore your system partition.  Otherwise there is no need to reboot - not even during installation.</Char_Desc_450>
+			<Char_Desc_2000>Drive Snapshot creates an exact Disk Image of your system into a file, including the operating system, installed programs, your data and all security attributes - while windows is running and you continue to work. If desaster strikes (a virus, trojan, or hard disk crash), a complete and exact restauration of your system will be possible in only few minutes. The image file can be mounted as a virtual drive, so you can easily restore (or use) single files or directories, using the Windows Explorer, or other program (e.g. WINDIFF). Restart to DOS is only necessary, if you must restore your system partition. Otherwise there is no need to reboot - not even during installation. Drive Snapshot saves only the use disk space, compresses the data and is extremly fast - a P4/2GHz will save approx. 1GByte/Minute on a local disk drive.</Char_Desc_2000>
+		</English>
+		<German>
+			<Keywords>Festplatte, Backup, Restore, desaster Recovery, Disk Image, Partition, RAID</Keywords>
+			<Char_Desc_45>Drive Snapshot -Disk Image Backup für Windows</Char_Desc_45>
+			<Char_Desc_80>Drive Snapshot - Disk Image Backup für Windows 2000/XP/2003/7/8/20008/2012</Char_Desc_80>
+			<Char_Desc_250>Drive Snapshot erstellt ein exaktes Disk Image Backup ihres Systems - im laufenden Betrieb von Windows. Ein Neustart nach DOS ist nur erforderlich, wenn das Systemlaufwerk restauriert werden soll.</Char_Desc_250>
+			<Char_Desc_450>Drive Snapshot erstellt ein exaktes Disk Image Backup ihres Systems - im laufenden Betrieb von Windows und Sie weiterarbeiten. Ein Neustart nach DOS ist nur erforderlich, wenn das Systemlaufwerk restauriert werden soll. Die Disk Image Datei kann als virtuelles Laufwerk angesehen und genutzt werden. Snapshot sichert nur die belegten Daten der Festplatte, komprimiert diese und sichert ein Gigabyte pro Minute.</Char_Desc_450>
+			<Char_Desc_2000>Drive Snapshot erstellt ein exaktes Abbild (Disk Image) Ihres Systems in eine Datei, einschließlich des Betriebssystems, der installierten Programme, der Anwenderdaten und aller Sicherheitseinstellungen - im laufenden Betrieb von Windows und während Sie weiterarbeiten. Im Falle eines Falles (Vireninfektion, Hardwaredefekt) kann Ihr System in wenigen Minuten exakt wiederhergestellt werden.  Das Image kann als virtuelles Laufwerk gemounted werden, so dass einzelne Dateien und Verzeichnisse mit dem Windows Explorer wiederhergestellt oder mit jedem beliebigen Programm (zum Beispiel WINDIFF) genutzt werden.  Ein Neustart nach DOS ist nur notwendig, wenn die Systempartition wiederhergestellt werden muss, sonst nie - auch nicht während der Installation. Drive Snapshot sichert nur die belegten Daten der Festplatte, komprimiert diese und ist extrem schnell - ein P4/2GHz sichert etwa ein Gigabyte pro Minute auf einer lokalen Festplatte.</Char_Desc_2000>
+		</German>
+	</Program_Descriptions>
+	<Web_Info>
+		<Application_URLs>
+			<Application_Info_URL>http://www.drivesnapshot.de</Application_Info_URL>
+			<Application_Order_URL>http://www.drivesnapshot.de/en/order.htm</Application_Order_URL>
+			<Application_Screenshot_URL>http://www.drivesnapshot.de/images/startup.png</Application_Screenshot_URL>
+			<Application_Icon_URL>http://www.drivesnapshot.de/favicon.png</Application_Icon_URL>
+			<Application_XML_File_URL>http://www.drivesnapshot.de/pad_file.xml</Application_XML_File_URL>
+		</Application_URLs>
+		<Download_URLs>
+			<Primary_Download_URL>http://www.drivesnapshot.de/download/setup.exe</Primary_Download_URL>
+			<Secondary_Download_URL />
+			<Additional_Download_URL_1 />
+			<Additional_Download_URL_2 />
+		</Download_URLs>
+	</Web_Info>
+	<Permissions>
+		<Distribution_Permissions />
+		<EULA />
+	</Permissions>
+	<DeuPAD>
+		<DeuPAD_Extension_Version>2.00</DeuPAD_Extension_Version>
+		<DeuPAD_Extension_Info>For information on the DeuPAD Extensions please go to http://www.deupad.org</DeuPAD_Extension_Info>
+		<SAVE_Member>Y</SAVE_Member>
+		<SAVE_Member_Number>TTE</SAVE_Member_Number>
+		<Company_Unique_ID>{C5D03983-299C-4005-9A83-46FC29CE032A}</Company_Unique_ID>
+		<Save_Prog_Num>TTE</Save_Prog_Num>
+		<Program_Cost_EUR>39.00</Program_Cost_EUR>
+		<Program_Cost_DEM>76,28</Program_Cost_DEM>
+		<Program_Unique_ID>{B14B3951-E57C-4054-BB3B-FA58889FD5EA}</Program_Unique_ID>
+		<Program_Categories_German>System-Tools</Program_Categories_German>
+		<Program_System_Requirements_German>erfordert Administrator Berechtigung</Program_System_Requirements_German>
+		<Expire_Other_Info_German />
+		<EULA_German />
+		<Program_Change_Info_German />
+	</DeuPAD>
+	<ASP>
+		<ASP_FORM>Y</ASP_FORM>
+		<ASP_Member>N</ASP_Member>
+		<ASP_Member_Number />
+	</ASP>
+	<MSN>
+		<MSN_FORM>Y</MSN_FORM>
+		<MSN_IS_32bit>Y</MSN_IS_32bit>
+	</MSN>
+	<ZDNET>
+		<ZDNET_FORM>Y</ZDNET_FORM>
+		<ZDNET_Product_ID_Code />
+	</ZDNET>
+	<Affiliates>
+		<Affiliates_FORM>Y</Affiliates_FORM>
+		<Affiliates_VERSION>1.0</Affiliates_VERSION>
+		<Affiliates_URL>http://www.asp-shareware.org/pad/extensions/Affiliates.htm</Affiliates_URL>
+		<Affiliates_Information_Page>https://cp.shareit.com/shareit/affiliates/signup.html?publisherid=32011&amp;md5=819541b5b4e133ed94bf8ffd4288088f</Affiliates_Information_Page>
+		<Affiliates_BMTMicro_Order_Page />
+		<Affiliates_BMTMicro_Vendor_ID />
+		<Affiliates_BMTMicro_Product_ID />
+		<Affiliates_BMTMicro_Maximum_Commission_Rate />
+		<Affiliates_DigiBuy_Order_Page />
+		<Affiliates_DigiBuy_Vendor_ID />
+		<Affiliates_DigiBuy_Product_ID />
+		<Affiliates_DigiBuy_Maximum_Commission_Rate />
+		<Affiliates_DigitalCandle_Order_Page />
+		<Affiliates_DigitalCandle_Vendor_ID />
+		<Affiliates_DigitalCandle_Product_ID />
+		<Affiliates_DigitalCandle_Maximum_Commission_Rate />
+		<Affiliates_Emetrix_Order_Page />
+		<Affiliates_Emetrix_Vendor_ID />
+		<Affiliates_Emetrix_Product_ID />
+		<Affiliates_Emetrix_Maximum_Commission_Rate />
+		<Affiliates_eSellerate_Order_Page />
+		<Affiliates_eSellerate_Vendor_ID />
+		<Affiliates_eSellerate_Product_ID />
+		<Affiliates_eSellerate_Maximum_Commission_Rate />
+		<Affiliates_Kagi_Order_Page />
+		<Affiliates_Kagi_Vendor_ID />
+		<Affiliates_Kagi_Product_ID />
+		<Affiliates_Kagi_Maximum_Commission_Rate />
+		<Affiliates_NorthStarSol_Order_Page />
+		<Affiliates_NorthStarSol_Vendor_ID />
+		<Affiliates_NorthStarSol_Product_ID />
+		<Affiliates_NorthStarSol_Maximum_Commission_Rate />
+		<Affiliates_Order1_Order_Page />
+		<Affiliates_Order1_Vendor_ID />
+		<Affiliates_Order1_Product_ID />
+		<Affiliates_Order1_Maximum_Commission_Rate />
+		<Affiliates_Osolis_Order_Page />
+		<Affiliates_Osolis_Vendor_ID />
+		<Affiliates_Osolis_Product_ID />
+		<Affiliates_Osolis_Maximum_Commission_Rate />
+		<Affiliates_Regnet_Order_Page />
+		<Affiliates_Regnet_Vendor_ID />
+		<Affiliates_Regnet_Product_ID />
+		<Affiliates_Regnet_Maximum_Commission_Rate />
+		<Affiliates_Regnow_Order_Page />
+		<Affiliates_Regnow_Vendor_ID />
+		<Affiliates_Regnow_Product_ID />
+		<Affiliates_Regnow_Maximum_Commission_Rate />
+		<Affiliates_Regsoft_Order_Page />
+		<Affiliates_Regsoft_Vendor_ID />
+		<Affiliates_Regsoft_Product_ID />
+		<Affiliates_Regsoft_Maximum_Commission_Rate />
+		<Affiliates_ShareIt_Order_Page />
+		<Affiliates_ShareIt_Vendor_ID>32011</Affiliates_ShareIt_Vendor_ID>
+		<Affiliates_ShareIt_Product_ID>177277</Affiliates_ShareIt_Product_ID>
+		<Affiliates_ShareIt_Maximum_Commission_Rate>25</Affiliates_ShareIt_Maximum_Commission_Rate>
+		<Affiliates_SWReg_Order_Page />
+		<Affiliates_SWReg_Vendor_ID />
+		<Affiliates_SWReg_Product_ID />
+		<Affiliates_SWReg_Maximum_Commission_Rate />
+		<Affiliates_V-Share_Order_Page />
+		<Affiliates_V-Share_Vendor_ID />
+		<Affiliates_V-Share_Product_ID />
+		<Affiliates_V-Share_Maximum_Commission_Rate />
+		<Affiliates_VFree_Order_Page />
+		<Affiliates_VFree_Vendor_ID />
+		<Affiliates_VFree_Product_ID />
+		<Affiliates_VFree_Maximum_Commission_Rate />
+		<Affiliates_Yaskifo_Order_Page />
+		<Affiliates_Yaskifo_Vendor_ID />
+		<Affiliates_Yaskifo_Product_ID />
+		<Affiliates_Yaskifo_Maximum_Commission_Rate />
+		<Affiliates_Avangate_Order_Page />
+		<Affiliates_Avangate_Vendor_ID />
+		<Affiliates_Avangate_Product_ID />
+		<Affiliates_Avangate_Maximum_Commission_Rate />
+		<Affiliates_clixGalore_Order_Page />
+		<Affiliates_clixGalore_Vendor_ID />
+		<Affiliates_clixGalore_Product_ID />
+		<Affiliates_clixGalore_Maximum_Commission_Rate />
+		<Affiliates_CommissionJunction_Order_Page />
+		<Affiliates_CommissionJunction_Vendor_ID />
+		<Affiliates_CommissionJunction_Product_ID />
+		<Affiliates_CommissionJunction_Maximum_Commission_Rate />
+		<Affiliates_LinkShare_Order_Page />
+		<Affiliates_LinkShare_Vendor_ID />
+		<Affiliates_LinkShare_Product_ID />
+		<Affiliates_LinkShare_Maximum_Commission_Rate />
+		<Affiliates_Plimus_Order_Page />
+		<Affiliates_Plimus_Vendor_ID />
+		<Affiliates_Plimus_Product_ID />
+		<Affiliates_Plimus_Maximum_Commission_Rate />
+		<Affiliates_Shareasale_Order_Page />
+		<Affiliates_Shareasale_Vendor_ID />
+		<Affiliates_Shareasale_Product_ID />
+		<Affiliates_Shareasale_Maximum_Commission_Rate />
+		<Affiliates_Cleverbridge_Order_Page />
+		<Affiliates_Cleverbridge_Vendor_ID />
+		<Affiliates_Cleverbridge_Product_ID />
+		<Affiliates_Cleverbridge_Maximum_Commission_Rate />
+		<Affiliates_OneNetworkDirect_Order_Page />
+		<Affiliates_OneNetworkDirect_Vendor_ID />
+		<Affiliates_OneNetworkDirect_Product_ID />
+		<Affiliates_OneNetworkDirect_Maximum_Commission_Rate />
+	</Affiliates>
+</XML_DIZ_INFO>

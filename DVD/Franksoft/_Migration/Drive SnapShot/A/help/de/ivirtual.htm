@@ -1,0 +1,189 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<title>Erzeugung einer bootbaren CD/DVD</title>
+</head>
+
+<body>
+
+<h1>Restore einer virtuellen Maschine&nbsp;<br>
+VMWare/MS Virtual Server&nbsp;</h1>
+
+<p><a href="tips.htm" target="_parent"><font size="+2">mehr Tipps</font></a></p>
+
+<h2>Der konventionelle Weg</h2>
+
+<p>Booten Sie die virtuelle Maschine unter DOS oder <a href="http://www.nu2.nu/pebuilder">BartPE.<br>
+
+</a>Restaurieren Sie die Maschine wie eine 'normale', vermutlich über das
+Netzwerk.</p>
+
+<h2>Die bessere Alternative</h2>
+
+<p>Legen Sie die neue (virtuelle) Platte wie normal an.</p>
+
+<p>Dann mounten Sie diese Platte in Ihrem Hostsystem als virtuelle Platte.<br>
+</p>
+
+<p><b>Microsoft Virtual Server</b> 2005 R2 Service Pack 1 enthält ein
+Kommandozeilen-Utility VHDMount, mit dem eine .VHD als virtuelles Laufwerk
+eingebunden werden kann</p>
+
+<p>Mounten einer Platte:&nbsp;&nbsp;&nbsp; <b>vhdmount.exe /p VirtualDISK.VHD<br>
+</b>Unmount einer Platte:&nbsp;&nbsp;&nbsp; <b>vhdmount.exe /u VirtualDISK.VHD</b></p>
+
+<p><b>VMWare Server </b>stellt leider nur ein <a href="http://www.vmware.com/download/diskmount.html">Tool</a>
+zur Verfügung, dass nur einzelne Partitionen einer Platte, nicht aber die
+gesamte Platte zur Verfügung stellt; damit ist die Partitionierung einer neuen
+Platte nicht möglich.</p>
+
+<p>
+Dankenswerterweise hat Ken Kato einen Open Source Treiber erstellt, der auch
+ganze VMWare Platten virtuell einbindet.<br>
+
+Das Original&nbsp; <i>http://chitchat.at.infoseek.co.jp/vmware/vdk.html</i> ist 
+leider verschwunden.<br>
+Leider finden weder der Windows Diskmanager noch Drive Snapshot diese
+virtuelle Platte.<br>
+<br>
+Da VDK aber Open Source ist, konnten wir ihn anpassen, sodass zumindest Drive
+Snapshot das Laufwerk entdeckt, und damit auch partitionieren und restaurieren
+kann.</p>
+
+<p>Laden Sie <a href="http://www.drivesnapshot.de/download/vdk.zip">VDK.EXE</a>&nbsp;
+runter (ohne <b>jegliche</b> Garantie, Haftung, etc.<br>
+Quellcode ist <a href="http://www.drivesnapshot.de/download/vdksrc.zip">hier</a>
+verfügbar).</p>
+
+<p>Mounten einer Platte:&nbsp;&nbsp;&nbsp; <b>vdk open 0 VirtualDISK.VMDK /RW<br>
+</b>Unmount einer Platte:&nbsp;&nbsp;&nbsp; <b>vdk close 0 /F /Q</b></p>
+
+<h2>Restore der Platte</h2>
+
+<p>Verwenden Sie das GUI (sonst restaurieren Sie hinterher eine physikalische
+Platte, und das wollen Sie nicht).<br>
+
+Snapshot starten, [Restore], Image anwählen, [next].<br>
+
+Klicken Sie mit der rechten Maustaste unten <b>links in der Grafik </b>auf das
+Feld [HD2 Samsung 200 GB].<br>
+
+Wählen Sie <b>Restore Partitionstructure.<br>
+</b>Danach ist die virtuelle Platte
+neu partitioniert wie das Ausgangssystem.<br>
+
+Anschliessend restaurieren Sie die einzelnen Partitionen.</p>
+
+<p>Fertig.<br>
+Platte unmounten (s.o.) und im Virtual Server/VMWare booten.</p>
+
+<h2>Fertig ? Falle 1</h2>
+
+<p>Beim Booten bekommen Sie einen Bluescreen <span class="titel3">&quot;Inaccessible
+Boot Device&quot; oder &quot;Stop 0x0000007b&quot;.<br>
+
+Das Betriebssystem erkennt den (emulierten) Festplattentreiber nicht.<br>
+Die
+einfache Lösung: lassen Sie eine IDE Platte emulieren, das kann jedes
+Betriebssystem auf diesem Planeten.<br>
+Falls das keine Option ist (weil z.B.<br>
+ESX
+Server keine IDE Platten emuliert), müssen Sie dem System noch den passenden
+Treiber beibringen.<br>
+
+Am einfachsten geht das (wenn die virtuelle Platte gemountet ist), über&nbsp;</span></p>
+
+<p><b>&nbsp;&nbsp;&nbsp;</b><span class="titel3"><b> Snapshot --AddDriver</b>
+(ein aktueller Snapshot.exe vorausgesetzt)</span></p>
+
+<p><span class="titel3">der fragt Sie nach dem Treiber für den emulierten
+Adapter (DiskDriver.SYS), und nach dem Ort des Windows, in das dieser Treiber
+installiert werden soll (NewDrive:\Windows).<br>
+
+Dieser Treiber wird dann beim nächsten Start 'einfach' gestartet, dafür dass
+der richtige Treiber gewählt wird sind Sie selbst zuständig.</span></p>
+
+<p><span class="titel3">Dieses Vorgehen funktioniert (unter BartPE) auch auf
+echter Hardware, um z.B.<br>
+einen neuen RAID Controller dem System bekannt zu
+machen.<br>
+
+In diesem Fall wird aber empfohlen, den Treiber danach (im richtigen Windows) noch einmal 'richtig' zu
+installieren, da erst dann evtl.<br>
+vorhandene Controls, Überwachungsinstrumente
+etc.<br>
+installiert werden.</span></p>
+
+<p>Fertig.<br>
+Platte unmounten (s.o.) und im Virtual Server/VMWare booten.</p>
+
+<h2>Fertig ? Falle 2</h2>
+
+<p>Windows meldet, dass die Hardware sich zu sehr geändert hat, und möchte
+erneut aktiviert werden.<br>
+
+Leider funktioniert Ihre Netzwerkkarte aber noch nicht nicht, und Aktivierung
+über Internet ist nicht möglich.</p>
+
+<p>Lösung 1: verwenden Sie wieder <span class="titel3"><b>Snapshot --AddDriver </b>um
+dem System den Netzwerkkartentreiber beizubringen<br>
+Lösung 2: rufen Sie Microsoft an - die wollen das schließlich so ;)</span></p>
+
+<h2>Fertig ? Falle 3</h2>
+
+<p>alles ist Prima, die Kiste bootet, aber nachdem Sie sich anmelden, meldet
+sich die Kiste gleich wieder - kommentarlos - ab.<br>
+Lustig, oder nicht? Wer sich
+das wohl ausgedacht hat ...</p>
+
+<p>Hintergrund und Lösung: vermutlich haben Sie den aktuellen Host in die VM
+dupliziert.<br>
+<br>
+Windows vergibt für jede Platte eine sogenannte Disk Signatur; eine 32-Bit
+Zahl im MBR.<br>
+Leider werden manchmal Resourcen nicht an 'erste Platte, erste
+Partition' gebunden, sondern an 'die Platte mit der Signatur 12345678, erste
+Partition'.<br>
+
+Damit das immer eindeutig ist, sorgt Windows auch dafür, dass keine 2 Platten
+mit derselben Signatur im System stecken.</p>
+
+<p>Wenn Sie jetzt versuchen (durch 'Restore Partitionstructure'), der neuen
+virtuellen Platte dieselbe Signatur zu geben, sorgt Windows dafür, dass sie
+doch wieder anders ist.</p>
+
+<p>Abhilfe: nachdem Sie mit Partitionierung und Restore fertig sind, gehen Sie
+noch mal nach&nbsp;</p>
+
+<p>[Restore], Image anwählen, [next].<br>
+
+Klicken Sie mit der rechten Maustaste unten <b>links in der Grafik </b>auf das
+Feld [HD2 Samsung 200 GB].<br>
+
+Wählen Sie <b>Restore DiskSignature.</b></p>
+
+<p>Danach sollten Sie die virtuelle Platte so schnell wie möglich entfernen /
+unmounten.</p>
+
+<h2>Kommentare zu der Dokumentation und Vorgehensweise</h2>
+
+<p>werden gerne entgegengenommen.</p>
+
+<h2>Viel Spass</h2>
+
+<p><a href="tips.htm" target="_parent"><font size="+2">mehr Tipps</font></a></p>
+<!--webbot bot="Include" U-Include="../en/footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+</body>
+
+</html>

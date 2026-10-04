@@ -1,0 +1,803 @@
+BIOSConfig 1.0
+;
+;     Originally created by BIOS Configuration Utility
+;     Version: 4.0.25.1
+;     Date="2026/06/01" Time="22:42:29" UTC="2"
+;
+;     Found 264 settings
+;
+Product Name
+	HP EliteBook 850 G8 Notebook PC
+Processor 1 Type
+	11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+Processor 1 Speed
+	2400 MHz
+Processor 1 Cores
+	4
+Processor 1 Cache Size (L1/L2/L3)
+	320 KB / 5 MB / 8 MB
+Processor 1 MicroCode Revision
+	BE
+Processor 1 Stepping
+	1
+Processor 1 Bottom-Slot 1(left)
+	Empty
+Processor 1 Bottom-Slot 2(right)
+	16 GB Micron
+Serial Number
+	5CG220040L
+SKU Number
+	1G1X7AV
+Universally Unique Identifier (UUID)
+	5D5209BB79A37D4CB8ED4065CE73EA87
+UUID (standard format)
+	BB09525D-A379-4C7D-B8ED-4065CE73EA87
+Memory Size
+	16384 MB
+Storage Devices
+	SAMSUNG MZVLQ512HBLU-00BH1-S671NJ0T349642 (512 GB)
+System Board CT Number
+	PKPSF00WBGM5O4
+Primary Battery Serial Number
+	09125 2022/03/23
+Product Family
+	103C_5336AN HP EliteBook
+MS Digital Marker
+	010000000000000001000000000000001D00000052563836542D57424E32562D57374D39392D4D344739382D5144423647
+System BIOS Version
+	T76 Ver. 01.23.00  11/06/2025
+BIOS Build Version
+	0001
+ME Firmware Version
+	15.0.55.2751
+ME Firmware Mode
+	Enable
+Audio Controller
+	Realtek ALC3292
+Video BIOS Version
+	Intel(R) GOP Driver [17.0.1053]
+Reference Code Revision
+	A.0.88.70
+Embedded Controller Firmware Version
+	30.57.00
+USB Type-C Controller(s) Firmware Version:
+	CCG6 : 2.9.0
+Camera Controller Firmware Version:
+	Camera : 0009
+Born On Date
+	07/25/2023
+System Board ID
+	8846
+Custom Logo
+	*Not Present
+	Present
+Intel(R) Thunderbolt Retimer FW version
+	02.28.01.01
+Intel(R) Thunderbolt Retimer FW Model ID
+	884A
+Asset Tracking Number
+	
+Ownership Tag
+	
+Feature Byte
+	476J6S6b7B7H7M7Q7W7m7saBaEapaqauawbUbhcAdpdqfAfPfXguhKhkj4jhk8mEmwn7nVngnwpq.a4
+Build ID
+	21WWCVET601#SUUZ#DUUZ
+Lock BIOS Version
+	*Disable
+	Enable
+Native OS Firmware Update Service
+	Disable
+	*Enable
+BIOS Rollback Policy
+	*Unrestricted Rollback to older BIOS
+	Restricted Rollback to older BIOS
+Minimum BIOS Version
+	00.00.00
+Clear BIOS Event Log
+	*Don't Clear
+	Clear
+Manufacturing Programming Mode
+	Unlock
+	*Lock
+Password Minimum Length
+	8
+At least one symbol is required in Administrator and User passwords
+	*No
+	Yes
+At least one number is required in Administrator and User passwords
+	*No
+	Yes
+At least one upper case character is required in Administrator and User passwords
+	*No
+	Yes
+At least one lower case character is required in Administrator and User passwords
+	*No
+	Yes
+Are spaces allowed in Administrator and User passwords?
+	*No
+	Yes
+Allow User to Modify Power-on Password
+	*No
+	Change Only
+	Change or Delete
+Wake on LAN Power-on Password Policy
+	*Bypass Password
+	Require Password
+Prompt for Admin authentication on F9 (Boot Menu)
+	Disable
+	*Enable
+Prompt for Admin authentication on F11 (System Recovery)
+	Disable
+	*Enable
+Prompt for Admin authentication on F12 (Network Boot)
+	*Disable
+	Enable
+Prompt for Admin authentication on Capsule Update
+	*Disable
+	Enable
+BIOS Administrator visible at Power-on Authentication
+	Disable
+	*Enable
+TPM Specification Version
+	2.0
+TPM Device
+	Hidden
+	*Available
+TPM State
+	Disable
+	*Enable
+Clear TPM
+	*No
+	On next boot
+TPM Activation Policy
+	F1 to Boot
+	Allow user to reject
+	*No prompts
+Verify Boot Block on every boot
+	*Disable
+	Enable
+Dynamic Runtime Scanning of Boot Block
+	*Disable
+	Enable
+Sure Start BIOS Settings Protection
+	*Disable
+	Enable
+Sure Start Secure Boot Keys Protection
+	*Disable
+	Enable
+Enhanced HP Firmware Runtime Intrusion Prevention and Detection
+	*Disable
+	Enable
+Sure Start Security Event Boot Notification
+	*Time out after 15 seconds
+	Require Acknowledgment
+Sure Start Security Event Policy
+	*Log Event Only
+	Log Event and notify user
+	Log Event and power off system
+Secure Boot
+	*Disable
+	Enable
+Import Custom Secure Boot keys
+	*Do Nothing
+	On next boot
+Clear Secure Boot keys
+	*Disable
+	Enable
+Reset Secure Boot keys to factory defaults
+	*Disable
+	Enable
+Enable MS UEFI CA key
+	*No
+	Yes
+Ready to disable MS UEFI CA Key
+	Not Ready
+	*Ready
+Custom Keys Image Verification State
+	*No Custom Keys
+	Fail
+	Success
+Ready BIOS for Device Guard Use
+	*Do Nothing
+	Configure on Next Boot
+	Clear Configuration on Next Boot
+Remote Device Management Status
+	Disabled
+Remote Device Management
+	*Disable
+	Enable
+Permanently Disable Remote Device Management (Set Once)
+	*No
+	Yes
+Secure Platform Management Key Endorsement Certificate
+	
+Secure Platform Management Signing Key
+	
+Secure Platform Management Current State
+	Not provisioned
+Secure Platform Management Version
+	1.00
+Secure Platform Management Usage Bitmask
+	0x0000
+Secure Platform Management Counter
+	0
+Secure Platform Management Key Endorsement Key
+	
+HP Sure Run Current State
+	Inactive
+Permanently Disable HP Sure Run (Set Once)
+	*No
+	Yes
+HP Cloud Managed
+	*Disable
+	Enable
+Permanently Disable HP Cloud Management (Set Once)
+	*No
+	Yes
+HP Cloud Managed State
+	Disabled
+Enhanced BIOS Authentication Mode
+	*Disable
+	Enable
+Enhanced BIOS Authentication Mode Version
+	1.01
+Enhanced BIOS Authentication Mode Local Access Key 1
+	
+Enhanced BIOS Authentication Mode Settings Anti-Replay Counter
+	0
+Enhanced BIOS Authentication Mode Actions Anti-Replay Counter
+	0
+Physical Presence Interface
+	*Disable
+	Enable
+Cover Removal Sensor
+	Disable
+	*Notify user
+Power Off Upon Cover Removal
+	Disable
+	*Enable
+Clear TPM on boot after cover removal
+	*Disable
+	Enable
+Last Cover Removal and Count
+	0 times
+Save/Restore GPT of System Hard Drive
+	*Disabled
+	Enabled
+DriveLock Enabled Drives
+	
+Secure Erase Hard Disk Serial Number
+	
+Secure Erase Hard Disk Model Number
+	
+Secure Erase Completion Date
+	
+Secure Erase Completion Status
+	
+Allow OPAL Hard Drive SID Authentication
+	*Disable
+	Enable
+Permanent Disable Absolute Persistence Module Set Once
+	*No
+	Yes
+Absolute Persistence Module Current State
+	*Inactive
+	Active
+System Management Command
+	*Disable
+	Enable
+SureStart Production Mode
+	Disable
+	*Enable
+Fingerprint Reset on Reboot
+	*Disable
+	Enable
+Boot Sector (MBR/GPT) Recovery Policy
+	Local user control
+	*Recover in event of corruption
+Host Based MAC Address
+	Disable
+	*System
+	Custom
+HBMA Factory MAC Address
+	84-69-93-EA-C1-4B
+HBMA System MAC Address
+	84-69-93-EA-C1-4B
+HBMA Custom MAC Address
+	00-00-00-00-00-00
+Pre-boot HBMA Support
+	Disable
+	*Enable
+Windows HBMA Support
+	Disable
+	*Enable
+Single NIC Operation (Disable All Other NICs when HBMA is active on one NIC)
+	*Disable
+	Enable
+HBMA Priority List
+	USB NIC Dongle:HP External Adapter :0BDA_8153
+	USB NIC Dongle:HP USB-C Travel Dock :17E9_4352
+	USB NIC Dongle:HP USB Travel Dock :17E9_4351
+	USB NIC Dongle:HP 3005pr :17E9_430A
+	USB NIC Dongle:HP Universal pr :17E9_4327
+	Thunderbolt Dock:HP Elite Dock :14E4_1682:14E4_1682
+	Thunderbolt Dock:HP Elite Hook 20 :8086_5502:103C_87B9
+Select Language
+	*English
+	Deutsch
+	Espanol
+	Italiano
+	Francais
+	Japanese
+	Portugues
+	Dansk
+	Svenska
+	Nederlands
+	Norsk
+	Suomi
+	Simplified Chinese
+	Traditional Chinese
+	Russian
+Select Keyboard Layout
+	*English
+	Deutsch
+	Espanol
+	Italiano
+	Francais
+	Japanese
+	Portugues
+	Dansk
+	Svenska
+	Nederlands
+	Norsk
+	Suomi
+	Simplified Chinese
+	Traditional Chinese
+	Russian
+Sunday
+	*Disable
+	Enable
+Monday
+	*Disable
+	Enable
+Tuesday
+	*Disable
+	Enable
+Wednesday
+	*Disable
+	Enable
+Thursday
+	*Disable
+	Enable
+Friday
+	*Disable
+	Enable
+Saturday
+	*Disable
+	Enable
+BIOS Power-On Hour
+	0
+BIOS Power-On Minute
+	0
+Power On When AC Detected
+	*Disable
+	Enable
+Power On When Lid is Opened
+	*Disable
+	Enable
+Startup Delay (sec.)
+	*0
+	5
+	10
+	15
+	20
+	25
+	30
+	35
+	40
+	45
+	50
+	55
+	60
+Fast Boot
+	*Disable
+	Enable
+Audio Alerts During Boot
+	*Disable
+	Enable
+NumLock on at boot
+	Disable
+	*Enable
+Prompt on Memory Size Change
+	*Disable
+	Enable
+USB Storage Boot
+	Disable
+	*Enable
+Network (PXE) Boot
+	*Disable
+	Enable
+IPv6 during UEFI Boot
+	Disable
+	*Enable
+Network Boot TFTP Window Size
+	4
+Prompt on Fixed Storage Change
+	*Disable
+	Enable
+Prompt on Battery Errors
+	*Disable
+	Enable
+UEFI Boot Order
+	HDD:M.2:1
+	HDD:USB:1
+HP_Disk0MapForUefiBootOrder
+	PciRoot(0x0)/Pci(0x1D,0x0)/Pci(0x0,0x0)/NVMe(0x1,16-02-44-21-D3-38-25-00)/HD(1,GPT,DB0F2490-27D4-4B1A-B3E9-29403B8E745A,0x800,0x96000)/\EFI\Microsoft\Boot\bootmgfw.efi
+	PciRoot(0x0)/Pci(0x14,0x0)
+Force Cold Boot
+	*Disable
+	Enable
+	Once
+Smart Card Power Savings
+	*Disable
+	Enable
+Launch Hotkeys without Fn Keypress
+	Disable
+	Enable
+	*Auto
+Power Control
+	*Disable
+	Enable
+Swap Fn and Ctrl (Keys)
+	Disable
+	*Enable
+Fast Charge
+	Disable
+	*Enable
+USB Type-C Connector System Software Interface (UCSI)
+	Disable
+	*Enable
+Enable High Resolution mode when connected to a USB-C DP alt mode dock
+	*Disable
+	Enable
+Special Keys mapped to Fn + keypress
+	*Disable
+	Enable
+Power button delay to avoid accidental activation for system sleep or power down
+	Disable
+	*Enable
+Fan Always on while on AC Power
+	*Disable
+	Enable
+Boost Converter
+	Disable
+	*Enable
+Backlit keyboard timeout
+	5 secs.
+	15 secs.
+	*30 secs.
+	1 min..
+	5 mins.
+	Never.
+Automatic Keyboard Backlit
+	Disable
+	*Enable
+Force enable HP Sure View
+	*Disable
+	Enable
+Bluetooth
+	Disable
+	*Enable
+Wireless Network Device (WLAN)
+	Disable
+	*Enable
+Mobile Network Device (WWAN) and GPS Combo Device
+	Disable
+	*Enable
+LAN / WWAN Auto Switching
+	Disable
+	*Enable
+LAN / WLAN Auto Switching
+	Disable
+	*Enable
+Lock Wireless Button
+	*Disable
+	Enable
+TILE Deactivate
+	*Disable
+	Enable
+Configure Storage Controller for VMD
+	*Disable
+	Enable
+Intel Dynamic Tuning
+	Disable
+	*Enable
+Power Slider Plus
+	Disable
+	*Enable
+PXE Boot Booster
+	*Disable
+	Enable
+HP Application Driver
+	Disable
+	*Enable
+Sanitization Mode Countdown Timer
+	15
+	30
+	45
+	60
+	75
+	90
+	105
+	*120
+	135
+	150
+	165
+	180
+	195
+	210
+	225
+	240
+	255
+	270
+	285
+	300
+Pre-Sanitization Mode Countdown Timer
+	0
+	1
+	2
+	*3
+	4
+	5
+	6
+	7
+	8
+	9
+	10
+Enhanced Sign-In Security
+	*Disable
+	Enable
+USB Audio Offload
+	Disable
+	*Enable
+Audio Device
+	Disable
+	*Enable
+Wake On LAN
+	Disabled
+	Boot to Network
+	*Boot to Hard Drive
+	Boot to Normal Boot Order
+Microphone
+	Disable
+	*Enable
+Internal Speakers
+	Disable
+	*Enable
+Runtime Power Management
+	Disable
+	*Enable
+Extended Idle Power States
+	Disable
+	*Enable
+Headphone Output
+	Disable
+	*Enable
+Battery Health Manager
+	Maximize Battery Health Management
+	*Let HP Manage My Battery Health
+	Minimize Battery Health Management
+HP will balance your battery health and battery duration (read-only)
+	*Enabled
+	Enabled & Activated
+Disable Battery On Next Boot
+	*Do not disable
+	Next shut down
+Integrated Camera
+	Disable
+	*Enable
+Fingerprint Device
+	Disable
+	*Enable
+Battery Safety Mode
+	*Disable
+	Enable
+Video Memory Size
+	*64 MB
+	128 MB
+	256 MB
+	512 MB
+Restrict USB Devices
+	*Allow all USB Devices
+	Allow only keyboard and mouse
+	Allow all but storage devices and hubs
+USB Legacy Port Charging
+	Disable
+	*Enable
+Disable Charging Port in sleep/off if battery below (%):
+	10
+Left USB Ports
+	Disable
+	*Enable
+Right USB Ports
+	Disable
+	*Enable
+Smart Card
+	*Disable
+	Enable
+Thunderbolt Type-C Ports
+	Disable
+	*Enable
+Thunderbolt Mode
+	Disable
+	*Enable
+Turbo-boost
+	Disable
+	*Enable
+Hyperthreading
+	Disable
+	*Enable
+Virtualization Technology (VTx)
+	Disable
+	*Enable
+Virtualization Technology for Directed I/O (VTd)
+	Disable
+	*Enable
+DMA Protection
+	Disable
+	*Enable
+Pre-boot DMA protection
+	Thunderbolt Only
+	*All PCIe Devices
+Measure additional DMA settings
+	*Disable
+	PCR1
+	PCR7
+OS Recovery
+	*Disable
+	Enable
+Recover OS from Network
+	Disable
+	*Enable
+Recover OS after Boot Failure
+	Disable
+	*Enable
+Prompt before Boot Failure Recovery
+	Disable
+	*Enable
+OS Recovery Agent URL
+	https://ftp.hp.com/pub/pcbios/CPR
+OS Recovery Agent Username
+	
+OS Recovery Agent Provisioning Version
+	0
+OS Recovery Agent Public Key
+	v02IkAmb7qkyNbIVBvaz/UfnocR4c37F5wV5eTIODxqML61JVP6YRJ/yWRV/I5VqqWvyaRvR2Eip22LGkJX4SjR3HladKeiAGFzKIUxLGQk3t4zPqCn2bR7CP3kjC4NZj3l+DK5sMGGNxa+1D0wE8J++ma+5I7VcLHBdffjRw9LeCoiwL11cC2ud4JfAPV90QWbOvOmYq11WSRcyNb36zv9mtCflBNn4fYTppwuQzlfVBZaZIDSLXugPP6PKc+sxnGDKwAxaRd+Kj2Aw0tLY9IpeapJzJa4Gpdbi2Y1PLskFtxex7X8bjjVBF/0dqRs48FGF0bVqeRyhT1ExoHGPuw==
+OS Recovery Image URL
+	
+OS Recovery Image Username
+	
+OS Recovery Image Provisioning Version
+	0
+OS Recovery Image Public Key
+	v02IkAmb7qkyNbIVBvaz/UfnocR4c37F5wV5eTIODxqML61JVP6YRJ/yWRV/I5VqqWvyaRvR2Eip22LGkJX4SjR3HladKeiAGFzKIUxLGQk3t4zPqCn2bR7CP3kjC4NZj3l+DK5sMGGNxa+1D0wE8J++ma+5I7VcLHBdffjRw9LeCoiwL11cC2ud4JfAPV90QWbOvOmYq11WSRcyNb36zv9mtCflBNn4fYTppwuQzlfVBZaZIDSLXugPP6PKc+sxnGDKwAxaRd+Kj2Aw0tLY9IpeapJzJa4Gpdbi2Y1PLskFtxex7X8bjjVBF/0dqRs48FGF0bVqeRyhT1ExoHGPuw==
+Update Source
+	*HP
+	Custom
+Automatically Check for Updates
+	Daily
+	Weekly
+	*Monthly
+Automatic BIOS Update Setting
+	*Disable
+	Let user decide whether to install updates
+	Install all updates automatically
+	Install only important updates automatically
+	Download and install normal BIOS updates automatically without prompts
+	Download and install important BIOS updates automatically without prompts
+Update Address
+	
+Force Check on Reboot
+	*Disable
+	Enable
+Update BIOS via Network
+	Disable
+	*Enable
+Use Proxy
+	*Disable
+	Enable
+Proxy Address
+	
+DNS Configuration
+	*Automatic
+	Manual
+DNS Addresses
+	
+Data transfer timeout
+	100
+IPv4 Address
+	
+IPv4 Configuration
+	*Automatic
+	Manual
+IPv4 Gateway
+	
+IPv4 Subnet Mask
+	
+Force HTTP no-cache
+	Disable
+	*Enable
+Force Default IP Configuration
+	*Disable
+	Enable
+Remote HP PC Hardware Diagnostics Custom Client Upload Url
+	
+Remote HP PC Hardware Diagnostics Use Custom Download Url
+	Disable
+	*Enable
+Remote HP PC Hardware Diagnostics Custom Client Download Url
+	
+Remote HP PC Hardware Diagnostics Scheduled Execution Enabled
+	*Disable
+	Enable
+Remote HP PC Hardware Diagnostics Scheduled Execution Frequency
+	Daily
+	*Weekly
+	Monthly
+Remote HP PC Hardware Diagnostics Last Execution Status
+	0
+Remote HP PC Hardware Diagnostics Last Execution Time Stamp
+	
+Remote HP PC Hardware Diagnostics Upload Server Username
+	
+Remote HP PC Hardware Diagnostics Upload Server Password
+	
+Remote HP PC Hardware Diagnostics Execute On Next Boot
+	*Disable
+	Enable
+E-label
+	Not Present
+	*Present
+Preboot Wi-Fi Profile 1
+	{"SSID":null,"Type":null}
+Preboot Wi-Fi Profile 2
+	{"SSID":null,"Type":null}
+Preboot Wi-Fi Profile 3
+	{"SSID":null,"Type":null}
+Preboot Wi-Fi Profile 4
+	{"SSID":null,"Type":null}
+Preboot Wi-Fi Profile 5
+	{"SSID":null,"Type":null}
+Preboot Wi-Fi Profile 6
+	{"SSID":null,"Type":null}
+Preboot Wi-Fi Profile Set Status
+	
+Preboot Wi-Fi Auto Connect Profile Priority
+	Preboot Wi-Fi Profile 1
+	Preboot Wi-Fi Profile 2
+	Preboot Wi-Fi Profile 3
+	Preboot Wi-Fi Profile 4
+	Preboot Wi-Fi Profile 5
+	Preboot Wi-Fi Profile 6
+Preboot Wi-Fi Timeout
+	60
+Preboot Wi-Fi Master Auto Connect
+	Disable
+	*Enable
+Extended DHCP Timeout
+	*Disable
+	Enable
+Network TCP Buffer Size
+	*32768
+	65536
+	2097152
+Save Custom Defaults
+	*Do not Save
+	Save
+Apply Custom Defaults and Exit
+	*No
+	Yes
+Apply Factory Defaults and Exit
+	*No
+	Yes

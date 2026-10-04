@@ -1,0 +1,12 @@
+Remote Configuration (Client)
+
+1. Copy the Application to the Client %ProgramFiles%\Aida64\RMT\
+2. Open CMD
+3. goto the Application folder
+4. enter aida64.exe /ACCEPTBG /SAFE /SILENT
+
+
+Now you can Connect to this Client
+
+
+Franksoft 05.01.2012

@@ -1,0 +1,72 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<meta name="keywords" content="tom ehlert,  Disk Imaging, WinNT,Win2K, Windows NT, Drive Snapshot">
+
+<title>Drive Snapshot - Bestellen</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+
+<center><h1>Drive Snapshot - Umzug auf neue Hardware</h1>
+</center>
+
+<p>Beim Booten bekommen Sie einen Bluescreen <span class="titel3">&quot;Inaccessible
+Boot Device&quot; oder &quot;Stop 0x0000007b&quot;.<br>
+
+Das Betriebssystem erkennt den neuen Festplattentreiber nicht.<br>
+</span></p>
+<p>Falls Sie mit BartPE, WindowsPE oder Winbuilder restauriert haben, können Sie 
+in das restaurierte System einen neuen Treiber installieren.</p>
+<p>Falls der nicht erkannte Controller ein RAID/SCSI oder sonst irgendwie 
+spannend ist, fügt </p>
+<p><b>&nbsp;&nbsp;&nbsp;</b><span class="titel3"><b> Snapshot --AddDriver</b>
+</span></p>
+
+<p><span class="titel3">dem System einen neuen Treiber hinzu.<br>
+Er fragt Sie nach dem Treiber für den Adapter (DiskDriver.SYS), 
+nach DiskDriver.INF, und nach dem Ort des Windows, in das dieser Treiber
+installiert werden soll (NewDrive:\Windows).<br>
+
+Dieser Treiber wird dann beim nächsten Start 'einfach' gestartet, dafür dass
+der richtige Treiber gewählt wird sind Sie selbst zuständig.</span></p>
+
+<p><span class="titel3">Es wird aber empfohlen, den Treiber danach (im richtigen Windows) noch einmal 'richtig' zu
+installieren, da erst dann evtl.<br>
+vorhandene Controls, Überwachungsinstrumente
+etc.<br>
+installiert werden.</span></p>
+<p>&nbsp;</p>
+<p>Falls der nicht erkannte Controller S-ATA ist, hilft häufig bereits, im BIOS 
+den Controller auf 'Legacy Mode' o.ä.<br>
+zu setzen und nicht auf RAID/enhanced/AHCI 
+o.ä.</p>
+<p><span class="titel3">Außerdem (siehe
+<a href="http://www.heise.de/ct/artikel/Reanimation-289830.html">c't 6/05</a> 
+und <a href="http://support.microsoft.com/kb/314082">Microsoft KB 314082</a>) 
+werden nicht immer alle unterstützten Controller auch angesprochen; </span></p>
+<p><b>&nbsp;&nbsp;&nbsp;</b><span class="titel3"><b> Snapshot --MergeIDE</b> </span></p>
+
+<p><span class="titel3">holt das nach (funktional identisch zum Import von 
+MergeIDE.REG)</span></p>
+
+<p>Fertig.<br>
+System neu starten.</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+
+</body>
+</html>

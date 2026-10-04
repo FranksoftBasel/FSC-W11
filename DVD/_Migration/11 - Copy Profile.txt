@@ -1,0 +1,7 @@
+
+
+
+robocopy "%UserProfile%" "%cd%\Migration\%Date%\Profile" /mir /xj /r:1 /w:1 /xd "Code Cache" Cache Temp Crypto Credentials SystemCertificates Vault "Windows Live Photo Gallery" Packages PeerDistRepub "3D Objects" /xf .tmp .LOG1 .LOG2
+
+mit ACL
+robocopy "%UserProfile%" "d:\Data\Profiles\%UserName%" /mir /xj /copyall

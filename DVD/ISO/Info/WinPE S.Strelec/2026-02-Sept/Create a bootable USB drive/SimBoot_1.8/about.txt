@@ -1,0 +1,28 @@
+
+Simply Bootable Usb-Flash Drive Creator 1.8
+Released: 10.10.2015
+
+-------------------------------------
+
+Изменения:
+
+1. + Кнопка для встроенного AkelPad (lite)
+2. Исправлен баг в Qemu под Windows XP SP3 
+3. Обновлен файл справки Help.chm
+
+Changes: 
+
+1. + AkelPad button
+3. Fixed Qemu bug in Windows XP SP3  
+5. File Help.chm updated 
+
+=========================================================================
+
+Checksums / Контрольные суммы:
+
+Name:	simboot.exe
+--------
+MD5:	6f2becc820f905bf3873066293d88dc7
+SHA256:	ed1f0c706e61ff8c386531172557ddadce59c80cf08ca17d0fae56a32d84ec94
+=========================================================================
+							Mole, 2015

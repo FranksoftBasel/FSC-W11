@@ -1,0 +1,114 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+<meta name="keywords" content="Drive Snapshot, backup, Differential Backup">
+<title>Differential Backup</title>
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+
+<style type="text/css">
+<!--
+.english { color:red ;font-size:100%;visibility:hidden}
+.german  { color:green ;font-size:10%;}
+-->
+</style>
+</head>
+<body>
+
+<h1 align="center">Drive Snapshot - Differential Backup</h1>
+
+<h3>Differentielle Backups&nbsp;</h3>
+<p>Drive Snapshot erlaubt das Anlegen von differentiellen Backups.<br>
+</p>
+<p>Dabei wird nur einmal ein komplettes Image angelegt ('Full Backup'), und
+zusätzlich wird ein (kleiner) Hashfile (.HSH), welcher eine Art
+Inhaltsverzeichnis des Full Backups ist.<br>
+Bei differentiellen Backups wird
+lediglich dieses Inhaltsverzeichnis benötigt um Differenzen zu merken und zu
+sichern.<br>
+Dieser Hashfile ist lediglich für differentielle Backups relevant, und
+wird bei einer eventuellen Rücksicherung nicht benötigt.</p>
+<h3>Technische Diskussion</h3>
+<p>ein paar Bemerkungen zur Technik, warum wir differentielle und nicht inkrementelle
+Images implementiert haben, finden sich <a href="../en/idifferential.htm">(in
+Englisch)</a></p>
+<h3><b>Implementierung:</b></h3>
+<p>Es werden jeweils 3 Dateien erzeugt&nbsp;</p>
+<ul>
+  <li>das 'Full Backup'; dieses kann an einen sicheren Platz 'entsorgt' werden;
+    wird nur bei Restore und Mount/Explore gebraucht&nbsp; (.SNA, .SN1,...)
+  <li>der Hashfile; wird nur bei differentiellem Backup benötigt, und sollte
+    auf einer lokalen Platte liegen,&nbsp; (.HSH)</li>
+  <li>die differentiellen Backup(s);&nbsp; (.SNA, .SN1,...)</li>
+</ul>
+
+<p>Note: Alte Images (pre 1.37) werden voll unterstützt und sind equivalent zu
+'Full Backups'</p>
+
+<h4>Komplettes Backup + Erzeugen des Hashfile</h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot C: X:\C_full.sna&nbsp; </b>(wie immer)</p>
+
+<p>ein entsprechender .HSH Hashfile wird an der Stelle des Images angelegt.<br>
+
+Zusätzliche Optionen</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+keinen Hashfile anlegen<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -OX:\Pfad&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hashfile
+an einem anderen Ort anlegen<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -OX:\Pfad\Filename&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Hashfile mit anderem Namen anlegen</p>
+
+<h4><b>Erzeugen eines Hashfiles aus einem existierenden Full Image</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot X:\C_full.sna&nbsp; -hC_full.hsh</b></p>
+
+<p>&nbsp;</p>
+
+<h4><b>Differentielles Backup (der Hashfile muss existieren)</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot C: X:\C_diff.sna -hX:\C_full.hsh</b></p>
+
+<p>&nbsp;</p>
+
+<h4><b>Mounten (Map/Explore) eines differentiellen Images (alle Teile nüssen
+gleichzeitig online verfügbar sein)</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot X:\C_diff.sna&nbsp;</b></p>
+
+<p>mit denselben Optionen wie 'normale' Images</p>
+
+<p>&nbsp;</p>
+
+<h4><b>Restore eines differentiellen Images aus Windows/BartPE</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot X:\C_diff.sna d:</b></p>
+
+<p>mit denselben Optionen wie 'normale' Images</p>
+
+<p>&nbsp;</p>
+
+<h4><b>Restore eines differentiellen Images aus echtem DOS/der Recovery Diskette</b></h4>
+
+<p>funktioniert einfach in 2 Schritten: es werden nacheinander beide Images
+restauriert (erst das volle Backup, dann die Differenz)</p>
+
+<p><b>&nbsp;&nbsp;&nbsp; a:&gt;snapshot restore hd1 primary1 X:\C_full.sna<br>
+&nbsp;&nbsp;&nbsp; a:&gt;snapshot restore hd1 primary1 X:\C_diff.sna</b></p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" endspan i-checksum="60662" -->
+
+</body>
+</html>

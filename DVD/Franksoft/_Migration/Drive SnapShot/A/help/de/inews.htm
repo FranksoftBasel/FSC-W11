@@ -1,0 +1,312 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<meta name="keywords" content="tom ehlert,  Disk Imaging, WinNT,Win2K, Windows NT, Windows 7, 2008, Windows 10, Server 2012, Server 2016, Server 2019">
+
+<title>Drive Snapshot - Was ist neu</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+
+<center><h1>Drive Snapshot - Was ist neu</h1>
+</center>
+
+<h4>V1.48 - Dezember 2019: Drive Snapshot 1.48</h4>
+
+<ul>
+	<li>
+		Anpassungen für aktuelle Betriebssysteme (Windows 10 (1909) und Server 2019)	
+	</li>
+<li>	
+	Überarbeitung der Verschlüsselung
+</li>
+
+</ul>
+
+
+
+<h4>V1.47 - Juli 2019: Drive Snapshot 1.47</h4>
+
+<ul>
+	<li>
+		Anpassungen für aktuelle Betriebssysteme (Windows 10 (1809) und Server 2019)	
+	</li>
+<li>	
+	Komplette Überarbeitung der Verschlüsselung. Images können jetzt mit einem vorher erzeugten Schlüssel verschlüsselt werden. 
+	Es ist nicht mehr notwendig ein Passwort im Klartext anzugeben. Die Verschlüsselung wurde auf AES256 umgestellt. Die Ver- 
+	und Entschlüsselung ist auf modernen Rechnern wesentlich schneller geworden.
+</li>
+<li>
+	Möglichkeit ein Medium eines Wechsesldatenträgers nach dem Abschluss des Backups auszuwerfen(--EjectMedium)
+</li>
+<li>
+	Bei einer Vollsicherung auf Netzwerklaufwerke wird die Hash-Datei zunächst lokal erzeugt und im Anschluss 
+	an das Backup in den Zielpfad kopiert. Das bsiherige Verhalten kann mit der Option --NoLocalHashFile 
+	wieder hergestellt werden.
+</li>
+
+</ul>
+
+
+
+<h4>V1.46 - März 2018: Drive Snapshot 1.46</h4>
+
+<ul>
+	<li>
+		Anpassungen für aktuelle Betriebssysteme (Windows 10 (1709))	
+	</li>
+<li>	
+	Sehr viel schnelleres Testen von verschlüsselten Images 
+</li>
+<li>
+	Zusätzliche Möglichkeit für ein schnelleres differentielles Image (--FastDiff:)
+</li>
+<li>
+	Möglichkeit ein USB-Laufwerk nach dem Abschluss des Backups zu entfernen (--EjectDrive)
+</li>
+<li>
+	Verbesserte Reparaturfunktion bei defekten Images (--repair)
+</li>
+<li>
+Das Linux Partitionshandling wurde verbessert</li>
+<li>
+Unterstützung neuerer Versionen des XFS (V5 mit CRC) Dateisystems</li>
+
+</ul>
+
+
+<h4>V1.45 - Dezember 2016: Drive Snapshot 1.45</h4>
+
+<ul>
+<li>
+Unterstützung von Server 2016</li>
+<li>
+Unterstützung von Platten mit nativen 4k Sektoren (4kn) </li>
+</ul>
+	
+
+
+
+<h4>V1.44 - 17 April 2016: Drive Snapshot 1.44</h4>
+
+<ul>
+<li>
+Unterstützung von Windows 10</li>
+<li>
+Restaurieren ganzer Festplatten mit mehreren Partitionen</li>
+<li>
+Automatiches Einbinden eines Netzwerklaufwerks mit Snapshot</li>
+<li>NT4sp6 wird wieder unterstützt. Falls Sie Probleme mit der aktuellen Version unter NT4 haben,<br>
+ verwenden Sie bitte <a href="http://www.drivesnapshot.de/download/snap140.exe">Snapshot.exe 1.40</a>.<br>
+Windows 2000 erfordert SP3 Upgrade Rollup.</li>
+</ul>
+	
+
+
+<h4>V1.43 - 17 Februar 2014: Drive Snapshot 1.43</h4>
+
+<ul>
+<li>
+Unterstützung von Windows 8, 8.1, 2012, 2012 R2</li>
+<li>
+Unterstützung von GPT Partitionen</li>
+<li>Anpassung der Partitionsstruktur an Plattengröße</li>
+</ul>
+
+<h4>V1.42 - 14 Dezember 2012: Drive Snapshot 1.42</h4>
+
+<ul>
+<li>
+<b>beseitigt einen Fehler von 1.41 bei der Kombination von 'Restore während Neustart' und 'Reboot 
+on Success'.<br>
+Sorry.</b></li>
+</ul>
+
+<h4>V1.41 - 20 Oktober 2012: Drive Snapshot 1.41</h4>
+
+<ul>
+<li>
+Backup und Restore per <a href="ftp.htm">FTP</a></li>
+<li>
+zur Unterstützung von 64-Bit Restore Umgebungen (WindowsPE oder Windows Setup DVD)
+<a href="http://www.drivesnapshot.de/download/snapshot64.exe">Snapshot64.exe</a></li>
+<li>VSS Unterstützung mit expliziter Beteiligung aller VSS-Writer und Löschen 
+von Transaktionslogs.<br>
+Siehe
+<a href="snapshot_vss.htm">VSS</a></li>
+<li>Zusammenf&uuml;hren einer differentiellen und einer vollen Sicherung zu einer neuen vollen Sicherung incl.<br>
+der Erzeugung einer neuen Hashdatei<li>druckbares 
+<a href="handbuch.pdf">Handbuch </a>als PDF</li>
+</ul>
+
+<h4>V1.40 - 20 Feb 2010: Drive Snapshot 1.40</h4>
+
+<ul>
+<li>
+Restore des Systemlaufwerks <a href="restboot.htm">während des Neustarts des 
+Rechners</a><li>
+Unterstützung von
+Windows 7/2008 R2<li>
+<p align="left">
+Unterstützung von Linux Ext4<li>
+<p align="left">
+<a href="hardware.htm">Umzug auf neue Hardware</a> ist verbessert worden</ul>
+
+<h4>V1.39 - 15 Juli 2008: Drive Snapshot 1.39</h4>
+
+<ul>
+<li>
+Unterstützung des 'Umzugs' in <a href="vm.htm" target="_self">virtuelle
+Maschinen (VMWare/Virtual Server)</a><li>
+gemountete Snapshots sind schreibbar - und können wieder gesichert werden;
+dadurch könne Images modifiziert werden<li>
+<p align="left">
+die Möglichkeit Dateien vom Backup auszuschließen
+ ist <a href="icommandline.htm#exclude139" target="_self"> verbessert worden</a><li>
+defekte Images können - innerhalb gewisser Grenzen - <a href="icommandline.htm#repair" target="_self">repariert
+werden</a><li>
+erlaubt unter WinPE/BartPE das <a href="icommandline.htm#AddDriver" target="_self">Installieren
+zusätzlicher Treiber</a><li>
+verträgt sich besser mit Vista/2008 X64</ul>
+
+<h4>V1.38 - 23 März 2007: Drive Snapshot 1.38&nbsp;</h4>
+
+<ul>
+<li>
+Unterstützt Microsoft VSS für MS Exchange Server (<a href="snapshot_vss.htm">Details
+hier</a>)
+<li>
+Mounten mehrerer Images gleichzeitig
+<li>
+die Möglichkeit einzelne Dateien/Verzeichnisse vom Backup <a href="icommandline.htm#exclude" target="_self">auszuschließen</a>
+ ist etwas verbessert worden<li>
+die Standardgröße von Images ist jetzt 1500 MB (nicht mehr 650), sodass 3
+Images auf eine DVD passen</ul>
+
+<p>Verträgt sich besser mit <a href="vista.htm">Windows
+Vista (mehr)</a></p>
+
+<h4>V1.37 - 28 Februar 2007: Drive Snapshot 1.37</h4>
+
+<p>Immer noch 1.37, verträgt sich aber besser mit <a href="vista.htm">Windows
+Vista (mehr)</a></p>
+
+<h4>V1.37 - 17 November 2005: Drive Snapshot 1.37</h4>
+
+<ul>
+<li>
+<a href="differential.htm" target="_parent">differentielles Backup</a>
+<li>
+Möglichkeit einzelne Dateien/Verzeichnisse vom Backup <a href="icommandline.htm#exclude" target="_self">auszuschließen</a>
+<li>
+Ersetzung auf der Kommandozeile von <a href="icommandline.htm#replace" target="_self">$DATE,$DRIVE,...</a><li>
+Unterstützung von Windows64 X64 (nicht IA64-Itanium)<li>
+Windows Longhorn Beta 1 (hat einfach funktioniert)</ul>
+
+<h4>V1.36 - 20 Juli 2005: Drive Snapshot 1.36</h4>
+&nbsp;&nbsp;&nbsp;&nbsp; ältere Versionen von Drive Snapshot <b><font color="#FF0000">sind nicht
+kompatibel mit Windows
+2003 SP1</font></b><p>Neu:&nbsp; Backup:</p>
+
+<ul>
+<li>
+Partitionen ohne Laufwerksbuchstaben (die über Mountpoints angesprochen werden)<li>
+Compaq/HP/Dell Service Partitionen<li>
+Linux Ext2/Ext3/Reiser/Swap Partitionen (diese können nicht gemountet werden)<li>
+Image Dateien werden so defragmentiert wie möglich abgespeichert<li>
+USB Sticks werden unterstützt<li>
+Ein bisschen Grafik im User Interface ;)</ul>
+
+<p>Restore:</p>
+
+<ul>
+<li>
+auf alle obigen Partitionen<li>
+wenn die Rücksicherung unter Windows/BartPE erfolgt, kann die Dateisystemgröße
+der Partitionsgröße für NTFS Laufwerke angepasst werden.<br>
+
+Vergrößern ist immer möglich; verkleinern nur bis zur Größe des höchsten
+belegten Sektors auf dem Laufwerk (nicht auf die belegte Größe der Dateien);
+im wesentlichen auf die Größe, die der Disk Defragmentierer anzeigt.<li>
+Im GUI können Partitionen erzeugt werden; <b> <font color="#FF0000"> versuchen Sie die rechte Mausttaste</font></b></ul>
+
+<p>beseitigte Fehler:</p>
+
+<ul>
+<li>
+bisher waren nur Images, die in weniger als 256 Dateien aufgesplittet waren,
+mountbar.<br>
+
+Jetzt werden bis zu 65535 Dateien (jede maximal 256 TB groß) unterstützt.<li>
+Unterstützung von Windows 2000/2003 Terminal Server<li>
+korrektes Verhalten, wenn Speicherkarten (MMC) nicht gesteckt sind<li>
+und natürlich diverser Kleinkram</ul>
+
+<p>&nbsp;</p>
+
+<h4>V1.35 -1 Mai 2004</h4>
+<ul>
+<li>
+BUG: Snapshot Backup war nicht kompatible mit Windows 2003 Server, und meldete:<br>
+&nbsp;&nbsp;&nbsp; 'Driver reports error: IRQL 5'.<br>
+beseitigt.<li>
+BUG: Die Notfalldiskette konnte nicht mit der Intel E1000 Netzwerkkarte umgehen.<br>
+
+beseitigt.</ul>
+
+<h4>V1.34 -22 Apr 2004</h4>
+<ul>
+<li>
+BUG: Snapshot Backup hat unter gewissen Umständen BlueScreens verursacht.<br>
+
+beseitigt.<li>
+BUG: DOS Restore funktionierte nicht mit (prähistorischen) Platten, die LBA
+nicht unterstützen.<br>
+beseitigt.<li>
+Neu: SafeGuard Easy wird erkannt, und besondert behandelt.<li>
+Neu: Der DOS Teil wird mit dem ExePacker <a href="http://www.ibsensoftware.com/products_aPACK.html">APACK</a>
+gepackt - und spart noch mal 3K;)</ul>
+
+<h4>V1.33 -1 Mar 2004</h4>
+<ul>
+<li>
+Neu: Auf speziellen Wunsch kann auch Backup/Restore von Kommandozeile eine 
+graphische Fortschrittsanzeige;<br>
+die Kommandozeilenoption -G&nbsp; (grafisch) erlaubt dies.<li>
+Neu: Wenn sich beim Restore die Plattengeometrie ändert ((Zylinder/Sektoren),
+ist das System nicht boot<br>
+Eine neue Option<br>
+&nbsp; DOS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Snapshot&nbsp;&nbsp;&nbsp;
+CHECKBOOT HD1<br>
+&nbsp; Windows: Snapshot -!CHECKBOOT HD1<br>
+beseitigt dies.<br>
+1.36 wird dies automatisch erledigen.<li>
+Kommandozeile: Wenn die Ausgaben in einen File umgeleitet werden, wird der
+Fortschrittstatus nicht mehr in diesen File geschrieben.<li>
+Formatierungen, Schreibfehler,...</ul>
+
+<h4>V1.30 - 9 Oktober 2003</h4>
+<ul>
+<li>
+Unterstützung von UDMA in der DOS Notfalldiskette&nbsp;<a href="makebootdisk.htm">[mehr]</a><li>
+Die Möglichkeit, den Datenteil innerhalb einer Partition zu vergrößern oder
+zu verkleinern <a href="resize.htm">[mehr]</a></ul>
+<p>&nbsp;</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+
+</body>
+</html>

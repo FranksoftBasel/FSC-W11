@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="en-us">
+    <meta name="keywords" content="disk image, disk, image, Disk Imaging, Windows NT,Windows 2000, Windows XP">
+    <title>
+      Drive Snapshot - FTP
+    </title>
+    <link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+    <base target="_parent">
+  </head>
+  <body>
+    <h1>
+      Using Volume Shadow Copy Service (VSS) with and without explicit usage of 
+      writers</h1>
+    <div id="gt-res-content" class="almost_half_cell">
+      <div dir="ltr" style="zoom:1">
+        <span id="result_box" class lang="en"><span class="hps">The</span>
+        <span class="hps">Volume Shadow Copy</span> <span class="hps">Service (VSS)</span>
+        <span class="hps">of Windows</span> <span class="hps">has been available 
+        since</span> <span class="hps">Windows XP/2003</span><span class>.<br>
+</span>
+        <span class="hps">It can be used by application</span> <span class="hps">
+        to create</span> <span class="hps">a shadow copy</span>
+        <span class="hps">of</span> <span class="hps">one or more partitions</span>.<br>
+
+        <span class="hps">The</span> <span class="hps">components that 
+        communicate</span> <span class="hps">with the VSS</span>
+        <span class="hps">are called</span> <span class="hps">VSS writer</span>.<br>
+
+        <span class="hps">You can</span> <span class="hps">before and after a</span>
+        <span class="hps">backup</span> <span class="hps">perform actions.<br>
+</span>
+        <span class="hps">A list</span> <span class="hps">of the available 
+        system</span> <span class="hps">writers</span> <span class="hps">can 
+        obtained by</span> <span class="hps">the command</span><span class>:</span></span></div>
+    </div>
+&nbsp;<p><b>vssadmin list writers</b></p>
+
+Snapshot can use VSS in two different modes.<br>
+
+
+<h3>VSS without explicit usage of writers</h3>
+
+<li>	Creates a shadow copy, that contains a konsistent copy of all existing 
+data.</li>
+<li>Snapshot uses this mode automatically if more then one partition is 
+selected, or MS Exchange is detected.<br>
+(in Windows SBS2003 the necessary Exchange 
+writer is disabled by default, and must be enabled; see&nbsp; <a href="http://support.microsoft.com/kb/838183">http://support.microsoft.com/kb/838183)</a> </li>
+
+<li>writers are not used in an explicit way, and no specific actions are taken.</li> 
+<li><span id="result_box0" class lang="en"><span class="hps">Transaction logs</span>
+<span class="hps">on an Exchange server</span> <span class="hps">will not be 
+truncated</span> <span class="hps">after the backup,</span> <span class="hps">
+and a</span> <span class="hps">Hyper</span><span class>-V host</span>
+<span class="hps">does not notify</span> <span class="hps">the</span>
+<span class="hps">virtual machines running</span> <span class="hps">on</span>
+<span class="hps">the scheduled backup</span></span>.</li><br /><br />
+
+<h3>VSS mit expliziter Beteiligung von Writern</h3>
+
+<li><span id="result_box1" class lang="en"><span class="hps">This mode uses</span>
+<span class="hps">snapshot</span> <span class="hps">only if instructed</span>
+<span class="hps atn">(</span>Advanced Backup <span class="hps">Options</span>
+<span class="hps">dialog</span>).<br>
+<span class="hps">The explicit</span>
+<span class="hps">involvement of all</span> <span class="hps">writers</span>
+<span class="hps">forcing</span> <span class="hps">by ticking</span>
+<span class="hps">at</span> <span class="hps">Explicitly</span>
+<span class="hps">include</span> <span class="hps">all</span> <span class="hps">
+VSS</span> <span class="hps">writers</span>.<br>
+<span class="hps">This means that 
+all</span> <span class="hps">the started</span> <span class="hps">VSS writers</span>
+<span class="hps">are notified about the starting backup</span>,
+<span class="hps">and</span> <span class="hps">can go ahead and</span>
+<span class="hps">carry out</span> <span class="hps">special operations</span></span>.<br>
+</li>
+<li>In this mode a Hyper-V Server would stop virtual machines running on it for 
+a short time until the the shadow copy has been taken.</li>
+    <li>An Exchange server will - after snapshot signals a successful backup - 
+    truncate transaction logs</li>
+    <li>Each writer is responsible for each owns actions.</li>
+<li><span id="result_box2" class lang="en"><span class="hps">Snapshot has</span>
+<span class="hps">no effect on the</span> <span class="hps">actions</span>
+<span class="hps">carried out by the</span> <span class="hps">writers</span></span>.</li><span id="result_box3" class lang="en"><span class="hps">A 
+detailed</span> <span class="hps">control of the</span> <span class="hps">Writer 
+is</span> <span class="hps">possible by using</span> <span class="hps">the 
+command line</span>, <span class="hps">for example if you</span>
+<span class="hps">already have</span> <span class="hps">a dedicated</span>
+<span class="hps">Exchange backup</span> <span class="hps">feature</span>
+<span class="hps">and</span> <span class="hps">do not</span> <span class="hps">
+want</span> <span class="hps">that</span> <span class="hps">snapshot</span>
+<span class="hps">triggers</span> <span class="hps">the deletion</span>
+<span class="hps">of the transaction logs</span>:</span>
+<ul type="square">
+<li>--AllWriters <br /> <span id="result_box4" class lang="en">
+<span class="hps">With this option,</span> <span class="hps">use</span>
+<span class="hps">the Volume Shadow Copy</span> <span class="hps">Service</span>
+<span class="hps">snapshot</span> <span class="hps">in a</span>
+<span class="hps">mode that</span> <span class="hps">notifies all</span>
+<span class="hps">involved applications</span> <span class="hps">explicitly</span>
+<span class="hps">about the process</span> <span class="hps">of the backup.<br>
+</span>
+<span class="hps">The</span> <span class="hps">writer</span> <span class="hps">
+then</span> <span class="hps">have</span> <span class="hps">the opportunity to</span>
+<span class="hps">perform</span> <span class="hps">before</span>
+<span class="hps">and</span> <span class="hps">after the</span>
+<span class="hps">backup</span> <span class="hps">necessary actions</span>.<br>
+
+<span class="hps">A</span> <span class="hps">Hyper-V</span> <span class="hps">
+server</span> <span class="hps">running virtual machines</span>
+<span class="hps">with</span> <span class="hps">virtual machines</span>
+<span class="hps">notified</span> <span class="hps">of impending</span>
+<span class="hps">backup</span>.<br>
+<span class="hps">Virtual</span>
+<span class="hps">machines on which</span> <span class="hps">no</span>
+<span class="hps">integration services are installed</span>, are stopped
+<span class="hps">short</span> <span class="hps">of creating</span>
+<span class="hps">the shadow copy</span></span>.</li>
+<li>--ExcludeWriter:"NameWriter1","NameWriter2","NameWriter3",...<br />
+This options sets implicit --AllWriters and excludes
+<span id="result_box5" class="short_text" lang="en"><span class="hps">the</span>
+<span class="hps">list of</span> <span class="hps">specified writers.</span><span class></span></span></li>
+<li>--IncludeWriter:"NameWriter1","NameWriter2","NameWriter3",...<br />
+Using this option only the specified writer will be notified.</li>
+</ul>
+
+
+	&nbsp;
+  </body>
+</html>

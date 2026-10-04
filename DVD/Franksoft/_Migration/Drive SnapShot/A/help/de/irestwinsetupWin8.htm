@@ -1,0 +1,158 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   <meta http-equiv="Content-Language" content="de">
+   <link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+   <style type="text/css"></style>
+   <base target="_parent">
+   <meta name="robots" content="index,follow">
+   <meta name="revisit-after" content="10 days">
+   <meta name="content" content="Backup ,Disk Cloning, Disk Imaging, Disaster recovery, DOS, WinPE, Windows PE, bare metal recovery, Neustart, Restart">
+   <meta name="description" content="Drive SnapShot restore from Setup DVD">
+   <meta name="keywords" content="Image, Disk, Windows PE, WinPE">
+   
+<title>Drive Snapshot - Restore von Windows Setup DVD</title></head>
+<body>
+<table BORDER=0 CELLSPACING=2 CELLPADDING=0 COLS=1 >
+<TBODY>
+</TBODY>
+
+<tr ALIGN=CENTER>
+<td><b><font size="+2">Wiederherstellen
+  des Systemlaufwerks von einer Windows 8 Setup DVD </font></b></td>
+</tr>
+
+</table><font FACE="LMRoman12-Regular">
+<p ALIGN="LEFT">Von einer Windows Setup DVD (Windows 7 oder neuer) kann man 
+booten, und aus dieser Umgebung den Rechner restaurieren.</p>
+<h3 ALIGN="LEFT">Wenn Sie keinen zusätzlichen Treiber für die Festplatte 
+benötigen</h3>
+<p ALIGN="LEFT">nach dem Booten, in Bild 1, selektieren Sie die Sprache und 
+Tastatur, drücken Umschalt-F10, und landen in der Eingabeaufforderung.</p> </font>
+<p ALIGN="LEFT">Wechseln Sie in 
+das
+Verzeichnis, in dem sich Snapshot befindet. Starten Sie hier das Programm und 
+führen das Restaurieren aus.</p>
+<p ALIGN="LEFT">Falls Sie die Fehlermeldung '<span class="st">Das zum 
+Unterstützen des Abbildtyps erforderliche <em style="font-style: normal">
+Subsystem</em> ist <em style="font-style: normal">nicht vorhanden' erhalten, 
+haben Sie von einer 64-Bit DVD gestartet, und müssen </em></span>die 64-Bit Version von Snapshot (<b>snapshot64.exe</b>) verwenden.</p>
+<p ALIGN="LEFT">Es hat sich als 
+praktisch
+erwiesen, die Datei snapshot.exe, snapshot64.exe und die Imagedateien im selben Ordner abzulegen. </p>
+<p ALIGN="LEFT">Falls Sie Netzwerkunterstützung benötigen, können Sie diese durch das 
+Kommando</p>
+<p ALIGN="LEFT"><font FACE="LMMono12-Regular">&nbsp;&nbsp;&nbsp; </font>
+<font face="Verdana" size="3">wpeutil initializenetwork</p>
+</font><font FACE="LMRoman12-Regular">
+<p align="justify">starten. </p>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8LanguageDE.png" width="630" height="467"><p>
+      <b>Bild1: Sprache wählen, dann mit Umschalt-F10 zur Eingabeaufforderung</b></td>
+    </tr>
+  </table>
+</div>
+<p>&nbsp;</p>
+<h3 ALIGN="LEFT">Wenn Sie DOCH einen zusätzlichen Treiber für die Festplatte 
+benötigen</h3>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8RepairDE.png" width="630" height="467"><p>
+      <b>Wählen Sie "Computerreparaturoptionen"</b></td>
+    </tr>
+  </table>
+  <p>&nbsp;</div>
+<div align="left">
+&nbsp;<table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8TroubleShootDE.png" width="628" height="471"><p>
+      <b>Dann "Problembehandlung"</b></td>
+    </tr>
+  </table>
+<p>&nbsp;</div>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8AdvanceDE.png" width="630" height="467"><p>
+      <b>Jetzt "Erweiterte Optionen"</b></td>
+    </tr>
+  </table>
+  <p>&nbsp;</div>
+<p align="justify">&nbsp;</p>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8SystemImageRecoveryDE.png"><p>
+      <b>"Systemimage-Wiederherstellung"</b></td>
+    </tr>
+  </table>
+<p>&nbsp;</div>  
+<p align="justify">&nbsp;</p>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8Driver1DE.png"><p>
+      <b>"Abbrechen"</b></td>
+    </tr>
+  </table>
+<p>&nbsp;</div>
+<p align="justify">&nbsp;</p>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8Driver2DE.png"><p>
+      <b>danach "Weiter"</b></td>
+    </tr>
+  </table>
+</div>
+<p align="justify">&nbsp;</p>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8Driver3DE.png"><p>
+      <b>"Erweitert"</b></td>
+    </tr>
+  </table>
+</div>
+<p align="justify">&nbsp;</p>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8Driver4DE.png"><p>
+      <b>Nun können Sie den Treiber installieren. Anschließend klicken Sie solange auf "Abbrechen" bis Sie wieder folgenden Dialog sehen.</b></td>
+    </tr>
+  </table>
+</div>
+<p align="justify">&nbsp;</p>
+<div align="left">
+  <table border="0" width="703" height="38">
+    <tr>
+      <td height="38" width="697">
+      <img border="0" src="../images/W8TroubleShootDE.png"><p>
+      <b>Drücken Sie Umschalt-F10 zum Öffnern einer Kommandozeile</b></td>
+    </tr>
+  </table>
+  <p>&nbsp;</div>
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+
+<title>Advanced Backup Options</title>
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+<body>
+<h1 align="center">Optionen für Fortgeschrittene:</h1>
+<hr>
+
+<p>
+<map name="FPMap0">
+<area href="back2.htm" shape="rect" coords="90, 403, 166, 432"></map>
+<img border="0" src="../images/advbac.png" usemap="#FPMap0" align="middle" hspace="10" vspace="10" width="581" height="441">
+</p>
+
+
+
+<p>
+
+Keine dieser Optionen ist für die normale Nutzung von Snapshot wichtig,
+Sie können normalerweise die Voreinstellungen übernehmen.<br>
+
+
+</p>
+
+<h3>VSS Options
+
+</h3>
+
+<p>erzwingt oder verhindert die Verwendung von VSS; <a href="snapshot_vss.htm">siehe
+auch</a>
+
+</p>
+
+<h3>
+Maximale Größe für einzelne Imagefiles angeben
+
+</h3>
+
+<p>Snapshot Image Files können sehr groß werden.<br>
+Andererseits sollten sie eine
+gewisse Groesse nicht überschreiten, sonst sind sie entweder nicht mehr unter
+DOS zu bearbeiten (Limit = 2047MB), nicht mehr auf CD-R (Limit = 650-900MB),
+oder nicht mehr auf ISO-DVD (Limit 2048 MB) zu brennen.<br>
+
+
+</p>
+
+<p>Deswegen unterteilt SNAPSHOT Image Dateien in einzelne Unterdateien .SNA, .SN1,.Sn2,..,.SN9,.S10...S99,.100...999,.1000
+etc.<br>
+
+
+</p>
+
+<p>Sollten Sie größere CD-R's verwenden (700 und 800 MB sind derzeit
+'Standard'), können Sie dies hier einstellen.<br>
+Mit dem <b> voreingestellten Wert von
+1500MB</b> passen 3 Images auf eine DVD.<br>
+
+
+</p>
+
+<h3>
+Wartungs- (Maintenance) Modus
+
+</h3>
+
+<p>
+Dies ist sinnvoll, wenn Sie die Festplatte sichern wollen, bevor Sie mit einem
+sogenannten 'Data Recovery' Tool auf die Festplatte losgehen, weil Sie zum
+Beispiel alle Dateien gelöscht haben, und Sie ein paar doch noch brauchten.<br>
+
+In diesem Fall ist in der Regel die Information des Dateisystems zu der
+Festplatte nicht mehr sinnvoll.<br>
+
+In diesem Fall speichert (und restauriert) Snapshot alle Sektoren der
+Festplatte, egal ob Sie genutzt werden oder nicht.<br>
+
+
+</p>
+
+<h3>Hash File Options
+
+</h3>
+
+<p>
+normalerweise wird bei jedem Full Backup auch ein Hashfile erzeugt; dieser wird
+für differentielle Images benötigt.<br>
+
+
+</p>
+
+<p>
+Sollten Sie nicht vorhaben, differentielle Images zu verwenden, können Sie das
+hier abschalten.<br>
+
+
+</p>
+
+<p>
+mit <b>[Create Hash file from full image] </b>können Sie einen evtl.<br>
+'verloren'
+gegangenen Hashfile neu erzeugen
+
+</p>
+
+<h3>
+Einstellungen als Standard übernehmen
+
+</h3>
+
+<p>Auf Wunsch werden diese Einstellungen nur einmalig (jetzt) verwandt, oder als
+Standarteinstellungen übernommen.<br>
+
+
+</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+</body>
+</html>

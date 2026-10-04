@@ -1,0 +1,237 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="robots" content="follow, index">
+<title>Differential Backup</title>
+<meta name="keywords" content="Drive Snapshot, backup, Differential Backup">
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+
+<style type="text/css">
+<!--
+.english { color:red ;font-size:100%;visibility:hidden}
+.german  { color:green ;font-size:10%;}
+-->
+</style>
+</head>
+<body>
+
+<h1 align="center">Drive Snapshot - Differential Backup</h1>
+
+<h3>Differential Backups</h3>
+<p>Drive Snapshot allows the creation of differential backups.</p>
+<p>Differential backups can only be made only once a full image (which is
+identical to old images) is created.<br>
+After that, a differential backup contains
+only the changes done since the last full backup.</p>
+<p>For a discussion of why differential backups were chosen, and some
+implementation details <a href="#details">see below</a>.</p>
+<h3><b>Implementation and usage:</b></h3>
+<p>There are three different files used</p>
+<ul>
+  <li>the 'Full Backup'; this can be put far away into a safe place, and is no
+    longer used for backups, only for&nbsp; viewing or restoring.<br>
+
+  <li>a checksum ('hash') file with extension .HSH; this is a directory of the
+    full image.<br>
+It's only used when creating differential images; you may delete
+    it if you don't plan to use differential images.<br>
+
+    By default, it's placed into the same destination as the full image, buit
+    should preferably be located on a local drive (for performance reasons)</li>
+  <li>differential backup files;&nbsp; (.SNA, .SN1,...)</li>
+</ul>
+
+<p>Note: Old Images (pre 1.37) are fully supported, and are equivalent to 'full'
+images.</p>
+
+<h4><b>Complete (full) Backup; generating a checksum file at the same time:</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot C: X:\C_full.sna&nbsp; </b>(as usual)</p>
+
+<p>a corresponding .HSH Hash-file will be created automatically at the location
+of the imagefile.<br>
+
+Additional Options</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+disable hashfile generation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -ODirname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+create Hashfile in a different location<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -ODirname\Filename&nbsp;&nbsp;&nbsp;&nbsp;
+create Hashfile with a different name</p>
+
+<h4><b>(Re-)Creation of the checksum file from an existing, possibly old, image:</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot X:\C_full.sna&nbsp; -HC_checksum.hsh</b></p>
+
+<p>&nbsp;</p>
+
+<h4><b>Differential Backup (the checksum file must exist):</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot C: X:\C_diff.sna -hX:\C_full.hsh</b></p>
+
+<p>&nbsp;</p>
+
+<h4><b>Map and Explore of a differential Image (all parts must be online
+accessible):</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot X:\C_diff.sna&nbsp;</b></p>
+
+<p>with the same options as with a 'normal' image</p>
+
+<p>&nbsp;</p>
+
+<h4><b>Restoring a differential Images from Windows:</b></h4>
+
+<p><b>&nbsp;&nbsp;&nbsp; C:&gt;snapshot X:\C_diff.sna d:</b></p>
+
+<p>with the same options as with a 'normal' image</p>
+
+<h4><b>Restoring a differential image from REAL DOS (the recovery disk)</b></h4>
+
+<p>is done in 2 steps: simply restore both images (the full and then the diff)
+after each other</p>
+
+<p><b>&nbsp;&nbsp;&nbsp; a:&gt;snapshot restore hd1 primary1 X:\C_full.sna<br>
+&nbsp;&nbsp;&nbsp; a:&gt;snapshot restore hd1 primary1 X:\C_diff.sna</b></p>
+
+<h3>&nbsp;</h3>
+<h3>&nbsp;</h3>
+<h3><a name="details"></a><b>Technical discussion</b></h3>
+
+<h3>Comparison differential vs.<br>
+incremental backups</h3>
+<p>Both incremental and differential backups serve the same purpose: to make the
+amount of data saved every day (actually on every backup) smaller.</p>
+<p>Both methods start with a full backup; thereafter incremental changes will
+only save the data changed since the last backup, while differential saves all
+data changed since the last full backup.</p>
+<p><b>Size: </b>Obviously incremental backups create smaller daily backup files.<br>
+
+However with differential backups it's possible to 'thin out' older backups like&nbsp;<br>
+&nbsp;&nbsp;&nbsp; 'delete backups older then 1 month, that were created during the week', keeping
+only Fridays backups.<br>
+
+While the daily data will be smaller for incremental backups, the total sum of
+backup data might be smaller for differentials.</p>
+<p><b>Reliability:</b> when restoring an incremental backup,&nbsp; each and every
+increment must be available and readable.<br>
+Even a single increment&nbsp; that is broken/unreadable/lost makes the rest of the chain
+useless - and you won't learn about this until you (unsuccessfully) try to restore.<br>
+<br>
+ This is different for sector-based backups (like Drive Snapshot and similar
+products)&nbsp; than for usual
+file-based backups, where you might be lucky and have the same file again in a later
+image, but in sector based images, every sector may be important - and isn't
+necessarily changed later again.<br>
+
+In contrast, the restore of a differential requires only 2 working readable
+images (the full and the differential); even if the differential is broken,
+restore of the backup one day before or after will be possible.</p>
+<p><b>Restore speed: </b>Restoring an incremental backup requires restore of all
+images up to the restore date; restoring a differential backup requires only restore
+of the full backup + one differential which will be usually (much) smaller (and
+might avoid a lot of DVD swapping).</p>
+<p><b>Easiness to handle and understand: </b>we think that 2 files are easier to
+handle and understand (both by the software and the user) then a potential
+unlimited number of increments.<br>
+It's also much easier to check if the image is
+complete before restore - checking this if the backup is spread over 50 daily
+DVD is something the user is unlikely to do.</p>
+<p>&nbsp;</p>
+<h3>Design decision - differential vs.<br>
+incremental backups</h3>
+<p>Of course, at this point it's clear we have implemented differential backup, else
+our argument would be different ;)</p>
+<h4>other design decisions: compare vs.<br>
+tracking changes</h4>
+<p>for differential/incremental backups, you have to know what changed since the
+last backup.<br>
+This can be done by tracking changes, or by comparing the current
+data with the data in the image.<br>
+
+While tracking changes is much faster then comparing with old image, and
+probably possible (at least one competitor implements incremental this way), we
+think that tracking changes across reboots, and possibly across access by a
+different operating system, is at least&nbsp; problematic, if reliable at
+all.<br>
+</p>
+<p>Therefore Drive Snapshot compares the current data with the full image.<br>
+Most
+of the time, it should run at about the hardware read speed of the drive being
+backed up; expect ~2-3 GB/min backup rate on moderate modern&nbsp; hardware.</p>
+<h4>other design decisions: real compare vs.<br>
+hash file</h4>
+<p>On the other hand, we would like to have the option to put the full image in
+a real safe place, possibly a DVD, or on a different server, possibly behind a
+(slow) internet connection.</p>
+<p>For this reason, Drive Snapshot creates a Checksum File of the full image;
+all data are compared not to the full image but instead to its checksum.<br>
+Since
+the Checksum file is much smaller (around 0.5% of the used data), it can (and
+should) be stored locally, while the original full image can be safely
+removed/put into a safe place.<br>
+</p>
+<p>While using checksum files seems slightly unsafe, it actually is safe.<br>
+As
+implemented, the checksums are 128 bit, and are used to compare one block of
+4KByte with the original 4KByte at the same place on the disk.<br>
+
+Thus the probability of wrongly identifying a single block as identical is
+2^-128; the probability of failure in a complete backup of 4TB is&nbsp; 2^30 *
+2^-128 = 2^-98.<br>
+
+<br>
+</p>
+<h4><a name="ishashingreliableenough">FAQ: is hashing reliable enough</a></h4>
+<p>Wouldn't it be more reliable to compare data directly instead of only the
+checksums ?</p>
+<p>Using a checksum of 128 Bits will make an error every 2^128 Blocks, 4KB each.<br>
+
+For a complete image of 4TB, using hashing will falsely identify a sector as
+'already existing' with probability of 2^-98.</p>
+<p>On the other hand, current hard disks have a <b>non-recoverable </b>error rate
+of surprisingly low 2^-45 (one non recoverable sector per 10^14 byte = 100TB) at
+best (search www.google.com for 'error rate non-recoverable').<br>
+ And tapes aren't
+much better, somewhere between 10^14-10^17.</p>
+<p>
+So it's <b>much</b> more probable (2^50 = 10^15) you can't restore an image due
+to a failing hard disk, than to a bad restored image due to failing checksums.<br>
+
+We consider checksums safe.</p>
+<h4><a name="diskdeframentation">FAQ: what about disk
+defragmentation</a> ?</h4>
+<p>It tolerates defragmentation.<br>
+It just compares the data at sector X
+with the old data at this place, finds them unequal, and saves the new data
+since they have changed, so the differential might grow significantly larger.</p>
+<p>In real life this problem isn't as bad as it sounds, if the full backup is
+taken at a time when the machine is mostly set up, and has been defragmented.<br>
+
+After this first defragmentation (which can move a lot of data around), usually
+only new data will be moved by a defragmentation run, but new data would have
+been saved anyway.</p>
+<p>This could be overcome by using the checksums as a database to locate the
+data somewhere else on the disk, and store something like 'these data for the
+current sector X were in the original image at sector Y'.<br>
+Unfortunately, this
+would force&nbsp; both the differential image and all parts of the full image to
+be online accessible at the same time, which would make restore from CD/DVD's
+impossible.</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+</html>

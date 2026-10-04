@@ -8,40 +8,61 @@
         { "VTOY_SECONDARY_BOOT_MENU": "0" },
         { "VTOY_DEFAULT_KBD_LAYOUT": "GERMAN" },
         { "VTOY_MENU_LANGUAGE": "de_DE" },
-        { "VTOY_DEFAULT_IMAGE": "/ISO/02. WinPE AnkhTech 15.iso" }
+        { "VTOY_DEFAULT_IMAGE": "/ISO/03. WinPE AnkhTech 15.iso" }
     ],
     "theme":{
         "file": "/ventoy/themes/arco/theme.txt",
         "fonts":[
-            "/ventoy/themes/arco/ubuntu_regular_20.pf2",
-            "/ventoy/themes/arco/ubuntu_regular_17.pf2",
-            "/ventoy/themes/arco/terminus-18.pf2",
-            "/ventoy/themes/arco/terminus-16.pf2",
-            "/ventoy/themes/arco/robotoslab-bold_16.pf2",
-            "/ventoy/themes/arco/robotoslab_16.pf2",
-            "/ventoy/themes/arco/firasans-bold_16.pf2",
-            "/ventoy/themes/arco/firasans_16.pf2",
-            "/ventoy/themes/arco/firamono-bold_16.pf2",
-            "/ventoy/themes/arco/firamono_16.pf2"
+            "/ventoy/themes/arco/terminus-18.pf2"
         ]
     },
-    "menu_alias":[
-        {
-            "image": "/Sources/boot.wim",
-            "alias": "12. Windows 11 Pro 25H2 Franksoft Client (USB)"
-        }
-    ],
     "menu_alias_legacy":[
         {
             "image": "/Sources/boot.wim",
-            "alias": "12. Windows 11 Pro 25H2 Franksoft Client (USB)"
+            "alias": "Windows 11 Pro 25H2 Franksoft Client (USB)"
+        },
+        {
+            "image": "/ISO/08. Windows 11 Pro 26H2 Okt 2026 (MCT).iso",
+            "alias": "Windows 11 Pro 26H2 Okt 2026 (MCT)"
+        },
+        {
+            "image": "/ISO/01. WinPE NHV Boot 2600 Extreme.iso",
+            "alias": "WinPE NHV Boot 2600 Extreme"
+        },
+        {
+            "image": "/ISO/02. WinPE SST 2026.09.08.iso",
+            "alias": "WinPE SST 2026.09.08"
+        },
+        {
+            "image": "/ISO/03. WinPE AnkhT 15.iso",
+            "alias": "WinPE AnkhT 15"
+        },
+        {
+            "image": "/ISO/04. WinPE Active@ Boot Disk 26.0.1.iso",
+            "alias": "WinPE Active@ Boot Disk 26.0.1"
+        },
+        {
+            "image": "/ISO/05. Linux Ubuntu 26.04.1.iso",
+            "alias": "Linux Ubuntu 26.04.1"
+        },
+        {
+            "image": "/ISO/06. Linux Kubuntu 26.04.1.iso",
+            "alias": "Linux Kubuntu 26.04.1"
+        },
+        {
+            "image": "/ISO/07. Linux Zorin 18.1 Pro.iso",
+            "alias": "Linux Zorin 18.1 Pro"
+        },
+        {
+            "image": "/ISO/09. Windows 11 Enterprise 25H2 DE.iso",
+            "alias": "Windows 11 Enterprise 25H2 DE"
         }
     ],
     "auto_install":[
         {
-            "image": "/ISO/10. Windows 11 Pro 25H2 Sept 2026 (MCT).iso",
+            "image": "/ISO/08. Windows 11 Pro 26H2 Okt 2026 (MCT).iso",
             "template":[
-                "/ISO/10. Windows 11 Pro 25H2 Sept 2026 (MCT)_Unat.xml"
+                "/ISO/08. Windows 11 Pro Unattended.xml"
             ]
         }
     ]

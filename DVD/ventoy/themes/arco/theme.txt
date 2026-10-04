@@ -15,8 +15,8 @@ terminal-border: "2"
 # Boot menu
 + boot_menu {
   left = 0%
-  top = 20%
-  width = 50%
+  top = 17%
+  width = 46%
   height = 50%
 
   item_font = "Terminus Bold 18"

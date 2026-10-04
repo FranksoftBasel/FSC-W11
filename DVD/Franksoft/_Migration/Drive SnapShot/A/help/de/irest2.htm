@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+
+<title>Drive Snapshot - Disk Image Restore 2</title>
+
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+</head>
+<body>
+<h1 align="center">Disk Image Restore <a href="rest1.htm">1</a> <font size="+4">2</font>  <a href="rest3.htm"> 3</a></h1>
+<hr>
+
+<table align="right"><tr><td>
+<map name="FPMap0">
+<area href="rest3.htm" coords="289, 448, 383, 482" shape="rect">
+<area href="rest1.htm" shape="rect" coords="170, 450, 265, 485"></map><img border="0" src="../images/restore2.png" usemap="#FPMap0" width="579" height="511">
+<a href="rest1.htm" target="_parent">
+</a>
+<a href="rest1.htm">
+<center>Screenshots</center>
+</a>
+</td></tr></table>
+
+<p>Als nächstes wählen Sie das Laufwerk, das Sie restaurieren wollen.</p>
+<p><b>Warnung: Alle derzeitigen Daten auf dem Laufwerk sind nach dem Restore&nbsp;
+unwiederbringlich
+verloren</b>.<br>
+<b>Sollten Sie noch Daten von diesem Laufwerk brauchen, sichern Sie
+diese bitte vorher.</b></p>
+<p>Wenn Sie auf ein anderes Laufwerk zurücksichern wollen, als das ursprüngliche,
+muss die Partitionsgröße (Partsize) größer oder gleich der Laufwerksgröße
+sein, eine Anpassung der Größe findet nicht statt.</p>
+
+<p>
+Nachdem Sie ein Laufwerk gewählt haben, Klicken Sie bitte <a href="rest3.htm">[Next]</a>.<br>
+
+
+</p>
+
+<p>
+Zusätzlich stehen (über die rechte Maustaste) folgende Funktionen zur
+Partitionierung/Verwaltung der Platte zur Verfügung:
+
+</p>
+
+<p>
+<b>Rechts Klick auf [HD1]</b>
+
+</p>
+
+<blockquote>
+  <p><b>Restore Partition Structure:</b> ersetzt eine evtl.<br>
+vorhandene
+  Partitionierung durch die ursprünglich vorhandendene, restauriert den MBR
+
+</p>
+
+  <p><b>Restore MBR:</b> ersetzt den ersten Sektor der Platte (MBR = Master Boot
+  Record) durch den ursprünglichen
+
+</p>
+
+  <p><b>Grow all NTFS Partitions:</b> Vergrößert alle NTFS_Partitionen damit beim 
+  	Restaurieren auf eine größere Festplatte der gesamte Bereich genutzt werden kann.
+</p>
+
+  <p><b>Align all partitions on 4k boundary:</b> Passt nach dem Restaurieren der Partitionsstruktur 
+  	alle Partitionen so an, dass sie auf einer 4k-Grenze beginnen. Das ist in der Regel nur beim 
+  	Restaurieren von Windows XP/Server 2003 auf neue Hardware notwendig.
+</p>
+
+
+
+  <p><b>CheckBoot:</b>&nbsp; leider verwenden auch 2007 noch einige Bootsektoren
+  zum Booten CHS Adressierung.<br>
+Dadurch wird eine exakte Kopie eines Laufwerks in
+  einem anderen Laufwerk mit anderen (virtuellen) Zylinder/Kopf/Sektor
+  Einstellung nicht mehr bootbar.<br>
+
+  Checkboot erkennt dies, und schlägt vor, Verbesserungen vorzunehmen.<br>
+
+
+</p>
+
+  <p><b>Clean Disk:</b> löscht den ersten Sektor (MBR); danach ist die Platte
+  (logisch) wie neu - und Ihre Daten futsch.<br>
+
+
+</p>
+
+  <p><b>Clean Disk Signature/Restore Disk Signature:</b>&nbsp;eine 32 Bit Zahl
+  im MBR, an Hand der Windows versucht, eine Platte zu identifizieren.<br>
+Wird vom
+  Diskmanager bei der Initialisierung zufällig vergeben.<br>
+
+
+</p>
+
+</blockquote>
+<p><b>Rechts Klick auf ein Laufwerk (C:)</b>
+
+</p>
+
+<blockquote>
+  <p><b>Restore:</b> restauriert das Laufwerk
+
+</p>
+
+  <p><b>Assign Drive Letter:&nbsp;</b> falls das Laufwerk keinen
+  Laufwerksbuchstaben hat (Windows 2003)
+
+</p>
+
+  <p><b>Open:</b> startet das Laufwerk im Explorer
+
+</p>
+
+  <p><b>Properties:</b> öffnet den Windows Eigenschaften Dialog
+
+</p>
+
+  <p><b>Grow Partition:</b> (nur für NTFS) falls das Filesystem kleiner als die
+  Partition ist, oder hinter der Partition freier Platz ist, kann die
+  Laufwerkgröße angepasst werden&nbsp;
+
+</p>
+
+  <p><b>Delete Partition: </b>löschen der Partiton&nbsp;
+
+</p>
+
+  <p><b>Activate/Deactivate Partition: </b>setzt bzw.<br>
+löscht das Active Flag
+  (auf primären Partitionen)
+
+</p>
+
+</blockquote>
+<p><b>Rechts Klick auf Free Space:</b> erzeugt primäre/extended/logische
+Partitionen</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+</body>
+</html>

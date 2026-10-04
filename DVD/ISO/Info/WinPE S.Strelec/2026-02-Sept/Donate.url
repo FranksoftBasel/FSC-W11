@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL={{product_version_product_url}}
+[InternetShortcut]
+URL=https://sergeistrelec.name//donate.html
+IDList=
+HotKey=0
+IconFile=http://www.sergeistrelec.ru/templates/sstr/images/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,11

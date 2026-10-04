@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="description" content="questions, you always wanted to ask about DiskImaging">
+
+<meta name="keywords" content="Drive SnapShot Backup FAQ">
+
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Drive Snapshot Backup - FAQ</title>
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+</head>
+<body>
+
+<center><h1>Snapshot Backup - FAQ</h1></center>
+
+<h4>How can I verify that Snapshot did what it claimed - backup all my data</h4>
+<blockquote>
+The easiest and fastest way:
+<p>Backup a drive.<br>
+Map the drive as virtual drive.<br>
+Use WINDIFF or similar file
+compare tools to compare the two drives; they should be identical.</p>
+<p>You will see differences, because WINDIFF will not be able to open the
+PAGEFILE or registry files on the original drive; but that's not SNAPSHOT's
+fault.<br>
+For these files you have to trust us (of course we tested this, using
+slightly more complicated setup's)</p>
+</blockquote>
+
+
+
+<h4>Do I have to shut down all Windows programs (highly recommended)</h4>
+<blockquote>
+No.<br>
+It's probably a good idea to save your open files before starting Snapshot Backup.<br>
+
+Otherwise you would eventually get outdated data on your disk.<br>
+
+After Snapshot has started you may continue to work normally, the image will reflect the data at start time.<br>
+
+</blockquote>
+
+<h4>May I install a new VIRUS, while Snapshot is running?</h4>
+
+<blockquote>Yes.<br>
+It won't make you happy, but Snapshot won't care.<br>
+The created image will not contain any sign of a virus, ready to be restored.<br>
+
+</blockquote>
+
+<h4>May I FORMAT/FDISK the disk that is currently being Snapshot'ed?</h4>
+<blockquote>
+<p>
+No.<br>
+It is not possible to run programs that access the disk directly while Snapshot is running.</p>
+</blockquote>
+
+<h4>What File systems does Snapshot support?</h4>
+<blockquote>
+<p>
+SnapShot relies mostly on the operating system to support a
+drive.<br>
+All file systems known to Windows(FAT16, FAT32, NTFS) are
+supported; additionally some LINUX file systems (EXT2,EXT3,Ext4,XFS,Reiser) are
+'manually' supported.<br>
+
+Other file system are stored completely, ignoring any free space information.</p>
+</blockquote>
+
+<h4>Does Snapshot support enhanced NTFS features like encryption, security, hard and symbolic links, mount points, multiple data streams, extended
+attributes,quota,...</h4>
+<blockquote>Yes.<br>
+Snapshot is sector-oriented.<br>
+Snapshot will backup all sectors relevant for the
+  file system, and restore them exactly the same way.<br>
+Snapshot never interprets these data on its own, the interpretation of these data is up to the
+  file system.<br>
+Snapshot only provides the necessary data.<br>
+The same is true for the Image Viewer.<br>
+    </blockquote>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+
+</body>
+</html>

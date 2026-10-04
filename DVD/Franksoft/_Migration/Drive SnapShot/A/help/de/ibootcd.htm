@@ -1,0 +1,78 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<title>Erzeugung einer bootbaren CD/DVD</title>
+</head>
+
+<body>
+
+<h1>Erzeugen einer bootbaren CD/DVD</h1>
+
+<p><a href="tips.htm" target="_parent"><font size="+2">mehr Tipps</font></a></p>
+
+<h2>Schritt 1 - wir brauchen etwas das bootbar ist</h2>
+
+<p><b>Wenn Sie ein Floppy Laufwerk haben:<br>
+</b>Erzeugen Sie eine bootbare Floppy, am einfachsten durch&nbsp;<br>
+&nbsp;&nbsp; Start-&gt;Programme-&gt;Snapshot-&gt;Create Recover Floppy<br>
+verwenden Sie A: als bootbares Medium <a href="#step2">unten</a></p>
+
+<p><b>Wenn Sie kein Floppy Laufwerk haben - Methode A:<br>
+</b>Legen Sie eine kleine Partition an, und restaurieren Sie networkbootdisk.sna
+(installiert während Setup) in diese Partition<br>
+Diese kann jetzt evtl.<br>
+von Ihnen noch angepasst werden.<br>
+
+Verwenden Sie diese Partition als bootbares Medium <a href="#step2">unten</a>.</p>
+
+<p><b>Wenn Sie kein Floppy Laufwerk haben - Methode B:<br>
+</b>erzeugen Sie ein bootbares (dekomprimiertes) Image einer Floppy<br>
+von der Windows Kommandozeile expandieren Sie networkbootdiskette.sna mit dem
+undokumentierten Kommando</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:\programme\snapshot&gt; snapshot
+networkbootdiskette.sna bootdisk.img -X</p>
+
+<p>Verwenden Sie bootdisk.img als bootbares Medium <a href="#step2">unten</a>.</p>
+
+<h2><a name="step2"></a>Schritt 2 - brennen einer bootbaren CD/DVD mit NERO</h2>
+
+<ul>
+  <li>starten Sie Nero</li>
+  <li>Legen Sie ein neues Projekt an</li>
+  <li>Schließen Sie den Wizzard, wenn nötig - wir brauchen den 'Experten'-Modus</li>
+  <li>links oben, selektieren Sie CD oder DVD</li>
+  <li>links unten suchen Sie CD-ROM [boot] oder DVD-ROM [boot]</li>
+  <li>klicken Sie den [boot] Tabulator</li>
+  <li>selektieren Sie (*) bootbares Laufwerk oder (*) Image File, je nach Medium
+    oben</li>
+  <li>selektieren Sie Experten Ansicht</li>
+  <li><b>stellen Sie sicher, dass</b> 'Emulation' auf <b>Floppy Emulation 1,44
+    MB steht</b></li>
+  <li>[NEU]</li>
+  <li>jetzt können Sie der CD weitere Dateien hinzufügen; diese sind nach Boot
+    unter W: erreichbar</li>
+  <li>brennen</li>
+  <li>fertig</li>
+</ul>
+
+<h2>STEP 3 - neu starten und verifizieren dass die CD booted</h2>
+
+<p>besser jetzt als erst im Notfall ;)</p>
+
+<p><a href="tips.htm" target="_parent"><font size="+2">mehr Tipps</font></a></p>
+<!--webbot bot="Include" U-Include="../en/footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="keywords" content="disk image, disk, image, Disk Imaging, Windows NT,Windows 2000, Windows XP, Windows Vista">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Drive Snapshot and Windows Vista</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+
+<center><h1>Drive Snapshot and Windows Vista ?</h1>
+</center>
+
+<h4>Is Drive Snapshot 1.37 compatible with Windows Vista (aka Windows for video
+recorders)?</h4>
+
+<p>Mostly, yes, <b>BUT</b>:</p>
+
+<p>Drive Snapshot requires administrative rights to run, so you have to start it
+with&nbsp;<br>
+right mouse click, 'Run as administrator' (fixed on 28.02.2007).<br>
+</p>
+
+<p>Vista X64 requires signed drivers; the Drive Snapshot 1.37 is (currently) not
+signed.<br>
+
+Therefore Vista X64 is not supported (fixed on 28.02.2007)</p>
+
+<p>The incredible stupid Vista Boot Manager will only boot from exactly the same
+disk, and the partition at exactly the same place as the original.<br>
+That is,
+there's no longer the possibility to&nbsp;</p>
+
+<blockquote>
+  <p align="left">'boot from first partition on first drive'</p>
+
+</blockquote>
+<p>Now, this is</p>
+
+<blockquote>
+  <p align="left">'boot from the partition at offset 1 MB on drive with disk
+  signature 1234'<br>
+  (if the partition doesn't start at exactly 1 MB, you're lost)</p>
+
+</blockquote>
+<p>The disk signature is a 4 byte value, that is written into the MBR, and is
+always created by the disk administrator to some random value.</p>
+
+<p>Due to this, the (currently) only supported restore methods are</p>
+
+<p>Either</p>
+
+<blockquote>
+
+<p>Restore a volume to the same disk (without any
+partitioning)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+</blockquote>
+
+<p>or (on a new disk)</p>
+
+<blockquote>
+
+<p>Restore the partition structure first<br>
+Then restore the volume(s)</p>
+
+</blockquote>
+
+<p>Restoring the partition structure from Windows:</p>
+
+<blockquote>
+
+<p>Snapshot, restore, select image, [next]</p>
+
+<p>Down in the graphic, to the left, right click [HD1]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --&gt; restore partition structure</p>
+
+<p>&nbsp;</p>
+
+</blockquote>
+
+<p>Any other method of cloning/moving to new disk/etc.<br>
+is currently NOT
+supported.</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+
+</body>
+</html>

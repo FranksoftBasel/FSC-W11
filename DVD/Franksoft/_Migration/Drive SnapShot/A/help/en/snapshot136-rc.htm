@@ -1,0 +1,106 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Snapshot 1.36 RC1</title>
+</head>
+
+<body>
+
+<h4><a href="http://www.drivesnapshot.de/en/index.htm" target="_parent">Main Page</a></h4>
+
+<h4>2 June 2005: Drive Snapshot 1.36 RC5</h4>
+
+<p>new features:</p>
+
+<p>backup:</p>
+
+<ul>
+<li>
+<font color="#FF0000">Compatibility with Windows 2003 Server SP1</font>
+<li>
+partitions without a drive letter (mounted at mountpoints)
+<li>
+unrecognised partitions (Compaq/HP/Dell service partitions)
+<li>
+Linux Ext2/Ext3/Reiser/Swap partitions
+<li>
+image files are saved as unfragmented as possible
+<li>
+USB sticks should be supported
+<li>
+our first attempt to use some graphic in the windows user interface ;)&nbsp;
+</ul>
+
+<p>Restore:</p>
+
+<ul>
+<li>
+to all partitions mentioned above
+<li>
+when restoring from Windows/BartPE, allows resizing of NTFS file system to the
+partition size.<br>
+
+Resizing up is always possible; resizing down only to the size of the highest
+used&nbsp;<br>
+sector on the disk (basically: what you see in disk defragmenter), NOT to the
+used data size;<br>
+no defragmentation on the fly is attempted.<br>
+
+</ul>
+
+<p>Bugs fixed:</p>
+
+<ul>
+<li>
+previous versions allowed mounting of images with &lt;= 256 image .sn1, .sn2,...pieces<br>
+now up to 65535 pieces (of max 256 TB each) are mountable
+<li>
+supports image mounting in Win 2000/Win 2003 Terminal server environment
+<li>
+behaves better, if memory cards (MMC etc.) aren't plugged in
+<li>
+a couple of minor things (as usual)
+<li>
+the described procedure to convert the networkbootdisk.sna into a 'real' image,
+suitable to burn a bootable CD, had a bug.<br>
+fixed.<br>
+
+</ul>
+
+<p>This is a pre-release version of Drive Snapshot 1.36.<br>
+While we don't expect
+any bugs, we are still testing it before finally releasing it.<br>
+If you find any
+bugs, feedback is appreciated.</p>
+
+<p><b>19 April 2005: Drive Snapshot 1.36 RC2</b></p>
+
+<p align="left">RC1: 13 april had minor bugs:<br>
+&nbsp;&nbsp;&nbsp; PAGEFILE.SYS was also saved; corrected<br>
+&nbsp;&nbsp;&nbsp; wouldn't work if you had offline 'drives' like MMC card
+reader; corrected&nbsp;</p>
+
+<p><b>30 April 2005: Drive Snapshot 1.36 RC3</b></p>
+
+<p align="left">enhanced graphics; minor bug fixes</p>
+
+<p><b>2 June 2005: Drive Snapshot 1.36 RC5</b></p>
+
+<p align="left">integrated Windows 2003 Server SP1 fix into normal version</p>
+
+<p align="left">Partition creation from the GUI during restore</p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left">You can download it from here (executable only, documentation
+still lacking) <a href="http://www.drivesnapshot.de/download/sn136rc5.exe">www.drivesnapshot.de/download/sn136rc5.exe</a></p>
+
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

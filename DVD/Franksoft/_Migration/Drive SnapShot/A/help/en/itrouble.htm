@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="keywords" content="Disk Image, WinNT,Win2K, Windows NT, Windows 2003, disaster, recovery, Disk, Image, backup, cloning">
+<title>Drive Snapshot - Bestellen</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+
+<center><h1>Troubleshooting - IRQL7</h1></center>
+Some users have reported either<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<b> Snapshot error: Strange error while reading data</b><br>
+or<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>Snapshot error: Driver reported error: &lt;1634: IRQL5&gt;</b>
+<p><b><font color="#FF0000">UPDATE(14 dec 2003):&nbsp;<br>
+</font>We noticed, that this may be caused, if you are using Windows 2003 Server
+and have 'Volume Shadow copy' enabled.<br>
+Currently, Drive Snapshot is not
+compatible with Volume Shadow Copy; using the method below to force it to run
+will most probably reboot your computer.<br>
+We are aware of this problem and
+working on a solution.</b></p>
+<p>&nbsp;</p>
+<p>The reason is, that some unusual driver modifies the kernel internals in a
+way, that disk access is used with Paging (virtual memory management) disabled.<br>
+
+This is unusual and probably due to some lazy driver programmer (whoever it is).</p>
+<p>So far Drive Snapshot's 'politic' has been to avoid to run in an unknown
+environment (to avoid bluescreens as much as possible); therefore the backup is
+aborted as soon as above condition is detected.</p>
+<p>Starting from 1.32 (4 dec 2003), Snapshot has been modified to allow to
+continue in this condition.</p>
+<blockquote>
+  <p><font color="#FF0000">Warning: Snapshot has been manually verified, it
+  *should* work with paging disabled.<br>
+However, it hasn't been tested on many
+  systems with these conditions, as these conditions are rare, and not
+  reproducible by us.<br>
+
+  There is a certain possibility, that running Snapshot Backup will now no
+  longer stop the backup, but instead </font><font color="#0000FF">BLUESCREEN </font><font color="#FF0000">your
+  PC.<br>
+
+  When running Snapshot now (specially the first time), please make sure, you
+  can tolerate the (low) probability of a </font><font color="#0000FF">BLUESCREEN</font><font color="#FF0000">,
+  and don't run it under productivity conditions.<br>
+
+  Running Snapshot without the fix however is as safe as it was before.</font></p>
+  <p><font color="#FF0000">Should you get a </font><font color="#0000FF">BLUESCREEN</font><font color="#FF0000">
+  please go to Reporting a Bluescreen section below to help us fix this issue.</font></p>
+</blockquote>
+<p>However, don't be too afraid: even if Snapshot causes a bluescreen, no data
+corruption will happen.<br>
+When the computer reboots, you'll see a CHKDSK running;
+after that the system will continue to run as usual.</p>
+<h2>here's the fix.</h2>
+<p>Start Snapshot from the command line, and add the parameter&nbsp;&nbsp;
+'-!IRQL7'&nbsp;<br>
+i.e.<br>
+start either<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:&gt;
+C:\programs\Snapshot\snapshot -!IRQL7<br>
+</b>for the GUI or<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:&gt;
+C:\programs\Snapshot\snapshot -!IRQL7&nbsp; C: X:\c-drive.sna&nbsp;<br>
+<br>
+This option is considered a temporary fix.<br>
+</b>This option will vanish again as
+soon as we think that it works proper; therefore we didn't invent a GUI for
+it,...</p>
+<p>If that fixes the problem, we want feedback.</p>
+<h2>Reporting a Bluescreen</h2>
+<p>If that does not fix the problem, we want feedback, too.</p>
+<p>It would be nice, if you could set your system settings to 'Kernel Memory
+Dump'</p>
+<blockquote>
+<p>My Computer -&gt;Properties -&gt;Advanced -&gt;Startup and Recovery-&gt;<br>
+&nbsp;&nbsp;&nbsp; Write Debugging Information = Kernel Memory Dump</p>
+</blockquote>
+<p>This will dump all kernel memory (~50MB) into the file %SystemRoot%\MEMORY.DMP,</p>
+<p>If you get a Bluescreen, we apologize.<br>
+Usually, Drive Snapshot tries
+everything to avoid Bluescreens.<br>
+Unfortunately, the 'driver reported
+error:IRQL5' bug couldn't be reproduced by us (on many test maschines), so this
+is a bit running in unknown environment.</p>
+<p>Please ZIP&nbsp; MEMORY.DMP and send it to <a href="mailto:support@drivesnapshot.de">support@drivesnapshot.de</a>;
+we will analyse it, and try to fix the problem as soon as possible.</p>
+<p>Thanks for understanding.</p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+
+</body>
+</html>

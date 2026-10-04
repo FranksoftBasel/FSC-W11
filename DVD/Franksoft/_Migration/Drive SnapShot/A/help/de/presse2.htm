@@ -1,0 +1,123 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Presseerklaerung nov 2002</title>
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+</head>
+
+<body>
+
+<p>Drive Snapshot - Disk Image basierte Backup und Desaster Recovery für
+Windows NT/2000/XP</p>
+<p>Wie andere Disk Image Programme (Ghost, Drive Image,...) sichert Drive
+Snapshot den gesamten genutzten Datenbestand ihrer Festplatte, einschließlich
+der Systemdateien, und restauriert
+ihn wieder.</p>
+<h4>Exklusive Eigenschaften von Snapshot:</h4>
+<p>NEU: Disk Image Erstellung direkt unter Windows -- ohne Neustart nach DOS</p>
+<p>NEU: die Erstellung im laufenden Betrieb. Insbesondere Datenbanken (oder
+andere Programme die rund um die Uhr laufen sollen oder müssen) brauchen nicht
+runtergefahren zu werden --&nbsp; Snapshot stellt sicher, dass die gesicherten
+Daten konsistent sind..</p>
+<p>NEU: Kompatibilität zu allen RAID Methoden.</p>
+<p>NEU: Einfache Wiederherstellung einzelner Dateien oder Verzeichnisse - mit
+dem Windows Explorer (oder jedem anderen Windows Programm)</p>
+<p>NEU: Drive Snapshot komprimiert die gesicherten Daten <b>und</b>&nbsp; ist rasend
+schnell&nbsp;</p>
+<p>NEU: Installation ohne Neustart und ohne Nebeneffekte.</p>
+<h4>Weitere Eigenschaften von Snapshot</h4>
+<p>Alle Operationen können auch von der Kommandozeile ausgeführt werden;
+dadurch ist Snapshot skriptfähig.<br>
+Das Windows Benutzer Interface ist kurz und knapp - so einfach wie möglich,
+aber nicht einfacher.&nbsp;</p>
+<p>&nbsp;</p>
+<h4>Disk Image Erstellung direkt unter Windows -- ohne Neustart nach DOS</h4>
+<p>Jedes Backup unter Windows hat ein fundamentales Problem: einige Dateien
+(speziell die Registry und die System-DLL's) sind ständig geöffnet, und können
+(speziell die Registry) auch während des Betriebs ständig geändert werden. Ähnliches
+gilt für von ihrem Virenscanner verwendete (Log- ) Dateien, die Dateien des in
+der Regel gestarteten Email Programms,...<br>
+Drive Snapshot löst dieses Problem, indem es während des Backups keine
+Schreibzugriffe auf die Festplatte zulässt - dadurch entsprechen die
+gesicherten Daten exakt dem Zustand der Festplatte zum Zeitpunkt des Start des Backup.</p>
+<h4>Disk Image Erstellung im laufenden Betrieb</h4>
+<p>Snapshot veranlasst zu Beginn der
+Sicherung, dass alle im Hauptspeicher gecachten Daten Sicherung auf die
+Festplatte gespeichert werden; danach werden die Daten gegen Schreibzugriffe
+gesperrt.<br>
+Dadurch sind
+die gesicherten Daten der gesamten gesicherten Partition konsistent.<br>
+Dadurch ist der Zustand der gesicherten Daten in etwa der, den man erhalten würde,
+wenn Windows jetzt mal 10 Minuten lang 'nichts' tun würde - und dann fällt der
+Strom aus.<br>
+Normalerweise für kein Programm ein Problem. Speziell Datenbanken haben dafür
+einen Mechanismus (Rollback/Rollforward), der die Konsistenz der Datenbank für Stromausfälle
+sicherstellt.</p>
+<h4>Disk Image Erstellung im LAUFENDEN Betrieb</h4>
+<p>Aber wenn Snapshot keine Schreibzugriffe zulässt - wird dann die Datenbank für
+die Zeit des Backups angehalten ?<br>
+Das wäre wohl kaum 'laufender Betrieb'?</p>
+<p>Der Trick ist der, Schreibzugriffe nur auf die <b>noch nicht gesicherten</b>
+Daten zu unterbinden; nachdem die Daten gesichert worden sind, ist auch der
+Schreibzugriff mit normaler Geschwindigkeit möglich.</p>
+<p>Snapshot geht sogar noch einen Schritt weiter: Snapshot läuft normalerweise
+im Hintergrund, mit niedriger Priorität, um den normalen Betrieb so wenig wie möglich
+zu verlangsamen. Nur wenn Daten gesichert werden müssen, die noch nicht
+gesichert waren, hält Snapshot ihr Programm für kurze Zeit an, sichert die
+Daten, die überschrieben werden sollen, und lässt dann ihr Programm
+weiterlaufen.</p>
+<p>In der Regel sollten Sie es nicht bemerken, wenn Snapshot gerade im
+Hintergrund aktiv ist - versuchen Sie mal weiterzuarbeiten während im
+Hintergrund der Explorer (oder xxBACKUP) ihre Dateien sichert.</p>
+<h4>Kompatibilität zu allen Windows Dateisystemen und RAID Methoden.</h4>
+<p>Snapshot arbeitet auf der Ebene von 'Laufwerken' = C:, D:,... ; der technisch
+korrekte Ausdruck ist 'Volume'.&nbsp;<br>
+Dadurch werden alle (Mirroring, Striping,...) RAID Methoden automatisch unterstützt.<br>
+Genauso werden alle Informationen über die zu sichernden Daten von Windows
+erfragt, dadurch werden alle von Windows unterstützten Dateisysteme
+(FAT16/FAT32/NTFS) automatisch unterstützt.</p>
+<h4>Einfache Wiederherstellung einzelner Dateien oder Verzeichnisse - mit dem
+Programm Ihrer Wahl</h4>
+<p>Snapshot bietet die Möglichkeit, gesicherte Laufwerke als virtuelles
+Laufwerk anzusehen.<br>
+Das virtuelle Laufwerk hat ähnliche Eigenschaften wie eine (große) CD-ROM, hat
+aber zusätzlich alle (NTFS-) Dateisystemattribute des originalen Laufwerks, wie
+'komprimiert, verschlüsselt, volume mount point,...'</p>
+<p>Damit können Sie einfach - mit dem Windows Explorer, oder <b>jedem</b>
+anderen Programm ihrer Wahl - Dateien und Verzeichnisse kopieren,
+vergleichen,...<br>
+</p>
+<h4><b>Drive Snapshot komprimiert die gesicherten Daten und&nbsp; ist rasend
+schnell&nbsp;</b></h4>
+<p>Bei der Entwicklung von Snapshot ist besonderer Wert auf hohe
+Arbeitsgeschwindigkeit gelegt worden.<br>
+Dadurch erreichen wir durchschnittlich eine Sicherungsgeschwindigkeit von 1 GB/Minute
+auf einem 2 GHz P4 - wir kennen kein Programm, das mit ähnlicher Geschwindigkeit
+arbeitet <b>und</b> komprimiert.<br>
+</p>
+<h4>Installation ohne Neustart und ohne Nebeneffekte</h4>
+<p>Man hat sich schon fast dran gewöhnt: Kaum ein Programm, dass nicht in der
+Installation ein paar DLL's in das Systemverzeichnis kopiert, und nach der
+Installation zum Neustart auffordert.</p>
+<p>Das muss nicht sein.<br>
+Drive Snapshot ist komplett ohne Installation oder Setup ablauffähig.<br>
+Drive Snapshot kopiert nichts in das Systemverzeichnis<br>
+Drive Snapshot installiert <b>und deinstalliert</b> alle benötigten Komponenten
+zur Laufzeit.<br>
+Ihr System bleibt das gleiche - vor und nach Ausführung von Snapshot.</p>
+<p>Starten Sie Snaphot.exe - fertig.</p>
+<p>Natürlich gibt es ein Setup. Dieses macht:<br>
+Anlegen von C:\Programme\Snapshot und kopieren der .EXE Datei dahin, kopieren
+der Hilfe Dateien, und die Installation des Snapshot Dateitypus .SNA, so dass
+auf Doppelklick automatisch ein virtuelles Laufwerk von diesem gesicherten
+Laufwerk erzeugt wird (und die Uninstall Informationen anlegt). </p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

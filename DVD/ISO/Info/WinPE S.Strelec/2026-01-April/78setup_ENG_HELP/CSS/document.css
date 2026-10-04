@@ -1,0 +1,284 @@
+﻿/*  ********************************************  *
+ *  This style sheet is for every document page.  * 
+ *  ********************************************  */
+
+body {
+  background-color:#FFFFFF;
+  /* background-image:url('../_images/paper.jpg'); */
+  margin:1em;
+  padding:0px;
+}
+
+h1 {	COLOR: #ffffff;	background-color:#0000aa;    border: 4px solid #73BD21;	}
+h2 {	COLOR: #ffee33;	background-color:#00aabb	}
+h3 {	COLOR: #ffff00;	background-color:#66bb00	}
+h4 {	COLOR: #336600;	background-color:#66ccaa	}
+h1, h2, h3, h4  {page-break-after:avoid; text-align: center}
+
+p { font-family: "Times New Roman"; font-size: 18px}
+
+pre {font-family: "Courier New"; font-size: 16}
+
+span.citation, span.definition, span.emphasis, span.foreign {
+  font-style:italic;}
+.draft {   color:#887799;  display:none;}
+.style1 {	FONT-FAMILY: "Courier New";	font-size: 20px}
+.style2a {	COLOR: #0000ff;	}
+.style2c {	COLOR: #ffffff;	background-color:#000099	}
+.style2b {	COLOR: #00ff00	}
+.style2d {	COLOR: #ffffff;	background-color:#666600	}
+.style2f {	COLOR: #333300;	background-color:#cccccc	}
+.style2g {	COLOR: #999999; }
+.style2h {	COLOR: #990099;	}
+.style2i {	COLOR: #ff9933;	}
+.style3 {	TEXT-DECORATION: underline}
+.style4 {	FONT-FAMILY: Arial, Helvetica, sans-serif}
+.style5 {	COLOR: #000099;	}
+.style7 {	COLOR: #000000;	background-color:#aa0000	}
+.undoreset {line-height:1.2em;}
+.style5 { font-family: "Palatino Linotype";  font-size: 14px}
+.style6 { font-family: "Times New Roman"; font-size: 16px}
+span.highlight { background-color: #ddffee;}
+div.highlight { background-color: #eeffaa;}
+div.b {    width: 1500px;}
+
+#container1 {
+    float:left;
+    width:100%;
+}
+#col1 {
+    float:left;
+    width:30%;
+    }
+#col2 {
+    float:left;
+    width:70%;
+    background:#ffffbb;
+}
+.ured {
+	text-decoration: underline; text-decoration-color: red;
+}
+
+img {
+  border-width:0px;
+}
+
+blockquote { 
+    display: block;
+    margin-left: 30px;}
+
+table {
+  border-collapse:collapse;
+}
+
+table, td, th {
+  border-color:#CCCCFF;
+  border-style:solid;
+}
+
+table {
+  border-width:2px;
+}
+
+td, th {
+  border-width:1px;
+  padding:1em;
+}
+
+th {
+  border-bottom-width:2px;
+  text-align:left;
+  white-space:nowrap;
+}
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-color:coral;
+    border-width: 5px;
+} 
+
+/*  **************  */
+/*  General Styles  */
+
+/*  For warning about various forms of incompleteness, e.g., that the text 
+    is still in preparation or that something is missed if browsing without 
+    scripts  */
+.alert {	COLOR: #ff0000}
+
+.title { font-size: 30px}
+a:link {color:green; background-color:transparent; text-decoration:none}
+a:visited {color:brown; background-color:transparent; text-decoration:none}
+a:hover {color:red; background-color:transparent; text-decoration:underline}
+a:active {color:yellow; background-color:transparent; text-decoration:underline}
+/*  For the things that are still in preparation and not yet advanced enough 
+    to be seen by ordinary readers but which we don't mind being seen as 
+    long as the early state is understood  */
+
+.draft {
+  color:#887799;
+  display:none;
+}
+
+#container1 {
+    float:left;
+    width:100%;
+}
+#col1 {
+    float:left;
+    width:30%;
+    }
+#col2 {
+    float:left;
+    width:70%;
+    background:#ffffbb;
+}
+
+
+.input, .output, .source {
+  font-family:"Courier New", Courier, monospace;
+  font-size:10pt;
+  margin-bottom:0pt;
+  margin-top:0pt; 
+  white-space:pre;
+} 
+
+.hidden { visibility: hidden; }
+.unhidden { visibility: visible; } 
+
+
+/*  ******  */
+/*  Banner  */
+
+/*  A banner is simulated when scripts don't run. It is modelled on the 
+    actual banner (presently from BANNER.HTM) that ordinarily shows in the 
+    banner frame, but the fake banner is picked up by an include (presently 
+    NOSCRIPT.HTM) in document and TOC pages.  */
+
+#Banner.NoScript {
+  border:1px #CCCCFF solid;
+  background-color:#EEEEDD;
+  min-width:640px;
+  width:100%;
+}
+
+@media print {
+#Banner.NoScript {
+  display:none;
+}
+}
+
+#Banner.NoScript #Links {
+  float:right;
+}
+
+#Banner.NoScript #Logo {
+  clear:right;
+}
+
+#Banner.NoScript #Logo p {
+  color:#224488;
+  font-family:"Times New Roman", Times, serif;
+  font-size:24px;
+  font-weight:bold;
+  font-style:italic;
+  margin:12px;
+  white-space:nowrap;
+}
+
+/*  The following styles for UL and LI are needed because the FrontPage 
+    Server Extensions (FPSE) at the remote site mishandle inclusions, such 
+    that elements other than DIV, P and SPAN lose their class names. Later 
+    editions of the FPSE, such as on the production site, have this fixed. 
+    For now, treat all UL and LI tags in the Links DIV as having the 
+    LinkList and LinkListItem classes respectively.  */
+
+#Banner.NoScript #Links li,
+#Banner.NoScript #Links ul {
+  border:none;
+  float:left;
+  list-style:none;
+  margin:0px;
+  padding:0px;
+  white-space:nowrap;
+}
+
+#Banner.NoScript #Links a {
+  background-color:#DDDDCC;
+  color:#3333CC;
+}
+
+#Banner.NoScript #Links a:hover {
+  background-color:#FFFFEE;
+  color:#6666FF;
+}
+
+#Banner.NoScript #Links span {
+  padding:1ex 1ex;
+}
+
+/*  *******************  */
+/*  Headers and Footers  */
+
+div.Header {
+  margin:0px;
+  padding:0px;
+  width:100%;
+}
+
+/*  Though headers are always (in practice) followed by a level-1 heading, 
+    footers can follow just about anything, and benefit from visual 
+    separation.  */
+
+div.Footer {
+  border-top:1px #88AACC solid;
+  clear:both;
+  margin-top:1em;
+  padding-top:1em;
+  width:100%;
+}
+
+div.Footer .Copyright,
+div.Footer .Dates {
+  font-size:smaller;
+  font-weight:bold;
+}
+
+div.Footer .PlaceholderLinks {
+  color:#AA88CC;
+  display:none;
+}
+
+/*  *********  */
+/*  Footnotes  */
+
+/*  Though footnotes aren't common in web pages, some pages at this site were 
+    written originally as Word documents and have footnotes. The editing is 
+    easier if the footnotes are kept.  */
+
+a.FootnoteReference {
+  font-size:smaller;
+  vertical-align:super;
+}
+
+div.Footnotes {
+  clear:both;
+  width:100%;
+}
+
+div.Footnotes hr {
+  height:1px;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  width:25%;
+}
+
+#box{display: none;}
+#container #login{ display: none;}
+#box:checked + #container #login{ display: block;}
+<script src="utf8.js"></script>

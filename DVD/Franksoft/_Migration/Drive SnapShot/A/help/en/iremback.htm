@@ -1,0 +1,71 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-gb">
+
+<meta name="keywords" content="disk image, remote operation, remote backup, windows">
+
+
+<title>Snapshot - Remote Backup</title>
+<base target="_self">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+</head>
+
+<body>
+
+<center><h1>Snapshot - Remote Backup</h1></center>
+
+
+
+<hr>
+<p>As a System administrator, keeping disk images for many computers current can
+be quite time consuming.<br>
+
+</p>
+
+<p>Due to Drive Snapshot's easy command line interface, this can be done much
+more easily.<br>
+
+</p>
+
+<p>Using RLOGIN/RCONSOLE from the Windows NT Resource pack, or the ingenious
+<a target="_blank" href="http://technet.microsoft.com/de-de/sysinternals/bb897553.aspx">PSEXEC</a>
+utility from <a href="http://www.sysinternals.com">S</a><a href="http://www.sysinternals.com" target="_blank">ysinternals</a>,
+you can easily automate this process, or control it from your own working place.<br>
+
+Example for PSEXEC:&nbsp;
+</p>
+
+<p><b>&nbsp;&nbsp;&nbsp; C::\&gt;PSEXEC&nbsp; \\userComputer -u administrator -p
+AdminPasswd&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -c -f
+-h c:\Programme\snapshot\Snapshot.exe C: \\Server\Backup\user\C-drive.SNA</b></p>
+
+<p>This will:<br>
+login to the computer 'Usercomputer' as an administrator (required); copy
+Snapshot.exe to the other computer, and start a backup of the C:-drive to some
+space on your \\Server.</p>
+
+<p>Please see PSEXEC documentation for more details.</p>
+<p><b>Note</b>: when backing up a Vista or Windows 7 computer, please use </p>
+<blockquote>
+  <p><b>&nbsp;-h </b>If the target system is Vista or higher, has the process<br>
+&nbsp;&nbsp;&nbsp;&nbsp; run with the account's elevated token, if available.</p>
+</blockquote>
+<p>Otherwise you will get a UAC (User Account Control) prompt that no one is 
+able to answer.</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+</body>
+
+</html>

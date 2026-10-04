@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="de">
+
+
+<meta name="robots" content="follow, index">
+<title>Disk Image Encryption</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+
+<style type="text/css">
+<!--
+.english { color:red ;font-size:100%;visibility:hidden}
+.german  { color:green ;font-size:10%;}
+-->
+</style>
+</head>
+<body>
+
+<h1 align="center">Snapshot - OEM Recovery Key</h1>
+
+<p><a href="back2.htm">Zurück zur Sicherung</a>&nbsp;</p>
+<p>Drive Snapshot bietet die Möglichkeit, einen Generalschlüssel zu
+vereinbaren, sodass verschlüsselte Images auf jeden Fall mit einem
+Generalschlüssel entschlüsselt werden können, auch wenn der Mitarbeiter
+gerade in Urlaub ist.</p>
+<p>Die Implementierung hat folgende Eigenschaften:</p>
+<p>Die ausführbare Datei SNAPSHOT.EXE wird vom OEM modifiziert; dazu wird mit
+einer Public Key Methode (s.u.) das OEM spezifische Kennwort 'OEMSuperSecret'
+als öffentlicher Schlüssel in den EXE file geschrieben.</p>
+<p>Alle mit diesem SNAPSHOT.EXE verschlüsselten Dateien sind danach sowohl mit
+dem Benutzerschlüssel, als auch dem OEM-Schlüssel lesbar.</p>
+<p>Es ist aber in keiner Weise möglich, den OEM-Schlüssel oder den
+Benutzerschlüssel zu rekonstruieren.</p>
+<p>Diese Funktionalität steht ausschließlich größeren Kunden auf gesonderte
+Nachfrage zur Verfügung.</p>
+<p>Da Verschlüsselung nur sicher ist, nachdem einige Experten sich die
+Implementierung angesehen haben, und wir sowieso danach gefragt werden, hier
+sind die&nbsp;</p>
+<h3>Details der Implementierung</h3>
+<p>Der Schlüssel, mit dem das Image verschlüsselt wird, ist immer eine
+Zufallszahl.<br>
+Damit das Image gelesen werden kann, wird dieser Archivschlüssel
+mit dem Benutzerschlüssel verschlüsselt und im Image gespeichert.<br>
+Bei Nutzung
+des Images wird dann dem einzugebenden Schlüssel der Archivschlüssel
+rekonstruiert.</p>
+<p>Wenn ein OEM Key vorhanden ist,&nbsp; wird der Archivschlüssel ebenfalls mit
+dem OEM Key verschlüsselt gespeichert und kann rekonstruiert werden.</p>
+<h3>Public Key Implementierung</h3>
+<p>Der OEM Key darf natürlich nicht aus der .EXE Datei rekonstruierbar sein.<br>
+
+Basierend auf dem Diffie-Hellman Algorithmus, erfolgt die Implementierung wie
+folgt:</p>
+<p>Der OEM erzeugt aus 'OEMSuperSecret' eine Zahl X (von 160 Bit Länge).</p>
+<p>Der OEM publiziert seinen Schlüssel in der Form von</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OEM Public Key = (A ^ X) modulo P</p>
+<p>mit festen und bekannten Konstanten A = 4711, P = 2^2203-1 ist eine große
+Primzahl.</p>
+<p>Wenn der Image spezifische Schlüssel verschlüsselt werden soll, erzeugt
+Snapshot eine weitere Zufallszahl Y='SomethingRandom' und bildet&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Archive Public Key = (A ^ Y)
+modulo P</p>
+<p>und</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CommonSecretKey = OEM Public Key =
+(A^X)^Y modulo P&nbsp;</p>
+<p>mit CommonSecretKey wird dann der Archiv Schlüssel gespeichert; zusätzlich
+wird im Image auch der Archiv Public Key (A^Y) gespeichert.</p>
+<p>Bei Rekonstruktion mit dem OEM Key wird dann&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CommonSecretKey = ArchivePublicKey
+^ X&nbsp;modulo P</p>
+<p>gebildet, und sowohl beim Ver- als auch Entschlüsseln haben beide Partner
+den gleichen CommonSecretKey zur Verfügung.</p>
+<p>Das Verfahrens beruht auf der Tatsache, dass A^X^Y = A^Y^X ist.</p>
+<p>Die Sicherheit des Verfahrens beruht darauf, dass es schwer ist, aus der
+Kenntnis von A^X mod P schwierig ist, X zu errechnen, sofern P eine hinreichend große
+Primzahl ist (in unserer Implementierung 2^2203-1).<br>
+</p>
+<p>Literatur:<br>
+<font size="2"><b> &nbsp; </b></font><font size="2"><a href="http://crypto.cs.mcgill.ca/~stiglic/Papers/dhfull.pdf">Security
+Issues in the Diffie-Hellman Key Agreement Protocol [Raymond, Stiglic]l<br>
+</a>&nbsp;<a href="http://www.dtc.umn.edu/~odlyzko/doc/discrete.logs.future.pdf"></a><a href="http://crypto.cs.mcgill.ca/~stiglic/Papers/dhfull.pdf">Discrete
+logarithms: The past and the futur</a>e [Odlyzko 99]<a href="http://crypto.cs.mcgill.ca/~stiglic/Papers/dhfull.pdf"><br>
+</a></font></p>
+<p><a href="back2.htm">Zurück zur Sicherung</a></p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" endspan i-checksum="60662" -->
+
+</body>
+</html>

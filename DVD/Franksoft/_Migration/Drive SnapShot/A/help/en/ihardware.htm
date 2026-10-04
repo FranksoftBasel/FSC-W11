@@ -1,0 +1,73 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="keywords" content="tom ehlert,  Disk Imaging, WinNT,Win2K, Windows NT, Drive Snapshot">
+
+<title>Drive Snapshot - moving to different Hardware</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+
+<center><h1>Drive Snapshot - moving to new Hardware</h1>
+</center>
+
+<p>First, if you are using S-ATA/P-ATA drives, your system should just work.</p>
+<p>If however you get a blue screen '<span class="titel3">Stop 0x0000007b - Inaccessible
+Boot Device&quot;, them the operating system doesn't recognize the new disk 
+controller, and some action is needed.</span></p>
+<p><b><span class="titel3">Moving from P-ATA to S-ATA</span></b></p>
+<p><span class="titel3">Most likely, your BIOS settings for the S-ATA drive is 
+'RAID', 'Native', or similar, and the operating system doesn't support S-ATA 
+drives.<br>
+Please go to BIOS, and change the S-ATA settings to 'Legacy' or similar.<br>
+
+In 'Legacy' mode, your S-ATA disk behaves exactly like a P-ATA disk, and should 
+be supported by the all versions of Windows.<br>
+Reboot.</span></p>
+<p><b><span class="titel3">Moving from P-ATA to P-ATA or S-ATA to S-ATA</span></b></p>
+<p><span class="titel3">in some cases, not all supported S-ATA and P-ATA 
+controllers are enabled.<br>
+If you have booted from BartPE/WindowsPE.<br>
+you can run
+</span></p>
+<p><b>&nbsp;&nbsp;&nbsp;</b><span class="titel3"><b> Snapshot --MergeIDE</b> </span></p>
+<p><span class="titel3">to enable more/all IDE controllers.<br>
+see also
+<a href="http://www.heise.de/ct/artikel/Reanimation-289830.html">c't 6/05</a> 
+und <a href="http://support.microsoft.com/kb/314082">Microsoft KB 314082</a>.</span></p>
+<p>&nbsp;</p>
+<p><b><span class="titel3">moving to a different SCSI/RAID/iSCSI/'interesting' 
+disk controller</span></b></p>
+<p>If you restored using BartPE, WindowsPE oder Winbuilder, you can integrate a 
+new controller into the restored windows system.<br>
+Running</p>
+<p><b>&nbsp;&nbsp;&nbsp;</b><span class="titel3"><b> Snapshot --AddDriver</b>
+</span></p>
+
+<p><span class="titel3">will ask you for the disk controller driver&nbsp;file (DiskDriver.SYS), 
+the .INF file (DiskDriver.INF), and the location of the windows where it shall be installed (NewDrive:\Windows).</span></p>
+<p><span class="titel3">Next time the system boots, this driver will be started; 
+it's your responsibility to locate the right driver.</span></p>
+
+<p><span class="titel3">Even if the system boots now, it is highly recommended 
+to re-install the driver in the booted windows environment (using the official 
+setup command), as some Controls will be missing.</span></p>
+<p><span class="titel3">Reboot.</span></p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+
+</body>
+</html>

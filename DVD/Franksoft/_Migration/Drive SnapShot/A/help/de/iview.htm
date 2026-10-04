@@ -1,0 +1,121 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<meta name="robots" content="follow, index">
+<meta name="keywords" content="tom ehlert,  Disk Imaging, WinNT">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+
+<title>Explorer</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+<div align="center"><h1>SnapShot - Disk Image Explorer</h1></div>
+
+<hr>
+<table align="right"><tr><td>
+
+<map name="FPMap1">
+<area href="start.htm" target="_parent" coords="95, 348, 186, 381" shape="rect">
+<area href="view2.htm" target="_parent" shape="rect" coords="247, 321, 433, 380"></map><img border="0" src="../images/view1.png" width="458" height="406" usemap="#FPMap1" align="middle">
+<a href="rest1.htm" target="_parent">
+</a>
+<center><a href="view1.htm">Screenshots</a></center>
+</td></tr></table>
+
+<p>
+Um
+einzelne Dateien oder ganze Verzeichnisse zu suchen oder wiederherzustellen, verwendet Snapshot einen
+ebenso einfachen wie leistungsfähigen Trick: Snapshot erzeugt ein virtuelles Laufwerk mit allen Dateien und Eigenschaften ihrer Festplatte - ähnlich eines 
+externen USB Laufwerks.</p>
+<p>Sie können auf diesem Laufwerk mit dem Windows Explorer (und jedem
+anderen Programm) auf dieses Laufwerk zugreifen, Dateien suchen, vergleichen,
+und mittels 'Drag and Drop' wiederherstellen, ...</p>
+<p>Die Dateien werden dazu nicht (wie z.B.bei WinZIP) erst in ein temporäreres
+Verzeichnis extrahiert, und von dort genutzt, sondern sind direkt von dem
+virtuellen Laufwerk aus nutzbar.</p>
+<p>Das virtuelle Laufwerk hat dieselben Eigenschaften wie das Ursprungslaufwerk;
+insbesondere sind die Sicherheitseinstellungen (für NTFS) identisch.</p>
+
+<p>Sie
+selektieren eine Image Datei, die Sie betrachten wollen.</p>
+<p>Sie sehen Informationen über das gesicherte Laufwerk zum Zeitpunkt der
+Sicherung, wie den Computernamen, Laufwerksbuchstaben, Größe,
+Festplattennummer, und evtl.<br>
+eingegebenen (eigenen) Kommentar.</p>
+<p>Zusätzlich suchen Sie einen Laufwerksbuchstaben aus, unter dem das Image
+angezeigt werden soll (oder lassen den vorgegebenen - Snapshot gibt ihnen die
+derzeit unbenutzten
+Laufwerke vor).</p>
+<p>Klicken Sie nun auf <a href="view2.htm">[Map and Explore virtual Drive].<br>
+
+</a> Dies erzeugt ein
+virtuelles Laufwerk <b>Z: </b>und starten den Windows Explorer auf diesem
+Laufwerk.</p>
+<p><b>[Set Snapshot as .SNA viewer] </b>trägt Snapshot als default Viewer für
+.SNA Dateien ein, so dass auf Doppelklick auf eine .SNA Datei automatisch ein
+virtuelles Laufwerk eingerichtet wird.<br>
+Die Installation per SETUP.EXE richtet dies ebenfalls
+ein.</p>
+<p>&nbsp;</p>
+
+<h2>Einschränkungen - 1</h2>
+
+<p>Um ein Laufwerk explorieren zu können, muss der direkte Zugriff auf&nbsp;
+<b>alle </b>Dateien des Image <b> gleichzeitig</b> möglich sein.<br>
+<br>
+ Dies betrifft den
+Fall, dass ein großes Image auf mehrere kleinere Dateien aufgeteilt und auf
+CDROM geschrieben wurde.<br>
+
+In diesem Fall können die Dateien an unterschiedlichen Stellen (auf Festplatte,
+im Netzwerk, oder auf CD-ROM) liegen, müssen aber <b>gleichzeitig</b>
+ansprechbar sein.<br>
+
+Ein Wechsel der CD-ROM während des Explorierens ist weder sinnvoll, noch
+vorgesehen.</p>
+
+<h2>Einschränkungen - 2</h2>
+
+<p>Snapshot Explorer verwendet Funktionen des Betriebssystems, um das virtuelle
+Laufwerk anzuzeigen.<br>
+
+Deswegen muss das aktuelle Betriebssystem das im Disk Image enthaltene
+Format verstehen.<br>
+Deswegen ist das Explorieren von Linux Dateisystemen (Ext3, Reiser, XFS) nur 
+möglich wenn eine Treiber für dieses Dateisystem installiert ist.&nbsp; </p>
+
+<h2>Einschränkungen - Zugriff verweigert</h2>
+
+<p>Wenn Sie ein Image auf einem fremden Rechner mounten, und z.B.<br>
+'Dokumente
+und Einstellungen\Tom' war ausschließlich für den Nutzer 'Tom' ansprechbar,
+kann erst mal niemand auf diese Daten zugreifen.<br>
+
+Kleiner Trick: der Administrator darf zwar auch nicht auf diese Daten zugreifen,
+kann sich aber die Zugriffsberechtigung geben.<br>
+</p>
+
+<p>Das Image ist zwar nicht schreibbar, das virtuelle Laufwerk (in gewissen 
+Grenzen) aber schon. Über 'Eigenschaften',
+'Sicherheit', 'Benutzer hinzufügen' kann man dem Administrator Zugriffsrechte geben.<br>
+
+Wenn das Image erneut gemountet wird
+muss die Rechtezuweisung wiederholt werden.<br>
+</p>
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" i-checksum="60662" endspan -->
+
+
+</body>
+</html>

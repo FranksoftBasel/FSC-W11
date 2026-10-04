@@ -1,0 +1,680 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="keywords" content="Disk Image, disk, image, backup, partition backup, Windows NT,Windows 2000, Windows XP">
+
+<title>Drive Snapshot - Windows commandline options</title>
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+</head>
+
+<body>
+<center><h1>Snapshot - command line options</h1></center>
+
+
+
+<p>Well - having a nice Windows interface is a fine thing - unless you want to
+automate certain things, which often is sheer impossible with all this Windows
+wizardry, often requiring dozens of clicks to accomplish even trivial tasks -
+just try to automate a Backup of your data with your favourite CD-ROM burning
+program.</p>
+
+
+
+<p>Drive Snapshot has a very easy command line interface:</p>
+<h2>Backup Drive to file</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>C:\&gt; SNAPSHOT C:&nbsp;&nbsp;
+X:\C-Drive.sna</b></p>
+<p>this will backup the C: drive to X:\C-Drive.SNA.</p>
+<p>To save several Volumes, simply create a Batch file like&nbsp;</p>
+<blockquote>
+<p>SNAPSHOT&nbsp;&nbsp; C:&nbsp;&nbsp; \\Server\Backups\C-Drive.sna&nbsp;<br>
+ SNAPSHOT&nbsp;&nbsp; D:&nbsp;&nbsp; \\Server\Backups\D-Drive.sna&nbsp;<br>
+ SNAPSHOT&nbsp;&nbsp; E:&nbsp;&nbsp; \\Server\Backups\E-Drive.sna&nbsp;</p>
+</blockquote>
+<p>This will backup C:, D:, E: to your server..</p>
+
+Alternatively you can use 
+<blockquote>	
+<p>SNAPSHOT C:+D:+E: \\Server\Backups\$disk-Drive.sna</p>
+</blockquote>
+<p>to backup C: and D: and E: at once.</p>
+
+To create a backup of all partitions on a physical disk (here HD1) use:
+<blockquote>	
+<p>SNAPSHOT HD1:* \\Server\Backups\$disk-Drive.sna</p>
+</blockquote>
+
+
+<h4>&nbsp;&nbsp;&nbsp; Option -L1450</h4>
+<p>Most of the time, it's sensible to limit the size of a single image file to
+some maximum value, so it can be written to a CD-ROM.<br>
+The default maximum size
+is 1450MB; you can change this with the -L parameter.<br>
+
+To avoid trouble with DOS when restoring your drives, you should keep this below
+2 GB.</p>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp; Option -R&nbsp; [empty Recycle bin ]</h4>
+<p>This will empty the Recycle Bin for this drive before starting the backup.</p>
+<h4>&nbsp;&nbsp;&nbsp; Option -W&nbsp; [Wait]</h4>
+<p>If the cursor is in the top left corner at the time of start, Snapshot
+assumes it has been started from a batchfile, and waits for the &lt;ANY&gt; key
+at end, so you can control the execution.<br>
+
+This is probably unwanted, if it was started from the scheduler.<br>
+
+This WaitForAnyKey can be suppressed with <b>-W</b>.</p>
+<h4>&nbsp;&nbsp;&nbsp; Option -G&nbsp; [Graphical]</h4>
+<p>For those who have created a shortcut to a customized Snapshot command,&nbsp; but
+still want to see a graphical progress.</p>
+<p>Useful if you have configured a shortcut or similar for automatic backup, telling the user 'Click here to backup your drive'.</p>
+<p>It has a few sub modes like</p>
+<p>&nbsp;&nbsp;&nbsp; -G&nbsp;&nbsp;&nbsp;&nbsp; show progress, wait for user to
+click [exit] when done&nbsp;<br>
+&nbsp;&nbsp;&nbsp; -Go&nbsp; show progress, exit when done if everything worked, else tell
+him so<br>
+&nbsp;&nbsp;&nbsp; -Gm&nbsp; start minimized<br>
+&nbsp;&nbsp;&nbsp; -Gx&nbsp; show progress, always exit when done<br>
+&nbsp;</p>
+
+<h4>&nbsp;&nbsp;&nbsp; Option -T&nbsp; [Test]</h4>
+<p>You can request a test of the image for validity, after it has been created.<br>
+
+This will completely reread the image and check its consistency,
+checksums,...<br>
+
+However (in particular in batchfiles) it's probably better to test the image
+separately ;like<br>
+<br>
+&nbsp;&nbsp;&nbsp; snapshot x:\image.sna -T<br>
+<br>
+so you can know whether a failure was due to the destination server being down,
+or 'unreliable data written'.<br>
+
+</p>
+<p>Any failure will be returned as Errorlevel &gt; 0.</p>
+<h2>Differential Backups</h2>
+<p>&nbsp;&nbsp;&nbsp; please see <a href="differential.htm">differential.htm</a>
+for detail</p>
+<h2>Set a Default Password from command line</h2>
+<p>&nbsp;&nbsp;&nbsp;
+ --setdefaultpwd=MySuperSecretPassword</p>
+<p>This password will be used for backup, restore, and mount from now on.<br>
+Restore and mount will ask for the
+password, should it be needed.</p>
+<h2>Restoring a Volume</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>C:\&gt; SNAPSHOT&nbsp; X:\D-Drive.sna&nbsp;&nbsp;
+D:</b></p>
+<p>restores the D: drive from X:\D-Drive.sna.<br>
+This will overwrite all data on
+the D: drive !!</p>
+<p>The limitations are identical to the normal <a href="rest.htm">Snapshot
+Restore</a>.</p>
+<h2>Setting the password from the command line</h2>
+<p>From the command line, you can set the password with&nbsp; <b>-PW=SuperSecret&nbsp; </b></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C:
+X:\Backup\c-drive.sna <b>-PW=SuperSecret</b></p>
+<p>This overrides a default password for this command only.<br>
+
+If you have a default password, and don't set one from the command line, the
+default is used.<br>
+
+If you have a default, but nevertheless don't want your image encrypted, you have to
+indicate an empty password:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:&gt;Snapshot C: X:\Backup\c-drive.sna
+<b>-PW=</b></p>
+<h2><a name="exclude"></a><a name="exclude">Excluding </a>files/directories from
+backup</h2>
+<p>In some cases it can be useful to exclude some files or directories from
+backup.</p>
+<p>That's always the case for (and is always done automagically) for
+PAGEFILE.SYS and HIBERFIL.SYS, but can also be useful for temporary files, big
+movie archives (which you have on the bought DVD anyway and similar stuff.</p>
+<p>Due to technical reasons, the data in excluded files are not
+saved, but the directory entries ARE saved.<br>
+Therefore, both when viewing the backup, and after
+restoring, the files *look* intact, but contain all zero's
+(when viewing) or random data (after restore).<br>
+</p>
+<p>For this reason, the image contains a fresh created Batch job 'SnapshotDeleteAfterRestore.BAT'.<br>
+
+After restore it should be executed to avoid possible confusion (it will delete
+all unsaved files).</p>
+<p>Files and directories can be excluded by</p>
+<p>&nbsp;&nbsp;&nbsp; --exclude:\Temp<br>
+&nbsp;&nbsp;&nbsp; --exclude:\Temp\* (which is equivalent)<br>
+&nbsp;&nbsp;&nbsp; --exclude:\Windows\Memory.dmp</p>
+<p>options can be concatenated with commas like</p>
+<p>&nbsp;&nbsp;&nbsp; --exclude:\Temp,\Windows\Memory.dmp,\Windows\Minidump\*,<b>&quot;\</b>Documents
+and Settings<b>&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</b>,<b>&quot;</b>\Program Files<b>&quot;</b>,\Windows\$NtUninstall* (1.38)<b><br>
+<br>
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Note:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \temp and
+\temp\*&nbsp; are equivalent<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Spaces in
+Filenames have to be enclosed by `<b>&quot;</b>`<br>
+</p>
+<p>Subdirectories are also always excluded.</p>
+<h2><a name="replace"></a>Creation of filenames with date,
+weekday, ...</h2>
+<p>Some 'magic' strings in the command line are replaced with the data, computer
+name, disk, etc.</p>
+<p>         So it makes sense to&nbsp;</p>
+<p>         &nbsp;&nbsp;&nbsp;&nbsp; c:\&gt;snapshot&nbsp; C:&nbsp;
+\\server\backups\$computername\$DISK-$DATE.sna</p>
+<div align="left">
+  <table border="0" width="493">
+    <tr>
+      <td width="45"></td>
+      <td width="95">         $date&nbsp;</td>
+      <td width="201">Date 6-digit&nbsp; YYMMDD</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="95">$computername&nbsp;</td>
+      <td width="201">Computer name</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="95">$type&nbsp;</td>
+      <td width="201">for differential Images --&gt; 'dif'</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="95">$disk&nbsp;</td>
+      <td width="201">the drive letter (C,D,...)</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="95">$weekday&nbsp;</td>
+      <td width="201">weekday, 2 letters</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="95">$year&nbsp;</td>
+      <td width="201">year (4 digits)</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="95">$month&nbsp;</td>
+      <td width="201">month&nbsp;(1..12)</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="95">$day&nbsp;</td>
+      <td width="201">day in month (1..31)</td>
+    </tr>
+    <tr>
+      <td width="45"></td>
+      <td width="95">$week&nbsp;</td>
+      <td width="201">week number (1..53)</td>
+    </tr>
+    
+  </table>
+</div>
+<p>&nbsp;</p>
+<h2>Mount a disk Image as virtual drive</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C:\&gt; SNAPSHOT&nbsp; X:\C-Drive.sna&nbsp;&nbsp;
+Z: -V</p>
+<p>mounts the image X:\C-Drive.SNA as drive Z:</p>
+<p>with a couple of variants:</p>
+<p>&nbsp;&nbsp;&nbsp; -VM&nbsp;&nbsp;&nbsp; just mount the image, don't start
+Explorer</p>
+<p>&nbsp;&nbsp;&nbsp; to be used in batch files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -VQ
+Z:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mounts the volume,&nbsp; doesn't show any dialog<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -!unmount:Z&nbsp;&nbsp;
+unmount Z:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -!unmount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+unmount all mounted drives (from 1.38)<br>
+<br>
+&nbsp;&nbsp;&nbsp; Snapshot should be started with 'start' like&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start Snapshot
+x:\image.bat Z: -vq<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xcopy z:\Data c:\Data&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Snapshot -!unmount:Z
+</p>
+<p><b><font color="#ff0000"><a name="exclude139"></a> </font></b>additionally File Extensions&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --exclude:&quot;\*.MP3,\*.TMP&quot;</p>
+<p>work as expected</p>
+<h2><a name="repair"></a>repairing
+damaged images</h2>
+<p>Unfortunately, images can be damaged.<br>
+Some image sub-files may be missing or
+unreadable, data may be damaged, etc., and the image isn't mountable any longer.</p>
+<p>As a <b>disk image, </b>this is useless as you will never know what data are
+missing.</p>
+<p>But often all you need is a few files from the image.<br>
+ If the .SNA file
+is existing,&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:&gt;snapshot x:\DAMAGED.SNA&nbsp;
+--repair:Y:\REPAIRED.SNA&nbsp;</p>
+<p>will try to reconstruct something mountable; at least after running CHKDSK
+over the virtual drive you should be able to retrieve some data. The new image needs
+approx. the same size as the original image.</p>
+<font color="#FF0000">1.44</font>&nbsp;&nbsp;With the command
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:&gt;snapshot x:\DAMAGED.SNA&nbsp;
+--repair:Y:\REPAIRED.SNA&nbsp;--OnlyOffsetInfo</p>
+the new image Y:\REPAIRED.SNA contains the offset information only. This kind of repair 
+operation uses much less disk space. The image can be mounted with the command</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:&gt;snapshot x:\DAMAGED.SNA&nbsp;
+--OffsetInfoFile:Y:\REPAIRED.SNA&nbsp;</p>
+
+
+<h2><font color="#ff0000"><a name="AddDriver"></a></font>Migration
+to different hardware</h2>
+<p>If you restore using VistaPE/BartPE, running&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c:&gt;snapshot --AddDriver</p>
+<p>will ask you for the driver to be installed, and the location of the
+(restored) Windows, and install this driver as an additional disk driver</p>
+<p>&nbsp;</p>
+<p>&nbsp;
+</p>
+<h2><a name="exclude140"></a>more special options during backup</h2>
+
+
+<table border="1" >
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--LogFile:C:\LOGFILE.TXT</td>
+		<td valign="top">redirects output to C:\LOGFILE.TXT um.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--UseVSS<br>
+        --NoVSS<br>
+        --ForceVSS</td>
+		<td valign="top">indicates usage of <a href="snapshot_vss.htm">Windows VSS</a> 
+        services or the internal driver</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--AllWriters </td>
+		<td valign="top">uses VSS services in a way that all supporting 
+        applications (exchange, oracle, SQL server,...) are notified about start 
+        of backup, and successful finish; see also <a href="snapshot_vss.htm">VSS</a>. 
+        this also truncates transactions logs</td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> --ExcludeWriter: </td>
+		<td valign="top"> &quot;NameWriter1&quot;,&quot;NameWriter2&quot;,&quot;NameWriter3&quot;...<br>
+        sets implicit --AllWriters, but disables a given writer; see also
+        <a href="snapshot_vss.htm">VSS</a></td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--IncludeWriter:</td> 
+		<td>&quot;NameWriter1&quot;,&quot;NameWriter2&quot;,&quot;NameWriter3&quot; ...<br>
+        uses only the&nbsp; given list of writers</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--CreateDir </td> 
+		<td>creates automatically the destination directory</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.43</font></td> 
+		<td valign="top" nowrap>--DedupTarget</td> 
+		<td>optimizes (somewhat) the storage requirements on a deduplicating Server 2012; 
+        disables compression</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.43</font></td> 
+		<td valign="top" nowrap>--AutoBackupSize:512</td> 
+		<td> if set, all small partitions on the same drive are also backup'ed 
+        (as HD1-1.sna, HD1-2.sna,...). the intention is tosave all partitions 
+        necessary to boot the system.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--exclude:\temp<br>
+        --exclude:\*.tmp<br>
+        --exclude:@excludeList.txt<br>
+        --exclude:\media\*.MP3</td> 
+		<td>allows exclusion of directories, files or files types from backup.<br>
+&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.46</font></td> 
+		<td valign="top" nowrap>--FastDiff:\*.vhd<br>
+			--FastDiff:\path1,\path2,...</td> 
+		<td>using this option can speed up differntial images. All files and folders given in the command line won't be read
+			if the file size, the modification date and the used clusters haven't changed since the last full backup.<br>
+</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.46</font></td> 
+		<td valign="top" nowrap>--EjectDriveAfterBackup</td> 
+		<td>Eject/Dismount a removable drive after successful image creation. <br>
+</td>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>--EjectMediaAfterBackup</td> 
+		<td>Eject/Eject the backup medium after successful image creation. <br>
+</td>
+
+	</tr>
+	
+	
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--FullIfHashIsMissing</td> 
+		<td>if during a differential backup a corrupt or missing hash files is 
+        detected, a new full backup is created</td>
+	</tr>
+	</tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--exec:&quot;NET START ORACLE&quot;&nbsp;<br>
+        --exec:&quot;RestartExchange.bat&quot;&nbsp;</td> 
+		<td>for use with the internal driver: after snapshot creation (just a 
+        few seconds after starting the backup), you can execute external 
+        command. has to be the last command on command line!</td>
+	</tr>
+	</tr>
+		<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--LimitIORate:10</td> 
+		<td>limits maximum I/O rate on the destination drive to 10MB/s ( 1-100)<br>
+&nbsp;</td>
+	</tr>
+	
+	
+</table>
+
+
+
+<p>&nbsp;</p>
+<h2>special options during restore</h2>
+
+
+<table border="1" >
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--Activate X:<br>
+        --Deactivate X:</td>
+		<td valign="top" width="725"><font FACE="LMRoman12-Regular">
+        <p ALIGN="LEFT">(de) activates the partition X:</font></td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> --resize C: 100000 </td>
+		<td valign="top" width="725"> enlarges the file system C: auf 100 GB, or 
+        at most to the existing partition size(<a href="resize.htm">see also</a>)</td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> --resizepart C: 100000</td>
+		<td valign="top" width="725"> enlarges both partition and file system to 100 GB<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --resizepart can't shrink the 
+        partition!</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--RestoreMBR HD1 filename - </td> 
+		<td width="725">restores exactly the first 512 byte of a partition</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--RestorePartitionStructure HD1 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        filename</td> 
+		<td width="725">restores all partitioning information, including boot 
+        code (up to 63 sectors), extended partitions,...<br>
+        recommended instead of --RestoreMBR</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.43</font></td> 
+		<td valign="top" nowrap>--Extendpartitions:Image.sna HD1</td> 
+		<td width="725">as --RestorePartitionstructure, but grows all NTFS 
+        partitions proportional to fill the disk</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--EntireDisk Image-C.sna HD1</td> 
+		<td width="725">Restores the partitions strucutre and all images saved with the same snapshot 
+				command (snapshot HD1:* Image-$disk.sna) to disk HD1</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td width="725">&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--Schedule C: D:\image.sna&nbsp;&nbsp;</td> 
+		<td width="725">schedules restore of C: from file D:\IMAGE.SNA for the 
+        next restart. D: must be a fixed drive; network drives are not supported</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--ListSchedule</td> 
+		<td width="725"> shows a possibly scheduled restore</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--RemoveSchedule </td> 
+		<td width="725">removes scheduled restores</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--autoreboot:off <br>
+        --autoreboot:any<br>
+        --autoreboot:success</td> 
+		<td width="725">rules behaviour after restore:<br>
+        the computer will restart never/always/only no errors happened.</td>
+	</tr>
+	</tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td width="725">&nbsp;</td>
+	</tr>
+	</tr>
+	</tr>
+		<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--AddDriver<br>
+        --MergeIDE</td> 
+		<td width="725">adds additional (disk-) drivers. See
+        <a href="hardware.htm">Hardware</a></td>
+	</tr>
+	
+	
+    <tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--ClearSignature HD1<br>
+        --SetSignature HD1 01234567</td> 
+		<td width="725">sets/removes disk signature<br>
+ &nbsp;</td>
+	</tr>
+	
+	
+    <tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--show<br>
+        --showlist</td> 
+		<td>shows in two different formats information about found drives and 
+        partitions</td>
+	</tr>
+	
+	
+</table>
+
+
+
+<h2>&nbsp;</h2>
+<h2>special options when mounting image files</h2>
+
+
+<table border="1" width="918" >
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" width="642">&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> --SearchFull:Fullpath</td>
+		<td valign="top" width="642"> when mounting a differential image, and 
+        the full image is located somewhere else.</td>
+	</tr>
+	</tr>
+	</tr>
+	</tr>
+			
+	
+</table>
+
+
+
+<p>&nbsp;</p>
+<h2>other special options</h2>
+
+
+<table border="1" >
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td>
+		<td valign="top" nowrap>--?</td>
+		<td valign="top">list of all available options</td>
+	</tr>
+	<tr>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> &nbsp;</td>
+		<td valign="top"> &nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--setdefaultpwd=MyPassword</td> 
+		<td>enters into registry a password with which coming images will be 
+        encrypted and decrypted per default.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>--setdefaultencpwd=MyPassword</td> 
+		<td>enters into registry a public key generated from password with which coming images will be 
+        encrypted per default.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;<font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>--setdefaultdecpwd=MyPassword</td> 
+		<td>enters into registry a password with which coming images will be 
+        decrypted per default.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;<font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>-pwgen=Key.txt -pw=MyPasswort</td> 
+		<td>generates a public key file which can be used to encrypt en image</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;<font color="#FF0000">1.47</font></td> 
+		<td valign="top" nowrap>-pwuse=Key.txt </td> 
+		<td>uses a public key file generated with -pwgen to encrypt en image</td>
+	</tr>	
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td> &nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--repair:X:CORRUPTED.SNA <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y:\REPAIRED.SNA </td> 
+		<td>tries to make most out of an image where parts are missing, 
+        unreadable, or destroyed. no warranties.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.46</font></td> 
+		<td valign="top" nowrap>--repair X:CORRUPTED.SNA </td> 
+		<td>Snapshot will try to repair the image CORRUPTED.SNA. All repaired data will be appended to the existing image.
+			You need at least version 1.46 of Snapshot to mount the repaired image.</td>
+	</tr>
+	
+	
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td>&nbsp;</td>
+	</tr>
+	</tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--QuickCheck:test.sna </td> 
+		<td>quick check if he images <b>looks</b> complete, and has some magic 
+        words at start and end of backup. does <b>not replace a complete test 
+        using -T</b></td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.46</font></td> 
+		<td valign="top" nowrap>--DeepVerify</td> 
+		<td>if used in addition to -T  the image will be verified using the algorithm used until version 1.45.</td>
+	</tr>		
+	<tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--register:Lizenzdata.txt </td> 
+		<td>generates a licensed snapshot.exe using the license info that we 
+        sent to you.</td>
+	</tr>
+	</tr>
+		<td valign="top" nowrap>&nbsp;</td> 
+		<td valign="top" nowrap>--merge:new_full.sna diff_image.sna </td> 
+		<td>combines a full and a differential image into a new full<br /></td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--NetUse:\\server\share,N:,Username,Password</td> 
+		<td width="725">connects the network share \\server\share with drive letter N:</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--NetUse:\\server\share,Username,Password</td> 
+		<td width="725"> connects the network share \\server\share \\server\share
+			without using a drive letter</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--AddFTPAccount:Username,Server,Password,Port</td> 
+		<td width="725">Adds a FTP account with the given credentials.
+			If the port number is omitted, the default port (21) will be used.</td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap><font color="#FF0000">1.44</font></td> 
+		<td valign="top" nowrap>--DeleteFTPAccount:Username,Server,Password,Port</td> 
+		<td width="725">Deletes the FTP account for the user with the given credentials.
+			If the port number is omitted, the default port (21) will be used.</td>
+	</tr>
+	
+	
+	
+    </table>
+
+
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+
+</body>
+</html>

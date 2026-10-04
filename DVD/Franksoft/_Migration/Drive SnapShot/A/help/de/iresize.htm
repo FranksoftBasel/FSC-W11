@@ -1,0 +1,272 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="de">
+<meta name="keywords" content="Partition, resize, windows, Disk, drive, Image, imaging, vcolume, snapshot, Backup ,Disk Cloning, Disk Imaging, Disaster recovery, Windows,Windows NT, Windows 2000,Windows XP, UDMA, 2003 server">
+
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+
+<title>Drive Snapshot - Resize Partitions</title>
+</head>
+
+<body>
+
+<h1 align="center">Snapshot - Partition Resize</h1>
+<hr>
+
+<h2>Partitionen vergrößern/verkleinern</h2>
+
+<p>Es wird manchmal gewünscht, Partitionen zu vergrößern oder zu verkleinern.</p>
+
+<p>Drive Snapshot unterstützt dies ab 30.September 03 unter folgenden
+Voraussetzungen:</p>
+<ul><li>Es wird ausschließlich das Filesystem innerhalb der Partition verändert,
+    die Partition beibt (derzeit) unverändert (wir arbeiten dran)<li>Vergrößern/Verkleinern ist nur unter Windows möglich<li>derzeit wird ausschließlich
+    NTFS unterstützt<li><b>das Resize ist ausdrücklich 'BETA'; d.h.<br>
+der Code
+    ist getestet, und funktioniert auch, ist aber weit weniger gut getestet als
+    die übrigen Komponenten von Drive Snapshot.<br>
+Sie verwenden Ihn auf eigene
+    Verantwortung.<br>
+</b>
+
+  <li>Bitte beendigen Sie alle Anwendungen, die auf das zu ändernde Laufwerk
+    zugreifen, soweit das möglich ist.<br>
+
+
+</ul>
+
+<p>Resize ist derzeit ausschließlich von der Windows Kommandozeile verfügbar.</p>
+
+<p><font face="Terminal">Ausgabe der Resize Möglichkeiten (keine Änderung)
+mit&nbsp;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;<font face="Terminal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font><font face="Terminal">snapshot -!resize c:<br>
+</font></p>
+
+<div align="center">
+  <center>
+  <table border="1" width="674" height="75">
+    <tr>
+      <td width="674" height="75"><font face="Terminal">C:\Programme\Snapshot\snapshot&gt;snapshot -!resize
+        c:<br>
+        SNAPSHOT - Instant DiskImaging for WinNT/2000/XP - (C) www.drivesnapshot.de<br>
+        <br>
+        <br>
+        Drive C: total size  2400 MB, free 2281 MB, clustersize 4096<br>
+        current       size is   2.516.582.400 = 2400 MB<br>
+        min.<br>
+possible size is   1.975.517.184 = 1884 MB<br>
+        max.<br>
+possible size is   3.890.525.184 = 3710 MB<br>
+        </font></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>min.<br>
+possible size: kleiner als diese Größe kann das Laufwerk nicht werden
+da an dieser Stelle Daten liegen; evtl.<br>
+kann dies durch einen
+Defragmentierungslauf verkleinert werden.<br>
+Es ist aber in der Regel nicht
+möglich, ein Laufwerk kleiner zu machen als ca.<br>
+0.5* die beim Anlegen des
+Laufwerks angegebene Größe, da an dieser Stelle einige Verwaltungsdaten
+liegen.<br>
+Insofern kann ein 10 GB Laufwerk nie mehr kleiner als 5GB werden.</p>
+
+<p>Danach Änderung, in diesem Fall soll das Laufwerk von 2400 MB auf 3000 vergrößert
+werden.<br>
+
+Dabei findet folgendes statt:</p>
+
+<p>Zunächst wird das Laufwerk auf Fehler geprüft; fehlerhafte Laufwerke rührt
+Snapshot nicht an.<br>
+In diesem Fall müssen Sie von Hand <b>und von der
+Kommandozeile</b> CHKDSK X: /F aufrufen, <b>die Überprüfung per Windows (KlickKlick)
+findet einige Fehler nicht!</b></p>
+
+<p>Danach wird das Laufwerk verkleinert, und in einen kontrolliert fehlerhaften
+Zustand gebracht, den wiederum CHKDSK beseitigen soll und kann und macht.<br>
+</p>
+
+<p>Sollte das zu ändernde Laufwerk Ihr Systemlaufwerk sein, oder sonst von
+einer Applikation belegt sein, fragt CHKDSK nach, ob er trotzdem laufen soll,
+bzw.<br>
+ob diese Prüfung beim nächsten Neustart vorgenommen werden soll.</p>
+
+<p><b>Beantworten Sie alle Fragen mit Ja, und <font color="#FF0000">benutzen Sie
+das Laufwerk nicht, bevor CHKDSK nicht fehlerfrei durchgelaufen ist</font>; wenn
+nötig starten Sie Windows sobald wie irgend möglich neu!!</b></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&nbsp;&nbsp;<font face="Terminal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font><font face="Terminal">snapshot -!resize c: 3000<br>
+</font></p>
+
+<div align="center">
+  <center>
+  <table border="1" width="664">
+    <tr>
+      <td width="63">1.Schritt:<br>
+        Überprüfen der Eingabe,&nbsp;</td>
+      <td width="585"><font face="Terminal">c:&gt;\Programme\snapshot\snapshot -!resize q: 3000<br>
+        SNAPSHOT - Instant DiskImaging for WinNT/2000/XP - (C) www.drivesnapshot.de<br>
+        <br>
+        Drive Q: total size  2400 MB, free 2281 MB, clustersize 4096<br>
+        current       size is   2.516.582.400 = 2400 MB<br>
+        min.<br>
+possible size is   1.975.517.184 = 1884 MB<br>
+        max.<br>
+possible size is   3.890.525.184 = 3710 MB<br>
+        wanted        size is   3.145.728.000 = 3000 MB<br>
+        verifying filesystem on T: for integrity first</font></td>
+    </tr>
+    <tr>
+      <td width="63">CHKDSK um das Laufwerk auf Fehler zu prüfen</td>
+      <td width="585"><font face="Terminal">The type of the file system is NTFS.<br>
+
+        Volume label is test.<br>
+
+        <br>
+        WARNING!  F parameter not specified.<br>
+
+        Running CHKDSK in read-only mode.<br>
+
+        <br>
+        CHKDSK is verifying files (stage 1 of 3)...<br>
+
+        File verification completed.<br>
+
+        CHKDSK is verifying indexes (stage 2 of 3)...<br>
+
+        Index verification completed.<br>
+
+        CHKDSK is verifying security descriptors (stage 3 of 3)...<br>
+
+        Security descriptor verification completed.<br>
+
+        Windows has checked the file system and found no problem.<br>
+
+        <br>
+   2457600 KB total disk space.<br>
+
+     96684 KB in 2472 files.<br>
+
+       520 KB in 129 indexes.<br>
+
+         0 KB in bad sectors.<br>
+
+     24164 KB in use by the system.<br>
+
+     21056 KB occupied by the log file.<br>
+
+   2336232 KB available on disk.<br>
+
+        <br>
+      4096 bytes in each allocation unit.<br>
+
+    614400 total allocation units on disk.<br>
+
+    584058 allocation units available on disk.<br>
+
+        <br>
+        Drive Q: checked and no errors found</font></td>
+    </tr>
+    <tr>
+      <td width="63">Snapshot ändert die Laufwerksgröße , danach wieder</td>
+      <td width="585"><font face="Terminal">resizing Q: to   3.145.728.000 (3000 MB)<br>
+        <br>
+        drive Q: has been resized to   3.145.728.000 = 3000 MB<br>
+        <br>
+        you MUST run CHKDSK /F on this drive before you continue<br>
+        to use it; if this is your systemdrive, please reboot your<br>
+        computer now<br>
+        <br>
+        running CHKDSK /F now.<br>
+Please let it run!!</font></td>
+    </tr>
+    <tr>
+      <td width="63">CHKDSK Lauf, um vorhandene Fehler zu beseitigen.<br>
+
+        <p>Die Meldung 'correcting errors...' wird erwartet !</td>
+      <td width="585"><font face="Terminal">The type of the file system is NTFS.<br>
+
+        Volume label is test.<br>
+
+        <br>
+        CHKDSK is verifying files (stage 1 of 3)...<br>
+
+        File verification completed.<br>
+
+        CHKDSK is verifying indexes (stage 2 of 3)...<br>
+
+        Index verification completed.<br>
+
+        CHKDSK is verifying security descriptors (stage 3 of 3)...<br>
+
+        Security descriptor verification completed.<br>
+
+        <span style="background-color: #FFFF00">Correcting errors in the Volume Bitmap.<br>
+</span>
+        Windows has made corrections to the file system.<br>
+
+        <br>
+   3072000 KB total disk space.<br>
+
+     96684 KB in 2472 files.<br>
+
+       520 KB in 129 indexes.<br>
+
+         0 KB in bad sectors.<br>
+
+     24184 KB in use by the system.<br>
+
+     21056 KB occupied by the log file.<br>
+
+   2950612 KB available on disk.<br>
+
+        <br>
+      4096 bytes in each allocation unit.<br>
+
+    768000 total allocation units on disk.<br>
+
+    737653 allocation units available on disk.</font></td>
+    </tr>
+    <tr>
+      <td width="63">Gratulation und Auszeichnung aller Unbeteiligten...</td>
+      <td width="585"><font face="Terminal">chkdsk found some errors, and corrected them<br>
+        this is the expected behaviour<br>
+        it should be save to use this drive now<br>
+        SUCCESS!</font></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>&nbsp;</p>
+
+<p>Nicht nur die Software ist BETA, die Beschreibung ist es auch.</p>
+
+  
+<p>Deswegen sind Anregungen jedweder Art willkommen.<br>
+</p>
+
+  
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019 Tom Ehlert Software</font>
+
+
+
+<!--webbot bot="Include" endspan i-checksum="60662" -->
+
+</body>
+
+</html>

@@ -1,0 +1,264 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="robots" content="follow, index">
+<meta name="keywords" content="Drive Snapshot, backup, Volume Snapshot Copy Service,VSS">
+<title>Drive Snapshot - VSS</title>
+
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+<base target="_parent">
+
+<style type="text/css">
+<!--
+.english { color:red ;font-size:100%;visibility:hidden}
+.german  { color:green ;font-size:10%;}
+-->
+</style>
+</head>
+<body>
+
+<h1 align="center">Drive Snapshot - VSS</h1>
+
+<p align="left">Drive Snapshot offers the
+possibility to use the Windows build in Volume Snapshot Copy Service (VSS) for
+the creation of consistent images.</p>
+
+<p align="left">Main advantage compared to the internal Drive Snapshot Driver is the
+ability to image a running MS Exchange server, and also to image several
+partitions at the same time.<br>
+(<a href="#Details">See below for technical Details</a>).</p>
+
+<h3 align="left">Usage</h3>
+
+<p align="left">By using VSS, several drives can be imaged at the same time:</p>
+
+<ul>
+  <li>
+    <p align="left">from the GUI by holding the&nbsp; Control key while clicking
+    in the list</li>
+  <li>
+    <p align="left">from the command line with&nbsp;<br>
+    <br>
+    <b>c:&gt;snapshot c:+d:+e:&nbsp; x:\backup\computer\$DISK-FULL.sna&nbsp;<br>
+    </b></li>
+  <li>
+    <p align="left">if saving several disks at the same time, the destination
+    MUST contain $DISK somewhere to differentiate the different image files</li>
+  <li>
+    <p align="left">differential
+    Images&nbsp;<br>
+    <br>
+    <b>c:&gt;snapshot c:+d:+e:&nbsp; x:\computer\$DISK-$DATE-Diff.sna -hx:\backup\computer\$DISK-FULL.hsh<br>
+    <br>
+    </b>works only from the command line</li>
+  <li>
+    <p align="left"><b>&nbsp;snapshot hd1:* x:\backup\$disk.sna<br>
+    <br>
+    </b>saves all partitions of physical drive 1, incl.<br>
+Linux, Dell, Compaq,...<br>
+<b>
+    </b></li>
+</ul>
+
+<h3 align="left"><a name="Details">Technical Details</a></h3>
+
+<p align="left">Since Windows XP Windows implements a 'Volume ShadowCopy
+Service' (VSS), that essentially provides the same service as the build in
+Snapshot driver - that is a consistent snapshot of one (or more) partitions at a
+fixed point in time.<br>
+
+Additionally, it defines and implements a broadcast similar to:&nbsp;</p>
+<blockquote>
+  <p align="left">To everybody who cares about VSS: would you please go into a
+  consistent state, bring transactions to a recoverable state, etc., and than
+  please be write for some (short) time because I'm going to make a backup.</p>
+</blockquote>
+<p align="left">At this time, the current state of the disk is frozen, and made
+available for backup programs until.<br>
+Changes to the drive while the backup is
+active are written to some reserved space on the disk, until the backup finishes
+and tells VSS to release the buffers.</p>
+<p align="left"><b>VSS advantages</b></p>
+<ul>
+  <li>
+    <p align="left">Can snapshot several volumes at the same time</p>
+  <li>
+    <p align="left">By using above mentioned broadcast it can also put Exchange
+    Server 2003 into a stable state without shutting down exchange services,
+    which isn't always reliable possible without using VSS.<br>
+For other databases
+    this isn't necessary (they seem to be implemented in a more stable fashion),
+    but at least using VSS doesn't hurt.</p>
+  </li>
+</ul>
+<p align="left"><b>VSS disadvantages</b></p>
+<ul>
+  <li>
+    <p align="left">by the fixed (preconfigured) size of the VSS buffers, at
+    least in theory this buffer can overflow, and thus abort the backup.<br>
+the
+    build in driver writes changes immediately to the image, and thus can't
+    overflow.</p>
+  <li>
+    <p align="left">by the additional buffering on disk, using VSS may be slower
+    then the internal driver.</p>
+  <li>
+    <p align="left">VSS doesn't exist for Windows NT and Windows 2000.</p>
+  <li>
+    <p align="left">VSS simply doesn't work, if some older products (like older
+    version of MS SQL) are running on more recent windows versions; NTBACKUP
+    doesn't work in these cases either.</p>
+  </li>
+</ul>
+<p align="left"><b>Implementation of VSS vs.<br>
+internal driver</b></p>
+<p align="left">As both drivers have their pros and cons, by default the VSS
+driver is only used if</p>
+<ul>
+  <li>
+    <p align="left">MS Exchange 2003 or Active Directory are detected</p>
+  <li>
+    <p align="left">a backup of several volumes is started</p>
+  </li>
+</ul>
+<p align="left">else the internal driver is used.<br>
+You may change this by using
+the [Advanced Options] dialog, or from command line by</p>
+<ul>
+  <li>
+    <p align="left">--noVSS: never uses VSS</p>
+  <li>
+    <p align="left">--UseVSS: always uses VSS, if it exists and works</p>
+  <li>
+    <p align="left">--ForceVSS: tries to use VSS; if VSS is not available for
+    some reason, backup is aborted with error</p>
+  </li>
+</ul>
+<p align="left">&nbsp;
+
+    <h2>
+      Using Volume Shadow Copy Service (VSS) with and without explicit usage of 
+      writers</h2>
+    <div id="gt-res-content" class="almost_half_cell">
+      <div dir="ltr" style="zoom:1">
+        <span id="result_box" class lang="en"><span class="hps">The</span>
+        <span class="hps">Volume Shadow Copy</span> <span class="hps">Service (VSS)</span>
+        <span class="hps">of Windows</span> <span class="hps">has been available 
+        since</span> <span class="hps">Windows XP/2003</span><span class>.<br>
+</span>
+        <span class="hps">It can be used by application</span> <span class="hps">
+        to create</span> <span class="hps">a shadow copy</span>
+        <span class="hps">of</span> <span class="hps">one or more partitions</span>.<br>
+
+        <span class="hps">The</span> <span class="hps">components that 
+        communicate</span> <span class="hps">with the VSS</span>
+        <span class="hps">are called</span> <span class="hps">VSS writer</span>.<br>
+
+        <span class="hps">You can</span> <span class="hps">before and after a</span>
+        <span class="hps">backup</span> <span class="hps">perform actions.<br>
+</span>
+        <span class="hps">A list</span> <span class="hps">of the available 
+        system</span> <span class="hps">writers</span> <span class="hps">can 
+        obtained by</span> <span class="hps">the command</span><span class>:</span></span></div>
+    </div>
+&nbsp;<p><b>vssadmin list writers</b></p>
+
+Snapshot can use VSS in two different modes.<br>
+
+
+<h3>VSS without explicit usage of writers</h3>
+
+<li>	Creates a shadow copy, that contains a konsistent copy of all existing 
+data.</li>
+<li>Snapshot uses this mode automatically if more then one partition is 
+selected, or MS Exchange is detected.<br>
+(in Windows SBS2003 the necessary Exchange 
+writer is disabled by default, and must be enabled; see&nbsp; <a href="http://support.microsoft.com/kb/838183">http://support.microsoft.com/kb/838183)</a> </li>
+
+<li>writers are not used in an explicit way, and no specific actions are taken.</li> 
+<li><span id="result_box0" class lang="en"><span class="hps">Transaction logs</span>
+<span class="hps">on an Exchange server</span> <span class="hps">will not be 
+truncated</span> <span class="hps">after the backup,</span> <span class="hps">
+and a</span> <span class="hps">Hyper</span><span class>-V host</span>
+<span class="hps">does not notify</span> <span class="hps">the</span>
+<span class="hps">virtual machines running</span> <span class="hps">on</span>
+<span class="hps">the scheduled backup</span></span>.</li><br /><br />
+
+<h3>VSS with and without explicit usage of writers</h3>
+
+<li><span id="result_box1" class lang="en"><span class="hps">Snapshot uses this mode only if instructed</span>
+<span class="hps atn">(</span>Advanced Backup <span class="hps">Options</span>
+<span class="hps">dialog</span>).<br>
+<span class="hps">In this mode 
+all</span> <span class="hps">started</span> <span class="hps">VSS writers</span>
+<span class="hps">are notified about the starting backup</span>,
+<span class="hps">and</span> <span class="hps">can go ahead and</span>
+<span class="hps">carry out</span> <span class="hps">special operations</span></span>.<br>
+
+They are also notified about successful backup, and may perform custom actions, 
+like truncating transaction logfiles.</li>
+<li>In this mode a Hyper-V Server would stop virtual machines running on it for 
+a short time until the the shadow copy has been taken.</li>
+    <li>An Exchange server will - after snapshot signals a successful backup - 
+    truncate transaction logs</li>
+    <li>Each writer is responsible for each owns actions.</li>
+<li><span id="result_box2" class lang="en"><span class="hps">Snapshot has</span>
+<span class="hps">no effect on the</span> <span class="hps">actions</span>
+<span class="hps">carried out by the</span> <span class="hps">writers</span></span>.<br>
+<span id="result_box3" class lang="en"><span class="hps">A 
+detailed</span> <span class="hps">control of the</span> <span class="hps">Writers 
+is</span> <span class="hps">possible by using</span> <span class="hps">the 
+command line</span>, <span class="hps">for example if you</span>
+<span class="hps">already have</span> <span class="hps">a dedicated</span>
+<span class="hps">Exchange backup</span> <span class="hps">feature</span>
+<span class="hps">and</span> <span class="hps">do not</span> <span class="hps">
+want</span> <span class="hps">that</span> <span class="hps">snapshot</span>
+<span class="hps">triggers</span> <span class="hps">the deletion</span>
+<span class="hps">of the transaction logs</span>:</span>
+<ul type="square">
+<li>--AllWriters:<span id="result_box4" class lang="en"><span class="hps"> With this option,</span> <span class="hps">use</span>
+<span class="hps">the Volume Shadow Copy</span> <span class="hps">Service</span>
+<span class="hps">snapshot</span> <span class="hps">in a</span>
+<span class="hps">mode that</span> <span class="hps">notifies all</span>
+<span class="hps">involved applications</span> <span class="hps">explicitly</span>
+<span class="hps">about the process</span> <span class="hps">of the backup.<br>
+</span>
+<span class="hps">The</span> <span class="hps">writer</span> <span class="hps">
+then</span> <span class="hps">have</span> <span class="hps">the opportunity to</span>
+<span class="hps">perform</span> <span class="hps">before</span>
+<span class="hps">and</span> <span class="hps">after the</span>
+<span class="hps">backup</span> <span class="hps">necessary actions</span>.<br>
+
+<span class="hps">A</span> <span class="hps">Hyper-V</span> <span class="hps">
+server</span> <span class="hps">running virtual machines</span>
+<span class="hps">with</span> <span class="hps">virtual machines</span>
+<span class="hps">notified</span> <span class="hps">of impending</span>
+<span class="hps">backup</span>.<br>
+<span class="hps">Virtual</span>
+<span class="hps">machines on which</span> <span class="hps">no</span>
+<span class="hps">integration services are installed</span>, are stopped
+<span class="hps">short</span> <span class="hps">of creating</span>
+<span class="hps">the shadow copy</span></span>.</li>
+<li>--ExcludeWriter:"NameWriter1","NameWriter2","NameWriter3",...<br />
+This options sets implicit --AllWriters and excludes
+<span id="result_box5" class="short_text" lang="en"><span class="hps">the</span>
+<span class="hps">list of</span> <span class="hps">specified writers.</span><span class></span></span></li>
+<li>--IncludeWriter:"NameWriter1","NameWriter2","NameWriter3",...<br />
+Using this option only the specified writer will be notified.</li>
+</ul>
+
+
+	&nbsp;
+  
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+</body>
+</html>

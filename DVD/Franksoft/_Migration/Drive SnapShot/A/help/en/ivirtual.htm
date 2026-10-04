@@ -1,0 +1,177 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Erzeugung einer bootbaren CD/DVD</title>
+</head>
+
+<body>
+
+<h1>Restoring (or migration) a virtual maschine&nbsp;<br>
+VMWare/MS Virtual Server&nbsp;</h1>
+
+<p><a href="itips.htm" target="_parent"><font size="+2">more tips</font></a></p>
+
+<h2>The conventional method</h2>
+
+<p>Just boot the virtual machine, using a DOS or <a href="http://www.nu2.nu/pebuilder">BartPE
+</a> Bootdisk.<br>
+
+Restore the machine like a 'normal' one, probably using the network.</p>
+
+<h2>A better way to do it</h2>
+
+<p>Create a new (virtual) disk, using the supplied virtual machine tools.<br>
+
+There's no need to partition it (yet).</p>
+
+<p>Next, you mount the virtual disk into your host system as a virtual disk.</p>
+
+<p><b>Microsoft Virtual Server</b> 2005 R2 Service Pack 1 has a command line
+tool <b>VHDMount</b>, which allows to mount a .VHD as virtual drive.</p>
+
+<p>Mounting a .vhd:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>vhdmount.exe /p VirtualDISK.VHD<br>
+</b>Unmounting<b> </b>a .vhd:&nbsp;&nbsp;&nbsp; <b>vhdmount.exe /u VirtualDISK.VHD</b></p>
+
+<p>unfortunately, <b>VMWare Server </b>just provides a <a href="http://www.vmware.com/download/diskmount.html">tool
+DISKMOUNT</a>&nbsp; that mounts single partitions into the host, not the entire
+disk; so partitioning of the disk isn't possible.</p>
+
+<p>Luckily, Ken Kato has created an Open Source Driver VDK, that allows to mount
+entire VMWare disks.<br>
+
+The original at <i>http://chitchat.at.infoseek.co.jp/vmware/vdk.html</i> is no 
+longer availkable.<br>
+
+Unfortunately, neither Windows Disk Manager nor Drive Snapshot detect this disk.<br>
+
+Luckily, VDK is open source (thanks, Ken), and we could modify VDK (slightly),
+so that at least Drive Snapshot recognizes the virtual drive.</p>
+
+<p>Just download <a href="http://www.drivesnapshot.de/download/vdk.zip">VDK.EXE</a>
+(no warranties of any kind).<br>
+Sourcecode is available <a href="http://www.drivesnapshot.de/download/vdksrc.zip">here</a>.</p>
+
+<p>Mounting a .VMDK:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <b>vdk open 0 VirtualDISK.VMDK /RW<br>
+</b>Unmounting a VMDK:&nbsp;&nbsp;&nbsp; <b>vdk close 0 /F /Q</b></p>
+
+<h2>Restoring the virtual Machine</h2>
+
+<p>Use the Snapshot GUI to restore; otherwise you might end up restoring to the
+wrong physical disk.<br>
+
+Start Snapshot , [Restore], select the Image, [next].<br>
+
+Right click in the Graphic <b>bottom, left onto</b> [HD2 VDK VMWARE 200 GB].<br>
+
+Choose <b>Restore Partition structure.<br>
+</b> After that, the original partitioning
+has been restored.<br>
+After that, restore all partitions.</p>
+
+<p>Done.<br>
+Unmount the disk, and boot it with Virtual Server/VMWare.</p>
+
+<h2>Done ? Trap 1</h2>
+
+<p>When booting, you get a <span class="titel3">&quot;Inaccessible
+Boot Device&quot; or &quot;Stop 0x0000007b&quot;.<br>
+
+The operating system doesn't recognize the (emulated) disk controller.<br>
+Easiest
+solution: tell VMWare to make the disk an IDE disk, each operating system in
+universe will recognize IDE disks.<br>
+If that's not an option (because VMWare ESX
+server doesn't emulate IDE disks), you have to install a driver for the
+(virtual) disk.<br>
+
+This is easiest done from the command line by</span></p>
+
+<p><b>&nbsp;&nbsp;&nbsp;</b><span class="titel3"><b>  C:&gt;Snapshot --AddDriver</b>
+ (requires a current Snapshot.exe)</span></p>
+
+<p><span class="titel3">this will ask for the driver (DiskDriver.SYS), and the
+location of the restored Windows, where the driver shall be installed (NewDrive:\Windows).<br>
+
+It's your responsibility to select the proper driver for the restored operating
+system (XP/2003/Vista, X86/X64).<br>
+<br>
+This driver is forced to start the next time Windows is started.<br>
+It's
+recommended to install this driver again in the booted windows, as some
+(optional) control elements might be missing.</span></p>
+
+<p><span class="titel3">This approach also works for 'real' hardware, but
+requires restore from BartPE (or any other WinPE variant), to teach Windows a
+new RAID controller etc.</span></p>
+
+<p>Done.<br>
+unmount disk, and boot Virtual Server/VMWare.</p>
+
+<h2>Done ? Trap 2</h2>
+
+<p>A messagebox pops up, notifying you that the hardware was changed, and
+Windows wants to be reactivated.<br>
+
+Unfortunately your network card doesn't work (yet), as this is new hardware, so
+activation over internet doesn't work.</p>
+
+<p>Solution 1: use <span class="titel3"><b>Snapshot --AddDriver</b> to teach the
+system the new network card.<br>
+
+Solution 2: call Microsoft - they wanted to be called for activation ;)</span></p>
+
+<h2>Done ? Trap 3</h2>
+
+<p>everything is fine, the machine boots, but when you login, you are
+immediately logged of.<br>
+Funny, isn't it....</p>
+
+<p>Background and solution: probably you restored the current host into the VM.<br>
+
+Windows gives each disk a unique ID, so called 'disk signature' (32-bit number
+in the MBR).<br>
+
+Some resources do NOT acess 'first partition on first disk', but 'first
+partition on disk with ID 1234'.</p>
+
+<p>Windows takes also care, that there are no 2 disks with the same disk
+signature, it will actively change the signature on a second disk if a duplicate
+ID is found.</p>
+
+<p>When you restored the partition structure, Windows modified the disk
+signature to 'something different'.</p>
+
+<p>Solution: after partitioning, and restore, go again to&nbsp;</p>
+
+<p>[Restore], select Image , [next].<br>
+
+right click on [HD2 VDK VMWARE 200 GB].<br>
+
+select <b>Restore DiskSignature.</b></p>
+
+<p>After that, unmount (and never mount again) the virtual disk.</p>
+
+<h2>Comments</h2>
+
+<p>are welcome</p>
+
+<h2>Good luck</h2>
+
+<p><a href="tips.htm" target="_parent"><font size="+2">more Tipps</font></a></p>
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" i-checksum="65510" endspan -->
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Drive Snapshot - Disk Image Restore 2</title>
+
+
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="../css/snapshot.css">
+</head>
+<body>
+<h1>Disk Image Restore <a href="rest1.htm">1</a> <font size="+4">2</font>  <a href="rest3.htm"> 3</a></h1>
+<hr>
+
+<table border="0">
+  <tr>
+    <td>
+
+<table align="right"><tr><td>
+<map name="FPMap0">
+<area href="rest3.htm" coords="275, 448, 425, 487" shape="rect">
+</map><img border="0" src="../images/restore2.png" usemap="#FPMap0" width="579" height="499">
+<a href="rest1.htm" target="_parent">
+</a>
+<a href="rest1.htm">
+<center>Screenshots</center>
+</a>
+</td></tr></table>
+
+<p>Next, you select the drive you want to restore.</p>
+<p><b>Warning: All current available data will be lost forever.<br>
+If you need any
+data from this drive, please save them before restoring the drive.</b></p>
+<p>If you want to restore to a different drive then the original one, the
+partition size (PartSize) has to be larger or equal to the drive size; currently
+there is no resize of the disk.</p>
+
+<p>First, you select the disk image file to be restored.<br>
+To aid you, all known
+properties about the image at creation time are shown.</p>
+<p>After selecting the drive, please click&nbsp; <a href="rest3.htm">[Next]</a>&nbsp;</p>
+
+
+
+<p>Additional, you have (by using the right mouse click) the following options
+for managing the disk:</p>
+<p><b>Right click on [HD1]</b></p>
+<blockquote>
+  <p><b>Restore Partition Structure:</b> deletes the existing partitioning, and
+  repartitions the disk like the original one; includes restoring the MBR</p>
+  <p><b>Restore MBR:</b> restores just the first sector of the disk</p>
+  <p><b>CheckBoot:</b>&nbsp; unfortunately, even 2007 some boot sector still use
+  CHS addressing.<br>
+If the original CHS translation is different from the new one,
+  these leads to a non-booting disk.<br>
+Detects and corrects some problems with not
+  booting disks.</p>
+  <p><b>Clean Disk:</b> effectively erases the complete disk by cleaning the
+  disks first sector (MBR).</p>
+  <p><b>Clean Disk Signature/Restore Disk Signature:</b>&nbsp;a 32 Bit number in
+  the MBR, which is used by some Windows components to re-identify disks.<br>
+initialised
+  to some random number by disk manager.</p>
+</blockquote>
+<p><b>Right Click on a volume (C:)</b></p>
+<blockquote>
+  <p><b>Restore:</b> restores the volume</p>
+  <p><b>Assign Drive Letter:&nbsp;</b> if the volume doesn't have a drive
+  letter, you can assign one (useful for Windows 2003)</p>
+  <p><b>Open:</b> starts the volume in Explorer</p>
+  <p><b>Properties:</b> starts the drive properties dialog</p>
+  <p><b>Grow Partition:</b> (only available for NTFS) if the file system is
+  smaller then the partition, or there's free space behind the partition, you
+  can increase the size</p>
+  <p><b>Delete Partition: </b><b>deletes the partition</b></p>
+  <p><b>Activate/Deactivate Partition: </b><b>sets or clears the active flag</b></p>
+</blockquote>
+<p><b>right click on free space:</b> creates primary/extended/logical partitions</p>
+<p>&nbsp;</p>
+
+
+
+      </td>
+  </tr>
+</table>
+
+
+<!--webbot bot="Include" U-Include="footer.htm" TAG="BODY" startspan -->
+
+<hr>
+<font size="1">
+ Copyright © 2001-2019&nbsp;&nbsp;&nbsp;&nbsp; Tom Ehlert Software</font> 
+
+
+
+<!--webbot bot="Include" endspan i-checksum="65510" -->
+
+</body>
+</html>
