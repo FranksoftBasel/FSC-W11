@@ -10,11 +10,14 @@ SET FSC_PHASE=03/06
 :: =============================================================================
 :: Script Name : FSC-Post-02.cmd
 :: Path        : "D:\Sources\$OEM$\$1\Temp\Updates\FSC-Post-02.cmd"
-:: Version     : 2.6
-:: Date        : 01.10.2026
+:: Version     : 2.7
+:: Date        : 06.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
+:: -----------------------------------------------------------------------------
+:: v2.7 - 06.10.2026
+:: - Wallpaper-Aufruf von FSC-Post-01.cmd Kopiert
 :: -----------------------------------------------------------------------------
 :: v2.6 - 01.10.2026
 :: - Wallpaper-Aufruf nach WAIT_DESKTOP verschoben
@@ -150,9 +153,8 @@ rem FSC Post-02 Wallpaper - erst nach geladenem Desktop
 rem ==========================================================
 SET "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
 SET "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_02.png"
-IF EXIST "%WallPaper_Exe%" IF EXIST "%FSC_Wallpaper%" (
-    START "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER
-)
+if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER"
+
 
 rem ==========================================================
 rem 2) msiexec.exe-Check:
