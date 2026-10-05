@@ -1,10 +1,13 @@
 :: =============================================================================
 :: Script Name : FS-Post-Apps.cmd
-:: Version     : 1.5
-:: Date        : 02.10.2026
+:: Version     : 1.6
+:: Date        : 03.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
+:: -----------------------------------------------------------------------------
+:: v1.6 - 03.10.2026
+:: - Remove: C++ AIO, Chrome
 :: -----------------------------------------------------------------------------
 :: v1.5 - 02.10.2026
 :: - Add SW: XnViewMP
@@ -115,15 +118,6 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 	REG ADD %ROE%\%i% /v "002" /d "REGEDIT /S %SourcePath%\DesktopRestore\DesktopRestore.reg" /f >NUL
 	SET /A i+=1
 
-	REG ADD %ROE%\%i% /ve /d "Visual C++ Redist AIO" /f >NUL
-	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\_Microsoft\VisualCppRedist_AIO.exe /y" /f >NUL
-	SET /A i+=1
-
-	REG ADD %ROE%\%i% /ve /d "Google Chrome" /f >NUL
-	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\Chrome\FS-Wrapper.exe" /f >NUL
-	REG ADD %ROE%\%i% /v "002" /d "REGEDIT /S %SourcePath%\Chrome\CU\Chrome-HKCU_FSC-01.reg" /f >NUL
-	SET /A i+=1
-
 	SET "HyperSnap=%ProgramFiles(x86)%\HyperSnap 6\HprSnap6.exe"
 	IF Not Exist "%HyperSnap%" (
 	REG ADD %ROE%\%i% /ve /d "Hyper Snap" /f >NUL
@@ -198,7 +192,7 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 
 	IF Not Exist "%ProgramFiles%\XnViewMP\xnviewmp.exe" (	
 	REG ADD %ROE%\%i% /ve /d "XnView MP" /f >NUL
-	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\XnViewMP\XnViewMP-win-x64.exe /Silent" /f >NUL
+	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\XnViewMP\FS-Wrapper.cmd" /f >NUL
 	SET /A i+=1
 	)
 
