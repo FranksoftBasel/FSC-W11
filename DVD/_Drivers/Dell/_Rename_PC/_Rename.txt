@@ -1,5 +1,5 @@
+Tablet:
 cctk.exe --asset=DellLT7200
 
-
-
+Laptop:
 cctk.exe --asset=DLtd-E5470

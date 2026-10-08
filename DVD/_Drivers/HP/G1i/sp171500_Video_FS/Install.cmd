@@ -1,9 +1,11 @@
 @echo off
 
-SET NAME=gfx_win_101.8991
-SET "ILOG=%~dp0%NAME%_%DATE%_%RANDOM%.log"
+IF Not Exist "%ProgramData%\Franksoft\Logs\Drivers" MD "%ProgramData%\Franksoft\Logs\Drivers"
 
-Tilte Install %Name%.exe
+SET NAME=gfx_win_101.9033
+SET "ILOG=%ProgramData%\Franksoft\Logs\Drivers\%NAME%_%DATE%_%RANDOM%.log"
+
+Title Install %Name%.exe
 @echo. 
 @echo. Install Intel video Driver...
 @echo. 
