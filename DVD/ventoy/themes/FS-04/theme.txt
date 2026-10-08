@@ -1,0 +1,57 @@
+# Global properties Theme 04
+title-text: ""
+desktop-image: "background.png"
+desktop-color: "#000000"
+
+terminal-font: "Fira Mono Bold 16"
+terminal-box: "terminal_box_*.png"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "2"
+
+
+# Boot menu
++ boot_menu {
+  left = 06%
+  top = 28%
+  width = 38%
+  height = 50%
+
+  item_font = "Terminus Bold 18"
+  item_color = "#FFFFFF"
+  selected_item_color = "#FFFFFF"
+
+  item_height = 31
+  item_padding = 2
+  item_spacing = 1
+
+  selected_item_pixmap_style = "select_*.png"
+}
+# Navigation keys hint 
++ label {
+  left = 0
+  top = 100%-24
+  width = 100%
+  align = "center"
+  # DE
+  # text = "System mit ↑ und ↓ auswählen und mit Enter bestätigen."
+  # EN
+  text = "Use ↑ and ↓ keys to change selection, Enter to confirm"
+  # FR
+  # text = "Choisissez le système avec les flèches du clavier (↑ et ↓), puis validez avec la touche Enter (↲)"
+  # NO
+  # text = "Bruk ↑ og ↓ for å endre menyvalg, velg med Enter"
+  # PT
+  # text = "Use as teclas ↑ e ↓ para mudar a seleção, e ENTER para confirmar"
+  # RU
+  # text = "Используйте клавиши ↑ и ↓ для изменения выбора, Enter для подтверждения"
+  # UA
+  # text = "Використовуйте ↑ та ↓ для вибору, Enter для підтвердження"
+  # zh_CN
+  # text = "使用 ↑ 和 ↓ 键移动选择条，Enter 键确认"
+  color = "#000000"
+  font = "Fira Mono Bold 14"
+# font = "DejaVu Regular 12"
+}

@@ -1,0 +1,30 @@
+# Global properties Theme 03
+title-text: ""
+desktop-image: "background.png"
+desktop-color: "#000000"
+
+terminal-font: "Terminus Regular 18"
+terminal-box: "terminal_box_*.png"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "2"
+
+# Boot menu
++ boot_menu {
+  left = 26%
+  top = 29%
+  width = 46%
+  height = 46%
+
+  item_font = "Terminus Regular 18"
+  item_color = "#FFFFFF"
+  selected_item_color = "#FFFFFF"
+
+  item_height = 28
+  item_padding = 2
+  item_spacing = 1
+
+  selected_item_pixmap_style = "select_*.png"
+}
