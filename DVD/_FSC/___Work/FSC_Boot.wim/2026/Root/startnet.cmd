@@ -2,37 +2,54 @@
 setlocal EnableExtensions EnableDelayedExpansion
 
 :: ============================================================
-:: Franksoft Boot (FSB)
-:: Windows Setup Launcher - Outside ISO / Ventoy WIMBOOT
+:: Franksoft Boot (FSB) - Windows Setup Launcher
 :: ============================================================
+:: File        : startnet.cmd
+:: Version     : 1.1
+:: Date        : 08.10.2026
+:: Author      : Franksoft
+:: Environment : Windows PE / Ventoy WIMBOOT
 ::
-:: Purpose:
-::   Starts Windows Setup from the unpacked MCT/FSC structure
-::   on the FSB data partition and explicitly supplies
-::   autounattend.xml.
+:: Description : Starts Windows Setup from the unpacked
+::               MCT/FSC structure on the FSB data partition
+::               with an explicit autounattend.xml.
 ::
-:: Boot path:
-::   Ventoy -> FSC-Setup.wim -> startnet.cmd
-::          -> find FSB -> setup.exe /unattend
+:: Boot path   : Ventoy -> FSC-Setup.wim -> startnet.cmd
+::               -> Find FSB -> setup.exe /unattend
 ::
-:: Expected FSB structure:
-::   \autounattend.xml
-::   \setup.exe
-::   \sources\boot.wim
+:: Required files in FSB root:
+::               \autounattend.xml
+::               \setup.exe
+::               \sources\boot.wim
 ::
-:: DEBUG:
-::   1 = detailed output + pause before Windows Setup
-::   0 = automatic execution
+:: DEBUG       : 0 = Automatic execution
+::               1 = Detailed output and pause before Setup
 ::
+:: Changelog   :
+:: 08.10.2026  v1.1  Added standardized script header,
+::                     console title and startup title box.
 :: ============================================================
 
 set "DEBUG=0"
 set "FSB="
+title Franksoft Boot (FSB) - Windows Setup Launcher
+
+:: OEM code page for WinPE console box characters
+chcp 850 >nul
 
 echo.
-echo ============================================================
-echo  Franksoft Boot - Windows Setup Launcher
-echo ============================================================
+echo.  €ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ€
+Echo.  ∫                                               ∫
+Echo.  ∫    Franksoft Boot - Windows Setup Launcher    ∫
+Echo.  ∫       Please wait - Initializing WinPE        ∫
+Echo.  ∫                                               ∫
+Echo.  ∫    Date    : %date%                       ∫
+Echo.  ∫    Time    : %time:~0,8%                         ∫
+Echo.  ∫                                               ∫
+echo   €‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹€
+
+rem echo   €‹‹‹ Date: %date% ‹‹‹‹‹‹‹‹ Time: %time:~0,8% ‹‹€
+
 echo.
 echo DEBUG = %DEBUG%
 echo.
