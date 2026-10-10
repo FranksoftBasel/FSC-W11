@@ -1,3 +1,31 @@
+:: ============================================================================
+::  Franksoft Client (FSC) - HP Driver Installation
+:: ============================================================================
+::  Script       : HP_EliteBook_8_G1i_Drivers.cmd
+::  Version      : 1.0 - Header Revision
+::  Updated      : 2026-10-09
+::  Author       : Franksoft
+::  Target       : HP EliteBook 8 G1i / Windows 11
+::
+::  Purpose      : Install HP driver packages from the local driver structure.
+::  Privileges   : Administrator (UAC elevation if required)
+::  Detection    : HKLM\HARDWARE\DESCRIPTION\System\BIOS
+::                 Value: SystemProductName
+::  Source       : Script directory and all subdirectories
+::  Log File     : %ProgramData%\Franksoft\Logs\Franksoft-Driver-Inst.txt
+::
+::  Workflow     : 01 - Check administrator permissions
+::                 02 - Read hardware model from BIOS registry
+::                 03 - Prepare installation log and model desktop folder
+::                 04 - Run all discovered install.cmd files recursively
+::                 05 - Install Realtek HD Audio SoftPaq (if present)
+::                 06 - Record installation finish information
+::
+::  Changelog    : 2026-10-09 - Added structured documentation header.
+::                              Driver installation logic unchanged.
+:: ============================================================================
+
+
 :: @echo off
 TITLE Script: %~nx0 - Time: %TIME%
 
