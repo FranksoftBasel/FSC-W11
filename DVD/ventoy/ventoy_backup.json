@@ -23,6 +23,7 @@
             "/ventoy/themes/Arch/theme.txt"
         ],
         "default_file": 3,
+	"ventoy_color": "#000000",
         "fonts":[
             "/ventoy/themes/FS-05/terminus-16.pf2",
             "/ventoy/themes/FS-05/terminus-18.pf2",
@@ -125,7 +126,8 @@
             "image": "/ISO/08. Windows 11 Pro 26H2 Okt 2026 (MCT).iso",
             "template":[
                 "/ISO/08. Windows 11 Pro Unattended.xml"
-            ]
+            ],
+            "autosel": 1804312606
         },
         {
             "image": "/ISO/09. Windows 11 Enterprise 25H2 DE.iso",

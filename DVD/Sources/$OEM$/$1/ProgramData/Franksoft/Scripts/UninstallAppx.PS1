@@ -5,11 +5,8 @@ $Apps = @(
 "Microsoft.YourPhone",
 "Microsoft.XboxGamingOverlay",
 "Microsoft.XboxSpeechToTextOverlay",
-"Microsoft.GetHelp",
-"Microsoft.Getstarted",
 "Microsoft.People",
 "Microsoft.Wallet",
-"Microsoft.WindowsFeedbackHub",
 "MicrosoftTeams",
 "Microsoft.Todos",
 "Microsoft.ZuneMusic"

@@ -153,7 +153,7 @@ rem FSC Post-02 Wallpaper - erst nach geladenem Desktop
 rem ==========================================================
 SET "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
 SET "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_02.png"
-if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER"
+if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER
 
 
 rem ==========================================================

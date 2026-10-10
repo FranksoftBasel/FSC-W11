@@ -4,8 +4,8 @@ TITLE Install Drivers - Script: %~nx0 - Time: %TIME%
 
 :: =============================================================================
 :: Script Name : Install_HP-Drivers.cmd
-:: Version     : 2.0
-:: Date        : 26.09.2026
+:: Version     : 2.1
+:: Date        : 09.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
@@ -116,6 +116,9 @@ FOR %%A IN (%MODEL%) DO (
 ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 G1i 13" >NUL && GOTO HPG1I
 ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 G1i 16" >NUL && GOTO HPG1I
 
+ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 Flip G2i" >NUL && GOTO HPG2I
+
+
 GOTO ERROR
 
 
@@ -129,6 +132,11 @@ SET "Driver_Source=%Driver-Root%\HP\G1i"
 SET "FSC_HP_Driver_Script=%Driver_Source%\HP_EliteBook_8_G1i_Drivers.cmd"
 GOTO FSC_Driver_Start
 
+:HPG2I
+SET "MODELL=G2i"
+SET "Driver_Source=%Driver-Root%\HP\G2i"
+SET "FSC_HP_Driver_Script=%Driver_Source%\HP_EliteBook_8_G2i_Drivers.cmd"
+GOTO FSC_Driver_Start
 
 :HP850
 SET "MODELL=850"

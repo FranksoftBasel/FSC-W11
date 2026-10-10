@@ -89,7 +89,7 @@ IF Not Exist "%SystemDrive%\%~nx0_DBG" MD "%SystemDrive%\%~nx0_DBG"
 
 set "WallPaper_Exe=%FSC-Tools-Local%\Scripts\WallP.exe"
 set "FSC_Wallpaper=%FSC-Tools-Local%\Logos\FSC_DEP\FSPost_01.png"
-if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER"
+if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER
 
 SET "EDGE_LNK_PD=%PUBLIC%\Desktop\Microsoft Edge.lnk"
 SET "EDGE_LNK_CU=%USERPROFILE%\Desktop\Microsoft Edge.lnk"

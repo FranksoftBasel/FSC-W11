@@ -45,7 +45,7 @@ reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "Start" /t REG_SZ /d "%DATE% %NT%" /f >
 
 set "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
 set "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_03.png"
-if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER"
+if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER
 
 SET "DesktopOK_VBS=%ProgramData%\Franksoft\Scripts\DesktopOK\DesktopOK_Start.vbs"
 IF Exist "%DesktopOK_VBS%" "%DesktopOK_VBS%"

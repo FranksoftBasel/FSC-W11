@@ -12,8 +12,13 @@ setlocal
 @echo.  ==============================================
 
 
-"%~dp0XnViewMP-win-x64.exe" /Silent /LOADINF="FS-Wrapper.inf"
+"%~dp0XnViewMP-win-x64.exe" /Silent /LOADINF="FS-Wrapper.inf" /MERGETASKS=!desktopicon
 
+
+
+Pushd "%~dp0"
+
+IF NOT Exist "%AppData%\XnViewMP" MD "%AppData%\XnViewMP"
 copy CU\xnview.ini "%AppData%\XnViewMP" 
 
 
@@ -26,6 +31,7 @@ SET "STM2=C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
 
 copy "%STM%\%Namex%.lnk" "%STM2%" /Y
 RD /S/Q "%STM%"
+del /F/Q "%Public%\Desktop\XnView MP.lnk"
 
 endlocal
 exit /b 0
