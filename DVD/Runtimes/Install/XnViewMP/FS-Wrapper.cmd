@@ -1,4 +1,10 @@
 @echo off
+
+:: =========================================================
+:: OPTIONAL START MINIMIZED
+:: =========================================================
+if not "%1"=="7" start /min cmd /c ""%~0" 7 %*" & exit /b
+
 SET Namex=XnView MP
 
 Title Bitte warten - %Namex% Installation...
