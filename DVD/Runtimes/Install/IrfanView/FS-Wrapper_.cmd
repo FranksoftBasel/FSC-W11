@@ -1,5 +1,6 @@
 @echo off
-SET Namex=IrfanView
+SET "Namex=IrfanView"
+SET "SETUPName=iview475g_x64_setup"
 
 Title Bitte warten - %Namex% Installation...
 
@@ -11,7 +12,7 @@ setlocal
 @echo.   Bitte warte bis %Namex% Installiert wurde
 @echo.  ==============================================
 
-"%~dp0iview475g_x64_setup.exe" /silent /group=1 /allusers=1
+"%~dp0%SETUPName%.exe" /silent /group=1 /allusers=1
 
 REM ============================================================
 REM CleanUp
