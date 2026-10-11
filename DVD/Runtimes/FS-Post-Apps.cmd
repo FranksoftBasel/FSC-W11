@@ -196,7 +196,7 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 	SET /A i+=1
 	)
 
-	IF Not Exist "%ProgramFiles(x86)%\Intel\Driver and Support Assistant\x86\DSAServiceHelper.exe" (	
+::	IF Not Exist "%ProgramFiles(x86)%\Intel\Driver and Support Assistant\x86\DSAServiceHelper.exe" (	
 	REG ADD %ROE%\%i% /ve /d "Intel Driver and Support Assistant" /f >NUL
 	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\Intel\DriverSuppAs\FS-Loader.cmd" /f >NUL
 	SET /A i+=1

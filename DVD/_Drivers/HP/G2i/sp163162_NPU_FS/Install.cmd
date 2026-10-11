@@ -1,8 +1,9 @@
 pushd "%~dp0"
 
+SET "VER=3.12"
 SET "DrvName=Installer-NPU"
 SET "DRV_Installer=%~dp0%DrvName%"
-SET "ILOG=%ProgramData%\Franksoft\Logs\Drivers\%DrvName%_%DATE%_%RANDOM%.log"
+SET "ILOG=%ProgramData%\Franksoft\Logs\Drivers\NPU-Intel_v%VER%_%DATE%_%RANDOM%.log"
 
 IF NOT Exist "%ProgramData%\Franksoft\Logs\Drivers" MD "%ProgramData%\Franksoft\Logs\Drivers"
 

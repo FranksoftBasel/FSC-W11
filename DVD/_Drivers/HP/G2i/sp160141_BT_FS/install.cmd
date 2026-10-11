@@ -3,10 +3,12 @@
 
 pushd "%~dp0"
 
+SET VER=24.70.0.4
+
 MD %ProgramData%\Franksoft\Logs\Drivers\
 
 SET "DRV_Installer=%~dp0FS-Wrapper"
-SET "ILOG=%ProgramData%\Franksoft\Logs\Drivers\Intel-Bluetooth_%DATE%_%RANDOM%.log"
+SET "ILOG=%ProgramData%\Franksoft\Logs\Drivers\Bluetooth_Intel_v%VER%_%DATE%_%RANDOM%.log"
 
 echo ======================================== > "%ILOG%"
 echo Start: %date% %time% >> "%ILOG%"
