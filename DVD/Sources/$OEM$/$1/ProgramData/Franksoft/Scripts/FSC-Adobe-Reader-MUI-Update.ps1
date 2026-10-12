@@ -1,11 +1,17 @@
 ﻿# ==================================================================================================
 # Franksoft - FSC Adobe Acrobat Reader MUI Update Downloader
-# Version : 1.5-4
+# Version : 1.5-5
 #
 # Webzugriff: curl.exe statt Invoke-WebRequest
 # Log: C:\ProgramData\Franksoft\Logs\AdobeReaderUpdate.log
 #
 # Changelog:
+#   v1.5-5 - 10.10.2026
+#          - Ersten Continuous-Release-Link aus Adobe Index verwenden
+#          - Platzhalterversionen im Titel werden akzeptiert
+#          - Version aus passender x86/x64 MSP vor Vergleich ermitteln
+#          - Keine feste Adobe Versionsnummer
+#
 #   v1.5-4 - 27.09.2026
 #          - Log-Pfad in der finalen Konsolen-Zusammenfassung hinzugefuegt
 #
@@ -98,10 +104,10 @@ function Get-CurlHtml {
 Write-Host ""
 Write-Host "Franksoft - Adobe Acrobat Reader MUI Update Downloader"
 Write-Host "======================================================"
-Write-Host "Version 1.5-4"
+Write-Host "Version 1.5-5"
 Write-Host ""
 Write-Log "======================================================================"
-Write-Log "Franksoft Adobe Acrobat Reader MUI Update Downloader v1.5-4 gestartet"
+Write-Log "Franksoft Adobe Acrobat Reader MUI Update Downloader v1.5-5 gestartet"
 Write-Log "======================================================================"
 
 try {
@@ -177,58 +183,27 @@ try {
         '(?is)<a\b[^>]*href=["''](?<href>[^"'']+)["''][^>]*>(?<text>.*?)</a>'
     )
 
-    $ReleaseHref    = $null
-    $ReleaseVersion = $null
-
+    $ReleaseHref = $null
+    $ReleaseLabel = $null
     foreach ($Anchor in $AnchorMatches) {
-        $LinkText = [regex]::Replace($Anchor.Groups["text"].Value, '<[^>]+>', '')
-        $LinkText = [System.Net.WebUtility]::HtmlDecode($LinkText).Trim()
-
-        $VersionMatch = [regex]::Match(
-            $LinkText,
-            '^(?<version>\d{2}\.\d{3}\.\d{5})\b'
+        $LinkText = [System.Net.WebUtility]::HtmlDecode(
+            ([regex]::Replace($Anchor.Groups["text"].Value, '<[^>]+>', '')).Trim()
         )
-
-        if ($VersionMatch.Success) {
-            $ReleaseVersion = $VersionMatch.Groups["version"].Value
-            $ReleaseHref    = $Anchor.Groups["href"].Value
+        $Href = [System.Net.WebUtility]::HtmlDecode($Anchor.Groups["href"].Value)
+        # Reihenfolge im Index ist entscheidend, nicht die konkrete Versionsnummer.
+        # Nur Links zu Continuous-Release-Seiten akzeptieren; keine Navigation.
+        if ($Href -match '(?i)(?:^|/)continuous/[^?#]+\.html' -and
+            $LinkText -match '^\d{2}\.\d{3}\.[0-9xX]{4,5}\b') {
+            $ReleaseHref = $Href
+            $ReleaseLabel = $LinkText
             break
         }
     }
-
-    if (-not $ReleaseHref -or -not $ReleaseVersion) {
-        throw "Kein Adobe Release-Link mit vollstaendiger Versionsnummer gefunden."
-    }
-
+    if (-not $ReleaseHref) { throw "Kein Continuous-Release-Link im Adobe Index gefunden." }
     $ReleaseUrl = ([Uri]::new([Uri]$IndexUrl, $ReleaseHref)).AbsoluteUri
-    Write-Host "Aktuell     : $ReleaseVersion"
-    Write-Log "Version aktuell     : $ReleaseVersion"
+    Write-Host "Release     : $ReleaseLabel"
+    Write-Log "Release Titel       : $ReleaseLabel"
     Write-Log "Release Notes       : $ReleaseUrl"
-
-# ==================================================================================================
-# FUNCTION: Installierte und aktuelle Adobe Version vergleichen
-# ==================================================================================================
-    $UpdateRequired=$true
-    if($InstalledVersion){
-        try {
-            if(([Version]$InstalledVersion) -ge ([Version]$ReleaseVersion)){ $UpdateRequired=$false }
-        } catch {
-            Write-Log "Versionsvergleich fehlgeschlagen: $($_.Exception.Message)"
-            $UpdateRequired=$true
-        }
-    }
-    if(!$UpdateRequired){
-        Write-Host ""
-        Write-Host "Adobe Reader ist aktuell." -ForegroundColor Green
-        Write-Host "Kein Download und keine Installation erforderlich."
-        Write-Log "Update erforderlich  : NEIN"
-        Write-Log "Script Exit Code     : 0"
-        Write-Log "======================================================================"
-        exit 0
-    }
-    Write-Host ""
-    Write-Host "Update erforderlich." -ForegroundColor Yellow
-    Write-Log "Update erforderlich  : JA"
 
 # ==================================================================================================
 # FUNCTION: Adobe Release-Seite mit curl.exe herunterladen
@@ -270,8 +245,22 @@ try {
 # FUNCTION: Adobe Version aus MSP-Dateinamen ermitteln
 # ==================================================================================================
     $vm=[regex]::Match($MspFile,'(?i)Upd(\d{2})(\d{3})(\d{5})')
-    if($vm.Success){ $NewVersion="{0}.{1}.{2}" -f $vm.Groups[1].Value,$vm.Groups[2].Value,$vm.Groups[3].Value }
-    else { $NewVersion=$ReleaseVersion }
+    if (-not $vm.Success) { throw "MSP-Version aus Dateiname nicht lesbar: $MspFile" }
+    $NewVersion="{0}.{1}.{2}" -f $vm.Groups[1].Value,$vm.Groups[2].Value,$vm.Groups[3].Value
+    Write-Host "Aktuell     : $NewVersion"
+    Write-Log "Version aktuell     : $NewVersion"
+
+# ==================================================================================================
+# FUNCTION: Versionsvergleich anhand der tatsaechlichen MSP-Version
+# ==================================================================================================
+    if (([Version]$InstalledVersion) -ge ([Version]$NewVersion)) {
+        Write-Host "Adobe Reader ist aktuell. Kein Download erforderlich." -ForegroundColor Green
+        Write-Log "Update erforderlich  : NEIN"
+        Write-Log "Script Exit Code     : 0"
+        exit 0
+    }
+    Write-Host "Update erforderlich." -ForegroundColor Yellow
+    Write-Log "Update erforderlich  : JA"
     Write-Host ""
     Write-Host "MUI MSP gefunden:" -ForegroundColor Green
     Write-Host "  Typ      : $MspType"

@@ -1,4 +1,4 @@
-FSC-Post-01.cmd
+:: FSC-Post-01.cmd
 
 set "OUTFILE=USB-HW-Type_%RANDOM%.txt"
 

@@ -3,8 +3,8 @@ SET FSC_PHASE=01/06
 :: =============================================================================
 :: Script Name : SetupComplete.cmd
 :: Path        : "D:\Sources\$OEM$\$$\Setup\Scripts\SetupComplete.cmd"
-:: Version     : 7.1
-:: Date        : 27.09.2026
+:: Version     : 7.2
+:: Date        : 12.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
@@ -279,14 +279,14 @@ Powershell Set-WinHomeLocation 223
 
 echo 45^| Runtime Installation %TIME%>>"%FSC-LOG-Progress%"
 
-SET CPFILEPath=%USB-Stick-Path%\Runtimes\Install\_Microsoft
-SET CPFILEPath0=%CPFILEPath%\VisualCppRedist_AIO.exe
-SET CPFILEPath1=%CPFILEPath%\vc_redist.x86-2015-2019.exe
-SET CPFILEPath2=%CPFILEPath%\vc_redist.x64-2015-2019.exe
+SET "CPFILEPath=%USB-Stick-Path%\Runtimes\Install\_Microsoft"
+SET "CPFILEPath0=%CPFILEPath%\VisualCppRedist_AIO.exe"
+SET "CPFILEPath1=%CPFILEPath%\vc_redist.x86-2015-2019.exe"
+SET "CPFILEPath2=%CPFILEPath%\vc_redist.x64-2015-2019.exe"
 
 @Echo. [SOFTWARE] Install Visual C++ Redistributable Runtimes>>%FSC-LOG%
 
-IF Exist %CPFILEPath0% (
+IF Exist "%CPFILEPath0%" (
     @Echo.    All-in-One May Package 2026>>%FSC-LOG%
     "%CPFILEPath0%" /y
 ) else (

@@ -1,7 +1,7 @@
 :: =============================================================================
 :: Script Name : FS-Post-Apps.cmd
-:: Version     : 1.6
-:: Date        : 03.10.2026
+:: Version     : 1.8
+:: Date        : 12.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
@@ -200,7 +200,7 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 	REG ADD %ROE%\%i% /ve /d "Intel Driver and Support Assistant" /f >NUL
 	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\Intel\DriverSuppAs\FS-Loader.cmd" /f >NUL
 	SET /A i+=1
-	)
+::	)
 
 
 ::	REG ADD %ROE%\%i% /v "003" /d "CMD /C  IF Exist %TVUPD% Copy /y %TVUPD% %FS-TV-LocalPath%\TeamViewerQS_de.exe" /f >NUL

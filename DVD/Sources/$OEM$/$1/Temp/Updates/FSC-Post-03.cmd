@@ -12,8 +12,8 @@ SET FSC_PHASE=04/06
 :: =============================================================================
 :: Script Name : FSC-Post-03.cmd
 :: Path        : "D:\Sources\$OEM$\$1\Temp\Updates\FSC-Post-03.cmd"
-:: Version     : 2.4
-:: Date        : 14.06.2026
+:: Version     : 2.5
+:: Date        : 12.10.2026
 :: Author      : Franksoft
 ::
 :: Purpose
@@ -66,7 +66,7 @@ Powershell (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods
 
 set "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
 set "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_03.png"
-if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER"
+if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER
 
 IF NOT Exist "%SystemDrive%\%~nx0_DBG" MD "%SystemDrive%\%~nx0_DBG"
 
@@ -308,7 +308,7 @@ IF Exist Z: (
 @Echo. - Logging: Deployment State>>"%FSC-LOG%"
 
 SET "Status=Phase %FSC-Counter-Start%/%FSC-Counter-End%"
-SET "FSC-Status-LOG=%CounterStart%/%CounterEnd%"
+SET "FSC-Status-LOG=%FSC-Counter-Start%/%FSC-Counter-End%"
 
 
 @Echo. - Power Plan: Change to "Ausbalanciert"
@@ -329,7 +329,7 @@ powercfg -change -hibernate-timeout-ac 45 >NUL
 powercfg -change -hibernate-timeout-dc 30 >NUL
 
 ::---Do not MOVE!!!
-SET CounterS=%CounterStart%/%CounterEnd%
+SET CounterS=%FSC-Counter-Start%/%FSC-Counter-End%
 SET REGKEY-RunOnce=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce
 SET FSC_Script_P3_WinUPD=%FSC_Scripts_Local%\WinUpd-Task.cmd
 SET FSC_Windows_Update_Task_MSG=FSC: Create scheduled task Franksoft Windows Update

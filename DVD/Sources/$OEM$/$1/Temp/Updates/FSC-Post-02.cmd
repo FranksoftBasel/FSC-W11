@@ -10,8 +10,8 @@ SET FSC_PHASE=03/06
 :: =============================================================================
 :: Script Name : FSC-Post-02.cmd
 :: Path        : "D:\Sources\$OEM$\$1\Temp\Updates\FSC-Post-02.cmd"
-:: Version     : 2.7
-:: Date        : 06.10.2026
+:: Version     : 2.8
+:: Date        : 12.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
@@ -223,6 +223,12 @@ rem Aktives Energieschema auslesen und Namen extrahieren
 for /f "tokens=*" %%i in ('powercfg /getactivescheme') do (
     for /f "tokens=2 delims=()" %%a in ("%%i") do set "CurrentPowerScheme=%%a"
 )
+
+
+SET "WallPaper_Exe=%ProgramData%\Franksoft\Scripts\WallP.exe"
+SET "FSC_Wallpaper=%ProgramData%\Franksoft\Logos\FSC_DEP\FSPost_02.png"
+if exist "%FSC_Wallpaper%" cmd /c start "" "%WallPaper_Exe%" "%FSC_Wallpaper%" CENTER
+
 
 SET "NT=%TIME: =0%"
 SET "NT=%NT:~0,8%"
