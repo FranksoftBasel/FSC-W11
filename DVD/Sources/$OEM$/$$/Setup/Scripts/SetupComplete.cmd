@@ -300,7 +300,7 @@ IF Exist %CPFILEPath1% (
     @Echo.    [ERROR] Not found %CPFILEPath1% >>%FSC-LOG%
 )
 
-IF Exist %CPFILEPath2% (
+IF Exist "%CPFILEPath2%" (
     @Echo.    Microsoft Visual C++ 2015-2019 Redistributable x64>>%FSC-LOG%
     "%CPFILEPath2%" /passive
 ) else (
