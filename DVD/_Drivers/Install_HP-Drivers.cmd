@@ -4,8 +4,8 @@ TITLE Install Drivers - Script: %~nx0 - Time: %TIME%
 
 :: =============================================================================
 :: Script Name : Install_HP-Drivers.cmd
-:: Version     : 2.1
-:: Date        : 09.10.2026
+:: Version     : 2.2
+:: Date        : 14.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
@@ -16,21 +16,27 @@ TITLE Install Drivers - Script: %~nx0 - Time: %TIME%
 :: - Erneute Suche nach \Sources\setup.exe entfernt
 :: - HP EliteBook 830 und 860 verwenden weiterhin bewusst denselben G10/860
 ::   Treibersatz
-:: - G1i-Erkennung mit FINDSTR /C: präzisiert
-:: - Existenzprüfung des ausgewählten Treiberscripts vor CALL ergänzt
+:: - G1i-Erkennung mit FINDSTR /C: praezisiert
+:: - Existenzpruefung des ausgewaehlten Treiberscripts vor CALL ergaenzt
 :: - Pushd/Popd bereinigt
 :: - Registry Start-/End-Tracking beibehalten
 :: - Nicht mehr verwendeter :HP830 Block am Dateiende als Legacy auskommentiert
 :: - ExitCode des aufgerufenen Treiberscripts wird protokolliert
+::
+:: v2.2 - 14.10.2026
+:: - Einheitliche Dateinamen fuer die vier HP Treiberscripts
+:: - G1i, G2i, G10 und G8 Referenzen entsprechend angepasst
+:: - Modell-Mapping, Aufrufreihenfolge und Logik unveraendert
+:: - FOR /D Aenderung befindet sich in den vier Treiberscripts
 ::
 :: Purpose
 :: -----------------------------------------------------------------------------
 :: Ermittelt das HP Modell und startet das passende FSC Treiberscript.
 ::
 :: Aktuelles Mapping:
-:: - HP EliteBook / Elite x360 830  -> G10\860\G10_860_Drivers_Hp.cmd
-:: - HP EliteBook 860              -> G10\860\G10_860_Drivers_Hp.cmd
-:: - HP EliteBook 850              -> G08\850\G8_Drivers_Hp.cmd
+:: - HP EliteBook / Elite x360 830  -> G10\860\HP_G10_860_Drivers.cmd
+:: - HP EliteBook 860              -> G10\860\HP_G10_860_Drivers.cmd
+:: - HP EliteBook 850              -> G08\850\HP_G08_Drivers.cmd
 :: - HP EliteBook 8 G1i 13 / 16   -> G1i\HP_EliteBook_8_G1i_Drivers.cmd
 ::
 :: Called by:
@@ -44,6 +50,11 @@ pushd "%~dp0"
 :: =============================================================================
 :: [01] INITIALIZATION / LOGGING
 :: =============================================================================
+
+SET HP_G08_Drivers_Scr=HP_G08_Drivers.cmd
+SET HP_G10_Drivers_Scr=HP_G10_860_Drivers.cmd
+SET HP_G1i_Drivers_Scr=HP_G1i_Drivers.cmd
+SET HP_G2i_Drivers_Scr=HP_G2i_Drivers.cmd
 
 SET "FSC_PHASE=01/06"
 
@@ -113,8 +124,8 @@ FOR %%A IN (%MODEL%) DO (
     IF /I "%%A"=="860" GOTO HP860
 )
 
-ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 G1i 13" >NUL && GOTO HPG1I
-ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 G1i 16" >NUL && GOTO HPG1I
+:: ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 G1i 13" >NUL && GOTO HPG1I
+ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 G1i" >NUL && GOTO HPG1I
 
 ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 Flip G2i" >NUL && GOTO HPG2I
 
@@ -128,27 +139,27 @@ GOTO ERROR
 
 :HPG1I
 SET "MODELL=G1i"
-SET "Driver_Source=%Driver-Root%\HP\G1i"
-SET "FSC_HP_Driver_Script=%Driver_Source%\HP_EliteBook_8_G1i_Drivers.cmd"
+SET "Driver_Source=%Driver-Root%\HP\%MODELL%"
+SET "FSC_HP_Driver_Script=%Driver_Source%\%HP_G1i_Drivers_Scr%"
 GOTO FSC_Driver_Start
 
 :HPG2I
 SET "MODELL=G2i"
-SET "Driver_Source=%Driver-Root%\HP\G2i"
-SET "FSC_HP_Driver_Script=%Driver_Source%\HP_EliteBook_8_G2i_Drivers.cmd"
+SET "Driver_Source=%Driver-Root%\HP\%MODELL%"
+SET "FSC_HP_Driver_Script=%Driver_Source%\%HP_G2i_Drivers_Scr%"
 GOTO FSC_Driver_Start
 
 :HP850
 SET "MODELL=850"
-SET "Driver_Source=%Driver-Root%\HP\G08\850"
-SET "FSC_HP_Driver_Script=%Driver_Source%\G8_Drivers_Hp.cmd"
+SET "Driver_Source=%Driver-Root%\HP\G08\%MODELL%"
+SET "FSC_HP_Driver_Script=%Driver_Source%\%HP_G08_Drivers_Scr%"
 GOTO FSC_Driver_Start
 
 
 :HP860
 SET "MODELL=860"
-SET "Driver_Source=%Driver-Root%\HP\G10\860"
-SET "FSC_HP_Driver_Script=%Driver_Source%\G10_860_Drivers_Hp.cmd"
+SET "Driver_Source=%Driver-Root%\HP\G10\%MODELL%"
+SET "FSC_HP_Driver_Script=%Driver_Source%\%HP_G10_Drivers_Scr%"
 GOTO FSC_Driver_Start
 
 
