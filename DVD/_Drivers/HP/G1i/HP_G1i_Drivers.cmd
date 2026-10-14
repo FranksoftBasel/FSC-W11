@@ -1,9 +1,9 @@
 :: ============================================================================
 ::  Franksoft Client (FSC) - HP Driver Installation
 :: ============================================================================
-::  Script       : HP_EliteBook_8_G1i_Drivers.cmd
-::  Version      : 1.0 - Header Revision
-::  Updated      : 2026-10-09
+::  Script       : HP-G1i-Drivers.cmd
+::  Version      : 1.1
+::  Updated      : 2026-10-14
 ::  Author       : Franksoft
 ::  Target       : HP EliteBook 8 G1i / Windows 11
 ::
@@ -11,18 +11,20 @@
 ::  Privileges   : Administrator (UAC elevation if required)
 ::  Detection    : HKLM\HARDWARE\DESCRIPTION\System\BIOS
 ::                 Value: SystemProductName
-::  Source       : Script directory and all subdirectories
+::  Source       : Immediate subdirectories of the script directory
 ::  Log File     : %ProgramData%\Franksoft\Logs\Franksoft-Driver-Inst.txt
 ::
 ::  Workflow     : 01 - Check administrator permissions
 ::                 02 - Read hardware model from BIOS registry
 ::                 03 - Prepare installation log and model desktop folder
-::                 04 - Run all discovered install.cmd files recursively
+::                 04 - Run install.cmd in each immediate child directory
 ::                 05 - Install Realtek HD Audio SoftPaq (if present)
 ::                 06 - Record installation finish information
 ::
 ::  Changelog    : 2026-10-09 - Added structured documentation header.
 ::                              Driver installation logic unchanged.
+::                 2026-10-14 - Unified CMD filename to HP-G1i-Drivers.cmd.
+::                            - Restrict install.cmd calls to first folder level.
 :: ============================================================================
 
 
@@ -60,11 +62,16 @@ IF NOT Exist "%PUBLIC%\Desktop\%ProductName%" MD "%PUBLIC%\Desktop\%ProductName%
 @echo. Driver Path .......... %~dp0>>"%FSC_Driver_Inst_LOG%"
 @echo. Script ............... %~f0>>"%FSC_Driver_Inst_LOG%"
 @echo. FSC DriverInst LOG ... %FSC_Driver_Inst_LOG%>>"%FSC_Driver_Inst_LOG%"
-@echo. 
+@echo.
 
 
 Pushd "%~dp0"
-for /r %%d in (.) do if exist "%%d\install.cmd" call "%%d\install.cmd"
+for /d %%D in ("%~dp0*") do (
+    if exist "%%~fD\install.cmd" (
+        echo Installing: %%~fD\install.cmd
+        call "%%~fD\install.cmd"
+    )
+)
 
 
 :: Audio

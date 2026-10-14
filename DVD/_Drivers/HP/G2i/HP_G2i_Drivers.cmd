@@ -1,3 +1,18 @@
+:: ============================================================================
+::  Franksoft Client (FSC) - HP Driver Installation
+:: ============================================================================
+::  Script       : HP-G2i-Drivers.cmd
+::  Version      : 1.1
+::  Updated      : 2026-10-14
+::  Author       : Franksoft
+::  Target       : HP EliteBook 8 G2i / Windows 11
+::
+::  Purpose      : Installs drivers using install.cmd in first-level folders.
+::  Log File     : %ProgramData%\Franksoft\Logs\Franksoft-Driver-Inst.txt
+::  Changelog    : 2026-10-14 - Unified CMD filename.
+::                            - Restrict install.cmd to first folder level.
+:: ============================================================================
+
 :: @echo off
 TITLE Script: %~nx0 - Time: %TIME%
 
@@ -36,7 +51,12 @@ IF NOT Exist "%PUBLIC%\Desktop\%ProductName%" MD "%PUBLIC%\Desktop\%ProductName%
 
 
 Pushd "%~dp0"
-for /r %%d in (.) do if exist "%%d\install.cmd" call "%%d\install.cmd"
+for /d %%D in ("%~dp0*") do (
+    if exist "%%~fD\install.cmd" (
+        echo Installing: %%~fD\install.cmd
+        call "%%~fD\install.cmd"
+    )
+)
 
 
 :: Audio

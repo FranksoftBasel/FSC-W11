@@ -1,3 +1,14 @@
+:: ============================================================================
+:: Franksoft Client (FSC) - HP Driver Installation
+:: ============================================================================
+:: Script    : HP-G10-Drivers.cmd
+:: Version   : 1.1
+:: Date      : 14.10.2026
+:: Author    : Franksoft
+:: Target    : HP EliteBook 830 / 860 G10
+:: Changelog : v1.1 - Filename unified; install.cmd only at first folder level
+:: ============================================================================
+
 @echo off
 TITLE Script: %~nx0 - Time: %TIME%
 
@@ -36,7 +47,12 @@ IF NOT Exist "%PUBLIC%\Desktop\%ProductName%" MD "%PUBLIC%\Desktop\%ProductName%
 
 
 Pushd "%~dp0"
-for /r %%d in (.) do if exist "%%d\install.cmd" call "%%d\install.cmd"
+for /d %%D in ("%~dp0*") do (
+    if exist "%%~fD\install.cmd" (
+        echo Installing: %%~fD\install.cmd
+        call "%%~fD\install.cmd"
+    )
+)
 
 :: Audio
 
