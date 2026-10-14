@@ -58,16 +58,13 @@ for /d %%D in ("%~dp0*") do (
 
 Pushd "%~dp0"
 
-IF EXIST "22_RealtekAudio_sp165807.exe" (
+SET AUDIO_DRV=sp174175_Audio.exe
+
+IF EXIST "%AUDIO_DRV%" (
 	@echo. >>"%FSC_Driver_Inst_LOG%"
-	@echo. Install Audio Driver.. 22_RealtekAudio_sp165807.exe Start Time %time:~0,8%>>"%FSC_Driver_Inst_LOG%"
-	22_RealtekAudio_sp165807.exe /s /e cmd.exe /a /c ""HPUP.exe""
+	@echo. Install Audio Driver.. %AUDIO_DRV% Start Time %time:~0,8%>>"%FSC_Driver_Inst_LOG%"
+	"%AUDIO_DRV%" /s /e cmd.exe /a /c ""HPUP.exe""
 )
-
-IF EXIST "22_RealtekAudio_sp165807.exe" (
-	@echo. Install Audio Driver.. 22_RealtekAudio_sp165807.exe End   Time %time:~0,8%>>"%FSC_Driver_Inst_LOG%"
-)
-
 
 @echo. >>"%FSC_Driver_Inst_LOG%"
 @echo. Phase ................ End >>"%FSC_Driver_Inst_LOG%"

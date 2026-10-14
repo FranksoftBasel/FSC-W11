@@ -78,7 +78,7 @@ for /d %%D in ("%~dp0*") do (
 
 Pushd "%~dp0"
 
-SET Audio_Drv=sp174332_Audio.exe
+SET Audio_Drv=sp174331_Audio.exe
 
 IF EXIST "%Audio_Drv%" (
 	@echo. >>"%FSC_Driver_Inst_LOG%"
