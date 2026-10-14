@@ -91,6 +91,12 @@
       "Source": "winget"
     },
     {
+      "Name": "XnView MP (x64)",
+      "Id": "XnSoft.XnViewMP",
+      "Mode": "install",
+      "Source": "winget"
+    },
+    {
       "Name": "Microsoft Terminal",
       "Id": "Microsoft.WindowsTerminal",
       "Mode": "update",
