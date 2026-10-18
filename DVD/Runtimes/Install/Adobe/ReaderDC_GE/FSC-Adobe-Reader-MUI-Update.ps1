@@ -1,9 +1,10 @@
 ﻿# ==================================================================================================
-# Franksoft - FSC Adobe Acrobat Reader MUI Update Downloader
+# Franksoft - FSC Adobe Acrobat Reader x86 MUI Update Downloader
 # Version : 1.5-5
+# Date : 16.10.2026
 #
 # Webzugriff: curl.exe statt Invoke-WebRequest
-# Log: C:\ProgramData\Franksoft\Logs\AdobeReaderUpdate.log
+# Log: C:\ProgramData\Franksoft\Logs\AdobeReaderUpdate_FSC.log
 #
 # Changelog:
 #   v1.5-5 - 10.10.2026
@@ -62,7 +63,7 @@ $ErrorActionPreference = "Stop"
 $IndexUrl = "https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html"
 $DownloadDir = "C:\Temp\Adobe"
 $LogDir = "C:\ProgramData\Franksoft\Logs"
-$LogFile = Join-Path $LogDir "AdobeReaderUpdate.log"
+$LogFile = Join-Path $LogDir "AdobeReaderUpdate_FSC.log"
 $IndexHtml = Join-Path $DownloadDir "AdobeReleaseIndex.html"
 $ReleaseHtml = Join-Path $DownloadDir "AdobeReleasePage.html"
 $CurlConnectTime = 10
@@ -104,10 +105,10 @@ function Get-CurlHtml {
 Write-Host ""
 Write-Host "Franksoft - Adobe Acrobat Reader MUI Update Downloader"
 Write-Host "======================================================"
-Write-Host "Version 1.5-5"
+Write-Host "Version 1.5-4"
 Write-Host ""
 Write-Log "======================================================================"
-Write-Log "Franksoft Adobe Acrobat Reader MUI Update Downloader v1.5-5 gestartet"
+Write-Log "Franksoft Adobe Acrobat Reader MUI Update Downloader v1.5-4 gestartet"
 Write-Log "======================================================================"
 
 try {
@@ -183,27 +184,58 @@ try {
         '(?is)<a\b[^>]*href=["''](?<href>[^"'']+)["''][^>]*>(?<text>.*?)</a>'
     )
 
-    $ReleaseHref = $null
-    $ReleaseLabel = $null
+    $ReleaseHref    = $null
+    $ReleaseVersion = $null
+
     foreach ($Anchor in $AnchorMatches) {
-        $LinkText = [System.Net.WebUtility]::HtmlDecode(
-            ([regex]::Replace($Anchor.Groups["text"].Value, '<[^>]+>', '')).Trim()
+        $LinkText = [regex]::Replace($Anchor.Groups["text"].Value, '<[^>]+>', '')
+        $LinkText = [System.Net.WebUtility]::HtmlDecode($LinkText).Trim()
+
+        $VersionMatch = [regex]::Match(
+            $LinkText,
+            '^(?<version>\d{2}\.\d{3}\.\d{5})\b'
         )
-        $Href = [System.Net.WebUtility]::HtmlDecode($Anchor.Groups["href"].Value)
-        # Reihenfolge im Index ist entscheidend, nicht die konkrete Versionsnummer.
-        # Nur Links zu Continuous-Release-Seiten akzeptieren; keine Navigation.
-        if ($Href -match '(?i)(?:^|/)continuous/[^?#]+\.html' -and
-            $LinkText -match '^\d{2}\.\d{3}\.[0-9xX]{4,5}\b') {
-            $ReleaseHref = $Href
-            $ReleaseLabel = $LinkText
+
+        if ($VersionMatch.Success) {
+            $ReleaseVersion = $VersionMatch.Groups["version"].Value
+            $ReleaseHref    = $Anchor.Groups["href"].Value
             break
         }
     }
-    if (-not $ReleaseHref) { throw "Kein Continuous-Release-Link im Adobe Index gefunden." }
+
+    if (-not $ReleaseHref -or -not $ReleaseVersion) {
+        throw "Kein Adobe Release-Link mit vollstaendiger Versionsnummer gefunden."
+    }
+
     $ReleaseUrl = ([Uri]::new([Uri]$IndexUrl, $ReleaseHref)).AbsoluteUri
-    Write-Host "Release     : $ReleaseLabel"
-    Write-Log "Release Titel       : $ReleaseLabel"
+    Write-Host "Aktuell     : $ReleaseVersion"
+    Write-Log "Version aktuell     : $ReleaseVersion"
     Write-Log "Release Notes       : $ReleaseUrl"
+
+# ==================================================================================================
+# FUNCTION: Installierte und aktuelle Adobe Version vergleichen
+# ==================================================================================================
+    $UpdateRequired=$true
+    if($InstalledVersion){
+        try {
+            if(([Version]$InstalledVersion) -ge ([Version]$ReleaseVersion)){ $UpdateRequired=$false }
+        } catch {
+            Write-Log "Versionsvergleich fehlgeschlagen: $($_.Exception.Message)"
+            $UpdateRequired=$true
+        }
+    }
+    if(!$UpdateRequired){
+        Write-Host ""
+        Write-Host "Adobe Reader ist aktuell." -ForegroundColor Green
+        Write-Host "Kein Download und keine Installation erforderlich."
+        Write-Log "Update erforderlich  : NEIN"
+        Write-Log "Script Exit Code     : 0"
+        Write-Log "======================================================================"
+        exit 0
+    }
+    Write-Host ""
+    Write-Host "Update erforderlich." -ForegroundColor Yellow
+    Write-Log "Update erforderlich  : JA"
 
 # ==================================================================================================
 # FUNCTION: Adobe Release-Seite mit curl.exe herunterladen
@@ -245,22 +277,8 @@ try {
 # FUNCTION: Adobe Version aus MSP-Dateinamen ermitteln
 # ==================================================================================================
     $vm=[regex]::Match($MspFile,'(?i)Upd(\d{2})(\d{3})(\d{5})')
-    if (-not $vm.Success) { throw "MSP-Version aus Dateiname nicht lesbar: $MspFile" }
-    $NewVersion="{0}.{1}.{2}" -f $vm.Groups[1].Value,$vm.Groups[2].Value,$vm.Groups[3].Value
-    Write-Host "Aktuell     : $NewVersion"
-    Write-Log "Version aktuell     : $NewVersion"
-
-# ==================================================================================================
-# FUNCTION: Versionsvergleich anhand der tatsaechlichen MSP-Version
-# ==================================================================================================
-    if (([Version]$InstalledVersion) -ge ([Version]$NewVersion)) {
-        Write-Host "Adobe Reader ist aktuell. Kein Download erforderlich." -ForegroundColor Green
-        Write-Log "Update erforderlich  : NEIN"
-        Write-Log "Script Exit Code     : 0"
-        exit 0
-    }
-    Write-Host "Update erforderlich." -ForegroundColor Yellow
-    Write-Log "Update erforderlich  : JA"
+    if($vm.Success){ $NewVersion="{0}.{1}.{2}" -f $vm.Groups[1].Value,$vm.Groups[2].Value,$vm.Groups[3].Value }
+    else { $NewVersion=$ReleaseVersion }
     Write-Host ""
     Write-Host "MUI MSP gefunden:" -ForegroundColor Green
     Write-Host "  Typ      : $MspType"

@@ -296,7 +296,7 @@ IF EXIST "%NotepadCFG_Source%" (
     @echo. * ERROR: Notepad config not found %NotepadCFG_Source%>>%FSC-LOG%
 )
 
-SET MSSnipCFG_Source=%ProgramData%\Franksoft\UWP\ScreenSketch\SnippingCfg.exe
+SET "MSSnipCFG_Source=%ProgramData%\Franksoft\UWP\ScreenSketch\SnippingCfg.exe"
 
 IF EXIST "%MSSnipCFG_Source%" (
     @echo. - Config: Windows Snipping tool

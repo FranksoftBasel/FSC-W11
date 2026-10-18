@@ -7,6 +7,12 @@
 # Log: C:\ProgramData\Franksoft\Logs\AdobeReaderUpdate_FSC.log
 #
 # Changelog:
+#   v1.5-5 - 10.10.2026
+#          - Ersten Continuous-Release-Link aus Adobe Index verwenden
+#          - Platzhalterversionen im Titel werden akzeptiert
+#          - Version aus passender x86/x64 MSP vor Vergleich ermitteln
+#          - Keine feste Adobe Versionsnummer
+#
 #   v1.5-4 - 27.09.2026
 #          - Log-Pfad in der finalen Konsolen-Zusammenfassung hinzugefuegt
 #
