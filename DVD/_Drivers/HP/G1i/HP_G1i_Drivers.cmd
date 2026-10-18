@@ -2,10 +2,10 @@
 setlocal EnableExtensions DisableDelayedExpansion
 
 :: ============================================================================
-:: Franksoft Client (FSC) - HP G1i Driver Installation / DEBUG
+:: Franksoft Client (FSC) - HP G1i Driver Installation
 :: ============================================================================
-:: File        : HP_G1i_Drivers_Debug.cmd
-:: Version     : 1.4 DEBUG
+:: File        : HP_G1i_Drivers.cmd
+:: Version     : 1.5
 :: Date        : 18.10.2026
 :: Author      : Franksoft
 :: Target      : HP EliteBook 8 G1i / Windows 11
@@ -15,6 +15,7 @@ setlocal EnableExtensions DisableDelayedExpansion
 ::               No additional WAIT mechanism; original CALL is retained.
 ::
 :: Changelog:
+:: v1.5 Final - 18.10.2026
 :: v1.4 DEBUG - 18.10.2026
 :: - Summary at end of console and debug log: Anzahl, Zeit, Errors, Success
 :: - Includes Audio in total count and result statistics
@@ -29,10 +30,13 @@ setlocal EnableExtensions DisableDelayedExpansion
 :: - No PowerShell Start-Process -Wait and no forced pauses
 :: ============================================================================
 
+:: Audio Driver
+:: 
+set "FSC_AUDIO=sp174331_Audio.exe"
+
 set "FSC_ROOT=%~dp0"
 set "FSC_LOG_DIR=%ProgramData%\Franksoft\Logs"
-set "FSC_DEBUG_LOG=%FSC_LOG_DIR%\HP_G1i_Drivers_Debug.txt"
-set "FSC_AUDIO=sp174331_Audio.exe"
+set "FSC_DEBUG_LOG=%FSC_LOG_DIR%\HP_G1i_Drivers.txt"
 set /a FSC_TOTAL=0, FSC_SKIPPED=0, FSC_NONZERO=0, FSC_SUCCESS=0, FSC_ERRORS=0, FSC_REBOOT=0, FSC_AUDIO_TOTAL=0, FSC_AUDIO_SKIPPED=0 >nul
 
 if not exist "%FSC_LOG_DIR%" md "%FSC_LOG_DIR%" >nul 2>&1
@@ -52,11 +56,11 @@ if errorlevel 1 (
 for /f "tokens=3*" %%A in ('reg query "HKLM\HARDWARE\DESCRIPTION\System\BIOS" /v "SystemProductName" 2^>nul ^| findstr /i "SystemProductName"') do set "FSC_MODEL=%%A %%B"
 if not defined FSC_MODEL set "FSC_MODEL=Unknown"
 
-TITLE FSC HP G1i Driver DEBUG - %FSC_MODEL%
+TITLE FSC HP G1i Driver - %FSC_MODEL%
 
 echo.
 echo ============================================================================
-echo  Franksoft Client - HP G1i Driver DEBUG
+echo  Franksoft Client - HP G1i Driver Installation
 echo ============================================================================
 echo  Model : %FSC_MODEL%
 echo  Root  : %FSC_ROOT%
