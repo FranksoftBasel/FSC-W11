@@ -3,8 +3,8 @@ SET FSC_PHASE=01/06
 :: =============================================================================
 :: Script Name : SetupComplete.cmd
 :: Path        : "D:\Sources\$OEM$\$$\Setup\Scripts\SetupComplete.cmd"
-:: Version     : 7.2
-:: Date        : 12.10.2026
+:: Version     : 7.3
+:: Date        : 15.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
@@ -79,7 +79,7 @@ reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "Script Path" /t REG_SZ /d "%FSC_SCRIPT
 reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "FSC Phase" /t REG_SZ /d "%FSC_PHASE%" /f
 reg add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "Start" /t REG_SZ /d "%DATE% %NT%" /f
 
-echo 10^| Windows Setup Finalisierung %TIME%>>"%FSC-LOG-Progress%"
+:: echo 10^| Windows Setup Finalisierung %TIME%>>"%FSC-LOG-Progress%"
 
 PUSHD "%~dp0"
 IF Not Exist "%SystemDrive%\%~nx0_DBG" MD "%SystemDrive%\%~nx0_DBG"
@@ -277,7 +277,7 @@ Powershell Set-WinHomeLocation 223
 :: - VMware Tools installieren falls vorhanden
 :: =============================================================================
 
-echo 45^| Runtime Installation %TIME%>>"%FSC-LOG-Progress%"
+:: echo 45^| Runtime Installation %TIME%>>"%FSC-LOG-Progress%"
 
 SET "CPFILEPath=%USB-Stick-Path%\Runtimes\Install\_Microsoft"
 SET "CPFILEPath0=%CPFILEPath%\VisualCppRedist_AIO.exe"
@@ -325,7 +325,7 @@ IF Exist "%ProgramFiles%\VMware\VMware Tools\vmtoolsd.exe" (
 :: - Passwortablauf des lokalen Admin deaktivieren
 :: =============================================================================
 
-echo 65^| Security / Windows Settings %TIME%>>"%FSC-LOG-Progress%"
+:: echo 65^| Security / Windows Settings %TIME%>>"%FSC-LOG-Progress%"
 
 @Echo.>>%FSC-LOG%
 @Echo. [WINDOWS] Security>>%FSC-LOG%
@@ -418,7 +418,7 @@ If Exist "%VolApp1%" (
 :: - Deployment Lockscreen konfigurieren
 :: =============================================================================
 
-echo 80^| Finalisierung / First Logon %TIME%>>"%FSC-LOG-Progress%"
+:: echo 80^| Finalisierung / First Logon %TIME%>>"%FSC-LOG-Progress%"
 
 SET FSC_REGFile_01=%~dp0FS-Cust.reg
 @Echo. >>%FSC-LOG%
@@ -462,7 +462,7 @@ IF Exist "%IMG%" (
 :: - Start und Ende der Treiberinstallation protokollieren
 :: =============================================================================
 
-echo 95^| Driver Installation %TIME%>>"%FSC-LOG-Progress%"
+:: echo 95^| Driver Installation %TIME%>>"%FSC-LOG-Progress%"
 
 @Echo. >>%FSC-LOG%
 @Echo. [DRIVER] Installation Start Time: %NT%>>%FSC-LOG%

@@ -1,15 +1,18 @@
 :: ============================================================================
 :: Franksoft Client (FSC) - HP Driver Installation
 :: ============================================================================
-:: Script    : HP-G8-Drivers.cmd
-:: Version   : 1.1
-:: Date      : 14.10.2026
+:: Script    : HP_G08_Drivers.cmd
+:: Version   : 1.2
+:: Date      : 15.10.2026
 :: Author    : Franksoft
 :: Target    : HP EliteBook 850 G8
 :: Changelog : v1.1 - Filename unified; install.cmd only at first folder level
+::             v1.2 - Original FOR /R + CALL restored (recursive)
+::                    Group headings; no PowerShell WAIT wrappers
 :: ============================================================================
 
 :: @echo off
+:: [01] INITIALIZATION / ADMINISTRATOR CHECK
 TITLE Script: %~nx0 - Time: %TIME%
 
 openfiles >nul 2>&1
@@ -19,10 +22,12 @@ if %errorlevel% NEQ 0 (
     exit
 )
 
+:: [02] HARDWARE DETECTION
 for /f "tokens=3*" %%a in ('reg query "HKLM\HARDWARE\DESCRIPTION\System\BIOS" /v "SystemProductName" ^| findstr /i "SystemProductName"') do (
     set "ProductName=%%a %%b"
 )
 
+:: [03] LOG INITIALIZATION
 SET "FSC_LOG_Dir=%ProgramData%\Franksoft\Logs"
 IF NOT EXIST "%FSC_LOG_Dir%" MD "%FSC_LOG_Dir%"
 SET "FSC_Driver_Inst_LOG=%FSC_LOG_Dir%\Franksoft-Driver-Inst.txt"
@@ -43,20 +48,13 @@ IF NOT Exist "%PUBLIC%\Desktop\%ProductName%" MD "%PUBLIC%\Desktop\%ProductName%
 @echo. Driver Path .......... %~dp0>>"%FSC_Driver_Inst_LOG%"
 @echo. Script ............... %~f0>>"%FSC_Driver_Inst_LOG%"
 @echo. FSC DriverInst LOG ... %FSC_Driver_Inst_LOG%>>"%FSC_Driver_Inst_LOG%"
-@echo. 
+@echo.
 
 
+:: [04] DRIVER INSTALLATION - ORIGINAL RECURSIVE CALL
 Pushd "%~dp0"
-
-:: for /r %%d in (.) do if exist "%%d\install.cmd" call "%%d\install.cmd"
-
-for /d %%D in ("%~dp0*") do (
-    if exist "%%~fD\install.cmd" (
-        echo Installing: %%~fD\install.cmd
-        call "%%~fD\install.cmd"
-    )
-)
-
+for /r %%d in (.) do if exist "%%d\install.cmd" call "%%d\install.cmd"
+:: [05] AUDIO INSTALLATION
 @Timeout 4
 
 SET AUDIO_DRV=sp174165_Audio.exe
@@ -70,6 +68,7 @@ IF EXIST "%AUDIO_DRV%" (
 Pushd "%~dp0"
 
 
+:: [06] FINALIZATION / LOGGING
 @echo. >>%FSC_Driver_Inst_LOG%
 @echo. Phase ................ End >>%FSC_Driver_Inst_LOG%
 @echo. Time ................. %time:~0,8%>>%FSC_Driver_Inst_LOG%
@@ -77,7 +76,7 @@ Pushd "%~dp0"
 @echo. Driver Path .......... %~dp0>>%FSC_Driver_Inst_LOG%
 @echo. Script ............... %~f0>>%FSC_Driver_Inst_LOG%
 @echo. FSC DriverInst LOG ... %FSC_Driver_Inst_LOG%>>%FSC_Driver_Inst_LOG%
-@echo. 
+@echo.
 @echo. ---------------------------------------------------------------->>%FSC_Driver_Inst_LOG%
 
 

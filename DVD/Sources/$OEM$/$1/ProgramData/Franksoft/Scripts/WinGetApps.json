@@ -19,12 +19,6 @@
       "Source": "msstore"
     },
     {
-      "Name": "Microsoft Fotos-Legacy",
-      "Id": "9NV2L4XVMCXM",
-      "Mode": "install",
-      "Source": "msstore"
-    },
-    {
       "Name": "Microsoft DotNet Runtime 8",
       "Id": "Microsoft.DotNet.Runtime.8",
       "Mode": "update",

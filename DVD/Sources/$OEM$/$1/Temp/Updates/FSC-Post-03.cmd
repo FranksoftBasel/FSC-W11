@@ -345,7 +345,7 @@ IF EXIST "%USB-Stick-Path%\WinUpd_1.txt" (
 ) ELSE (
     SET "WINUPD2=0"
     @echo. - Windows: Enable Windows System Restore
-    @echo. - Windows: Enable Windows System Restore >> %FSC-LOG%
+    @echo. - Windows: Enable Windows System Restore >> "%FSC-LOG%"
     start "" /min powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command "Enable-ComputerRestore -Drive 'C:\'" %_null%
 )
 
