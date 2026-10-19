@@ -26,7 +26,7 @@ setlocal EnableExtensions DisableDelayedExpansion
 :: - FIRST folder level only; deeper install.cmd files are not called directly
 :: - Record directories without install.cmd as SKIP
 :: - Separate debug log; existing FSC production log remains untouched
-:: - Current G10 Realtek audio installer retained (sp174331_Audio.exe)
+:: - Current G10 Realtek audio installer retained (sp174175_Audio.exe)
 :: - No PowerShell Start-Process -Wait and no forced pauses
 :: ============================================================================
 
@@ -106,7 +106,7 @@ for /d %%D in ("%FSC_ROOT%*") do (
 :: ==========================================================================
 :: [02] AUDIO - SAME COMMAND LINE AS CURRENT G10 SCRIPT
 :: ==========================================================================
-:: Current source audio SoftPaq: sp174331_Audio.exe
+:: Current source audio SoftPaq: sp174175_Audio.exe
 :: Do not replace by a different installer during this debug run.
 
 cd /d "%FSC_ROOT%"
