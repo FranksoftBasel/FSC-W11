@@ -152,7 +152,7 @@ echo ------------------------------------------------------------
 
 >>"%FSC_LOG%" echo [DONE  ] %DATE% %FSC_RUN_END_TIME%
 >>"%FSC_LOG%" echo ------------------------------------------------------------
->>"%FSC_LOG%" echo  Franksoft Client - HP G1i Driver DEBUG - SUMMARY
+>>"%FSC_LOG%" echo  Franksoft Client - HP G1i Driver - SUMMARY
 >>"%FSC_LOG%" echo ------------------------------------------------------------
 >>"%FSC_LOG%" echo  Anzahl .......... %FSC_COUNT%  ^(%FSC_TOTAL% install.cmd + %FSC_AUDIO_TOTAL% Audio^)
 >>"%FSC_LOG%" echo  Zeit ............ %FSC_RUN_DURATION%
