@@ -1,7 +1,7 @@
 ﻿# ==================================================================================================
 # Franksoft - FSC Adobe Acrobat Reader x86 MUI Update Downloader
-# Version : 1.5-5
-# Date : 16.10.2026
+# Version : 1.5-6
+# Date : 18.10.2026
 #
 # Webzugriff: curl.exe statt Invoke-WebRequest
 # Log: C:\ProgramData\Franksoft\Logs\AdobeReaderUpdate_FSC.log
@@ -63,7 +63,7 @@ $ErrorActionPreference = "Stop"
 $IndexUrl = "https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html"
 $DownloadDir = "C:\Temp\Adobe"
 $LogDir = "C:\ProgramData\Franksoft\Logs"
-$LogFile = Join-Path $LogDir "AdobeReaderUpdate_FSC.log"
+$LogFile = Join-Path $LogDir "FSC-Adobe-Reader-Update.log"
 $IndexHtml = Join-Path $DownloadDir "AdobeReleaseIndex.html"
 $ReleaseHtml = Join-Path $DownloadDir "AdobeReleasePage.html"
 $CurlConnectTime = 10

@@ -10,7 +10,7 @@
 # ============================================================================
 
 $JsonFile = "$env:ProgramData\Franksoft\Scripts\WinGetApps.json"
-$LogFile  = "$env:ProgramData\Franksoft\Logs\WinGetUpdate_FSC.log"
+$LogFile  = "$env:ProgramData\Franksoft\Logs\FSC-WinGet-Update.log"
 
 function Write-Log {
     param([string]$Text)

@@ -36,7 +36,7 @@ TITLE Franksoft Client: Windows Update - Prepare
 :: Log
 :: -----------------------------------------------------------------------------
 :: %ProgramData%\Franksoft\Logs\Franksoft Client.txt
-:: %ProgramData%\Franksoft\Logs\WinUpdate_FSC.log
+:: %ProgramData%\Franksoft\Logs\FSC-Windows-Update.log
 :: =============================================================================
 
 Powershell (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,40)
@@ -65,7 +65,7 @@ IF NOT Exist "%TEMP%\WinUpdatesView_List" (
 TITLE Franksoft Client: Windows Update - Script: %~nx0 - %NT%
 
 SET FSC_LOG="%ProgramData%\Franksoft\Logs\Franksoft Client.txt"
-SET FSC_LOG_UPD="%ProgramData%\Franksoft\Logs\WinUpdate_FSC.log"
+SET FSC_LOG_UPD="%ProgramData%\Franksoft\Logs\FSC-Windows-Update.log"
 
 :: SET FSC WUP Wallpaper
 REG Add "HKCU\Control Panel\Colors" /v Background /t REG_SZ /d "0 0 0" /f >NUL 2>&1

@@ -1,5 +1,5 @@
 ﻿# ============================================================================
-# FSC-Screenshot-V4.ps1
+# FSC-Screenshot-V4.1.ps1
 # Franksoft Client Deployment - Window Screenshot
 #
 # V4:
@@ -7,7 +7,7 @@
 # - Sucht "Franksoft Client Deployment"
 # - DPI-aware
 # - Verwendet DWM Extended Frame Bounds fuer die sichtbaren Fenstergrenzen
-# - Erster Screenshot: FSC-Complete.png
+# - Erster Screenshot: FSC-Deployment-Complete.png
 # - Weitere: FSC-Complete_yyyy-MM-dd_HH-mm-ss.png
 # ============================================================================
 
@@ -15,7 +15,7 @@ $ErrorActionPreference = "Stop"
 
 $WindowTitle = "Franksoft Client Deployment"
 $LogPath     = "C:\ProgramData\Franksoft\Logs"
-$BaseFile    = Join-Path $LogPath "FSC-Complete.png"
+$BaseFile    = Join-Path $LogPath "FSC-Deployment-Complete.png"
 
 try {
     Add-Type -AssemblyName System.Drawing

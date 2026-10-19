@@ -35,7 +35,7 @@ echo.
 
 
 set "LIST=%~dp0FSC-Cleanup.txt"
-set "LOG=%ProgramData%\Franksoft\Logs\Cleanup_FSC.log"
+set "LOG=%ProgramData%\Franksoft\Logs\FSC-CleanUp.log"
 
 if not exist "%ProgramData%\Franksoft\Logs" md "%ProgramData%\Franksoft\Logs"
 

@@ -7,19 +7,19 @@ chcp 1252 1>NUL 2>NUL
 :: if not "%1"=="7" start /min cmd /c ""%~0" 7 %*" & exit /b
 
 
-SET FSC-Ver=3.3
+SET FSC-Ver=3.4
 Title Franksoft Defender Update
 :: =====================================================================================
 :: FSC-DefenderUpdate-Debug-V3.cmd
 :: Version : %FSC-Ver%
-:: Date    : 13.06.2026 23:15
+:: Date    : 18.10.2026
 :: Author  : Franksoft
 :: =====================================================================================
 
 setlocal EnableExtensions EnableDelayedExpansion
 
 set "LOGDIR=%ProgramData%\Franksoft\Logs"
-set "LOGFILE=%LOGDIR%\DefenderUpdate_FSC.log"
+set "LOGFILE=%LOGDIR%\FSC-Defender-Update.log"
 
 if not exist "%LOGDIR%" md "%LOGDIR%"
 

@@ -44,8 +44,8 @@ SET FSC_PHASE=06/06
 ::
 :: Log
 :: -----------------------------------------------------------------------------
-:: %ProgramData%\Franksoft\Logs\WinGetUpdate_FSC.log
-:: %ProgramData%\Franksoft\Logs\AdobeReaderUpdate.log
+:: %ProgramData%\Franksoft\Logs\FSC-WinGet-Update.log
+:: %ProgramData%\Franksoft\Logs\FSC-Adobe-Reader-Update.log
 ::
 :: Changelog
 :: -----------------------------------------------------------------------------

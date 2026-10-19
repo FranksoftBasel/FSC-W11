@@ -163,6 +163,20 @@ C:\Windows\Web\Wallpaper\Theme1\img4.zip
 %ProgramData%\Franksoft\Scripts\elevate.exe
 %ProgramData%\Franksoft\Scripts\f01b4d95cf55d32a.automaticDestinations-ms
 %ProgramData%\Franksoft\Scripts\hashlnk.exe
+%ProgramData%\Franksoft\Scripts\WinUpdatesView_List.cmd
+%ProgramData%\Franksoft\Scripts\WinUpdatesView.exe
+%ProgramData%\Franksoft\Scripts\WinUpdatesView.cfg
+%ProgramData%\Franksoft\Scripts\WinGetUpdate_FSC JSON Checker.url
+%ProgramData%\Franksoft\Scripts\SwitchExplorer.exe
+%ProgramData%\Franksoft\Scripts\FS-Shutdown.ps1.png
+%ProgramData%\Franksoft\Scripts\FSC-Screenshot.VBS
+%ProgramData%\Franksoft\Scripts\FSC-Screenshot.ps1
+%ProgramData%\Franksoft\Scripts\FSC-DeploymentReport.ps1
+%ProgramData%\Franksoft\Scripts\FSC-Complete.VBS
+%ProgramData%\Franksoft\Scripts\FSC-Complete.ps1
+%ProgramData%\Franksoft\Scripts\FSC-Complete.png
+%ProgramData%\Franksoft\Scripts\FSC-Adobe-Reader-MUI-Update.ps1
+
 
 %USERPROFILE%\Desktop\FSC-Appx-Update.txt
 

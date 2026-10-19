@@ -5,8 +5,8 @@ setlocal EnableExtensions DisableDelayedExpansion
 :: Franksoft Client (FSC) - HP G1i Driver Installation
 :: ============================================================================
 :: File        : HP_G1i_Drivers.cmd
-:: Version     : 1.5
-:: Date        : 18.10.2026
+:: Version     : 1.6
+:: Date        : 19.10.2026
 :: Author      : Franksoft
 :: Target      : HP EliteBook 8 G1i / Windows 11
 ::
@@ -15,7 +15,7 @@ setlocal EnableExtensions DisableDelayedExpansion
 ::               No additional WAIT mechanism; original CALL is retained.
 ::
 :: Changelog:
-:: v1.5 Final - 18.10.2026
+:: v1.6 Final - 18.10.2026
 :: v1.4 DEBUG - 18.10.2026
 :: - Summary at end of console and debug log: Anzahl, Zeit, Errors, Success
 :: - Includes Audio in total count and result statistics
@@ -36,7 +36,7 @@ set "FSC_AUDIO=sp174331_Audio.exe"
 
 set "FSC_ROOT=%~dp0"
 set "FSC_LOG_DIR=%ProgramData%\Franksoft\Logs"
-set "FSC_DEBUG_LOG=%FSC_LOG_DIR%\HP_G1i_Drivers.txt"
+set "FSC_LOG=%FSC_LOG_DIR%\FSC-Drivers-HP-G1i.log"
 set /a FSC_TOTAL=0, FSC_SKIPPED=0, FSC_NONZERO=0, FSC_SUCCESS=0, FSC_ERRORS=0, FSC_REBOOT=0, FSC_AUDIO_TOTAL=0, FSC_AUDIO_SKIPPED=0 >nul
 
 if not exist "%FSC_LOG_DIR%" md "%FSC_LOG_DIR%" >nul 2>&1
@@ -49,7 +49,7 @@ if not exist "%FSC_LOG_DIR%" (
 openfiles >nul 2>&1
 if errorlevel 1 (
     echo [ERROR] Administrator rights required. Open CMD as Administrator.
-    >>"%FSC_DEBUG_LOG%" echo [ERROR] %DATE% %TIME% - No administrator rights
+    >>"%FSC_LOG%" echo [ERROR] %DATE% %TIME% - No administrator rights
     endlocal & exit /b 5
 )
 
@@ -64,17 +64,17 @@ echo  Franksoft Client - HP G1i Driver Installation
 echo ============================================================================
 echo  Model : %FSC_MODEL%
 echo  Root  : %FSC_ROOT%
-echo  Log   : %FSC_DEBUG_LOG%
+echo  Log   : %FSC_LOG%
 echo  Time  : %DATE% %TIME%
 echo ============================================================================
 echo.
 
->>"%FSC_DEBUG_LOG%" echo.
->>"%FSC_DEBUG_LOG%" echo ============================================================================
->>"%FSC_DEBUG_LOG%" echo [RUN] %DATE% %TIME% - %~nx0
->>"%FSC_DEBUG_LOG%" echo [MODEL] %FSC_MODEL%
->>"%FSC_DEBUG_LOG%" echo [ROOT] %FSC_ROOT%
->>"%FSC_DEBUG_LOG%" echo ============================================================================
+>>"%FSC_LOG%" echo.
+>>"%FSC_LOG%" echo ============================================================================
+>>"%FSC_LOG%" echo [RUN] %DATE% %TIME% - %~nx0
+>>"%FSC_LOG%" echo [MODEL] %FSC_MODEL%
+>>"%FSC_LOG%" echo [ROOT] %FSC_ROOT%
+>>"%FSC_LOG%" echo ============================================================================
 
 :: ==========================================================================
 :: Run timer - calculated using Windows CMD only (no PowerShell or WMI)
@@ -89,7 +89,7 @@ call :ToCentiseconds "%FSC_RUN_START_TIME%" FSC_RUN_START_CS
 pushd "%FSC_ROOT%"
 if errorlevel 1 (
     echo [ERROR] Cannot access: "%FSC_ROOT%"
-    >>"%FSC_DEBUG_LOG%" echo [ERROR] Could not access "%FSC_ROOT%"
+    >>"%FSC_LOG%" echo [ERROR] Could not access "%FSC_ROOT%"
     endlocal & exit /b 4
 )
 
@@ -98,7 +98,7 @@ for /d %%D in ("%FSC_ROOT%*") do (
         call :RunDriver "%%~fD\install.cmd"
     ) else (
         echo [SKIP  ] No install.cmd: "%%~fD"
-        >>"%FSC_DEBUG_LOG%" echo [SKIP  ] No install.cmd: "%%~fD"
+        >>"%FSC_LOG%" echo [SKIP  ] No install.cmd: "%%~fD"
         set /a FSC_SKIPPED+=1 >nul
     )
 )
@@ -115,7 +115,7 @@ if exist "%FSC_ROOT%%FSC_AUDIO%" (
 ) else (
     set /a FSC_AUDIO_SKIPPED+=1 >nul
     echo [AUDIO ] SKIP - "%FSC_AUDIO%" not found in driver root
-    >>"%FSC_DEBUG_LOG%" echo [AUDIO ] SKIP - "%FSC_AUDIO%" not found in driver root
+    >>"%FSC_LOG%" echo [AUDIO ] SKIP - "%FSC_AUDIO%" not found in driver root
 )
 
 :: ==========================================================================
@@ -138,7 +138,7 @@ set /a "FSC_COUNT=FSC_TOTAL+FSC_AUDIO_TOTAL" >nul
 
 echo.
 echo ------------------------------------------------------------
-echo  Franksoft Client - HP G1i Driver DEBUG - SUMMARY
+echo  Franksoft Client - HP G1i Driver - SUMMARY
 echo ------------------------------------------------------------
 echo  Anzahl .......... %FSC_COUNT%  ^(%FSC_TOTAL% install.cmd + %FSC_AUDIO_TOTAL% Audio^)
 echo  Zeit ............ %FSC_RUN_DURATION%
@@ -147,21 +147,21 @@ echo  Success ......... %FSC_SUCCESS%
 echo  Reboot .......... %FSC_REBOOT%  ^(in Success enthalten^)
 echo  Skip ............ %FSC_SKIPPED% Ordner / %FSC_AUDIO_SKIPPED% Audio
 echo  NonZero ......... %FSC_NONZERO%  ^(inkl. Reboot-Codes^)
-echo  Log ............. %FSC_DEBUG_LOG%
+echo  Log ............. %FSC_LOG%
 echo ------------------------------------------------------------
 
->>"%FSC_DEBUG_LOG%" echo [DONE  ] %DATE% %FSC_RUN_END_TIME%
->>"%FSC_DEBUG_LOG%" echo ------------------------------------------------------------
->>"%FSC_DEBUG_LOG%" echo  Franksoft Client - HP G1i Driver DEBUG - SUMMARY
->>"%FSC_DEBUG_LOG%" echo ------------------------------------------------------------
->>"%FSC_DEBUG_LOG%" echo  Anzahl .......... %FSC_COUNT%  ^(%FSC_TOTAL% install.cmd + %FSC_AUDIO_TOTAL% Audio^)
->>"%FSC_DEBUG_LOG%" echo  Zeit ............ %FSC_RUN_DURATION%
->>"%FSC_DEBUG_LOG%" echo  Errors .......... %FSC_ERRORS%
->>"%FSC_DEBUG_LOG%" echo  Success ......... %FSC_SUCCESS%
->>"%FSC_DEBUG_LOG%" echo  Reboot .......... %FSC_REBOOT%  ^(in Success enthalten^)
->>"%FSC_DEBUG_LOG%" echo  Skip ............ %FSC_SKIPPED% Ordner / %FSC_AUDIO_SKIPPED% Audio
->>"%FSC_DEBUG_LOG%" echo  NonZero ......... %FSC_NONZERO%  ^(inkl. Reboot-Codes^)
->>"%FSC_DEBUG_LOG%" echo ------------------------------------------------------------
+>>"%FSC_LOG%" echo [DONE  ] %DATE% %FSC_RUN_END_TIME%
+>>"%FSC_LOG%" echo ------------------------------------------------------------
+>>"%FSC_LOG%" echo  Franksoft Client - HP G1i Driver DEBUG - SUMMARY
+>>"%FSC_LOG%" echo ------------------------------------------------------------
+>>"%FSC_LOG%" echo  Anzahl .......... %FSC_COUNT%  ^(%FSC_TOTAL% install.cmd + %FSC_AUDIO_TOTAL% Audio^)
+>>"%FSC_LOG%" echo  Zeit ............ %FSC_RUN_DURATION%
+>>"%FSC_LOG%" echo  Errors .......... %FSC_ERRORS%
+>>"%FSC_LOG%" echo  Success ......... %FSC_SUCCESS%
+>>"%FSC_LOG%" echo  Reboot .......... %FSC_REBOOT%  ^(in Success enthalten^)
+>>"%FSC_LOG%" echo  Skip ............ %FSC_SKIPPED% Ordner / %FSC_AUDIO_SKIPPED% Audio
+>>"%FSC_LOG%" echo  NonZero ......... %FSC_NONZERO%  ^(inkl. Reboot-Codes^)
+>>"%FSC_LOG%" echo ------------------------------------------------------------
 
 popd
 endlocal & exit /b 0
@@ -177,7 +177,7 @@ set "FSC_START_TIME=%TIME: =0%"
 call :ToCentiseconds "%FSC_START_TIME%" FSC_START_CS
 
 echo [START ] %DATE% %FSC_START_TIME% - "%FSC_ITEM%"
->>"%FSC_DEBUG_LOG%" echo [START ] %DATE% %FSC_START_TIME% - "%FSC_ITEM%"
+>>"%FSC_LOG%" echo [START ] %DATE% %FSC_START_TIME% - "%FSC_ITEM%"
 
 :: The original synchronous CMD call is retained, not replaced.
 call "%FSC_ITEM%"
@@ -192,7 +192,7 @@ set "FSC_PAD=0%FSC_CENTI%"
 set "FSC_PAD=%FSC_PAD:~-2%"
 
 echo [RETURN] %DATE% %FSC_END_TIME% - ExitCode=%FSC_RC% - Duration=%FSC_SECONDS%.%FSC_PAD%s - "%FSC_ITEM%"
->>"%FSC_DEBUG_LOG%" echo [RETURN] %DATE% %FSC_END_TIME% - ExitCode=%FSC_RC% - Duration=%FSC_SECONDS%.%FSC_PAD%s - "%FSC_ITEM%"
+>>"%FSC_LOG%" echo [RETURN] %DATE% %FSC_END_TIME% - ExitCode=%FSC_RC% - Duration=%FSC_SECONDS%.%FSC_PAD%s - "%FSC_ITEM%"
 
 :: A successful non-zero code may indicate a pending reboot.
 :: Intel NPU ExitCode 14 has been verified as "success, restart required".
@@ -202,7 +202,7 @@ if "%FSC_RC%"=="0" set "FSC_RESULT=SUCCESS"
 if "%FSC_RC%"=="3010" set "FSC_RESULT=REBOOT"
 if "%FSC_RC%"=="14" if /I "%~dp1"=="%FSC_ROOT%sp163162_NPU_FS\" set "FSC_RESULT=REBOOT"
 echo [RESULT] %FSC_RESULT% - ExitCode=%FSC_RC% - "%FSC_ITEM%"
->>"%FSC_DEBUG_LOG%" echo [RESULT] %FSC_RESULT% - ExitCode=%FSC_RC% - "%FSC_ITEM%"
+>>"%FSC_LOG%" echo [RESULT] %FSC_RESULT% - ExitCode=%FSC_RC% - "%FSC_ITEM%"
 endlocal & call :RegisterResult "%FSC_RESULT%" "%FSC_RC%"
 exit /b 0
 
@@ -217,7 +217,7 @@ set "FSC_START_TIME=%TIME: =0%"
 call :ToCentiseconds "%FSC_START_TIME%" FSC_START_CS
 
 echo [AUDIO START ] %DATE% %FSC_START_TIME% - "%FSC_AUDIO_FILE%"
->>"%FSC_DEBUG_LOG%" echo [AUDIO START ] %DATE% %FSC_START_TIME% - "%FSC_AUDIO_FILE%"
+>>"%FSC_LOG%" echo [AUDIO START ] %DATE% %FSC_START_TIME% - "%FSC_AUDIO_FILE%"
 
 "%FSC_AUDIO_FILE%" /s /e cmd.exe /a /c ""HPUP.exe""
 set "FSC_RC=%ERRORLEVEL%"
@@ -231,12 +231,12 @@ set "FSC_PAD=0%FSC_CENTI%"
 set "FSC_PAD=%FSC_PAD:~-2%"
 
 echo [AUDIO RETURN] %DATE% %FSC_END_TIME% - ExitCode=%FSC_RC% - Duration=%FSC_SECONDS%.%FSC_PAD%s
->>"%FSC_DEBUG_LOG%" echo [AUDIO RETURN] %DATE% %FSC_END_TIME% - ExitCode=%FSC_RC% - Duration=%FSC_SECONDS%.%FSC_PAD%s
+>>"%FSC_LOG%" echo [AUDIO RETURN] %DATE% %FSC_END_TIME% - ExitCode=%FSC_RC% - Duration=%FSC_SECONDS%.%FSC_PAD%s
 set "FSC_RESULT=ERROR"
 if "%FSC_RC%"=="0" set "FSC_RESULT=SUCCESS"
 if "%FSC_RC%"=="3010" set "FSC_RESULT=REBOOT"
 echo [AUDIO RESULT] %FSC_RESULT% - ExitCode=%FSC_RC%
->>"%FSC_DEBUG_LOG%" echo [AUDIO RESULT] %FSC_RESULT% - ExitCode=%FSC_RC%
+>>"%FSC_LOG%" echo [AUDIO RESULT] %FSC_RESULT% - ExitCode=%FSC_RC%
 endlocal & call :RegisterResult "%FSC_RESULT%" "%FSC_RC%"
 exit /b 0
 
