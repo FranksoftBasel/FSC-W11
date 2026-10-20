@@ -13,7 +13,7 @@ REM ============================================================================
 rem
 rem Loggings of the UWP installation are captured in these logs for debugging purpose
 rem
-set Log_Folder=%~d0\programdata\hp\logs\UWP
+set Log_Folder=%ProgramData%\hp\logs\UWP
 if not exist "%Log_Folder%" md "%Log_Folder%"
 set APP_Log=%Log_Folder%\%APP_Title%.log
 set APPDISM_Log=%Log_Folder%\%APP_Title%_DISM.log

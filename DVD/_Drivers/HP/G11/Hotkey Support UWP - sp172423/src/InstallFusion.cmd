@@ -10,7 +10,7 @@ REM **************************************************************
 rem
 rem Loggings of the Fusion driver installation are captured for debugging purpose
 rem
-set Log_Folder=%~d0\programdata\HP\logs
+set Log_Folder=%ProgramData%\HP\logs
 if not exist "%Log_Folder%" md "%Log_Folder%"
 set DRV_Log=%Log_Folder%\%DRV_Title%.log
 REM SET CMDLog=%Log_Folder%\cmdline.txt
