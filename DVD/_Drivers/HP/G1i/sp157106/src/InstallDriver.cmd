@@ -5,7 +5,7 @@ set errcode=0
 
 REM **************************************************************
 REM DRV_Title - Avoid using space if possible
-set DRV_Title=DRV_DRV_Intel_PPM
+set DRV_Title=DRV_Intel_PPM
 REM **************************************************************
 
 rem

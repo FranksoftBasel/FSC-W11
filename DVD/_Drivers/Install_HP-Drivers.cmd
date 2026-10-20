@@ -4,8 +4,8 @@ TITLE Install Drivers - Script: %~nx0 - Time: %TIME%
 
 :: =============================================================================
 :: Script Name : Install_HP-Drivers.cmd
-:: Version     : 2.6
-:: Date        : 19.10.2026
+:: Version     : 2.7
+:: Date        : 20.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
@@ -28,6 +28,10 @@ TITLE Install Drivers - Script: %~nx0 - Time: %TIME%
 :: - Start/End auch bei fehlender Treiber-CMD protokollieren
 :: - Vorherige End/ExitCode-Werte vor neuem Aufruf entfernen
 :: - Treiberinstallationsroutine selbst unveraendert
+:: v2.7 - 20.10.2026
+:: - HP G11 Generation vor dem allgemeinen 830/850/860 Mapping erkennen
+:: - HP_G11_Drivers.cmd im G11-Root oder direkten Unterordner suchen
+:: - Registry-Logging und bestehende HP Zuordnungen unveraendert
 ::
 :: Purpose : Ermittelt HP Modell und startet passendes FSC Treiberscript.
 :: Called  : SetupComplete.cmd
@@ -85,7 +89,8 @@ ECHO Modell: %MODEL%
 :: =============================================================================
 :: [04] MODEL MAPPING
 :: =============================================================================
-:: Prioritaet: HP 830 G8 muss VOR dem allgemeinen 830-Mapping kommen.
+:: Prioritaet: Generation G11 und HP 830 G8 VOR dem allgemeinen Nummern-Mapping.
+ECHO %MODEL% | FINDSTR /I /C:" G11" >NUL && GOTO HPG11
 ECHO %MODEL% | FINDSTR /I /C:"830 G8" >NUL && GOTO HP850
 
 FOR %%A IN (%MODEL%) DO (
@@ -101,6 +106,22 @@ GOTO ERROR
 :: =============================================================================
 :: [05] DRIVER TARGETS
 :: =============================================================================
+:: HP G11: Standardpfad oder genau eine Verzeichnisebene tiefer.
+:: Keine rekursive Suche und keine Veraenderung der Treiberinstallationsroutine.
+:HPG11
+SET "MODELL=G11"
+SET "Driver_Source=%Driver-Root%\HP\G11"
+SET "FSC_HP_Driver_Script=%Driver_Source%\HP_G11_Drivers.cmd"
+IF EXIST "%FSC_HP_Driver_Script%" GOTO FSC_Driver_Start
+FOR /D %%D IN ("%Driver_Source%\*") DO (
+    IF EXIST "%%~fD\HP_G11_Drivers.cmd" (
+        SET "Driver_Source=%%~fD"
+        SET "FSC_HP_Driver_Script=%%~fD\HP_G11_Drivers.cmd"
+        GOTO FSC_Driver_Start
+    )
+)
+GOTO FSC_Driver_Start
+
 :HPG1I
 SET "MODELL=G1i"
 SET "Driver_Source=%Driver-Root%\HP\%MODELL%"

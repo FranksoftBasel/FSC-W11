@@ -1,0 +1,1 @@
+cmd /k pnputil /enum-devices /problem

@@ -24,8 +24,8 @@ if defined FCC_LOG_FOLDER (
     SET "APP_LOG=%FCC_LOG_FOLDER%\%~n0.log"
     if not exist "%FCC_LOG_FOLDER%" md "%FCC_LOG_FOLDER%"
 ) else (
-    SET "APP_LOG=%~d0\programdata\HP\logs\%SW_TITLE%.log"
-    if not exist "%~d0\programdata\HP\logs" md "%~d0\programdata\HP\logs"
+    SET "APP_LOG=%ProgramData%\HP\logs\%SW_TITLE%.log"
+    if not exist "%ProgramData%\HP\logs" md "%ProgramData%\HP\logs"
 )
 
 rem

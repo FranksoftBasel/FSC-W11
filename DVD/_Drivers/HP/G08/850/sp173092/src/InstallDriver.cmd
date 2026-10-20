@@ -5,7 +5,7 @@ set errcode=0
 
 REM **************************************************************
 REM DRV_Title - Avoid using space if possible
-set DRV_Title=DRV_TITLE
+set DRV_Title=Synaptic_TouchPad
 REM **************************************************************
 
 rem

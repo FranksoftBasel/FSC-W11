@@ -15,7 +15,7 @@ TITLE Franksoft Client: Windows Update - Prepare
 @Echo. Please wait for Franksoft Client: Windows Update - Prepare
 @Echo. 
 
-@SET "FSC_VERSION=2.5"
+@SET "FSC_VERSION=2.6"
 
 :: =============================================================================
 :: Script Name : WinUpdate_FSC.cmd
@@ -548,5 +548,8 @@ Taskkill /im Chrome.exe /f >NUL 2>NUL
 cmd /c start /min chrome
 Timeout 2 >NUL
 Taskkill /im Chrome.exe /f >NUL 2>NUL
+
+Powershell (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,40)
+
 
 EXIT /B %FSC_WINGET_RC%

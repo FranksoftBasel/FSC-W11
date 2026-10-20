@@ -11,7 +11,7 @@ REM **************************************************************
 rem
 rem Loggings of the driver installation are captured for debugging purpose
 rem
-set Log_Folder=%programdata%\HP\logs\Intel Chipset Driver
+set Log_Folder=%programdata%\HP\logs
 if not exist "%Log_Folder%" md "%Log_Folder%"
 set DRV_Log=%Log_Folder%\%DRV_Title%.log
 

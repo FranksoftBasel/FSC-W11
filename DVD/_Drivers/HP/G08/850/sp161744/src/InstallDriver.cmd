@@ -5,13 +5,13 @@ set errcode=0
 
 REM **************************************************************
 REM DRV_Title - Avoid using space if possible
-set DRV_Title=DRV_TITLE
+set DRV_Title=Thunderbolt_Driver
 REM **************************************************************
 
 rem
 rem Loggings of the driver installation are captured for debugging purpose
 rem
-set Log_Folder=%programdata%\HP\logs
+set Log_Folder=%ProgramData%\HP\logs
 if not exist "%Log_Folder%" md "%Log_Folder%"
 set DRV_Log=%Log_Folder%\%DRV_Title%.log
 

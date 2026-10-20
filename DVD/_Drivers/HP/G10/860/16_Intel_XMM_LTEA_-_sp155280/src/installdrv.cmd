@@ -11,7 +11,7 @@ REM %Description of deliverable%
 REM ****************************************************
 REM *      COMPONENT OWNER TO UPDATE (SW_TITLE)        *
 REM ****************************************************
-SET SW_TITLE=SW_TITLE
+SET SW_TITLE=Intel_XMM_LTEA
 REM ****************************************************
 set DriverPrefix=dchu_
 REM MODIFY SET DRIVERPREFIX AS NEEDED
