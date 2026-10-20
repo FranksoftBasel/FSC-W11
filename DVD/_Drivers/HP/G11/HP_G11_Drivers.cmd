@@ -28,7 +28,7 @@ set "FSC_AUDIO=sp174143_Audio.exe"
 :: - FIRST folder level only; deeper install.cmd files are not called directly
 :: - Record directories without install.cmd as SKIP
 :: - Separate debug log; existing FSC production log remains untouched
-:: - Current G11 Realtek audio installer retained (sp174175_Audio.exe)
+:: - Current G11 Realtek audio installer retained (sp174143_Audio.exe)
 :: - No PowerShell Start-Process -Wait and no forced pauses
 :: ============================================================================
 
