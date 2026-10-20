@@ -4,7 +4,7 @@ TITLE Install Drivers - Script: %~nx0 - Time: %TIME%
 
 :: =============================================================================
 :: Script Name : Install_HP-Drivers.cmd
-:: Version     : 2.7
+:: Version     : 2.8
 :: Date        : 20.10.2026
 :: Author      : Franksoft
 ::
@@ -99,8 +99,8 @@ FOR %%A IN (%MODEL%) DO (
     IF /I "%%A"=="860" GOTO HP860
 )
 
-ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 G1i" >NUL && GOTO HPG1I
-ECHO %MODEL% | FINDSTR /I /C:"EliteBook 8 G2i" >NUL && GOTO HPG2I
+ECHO %MODEL% | FINDSTR /I /C:"G1i" >NUL && GOTO HPG1I
+ECHO %MODEL% | FINDSTR /I /C:"G2i" >NUL && GOTO HPG2I
 GOTO ERROR
 
 :: =============================================================================
