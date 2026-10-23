@@ -439,6 +439,46 @@ foreach ($row in $ScriptItems) {
 "@
 }
 
+# ============================================================================
+# Complete script execution overview (chronological, exact seconds)
+# ============================================================================
+
+$allScriptsRowsHtml = ""
+$orderedScripts = @($ScriptItems | Sort-Object @{ Expression = { if ($_.Start) { $_.Start } else { [datetime]::MaxValue } } }, Script)
+foreach ($row in $orderedScripts) {
+    $durationText = "-"
+    if ($row.Start -and $row.End -and $row.End -ge $row.Start) {
+        $span = $row.End - $row.Start
+        $durationText = "{0:00}:{1:00}:{2:00}" -f [math]::Floor($span.TotalHours), $span.Minutes, $span.Seconds
+    }
+
+    $exitCodeText = "-"
+    if (Test-Path ("Registry::" + $row.RegPath)) {
+        $exitValue = (Get-ItemProperty -LiteralPath ("Registry::" + $row.RegPath) -Name "Exit_Code" -ErrorAction SilentlyContinue)."Exit_Code"
+        if ($null -eq $exitValue) {
+            $exitValue = (Get-ItemProperty -LiteralPath ("Registry::" + $row.RegPath) -Name "ExitCode" -ErrorAction SilentlyContinue).ExitCode
+        }
+        if ($null -ne $exitValue -and [string]$exitValue -ne "") {
+            $exitCodeText = [string]$exitValue
+        }
+    }
+    $statusClass = if ($row.Status -eq "OK") { "ok" } elseif ($row.Status -eq "Started") { "warn" } else { "bad" }
+    $allScriptsRowsHtml += @"
+<tr>
+  <td>$(HtmlEncode $row.Phase)</td>
+  <td>$(HtmlEncode $row.Script)</td>
+  <td>$(HtmlEncode (Format-Time $row.Start))</td>
+  <td>$(HtmlEncode (Format-Time $row.End))</td>
+  <td class="num">$(HtmlEncode $durationText)</td>
+  <td class="$statusClass">$(HtmlEncode $row.Status)</td>
+  <td class="num">$(HtmlEncode $exitCodeText)</td>
+</tr>
+"@
+}
+if (-not $allScriptsRowsHtml) {
+    $allScriptsRowsHtml = '<tr><td colspan="7" class="muted">Keine Script-Zeitdaten in der Registry gefunden.</td></tr>'
+}
+
 $wingetRowsHtml = ""
 if ($WinGetRowsForHtml.Count -gt 0) {
     foreach ($row in $WinGetRowsForHtml) {
@@ -674,6 +714,19 @@ $html = @"
             <p class="path">$(HtmlEncode $FscLogPath)</p>
             <pre>$fscLogHtml</pre>
         </div>
+    </div>
+
+    <div class="panel">
+        <h2>Alle Scripts – Laufzeiten (chronologisch)</h2>
+        <table>
+            <thead>
+                <tr><th>Phase</th><th>Script</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th><th>Exit-Code</th></tr>
+            </thead>
+            <tbody>
+                $allScriptsRowsHtml
+            </tbody>
+        </table>
+        <p class="muted">Laufzeiten sekundengenau aus HKLM\\SOFTWARE\\Franksoft\\Setup. Parallele oder verschachtelte Scripts werden nicht als zusätzliche Deployment-Gesamtdauer summiert.</p>
     </div>
 
     <div class="footer">
