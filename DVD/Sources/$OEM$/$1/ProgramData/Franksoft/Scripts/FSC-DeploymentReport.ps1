@@ -3,10 +3,10 @@
 # Deployment Report Generator
 #
 # Script : FSC-CreateDeploymentReport.ps1
-# Version: 1.6
+# Version: 1.7
 # Author : Franksoft
 # Date   : 23.10.2026
-# Time   : 20:44:47
+# Time   : 20:46:48
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
@@ -714,7 +714,7 @@ $html = @"
             <h2>Report Info</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
-                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.6 (23.10.2026 20:44:47)</span>
+                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.7 (23.10.2026 20:46:48)</span>
                 <b>Registry:</b><span>$(if (Test-Path $RegSetupRoot) { "OK" } else { "Fehlt" })</span>
                 <b>FSC Log:</b><span>$(if (Test-Path $FscLogPath) { "OK" } else { "Fehlt" })</span>
                 <b>WinGet Logs:</b><span>$(if ($WinGetBeforePath -or $WinGetAfterPath) { "OK" } else { "Fehlt" })</span>
@@ -805,6 +805,8 @@ $html = @"
 $utf8Bom = New-Object System.Text.UTF8Encoding($true)
 [System.IO.File]::WriteAllText($ReportPath, $html, $utf8Bom)
 
+Write-Host "Generator: FSC-DeploymentReport.ps1 v1.7 (23.10.2026 20:46:48)"
+Write-Host "Script-Datei: $PSCommandPath"
 Write-Host "Deployment Report erstellt: $ReportPath"
 
 
