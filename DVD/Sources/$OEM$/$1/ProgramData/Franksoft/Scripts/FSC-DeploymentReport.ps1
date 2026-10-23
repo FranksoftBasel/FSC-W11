@@ -3,10 +3,10 @@
 # Deployment Report Generator
 #
 # Script : FSC-CreateDeploymentReport.ps1
-# Version: 1.5
+# Version: 1.6
 # Author : Franksoft
 # Date   : 23.10.2026
-# Time   : 20:41:45
+# Time   : 20:44:47
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
@@ -465,8 +465,19 @@ if (Test-Path $FscLogPath) {
 
 $Generated = Get-Date -Format "dd.MM.yyyy HH:mm:ss"
 
+# Explicit FSC deployment phase order; helper/child scripts are shown below
+# in the complete execution overview, not in this main phase timeline.
+$mainScriptOrder = @(
+    "PE-LogFile.cmd",
+    "SetupComplete.cmd",
+    "Install_HP-Drivers.cmd",
+    "FSC-Post-01.cmd",
+    "FSC-Post-02.cmd",
+    "FSC-Post-03.cmd"
+)
 $scriptRowsHtml = ""
-foreach ($row in $ScriptItems) {
+foreach ($scriptName in $mainScriptOrder) {
+    foreach ($row in @($ScriptItems | Where-Object { $_.Script -eq $scriptName })) {
     $statusClass = if ($row.Status -eq "OK") { "ok" } elseif ($row.Status -eq "Started") { "warn" } else { "bad" }
     $logText = if ($row.Log) { $row.Log } else { "" }
 
@@ -476,11 +487,15 @@ foreach ($row in $ScriptItems) {
   <td>$(HtmlEncode $row.Script)</td>
   <td>$(HtmlEncode (Format-Time $row.Start))</td>
   <td>$(HtmlEncode (Format-Time $row.End))</td>
-  <td class="num">$(HtmlEncode $row.Minutes)</td>
+  <td class="num">$(HtmlEncode (Format-Duration $row.Start $row.End))</td>
   <td class="$statusClass">$(HtmlEncode $row.Status)</td>
   <td class="path">$(HtmlEncode $logText)</td>
 </tr>
 "@
+    }
+}
+if (-not $scriptRowsHtml) {
+    $scriptRowsHtml = '<tr><td colspan="7" class="muted">Keine Haupt-Scriptdaten in der Registry gefunden.</td></tr>'
 }
 
 # ============================================================================
@@ -699,7 +714,7 @@ $html = @"
             <h2>Report Info</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
-                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.5 (23.10.2026 20:41:45)</span>
+                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.6 (23.10.2026 20:44:47)</span>
                 <b>Registry:</b><span>$(if (Test-Path $RegSetupRoot) { "OK" } else { "Fehlt" })</span>
                 <b>FSC Log:</b><span>$(if (Test-Path $FscLogPath) { "OK" } else { "Fehlt" })</span>
                 <b>WinGet Logs:</b><span>$(if ($WinGetBeforePath -or $WinGetAfterPath) { "OK" } else { "Fehlt" })</span>
@@ -737,7 +752,7 @@ $html = @"
         <h2>Script Timeline aus Registry</h2>
         <table>
             <thead>
-                <tr><th>Phase</th><th>Script</th><th>Start</th><th>Ende</th><th>Dauer (Min)</th><th>Status</th><th>Log File</th></tr>
+                <tr><th>Phase</th><th>Script</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th><th>Log File</th></tr>
             </thead>
             <tbody>
                 $scriptRowsHtml
