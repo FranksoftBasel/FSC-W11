@@ -1,0 +1,1 @@
+dism /online /Add-ProvisionedAppxPackage /PackagePath:"%~dp0ICPS.appx" /LicensePath:"%~dp0ICPS_License1.xml" /Region:all

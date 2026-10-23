@@ -3,8 +3,8 @@ SET FSC_PHASE=01/06
 :: =============================================================================
 :: Script Name : SetupComplete.cmd
 :: Path        : "D:\Sources\$OEM$\$$\Setup\Scripts\SetupComplete.cmd"
-:: Version     : 7.3
-:: Date        : 15.10.2026
+:: Version     : 7.4
+:: Date        : 21.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
@@ -91,6 +91,7 @@ SET FSC-Tools-Local=%ProgramData%\Franksoft
 SET FSC-Scripts-Local=%FSC-Tools-Local%\Scripts
 
 
+
 :: =============================================================================
 :: [02] SYSTEM INFORMATION
 :: Funktion:
@@ -130,6 +131,25 @@ if /i "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
     set "BITNESS=x86"
 )
 
+
+@echo. +------------------------------------------------------------+>>%FSC-LOG%
+@echo.                                                   >>%FSC-LOG%
+@echo.  Phase ID:      %Status% (Start)                  >>%FSC-LOG%
+@echo.  Script Path:   %~dp0%~nx0                        >>%FSC-LOG%
+@echo.  Timestamp:     %Date% %NT%                       >>%FSC-LOG%
+@echo.                                                   >>%FSC-LOG%
+@echo. +------------------------------------------------------------+>>%FSC-LOG%
+@echo.  ComputerName:  %ComputerName%                    >>%FSC-LOG%
+@echo.  Modell:        %SystemProductName%               >>%FSC-LOG%
+@echo.  OS:            %FullProductName%                 >>%FSC-LOG%
+@echo.  Bitness:       %Bitness%                         >>%FSC-LOG%
+@echo.  Version:       %WIN_VER%                         >>%FSC-LOG%
+@echo.  Release:       %WinRelease%                      >>%FSC-LOG%
+@echo.  Build:         %CurrentBuild%                    >>%FSC-LOG%
+@echo.  User:          %UserName%                        >>%FSC-LOG%
+@echo.  IsAdmin:       %Admin-Status%                    >>%FSC-LOG%
+@echo.  Power Plan:    %CurrentPowerScheme%              >>%FSC-LOG%
+@echo. +------------------------------------------------------------+>>%FSC-LOG%
 
 :: =============================================================================
 :: [03] WINDOWS SETUP SOURCE / ENVIRONMENT
@@ -201,27 +221,6 @@ EVENTCREATE /T INFORMATION /so Franksoft /ID 007 /l application /d "Franksoft Cl
 
 SET "NT=%TIME: =0%"
 SET "NT=%NT:~0,8%"
-
-@echo. +------------------------------------------------------------+>>%FSC-LOG%
-@echo.                                                   >>%FSC-LOG%
-@echo.  Phase ID:      %Status% (Start)                  >>%FSC-LOG%
-@echo.  Script Path:   %~dp0%~nx0                        >>%FSC-LOG%
-@echo.  Timestamp:     %Date% %NT%                       >>%FSC-LOG%
-@echo.                                                   >>%FSC-LOG%
-@echo. +------------------------------------------------------------+>>%FSC-LOG%
-@echo.  ComputerName:  %ComputerName%                    >>%FSC-LOG%
-@echo.  Modell:        %SystemProductName%               >>%FSC-LOG%
-@echo.  OS:            %FullProductName%                 >>%FSC-LOG%
-@echo.  Bitness:       %Bitness%                         >>%FSC-LOG%
-@echo.  Version:       %WIN_VER%                         >>%FSC-LOG%
-@echo.  Release:       %WinRelease%                      >>%FSC-LOG%
-@echo.  Build:         %CurrentBuild%                    >>%FSC-LOG%
-@echo.  User:          %UserName%                        >>%FSC-LOG%
-@echo.  IsAdmin:       %Admin-Status%                    >>%FSC-LOG%
-@echo.  Power Plan:    %CurrentPowerScheme%              >>%FSC-LOG%
-@echo. +------------------------------------------------------------+>>%FSC-LOG%
-@Echo. >>%FSC-LOG%
-
 
 :: =============================================================================
 :: [06] WINDOWS CONFIGURATION

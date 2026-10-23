@@ -1,13 +1,13 @@
 :: =============================================================================
 :: Script Name : FS-Post-Apps.cmd
-:: Version     : 1.9
-:: Date        : 18.10.2026
+:: Version     : 2.0
+:: Date        : 21.10.2026
 :: Author      : Franksoft
 ::
 :: Changelog
 :: -----------------------------------------------------------------------------
 :: v1.6 - 03.10.2026
-:: - Remove: C++ AIO, Chrome
+:: - Remove: C++ AIO, Chrome, Edge
 :: -----------------------------------------------------------------------------
 :: v1.5 - 02.10.2026
 :: - Add SW: XnViewMP
@@ -125,23 +125,10 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 	SET /A i+=1
 	)
 
-	REG ADD %ROE%\%i% /ve /d "Microsoft Edge" /f >NUL
-	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\_Microsoft\Edge\KillEdge.vbs" /f >NUL
-	REG ADD %ROE%\%i% /v "002" /d "%SourcePath%\_Microsoft\Edge\FS-Wrapper.exe" /f >NUL
-	REG ADD %ROE%\%i% /v "003" /d "REGEDIT /S %SourcePath%\_Microsoft\Edge\CU\MS-EDGE-HKCU_FSC-01.reg" /f >NUL
-	SET /A i+=1
-
 	REG ADD %ROE%\%i% /ve /d "Microsoft OneDrive" /f >NUL
 	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\_Microsoft\OneDrive\OneDriveSetup_Kill.vbs" /f >NUL
 	REG ADD %ROE%\%i% /v "002" /d "%SourcePath%\_Microsoft\OneDrive\OneDrive_Wrapper.exe" /f >NUL
 	SET /A i+=1
-
-	SET "WT=%SourcePath%\_Microsoft\Terminal\Microsoft.WindowsTerminal_Install.cmd"
-	IF Exist "%WT%" (
-	REG ADD %ROE%\%i% /ve /d "Microsoft Terminal" /f >NUL
-	REG ADD %ROE%\%i% /v "001" /d "%WT%" /f >NUL
-	SET /A i+=1
-	)
 
 	SET "MPC=%SourcePath%\MPC-HC\FS-Loader.exe"
 	IF Exist "%MPC%" (

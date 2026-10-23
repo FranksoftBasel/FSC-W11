@@ -2,13 +2,13 @@
 setlocal EnableExtensions
 
 :: ============================================================================
-:: Franksoft Client (FSC) - Intel Graphics Driver (G1i)
+:: Franksoft Client (FSC) - Intel Graphics Driver (G10)
 :: ============================================================================
 :: File        : Install.cmd
 :: Version     : 1.1
 :: Date        : 17.10.2026
 :: Author      : Franksoft
-:: Target      : HP EliteBook 8 G1i / Windows 11
+:: Target      : HP EliteBook G10 / Windows 11
 :: Purpose     : Install Intel Graphics driver from pre-extracted Intel package
 :: Method      : Direct Installer.exe call; no SFX, no optional Intel extras
 :: Changelog   : v1.1 - Replace gfx_win_101.xxxx.exe SFX with Installer.exe

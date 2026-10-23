@@ -7,10 +7,10 @@ chcp 1252 1>NUL 2>NUL
 :: if not "%1"=="7" start /min cmd /c ""%~0" 7 %*" & exit /b
 
 
-SET FSC-Ver=3.4
+SET FSC-Ver=3.5
 Title Franksoft Defender Update
 :: =====================================================================================
-:: FSC-DefenderUpdate-Debug-V3.cmd
+:: FSC-DefenderUpdate.cmd
 :: Version : %FSC-Ver%
 :: Date    : 18.10.2026
 :: Author  : Franksoft
@@ -61,7 +61,7 @@ echo Start Time   : %DATE% %TIME%>>"%LOGFILE%"
 echo ===============================================================================>>"%LOGFILE%"
 echo.>>"%LOGFILE%"
 
-@echo.   - Franksoft Defender Update Debug V%FSC-Ver%
+@echo.   - Franksoft Defender Update V%FSC-Ver%
 @echo.   - Check Vorheriger Defender Status...
 
 echo Defender Status vor Update:>>"%LOGFILE%"

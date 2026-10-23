@@ -1,4 +1,4 @@
-SET NAME=WiFi-24.70.0-Driver64-Win10-Win11
+SET NAME=WiFi-24.70.0-Driver64
 
 
 pushd "%~dp0"
