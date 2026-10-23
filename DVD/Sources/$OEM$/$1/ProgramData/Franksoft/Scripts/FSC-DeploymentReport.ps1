@@ -3,10 +3,10 @@
 # Deployment Report Generator
 #
 # Script : FSC-CreateDeploymentReport.ps1
-# Version: 1.2
+# Version: 1.3
 # Author : Franksoft
 # Date   : 23.10.2026
-# Time   : 20:26:30
+# Time   : 20:28:25
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
@@ -670,6 +670,7 @@ $html = @"
             <h2>Report Info</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
+                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.3 (23.10.2026 20:28:25)</span>
                 <b>Registry:</b><span>$(if (Test-Path $RegSetupRoot) { "OK" } else { "Fehlt" })</span>
                 <b>FSC Log:</b><span>$(if (Test-Path $FscLogPath) { "OK" } else { "Fehlt" })</span>
                 <b>WinGet Logs:</b><span>$(if ($WinGetBeforePath -or $WinGetAfterPath) { "OK" } else { "Fehlt" })</span>
@@ -682,7 +683,7 @@ $html = @"
             <h2>Deployment Summary</h2>
             <table class="summary-table">
                 <tr><td>Windows Setup</td><td>$(Format-Time $WindowsSetupStart)</td><td>$(Format-Time $WindowsSetupEnd)</td><td class="num big">$WindowsSetupMin Minuten</td></tr>
-                <tr><td>Install_HP-Drivers.cmd</td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num big">$(HtmlEncode $HPDriversDuration)</td></tr>
+                <tr><td><b>Install_HP-Drivers.cmd</b></td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num big">$(HtmlEncode $HPDriversDuration)</td></tr>
                 <tr><td>Franksoft Deployment</td><td>$(Format-Time $FSCDeploymentStart)</td><td>$(Format-Time $FSCDeploymentEnd)</td><td class="num big">$FSCDeploymentMin Minuten</td></tr>
                 <tr><td>Windows Update</td><td>$(Format-Time $WindowsUpdateStart)</td><td>$(Format-Time $WindowsUpdateEnd)</td><td class="num big">$(if ($WindowsUpdateMin -gt 0) { "$WindowsUpdateMin Minuten" } else { "nicht ausgeführt" })</td></tr>
                 <tr class="total-row"><td colspan="3">Gesamtdauer</td><td class="num">$TotalMin Minuten</td></tr>
@@ -762,7 +763,6 @@ $utf8Bom = New-Object System.Text.UTF8Encoding($true)
 
 Write-Host "Deployment Report erstellt: $ReportPath"
 
-$Html | Set-Content -Path $ReportPath -Encoding UTF8
 
 # ============================================================================
 # Desktop Shortcut
