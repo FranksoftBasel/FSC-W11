@@ -453,10 +453,10 @@ foreach ($row in $orderedScripts) {
     }
 
     $exitCodeText = "-"
-    if (Test-Path ("Registry::" + $row.RegPath)) {
-        $exitValue = (Get-ItemProperty -LiteralPath ("Registry::" + $row.RegPath) -Name "Exit_Code" -ErrorAction SilentlyContinue)."Exit_Code"
+    if (Test-Path (Join-Path $RegSetupRoot $row.Script)) {
+        $exitValue = (Get-ItemProperty -LiteralPath (Join-Path $RegSetupRoot $row.Script) -Name "Exit_Code" -ErrorAction SilentlyContinue)."Exit_Code"
         if ($null -eq $exitValue) {
-            $exitValue = (Get-ItemProperty -LiteralPath ("Registry::" + $row.RegPath) -Name "ExitCode" -ErrorAction SilentlyContinue).ExitCode
+            $exitValue = (Get-ItemProperty -LiteralPath (Join-Path $RegSetupRoot $row.Script) -Name "ExitCode" -ErrorAction SilentlyContinue).ExitCode
         }
         if ($null -ne $exitValue -and [string]$exitValue -ne "") {
             $exitCodeText = [string]$exitValue
