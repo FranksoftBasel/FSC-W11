@@ -102,15 +102,15 @@ function HtmlEncode {
 }
 
 function Format-Time {
-    param([datetime]$Date)
-    if ($Date) { return $Date.ToString("HH:mm:ss") }
-    return ""
+    param([AllowNull()][object]$Date)
+    if ($null -eq $Date -or [string]::IsNullOrWhiteSpace([string]$Date)) { return "" }
+    try { return ([datetime]$Date).ToString("HH:mm:ss") } catch { return "" }
 }
 
 function Format-DateTime {
-    param([datetime]$Date)
-    if ($Date) { return $Date.ToString("dd.MM.yyyy HH:mm:ss") }
-    return ""
+    param([AllowNull()][object]$Date)
+    if ($null -eq $Date -or [string]::IsNullOrWhiteSpace([string]$Date)) { return "" }
+    try { return ([datetime]$Date).ToString("dd.MM.yyyy HH:mm:ss") } catch { return "" }
 }
 
 function Get-RegistryValueByNames {
@@ -453,13 +453,14 @@ foreach ($row in $orderedScripts) {
     }
 
     $exitCodeText = "-"
-    if (Test-Path (Join-Path $RegSetupRoot $row.Script)) {
-        $exitValue = (Get-ItemProperty -LiteralPath (Join-Path $RegSetupRoot $row.Script) -Name "Exit_Code" -ErrorAction SilentlyContinue)."Exit_Code"
-        if ($null -eq $exitValue) {
-            $exitValue = (Get-ItemProperty -LiteralPath (Join-Path $RegSetupRoot $row.Script) -Name "ExitCode" -ErrorAction SilentlyContinue).ExitCode
-        }
-        if ($null -ne $exitValue -and [string]$exitValue -ne "") {
-            $exitCodeText = [string]$exitValue
+    $scriptRegPath = Join-Path $RegSetupRoot $row.Script
+    if (Test-Path -LiteralPath $scriptRegPath) {
+        $scriptRegItem = Get-ItemProperty -LiteralPath $scriptRegPath -ErrorAction SilentlyContinue
+        if ($null -ne $scriptRegItem) {
+            $exitValue = Get-RegistryValueByNames -Item $scriptRegItem -Names @("Exit_Code", "ExitCode", "Exit Code")
+            if (-not [string]::IsNullOrWhiteSpace($exitValue)) {
+                $exitCodeText = $exitValue
+            }
         }
     }
     $statusClass = if ($row.Status -eq "OK") { "ok" } elseif ($row.Status -eq "Started") { "warn" } else { "bad" }
