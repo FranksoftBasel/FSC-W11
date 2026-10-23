@@ -3,10 +3,10 @@
 # Deployment Report Generator
 #
 # Script : FSC-CreateDeploymentReport.ps1
-# Version: 1.4
+# Version: 1.5
 # Author : Franksoft
 # Date   : 23.10.2026
-# Time   : 20:30:08
+# Time   : 20:41:45
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
@@ -699,7 +699,7 @@ $html = @"
             <h2>Report Info</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
-                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.4 (23.10.2026 20:30:08)</span>
+                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.5 (23.10.2026 20:41:45)</span>
                 <b>Registry:</b><span>$(if (Test-Path $RegSetupRoot) { "OK" } else { "Fehlt" })</span>
                 <b>FSC Log:</b><span>$(if (Test-Path $FscLogPath) { "OK" } else { "Fehlt" })</span>
                 <b>WinGet Logs:</b><span>$(if ($WinGetBeforePath -or $WinGetAfterPath) { "OK" } else { "Fehlt" })</span>
@@ -712,8 +712,8 @@ $html = @"
             <h2>Deployment Summary</h2>
             <table class="summary-table">
                 <tr><td>Windows Setup</td><td>$(Format-Time $WindowsSetupStart)</td><td>$(Format-Time $WindowsSetupEnd)</td><td class="num big">$WindowsSetupDuration</td></tr>
-                <tr><td><b>Install_HP-Drivers.cmd</b></td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num big">$(HtmlEncode $HPDriversDuration)</td></tr>
                 <tr><td>Franksoft Deployment</td><td>$(Format-Time $FSCDeploymentStart)</td><td>$(Format-Time $FSCDeploymentEnd)</td><td class="num big">$FSCDeploymentDuration</td></tr>
+                <tr><td><b>Install_HP-Drivers.cmd</b></td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num big">$(HtmlEncode $HPDriversDuration)</td></tr>
                 <tr><td>Windows Update</td><td>$(Format-Time $WindowsUpdateStart)</td><td>$(Format-Time $WindowsUpdateEnd)</td><td class="num big">$WindowsUpdateDuration</td></tr>
                 <tr class="total-row"><td colspan="3">Gesamtdauer</td><td class="num">$TotalDuration</td></tr>
             </table>
