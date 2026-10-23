@@ -257,6 +257,20 @@ $WULastResult = ""
 $WURound = ""
 $WUPhase = ""
 
+# Driver installation: exact registry script timestamps (included in deployment total).
+$HPDriversStart = $null
+$HPDriversEnd = $null
+$HPDriversDuration = "nicht erfasst"
+$hpDriverItem = @($ScriptItems | Where-Object { $_.Script -eq "Install_HP-Drivers.cmd" } | Select-Object -First 1)
+if ($hpDriverItem.Count -gt 0) {
+    $HPDriversStart = $hpDriverItem[0].Start
+    $HPDriversEnd = $hpDriverItem[0].End
+    if ($HPDriversStart -and $HPDriversEnd -and $HPDriversEnd -ge $HPDriversStart) {
+        $hpSpan = $HPDriversEnd - $HPDriversStart
+        $HPDriversDuration = "{0:00}:{1:00}:{2:00}" -f [math]::Floor($hpSpan.TotalHours), $hpSpan.Minutes, $hpSpan.Seconds
+    }
+}
+
 # Windows Setup: PE WindowsSetupStart -> SetupComplete Start.
 try {
     $pePath = Join-Path $RegSetupRoot "PE-LogFile.cmd"
@@ -668,6 +682,7 @@ $html = @"
             <h2>Deployment Summary</h2>
             <table class="summary-table">
                 <tr><td>Windows Setup</td><td>$(Format-Time $WindowsSetupStart)</td><td>$(Format-Time $WindowsSetupEnd)</td><td class="num big">$WindowsSetupMin Minuten</td></tr>
+                <tr><td>Install_HP-Drivers.cmd</td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num big">$(HtmlEncode $HPDriversDuration)</td></tr>
                 <tr><td>Franksoft Deployment</td><td>$(Format-Time $FSCDeploymentStart)</td><td>$(Format-Time $FSCDeploymentEnd)</td><td class="num big">$FSCDeploymentMin Minuten</td></tr>
                 <tr><td>Windows Update</td><td>$(Format-Time $WindowsUpdateStart)</td><td>$(Format-Time $WindowsUpdateEnd)</td><td class="num big">$(if ($WindowsUpdateMin -gt 0) { "$WindowsUpdateMin Minuten" } else { "nicht ausgeführt" })</td></tr>
                 <tr class="total-row"><td colspan="3">Gesamtdauer</td><td class="num">$TotalMin Minuten</td></tr>
