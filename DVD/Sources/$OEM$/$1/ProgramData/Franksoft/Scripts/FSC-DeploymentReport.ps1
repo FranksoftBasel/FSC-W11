@@ -5,7 +5,8 @@
 # Script : FSC-CreateDeploymentReport.ps1
 # Version: 1.1
 # Author : Franksoft
-# Date   : 22.06.2026
+# Date   : 23.10.2026
+# Time   : 20:20:39
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
