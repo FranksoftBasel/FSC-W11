@@ -5,7 +5,8 @@
 :: =========================================================
 if not "%1"=="7" start /min cmd /c ""%~0" 7 %*" & exit /b
 
-SET Namex=XnView MP
+SET "NAME=XnView MP"
+SET "INSTALLER=XnViewMP-win-x64_v1.12.1"
 
 Title Bitte warten - %Namex% Installation...
 
@@ -18,7 +19,7 @@ setlocal
 @echo.  ==============================================
 
 
-"%~dp0XnViewMP-win-x64.exe" /Silent /LOADINF="FS-Wrapper.inf" /MERGETASKS=!desktopicon
+"%~dp0%INSTALLER%.exe" /Silent /LOADINF="FS-Wrapper.inf" /MERGETASKS=!desktopicon
 
 
 

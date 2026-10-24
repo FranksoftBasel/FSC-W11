@@ -49,6 +49,13 @@
       "Source": "winget"
     },
     {
+      "Name": "7zip",
+      "Id": "7zip.7zip",
+      "Mode": "update",
+      "Source": "winget",
+      "UninstallPrevious": true
+    },
+    {
       "Name": "Google Chrome",
       "Id": "Google.Chrome",
       "Mode": "update",

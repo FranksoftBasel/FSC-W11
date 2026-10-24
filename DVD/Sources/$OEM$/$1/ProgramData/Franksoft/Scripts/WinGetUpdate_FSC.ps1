@@ -1,13 +1,33 @@
-# ============================================================================
-# WinGetUpdate_FSC.ps1
-# Franksoft Client Deployment
-# ============================================================================
-# Modules: WinGetApps.json, WinGetUpdate_FSC.cmd
-# Liest WinGetApps.json ein
+﻿# =============================================================================
+# Script Name : WinGetUpdate_FSC.ps1
+# Version     : 1.1
+# Date        : 23.10.2026
+# Author      : Franksoft
+#
+# Purpose
+# -----------------------------------------------------------------------------
+# FSC Deployment - JSON-gesteuerte WinGet-Installationen und Updates
 # Mode=install -> winget install
 # Mode=update  -> winget upgrade
+# Optional: UninstallPrevious=true -> --uninstall-previous beim Upgrade
+# Kein globales winget upgrade --all
 #
-# ============================================================================
+# Files
+# -----------------------------------------------------------------------------
+# Config      : C:\ProgramData\Franksoft\Scripts\WinGetApps.json
+# Launcher    : WinGetUpdate_FSC.cmd
+# Log         : C:\ProgramData\Franksoft\Logs\FSC-WinGet-Update.log
+#
+# Changelog
+# -----------------------------------------------------------------------------
+# v1.0  Initiale JSON-gesteuerte WinGet-Installation und Updates
+# v1.1  Franksoft-Header und optionaler 7-Zip-Parameter
+#       UninstallPrevious via JSON hinzugefuegt
+#
+# Planned
+# -----------------------------------------------------------------------------
+# Vorher-/Nachher-Versionsvergleich und ExitCode-Auswertung pro App
+# =============================================================================
 
 $JsonFile = "$env:ProgramData\Franksoft\Scripts\WinGetApps.json"
 $LogFile  = "$env:ProgramData\Franksoft\Logs\FSC-WinGet-Update.log"
@@ -53,16 +73,20 @@ foreach ($App in $Config.Apps)
 
             "update"
             {
-                winget upgrade `
-                    --id "$($App.Id)" `
-                    --exact `
-                    --source winget `
-                    --accept-source-agreements `
-                    --disable-interactivity `
-                    --silent `
-                    --include-unknown `
-                    --accept-package-agreements `
-                    --force
+                $WingetArgs = @(
+                    'upgrade', '--id', [string]$App.Id,
+                    '--exact', '--source', 'winget',
+                    '--accept-source-agreements', '--disable-interactivity',
+                    '--silent', '--include-unknown',
+                    '--accept-package-agreements', '--force'
+                )
+
+                if ($App.UninstallPrevious -eq $true) {
+                    $WingetArgs += '--uninstall-previous'
+                    Write-Log 'Option: --uninstall-previous'
+                }
+
+                & winget @WingetArgs
             }
 
             default

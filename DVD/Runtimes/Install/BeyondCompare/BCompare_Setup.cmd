@@ -141,6 +141,10 @@ if /I "!SetupVersion!"=="!InstalledVersion!" (
 regedit /s "%~dp0HKCU-RUN.reg"
 copy /Y "%~dp0BCompare.vbs" "%ProgramFiles%\Beyond Compare 5"
 
+Pushd "~%dp0"
+Xcopy "CU\Beyond Compare 5" "%AppData%\Scooter Software\Beyond Compare 5\" /y
+
+
 echo.
 echo =========================================================
 echo                       FERTIG
