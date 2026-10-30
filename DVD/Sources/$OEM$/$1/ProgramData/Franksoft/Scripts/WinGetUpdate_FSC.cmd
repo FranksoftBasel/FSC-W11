@@ -4,7 +4,7 @@ setlocal EnableExtensions
 
 SET "MSGX=Franksoft Client: WinGET Software-Deployment - Please wait... ^| Script: %~nx0"
 
-:: Adminrechte prfen
+:: Adminrechte pr?fen
 net session >nul 2>&1
 if %errorlevel% neq 0 (
     echo Starte mit Administratorrechten neu...
@@ -23,8 +23,9 @@ SET FSC_PHASE=06/06
 :: Franksoft Client Deployment
 :: =============================================================================
 :: Script Name : WinGetUpdate_FSC.cmd
-:: Version     : 1.4
-:: Date        : 27.09.2026
+:: Version     : 1.5
+:: Date        : 25.10.2026
+:: Time        : 16:55:00
 :: Author      : Franksoft
 :: Copyright   : (c) Franksoft 1997-2027
 ::
@@ -51,8 +52,8 @@ SET FSC_PHASE=06/06
 :: -----------------------------------------------------------------------------
 :: v1.4 - 27.09.2026
 ::        - FSC-Adobe-Reader-MUI-Update.ps1 integriert
-::        - Adobe Acrobat Reader Update wird nach WinGet ausgefhrt
-::        - CMD wartet auf vollst„ndigen Abschluss des Adobe Updates
+::        - Adobe Acrobat Reader Update wird nach WinGet ausgef?hrt
+::        - CMD wartet auf vollst?ndigen Abschluss des Adobe Updates
 ::        - Adobe Update verwendet eigenen FSC Log
 ::
 :: v1.3 - 27.09.2026
@@ -78,6 +79,7 @@ echo Franksoft WinGet Updates
 echo.
 
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%ProgramData%\Franksoft\Scripts\WinGetUpdate_FSC.ps1"
+SET "FSC_WINGET_RC=%ERRORLEVEL%"
 
 REM ==================================================================================================
 REM ADOBE ACROBAT READER MUI UPDATE
@@ -87,6 +89,7 @@ echo.
 echo [Adobe Reader] Suche nach Updates...
 
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%ProgramData%\Franksoft\Scripts\FSC-Adobe-Reader-MUI-Update.ps1"
+SET "FSC_ADOBE_RC=%ERRORLEVEL%"
 
 :: Chrome Policy Update
 
@@ -108,4 +111,17 @@ SET "NT=%TIME: =0%"
 SET "NT=%NT:~0,8%"
 REG Add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v "End" /t REG_SZ /d "%DATE% %NT%" /f >nul
 
-exit /b 0
+:: Capture after WinGet, Adobe and policy work; never overwrite Before.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%ProgramData%\Franksoft\Scripts\FSC-AppSnapshot.ps1" -Stage After
+SET "FSC_SNAPSHOT_RC=%ERRORLEVEL%"
+REG Add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v WinGetExitCode /t REG_SZ /d "%FSC_WINGET_RC%" /f >NUL
+REG Add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v AdobeExitCode /t REG_SZ /d "%FSC_ADOBE_RC%" /f >NUL
+REG Add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v AfterSnapshotExitCode /t REG_SZ /d "%FSC_SNAPSHOT_RC%" /f >NUL
+SET "FSC_RESULT=0"
+IF NOT "%FSC_WINGET_RC%"=="0" SET "FSC_RESULT=1"
+IF NOT "%FSC_ADOBE_RC%"=="0" IF NOT "%FSC_ADOBE_RC%"=="3010" SET "FSC_RESULT=1"
+IF NOT "%FSC_SNAPSHOT_RC%"=="0" SET "FSC_RESULT=1"
+REG Add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v ExitCode /t REG_SZ /d "%FSC_RESULT%" /f >NUL
+>>"%ProgramData%\Franksoft\Logs\Franksoft Client.txt" echo WinGetUpdate_FSC: WinGet=%FSC_WINGET_RC% Adobe=%FSC_ADOBE_RC% Snapshot=%FSC_SNAPSHOT_RC% Result=%FSC_RESULT%
+exit /b %FSC_RESULT%
+

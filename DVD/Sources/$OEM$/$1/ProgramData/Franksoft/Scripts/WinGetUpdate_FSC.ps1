@@ -1,7 +1,8 @@
 ﻿# =============================================================================
 # Script Name : WinGetUpdate_FSC.ps1
-# Version     : 1.1
-# Date        : 23.10.2026
+# Version     : 1.2
+# Date        : 25.10.2026
+# Time        : 16:55:00
 # Author      : Franksoft
 #
 # Purpose
@@ -26,7 +27,8 @@
 #
 # Planned
 # -----------------------------------------------------------------------------
-# Vorher-/Nachher-Versionsvergleich und ExitCode-Auswertung pro App
+# v1.2: Echte ExitCodes und WinGet-Ausgabe im Log; Gesamtcode bei Fehlern.
+# App-Snapshots werden zentral von den CMD-Aufrufern erfasst.
 # =============================================================================
 
 $JsonFile = "$env:ProgramData\Franksoft\Scripts\WinGetApps.json"
@@ -41,13 +43,19 @@ function Write-Log {
     Add-Content -Path $LogFile -Value "$Time $Text"
 }
 
+$null = New-Item -ItemType Directory -Path (Split-Path $LogFile) -Force
+
 if (!(Test-Path $JsonFile))
 {
     Write-Log "JSON nicht gefunden: $JsonFile"
     exit 1
 }
 
-$Config = Get-Content $JsonFile -Raw | ConvertFrom-Json
+$ErrorActionPreference = 'Stop'
+$null = New-Item -ItemType Directory -Path (Split-Path $LogFile) -Force
+$Failures = 0
+try { $Config = Get-Content $JsonFile -Raw | ConvertFrom-Json; $null = Get-Command winget -ErrorAction Stop }
+catch { Write-Log "FEHLER Konfiguration/WinGet: $_"; exit 1 }
 
 foreach ($App in $Config.Apps)
 {
@@ -60,15 +68,19 @@ foreach ($App in $Config.Apps)
 
     try
     {
+        $AppExitCode = $null
         switch ($App.Mode.ToLower())
         {
             "install"
             {
+                $ErrorActionPreference = 'Continue'
                 winget install `
                     --id "$($App.Id)" `
                     --accept-package-agreements `
                     --accept-source-agreements `
-                    --silent
+                    --silent 2>&1 | ForEach-Object { Write-Log ([string]$_) }
+                $AppExitCode = $LASTEXITCODE
+                $ErrorActionPreference = 'Stop'
             }
 
             "update"
@@ -86,19 +98,26 @@ foreach ($App in $Config.Apps)
                     Write-Log 'Option: --uninstall-previous'
                 }
 
-                & winget @WingetArgs
+                $ErrorActionPreference = 'Continue'
+                & winget @WingetArgs 2>&1 | ForEach-Object { Write-Log ([string]$_) }
+                $AppExitCode = $LASTEXITCODE
+                $ErrorActionPreference = 'Stop'
             }
 
             default
             {
-                Write-Log "Unbekannter Mode: $($App.Mode)"
+                throw "Unbekannter Mode: $($App.Mode)"
             }
         }
 
-        Write-Log "Erfolgreich"
+        Write-Log "ExitCode: $AppExitCode"
+        if ($AppExitCode -eq 0) { Write-Log 'Befehl erfolgreich; Versionsaenderung siehe App-Snapshot.' }
+        elseif ($AppExitCode -eq -1978335189) { Write-Log 'Kein anwendbares Update vorhanden.' }
+        else { $Failures++; Write-Log "FEHLER: WinGet ExitCode=$AppExitCode" }
     }
     catch
     {
+        $Failures++
         Write-Log "FEHLER: $_"
     }
 }
@@ -106,4 +125,5 @@ foreach ($App in $Config.Apps)
 Write-Log ""
 Write-Log "WinGet Updates abgeschlossen"
 
+if ($Failures -gt 0) { exit 1 }
 exit 0

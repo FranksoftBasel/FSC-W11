@@ -3,10 +3,10 @@
 # Deployment Report Generator
 #
 # Script : FSC-CreateDeploymentReport.ps1
-# Version: 1.7
+# Version: 1.8
 # Author : Franksoft
-# Date   : 23.10.2026
-# Time   : 20:46:48
+# Date   : 25.10.2026
+# Time   : 16:55:00
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
@@ -365,90 +365,55 @@ if ($WindowsUpdateStart -and $WindowsUpdateEnd -and $WindowsUpdateEnd -ge $Windo
 $TotalDuration = "{0:00}:{1:00}:{2:00}" -f [math]::Floor($TotalDurationSpan.TotalHours), $TotalDurationSpan.Minutes, $TotalDurationSpan.Seconds
 
 # ============================================================================
-# WinGet Before / After comparison
+# Full application inventory: Post-01 Before -> latest WinGet CMD After
 # ============================================================================
-
-function Find-WinGetFile {
-    param([string]$Kind)
-
-    if (-not (Test-Path $LogRoot)) { return $null }
-
-    $patterns = @(
-        "*WinGet*${Kind}*.csv",
-        "*Winget*${Kind}*.csv",
-        "*WinGet*${Kind}*.txt",
-        "*Winget*${Kind}*.txt"
-    )
-
-    foreach ($pattern in $patterns) {
-        $f = Get-ChildItem -Path $LogRoot -Filter $pattern -File -ErrorAction SilentlyContinue |
-            Sort-Object LastWriteTime -Descending |
-            Select-Object -First 1
-        if ($f) { return $f.FullName }
-    }
-    return $null
-}
-
-function Import-WinGetSnapshot {
-    param([string]$Path)
-
-    $result = @{}
-    if (-not $Path -or -not (Test-Path $Path)) { return $result }
-
-    try {
-        if ($Path.ToLower().EndsWith(".csv")) {
-            $rows = Import-Csv -Path $Path
-            foreach ($r in $rows) {
-                $name = Get-RegistryValueByNames -Item $r -Names @("Name", "App", "PackageName", "Package", "DisplayName")
-                $ver  = Get-RegistryValueByNames -Item $r -Names @("Version", "InstalledVersion", "Installed Version", "DisplayVersion")
-                if ($name) { $result[$name] = $ver }
-            }
-        }
-        else {
-            $lines = Get-Content -Path $Path -ErrorAction SilentlyContinue
-            foreach ($line in $lines) {
-                if ([string]::IsNullOrWhiteSpace($line)) { continue }
-                # Simple tolerant parsing: name + 2 spaces + version at end.
-                if ($line -match "^(.+?)\s{2,}([0-9][^\s]*)\s*$") {
-                    $result[$matches[1].Trim()] = $matches[2].Trim()
-                }
-            }
-        }
-    } catch {}
-
-    return $result
-}
-
-$WinGetBeforePath = Find-WinGetFile -Kind "Before"
-$WinGetAfterPath  = Find-WinGetFile -Kind "After"
+$WinGetBeforePath = Join-Path $LogRoot 'AppSnapshots\Before.json'
+$WinGetAfterPath = Join-Path $LogRoot 'AppSnapshots\After.json'
 $WinGetRows = @()
 $WinGetUpdated = 0
 $WinGetUnchanged = 0
-
-$before = Import-WinGetSnapshot -Path $WinGetBeforePath
-$after  = Import-WinGetSnapshot -Path $WinGetAfterPath
-
-$allNames = @($before.Keys + $after.Keys) | Sort-Object -Unique
-foreach ($name in $allNames) {
-    $b = if ($before.ContainsKey($name)) { $before[$name] } else { "" }
-    $a = if ($after.ContainsKey($name))  { $after[$name] }  else { "" }
-
-    $status = "Unchanged"
-    if ($b -and $a -and $b -ne $a) { $status = "Updated"; $WinGetUpdated++ }
-    elseif (-not $b -and $a) { $status = "Added"; $WinGetUpdated++ }
-    elseif ($b -and -not $a) { $status = "Missing" }
-    else { $WinGetUnchanged++ }
-
-    $WinGetRows += [pscustomobject]@{
-        App = $name
-        Before = $b
-        After = $a
-        Status = $status
+$AppSnapshotInfo = 'Kein vollstaendiges Snapshot-Paar vorhanden.'
+try {
+    $captureState = Get-ItemProperty 'HKLM:\SOFTWARE\Franksoft\Setup\WinGetUpdate_FSC.cmd' -ErrorAction SilentlyContinue
+    if ($null -ne $captureState) {
+        $captureRC = Get-RegistryValueByNames $captureState @('AfterSnapshotExitCode')
+        if ($captureRC -and $captureRC -ne '0') { throw 'Letzter After-Snapshot fehlgeschlagen; alter Snapshot wird nicht ausgewertet.' }
     }
-}
-
-# Limit huge reports, but keep useful data.
-$WinGetRowsForHtml = @($WinGetRows | Select-Object -First 80)
+    $beforeDoc = Get-Content -LiteralPath $WinGetBeforePath -Raw -ErrorAction Stop | ConvertFrom-Json
+    $afterDoc = Get-Content -LiteralPath $WinGetAfterPath -Raw -ErrorAction Stop | ConvertFrom-Json
+    if ($beforeDoc.Schema -ne 1 -or $afterDoc.Schema -ne 1) { throw 'Unbekanntes Snapshot-Format.' }
+    if ($beforeDoc.Session -ne $afterDoc.Session) { throw 'Snapshots stammen aus unterschiedlichen Installationen oder Benutzerkonten.' }
+    $currentOS = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+    $sessionPrefix = '{0}|{1}|' -f $env:COMPUTERNAME,$currentOS.InstallDate
+    if (-not $beforeDoc.Session.StartsWith($sessionPrefix)) { throw 'Snapshots gehoeren zu einer anderen Windows-Installation.' }
+    if ([datetimeoffset]$afterDoc.Captured -lt [datetimeoffset]$beforeDoc.Captured) { throw 'After-Snapshot ist aelter als Before.' }
+    $AppSnapshotInfo = 'Before: {0} | After: {1}' -f $beforeDoc.Captured,$afterDoc.Captured
+    $before = @{}; $after = @{}
+    foreach ($entry in @($beforeDoc.Apps)) {
+        if (-not $before.ContainsKey($entry.Id)) { $before[$entry.Id] = @() }
+        $before[$entry.Id] += $entry
+    }
+    foreach ($entry in @($afterDoc.Apps)) {
+        if (-not $after.ContainsKey($entry.Id)) { $after[$entry.Id] = @() }
+        $after[$entry.Id] += $entry
+    }
+    foreach ($id in @(@($before.Keys) + @($after.Keys) | Sort-Object -Unique)) {
+        $hasBefore = $before.ContainsKey($id); $hasAfter = $after.ContainsKey($id)
+        $b = ''; $a = ''
+        if ($hasBefore) { $b = (@($before[$id] | ForEach-Object { [string]$_.Version } | Sort-Object -Unique) -join ', ') }
+        if ($hasAfter) { $a = (@($after[$id] | ForEach-Object { [string]$_.Version } | Sort-Object -Unique) -join ', ') }
+        $item = if ($hasAfter) { $after[$id][0] } else { $before[$id][0] }
+        $status = 'Unveraendert'
+        if (-not $hasBefore) { $status = 'Neu installiert' }
+        elseif (-not $hasAfter) { $status = 'Nicht mehr vorhanden' }
+        elseif (-not $b -or -not $a) { $status = 'Version unbekannt' }
+        elseif ($b -ne $a) { $status = 'Version geaendert'; $WinGetUpdated++ }
+        else { $WinGetUnchanged++ }
+        $WinGetRows += [pscustomobject]@{App=($item.Name + ' [' + $item.Source + ']');Before=$b;After=$a;Status=$status}
+    }
+} catch { $AppSnapshotInfo = 'Vergleich nicht verfuegbar: ' + $_.Exception.Message }
+# Show every captured app; no former 80-row limit.
+$WinGetRowsForHtml = @($WinGetRows | Sort-Object App)
 
 # ============================================================================
 # FSC Log excerpt
@@ -503,7 +468,7 @@ if (-not $scriptRowsHtml) {
 # ============================================================================
 
 $allScriptsRowsHtml = ""
-$orderedScripts = @($ScriptItems | Sort-Object @{ Expression = { if ($_.Start) { $_.Start } else { [datetime]::MaxValue } } }, Script)
+$orderedScripts = @($ScriptItems | Sort-Object -Property @(@{ Expression = { if ($_.Start) { $_.Start } else { [datetime]::MaxValue } } }, 'Script'))
 foreach ($row in $orderedScripts) {
     $durationText = "-"
     if ($row.Start -and $row.End -and $row.End -ge $row.Start) {
@@ -542,12 +507,9 @@ if (-not $allScriptsRowsHtml) {
 $wingetRowsHtml = ""
 if ($WinGetRowsForHtml.Count -gt 0) {
     foreach ($row in $WinGetRowsForHtml) {
-        $class = switch ($row.Status) {
-            "Updated" { "ok"; break }
-            "Added" { "ok"; break }
-            "Missing" { "warn"; break }
-            default { "muted" }
-        }
+        $class = 'muted'
+        if ($row.Status -eq 'Version geaendert' -or $row.Status -eq 'Neu installiert') { $class = 'ok' }
+        elseif ($row.Status -eq 'Nicht mehr vorhanden') { $class = 'warn' }
         $wingetRowsHtml += @"
 <tr>
   <td>$(HtmlEncode $row.App)</td>
@@ -558,7 +520,7 @@ if ($WinGetRowsForHtml.Count -gt 0) {
 "@
     }
 } else {
-    $wingetRowsHtml = "<tr><td colspan='4' class='muted'>Keine WinGet Before/After Daten gefunden.</td></tr>"
+    $wingetRowsHtml = "<tr><td colspan='4' class='muted'>Kein auswertbares App-Snapshot-Paar gefunden.</td></tr>"
 }
 
 $fscLogHtml = ""
@@ -714,10 +676,10 @@ $html = @"
             <h2>Report Info</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
-                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.7 (23.10.2026 20:46:48)</span>
+                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.8 (25.10.2026 16:55:00)</span>
                 <b>Registry:</b><span>$(if (Test-Path $RegSetupRoot) { "OK" } else { "Fehlt" })</span>
                 <b>FSC Log:</b><span>$(if (Test-Path $FscLogPath) { "OK" } else { "Fehlt" })</span>
-                <b>WinGet Logs:</b><span>$(if ($WinGetBeforePath -or $WinGetAfterPath) { "OK" } else { "Fehlt" })</span>
+                <b>App-Snapshots:</b><span>$(if ((Test-Path $WinGetBeforePath) -and (Test-Path $WinGetAfterPath)) { "OK" } else { "Fehlt" })</span>
             </div>
         </div>
     </div>
@@ -762,13 +724,15 @@ $html = @"
 
     <div class="grid2">
         <div class="panel">
-            <h2>WinGet Before / After Vergleich</h2>
+            <h2>Installierte Apps – Before / After Vergleich</h2>
             <table>
                 <thead><tr><th>App</th><th>Vorher</th><th>Nachher</th><th>Status</th></tr></thead>
                 <tbody>$wingetRowsHtml</tbody>
             </table>
             <p class="muted">Before: $(HtmlEncode $WinGetBeforePath)<br>After: $(HtmlEncode $WinGetAfterPath)</p>
-            <p><b>Updated:</b> $WinGetUpdated &nbsp;&nbsp; <b>Unchanged:</b> $WinGetUnchanged</p>
+            <p>$(HtmlEncode $AppSnapshotInfo)</p>
+            <p><b>Version geaendert:</b> $WinGetUpdated &nbsp;&nbsp; <b>Unveraendert:</b> $WinGetUnchanged</p>
+            <p class="muted">Versionsaenderungen zeigen keine Zuordnung zu einem bestimmten Updater. Portable Apps ohne Registrierung sind nicht enthalten.</p>
         </div>
 
         <div class="panel">
@@ -805,7 +769,7 @@ $html = @"
 $utf8Bom = New-Object System.Text.UTF8Encoding($true)
 [System.IO.File]::WriteAllText($ReportPath, $html, $utf8Bom)
 
-Write-Host "Generator: FSC-DeploymentReport.ps1 v1.7 (23.10.2026 20:46:48)"
+Write-Host "Generator: FSC-DeploymentReport.ps1 v1.8 (25.10.2026 16:55:00)"
 Write-Host "Script-Datei: $PSCommandPath"
 Write-Host "Deployment Report erstellt: $ReportPath"
 
@@ -838,3 +802,4 @@ Write-Host $ReportPath
 if ($OpenReport) {
     Start-Process $ReportPath
 }
+

@@ -2,21 +2,22 @@
 :: Script Name : FSC-Post-01.cmd
 :: Path        : "C:\Temp\Updates\FSC-Post-01.cmd"
 :: Source      : "D:\Sources\$OEM$\$1\Temp\Updates\FSC-Post-01.cmd"
-:: Version     : 2.5
-:: Date        : 27.09.2026
+:: Version     : 2.6
+:: Date        : 25.10.2026
+:: Time        : 16:55:00
 :: Author      : Franksoft
 ::
 :: Changelog
 :: -----------------------------------------------------------------------------
 :: v2.5 - 27.09.2026
-:: - Header an den Scriptanfang verschoben und Changelog ergÃ¤nzt
+:: - Header an den Scriptanfang verschoben und Changelog erg„nzt
 :: - FST_HKLM.REG Import aus FSC-Post-01.cmd entfernt
 :: - FST_HKLM.REG wird ab SetupComplete.cmd v7.1 im SYSTEM-Kontext importiert
 :: - Alte lokale PowerPlan-Erstellung und Powercfg-Konfiguration entfernt
-:: - Energie-Konfiguration wird zentral durch PowerPlanFS.cmd ausgefÃ¼hrt
-:: - Auslesen des aktuell aktiven Power Plans fÃ¼r das Logging beibehalten
+:: - Energie-Konfiguration wird zentral durch PowerPlanFS.cmd ausgefhrt
+:: - Auslesen des aktuell aktiven Power Plans fr das Logging beibehalten
 :: - Display-Helligkeit 40 Prozent beibehalten
-:: - FST_HKCU.REG und Ã¼brige Post-Deployment-Logik unverÃ¤ndert beibehalten
+:: - FST_HKCU.REG und übrige Post-Deployment-Logik unverändert beibehalten
 ::
 :: v2.4 - 14.06.2026
 :: - Bisheriger produktiver Stand
@@ -29,7 +30,7 @@
 :: - FSC Software Deployment
 ::
 :: Systemweite FSC Registry-Konfiguration:
-:: - FST_HKLM.REG wird bereits in SetupComplete.cmd ausgefÃ¼hrt
+:: - FST_HKLM.REG wird bereits in SetupComplete.cmd ausgefhrt
 ::
 :: Log
 :: -----------------------------------------------------------------------------
@@ -165,7 +166,7 @@ echo.
 :: Warte auf explorer.exe UND dass der Desktop geladen ist
 
 :WAIT_EXPLORER
-:: PrÃ¼fen, ob explorer.exe lÃ¤uft
+:: Prüfen, ob explorer.exe läuft
 tasklist /FI "IMAGENAME eq explorer.exe" | find /I "explorer.exe" %_null%
 if errorlevel 1 (
     timeout /t 1 >nul
@@ -173,7 +174,7 @@ if errorlevel 1 (
 )
 
 :WAIT_DESKTOP
-:: PrÃ¼fen, ob der Explorer ein Fenster (Desktop) hat
+:: Prüfen, ob der Explorer ein Fenster (Desktop) hat
 powershell -command ^
     "$e = Get-Process explorer -ErrorAction SilentlyContinue; if ($e -and $e.MainWindowHandle -ne 0) { exit 0 } else { exit 1 }"
 if errorlevel 1 (
@@ -458,8 +459,8 @@ If Exist %FSC_Explorer_JumpList% (
 :: POWER PLAN
 :: -------------------------------------------------------------------------------
 :: Die komplette Energie-Konfiguration erfolgt bereits in SetupComplete.cmd
-:: Ã¼ber PowerPlanFS.cmd.
-:: Hier wird nur noch der aktuell aktive Power Plan fÃ¼r das Logging ausgelesen.
+:: über PowerPlanFS.cmd.
+:: Hier wird nur noch der aktuell aktive Power Plan für das Logging ausgelesen.
 
 for /f "tokens=*" %%i in ('powercfg /getactivescheme') do (
     for /f "tokens=2 delims=()" %%a in ("%%i") do set "CurrentPowerScheme=%%a"
@@ -806,6 +807,12 @@ If Not Exist "%Temp%\FSRunOnce_Done" (Timeout 10 >NUL) else Goto EndWPI
 Goto WFSCRU
 
 :EndWPI
+:: App inventory after software deployment, before update rounds.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%ProgramData%\Franksoft\Scripts\FSC-AppSnapshot.ps1" -Stage Before
+SET "FSC_SNAPSHOT_RC=%ERRORLEVEL%"
+REG Add "%FSC_REG%\%FSC_SCRIPT_NAME%" /v BeforeSnapshotExitCode /t REG_SZ /d "%FSC_SNAPSHOT_RC%" /f >NUL
+>>"%ProgramData%\Franksoft\Logs\Franksoft Client.txt" echo App-Snapshot Before ExitCode: %FSC_SNAPSHOT_RC%
+
 :: END OF FS-Post-Apps.cmd
 
 IF EXIST "%Temp%\FSRunOnce_Done" (
@@ -939,3 +946,4 @@ IF Exist "%FSC_Shutdown_Ps1%" (
 )
 
 Exit
+
