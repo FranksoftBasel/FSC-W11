@@ -150,7 +150,10 @@ C:\Windows\Web\Wallpaper\Theme1\img4.zip
 %ProgramData%\Franksoft\Scripts\UAC-DEF.reg
 %ProgramData%\Franksoft\Scripts\UAC-OFF.reg
 %ProgramData%\Franksoft\Scripts\UninstallAppx.PS1
-%ProgramData%\Franksoft\Scripts\UpdateTime.exe
+%ProgramData%\Franksoft\Scripts\FullUpdatesHistoryView.exe
+%ProgramData%\Franksoft\Scripts\SetVol.ps1
+%ProgramData%\Franksoft\Scripts\Shell-Context-Hash.reg
+%ProgramData%\Franksoft\Scripts\FSC-AppSnapshot.ps1
 %ProgramData%\Franksoft\Scripts\W8Icons01.EXE
 %ProgramData%\Franksoft\Scripts\Wallpaper.lnk
 %ProgramData%\Franksoft\Scripts\WallpaperChanger.exe

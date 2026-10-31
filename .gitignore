@@ -32,3 +32,4 @@ google-services.json
 # Android Profiling
 *.hprof
 /Sources/$OEM$/$1/ProgramData/Franksoft/Scripts/_Backup
+DVD/test.txt
