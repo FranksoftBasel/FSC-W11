@@ -3,10 +3,10 @@
 # Deployment Report Generator
 #
 # Script : FSC-CreateDeploymentReport.ps1
-# Version: 1.8
+# Version: 2.9
 # Author : Franksoft
-# Date   : 25.10.2026
-# Time   : 16:55:00
+# Date   : 31.10.2026
+# Time   : 14:40:00
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
@@ -68,9 +68,13 @@ function Convert-FSCDate {
     if ([string]::IsNullOrWhiteSpace($Value)) { return $null }
 
     $Value = $Value.Trim()
+    # CMD DATE can include a weekday prefix; TIME can use a one-digit hour.
+    $Value = $Value -replace '^\D+\s+(?=\d{1,2}\.)','' 
 
     $formats = @(
         "dd.MM.yyyy HH:mm:ss",
+        "dd.MM.yyyy H:mm:ss",
+        "d.M.yyyy H:mm:ss",
         "dd.MM.yyyy HH:mm",
         "MM/dd/yyyy HH:mm:ss",
         "MM/dd/yyyy HH:mm"
@@ -322,33 +326,68 @@ try {
     if ($null -ne $tmp) { $FSCDeploymentMin = $tmp }
 } catch {}
 
-# Windows Update: HKLM\SOFTWARE\Franksoft\WindowsUpdate FirstStart -> DeploymentEnd fallback LastEndPhase09.
-try {
-    if (Test-Path $RegWU) {
-        $wu = Get-ItemProperty -Path $RegWU
-
-        $WindowsUpdateStart = Convert-FSCDate $wu.FirstStart
-        $WindowsUpdateEnd   = Convert-FSCDate $wu.DeploymentEnd
-        if (-not $WindowsUpdateEnd) { $WindowsUpdateEnd = Convert-FSCDate $wu.LastEndPhase09 }
-
-        $WULastResult = [string]$wu.LastResult
-        $WURound      = [string]$wu.CurrentRound
-        $WUPhase      = [string]$wu.CurrentPhase
-
-        $tmp = Get-Minutes -Start $WindowsUpdateStart -End $WindowsUpdateEnd
-        if ($null -ne $tmp -and $tmp -gt 0) {
-            $WindowsUpdateMin = $tmp
-            $WUStatus = "erfolgreich abgeschlossen"
+# Windows Update: tolerate absent legacy values under StrictMode.
+function Get-FSCWindowsUpdateData {
+    param([object]$Item)
+    $phases = @()
+    for ($i = 1; $i -le 12; $i++) {
+        $phaseName = 'Phase{0:00}' -f $i
+        $start = Convert-FSCDate (Get-RegistryValueByNames $Item @("FirstStart$phaseName", "LastStart$phaseName"))
+        $end = Convert-FSCDate (Get-RegistryValueByNames $Item @("LastEnd$phaseName"))
+        if ($start -or $end) {
+            $phases += [pscustomobject]@{Phase=$phaseName;Start=$start;End=$end}
         }
     }
-} catch {}
+    $start = Convert-FSCDate (Get-RegistryValueByNames $Item @('FirstStart'))
+    if (-not $start) {
+        $starts = @($phases | Where-Object { $null -ne $_.Start } | ForEach-Object { $_.Start } | Sort-Object)
+        if ($starts.Count -gt 0) { $start = $starts[0] }
+    }
+    $result = Get-RegistryValueByNames $Item @('LastResult')
+    $round = Get-RegistryValueByNames $Item @('CurrentRound')
+    $phase = Get-RegistryValueByNames $Item @('CurrentPhase')
+    $end = Convert-FSCDate (Get-RegistryValueByNames $Item @('DeploymentEnd','FinishTime'))
+    # A per-phase timestamp is a final end only for a recorded completion.
+    if (-not $end -and ($result -eq 'Success' -or $phase -eq 'Finish')) {
+        $end = Convert-FSCDate (Get-RegistryValueByNames $Item @('LastEnd'))
+        if (-not $end) {
+            $ends = @($phases | Where-Object { $null -ne $_.End } | ForEach-Object { $_.End } | Sort-Object)
+            if ($ends.Count -gt 0) { $end = $ends[-1] }
+        }
+    }
+    $status = 'Zeitdaten fehlen'
+    if ($result -eq 'Success') { $status = 'erfolgreich abgeschlossen' }
+    elseif ($result -match 'Error|Fail') { $status = 'mit Fehler beendet' }
+    elseif ($phase -eq 'Finish') { $status = 'beendet; Ergebnis: ' + $result }
+    elseif ($start -or $result -or $phase) { $status = 'noch nicht abgeschlossen' }
+    return [pscustomobject]@{Start=$start;End=$end;Result=$result;Round=$round;Phase=$phase;Status=$status;Phases=@($phases)}
+}
+$WUPhaseRows = @()
+$WUStatus = 'Registry-Daten fehlen'
+try {
+    if (Test-Path $RegWU) {
+        $wu = Get-ItemProperty -Path $RegWU -ErrorAction Stop
+        $wuData = Get-FSCWindowsUpdateData $wu
+        $WindowsUpdateStart = $wuData.Start
+        $WindowsUpdateEnd = $wuData.End
+        $WULastResult = $wuData.Result
+        $WURound = $wuData.Round
+        $WUPhase = $wuData.Phase
+        $WUStatus = $wuData.Status
+        $WUPhaseRows = @($wuData.Phases)
+        if ($WindowsUpdateStart -and $WindowsUpdateEnd) {
+            $tmp = Get-Minutes -Start $WindowsUpdateStart -End $WindowsUpdateEnd
+            if ($null -ne $tmp) { $WindowsUpdateMin = $tmp }
+        }
+    }
+} catch { $WUStatus = 'Registry konnte nicht gelesen werden: ' + $_.Exception.Message }
 
 $TotalMin = $WindowsSetupMin + $FSCDeploymentMin + $WindowsUpdateMin
 
 # Exact summary times. Drivers are contained within Franksoft Deployment.
 $WindowsSetupDuration = Format-Duration $WindowsSetupStart $WindowsSetupEnd
 $FSCDeploymentDuration = Format-Duration $FSCDeploymentStart $FSCDeploymentEnd
-$WindowsUpdateDuration = "nicht ausgefuehrt"
+$WindowsUpdateDuration = "Zeitdaten fehlen"
 $TotalDurationSpan = [timespan]::Zero
 foreach ($period in @(
     @{ Start = $WindowsSetupStart; End = $WindowsSetupEnd },
@@ -388,6 +427,25 @@ try {
     if (-not $beforeDoc.Session.StartsWith($sessionPrefix)) { throw 'Snapshots gehoeren zu einer anderen Windows-Installation.' }
     if ([datetimeoffset]$afterDoc.Captured -lt [datetimeoffset]$beforeDoc.Captured) { throw 'After-Snapshot ist aelter als Before.' }
     $AppSnapshotInfo = 'Before: {0} | After: {1}' -f $beforeDoc.Captured,$afterDoc.Captured
+    # 7-Zip product family: match an architecture migration only when each
+    # snapshot has exactly one installation in the same account scope.
+    $sevenBefore = @($beforeDoc.Apps | Where-Object { $_.Name -match '^7-Zip(?:\s|$)' -and $_.Publisher -eq 'Igor Pavlov' })
+    $sevenAfter = @($afterDoc.Apps | Where-Object { $_.Name -match '^7-Zip(?:\s|$)' -and $_.Publisher -eq 'Igor Pavlov' })
+    if ($sevenBefore.Count -eq 1 -and $sevenAfter.Count -eq 1) {
+        $scopeBefore = ([string]$sevenBefore[0].Source -split '/')[0]
+        $scopeAfter = ([string]$sevenAfter[0].Source -split '/')[0]
+        if ($scopeBefore -eq $scopeAfter) {
+            $sevenBefore[0].Id = "Win32|$scopeBefore|Igor Pavlov|7-Zip"
+            $sevenAfter[0].Id = $sevenBefore[0].Id
+        }
+    }
+    # English and German WebView2 display names identify the same product.
+    # Keep account scope and registry view separate.
+    foreach ($entry in @($beforeDoc.Apps) + @($afterDoc.Apps)) {
+        if ($entry.Name -match '^Microsoft Edge WebView2(?: Runtime|-Laufzeit)$' -and $entry.Source -match '^(LocalMachine|CurrentUser)/Registry(32|64)$') {
+            $entry.Id = 'Win32|' + $entry.Source + '|Microsoft Edge WebView2'
+        }
+    }
     $before = @{}; $after = @{}
     foreach ($entry in @($beforeDoc.Apps)) {
         if (-not $before.ContainsKey($entry.Id)) { $before[$entry.Id] = @() }
@@ -403,11 +461,11 @@ try {
         if ($hasBefore) { $b = (@($before[$id] | ForEach-Object { [string]$_.Version } | Sort-Object -Unique) -join ', ') }
         if ($hasAfter) { $a = (@($after[$id] | ForEach-Object { [string]$_.Version } | Sort-Object -Unique) -join ', ') }
         $item = if ($hasAfter) { $after[$id][0] } else { $before[$id][0] }
-        $status = 'Unveraendert'
-        if (-not $hasBefore) { $status = 'Neu installiert' }
-        elseif (-not $hasAfter) { $status = 'Nicht mehr vorhanden' }
+        $status = 'Unverändert'
+        if (-not $hasBefore) { $status = 'Neu' }
+        elseif (-not $hasAfter) { $status = 'nicht mehr Vorhanden' }
         elseif (-not $b -or -not $a) { $status = 'Version unbekannt' }
-        elseif ($b -ne $a) { $status = 'Version geaendert'; $WinGetUpdated++ }
+        elseif ($b -ne $a) { $status = 'Aktualisiert'; $WinGetUpdated++ }
         else { $WinGetUnchanged++ }
         $WinGetRows += [pscustomobject]@{App=($item.Name + ' [' + $item.Source + ']');Before=$b;After=$a;Status=$status}
     }
@@ -452,15 +510,14 @@ foreach ($scriptName in $mainScriptOrder) {
   <td>$(HtmlEncode $row.Script)</td>
   <td>$(HtmlEncode (Format-Time $row.Start))</td>
   <td>$(HtmlEncode (Format-Time $row.End))</td>
-  <td class="num">$(HtmlEncode (Format-Duration $row.Start $row.End))</td>
+  <td>$(HtmlEncode (Format-Duration $row.Start $row.End))</td>
   <td class="$statusClass">$(HtmlEncode $row.Status)</td>
-  <td class="path">$(HtmlEncode $logText)</td>
 </tr>
 "@
     }
 }
 if (-not $scriptRowsHtml) {
-    $scriptRowsHtml = '<tr><td colspan="7" class="muted">Keine Haupt-Scriptdaten in der Registry gefunden.</td></tr>'
+    $scriptRowsHtml = '<tr><td colspan="6" class="muted">Keine Haupt-Scriptdaten in der Registry gefunden.</td></tr>'
 }
 
 # ============================================================================
@@ -508,8 +565,8 @@ $wingetRowsHtml = ""
 if ($WinGetRowsForHtml.Count -gt 0) {
     foreach ($row in $WinGetRowsForHtml) {
         $class = 'muted'
-        if ($row.Status -eq 'Version geaendert' -or $row.Status -eq 'Neu installiert') { $class = 'ok' }
-        elseif ($row.Status -eq 'Nicht mehr vorhanden') { $class = 'warn' }
+        if ($row.Status -eq 'Aktualisiert' -or $row.Status -eq 'Neu') { $class = 'ok' }
+        elseif ($row.Status -eq 'nicht mehr Vorhanden') { $class = 'warn removed-app' }
         $wingetRowsHtml += @"
 <tr>
   <td>$(HtmlEncode $row.App)</td>
@@ -523,6 +580,7 @@ if ($WinGetRowsForHtml.Count -gt 0) {
     $wingetRowsHtml = "<tr><td colspan='4' class='muted'>Kein auswertbares App-Snapshot-Paar gefunden.</td></tr>"
 }
 
+$FscLogUri = 'file:///' + $FscLogPath.Replace('\','/')
 $fscLogHtml = ""
 if ($FscLogExcerpt.Count -gt 0) {
     foreach ($line in $FscLogExcerpt) {
@@ -532,7 +590,12 @@ if ($FscLogExcerpt.Count -gt 0) {
     $fscLogHtml = "Keine FSC Logdaten gefunden."
 }
 
-$wuStatusClass = if ($WUStatus -like "erfolgreich*") { "ok" } else { "muted" }
+$wuStatusClass = if ($WUStatus -like "erfolgreich*") { "ok" } elseif ($WUStatus -like '*Fehler*') { 'bad' } else { "muted" }
+$wuPhasesHtml = ''
+foreach ($p in $WUPhaseRows) {
+    $wuPhasesHtml += '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td></tr>' -f (HtmlEncode $p.Phase), (HtmlEncode (Format-DateTime $p.Start)), (HtmlEncode (Format-DateTime $p.End)), (HtmlEncode (Format-Duration $p.Start $p.End))
+}
+if (-not $wuPhasesHtml) { $wuPhasesHtml = '<tr><td colspan="4" class="muted">Keine Zeitdaten zu Update-Runden vorhanden.</td></tr>' }
 
 $html = @"
 <!DOCTYPE html>
@@ -610,10 +673,13 @@ $html = @"
         vertical-align: top;
     }
     .num { text-align: right; }
-    .big { font-size: 18px; font-weight: 700; color: #003C7A; }
-    .total-row td { font-weight: 700; background: #F1F6FD; font-size: 16px; }
+    .summary-duration { font-size: 14px; font-weight: 400; color: #202020; font-variant-numeric: tabular-nums; }
+    .summary-table .driver-row td { font-weight: 700; }
+    .total-row td { font-weight: 700; background: #F1F6FD; font-size: 20px; color: #003C7A; }
+    .total-row td.num { font-size: 24px; font-variant-numeric: tabular-nums; }
     .ok { color: #0A7A20; font-weight: 600; }
     .warn { color: #B26B00; font-weight: 600; }
+    .removed-app { font-weight: 700; }
     .bad { color: #B00020; font-weight: 600; }
     .muted { color: var(--muted); }
     .path { font-family: Consolas, monospace; font-size: 12px; color: #404040; }
@@ -676,7 +742,7 @@ $html = @"
             <h2>Report Info</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
-                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v1.8 (25.10.2026 16:55:00)</span>
+                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v2.9 (31.10.2026 14:40:00)</span>
                 <b>Registry:</b><span>$(if (Test-Path $RegSetupRoot) { "OK" } else { "Fehlt" })</span>
                 <b>FSC Log:</b><span>$(if (Test-Path $FscLogPath) { "OK" } else { "Fehlt" })</span>
                 <b>App-Snapshots:</b><span>$(if ((Test-Path $WinGetBeforePath) -and (Test-Path $WinGetAfterPath)) { "OK" } else { "Fehlt" })</span>
@@ -688,10 +754,10 @@ $html = @"
         <div class="panel">
             <h2>Deployment Summary</h2>
             <table class="summary-table">
-                <tr><td>Windows Setup</td><td>$(Format-Time $WindowsSetupStart)</td><td>$(Format-Time $WindowsSetupEnd)</td><td class="num big">$WindowsSetupDuration</td></tr>
-                <tr><td>Franksoft Deployment</td><td>$(Format-Time $FSCDeploymentStart)</td><td>$(Format-Time $FSCDeploymentEnd)</td><td class="num big">$FSCDeploymentDuration</td></tr>
-                <tr><td><b>Install_HP-Drivers.cmd</b></td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num big">$(HtmlEncode $HPDriversDuration)</td></tr>
-                <tr><td>Windows Update</td><td>$(Format-Time $WindowsUpdateStart)</td><td>$(Format-Time $WindowsUpdateEnd)</td><td class="num big">$WindowsUpdateDuration</td></tr>
+                <tr><td>Windows Setup</td><td>$(Format-Time $WindowsSetupStart)</td><td>$(Format-Time $WindowsSetupEnd)</td><td class="num summary-duration">$WindowsSetupDuration</td></tr>
+                <tr><td>Franksoft Deployment</td><td>$(Format-Time $FSCDeploymentStart)</td><td>$(Format-Time $FSCDeploymentEnd)</td><td class="num summary-duration">$FSCDeploymentDuration</td></tr>
+                <tr class="driver-row"><td><b>Install_HP-Drivers.cmd</b></td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num summary-duration">$(HtmlEncode $HPDriversDuration)</td></tr>
+                <tr><td>Windows Update</td><td>$(Format-Time $WindowsUpdateStart)</td><td>$(Format-Time $WindowsUpdateEnd)</td><td class="num summary-duration">$WindowsUpdateDuration</td></tr>
                 <tr class="total-row"><td colspan="3">Gesamtdauer</td><td class="num">$TotalDuration</td></tr>
             </table>
         </div>
@@ -700,9 +766,9 @@ $html = @"
             <h2>Windows Update</h2>
             <div class="kv">
                 <b>Status:</b><span class="$wuStatusClass">$(HtmlEncode $WUStatus)</span>
-                <b>FirstStart:</b><span>$(HtmlEncode (Format-DateTime $WindowsUpdateStart))</span>
-                <b>DeploymentEnd:</b><span>$(HtmlEncode (Format-DateTime $WindowsUpdateEnd))</span>
-                <b>Dauer:</b><span>$(if ($WindowsUpdateMin -gt 0) { "$WindowsUpdateMin Minuten" } else { "nicht ausgeführt" })</span>
+                <b>Start:</b><span>$(HtmlEncode (Format-DateTime $WindowsUpdateStart))</span>
+                <b>Ende:</b><span>$(HtmlEncode (Format-DateTime $WindowsUpdateEnd))</span>
+                <b>Dauer:</b><span>$(HtmlEncode $WindowsUpdateDuration)</span>
                 <b>Result:</b><span>$(HtmlEncode $WULastResult)</span>
                 <b>Round:</b><span>$(HtmlEncode $WURound)</span>
                 <b>Phase:</b><span>$(HtmlEncode $WUPhase)</span>
@@ -711,10 +777,18 @@ $html = @"
     </div>
 
     <div class="panel">
+        <h2>Windows Update – Runden aus Registry</h2>
+        <p class="path">HKLM\SOFTWARE\Franksoft\WindowsUpdate</p>
+        <table><thead><tr><th>Runde</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th></tr></thead>
+        <tbody>$wuPhasesHtml</tbody></table>
+        <p class="muted">Gesamtdauer von erstem Start bis Abschluss inklusive Neustarts und Wartezeiten. Laufzeiten der Runden werden nicht zusätzlich summiert.</p>
+    </div>
+
+    <div class="panel">
         <h2>Script Timeline aus Registry</h2>
         <table>
             <thead>
-                <tr><th>Phase</th><th>Script</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th><th>Log File</th></tr>
+                <tr><th>Phase</th><th>Script</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th></tr>
             </thead>
             <tbody>
                 $scriptRowsHtml
@@ -722,7 +796,7 @@ $html = @"
         </table>
     </div>
 
-    <div class="grid2">
+    <div>
         <div class="panel">
             <h2>Installierte Apps – Before / After Vergleich</h2>
             <table>
@@ -731,13 +805,13 @@ $html = @"
             </table>
             <p class="muted">Before: $(HtmlEncode $WinGetBeforePath)<br>After: $(HtmlEncode $WinGetAfterPath)</p>
             <p>$(HtmlEncode $AppSnapshotInfo)</p>
-            <p><b>Version geaendert:</b> $WinGetUpdated &nbsp;&nbsp; <b>Unveraendert:</b> $WinGetUnchanged</p>
-            <p class="muted">Versionsaenderungen zeigen keine Zuordnung zu einem bestimmten Updater. Portable Apps ohne Registrierung sind nicht enthalten.</p>
+            <p><b>Aktualisiert:</b> $WinGetUpdated &nbsp;&nbsp; <b>Unverändert:</b> $WinGetUnchanged</p>
+            <p class="muted">Versionsaenderungen zeigen keine Zuordnung zu einem bestimmten Updater. Neu bedeutet: kein Before-Eintrag vorhanden; eine Neuinstallation ist damit nicht bewiesen. Portable Apps ohne Registrierung sind nicht enthalten.</p>
         </div>
 
         <div class="panel">
             <h2>FSC Log Auszug</h2>
-            <p class="path">$(HtmlEncode $FscLogPath)</p>
+            <p class="path"><a href="$(HtmlEncode $FscLogUri)">$(HtmlEncode $FscLogPath)</a></p>
             <pre>$fscLogHtml</pre>
         </div>
     </div>
@@ -769,7 +843,7 @@ $html = @"
 $utf8Bom = New-Object System.Text.UTF8Encoding($true)
 [System.IO.File]::WriteAllText($ReportPath, $html, $utf8Bom)
 
-Write-Host "Generator: FSC-DeploymentReport.ps1 v1.8 (25.10.2026 16:55:00)"
+Write-Host "Generator: FSC-DeploymentReport.ps1 v2.9 (31.10.2026 14:40:00)"
 Write-Host "Script-Datei: $PSCommandPath"
 Write-Host "Deployment Report erstellt: $ReportPath"
 
