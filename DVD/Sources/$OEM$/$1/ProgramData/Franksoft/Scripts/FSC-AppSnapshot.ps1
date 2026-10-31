@@ -1,8 +1,8 @@
 ﻿# ============================================================================
 # Script : FSC-AppSnapshot.ps1
-# Version: 1.0
-# Date   : 25.10.2026
-# Time   : 17:00:00
+# Version: 1.1
+# Date   : 31.10.2026
+# Time   : 14:00:00
 # Author : Franksoft
 # Windows PowerShell 5.1. Read-only inventory; never uses Win32_Product.
 # Before is immutable per Windows installation and user. After is refreshed.
@@ -33,7 +33,12 @@ try {
                         $key = $uninstall.OpenSubKey($child)
                         try {
                             $name = [string]$key.GetValue('DisplayName','')
-                            if (-not $name -or $key.GetValue('SystemComponent',0) -eq 1 -or $key.GetValue('ParentKeyName','')) { continue }
+                            # WebView2 may be hidden as a system/child component after updates.
+                            # Registry32 maps HKLM SOFTWARE to WOW6432Node automatically.
+                            $isWebView = $child -eq 'Microsoft EdgeWebView'
+                            if (-not $name -and $isWebView) { $name = 'Microsoft Edge WebView2 Runtime' }
+                            if (-not $name) { continue }
+                            if (-not $isWebView -and ($key.GetValue('SystemComponent',0) -eq 1 -or $key.GetValue('ParentKeyName',''))) { continue }
                             $version = [string]$key.GetValue('DisplayVersion','')
                             $publisher = [string]$key.GetValue('Publisher','')
                             # MSI product GUIDs can change on upgrades. Compare product family instead.

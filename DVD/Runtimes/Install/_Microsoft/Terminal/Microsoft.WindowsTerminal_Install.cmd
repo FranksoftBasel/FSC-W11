@@ -21,7 +21,7 @@ exit /b
 pushd "%~dp0"
 
 SET RT=Microsoft.UI.Xaml_8.2310.30001.0_X64_msix_en-US.msix
-SET PKG01=Microsoft.WindowsTerminal_1.24.11321.0_8wekyb3d8bbwe.msixbundle
+SET PKG01=Microsoft.WindowsTerminal_1.24.11321.0_8.msixbundle
 
 pushd "%~dp0"
 
