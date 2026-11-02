@@ -1,8 +1,5 @@
 :: Debug
 
-SET "FSC_KB_Disabler=%ProgramData%\Franksoft\Scripts\WinUpdate_HIDE_FSC.ps1"
-IF Exist "%FSC_KB_Disabler%" Powershell -ep Bypass -File "%FSC_KB_Disabler%"
-
 :: =============================================================================
 :: Script Name : FSC-Post-01.cmd
 :: Path        : "C:\Temp\Updates\FSC-Post-01.cmd"

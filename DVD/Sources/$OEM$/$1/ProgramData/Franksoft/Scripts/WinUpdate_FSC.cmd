@@ -15,14 +15,14 @@ TITLE Franksoft Client: Windows Update - Prepare
 @Echo. Please wait for Franksoft Client: Windows Update - Prepare
 @Echo. 
 
-@SET "FSC_VERSION=2.7"
+@SET "FSC_VERSION=2.8"
 
 :: =============================================================================
 :: Script Name : WinUpdate_FSC.cmd
 :: Path        : C:\Temp\Updates\WinUpdate_FSC.cmd
-:: Version     : 2.7
+:: Version     : 2.8
 :: Date        : 02.11.2026
-:: Time	       : 14:21
+:: Time        : 16:44
 :: Author      : Franksoft
 :: Modules     : PowerShell-Modul PSWindowsUpdate
 ::
@@ -38,12 +38,6 @@ TITLE Franksoft Client: Windows Update - Prepare
 :: -----------------------------------------------------------------------------
 :: %ProgramData%\Franksoft\Logs\Franksoft Client.txt
 :: %ProgramData%\Franksoft\Logs\WindowsUpdate\WinUpdate_FSC.log
-::
-:: Changelog
-:: -----------------------------------------------------------------------------
-:: v2.4 - Windows Update auf 12 Runden erweitert
-::      - Registry-basierter Rundencounter (Phase01)
-::      - WinUpdate_FSC.log nach Logs\WindowsUpdate verschoben
 :: =============================================================================
 
 Powershell (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,40)
@@ -111,7 +105,8 @@ REM ----------------------------------------------------------------------------
 REM Windows Update phase counter - Registry only
 REM HKLM\SOFTWARE\Franksoft\WupCount
 REM   Phase01    REG_SZ   1..12
-REM   WinGetDone REG_SZ   1
+REM   WinGetDone03 REG_SZ  1
+REM   WinGetDone06 REG_SZ  1
 REM -----------------------------------------------------------------------------
 
 REM A completed previous deployment means this is a new FSC WU run.
@@ -177,7 +172,7 @@ Set VolApp1=%FSC-Tools-Local%\Scripts\SetVol.vbs
 If Exist "%VolApp1%" Start "" "%VolApp1%"
 
 :: Check and Connect
-SET WFWI_Profile_Path=%ProgramData%\Franksoft\Scripts\Wlan
+SET WFWI_Profile_Path=%ProgramData%\Franksoft\Scripts\WlanProfile
 SET WFWI_Profile=%WFWI_Profile_Path%\WLAN-BatMan.xml
 SET WFWI_Connect_Script=%WFWI_Profile_Path%\Connect-Batman.cmd
 
@@ -329,6 +324,13 @@ SET "FSC_DEFENDER_MARKER=%TEMP%\FSC_DefenderUpdateDone"
 :: Defender Update END
 
 SET NT=%TIME: =0%
+
+REM -----------------------------------------------------------------------------
+REM FSC TEST - Hide selected Windows Updates
+REM Run only in Phase 01 and only with USB marker Fsc-test-1.txt
+REM Fsc-test-0.txt has priority and disables the function
+REM -----------------------------------------------------------------------------
+IF "%Status%"=="1" CALL :RunKBHide
 
 @echo.   - Check Windows Updates
 @echo.   - Get-WindowsUpdate>>%FSC_LOG%
@@ -530,6 +532,48 @@ IF Exist "%PSShutDownScr%" (
 
 Exit /b
 
+:RunKBHide
+SET "FSC_KB_HIDE_PS1=%ProgramData%\Franksoft\Scripts\WinUpdate_HIDE_FSC.ps1"
+
+IF NOT DEFINED USB_Stick_Path (
+    Echo.   - KB Hide: USB stick not found - skipped>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   - KB Hide: USB stick not found - skipped>>%FSC_LOG_UPD%
+    EXIT /B 0
+)
+
+SET "FSC_TEST_ON=%USB_Stick_Path%\Fsc-test-1.txt"
+SET "FSC_TEST_OFF=%USB_Stick_Path%\Fsc-test-0.txt"
+
+IF EXIST "%FSC_TEST_OFF%" (
+    Echo.   - KB Hide: Fsc-test-0.txt found - disabled
+    Echo.   - KB Hide: Fsc-test-0.txt found - disabled>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   - KB Hide: Fsc-test-0.txt found - disabled>>%FSC_LOG_UPD%
+    EXIT /B 0
+)
+
+IF NOT EXIST "%FSC_TEST_ON%" (
+    Echo.   - KB Hide: no Fsc-test-1.txt - skipped>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   - KB Hide: no Fsc-test-1.txt - skipped>>%FSC_LOG_UPD%
+    EXIT /B 0
+)
+
+IF NOT EXIST "%FSC_KB_HIDE_PS1%" (
+    Echo.   * KB Hide: Script NOT found %FSC_KB_HIDE_PS1%
+    Echo.   * KB Hide: Script NOT found %FSC_KB_HIDE_PS1%>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   * KB Hide: Script NOT found %FSC_KB_HIDE_PS1%>>%FSC_LOG_UPD%
+    EXIT /B 1
+)
+
+Echo.   - KB Hide: Fsc-test-1.txt found - execute WinUpdate_HIDE_FSC.ps1
+Echo.   - KB Hide: Execute WinUpdate_HIDE_FSC.ps1>>%FSC_LOG%
+IF DEFINED FSC_LOG_UPD Echo.   - KB Hide: Execute WinUpdate_HIDE_FSC.ps1>>%FSC_LOG_UPD%
+
+Powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%FSC_KB_HIDE_PS1%"
+SET "FSC_KB_HIDE_RC=%ERRORLEVEL%"
+Echo.   - KB Hide ReturnCode: %FSC_KB_HIDE_RC%>>%FSC_LOG%
+IF DEFINED FSC_LOG_UPD Echo.   - KB Hide ReturnCode: %FSC_KB_HIDE_RC%>>%FSC_LOG_UPD%
+EXIT /B %FSC_KB_HIDE_RC%
+
 :RunWinGet
 SET "FSC_WINGET_CMD=%ProgramData%\Franksoft\Scripts\WinGetUpdate_FSC.cmd"
 
@@ -542,26 +586,18 @@ IF NOT EXIST "%FSC_WINGET_CMD%" (
 Echo.   - Call WinGetUpdate_FSC.cmd
 Echo.   - Call WinGetUpdate_FSC.cmd>>%FSC_LOG%
 IF DEFINED FSC_LOG_UPD Echo.   - Call WinGetUpdate_FSC.cmd>>%FSC_LOG_UPD%
-
 CALL "%FSC_WINGET_CMD%"
 SET "FSC_WINGET_RC=%ERRORLEVEL%"
-
 Echo.   - WinGetUpdate_FSC.cmd ReturnCode: %FSC_WINGET_RC%>>%FSC_LOG%
 IF DEFINED FSC_LOG_UPD Echo.   - WinGetUpdate_FSC.cmd ReturnCode: %FSC_WINGET_RC%>>%FSC_LOG_UPD%
-
-REM Mark as done only after the CMD was actually found and executed.
 REG Add "%REG_WUPCOUNT%" /v WinGetDone /t REG_SZ /d "1" /f >NUL
-
-REM Keep the known-good Chrome post-update start/kill sequence from FSC 2.0.
 cmd /c start /min chrome
 Timeout 4 >NUL
 Taskkill /im Chrome.exe /f >NUL 2>NUL
 cmd /c start /min chrome
 Timeout 2 >NUL
 Taskkill /im Chrome.exe /f >NUL 2>NUL
-
 EXIT /B %FSC_WINGET_RC%
-
 
 :CheckPreviousRound
 SET "FSC_PREVIOUS_PHASE=Phase%Status2%"
