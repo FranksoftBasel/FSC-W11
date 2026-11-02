@@ -3,10 +3,10 @@
 # Deployment Report Generator
 #
 # Script : FSC-CreateDeploymentReport.ps1
-# Version: 3.1
+# Version: 3.2
 # Author : Franksoft
 # Date   : 02.11.2026
-# Time   : 13:50:00
+# Time   : 14:00:00
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
@@ -723,7 +723,7 @@ $html = @"
         font-size: 18px;
         color: #003C7A;
         font-weight: 700;
-        text-transform: uppercase;
+        text-transform: none;
         letter-spacing: .2px;
     }
     .kv { display: grid; grid-template-columns: 140px 1fr; row-gap: 8px; column-gap: 12px; font-size: 14px; }
@@ -748,7 +748,7 @@ $html = @"
     }
     .num { text-align: right; }
     .summary-duration { font-size: 14px; font-weight: 400; color: #202020; font-variant-numeric: tabular-nums; }
-    .summary-table .driver-row td { font-weight: 700; }
+    .summary-table .driver-row td.summary-duration { font-weight: 700; }
     .total-row td { font-weight: 700; background: #F1F6FD; font-size: 20px; color: #003C7A; }
     .total-row td.num { font-size: 24px; font-variant-numeric: tabular-nums; }
     .ok { color: #0A7A20; font-weight: 600; }
@@ -816,7 +816,7 @@ $html = @"
             <h2>Report Info</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
-                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v3.1 (02.11.2026 13:50:00)</span>
+                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v3.2 (02.11.2026 14:00:00)</span>
                 <b>Registry:</b><span>$(if (Test-Path $RegSetupRoot) { "OK" } else { "Fehlt" })</span>
                 <b>FSC Log:</b><span>$(if (Test-Path $FscLogPath) { "OK" } else { "Fehlt" })</span>
                 <b>App-Snapshots:</b><span>$(if ((Test-Path $WinGetBeforePath) -and (Test-Path $WinGetAfterPath)) { "OK" } else { "Fehlt" })</span>
@@ -829,8 +829,8 @@ $html = @"
             <h2>Deployment Summary</h2>
             <table class="summary-table">
                 <tr><td>Windows Setup</td><td>$(Format-Time $WindowsSetupStart)</td><td>$(Format-Time $WindowsSetupEnd)</td><td class="num summary-duration">$WindowsSetupDuration</td></tr>
+                <tr class="driver-row"><td>Install_HP-Drivers.cmd</td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num summary-duration">$(HtmlEncode $HPDriversDuration)</td></tr>
                 <tr><td>Franksoft Deployment</td><td>$(Format-Time $FSCDeploymentStart)</td><td>$(Format-Time $FSCDeploymentEnd)</td><td class="num summary-duration">$FSCDeploymentDuration</td></tr>
-                <tr class="driver-row"><td><b>Install_HP-Drivers.cmd</b></td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num summary-duration">$(HtmlEncode $HPDriversDuration)</td></tr>
                 <tr><td>Windows Update</td><td>$(Format-Time $WindowsUpdateStart)</td><td>$(Format-Time $WindowsUpdateEnd)</td><td class="num summary-duration">$WindowsUpdateDuration</td></tr>
                 <tr class="total-row"><td colspan="3">Gesamtdauer</td><td class="num">$TotalDuration</td></tr>
             </table>
@@ -851,7 +851,7 @@ $html = @"
     </div>
 
     <div class="panel">
-        <h2>Windows Updates – Update-Verlauf</h2>
+        <h2>Windows Updates Verlauf</h2>
         <p class="muted">$(HtmlEncode $WUHistoryMessage)</p>
         <table>
             <thead><tr><th>KB</th><th>Update</th><th>Installationsdatum</th><th>Ergebnis</th></tr></thead>
@@ -861,7 +861,7 @@ $html = @"
     </div>
 
     <div class="panel">
-        <h2>Windows Update – Runden aus Registry</h2>
+        <h2>Windows Update – Phasen von WinUpdate_FSC.cmd</h2>
         <p class="path">HKLM\SOFTWARE\Franksoft\WindowsUpdate</p>
         <table><thead><tr><th>Runde</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th></tr></thead>
         <tbody>$wuPhasesHtml</tbody></table>
@@ -869,7 +869,7 @@ $html = @"
     </div>
 
     <div class="panel">
-        <h2>Script Timeline aus Registry</h2>
+        <h2>FSC Script Timeline</h2>
         <table>
             <thead>
                 <tr><th>Phase</th><th>Script</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th></tr>
@@ -882,7 +882,7 @@ $html = @"
 
     <div>
         <div class="panel">
-            <h2>Installierte Apps – Before / After Vergleich</h2>
+            <h2>Installierte Apps – Vorher/Nachher Vergleich</h2>
             <table>
                 <thead><tr><th>App</th><th>Vorher</th><th>Nachher</th><th>Status</th></tr></thead>
                 <tbody>$wingetRowsHtml</tbody>
@@ -927,7 +927,7 @@ $html = @"
 $utf8Bom = New-Object System.Text.UTF8Encoding($true)
 [System.IO.File]::WriteAllText($ReportPath, $html, $utf8Bom)
 
-Write-Host "Generator: FSC-DeploymentReport.ps1 v3.1 (02.11.2026 13:50:00)"
+Write-Host "Generator: FSC-DeploymentReport.ps1 v3.2 (02.11.2026 14:00:00)"
 Write-Host "Script-Datei: $PSCommandPath"
 Write-Host "Deployment Report erstellt: $ReportPath"
 
