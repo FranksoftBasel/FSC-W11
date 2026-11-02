@@ -92,6 +92,12 @@
       "Source": "winget"
     },
     {
+      "Name": "ChatGPT Desktop",
+      "Id": "9PLM9XGG6VKS",
+      "Mode": "install",
+      "Source": "winget"
+    },
+    {
       "Name": "XnView MP (x64)",
       "Id": "XnSoft.XnViewMP",
       "Mode": "install",

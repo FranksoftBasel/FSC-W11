@@ -47,18 +47,17 @@ C:\Windows\Panther\MainQueueOnline0.que
 %ProgramData%\Franksoft\Sounds
 %ProgramData%\Franksoft\Support
 %ProgramData%\Franksoft\UserAccountPictures
-D:\Sources\$OEM$\$$\Setup\Scripts\A
-
+%ProgramData%\Franksoft\Scripts\Update Time v1.4.url
+D:\$WINDOWS.~BT
 C:\Windows\System32\oobe\info\backgrounds.zip
-D:\Sources\$OEM$\$$\Web\Screen.zip
-
-D:\Sources\$OEM$\$$\Web\Wallpaper\Windows\Windows\img0.jpg
 C:\Windows\Web\Wallpaper\Theme1\img4.zip
 
-
-
-
+%ProgramData%\Franksoft\Scripts\WlanProfile
+%ProgramData%\Franksoft\Scripts\TaskBar
 %ProgramData%\Franksoft\FS-WfWi-cfg-Beta.ExE
+%ProgramData%\Franksoft\Scripts\FS_PlayAudio.vbs
+%ProgramData%\Franksoft\Scripts\WallP.exe
+%ProgramData%\Franksoft\Scripts\WinUpdate_HIDE_FSC.ps1
 
 %ProgramData%\Franksoft\Logos\WindowsUpdate_FSC_Logo_01.zip
 %ProgramData%\Franksoft\Logos\Themes.zip

@@ -15,14 +15,14 @@ TITLE Franksoft Client: Windows Update - Prepare
 @Echo. Please wait for Franksoft Client: Windows Update - Prepare
 @Echo. 
 
-@SET "FSC_VERSION=2.8"
+@SET "FSC_VERSION=2.9"
 
 :: =============================================================================
 :: Script Name : WinUpdate_FSC.cmd
 :: Path        : C:\Temp\Updates\WinUpdate_FSC.cmd
-:: Version     : 2.8
+:: Version     : 2.9
 :: Date        : 02.11.2026
-:: Time        : 16:44
+:: Time        : 22:37
 :: Author      : Franksoft
 :: Modules     : PowerShell-Modul PSWindowsUpdate
 ::
@@ -38,6 +38,13 @@ TITLE Franksoft Client: Windows Update - Prepare
 :: -----------------------------------------------------------------------------
 :: %ProgramData%\Franksoft\Logs\Franksoft Client.txt
 :: %ProgramData%\Franksoft\Logs\WindowsUpdate\WinUpdate_FSC.log
+::
+:: Changelog
+:: -----------------------------------------------------------------------------
+:: v2.9 - WinGet wieder in Phase 03 und Phase 06
+::      - Separate Marker WinGetDone03 / WinGetDone06
+::      - Done-Marker nur bei ReturnCode 0
+::      - winget.exe Readiness-Check mit Retry vor jedem Lauf
 :: =============================================================================
 
 Powershell (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,40)
@@ -172,7 +179,7 @@ Set VolApp1=%FSC-Tools-Local%\Scripts\SetVol.vbs
 If Exist "%VolApp1%" Start "" "%VolApp1%"
 
 :: Check and Connect
-SET WFWI_Profile_Path=%ProgramData%\Franksoft\Scripts\WlanProfile
+SET WFWI_Profile_Path=%ProgramData%\Franksoft\Scripts\Wlan
 SET WFWI_Profile=%WFWI_Profile_Path%\WLAN-BatMan.xml
 SET WFWI_Connect_Script=%WFWI_Profile_Path%\Connect-Batman.cmd
 
@@ -213,12 +220,10 @@ REG Add "%REG_FSCWU%" /v LastResult /t REG_SZ /d "Running" /f >NUL
 
 SET FSC_LOG="%ProgramData%\Franksoft\Logs\Franksoft Client.txt"
 
-REM WinGet was proven working in FSC 2.0 at update round 3.
-REM Run it once as soon as round 3 is reached; WinGetDone prevents duplicates.
-REM This also recovers automatically if a manual/extra start skips exact round 3.
-SET "FSC_WINGET_DONE=0"
-REG QUERY "%REG_WUPCOUNT%" /v WinGetDone >NUL 2>NUL && SET "FSC_WINGET_DONE=1"
-IF %Status% GEQ 3 IF "%FSC_WINGET_DONE%"=="0" CALL :RunWinGet
+REM WinGet runs twice per FSC deployment: Phase 03 and Phase 06.
+REM Separate registry markers prevent duplicate execution of either run.
+IF "%Status%"=="3" CALL :RunWinGet WinGetDone03
+IF "%Status%"=="6" CALL :RunWinGet WinGetDone06
 
 IF "%Status%"=="4" (
     cmd /c start /min chrome
@@ -575,7 +580,22 @@ IF DEFINED FSC_LOG_UPD Echo.   - KB Hide ReturnCode: %FSC_KB_HIDE_RC%>>%FSC_LOG_
 EXIT /B %FSC_KB_HIDE_RC%
 
 :RunWinGet
+SET "FSC_WINGET_MARKER=%~1"
 SET "FSC_WINGET_CMD=%ProgramData%\Franksoft\Scripts\WinGetUpdate_FSC.cmd"
+
+IF "%FSC_WINGET_MARKER%"=="" (
+    Echo.   * WinGet marker missing>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   * WinGet marker missing>>%FSC_LOG_UPD%
+    EXIT /B 1
+)
+
+REM Skip only if this exact WinGet run already completed successfully.
+REG QUERY "%REG_WUPCOUNT%" /v "%FSC_WINGET_MARKER%" >NUL 2>NUL
+IF NOT ERRORLEVEL 1 (
+    Echo.   - WinGet: %FSC_WINGET_MARKER% already completed - skipped>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   - WinGet: %FSC_WINGET_MARKER% already completed - skipped>>%FSC_LOG_UPD%
+    EXIT /B 0
+)
 
 IF NOT EXIST "%FSC_WINGET_CMD%" (
     Echo.   * WinGetUpdate_FSC.cmd NOT found: %FSC_WINGET_CMD%>>%FSC_LOG%
@@ -583,20 +603,60 @@ IF NOT EXIST "%FSC_WINGET_CMD%" (
     EXIT /B 1
 )
 
+REM winget.exe can be temporarily locked while AppInstaller is being serviced.
+REM Wait up to 120 seconds before starting the FSC WinGet deployment.
+SET /A FSC_WINGET_WAIT=0
+
+:RunWinGet_Wait
+winget --version >NUL 2>NUL
+IF NOT ERRORLEVEL 1 GOTO RunWinGet_Ready
+
+SET /A FSC_WINGET_WAIT+=1
+Echo.   - WinGet: winget.exe not ready - retry %FSC_WINGET_WAIT%/12>>%FSC_LOG%
+IF DEFINED FSC_LOG_UPD Echo.   - WinGet: winget.exe not ready - retry %FSC_WINGET_WAIT%/12>>%FSC_LOG_UPD%
+
+IF %FSC_WINGET_WAIT% GEQ 12 (
+    Echo.   * WinGet: winget.exe not ready after 120 seconds - this run failed>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   * WinGet: winget.exe not ready after 120 seconds - this run failed>>%FSC_LOG_UPD%
+    EXIT /B 1
+)
+
+Timeout /T 10 /NOBREAK >NUL
+GOTO RunWinGet_Wait
+
+:RunWinGet_Ready
+Echo.   - WinGet: winget.exe ready
+Echo.   - WinGet: winget.exe ready>>%FSC_LOG%
+IF DEFINED FSC_LOG_UPD Echo.   - WinGet: winget.exe ready>>%FSC_LOG_UPD%
+
 Echo.   - Call WinGetUpdate_FSC.cmd
 Echo.   - Call WinGetUpdate_FSC.cmd>>%FSC_LOG%
 IF DEFINED FSC_LOG_UPD Echo.   - Call WinGetUpdate_FSC.cmd>>%FSC_LOG_UPD%
+
 CALL "%FSC_WINGET_CMD%"
 SET "FSC_WINGET_RC=%ERRORLEVEL%"
+
 Echo.   - WinGetUpdate_FSC.cmd ReturnCode: %FSC_WINGET_RC%>>%FSC_LOG%
 IF DEFINED FSC_LOG_UPD Echo.   - WinGetUpdate_FSC.cmd ReturnCode: %FSC_WINGET_RC%>>%FSC_LOG_UPD%
-REG Add "%REG_WUPCOUNT%" /v WinGetDone /t REG_SZ /d "1" /f >NUL
+
+REM Mark this run as done only after a successful WinGet CMD return code.
+IF "%FSC_WINGET_RC%"=="0" (
+    REG Add "%REG_WUPCOUNT%" /v "%FSC_WINGET_MARKER%" /t REG_SZ /d "1" /f >NUL
+    Echo.   - WinGet: %FSC_WINGET_MARKER% completed>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   - WinGet: %FSC_WINGET_MARKER% completed>>%FSC_LOG_UPD%
+) ELSE (
+    Echo.   * WinGet: %FSC_WINGET_MARKER% NOT marked done because ReturnCode=%FSC_WINGET_RC%>>%FSC_LOG%
+    IF DEFINED FSC_LOG_UPD Echo.   * WinGet: %FSC_WINGET_MARKER% NOT marked done because ReturnCode=%FSC_WINGET_RC%>>%FSC_LOG_UPD%
+)
+
+REM Keep the known-good Chrome post-update start/kill sequence.
 cmd /c start /min chrome
 Timeout 4 >NUL
 Taskkill /im Chrome.exe /f >NUL 2>NUL
 cmd /c start /min chrome
 Timeout 2 >NUL
 Taskkill /im Chrome.exe /f >NUL 2>NUL
+
 EXIT /B %FSC_WINGET_RC%
 
 :CheckPreviousRound
