@@ -15,12 +15,12 @@ TITLE Franksoft Client: Windows Update - Prepare
 @Echo. Please wait for Franksoft Client: Windows Update - Prepare
 @Echo. 
 
-@SET "FSC_VERSION=2.6"
+@SET "FSC_VERSION=2.7"
 
 :: =============================================================================
 :: Script Name : WinUpdate_FSC.cmd
 :: Path        : C:\Temp\Updates\WinUpdate_FSC.cmd
-:: Version     : 2.6
+:: Version     : 2.7
 :: Date        : 02.11.2026
 :: Time	       : 14:21
 :: Author      : Franksoft
@@ -130,6 +130,9 @@ FOR /F "tokens=2,*" %%A IN ('REG QUERY "%REG_WUPCOUNT%" /v Phase01 2^>NUL ^| FIN
 REM Validate numeric value
 SET /A Status2=%Status2%+0 2>NUL
 IF %Status2% LSS 0 SET "Status2=0"
+
+REM Resume an interrupted round: the counter alone does not prove completion.
+IF %Status2% GTR 0 IF %Status2% LEQ 12 CALL :CheckPreviousRound
 
 REM Safety: if phase 12 was already completed but Finish was interrupted, finish now.
 IF %Status2% GEQ 12 (
@@ -310,7 +313,7 @@ if exist "%FSC_DEFENDER_MARKER%" (
         echo.   - Update: Microsoft Defender Signatur>>%FSC_LOG%
         IF DEFINED FSC_LOG_UPD echo.   - Update: Microsoft Defender Signatur>>%FSC_LOG_UPD%
 
-        call "%WinDefenderUpdate%"
+        cmd.exe /d /c call "%WinDefenderUpdate%"
 
         echo.   - Defender Update ReturnCode: %ERRORLEVEL%>>%FSC_LOG%
         IF DEFINED FSC_LOG_UPD echo.   - Defender Update ReturnCode: %ERRORLEVEL%>>%FSC_LOG_UPD%
@@ -348,8 +351,10 @@ IF DEFINED FSC_LOG_UPD @echo.   - Install Windows Updates>>%FSC_LOG_UPD%
 @echo. 
 @echo. 
 Powershell.exe Install-WindowsUpdate -ComputerName %COMPUTERNAME% -IgnoreReboot -Confirm:$false -Verbose -AcceptAll >NUL
-@echo.   - Install-WindowsUpdate ReturnCode: %ERRORLEVEL%>>%FSC_LOG%
-IF DEFINED FSC_LOG_UPD @echo.   - Install-WindowsUpdate ReturnCode: %ERRORLEVEL%>>%FSC_LOG_UPD%
+SET "FSC_UPDATE_RC=%ERRORLEVEL%"
+@echo.   - Install-WindowsUpdate ReturnCode: %FSC_UPDATE_RC%>>%FSC_LOG%
+IF DEFINED FSC_LOG_UPD @echo.   - Install-WindowsUpdate ReturnCode: %FSC_UPDATE_RC%>>%FSC_LOG_UPD%
+REG Add "%REG_FSCWU%" /v LastUpdateExitCode%PHASE_NAME% /t REG_SZ /d "%FSC_UPDATE_RC%" /f >NUL
 
 SET "NT=%TIME: =0%"
 SET "NT=%NT:~0,8%"
@@ -358,6 +363,11 @@ SET "NT=%NT:~0,8%"
 @echo. Franksoft Client: Windows Update Reboot - Time: %NT:~0,8%>>%FSC_LOG%
 
 REG Add "%REG_FSCWU%" /v LastEnd%PHASE_NAME% /t REG_SZ /d "%DATE% %NT%" /f >NUL
+IF ERRORLEVEL 1 (
+    Echo.   * ERROR: phase end could not be saved; round will be retried.>>%FSC_LOG_UPD%
+    EXIT /B 1
+)
+Echo.   - %PHASE_NAME% completed: %DATE% %NT%>>%FSC_LOG_UPD%
 REG Add "%REG_FSCWU%" /v LastResult /t REG_SZ /d "Reboot" /f >NUL
 
 IF "%FSC_RUN_PHASE%"=="12" GOTO Finish
@@ -552,3 +562,12 @@ Taskkill /im Chrome.exe /f >NUL 2>NUL
 
 EXIT /B %FSC_WINGET_RC%
 
+
+:CheckPreviousRound
+SET "FSC_PREVIOUS_PHASE=Phase%Status2%"
+IF %Status2% LSS 10 SET "FSC_PREVIOUS_PHASE=Phase0%Status2%"
+REG QUERY "%REG_FSCWU%" /v LastEnd%FSC_PREVIOUS_PHASE% >NUL 2>NUL
+IF NOT ERRORLEVEL 1 EXIT /B 0
+Echo.   - Incomplete %FSC_PREVIOUS_PHASE%: retrying this round.>>%FSC_LOG_UPD%
+SET /A Status2-=1
+EXIT /B 0
