@@ -15,13 +15,14 @@ TITLE Franksoft Client: Windows Update - Prepare
 @Echo. Please wait for Franksoft Client: Windows Update - Prepare
 @Echo. 
 
-@SET "FSC_VERSION=2.5"
+@SET "FSC_VERSION=2.6"
 
 :: =============================================================================
 :: Script Name : WinUpdate_FSC.cmd
 :: Path        : C:\Temp\Updates\WinUpdate_FSC.cmd
-:: Version     : 2.5
+:: Version     : 2.6
 :: Date        : 02.11.2026
+:: Time	       : 14:21
 :: Author      : Franksoft
 :: Modules     : PowerShell-Modul PSWindowsUpdate
 ::
