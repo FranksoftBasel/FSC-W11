@@ -183,10 +183,6 @@ If Not Exist "%ProgramFiles%\Desktop Restore\dkticnsr.dll" (
 	SET /A i+=1
 	)
 
-	REG ADD %ROE%\%i% /ve /d "Intel Driver and Support Assistant" /f >NUL
-	REG ADD %ROE%\%i% /v "001" /d "%SourcePath%\Intel\DriverSuppAs\FS-Loader.cmd" /f >NUL
-	SET /A i+=1
-
 SET "NT=%TIME: =0%"
 SET "NT=%NT:~0,8%"
 

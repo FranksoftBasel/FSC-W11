@@ -15,13 +15,13 @@ TITLE Franksoft Client: Windows Update - Prepare
 @Echo. Please wait for Franksoft Client: Windows Update - Prepare
 @Echo. 
 
-@SET "FSC_VERSION=2.4"
+@SET "FSC_VERSION=2.5"
 
 :: =============================================================================
 :: Script Name : WinUpdate_FSC.cmd
 :: Path        : C:\Temp\Updates\WinUpdate_FSC.cmd
-:: Version     : %FSC_VERSION%
-:: Date        : 21.09.2026
+:: Version     : 2.5
+:: Date        : 02.11.2026
 :: Author      : Franksoft
 :: Modules     : PowerShell-Modul PSWindowsUpdate
 ::
@@ -37,6 +37,12 @@ TITLE Franksoft Client: Windows Update - Prepare
 :: -----------------------------------------------------------------------------
 :: %ProgramData%\Franksoft\Logs\Franksoft Client.txt
 :: %ProgramData%\Franksoft\Logs\WindowsUpdate\WinUpdate_FSC.log
+::
+:: Changelog
+:: -----------------------------------------------------------------------------
+:: v2.4 - Windows Update auf 12 Runden erweitert
+::      - Registry-basierter Rundencounter (Phase01)
+::      - WinUpdate_FSC.log nach Logs\WindowsUpdate verschoben
 :: =============================================================================
 
 Powershell (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,40)
@@ -167,7 +173,7 @@ Set VolApp1=%FSC-Tools-Local%\Scripts\SetVol.vbs
 If Exist "%VolApp1%" Start "" "%VolApp1%"
 
 :: Check and Connect
-SET WFWI_Profile_Path=%ProgramData%\Franksoft\FSC-Apps\Wlan
+SET WFWI_Profile_Path=%ProgramData%\Franksoft\Scripts\Wlan
 SET WFWI_Profile=%WFWI_Profile_Path%\WLAN-BatMan.xml
 SET WFWI_Connect_Script=%WFWI_Profile_Path%\Connect-Batman.cmd
 

@@ -1,4 +1,12 @@
 net start WSearch
+
+:: Debug
+
+SET "FSC_KB_Disabler=%ProgramData%\Franksoft\Scripts\WinUpdate_HIDE_FSC.ps1"
+IF Exist "%FSC_KB_Disabler%" Powershell -ep Bypass -File "%FSC_KB_Disabler%"
+
+
+
 cls
 
 @Echo off

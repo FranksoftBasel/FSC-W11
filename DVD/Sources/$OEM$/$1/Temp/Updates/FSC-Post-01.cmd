@@ -1,3 +1,8 @@
+:: Debug
+
+SET "FSC_KB_Disabler=%ProgramData%\Franksoft\Scripts\WinUpdate_HIDE_FSC.ps1"
+IF Exist "%FSC_KB_Disabler%" Powershell -ep Bypass -File "%FSC_KB_Disabler%"
+
 :: =============================================================================
 :: Script Name : FSC-Post-01.cmd
 :: Path        : "C:\Temp\Updates\FSC-Post-01.cmd"
@@ -10,14 +15,14 @@
 :: Changelog
 :: -----------------------------------------------------------------------------
 :: v2.5 - 27.09.2026
-:: - Header an den Scriptanfang verschoben und Changelog erg„nzt
+:: - Header an den Scriptanfang verschoben und Changelog ergï¿½nzt
 :: - FST_HKLM.REG Import aus FSC-Post-01.cmd entfernt
 :: - FST_HKLM.REG wird ab SetupComplete.cmd v7.1 im SYSTEM-Kontext importiert
 :: - Alte lokale PowerPlan-Erstellung und Powercfg-Konfiguration entfernt
-:: - Energie-Konfiguration wird zentral durch PowerPlanFS.cmd ausgefhrt
-:: - Auslesen des aktuell aktiven Power Plans fr das Logging beibehalten
+:: - Energie-Konfiguration wird zentral durch PowerPlanFS.cmd ausgefï¿½hrt
+:: - Auslesen des aktuell aktiven Power Plans fï¿½r das Logging beibehalten
 :: - Display-Helligkeit 40 Prozent beibehalten
-:: - FST_HKCU.REG und übrige Post-Deployment-Logik unverändert beibehalten
+:: - FST_HKCU.REG und ï¿½brige Post-Deployment-Logik unverï¿½ndert beibehalten
 ::
 :: v2.4 - 14.06.2026
 :: - Bisheriger produktiver Stand
@@ -30,7 +35,7 @@
 :: - FSC Software Deployment
 ::
 :: Systemweite FSC Registry-Konfiguration:
-:: - FST_HKLM.REG wird bereits in SetupComplete.cmd ausgefhrt
+:: - FST_HKLM.REG wird bereits in SetupComplete.cmd ausgefï¿½hrt
 ::
 :: Log
 :: -----------------------------------------------------------------------------
@@ -166,7 +171,7 @@ echo.
 :: Warte auf explorer.exe UND dass der Desktop geladen ist
 
 :WAIT_EXPLORER
-:: Prüfen, ob explorer.exe läuft
+:: Prï¿½fen, ob explorer.exe lï¿½uft
 tasklist /FI "IMAGENAME eq explorer.exe" | find /I "explorer.exe" %_null%
 if errorlevel 1 (
     timeout /t 1 >nul
@@ -174,7 +179,7 @@ if errorlevel 1 (
 )
 
 :WAIT_DESKTOP
-:: Prüfen, ob der Explorer ein Fenster (Desktop) hat
+:: Prï¿½fen, ob der Explorer ein Fenster (Desktop) hat
 powershell -command ^
     "$e = Get-Process explorer -ErrorAction SilentlyContinue; if ($e -and $e.MainWindowHandle -ne 0) { exit 0 } else { exit 1 }"
 if errorlevel 1 (
@@ -459,8 +464,8 @@ If Exist %FSC_Explorer_JumpList% (
 :: POWER PLAN
 :: -------------------------------------------------------------------------------
 :: Die komplette Energie-Konfiguration erfolgt bereits in SetupComplete.cmd
-:: über PowerPlanFS.cmd.
-:: Hier wird nur noch der aktuell aktive Power Plan für das Logging ausgelesen.
+:: ï¿½ber PowerPlanFS.cmd.
+:: Hier wird nur noch der aktuell aktive Power Plan fï¿½r das Logging ausgelesen.
 
 for /f "tokens=*" %%i in ('powercfg /getactivescheme') do (
     for /f "tokens=2 delims=()" %%a in ("%%i") do set "CurrentPowerScheme=%%a"

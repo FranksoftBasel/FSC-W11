@@ -1,0 +1,18 @@
+Get-WindowsUpdate -MicrosoftUpdate -IsHidden
+
+
+Hide-WindowsUpdate -KBArticleID "KB5127648" -Confirm:$false -Verbose
+Hide-WindowsUpdate -KBArticleID "KB5127936" -Confirm:$false -Verbose
+
+
+Get-WindowsUpdate -MicrosoftUpdate -IsHidden
+
+
+Check Available:
+Get-WindowsUpdate -MicrosoftUpdate -Category "Security Updates" -Verbose
+Get-WindowsUpdate -MicrosoftUpdate -Title "*Windows 11*" -Verbose
+
+Check installed:
+Get-HotFix | Sort-Object InstalledOn -Descending | Select-Object -First 10 HotFixID,InstalledOn,Description
+
+

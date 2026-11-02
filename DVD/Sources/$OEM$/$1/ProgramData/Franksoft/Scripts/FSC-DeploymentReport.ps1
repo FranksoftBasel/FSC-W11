@@ -3,10 +3,10 @@
 # Deployment Report Generator
 #
 # Script : FSC-CreateDeploymentReport.ps1
-# Version: 2.9
+# Version: 3.1
 # Author : Franksoft
-# Date   : 31.10.2026
-# Time   : 14:40:00
+# Date   : 02.11.2026
+# Time   : 13:50:00
 #
 # Purpose:
 # Creates a local HTML deployment report from FSC registry timing data,
@@ -474,6 +474,80 @@ try {
 $WinGetRowsForHtml = @($WinGetRows | Sort-Object App)
 
 # ============================================================================
+# Windows Update history from existing WinUpdatesView After exports
+# ============================================================================
+function Get-FSCUpdateField {
+    param([object]$Row, [string[]]$Names)
+    return Get-RegistryValueByNames $Row $Names
+}
+function Import-FSCUpdateHistory {
+    param([string]$Path)
+    if ($Path -like '*.csv') {
+        $rawRows = @(Import-Csv -LiteralPath $Path -Encoding UTF8 -ErrorAction Stop)
+    } else {
+        $rawRows = @()
+        $fields = @{}
+        foreach ($line in @(Get-Content -LiteralPath $Path -Encoding UTF8 -ErrorAction Stop) + @('====')) {
+            if ($line -match '^\s*=+\s*$') {
+                if ($fields.Count -gt 0) { $rawRows += [pscustomobject]$fields; $fields = @{} }
+            } elseif ($line -match '^\s*([^:]+?)\s*:\s*(.*)$') {
+                $fields[$matches[1].Trim()] = $matches[2].Trim()
+            }
+        }
+    }
+    foreach ($r in $rawRows) {
+        $title = Get-FSCUpdateField $r @('Title','Titel','Update Title')
+        if (-not $title) { continue }
+        $operation = Get-FSCUpdateField $r @('Operation','Vorgang','Aktion')
+        if ($operation -match 'Uninstall|Deinstall') { continue }
+        $kb = Get-FSCUpdateField $r @('KB Number','KB-Nummer','KB','KB Article')
+        if (-not $kb -and $title -match '\bKB\d+\b') { $kb = $matches[0] }
+        if ($kb -match '^\d+$') { $kb = 'KB' + $kb }
+        [pscustomobject]@{
+            KB = $kb
+            Title = $title
+            Date = Get-FSCUpdateField $r @('Install Date','Installationsdatum','Installation Date','Date','Datum')
+            Result = Get-FSCUpdateField $r @('Operation Result','Ergebnis','Result','Resultat')
+        }
+    }
+}
+$WUHistoryPath = ''
+$WUHistoryRows = @()
+$WUHistoryMessage = 'Kein WinUpdatesView-After-Export gefunden.'
+$WUHistoryRowsHtml = ''
+try {
+    $historyFiles = @()
+    foreach ($dir in @((Join-Path $LogRoot 'WindowsUpdate'), $LogRoot)) {
+        if (Test-Path -LiteralPath $dir) {
+            $historyFiles += @(Get-ChildItem -LiteralPath $dir -File -ErrorAction Stop | Where-Object { $_.Name -like 'WinUpdatesView_after_*' -and $_.Extension -in @('.csv','.txt') })
+        }
+    }
+    # Read the latest usable export; TXT and CSV are supported.
+    $historyFiles = @($historyFiles | Sort-Object LastWriteTime -Descending)
+    foreach ($file in $historyFiles) {
+        try {
+            $imported = @(Import-FSCUpdateHistory $file.FullName)
+            if ($imported.Count -gt 0) {
+                $WUHistoryPath = $file.FullName
+                # Stable grouping: KB updates first, preserving export order in both groups.
+                $WUHistoryRows = @($imported | Where-Object { -not [string]::IsNullOrWhiteSpace($_.KB) }) + @($imported | Where-Object { [string]::IsNullOrWhiteSpace($_.KB) })
+                break
+            }
+        } catch { Write-Warning ('Update-Export nicht lesbar: ' + $file.FullName + ': ' + $_.Exception.Message) }
+    }
+    if ($WUHistoryRows.Count -gt 0) {
+        $WUHistoryMessage = '{0} Eintraege aus dem After-Export. Der Verlauf kann auch Updates vor dem FSC-Update-Lauf enthalten.' -f $WUHistoryRows.Count
+        foreach ($row in $WUHistoryRows) {
+            $resultClass = 'muted'
+            if ($row.Result -match '^(Succeeded|Erfolgreich|Success)$') { $resultClass = 'ok' }
+            elseif ($row.Result -match 'Fail|Fehler|Abgebrochen|Abort') { $resultClass = 'bad' }
+            $WUHistoryRowsHtml += '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td class="{3}">{4}</td></tr>' -f (HtmlEncode $row.KB), (HtmlEncode $row.Title), (HtmlEncode $row.Date), $resultClass, (HtmlEncode $row.Result)
+        }
+    }
+} catch { $WUHistoryMessage = 'Windows-Update-Verlauf konnte nicht gelesen werden: ' + $_.Exception.Message }
+if (-not $WUHistoryRowsHtml) { $WUHistoryRowsHtml = '<tr><td colspan="4" class="muted">Keine Update-Eintraege verfuegbar.</td></tr>' }
+
+# ============================================================================
 # FSC Log excerpt
 # ============================================================================
 
@@ -742,7 +816,7 @@ $html = @"
             <h2>Report Info</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
-                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v2.9 (31.10.2026 14:40:00)</span>
+                <b>Generator:</b><span>FSC-DeploymentReport.ps1 v3.1 (02.11.2026 13:50:00)</span>
                 <b>Registry:</b><span>$(if (Test-Path $RegSetupRoot) { "OK" } else { "Fehlt" })</span>
                 <b>FSC Log:</b><span>$(if (Test-Path $FscLogPath) { "OK" } else { "Fehlt" })</span>
                 <b>App-Snapshots:</b><span>$(if ((Test-Path $WinGetBeforePath) -and (Test-Path $WinGetAfterPath)) { "OK" } else { "Fehlt" })</span>
@@ -774,6 +848,16 @@ $html = @"
                 <b>Phase:</b><span>$(HtmlEncode $WUPhase)</span>
             </div>
         </div>
+    </div>
+
+    <div class="panel">
+        <h2>Windows Updates – Update-Verlauf</h2>
+        <p class="muted">$(HtmlEncode $WUHistoryMessage)</p>
+        <table>
+            <thead><tr><th>KB</th><th>Update</th><th>Installationsdatum</th><th>Ergebnis</th></tr></thead>
+            <tbody>$WUHistoryRowsHtml</tbody>
+        </table>
+        <p class="path">$(HtmlEncode $WUHistoryPath)</p>
     </div>
 
     <div class="panel">
@@ -843,7 +927,7 @@ $html = @"
 $utf8Bom = New-Object System.Text.UTF8Encoding($true)
 [System.IO.File]::WriteAllText($ReportPath, $html, $utf8Bom)
 
-Write-Host "Generator: FSC-DeploymentReport.ps1 v2.9 (31.10.2026 14:40:00)"
+Write-Host "Generator: FSC-DeploymentReport.ps1 v3.1 (02.11.2026 13:50:00)"
 Write-Host "Script-Datei: $PSCommandPath"
 Write-Host "Deployment Report erstellt: $ReportPath"
 
