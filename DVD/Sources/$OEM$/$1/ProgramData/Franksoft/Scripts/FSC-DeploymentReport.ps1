@@ -110,6 +110,20 @@ function Format-Duration {
     } catch { return "-" }
 }
 
+function Format-FSCResult {
+    param([AllowNull()][string]$Value)
+    switch -Regex (([string]$Value).Trim()) {
+        '^(Succeeded|Success)$' { 'Erfolgreich'; break }
+        '^Succeeded With Errors$' { 'Erfolgreich mit Fehlern'; break }
+        '^(Failed|Failure|Error)$' { 'Fehlgeschlagen'; break }
+        '^(Aborted|Cancelled|Canceled)$' { 'Abgebrochen'; break }
+        '^(Running|In Progress)$' { 'Läuft'; break }
+        '^Reboot$' { 'Neustart'; break }
+        '^Finish$' { 'Abschluss'; break }
+        default { $Value }
+    }
+}
+
 function HtmlEncode {
     param([object]$Text)
     if ($null -eq $Text) { return "" }
@@ -426,7 +440,7 @@ try {
     $sessionPrefix = '{0}|{1}|' -f $env:COMPUTERNAME,$currentOS.InstallDate
     if (-not $beforeDoc.Session.StartsWith($sessionPrefix)) { throw 'Snapshots gehoeren zu einer anderen Windows-Installation.' }
     if ([datetimeoffset]$afterDoc.Captured -lt [datetimeoffset]$beforeDoc.Captured) { throw 'After-Snapshot ist aelter als Before.' }
-    $AppSnapshotInfo = 'Before: {0} | After: {1}' -f $beforeDoc.Captured,$afterDoc.Captured
+    $AppSnapshotInfo = 'Vorher: {0} | Nachher: {1}' -f $beforeDoc.Captured,$afterDoc.Captured
     # 7-Zip product family: match an architecture migration only when each
     # snapshot has exactly one installation in the same account scope.
     $sevenBefore = @($beforeDoc.Apps | Where-Object { $_.Name -match '^7-Zip(?:\s|$)' -and $_.Publisher -eq 'Igor Pavlov' })
@@ -513,7 +527,7 @@ function Import-FSCUpdateHistory {
 }
 $WUHistoryPath = ''
 $WUHistoryRows = @()
-$WUHistoryMessage = 'Kein WinUpdatesView-After-Export gefunden.'
+$WUHistoryMessage = 'Kein WinUpdatesView-Export nach dem Update-Lauf gefunden.'
 $WUHistoryRowsHtml = ''
 try {
     $historyFiles = @()
@@ -536,16 +550,16 @@ try {
         } catch { Write-Warning ('Update-Export nicht lesbar: ' + $file.FullName + ': ' + $_.Exception.Message) }
     }
     if ($WUHistoryRows.Count -gt 0) {
-        $WUHistoryMessage = '{0} Eintraege aus dem After-Export. Der Verlauf kann auch Updates vor dem FSC-Update-Lauf enthalten.' -f $WUHistoryRows.Count
+        $WUHistoryMessage = '{0} Einträge aus dem Export nach dem Update-Lauf. Der Verlauf kann auch Updates vor dem FSC-Update-Lauf enthalten.' -f $WUHistoryRows.Count
         foreach ($row in $WUHistoryRows) {
             $resultClass = 'muted'
             if ($row.Result -match '^(Succeeded|Erfolgreich|Success)$') { $resultClass = 'ok' }
             elseif ($row.Result -match 'Fail|Fehler|Abgebrochen|Abort') { $resultClass = 'bad' }
-            $WUHistoryRowsHtml += '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td class="{3}">{4}</td></tr>' -f (HtmlEncode $row.KB), (HtmlEncode $row.Title), (HtmlEncode $row.Date), $resultClass, (HtmlEncode $row.Result)
+            $WUHistoryRowsHtml += '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td class="{3}">{4}</td></tr>' -f (HtmlEncode $row.KB), (HtmlEncode $row.Title), (HtmlEncode $row.Date), $resultClass, (HtmlEncode (Format-FSCResult $row.Result))
         }
     }
 } catch { $WUHistoryMessage = 'Windows-Update-Verlauf konnte nicht gelesen werden: ' + $_.Exception.Message }
-if (-not $WUHistoryRowsHtml) { $WUHistoryRowsHtml = '<tr><td colspan="4" class="muted">Keine Update-Eintraege verfuegbar.</td></tr>' }
+if (-not $WUHistoryRowsHtml) { $WUHistoryRowsHtml = '<tr><td colspan="4" class="muted">Keine Update-Einträge verfügbar.</td></tr>' }
 
 # ============================================================================
 # FSC Log excerpt
@@ -676,7 +690,7 @@ $html = @"
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<title>Franksoft Deployment Report</title>
+<title>Franksoft-Installationsbericht</title>
 <style>
     :root {
         --blue: #005FB8;
@@ -782,7 +796,7 @@ $html = @"
 
 <div class="header">
     <div>
-        <h1>Franksoft Deployment Report</h1>
+        <h1>Franksoft-Installationsbericht</h1>
         <div class="sub">Automatischer Report aus Registry, FSC Log und WinGet Logs</div>
     </div>
     <div class="brand">FSC<small>FRANKSOFT CLIENT</small></div>
@@ -813,7 +827,7 @@ $html = @"
     </div>
 </div>
         <div>
-            <h2>Report Info</h2>
+            <h2>Berichtsinformationen</h2>
             <div class="kv">
                 <b>Erstellt:</b><span>$(HtmlEncode $Generated)</span>
                 <b>Generator:</b><span>FSC-DeploymentReport.ps1 v3.2 (02.11.2026 14:00:00)</span>
@@ -826,11 +840,11 @@ $html = @"
 
     <div class="grid2">
         <div class="panel">
-            <h2>Deployment Summary</h2>
+            <h2>Installationsübersicht</h2>
             <table class="summary-table">
-                <tr><td>Windows Setup</td><td>$(Format-Time $WindowsSetupStart)</td><td>$(Format-Time $WindowsSetupEnd)</td><td class="num summary-duration">$WindowsSetupDuration</td></tr>
+                <tr><td>Windows-Installation</td><td>$(Format-Time $WindowsSetupStart)</td><td>$(Format-Time $WindowsSetupEnd)</td><td class="num summary-duration">$WindowsSetupDuration</td></tr>
                 <tr class="driver-row"><td>Install_HP-Drivers.cmd</td><td>$(Format-Time $HPDriversStart)</td><td>$(Format-Time $HPDriversEnd)</td><td class="num summary-duration">$(HtmlEncode $HPDriversDuration)</td></tr>
-                <tr><td>Franksoft Deployment</td><td>$(Format-Time $FSCDeploymentStart)</td><td>$(Format-Time $FSCDeploymentEnd)</td><td class="num summary-duration">$FSCDeploymentDuration</td></tr>
+                <tr><td>Franksoft-Installation</td><td>$(Format-Time $FSCDeploymentStart)</td><td>$(Format-Time $FSCDeploymentEnd)</td><td class="num summary-duration">$FSCDeploymentDuration</td></tr>
                 <tr><td>Windows Update</td><td>$(Format-Time $WindowsUpdateStart)</td><td>$(Format-Time $WindowsUpdateEnd)</td><td class="num summary-duration">$WindowsUpdateDuration</td></tr>
                 <tr class="total-row"><td colspan="3">Gesamtdauer</td><td class="num">$TotalDuration</td></tr>
             </table>
@@ -843,9 +857,9 @@ $html = @"
                 <b>Start:</b><span>$(HtmlEncode (Format-DateTime $WindowsUpdateStart))</span>
                 <b>Ende:</b><span>$(HtmlEncode (Format-DateTime $WindowsUpdateEnd))</span>
                 <b>Dauer:</b><span>$(HtmlEncode $WindowsUpdateDuration)</span>
-                <b>Result:</b><span>$(HtmlEncode $WULastResult)</span>
-                <b>Round:</b><span>$(HtmlEncode $WURound)</span>
-                <b>Phase:</b><span>$(HtmlEncode $WUPhase)</span>
+                <b>Ergebnis:</b><span>$(HtmlEncode (Format-FSCResult $WULastResult))</span>
+                <b>Runde:</b><span>$(HtmlEncode $WURound)</span>
+                <b>Phase:</b><span>$(HtmlEncode (Format-FSCResult $WUPhase))</span>
             </div>
         </div>
     </div>
@@ -869,10 +883,10 @@ $html = @"
     </div>
 
     <div class="panel">
-        <h2>FSC Script Timeline</h2>
+        <h2>FSC-Skriptübersicht</h2>
         <table>
             <thead>
-                <tr><th>Phase</th><th>Script</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th></tr>
+                <tr><th>Phase</th><th>Skript</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th></tr>
             </thead>
             <tbody>
                 $scriptRowsHtml
@@ -904,7 +918,7 @@ $html = @"
         <h2>Alle Scripts – Laufzeiten (chronologisch)</h2>
         <table>
             <thead>
-                <tr><th>Phase</th><th>Script</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th><th>Exit-Code</th></tr>
+                <tr><th>Phase</th><th>Skript</th><th>Start</th><th>Ende</th><th>Dauer (hh:mm:ss)</th><th>Status</th><th>Rückgabecode</th></tr>
             </thead>
             <tbody>
                 $allScriptsRowsHtml
