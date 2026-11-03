@@ -690,7 +690,7 @@ $html = @"
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<title>Franksoft-Installationsbericht</title>
+<title>Franksoft Deployment Report</title>
 <style>
     :root {
         --blue: #005FB8;
@@ -796,7 +796,7 @@ $html = @"
 
 <div class="header">
     <div>
-        <h1>Franksoft-Installationsbericht</h1>
+        <h1>Franksoft Deployment Report</h1>
         <div class="sub">Automatischer Report aus Registry, FSC Log und WinGet Logs</div>
     </div>
     <div class="brand">FSC<small>FRANKSOFT CLIENT</small></div>
